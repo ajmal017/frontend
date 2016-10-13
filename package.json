@@ -1,0 +1,30 @@
+{
+  "name": "finaskus",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sheikh Mohammed Shamnoon",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "3.9.1",
+    "gulp-concat": "2.6.0",
+    "gulp-exec": "2.1.2",
+    "gulp-htmlmin": "3.0.0",
+    "gulp-imagemin": "3.0.3",
+    "gulp-inject": "4.1.0",
+    "gulp-less": "3.1.0",
+    "gulp-rename": "1.2.2",
+    "gulp-server-livereload": "1.8.2",
+    "gulp-uglify": "2.0.0",
+    "gulp-watch": "4.3.9",
+    "less-plugin-autoprefix": "1.5.1",
+    "less-plugin-clean-css": "1.5.1",
+    "run-sequence": "1.2.2"
+  },
+  "dependencies": {
+    "gulp-less": "3.1.0"
+  }
+}

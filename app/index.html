@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html ng-app="finApp" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Finaskus</title>
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="page-wrapper">
+        <div ng-view autoscroll="true"></div></div>
+    </div>
+    <!--Library Files Start-->
+    <script type="text/javascript" src="lib/jquery.min.js"></script>
+    <script type="text/javascript" src="lib/bootstrap.min.js"></script>
+    <script type="text/javascript" src="lib/angular.min.js"></script>
+    <script type="text/javascript" src="lib/angular-resource.min.js"></script>
+    <script type="text/javascript" src="lib/angular-route.min.js"></script>
+    <script type="text/javascript" src="lib/angular-sanitize.min.js"></script>
+    
+    <!--Library Files End-->
+    <!-- Main File-->
+    <script type="text/javascript" src="app.js"></script>
+    <!-- Main File-->
+    <!--Common Module Start-->
+    <script type="text/javascript" src="modules/common/directives/appDirectives.js"></script>
+    <script type="text/javascript" src="modules/common/config/appConfig.js"></script>
+    <script type="text/javascript" src="modules/common/config/appText.js"></script>
+    <script type="text/javascript" src="modules/common/services/appServices.js"></script>
+    <!--Common Module End-->    
+    <!--Authentication Module Start-->
+    <script type="text/javascript" src="modules/authentication/authConfig.js"></script>
+    <script type="text/javascript" src="modules/authentication/controllers/authController.js"></script>
+    <script type="text/javascript" src="modules/authentication/services/authService.js"></script>
+    <!--Authentication Module End-->
+  </body>
+</html>
