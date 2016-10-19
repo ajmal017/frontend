@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Finaskus</title>
-    <link rel="stylesheet" type="text/css" href="lib/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="libs/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -17,15 +17,18 @@
   </head>
   <body>
     <div class="page-wrapper">
+        <fin-header></fin-header>
+        <div class="drawer-overlay"></div>
         <div ng-view autoscroll="true"></div></div>
     </div>
+    <fin-drawer></fin-drawer>
     <!--Library Files Start-->
-    <script type="text/javascript" src="lib/jquery.min.js"></script>
-    <script type="text/javascript" src="lib/bootstrap.min.js"></script>
-    <script type="text/javascript" src="lib/angular.min.js"></script>
-    <script type="text/javascript" src="lib/angular-resource.min.js"></script>
-    <script type="text/javascript" src="lib/angular-route.min.js"></script>
-    <script type="text/javascript" src="lib/angular-sanitize.min.js"></script>
+    <script type="text/javascript" src="libs/jquery.min.js"></script>
+    <script type="text/javascript" src="libs/bootstrap.min.js"></script>
+    <script type="text/javascript" src="libs/angular.min.js"></script>
+    <script type="text/javascript" src="libs/angular-resource.min.js"></script>
+    <script type="text/javascript" src="libs/angular-route.min.js"></script>
+    <script type="text/javascript" src="libs/angular-sanitize.min.js"></script>
     
     <!--Library Files End-->
     <!-- Main File-->

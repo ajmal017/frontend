@@ -95,7 +95,7 @@ gulp.task('giveBuild',['copyAssets','minifyJS','copylibJSFiles','copylibCssFiles
 
 gulp.task('copyFiles',function(){
     return gulp.src(devePlace)
-    .pipe(gulp.dest('../CombatPhoneGap/www/'));
+    .pipe(gulp.dest('/'));
 });
 
 var exec = require('child_process').exec;

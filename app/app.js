@@ -8,6 +8,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		'ngRoute',
 		'ngResource',
 		'ngSanitize',
+		'finApp.directives',
+		'finApp.auth'
 	])
 	.config(config)
 	.run(run);
@@ -24,9 +26,9 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
                 title : 'Page not found',
                 templateUrl: 'modules/common/views/404.html'
             });
-		$httpProvider.interceptors.push('finAppHttpIntercepter');
+		//$httpProvider.interceptors.push('finAppHttpIntercepter');
 	}
-	run.$inject = ['$route','$routeParams','$rootScope',];
+	run.$inject = ['$route','$routeParams','$rootScope'];
 	function run($route,$routeParams,$rootScope){
 		
 		
