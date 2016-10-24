@@ -76,6 +76,12 @@ header{
 						padding-right:0px;
 					}					
 				}
+				p{
+					.GLOBAL_FONT_STYLE('Roboto-Light',@black,normal);
+					font-size:14px;
+					margin-top:10%;
+
+				}
 			}
 		}
 		@media @below768{
@@ -98,6 +104,14 @@ header{
 				.log-in{
 					display:none;
 				}
+			}
+		}
+	}
+	.navbar-header{
+		@media only screen and (min-width:1200px){
+			width:14%;
+			.navbar-brand{
+				width:100%;
 			}
 		}
 	}
@@ -469,6 +483,10 @@ section{
 		}
 	}	
 }
+.fin-btn-group{
+	width:100%;
+	float:left;
+}
 .fin-app-btn{
 	padding:4% 0px;
 	border:none;
@@ -517,4 +535,18 @@ section{
 			}
 		}
 	}
+}
+.fin-link-btn{
+	border:none;
+	background:none;
+	outline:none;
+	padding:3% 0px;
+	.GLOBAL_FONT_STYLE('Roboto-Bold',@flamingoapprox,normal);
+	.PIXEL2EM(12);
+	float:left;
+	span{
+		display:inline-block;
+		margin-right: 14px;
+	}
+	margin-right: 10px;
 }

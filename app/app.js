@@ -8,7 +8,9 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		'ngRoute',
 		'ngResource',
 		'ngSanitize',
+		'finApp.config',
 		'finApp.directives',
+		'finApp.servies',
 		'finApp.auth'
 	])
 	.config(config)
@@ -28,12 +30,12 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
             });
 		//$httpProvider.interceptors.push('finAppHttpIntercepter');
 	}
-	run.$inject = ['$route','$routeParams','$rootScope'];
-	function run($route,$routeParams,$rootScope){
+	run.$inject = ['$route','$routeParams','$rootScope','$location','appConfig','checkPath'];
+	function run($route,$routeParams,$rootScope,$location,appConfig,checkPath){
 		
 		
 		$rootScope.$on('$locationChangeStart', function(event, current, previous) {
-		
+			$rootScope.getStarted = checkPath($location.path(),appConfig.pagesWithAlreadySignMsg);
 		});
 		$rootScope.$on('$routeChangeSuccess', function(event, current, previous) {
 			$rootScope.title = $route.current.title;

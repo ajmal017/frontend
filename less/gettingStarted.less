@@ -1,0 +1,56 @@
+.getStarted{
+	padding-top:2%;
+	padding-left:6%;
+	padding-right:6%;
+	.pigyImage{
+		img{
+			width:100%;
+		}
+		animation: move 1s infinite alternate;
+	}	
+	.shadow{
+		position: absolute;
+		bottom: -34%;
+		padding: 2%;
+		border-radius: 50%;
+		animation: scalling 1s infinite alternate;
+		background-color:@concretesolid;
+		opacity:0.7;
+	}
+	.getStartDesc{
+		padding-top:12%;
+		h1{
+		.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@blackapprox,normal);
+			.PIXEL2EM(30);
+		}
+		p{
+		width:97%;
+		padding-top:5%;
+		.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@blackapprox,normal);
+			.PIXEL2EM(18);
+			opacity:0.7;
+			line-height:26px;
+			margin-bottom:10%;
+		}
+	}
+	.fin-app-btn{
+		padding: 3% 0px;
+		width: 34%;
+	}
+}
+@keyframes move{
+  0% {
+    transform:translateY(0px);
+  }
+  100% {
+    transform:translateY(30px);
+  }
+}
+@keyframes scalling{
+  0% {
+    transform:scale(0.3);
+  }
+  100% {
+    transform:scale(1);
+  }
+}

@@ -60,6 +60,13 @@ header .navbar .navbar-right li {
 header .navbar .navbar-right li:last-child a {
   padding-right: 0px;
 }
+header .navbar .navbar-right li p {
+  font-family: 'Roboto-Light';
+  color: #000;
+  font-weight: normal;
+  font-size: 14px;
+  margin-top: 10%;
+}
 @media only screen and (max-width:768px) {
   header .navbar {
     padding-top: 6%;
@@ -82,6 +89,14 @@ header .navbar .navbar-right li:last-child a {
   }
   header .navbar .navbar-right .log-in {
     display: none;
+  }
+}
+@media only screen and (min-width: 1200px) {
+  header .navbar-header {
+    width: 14%;
+  }
+  header .navbar-header .navbar-brand {
+    width: 100%;
   }
 }
 .drawer-overlay {
@@ -606,6 +621,10 @@ section.introduction.about-app a {
   background-repeat: no-repeat;
   vertical-align: middle;
 }
+.fin-btn-group {
+  width: 100%;
+  float: left;
+}
 .fin-app-btn {
   padding: 4% 0px;
   border: none;
@@ -668,6 +687,22 @@ section.introduction.about-app a {
 }
 .fin-app-btn.fin-signIn .sign-img + span {
   margin-left: 15%;
+}
+.fin-link-btn {
+  border: none;
+  background: none;
+  outline: none;
+  padding: 3% 0px;
+  font-family: 'Roboto-Bold';
+  color: #F26529;
+  font-weight: normal;
+  font-size: 0.75em;
+  float: left;
+  margin-right: 10px;
+}
+.fin-link-btn span {
+  display: inline-block;
+  margin-right: 14px;
 }
 .login-wrapper {
   position: fixed;
@@ -818,4 +853,144 @@ section.introduction.about-app a {
   right: 0px;
   text-align: center;
   width: 6%;
+}
+.getStarted {
+  padding-top: 2%;
+  padding-left: 6%;
+  padding-right: 6%;
+}
+.getStarted .pigyImage {
+  -webkit-animation: move 1s infinite alternate;
+     -moz-animation: move 1s infinite alternate;
+       -o-animation: move 1s infinite alternate;
+          animation: move 1s infinite alternate;
+}
+.getStarted .pigyImage img {
+  width: 100%;
+}
+.getStarted .shadow {
+  position: absolute;
+  bottom: -34%;
+  padding: 2%;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+  -webkit-animation: scalling 1s infinite alternate;
+     -moz-animation: scalling 1s infinite alternate;
+       -o-animation: scalling 1s infinite alternate;
+          animation: scalling 1s infinite alternate;
+  background-color: #f2f2f2;
+  opacity: 0.7;
+}
+.getStarted .getStartDesc {
+  padding-top: 12%;
+}
+.getStarted .getStartDesc h1 {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #010101;
+  font-weight: normal;
+  font-size: 1.875em;
+}
+.getStarted .getStartDesc p {
+  width: 97%;
+  padding-top: 5%;
+  font-family: 'PlayfairDisplay-Regular';
+  color: #010101;
+  font-weight: normal;
+  font-size: 1.125em;
+  opacity: 0.7;
+  line-height: 26px;
+  margin-bottom: 10%;
+}
+.getStarted .fin-app-btn {
+  padding: 3% 0px;
+  width: 34%;
+}
+@-webkit-keyframes move {
+  0% {
+    -webkit-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(30px);
+            transform: translateY(30px);
+  }
+}
+@-moz-keyframes move {
+  0% {
+    -moz-transform: translateY(0px);
+         transform: translateY(0px);
+  }
+  100% {
+    -moz-transform: translateY(30px);
+         transform: translateY(30px);
+  }
+}
+@-o-keyframes move {
+  0% {
+    -o-transform: translateY(0px);
+       transform: translateY(0px);
+  }
+  100% {
+    -o-transform: translateY(30px);
+       transform: translateY(30px);
+  }
+}
+@keyframes move {
+  0% {
+    -webkit-transform: translateY(0px);
+       -moz-transform: translateY(0px);
+         -o-transform: translateY(0px);
+            transform: translateY(0px);
+  }
+  100% {
+    -webkit-transform: translateY(30px);
+       -moz-transform: translateY(30px);
+         -o-transform: translateY(30px);
+            transform: translateY(30px);
+  }
+}
+@-webkit-keyframes scalling {
+  0% {
+    -webkit-transform: scale(0.3);
+            transform: scale(0.3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+@-moz-keyframes scalling {
+  0% {
+    -moz-transform: scale(0.3);
+         transform: scale(0.3);
+  }
+  100% {
+    -moz-transform: scale(1);
+         transform: scale(1);
+  }
+}
+@-o-keyframes scalling {
+  0% {
+    -o-transform: scale(0.3);
+       transform: scale(0.3);
+  }
+  100% {
+    -o-transform: scale(1);
+       transform: scale(1);
+  }
+}
+@keyframes scalling {
+  0% {
+    -webkit-transform: scale(0.3);
+       -moz-transform: scale(0.3);
+         -o-transform: scale(0.3);
+            transform: scale(0.3);
+  }
+  100% {
+    -webkit-transform: scale(1);
+       -moz-transform: scale(1);
+         -o-transform: scale(1);
+            transform: scale(1);
+  }
 }

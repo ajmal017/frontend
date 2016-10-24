@@ -14,12 +14,6 @@
 					 $('.menu,.drawer-overlay,.close-value').on('click',function(){
 				        drawerAnimate();
 				    });
-				    var drawerAnimate = function(){
-				        $('.drawer').toggleClass('open');
-				        $('.drawer-overlay').toggleClass('open');
-				        $('.page-wrapper').toggleClass('open');
-				         $('.bar1,.bar2').toggleClass('open');
-				    };
 				}
 			};			
 		}
@@ -28,7 +22,20 @@
 			return{
 				restrict : 'E',
 				replace:true,
-				templateUrl:'modules/common/views/drawer.html'
+				templateUrl:'modules/common/views/drawer.html',
+				link:function(){
+					$('.close-value').on('click',function(){
+				        drawerAnimate();
+				    });
+				}
 			};
 		}
+
+		var drawerAnimate = function(){
+	        $('.drawer').toggleClass('open');
+	        $('.drawer-overlay').toggleClass('open');
+	        $('.page-wrapper').toggleClass('open');
+	        $('.bar1,.bar2').toggleClass('open');
+	    };
+
 })();
