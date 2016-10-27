@@ -48,6 +48,7 @@
 		float:left;
 		padding-top:14%;
 		.form-group{
+			position:relative;
 			margin-bottom:6%;
 			&:nth-child(2){
 				margin-bottom:0px;
@@ -64,25 +65,24 @@
 				background-repeat: repeat-x;
 				background-color:transparent;
 				padding-bottom:2%;
+				&:focus,&:valid{
+					+ label{
+						.GLOBAL_FONT_STYLE('Roboto-Bold',@marinerapprox,normal);
+						.PIXEL2EM(16);
+						top:-40%;
+					}
+				}
 			}
-			input[type="password"]{
-				letter-spacing:5px;
-			}
-			input::-webkit-input-placeholder{
-				color:@marinerapprox;
-				opacity:0.6;
-				letter-spacing:0px;
-			}
-			input:-ms-input-placeholder{
-				color:@marinerapprox;
-				opacity:0.6;
-				letter-spacing:0px;
-			}
-			input:-moz-placeholder{
-				color:@marinerapprox;
-				opacity:0.6;
-				letter-spacing:0px;
-			}
+			input + label{
+					position:absolute;
+					pointer-events:none;
+					top:-4px;
+					.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@marinerapprox,normal);
+					.PIXEL2EM(24);
+					transition:all 0.2s ease;
+					opacity:0.6;
+					letter-spacing:0px;
+				}
 			.password-cover{
 				position:relative;
 				span{

@@ -541,6 +541,10 @@ section.introduction.about-app a {
      -moz-border-radius: 40px;
           border-radius: 40px;
   text-decoration: none!important;
+  -webkit-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
 }
 .fin-btn.fin-works {
   max-width: 300px;
@@ -604,6 +608,10 @@ section.introduction.about-app a {
 .fin-link {
   font-family: 'Roboto-Bold';
   font-size: 14px;
+  -webkit-transition: all 500ms ease-in-out;
+  -o-transition: all 500ms ease-in-out;
+  -moz-transition: all 500ms ease-in-out;
+  transition: all 500ms ease-in-out;
 }
 .fin-link.log-in {
   color: #F26529 !important;
@@ -633,6 +641,10 @@ section.introduction.about-app a {
   -webkit-border-radius: 25px;
      -moz-border-radius: 25px;
           border-radius: 25px;
+  -webkit-transition: all 200ms ease-in-out;
+  -o-transition: all 200ms ease-in-out;
+  -moz-transition: all 200ms ease-in-out;
+  transition: all 200ms ease-in-out;
 }
 .fin-app-btn.fin-orange {
   font-family: 'Roboto-Bold';
@@ -766,6 +778,7 @@ section.introduction.about-app a {
   padding-top: 14%;
 }
 .login-wrapper .login-form .form-group {
+  position: relative;
   margin-bottom: 6%;
 }
 .login-wrapper .login-form .form-group:nth-child(2) {
@@ -793,21 +806,26 @@ section.introduction.about-app a {
   background-color: transparent;
   padding-bottom: 2%;
 }
-.login-wrapper .login-form .form-group input[type="password"] {
-  letter-spacing: 5px;
-}
-.login-wrapper .login-form .form-group input::-webkit-input-placeholder {
+.login-wrapper .login-form .form-group input:focus + label,
+.login-wrapper .login-form .form-group input:valid + label {
+  font-family: 'Roboto-Bold';
   color: #247abc;
-  opacity: 0.6;
-  letter-spacing: 0px;
+  font-weight: normal;
+  font-size: 1em;
+  top: -40%;
 }
-.login-wrapper .login-form .form-group input:-ms-input-placeholder {
+.login-wrapper .login-form .form-group input + label {
+  position: absolute;
+  pointer-events: none;
+  top: -4px;
+  font-family: 'PlayfairDisplay-Regular';
   color: #247abc;
-  opacity: 0.6;
-  letter-spacing: 0px;
-}
-.login-wrapper .login-form .form-group input:-moz-placeholder {
-  color: #247abc;
+  font-weight: normal;
+  font-size: 1.5em;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
   opacity: 0.6;
   letter-spacing: 0px;
 }
@@ -993,4 +1011,74 @@ section.introduction.about-app a {
          -o-transform: scale(1);
             transform: scale(1);
   }
+}
+.calendar-cover {
+  width: 13%;
+  -webkit-box-shadow: 2px 9px 31px -16px #257bbc;
+     -moz-box-shadow: 2px 9px 31px -16px #257bbc;
+          box-shadow: 2px 9px 31px -16px #257bbc;
+  -webkit-border-top-left-radius: 15%;
+     -moz-border-radius-topleft: 15%;
+          border-top-left-radius: 15%;
+  -webkit-border-top-right-radius: 15%;
+     -moz-border-radius-topright: 15%;
+          border-top-right-radius: 15%;
+  -webkit-border-bottom-left-radius: 15%;
+     -moz-border-radius-bottomleft: 15%;
+          border-bottom-left-radius: 15%;
+  -webkit-border-bottom-right-radius: 15%;
+     -moz-border-radius-bottomright: 15%;
+          border-bottom-right-radius: 15%;
+  overflow: hidden;
+}
+.calendar-cover .calendar-body {
+  padding-top: 10%;
+  padding-bottom: 18%;
+  padding-left: 4%;
+  padding-right: 4%;
+}
+.calendar-cover .calendar-body input {
+  border: none;
+  outline: none;
+  text-align: center;
+  width: 100%;
+  font-family: 'PlayfairDisplay-Regular';
+  color: #047BC1;
+  font-weight: normal;
+  font-size: 4.5em;
+  background: none;
+  color: transparent;
+  text-shadow: 0 0 0 #047BC1;
+}
+.calendar-cover .calendar-body input:focus {
+  outline: none;
+}
+.calendar-cover .calendar-footer {
+  background-color: #fafafa;
+  float: left;
+  width: 100%;
+}
+.calendar-cover .calendar-footer button {
+  position: relative;
+  border: none;
+  background: none;
+  outline: none;
+  width: 50%;
+  float: left;
+  min-height: 56px;
+}
+.calendar-cover .calendar-footer button span {
+  display: inline-block;
+}
+.calendar-cover .calendar-footer button:first-child:after {
+  content: '';
+  position: absolute;
+  width: 1px;
+  height: 90%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  background-color: #d7dde4;
 }

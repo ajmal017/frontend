@@ -23,6 +23,9 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
                 templateUrl: 'modules/authentication/views/login.html',
                 controller: 'authController'
             })
+            .when('/widgets', {
+                templateUrl: 'modules/common/views/widgets.html'
+            })
             .otherwise({
                 redirectTo: '/404',
                 title : 'Page not found',

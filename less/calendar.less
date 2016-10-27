@@ -1,0 +1,60 @@
+.calendar-cover{
+	width:13%;
+	box-shadow: 2px 9px 31px -16px #257bbc;
+	border-top-left-radius: 15%;
+	border-top-right-radius: 15%;
+	border-bottom-left-radius: 15%;
+	border-bottom-right-radius: 15%;
+	overflow:hidden;
+	.calendar-body{
+		padding-top:10%;
+		padding-bottom:18%;
+		padding-left:4%;
+		padding-right:4%;
+		input{
+			border:none;
+			outline:none;
+			text-align:center;
+			width:100%;
+			.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@lochmaraapprox,normal);
+			.PIXEL2EM(72);
+			background:none;
+			color: transparent;
+			text-shadow: 0 0 0 @lochmaraapprox;
+			&:focus{
+				outline:none;
+			}
+		}
+	}
+	.calendar-footer{
+		background-color:#fafafa;
+		float:left;
+		width:100%;
+		button{
+			position:relative;
+			border:none;
+			background:none;
+			outline:none;
+			width:50%;
+			float:left;
+			min-height:56px;
+			span{
+				display:inline-block;
+			}
+			&:first-child {
+				&:after{
+					content : '';
+					position:absolute;
+					width:1px;
+					height:90%;
+					top:0;
+					bottom:0;
+					right:0;
+					margin-top:auto;
+					margin-bottom:auto;
+					background-color:#d7dde4;
+				}
+			}
+		}
+	}
+}
