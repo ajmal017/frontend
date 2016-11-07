@@ -20,6 +20,10 @@ body {
   height: 100%;
   float: left;
 }
+div[ng-view] {
+  width: 100%;
+  float: left;
+}
 .page-wrapper {
   width: 100%;
   height: 100%;
@@ -355,6 +359,18 @@ aside.drawer .list-cover ul li a:hover {
 aside.drawer .list-cover ul li.active a {
   opacity: 0.4;
 }
+aside.drawer .list-cover ul li .secondLevel li {
+  margin-bottom: 2%;
+}
+aside.drawer .list-cover ul li .secondLevel li:first-child {
+  margin-top: 5%;
+}
+aside.drawer .list-cover ul li .secondLevel li a {
+  font-family: 'Roboto-Bold';
+  color: #fff;
+  font-weight: normal;
+  font-size: 1em;
+}
 aside.drawer .list-cover .registered {
   font-family: 'Roboto-Regular';
   color: #fff;
@@ -415,6 +431,13 @@ aside.drawer .list-cover .copywrite span:last-child {
   aside.drawer {
     width: 100%;
   }
+}
+aside.drawer .panel {
+  background: none;
+  border: 0px;
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
 }
 section {
   width: 100%;
@@ -1013,7 +1036,8 @@ section.introduction.about-app a {
   }
 }
 .calendar-cover {
-  width: 13%;
+  position: relative;
+  width: 100%;
   -webkit-box-shadow: 2px 9px 31px -16px #257bbc;
      -moz-box-shadow: 2px 9px 31px -16px #257bbc;
           box-shadow: 2px 9px 31px -16px #257bbc;
@@ -1032,23 +1056,21 @@ section.introduction.about-app a {
   overflow: hidden;
 }
 .calendar-cover .calendar-body {
+  position: relative;
   padding-top: 10%;
   padding-bottom: 18%;
   padding-left: 4%;
   padding-right: 4%;
 }
 .calendar-cover .calendar-body input {
+  font-family: 'PlayfairDisplay-Regular';
+  font-weight: normal;
   border: none;
   outline: none;
   text-align: center;
   width: 100%;
-  font-family: 'PlayfairDisplay-Regular';
-  color: #047BC1;
-  font-weight: normal;
   font-size: 4.5em;
   background: none;
-  color: transparent;
-  text-shadow: 0 0 0 #047BC1;
 }
 .calendar-cover .calendar-body input:focus {
   outline: none;
@@ -1081,4 +1103,319 @@ section.introduction.about-app a {
   margin-top: auto;
   margin-bottom: auto;
   background-color: #d7dde4;
+}
+.calendar-cover .calendar-footer button:active {
+  top: 2px;
+}
+.calendar-cover .format {
+  font-family: 'PlayfairDisplay-Regular';
+  font-weight: normal;
+  font-size: 1.875em;
+  position: absolute;
+  right: 10%;
+  top: 12%;
+  z-index: 1;
+}
+.calendar-cover.addBlue .calendar-body {
+  background-color: #f0f4f7;
+}
+.calendar-cover.addBlue .calendar-body input {
+  color: #047BC1;
+}
+.calendar-cover.addBlue .format {
+  color: #047BC1;
+}
+.calendar-cover.addRed .calendar-body {
+  background-color: #fde8de;
+}
+.calendar-cover.addRed .calendar-body input {
+  color: #F26529;
+}
+.calendar-cover.addRed .format {
+  color: #F26529;
+}
+.calendar-divider {
+  position: relative;
+  margin-top: 6%;
+}
+.calendar-divider span {
+  width: 100%;
+  height: 2px;
+  display: inline-block;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, #247abc), color-stop(0%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(left, #247abc 25%, rgba(255, 255, 255, 0) 0%);
+  background-image: -moz-linear-gradient(left, #247abc 25%, rgba(255, 255, 255, 0) 0%);
+  background-image: -o-linear-gradient(left, #247abc 25%, rgba(255, 255, 255, 0) 0%);
+  background-image: linear-gradient(to right, #247abc 25%, rgba(255, 255, 255, 0) 0%);
+  background-position: bottom;
+  -webkit-background-size: 6px 2px;
+     -moz-background-size: 6px 2px;
+       -o-background-size: 6px 2px;
+          background-size: 6px 2px;
+  background-repeat: repeat-x;
+  background-color: transparent;
+}
+.swiper-container {
+  width: 100%;
+  height: 450px;
+}
+.swiper-container .bubble {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+     -moz-box-orient: vertical;
+     -moz-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-justify-content: space-around;
+      -ms-flex-pack: distribute;
+          justify-content: space-around;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  right: -7px;
+  top: 40%;
+  width: 20px;
+  z-index: 10;
+}
+.swiper-container .dot {
+  width: 4px;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+  height: 4px;
+  margin: 0 auto;
+  background-color: #a0c9e9;
+  -webkit-transition: all 200ms ease;
+  -o-transition: all 200ms ease;
+  -moz-transition: all 200ms ease;
+  transition: all 200ms ease;
+}
+.swiper-container .dot-cover {
+  position: relative;
+}
+.swiper-container .dot-cover:not(:last-child) {
+  padding-bottom: 100%;
+}
+.swiper-container .dot-cover:not(:last-child) .dot:after {
+  -webkit-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  content: '';
+  position: absolute;
+  height: 0%;
+  width: 1px;
+  background-color: #f26422;
+  top: 6px;
+  left: 0px;
+  right: 0px;
+  margin: 0 auto;
+}
+.swiper-container .dot-cover.showPseudo:after {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #047BC1;
+  font-weight: normal;
+  font-size: 1em;
+  display: inline-block;
+  min-width: 52px;
+  content: attr(data-content);
+  position: absolute;
+  top: -4px;
+  right: 19px;
+}
+.swiper-container .dot-cover:not(:last-child) .dot.ani:after {
+  height: 100%;
+}
+.swiper-container .dot.active,
+.swiper-container .dot.ani {
+  background-color: #f26422;
+  width: 6px;
+  height: 6px;
+}
+.swiper-container.customSwiper .typeSwiper {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+.swiper-container.customSwiper .typeSwiper .image-backdrop {
+  margin-bottom: 20%;
+}
+.swiper-container.customSwiper .typeSwiper .image-backdrop img {
+  width: 100%;
+}
+.swiper-container.customSwiper .typeSwiper p {
+  font-family: 'Roboto-Bold';
+  color: #F26529;
+  font-weight: normal;
+  font-size: 16px;
+}
+.swiper-container.customSwiper .swiper-content p {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #010101;
+  font-weight: normal;
+  font-size: 1.125em;
+  margin-bottom: 2%;
+}
+.swiper-container.customSwiper .swiper-content p .swiper-input {
+  display: inline-block;
+}
+.swiper-container.customSwiper .swiper-content p .swiper-input.age {
+  width: 4%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.swiper-container.customSwiper .swiper-content p .swiper-input input {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #247abc;
+  font-weight: normal;
+  font-size: 1.25em !important;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, #247abc), color-stop(0%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(left, #247abc 25%, rgba(255, 255, 255, 0) 0%);
+  background-image: -moz-linear-gradient(left, #247abc 25%, rgba(255, 255, 255, 0) 0%);
+  background-image: -o-linear-gradient(left, #247abc 25%, rgba(255, 255, 255, 0) 0%);
+  background-image: linear-gradient(to right, #247abc 25%, rgba(255, 255, 255, 0) 0%);
+  background-position: bottom;
+  -webkit-background-size: 6px 2px;
+     -moz-background-size: 6px 2px;
+       -o-background-size: 6px 2px;
+          background-size: 6px 2px;
+  background-repeat: repeat-x;
+  background-color: transparent;
+  padding-bottom: 5px;
+  text-align: center;
+}
+.swiper-container.customSwiper .swiper-content.content-1 {
+  position: absolute;
+  top: 48%;
+  -webkit-transform: translateY(-48%);
+     -moz-transform: translateY(-48%);
+      -ms-transform: translateY(-48%);
+       -o-transform: translateY(-48%);
+          transform: translateY(-48%);
+}
+.swiper-container.customSwiper .fin-btn-group {
+  z-index: 1000;
+  width: 34%;
+  position: absolute;
+  bottom: 5%;
+}
+/*.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+}*/
+.s-hidden {
+  visibility: hidden;
+  padding-right: 10px;
+  padding: 13px;
+  position: absolute;
+}
+.select {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  min-width: 100px;
+}
+.styledSelect {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #247abc;
+  font-weight: normal;
+  font-size: 1em !important;
+  background-color: #ffffff;
+  -webkit-box-shadow: 1.5px 2.33px 8px -2px #247abc;
+     -moz-box-shadow: 1.5px 2.33px 8px -2px #247abc;
+          box-shadow: 1.5px 2.33px 8px -2px #247abc;
+  -webkit-border-radius: 25px;
+     -moz-border-radius: 25px;
+          border-radius: 25px;
+  padding-right: 100px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 28px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+.styledSelect:after {
+  content: url('../images/dropdown-arrow.png');
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: 0px;
+  right: 30px;
+}
+.styledSelect:active,
+.styledSelect.active {
+  background-color: #eee;
+}
+.options {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  margin: 0 0;
+  padding: 0 0;
+  list-style: none;
+  background-color: white;
+  -webkit-box-shadow: 1.5px 2.33px 8px -2px #247abc;
+     -moz-box-shadow: 1.5px 2.33px 8px -2px #247abc;
+          box-shadow: 1.5px 2.33px 8px -2px #247abc;
+}
+.options li {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #247abc;
+  font-weight: normal;
+  font-size: 1.125em !important;
+  padding: 0 6px;
+  margin: 0 0;
+  padding: 0 10px;
+}
+.options li:hover {
+  background-color: #39f;
+  color: white;
+}
+section.swiper-outer-cover {
+  padding-left: 6%;
+  padding-right: 6%;
+  padding-top: 6%;
+}
+section.swiper-outer-cover.customSwiper .typeSwiper {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+}
+section.swiper-outer-cover.customSwiper .typeSwiper p {
+  font-family: 'Roboto-Bold';
+  color: #F26529;
+  font-weight: normal;
+  font-size: 16px;
 }

@@ -1,0 +1,63 @@
+.s-hidden {
+    visibility:hidden;
+    padding-right:10px;
+    padding: 13px;
+    position:absolute;
+}
+.select {
+    cursor:pointer;
+    display:inline-block;
+    position:relative;
+    min-width:100px;
+}
+.styledSelect {
+    .GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@marinerapprox,normal);
+    .PIXEL2EM(16)!important;
+    background-color: rgb( 255, 255, 255 );
+    box-shadow: 1.5px 2.33px 8px -2px #247abc;    
+    border-radius:25px; 
+    padding-right:100px; 
+    padding-top:4px;
+    padding-bottom:4px;
+    padding-left:28px;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    margin-right:10px;
+    margin-left:10px;
+}
+.styledSelect:after {
+    content:url('../images/dropdown-arrow.png');
+    width:0;
+    height:0;
+    position:absolute;
+    top:0px;
+    right:30px;
+}
+.styledSelect:active, .styledSelect.active {
+    background-color:#eee;
+}
+.options {
+    display:none;
+    position:absolute;
+    top:100%;
+    right:0;
+    left:0;
+    z-index:999;
+    margin:0 0;
+    padding:0 0;
+    list-style:none;
+    background-color:white;
+    box-shadow: 1.5px 2.33px 8px -2px #247abc;
+}
+.options li {.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@marinerapprox,normal);
+    .PIXEL2EM(18)!important;
+    padding:0 6px;
+    margin:0 0;
+    padding:0 10px;
+}
+.options li:hover {
+    background-color:#39f;
+    color:white;
+}

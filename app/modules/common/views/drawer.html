@@ -3,19 +3,35 @@
     <div class="close-btn">
       <p class="close-value"><span class="text">CLOSE</span><span class="close-cover"><span class="bar1"></span><span class="bar2"></span></span></p>
     </div>
-    <div class="list-cover">
-      <ul>
-        <li class="active"><a href="#">Home</a></li>
-        <li><a href="#">About Us</a></li>
-        <li><a href="#">How It Works</a></li>
-        <li><a href="#">Why Finaskus?</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Blog</a></li>
-        <li><a href="#">Contact Us</a></li>
+    <div class="list-cover" ng-init="default = false">
+      <ul id="accordion1" ng-if="default">
+        <li class="panel active"><a href="javascript:void(0)">Home</a></li>
+        <li class="panel"><a href="javascript:void(0)">About Us</a></li>
+        <li class="panel"><a href="javascript:void(0)">How It Works</a></li>
+        <li class="panel"><a href="javascript:void(0)">Why Finaskus?</a></li>
+        <li class="panel"><a href="javascript:void(0)">FAQ</a></li>
+        <li class="panel"><a href="javascript:void(0)">Blog</a></li>
+        <li class="panel"><a href="javascript:void(0)">Contact Us</a></li>
         <a href="#" class="fin-btn fin-start">GET STARTED NOW</a>
       </ul>
-      <p class="registered">Already registered?</p>
-      <p class="login">LOG IN NOW</p>
+      <ul id="accordion1" ng-if="!default">
+        <li class="panel active"><a href="javascript:void(0)">Dashboard</a></li>
+        <li class="panel"><a href="javascript:void(0)">Risk Assessment</a></li>
+        <li class="panel"><a href="#secoundLink" data-toggle="collapse" data-parent="#accordion1">Build Financial Goals</a>
+            <ul id="secoundLink" class="collapse secondLevel">
+              <li><a href="javascript:void(0)">Retirement</a></li>
+              <li><a href="javascript:void(0)">Education</a></li>
+              <li><a href="javascript:void(0)">Tax Saving</a></li>
+              <li><a href="javascript:void(0)">Property</a></li>
+              <li><a href="javascript:void(0)">Wedding</a></li>
+              <li><a href="javascript:void(0)">Automobile</a></li>
+              <li><a href="javascript:void(0)">Other</a></li>
+            </ul>
+        </li>
+        <li class="panel"><a href="javascript:void(0)">Build Smart Portfolio</a></li>        
+        <li class="panel"><a href="javascript:void(0)">Track Performance</a></li>
+        <li class="panel"><a href="javascript:void(0)">Help?</a></li>
+      </ul>
       <p class="copywrite"><span>Finaskus</span><span>&copy;</span><span>2016</span></p>
     </div>
   </div>

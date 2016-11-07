@@ -1,0 +1,29 @@
+<div ng-if="swiperName == 'riskAssesment'" class="swiper-container customSwiper riskAssesment">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <div class="swiper-content content-1">
+                <p>I am a <span class="swiper-input age"><input type="text" name="year" ng-model="year"></span> years old<select dropdown ng-model="gender" ng-init="gender = 'Male'"><option value="Male">Male</option><option value="Female">Female</option></select> and I am <select dropdown ng-model="status" ng-init="status = 'Single'"><option value="Single">Single</option><option value="Married">Married</option></select></p>
+                <p>with <select dropdown ng-model="kids" ng-init="kids = 'No'"><option value="No">No</option><option value="1">1</option>
+                <option value="2">2</option><option value="2+">2+</option></select>kids,<select dropdown ng-model="dependent" ng-init="dependent = 'No'"><option value="No">No</option><option value="1">1</option>
+                <option value="2">2</option></select>dependent parents</p>
+                <p>and my primary income source is<select dropdown ng-model="income" ng-init="income = 'Salary'"><option value="Salary">Salary</option><option value="Business">Business</option>
+                <option value="Homemarker">Homemaker</option><option value="Retired">Retired</option><option value="Other">Other</option></select></p>
+            </div>
+        </div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">Slide 3</div>
+        <div class="swiper-slide">Slide 1</div>
+        <div class="swiper-slide">Slide 2</div>
+    </div>
+    <div class="typeSwiper">
+        <div class="image-backdrop"><img src="assets/images/riskMargin.png"></div>
+        <p>Risk Assessment</p>
+    </div>    
+    <div class="swiper-pagination"></div>
+    <div class="fin-btn-group">
+        <button class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
+</div>

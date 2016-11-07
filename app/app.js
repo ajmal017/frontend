@@ -11,7 +11,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		'finApp.config',
 		'finApp.directives',
 		'finApp.servies',
-		'finApp.auth'
+		'finApp.auth',
+		'finApp.riskAssesment'
 	])
 	.config(config)
 	.run(run);

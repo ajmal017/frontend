@@ -1,2 +1,20 @@
-<fin-calendar-form ng-model="equity" type="blue" min="0" max="100"></fin-calendar-form>
-<fin-calendar-form ng-model="equity2" type="red" min="0" max="50"></fin-calendar-form>
+
+<swiper swiper-name="riskAssesment"></swiper>
+<swiper swiper-name="other"></swiper>
+<div class="col-xs-12">
+	<div class="col-xs-2">
+		<fin-calendar-form ng-model="equity" format="percent" type="blue" min="0" max="100"></fin-calendar-form>
+	</div>
+	<div class="col-xs-2 calendar-divider"><span></span></div>
+	<div class="col-xs-2">
+		<fin-calendar-form ng-model="equity2" format="percent" type="red" min="0" max="50"></fin-calendar-form>
+	</div>
+</div>
+
+<select dropdown ng-model="selectedValue" ng-init="selectedValue = 'Male'">
+    <option value="Male">Married with kids</option>
+    <option value="aye">Aye</option>
+    <option value="eh">Eh</option>
+    <option value="ooh">Ooh</option>
+    <option value="whoop">Whoop</option>
+</select>
