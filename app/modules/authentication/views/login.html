@@ -12,22 +12,22 @@
 		</div>
 	</header>
 	<div class="login-form">
-		<form>
+		<form name="loginForm" novalidate>
 			<div class="form-group">
-				<input type="text" name="email" required>
-				<label>Email</label>
+				<input type="text" name="email" ng-model="user.username" required>
+				<label>Email or Phone</label>
 			</div>
 			<div class="form-group">
 				<div class="col-xs-12 password-cover" ng-init="defaultType = 'password'">
 					<div class="row">
-						<input type="{{defaultType}}" name="password" required>
+						<input type="{{defaultType}}" ng-model="user.password" name="password" required>
 						<label>Password</label>
 						<span class="show-password"><img src="assets/images/showPassword.png" ng-click="((defaultType =='password')?defaultType ='text':defaultType = 'password')"></span>
 					</div>
 				</div>
 			</div>
 			<div class="login-btn-group">
-				<button class="fin-app-btn fin-orange">LOGIN</button>
+				<button class="fin-app-btn fin-orange" ng-click="verifyLogin(user)">LOGIN</button>
 				<span class="or">OR</span>
 				<button class="fin-app-btn fin-signIn"><span class="sign-img"><img src="assets/images/gSignIn.png"></span><span>SIGN IN WITH GOOGLE</span></button>
 			</div>

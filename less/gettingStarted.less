@@ -1,24 +1,14 @@
 .getStarted{
-	padding-top:2%;
+	padding-top:4%;
 	padding-left:6%;
 	padding-right:6%;
 	.pigyImage{
 		img{
 			width:100%;
 		}
-		animation: move 1s infinite alternate;
 	}	
-	.shadow{
-		position: absolute;
-		bottom: -34%;
-		padding: 2%;
-		border-radius: 50%;
-		animation: scalling 1s infinite alternate;
-		background-color:@concretesolid;
-		opacity:0.7;
-	}
 	.getStartDesc{
-		padding-top:12%;
+		padding-top:3%;
 		h1{
 		.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@blackapprox,normal);
 			.PIXEL2EM(30);
@@ -37,6 +27,34 @@
 		padding: 3% 0px;
 		width: 34%;
 	}
+	.bubble{
+        position:fixed;
+        right: 6%;
+        top:40%;
+        width:14%;
+        z-index: 10;
+        p{
+          .GLOBAL_FONT_STYLE('Roboto-Bold',@flamingoapprox,normal);
+          font-size:16px;    
+          text-align: right;   
+        }
+    }
+    .dot{
+      float: right;
+      width:4px;
+      border-radius:50%;
+      height:4px;
+      background-color:#a0c9e9;
+      transition:all 200ms ease;
+    }
+    .dot-cover{
+        position:relative;
+        float: right;
+        width: 100%;
+        &:not(:last-child){
+            padding-bottom:16px;
+        }
+    }
 }
 @keyframes move{
   0% {

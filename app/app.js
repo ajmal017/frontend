@@ -10,21 +10,26 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		'ngSanitize',
 		'finApp.config',
 		'finApp.directives',
+		'finApp.text',
 		'finApp.servies',
+		'angularLazyImg',
 		'finApp.auth',
+		'finApp.registration',
 		'finApp.riskAssesment'
 	])
 	.config(config)
 	.run(run);
 
-	config.$inject = ['$routeProvider','$httpProvider'];
-	function config($routeProvider,$httpProvider){
+	config.$inject = ['$routeProvider','$httpProvider','$resourceProvider'];
+	function config($routeProvider,$httpProvider,$resourceProvider){
 		$routeProvider
 			.when('/', {
+				title : '',
                 templateUrl: 'modules/authentication/views/login.html',
                 controller: 'authController'
             })
             .when('/widgets', {
+            	title : '',
                 templateUrl: 'modules/common/views/widgets.html'
             })
             .otherwise({
@@ -32,7 +37,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
                 title : 'Page not found',
                 templateUrl: 'modules/common/views/404.html'
             });
-		//$httpProvider.interceptors.push('finAppHttpIntercepter');
+		$httpProvider.interceptors.push('finWebInterCepter');
+		$resourceProvider.defaults.stripTrailingSlashes = false;
 	}
 	run.$inject = ['$route','$routeParams','$rootScope','$location','appConfig','checkPath'];
 	function run($route,$routeParams,$rootScope,$location,appConfig,checkPath){
@@ -40,6 +46,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		
 		$rootScope.$on('$locationChangeStart', function(event, current, previous) {
 			$rootScope.getStarted = checkPath($location.path(),appConfig.pagesWithAlreadySignMsg);
+			$rootScope.menu = checkPath($location.path(),appConfig.pagesWithOnlyMenu);
 		});
 		$rootScope.$on('$routeChangeSuccess', function(event, current, previous) {
 			$rootScope.title = $route.current.title;

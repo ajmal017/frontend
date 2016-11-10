@@ -2,12 +2,13 @@
     <nav class="navbar navbar-default">
       <div class="container-fluid">
         <div class="navbar-header">
-          <a class="navbar-brand" href="#"><img src="assets/images/logo.png"></a>
+          <a class="navbar-brand" href="javascript:void(0)" click-redirect="/"><img src="assets/images/logo.png"></a>
         </div>
+        <h1 ng-if="title" ng-bind="title"></h1>
           <ul class="nav navbar-nav navbar-right">
-            <li ng-if="!getStarted"><a href="#/gettingStarted" class="fin-btn start-btn">GET STARTED</a></li>
-            <li ng-if="getStarted"><p>Already have an account?</p></li>
-            <li><a href="#/" class="fin-link log-in">LOG IN</a></li>
+            <li ng-if="!getStarted && !menu"><a href="#/gettingStarted" class="fin-btn start-btn">GET STARTED</a></li>
+            <li ng-if="getStarted && !menu"><p>Already have an account?</p></li>
+            <li ng-if="!menu"><a href="javascript:void(0)" click-redirect="/" class="fin-link log-in">LOG IN</a></li>
             <li><a href="javascript:void(0)" class="fin-link menu">MENU <span class="menu-icon"></span></a></li>
           </ul>
       </div>

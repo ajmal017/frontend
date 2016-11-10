@@ -34,12 +34,14 @@ input::-webkit-calendar-picker-indicator {
   display: none;
 }
 html,body{
-	font-size: 14px;
+	
 }	
 html,body{
+	.GLOBAL_FONT_STYLE('Roboto-Regular',@black,normal);
 	width: 100%;
 	height: 100%;
 	float: left;
+	.PIXEL2EM(14);
 }
 div[ng-view]{
 	width:100%;
@@ -70,6 +72,17 @@ header{
 			img{
 				width:100%;
 			}
+		}
+		h1{
+			.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@black,normal);
+    		.PIXEL2EM(24);
+			position: absolute;
+			left: 0;
+			right: 0;
+			margin-left: auto;
+			margin-right: auto;
+			width: 20%;
+			text-align: center;
 		}
 		.navbar-right{
 			margin-top:10px;
@@ -509,6 +522,13 @@ section{
 .fin-btn-group{
 	width:100%;
 	float:left;
+	button[disabled]{
+		opacity:0.4;
+		box-shadow:none;
+		&:hover{
+			box-shadow:none;
+		}
+	}
 }
 .fin-app-btn{
 	padding:4% 0px;
@@ -526,6 +546,17 @@ section{
 		box-shadow: 0px 1px 2px 0px #f26529;
 		&:hover{
 			box-shadow: 0px 5px 4px 0px #f26529;
+		}
+	}
+	&.fin-white{
+		.GLOBAL_FONT_STYLE('Roboto-Bold',@flamingoapprox,normal);
+		.PIXEL2EM(12);
+		width:46%;
+		float:left;
+		background-color:#fff;
+		box-shadow: 0px 1px 2px 0px rgb( 242, 101, 41 );
+		&:hover{
+			box-shadow: 0px 5px 4px 0px rgb( 242, 101, 41 );
 		}
 	}
 	&.fin-signIn{
@@ -560,6 +591,13 @@ section{
 		}
 	}
 }
+button[disabled]{
+	opacity:0.4;
+	box-shadow:none!important;
+	&:hover{
+		box-shadow:none!important;
+	}
+}
 .fin-link-btn{
 	border:none;
 	background:none;
@@ -573,4 +611,47 @@ section{
 		margin-right: 14px;
 	}
 	margin-right: 10px;
+}
+
+.radio-cover{
+    width: 100%;
+    float: left;
+	input[type="radio"] {
+	    display:none;
+	    + label{
+	    	.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@blackapprox,normal);
+          	.PIXEL2EM(19);
+          	width:100%;
+          	float:left;
+          	margin-bottom:2%;
+          	opacity:0.7;
+	    	span{
+		    	display:inline-block;
+			    width:30px;
+			    height:30px;
+			    margin-right:20px;
+			    margin-top:-4px;
+			    vertical-align:middle;
+			    background-image:url('../images/checked.png');
+			    background-color:#1a78b9;
+			    opacity:0.6;
+			    background-position:center;
+			    background-size:0% 0%;
+			    background-repeat:no-repeat;
+			    transition:all 0.2s ease;
+			    cursor:pointer;
+			    border-radius:50%;
+	    	}
+	    }
+	    &:checked{
+	    	+label{
+	    		opacity:1;
+	    		span{
+	    			background-color:#1a78b9;
+				    opacity:1;
+				    background-size:45% 36%;
+	    		}
+	    	}
+	    }
+	}
 }

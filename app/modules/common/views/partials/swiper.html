@@ -1,29 +1,492 @@
-<div ng-if="swiperName == 'riskAssesment'" class="swiper-container customSwiper riskAssesment">
+<div ng-if="swiperName == 'riskAssesment1'" class="swiper-container customSwiper riskAssesment1">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
+            <form name="riskAssesment1Form1" novalidate ng-init="step = 1">
             <div class="swiper-content content-1">
-                <p>I am a <span class="swiper-input age"><input type="text" name="year" ng-model="year"></span> years old<select dropdown ng-model="gender" ng-init="gender = 'Male'"><option value="Male">Male</option><option value="Female">Female</option></select> and I am <select dropdown ng-model="status" ng-init="status = 'Single'"><option value="Single">Single</option><option value="Married">Married</option></select></p>
-                <p>with <select dropdown ng-model="kids" ng-init="kids = 'No'"><option value="No">No</option><option value="1">1</option>
-                <option value="2">2</option><option value="2+">2+</option></select>kids,<select dropdown ng-model="dependent" ng-init="dependent = 'No'"><option value="No">No</option><option value="1">1</option>
-                <option value="2">2</option></select>dependent parents</p>
-                <p>and my primary income source is<select dropdown ng-model="income" ng-init="income = 'Salary'"><option value="Salary">Salary</option><option value="Business">Business</option>
-                <option value="Homemarker">Homemaker</option><option value="Retired">Retired</option><option value="Other">Other</option></select></p>
+                <p>I am a <span class="swiper-input age"><input only-number type="text" name="year" required ng-model="modelVal.A1"></span> years old<select dropdown ng-model="modelVal.A7"><option selected value="op1">Male</option><option value="op2">Female</option></select> and I am <select dropdown ng-model="modelVal.A17"><option selected value="op1">Single</option><option value="op2">Married</option></select></p>
+                <p>with <select dropdown ng-model="modelVal.A15"><option selected value="op1">No</option><option value="op2">1</option>
+                <option value="op3">2</option><option value="op4">2+</option></select>kids,<select dropdown ng-model="modelVal.A16"><option selected value="op1">No</option><option value="op2">1</option>
+                <option value="op3">2</option></select>dependent parents</p>
+                <p>and my primary income source is<select dropdown ng-model="modelVal.A18"><option selected value="op1">Salary</option><option value="op2">Business</option>
+                <option value="op3">Homemaker</option><option value="op3">Retired</option><option value="op4">Other</option></select></p>
+            </div>
+            </form>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-content content-1">
+                <p>When it comes to investing, i<select dropdown ng-model="modelVal.A4"><option selected value="op1">Am a beginner</option><option value="op2">Understand somewhat</option><option value="op3">Understand well</option><option value="op4">Am an expert</option></select></p>
             </div>
         </div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 1</div>
-        <div class="swiper-slide">Slide 2</div>
-        <div class="swiper-slide">Slide 3</div>
-        <div class="swiper-slide">Slide 1</div>
-        <div class="swiper-slide">Slide 2</div>
+        <div class="swiper-slide">
+            <form name="riskAssesment1Form2" novalidate>
+            <div class="swiper-content">
+                <h2>I currently own / have invested in the following</h2>
+                <div class="radio-cover">
+                    <input type="radio" required id="option1Type1" name="option1" ng-model="modelVal.A8" value="op1"><label for="option1Type1"><span></span>Fixed Deposits</label>
+                    <input type="radio" required id="option1Type2" name="opoption1Tion1" ng-model="modelVal.A8" value="op2"><label for="option1Type2"><span></span>Other Fixed Income Products (PPF etc)</label>
+                    <input type="radio" required id="option1Type3" name="option1" ng-model="modelVal.A8" value="op3"><label for="option1Type3"><span></span>Equity Mutual Funds</label>
+                    <input type="radio" required id="option1Type4" name="option1" ng-model="modelVal.A8" value="op4"><label for="option1Type4"><span></span>Direct Stocks Bluechip</label>
+                    <input type="radio" required id="option1Type5" name="option1" ng-model="modelVal.A8" value="op5"><label for="option1Type5"><span></span>Direct Stocks Mid / Small Caps</label>
+                </div>
+            </div>
+            </form>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-content">
+                <form name="riskAssesment1Form3" novalidate>
+                <h2>I am most likely to invest for a</h2>
+                <div class="radio-cover">
+                    <input type="radio" required id="option2Type1" name="option2" ng-model="modelVal.A9" value="op1"><label for="option2Type1"><span></span>Guaranteed return of 7% per annum</label>
+                    <input type="radio" required id="option2Type2" name="option2" ng-model="modelVal.A9" value="op2"><label for="option2Type2"><span></span>Likely return of 12% with a chance of 4% loss</label>
+                    <input type="radio" required id="option2Type3" name="option2" ng-model="modelVal.A9" value="op3"><label for="option2Type3"><span></span>Likely return of 20% with a chance of 10% loss</label>
+                    <input type="radio" required id="option2Type4" name="option2" ng-model="modelVal.A9" value="op4"><label for="option2Type4"><span></span>Likely return of 30% with a chance of 20% loss</label>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-content">
+                <form name="riskAssesment1Form4" novalidate>
+                <h2>If Rs 1 lakh investment goes down to Rs 80,000 in 2 months, I will</h2>
+                <div class="radio-cover">
+                    <input type="radio" required id="option3Type1" name="option3" ng-model="modelVal.A19" value="op1"><label for="option3Type1"><span></span>Sell All your Mutual Fund Holdings</label>
+                    <input type="radio" required id="option3Type2" name="option3" ng-model="modelVal.A19" value="op2"><label for="option3Type2"><span></span>Sell part of your Mutual fund Holdings</label>
+                    <input type="radio" required id="option3Type3" name="option3" ng-model="modelVal.A19" value="op3"><label for="option3Type3"><span></span>Do Nothing</label>
+                    <input type="radio" required id="option3Type4" name="option3" ng-model="modelVal.A19" value="op4"><label for="option3Type4"><span></span>Add to your Mutual Fund Holdings</label>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-content content-6">
+                <div class="col-xs-12 score-header">
+                    <div class="row">
+                        <div class="col-xs-4" ng-if="result >= 0 && result <= 4">
+                            <div class="title-image-cover" >
+                                <div class="time-image">
+                                    <img lazy-img="assets/images/categoryImage1.png">
+                                </div>
+                                <div class="point-range">
+                                    <p><span>0.0</span> - <span>4.0</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4" ng-if="result >= 4.1 && result <= 6.0">
+                            <div class="title-image-cover">
+                                <div class="time-image">
+                                    <img lazy-img="assets/images/categoryImage3.png">
+                                </div>
+                                <div class="point-range">
+                                    <p><span>4.1</span> - <span>6.0</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4" ng-if="result >= 6.1 && result <= 7.5">
+                            <div class="title-image-cover">
+                                <div class="time-image">
+                                    <img lazy-img="assets/images/assesmentCar.png">
+                                </div>
+                                <div class="point-range">
+                                    <p><span>6.1</span> - <span>7.5</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4" ng-if="result >= 7.6 && result <= 9.0">
+                            <div class="title-image-cover">
+                                <div class="time-image">
+                                    <img lazy-img="assets/images/categoryImage2.png">
+                                </div>
+                                <div class="point-range">
+                                    <p><span>7.6</span> - <span>9.0</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4" ng-if="result >= 9.1 && result <= 10.0">
+                            <div class="title-image-cover">
+                                <div class="time-image">
+                                    <img lazy-img="assets/images/categoryImage4.png">
+                                </div>
+                                <div class="point-range">
+                                    <p><span>9.1</span> - <span>10.0</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <h3>Your risk score is</h3>
+                            <p class="score">{{result}}</p>
+                        </div>
+                        <div class="col-xs-5" ng-if="result >= 0 && result <= 4">
+                            <h3>You are <span>Low</span> Risk Taker</h3>
+                            <p class="desc">Minimize risk, preserve capital and target steady returns</p>
+                            <p class="desc">Invest mainly in debt funds</p>
+                        </div>
+                        <div class="col-xs-5" ng-if="result >= 4.1 && result <= 6.0">
+                            <h3>You are <span>Below Average</span> Risk Taker</h3>
+                            <p class="desc">Take calculated risks to get upside on returns</p>
+                            <p class="desc">Invest mainly in equity with some protection from debt funds</p>
+                        </div>
+                        <div class="col-xs-5" ng-if="result >= 6.1 && result <= 7.5">
+                            <h3>You are <span>Average</span> Risk Taker</h3>
+                            <p class="desc">Take some risk to build wealth while protecting high downside</p>
+                            <p class="desc">Invest in a balance of equity and debt funds</p>
+                        </div>
+                        <div class="col-xs-5" ng-if="result >= 7.6 && result <= 9.0">
+                            <h3>You are <span>Above Average</span> Risk Taker</h3>
+                            <p class="desc">Take calculated risks to get upside on returns</p>
+                            <p class="desc">Invest mainly in equity with some protection from debt funds</p>
+                        </div>
+                        <div class="col-xs-5" ng-if="result >= 9.1 && result <= 10.0">
+                            <h3>You are <span>High</span> Risk Taker</h3>
+                            <p class="desc">Take calculated risks over long term to maximize wealth</p>
+                            <p class="desc">Invest mainly to equity funds</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 score-category">
+                    <div class="row">
+                        <h3>Other Risk Profiles</h3>
+                        <div class="col-xs-6 score-cover" ng-if="!(result >= 0 && result <= 4)">
+                            <div class="col-xs-4">
+                                <div class="time-image">
+                                    <img src="assets/images/categoryImage1.png">
+                                </div>
+                            </div>
+                            <div class="col-xs-8">
+                                <h4>Low Risk Taker<span class="range">0 - 4.0</span></h4>
+                                <ul>
+                                    <li>Minimize risk, preserve capital and target steady returns</li>
+                                    <li>Invest mainly in debt funds</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 score-cover" ng-if="!(result >= 6.1 && result <= 7.5)">
+                            <div class="col-xs-4">
+                                <div class="time-image">
+                                    <img src="assets/images/assesmentCar.png">
+                                </div>
+                            </div>
+                            <div class="col-xs-8">
+                                <h4>Average Risk Taker<span class="range">6.1 - 7.5</span></h4>
+                                <ul>
+                                    <li>Take some risk to build wealth while protecting high downside</li>
+                                    <li>Invest in a balance of equity and debt funds</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 score-cover" ng-if="!(result >= 4.1 && result <= 6.0)">
+                            <div class="col-xs-4">
+                                <div class="time-image">
+                                    <img src="assets/images/categoryImage3.png">
+                                </div>
+                            </div>
+                            <div class="col-xs-8">
+                                <h4>Below Average Risk Taker<span class="range">4.1 - 6.0</span></h4>
+                                <ul>
+                                    <li>Take low to moderate risk and protect downside</li>
+                                    <li>Invest mainly in debt funds with some upside from equity</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 score-cover" ng-if="!(result >= 7.6 && result <= 9.0)">
+                            <div class="col-xs-4">
+                                <div class="time-image">
+                                    <img src="assets/images/categoryImage2.png">
+                                </div>
+                            </div>
+                            <div class="col-xs-8">
+                                <h4>Above Average Risk Taker<span class="range">7.6 - 9.0</span></h4>
+                                <ul>
+                                    <li>Take calculated risks to get upside on returns</li>
+                                    <li>Invest mainly in equity with some protection from debt funds</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 score-cover" ng-if="!(result >= 9.1 && result <= 10.0)">
+                            <div class="col-xs-4">
+                                <div class="time-image">
+                                    <img src="assets/images/categoryImage4.png">
+                                </div>
+                            </div>
+                            <div class="col-xs-8">
+                                <h4>High Risk Taker<span class="range">9.1 - 10.0</span></h4>
+                                <ul>
+                                    <li>Take calculated risks over long term to maximize wealth</li>
+                                    <li>Invest mainly to equity funds</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <p class="more-questions">Would you like to answer some more questions to fine tune your score?</p>
+                <div class="fin-btn-group answer-more">
+                    <button ng-click="gotoMoreQuestion()" class="fin-app-btn fin-orange content-next">YES, I'D LIKE THAT</button>
+                    <button class="fin-app-btn fin-white content-next">NO THANKS, LET'S CONTINUE TO NEXT STEP</button>
+                    <button ng-click="gotoFirst(0);(step = 1)" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>I'D LIKE TO TRY AGAIN</button>
+                </div>
+            </div>
+        </div>
     </div>
     <div class="typeSwiper">
         <div class="image-backdrop"><img src="assets/images/riskMargin.png"></div>
         <p>Risk Assessment</p>
     </div>    
-    <div class="swiper-pagination"></div>
-    <div class="fin-btn-group">
-        <button class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
+        <button class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png" ng-click="(step!=1) && (step = step - 1)"></span>BACK</button>
+        <button ng-show="step == 1" ng-disabled="riskAssesment1Form1.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="step == 2" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="step == 3" ng-disabled="riskAssesment1Form2.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="step == 4" ng-disabled="riskAssesment1Form3.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="step == 5" ng-disabled="riskAssesment1Form4.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
+</div>
+<div ng-if="swiperName == 'riskAssesment2'" class="swiper-container customSwiper riskAssesment2" ng-init="step = 1">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <div class="swiper-content">
+                <form name="riskAssesment2Form1" novalidate>
+                <h2>How long have you been investing money in the stock market?</h2>
+                <div class="radio-cover">
+                    <input type="radio" required id="option1Type1" name="option1" ng-model="modelVal.A10" value="op1"><label for="option1Type1"><span></span>I have never invested in the stock market before</label>
+                    <input type="radio" required id="option1Type2" name="opoption1Tion1" ng-model="modelVal.A10" value="op2"><label for="option1Type2"><span></span>Less than 3 years</label>
+                    <input type="radio" required id="option1Type3" name="option1" ng-model="modelVal.A10" value="op3"><label for="option1Type3"><span></span>Between 3 and 10 years</label>
+                    <input type="radio" required id="option1Type4" name="option1" ng-model="modelVal.A10" value="op4"><label for="option1Type4"><span></span>More than 10 years</label>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-content">
+                <form name="riskAssesment2Form2" novalidate>
+                <h2>What would you do with your mutual fund holdings when you read the newspaper headline “UK markets are in crisis”?</h2>
+                <div class="radio-cover">
+                    <input type="radio" required id="option2Type1" name="option2" ng-model="modelVal.A11" value="op1"><label for="option2Type1"><span></span>Buy more mutual funds</label>
+                    <input type="radio" required id="option2Type2" name="option2" ng-model="modelVal.A11" value="op2"><label for="option2Type2"><span></span>Shift from Equity to Debt funds</label>
+                    <input type="radio" required id="option2Type3" name="option2" ng-model="modelVal.A11" value="op3"><label for="option2Type3"><span></span>Sell all mutual fund holdings</label>
+                    <input type="radio" required id="option2Type4" name="option2" ng-model="modelVal.A11" value="op4"><label for="option2Type4"><span></span>Do Nothing</label>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-content">
+                <form name="riskAssesment2Form3" novalidate>
+                <h2>Compared to your peers do you think you are more or less tolerant of investment risk?</h2>
+                <div class="radio-cover">
+                    <input type="radio" required id="option3Type1" name="option3" ng-model="modelVal.A12" value="op1"><label for="option3Type1"><span></span>I am a lot less willing to take risk.</label>
+                    <input type="radio" required id="option3Type2" name="option3" ng-model="modelVal.A12" value="op2"><label for="option3Type2"><span></span>I am less willing to take risk.</label>
+                    <input type="radio" required id="option3Type3" name="option3" ng-model="modelVal.A12" value="op3"><label for="option3Type3"><span></span>I am about the same.</label>
+                    <input type="radio" required id="option3Type4" name="option3" ng-model="modelVal.A12" value="op4"><label for="option3Type4"><span></span>I am more willing to take risk.</label>
+                    <input type="radio" required id="option3Type5" name="option3" ng-model="modelVal.A12" value="op5"><label for="option3Type5"><span></span>I am a lot more willing to take risk.</label>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-content">
+                <form name="riskAssesment2Form4" novalidate>
+                <h2>What would you do with your mutual fund holdings when you read the newspaper headline “RBI reduces repo rate by 25 bps”?</h2>
+                <div class="radio-cover">
+                    <input type="radio" required id="option4Type1" name="option4" ng-model="modelVal.A13" value="op1"><label for="option4Type1"><span></span>Buy more mutual funds</label>
+                    <input type="radio" required id="option4Type2" name="option3" ng-model="modelVal.A13" value="op2"><label for="option4Type2"><span></span>Shift from Equity to Debt funds</label>
+                    <input type="radio" required id="option4Type3" name="option4" ng-model="modelVal.A13" value="op3"><label for="option4Type3"><span></span>Sell all mutual fund holdings</label>
+                    <input type="radio" required id="option4Type4" name="option4" ng-model="modelVal.A13" value="op4"><label for="option4Type4"><span></span>Do Nothing</label>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-content">
+            <form name="riskAssesment2Form5" novalidate>
+                <h2>Imagine a choice between a stable job with limited opportunity for pay increases or a less secure job with the option of big payday in the future. Which job would you be more likely to take today?</h2>
+                <div class="radio-cover">
+                    <input type="radio" required id="option5Type1" name="option5" ng-model="modelVal.A14" value="op1"><label for="option5Type1"><span></span>I’d definitely take the stable job with limited pay increases</label>
+                    <input type="radio" required id="option5Type2" name="option3" ng-model="modelVal.A14" value="op2"><label for="option5Type2"><span></span>I’d probably take the stable job with limited pay increases</label>
+                    <input type="radio" required id="option5Type3" name="option5" ng-model="modelVal.A14" value="op3"><label for="option5Type3"><span></span>I don’t know</label>
+                    <input type="radio" required id="option5Type4" name="option5" ng-model="modelVal.A14" value="op4"><label for="option5Type4"><span></span>I’d probably take the less secure job with big payday in the future</label>
+                    <input type="radio" required id="option5Type4" name="option5" ng-model="modelVal.A14" value="op5"><label for="option5Type4"><span></span>I’d definitely take the less secure job with big payday in the future</label>
+                </div>
+                </form>
+            </div>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-content content-6">
+                <div class="col-xs-12 score-header">
+                    <div class="row">
+                        <div class="col-xs-4" ng-if="result >= 0 && result <= 4">
+                            <div class="title-image-cover" >
+                                <div class="time-image">
+                                    <img lazy-img="assets/images/categoryImage1.png">
+                                </div>
+                                <div class="point-range">
+                                    <p><span>0.0</span> - <span>4.0</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4" ng-if="result >= 4.1 && result <= 6.0">
+                            <div class="title-image-cover">
+                                <div class="time-image">
+                                    <img lazy-img="assets/images/categoryImage3.png">
+                                </div>
+                                <div class="point-range">
+                                    <p><span>4.1</span> - <span>6.0</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4" ng-if="result >= 6.1 && result <= 7.5">
+                            <div class="title-image-cover">
+                                <div class="time-image">
+                                    <img lazy-img="assets/images/assesmentCar.png">
+                                </div>
+                                <div class="point-range">
+                                    <p><span>6.1</span> - <span>7.5</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4" ng-if="result >= 7.6 && result <= 9.0">
+                            <div class="title-image-cover">
+                                <div class="time-image">
+                                    <img lazy-img="assets/images/categoryImage2.png">
+                                </div>
+                                <div class="point-range">
+                                    <p><span>7.6</span> - <span>9.0</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-4" ng-if="result >= 9.1 && result <= 10.0">
+                            <div class="title-image-cover">
+                                <div class="time-image">
+                                    <img lazy-img="assets/images/categoryImage4.png">
+                                </div>
+                                <div class="point-range">
+                                    <p><span>9.1</span> - <span>10.0</span></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <h3>Your risk score is</h3>
+                            <p class="score">{{result}}</p>
+                        </div>
+                        <div class="col-xs-5" ng-if="result >= 0 && result <= 4">
+                            <h3>You are <span>Low</span> Risk Taker</h3>
+                            <p class="desc">Minimize risk, preserve capital and target steady returns</p>
+                            <p class="desc">Invest mainly in debt funds</p>
+                        </div>
+                        <div class="col-xs-5" ng-if="result >= 4.1 && result <= 6.0">
+                            <h3>You are <span>Below Average</span> Risk Taker</h3>
+                            <p class="desc">Take calculated risks to get upside on returns</p>
+                            <p class="desc">Invest mainly in equity with some protection from debt funds</p>
+                        </div>
+                        <div class="col-xs-5" ng-if="result >= 6.1 && result <= 7.5">
+                            <h3>You are <span>Average</span> Risk Taker</h3>
+                            <p class="desc">Take some risk to build wealth while protecting high downside</p>
+                            <p class="desc">Invest in a balance of equity and debt funds</p>
+                        </div>
+                        <div class="col-xs-5" ng-if="result >= 7.6 && result <= 9.0">
+                            <h3>You are <span>Above Average</span> Risk Taker</h3>
+                            <p class="desc">Take calculated risks to get upside on returns</p>
+                            <p class="desc">Invest mainly in equity with some protection from debt funds</p>
+                        </div>
+                        <div class="col-xs-5" ng-if="result >= 9.1 && result <= 10.0">
+                            <h3>You are <span>High</span> Risk Taker</h3>
+                            <p class="desc">Take calculated risks over long term to maximize wealth</p>
+                            <p class="desc">Invest mainly to equity funds</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-12 score-category">
+                    <div class="row">
+                        <h3>Other Risk Profiles</h3>
+                        <div class="col-xs-6 score-cover" ng-if="!(result >= 0 && result <= 4)">
+                            <div class="col-xs-4">
+                                <div class="time-image">
+                                    <img src="assets/images/categoryImage1.png">
+                                </div>
+                            </div>
+                            <div class="col-xs-8">
+                                <h4>Low Risk Taker<span class="range">0 - 4.0</span></h4>
+                                <ul>
+                                    <li>Minimize risk, preserve capital and target steady returns</li>
+                                    <li>Invest mainly in debt funds</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 score-cover" ng-if="!(result >= 6.1 && result <= 7.5)">
+                            <div class="col-xs-4">
+                                <div class="time-image">
+                                    <img src="assets/images/assesmentCar.png">
+                                </div>
+                            </div>
+                            <div class="col-xs-8">
+                                <h4>Average Risk Taker<span class="range">6.1 - 7.5</span></h4>
+                                <ul>
+                                    <li>Take some risk to build wealth while protecting high downside</li>
+                                    <li>Invest in a balance of equity and debt funds</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 score-cover" ng-if="!(result >= 4.1 && result <= 6.0)">
+                            <div class="col-xs-4">
+                                <div class="time-image">
+                                    <img src="assets/images/categoryImage3.png">
+                                </div>
+                            </div>
+                            <div class="col-xs-8">
+                                <h4>Below Average Risk Taker<span class="range">4.1 - 6.0</span></h4>
+                                <ul>
+                                    <li>Take low to moderate risk and protect downside</li>
+                                    <li>Invest mainly in debt funds with some upside from equity</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 score-cover" ng-if="!(result >= 7.6 && result <= 9.0)">
+                            <div class="col-xs-4">
+                                <div class="time-image">
+                                    <img src="assets/images/categoryImage2.png">
+                                </div>
+                            </div>
+                            <div class="col-xs-8">
+                                <h4>Above Average Risk Taker<span class="range">7.6 - 9.0</span></h4>
+                                <ul>
+                                    <li>Take calculated risks to get upside on returns</li>
+                                    <li>Invest mainly in equity with some protection from debt funds</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-xs-6 score-cover" ng-if="!(result >= 9.1 && result <= 10.0)">
+                            <div class="col-xs-4">
+                                <div class="time-image">
+                                    <img src="assets/images/categoryImage4.png">
+                                </div>
+                            </div>
+                            <div class="col-xs-8">
+                                <h4>High Risk Taker<span class="range">9.1 - 10.0</span></h4>
+                                <ul>
+                                    <li>Take calculated risks over long term to maximize wealth</li>
+                                    <li>Invest mainly to equity funds</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fin-btn-group answer-more addMargin">
+                    <button click-redirect="/riskAssesment" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>I'D LIKE TO TRY AGAIN</button>
+                    <button ng-if="true" class="fin-app-btn fin-orange content-next">SIGN UP</button>
+                    <button ng-if="false" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="typeSwiper">
+        <div class="image-backdrop"><img src="assets/images/riskMargin.png"></div>
+        <p>Risk Assessment</p>
+    </div>    
+    <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
+        <button class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png" ng-click="(step!=1) && (step = step - 1)"></span>BACK</button>
+        <button ng-show="step == 1" ng-disabled="riskAssesment2Form1.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="step == 2" ng-disabled="riskAssesment2Form2.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="step == 3" ng-disabled="riskAssesment2Form3.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="step == 4" ng-disabled="riskAssesment2Form4.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="step == 5" ng-disabled="riskAssesment2Form5.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="step == 6" ng-disabled="riskAssesment2Form6.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>

@@ -2,11 +2,30 @@
 	'use strict';
 	angular
 		.module('finApp.directives',[])
+		.directive('clickRedirect',clickRedirect)
 		.directive('finHeader',finHeader)
 		.directive('finDrawer',finDrawer)
 		.directive('finCalendarForm',finCalendarForm)
-		.directive('dropdown',dropdown);
+		.directive('dropdown',dropdown)
+		.directive('onlyNumber',onlyNumber)
+		.directive('validatePassword',validatePassword);
 
+		clickRedirect.$inject = ['$location','$rootScope'];
+	    function clickRedirect($location,$rootScope) {
+	        var directive = {
+	            link: link,
+	            restrict: 'EA'
+	        };
+	        return directive;
+
+	        function link($scope, $element, $attrs) {
+	            $element.on('click', function() {
+	                $location.path($attrs.clickRedirect);
+	                $scope.$apply();
+	            });
+	        }
+	    }
+	    
 		function finHeader(){
 			return{
 				restrict : 'E',
@@ -99,6 +118,21 @@
 			};
 	    }
 
+	    function onlyNumber(){
+	    	return{
+	    		restrict : 'A',
+	    		require : 'ngModel',
+	    		link : function($scope,$element,$attr,ngModel){
+	    			ngModel.$parsers.unshift(function(value) {
+	    				value = value.replace(/[^0-9]/g, '');
+	    				ngModel.$setViewValue(value);
+                		ngModel.$render();
+                		return value;
+	    			});
+	    		}
+	    	}
+	    }
+
 	    function dropdown(){
 	    	return{
 	    		restrict : 'EA',
@@ -109,10 +143,7 @@
     				$this.addClass('s-hidden');
     				$this.wrap('<div class="select"></div>');
     				$this.after('<div class="styledSelect"></div>');
-    				var $styledSelect = $this.next('div.styledSelect');
-    				setTimeout(function(){
-    					$styledSelect.text(ngModel.$viewValue);
-    				},0);    				
+    				var $styledSelect = $this.next('div.styledSelect');   				
 				    var $list = $('<ul />', {
 				        'class': 'options'
 				    }).insertAfter($styledSelect);
@@ -121,10 +152,13 @@
 				            text: $this.children('option').eq(i).text(),
 				            rel: $this.children('option').eq(i).val()
 				        }).appendTo($list);
+				        $styledSelect.text($this.children('option[selected]').text());
+				        ngModel.$setViewValue($this.children('option[selected]').val());
 				    }
 				    var $listItems = $list.children('li');
 				    $styledSelect.click(function (e) {
 				        e.stopPropagation();
+				        $('.customSwiper .fin-btn-group').css('z-index',0);
 				        $('div.styledSelect.active').each(function () {
 				            $(this).removeClass('active').next('ul.options').hide();
 				        });
@@ -136,13 +170,31 @@
 				        $this.val($(this).attr('rel'));
 				        ngModel.$setViewValue($(this).attr('rel'));
 				        $list.hide();
+				        $('.customSwiper .fin-btn-group').css('z-index',1000);
 				    });
 				    $(document).click(function () {
 				        $styledSelect.removeClass('active');
+				        $('.customSwiper .fin-btn-group').css('z-index',1000);
 				        $list.hide();
 				    });
 	    		}
 	    	}
 	    }
 
+		function validatePassword() {
+		    return {
+				restrict : 'EA',
+				require: 'ngModel',
+				link: function(scope, element, attrs, ngModel) {
+					if(!ngModel) return;
+					function validate(value){
+						var valid = (value === scope.$eval(attrs.validatePassword));
+						ngModel.$setValidity('equal', valid);
+						return valid ? value : undefined;
+					}
+					ngModel.$parsers.push(validate);
+					ngModel.$formatters.push(validate);
+				}
+		    };
+		}
 })();

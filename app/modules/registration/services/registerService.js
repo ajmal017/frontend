@@ -1,16 +1,16 @@
 (function() {
     'use strict';
     angular
-        .module('finApp.auth')
-        .factory('authService', authService);
+        .module('finApp.registration')
+        .factory('registerService', registerService);
 
-        authService.$inject = ['$resource','appConfig','$q'];
-        function authService($resource,appConfig,$q){
+        registerService.$inject = ['$resource','appConfig','$q'];
+        function registerService($resource,appConfig,$q){
         	return{
-        		verifyLogin : verifyLogin,
+        		registerUser : registerUser,
         	}
 
-	        function verifyLogin(params){
+	        function registerUser(params){
 				var defer = $q.defer();
 				var postAPI = $resource( 
 					appConfig.API_BASE_URL+'/user/login/', 
