@@ -764,6 +764,9 @@ section.introduction.about-app a {
 .fin-app-btn.fin-signIn .sign-img + span {
   margin-left: 15%;
 }
+.fin-app-btn.full-width {
+  width: 100%;
+}
 button[disabled] {
   opacity: 0.4;
   -webkit-box-shadow: none!important;
@@ -843,6 +846,120 @@ button[disabled]:hover {
      -moz-background-size: 45% 36%;
        -o-background-size: 45% 36%;
           background-size: 45% 36%;
+}
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+     -moz-animation-name: fadeIn;
+       -o-animation-name: fadeIn;
+          animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+     -moz-animation-duration: 1s;
+       -o-animation-duration: 1s;
+          animation-duration: 1s;
+}
+@-webkit-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+form .form-group {
+  position: relative;
+  margin-bottom: 6%;
+}
+form .form-group:nth-child(2) {
+  margin-bottom: 0px;
+}
+form .form-group input {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #247abc;
+  font-weight: normal;
+  font-size: 1.25em;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, #247abc), color-stop(0%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(left, #247abc 25%, rgba(255, 255, 255, 0) 0%);
+  background-image: -moz-linear-gradient(left, #247abc 25%, rgba(255, 255, 255, 0) 0%);
+  background-image: -o-linear-gradient(left, #247abc 25%, rgba(255, 255, 255, 0) 0%);
+  background-image: linear-gradient(to right, #247abc 25%, rgba(255, 255, 255, 0) 0%);
+  background-position: bottom;
+  -webkit-background-size: 6px 2px;
+     -moz-background-size: 6px 2px;
+       -o-background-size: 6px 2px;
+          background-size: 6px 2px;
+  background-repeat: repeat-x;
+  background-color: transparent;
+  padding-bottom: 2%;
+}
+form .form-group input:focus + label,
+form .form-group input:valid + label {
+  font-family: 'Roboto-Bold';
+  color: #247abc;
+  font-weight: normal;
+  font-size: 1em;
+  top: -72%;
+}
+form .form-group input + label {
+  position: absolute;
+  pointer-events: none;
+  top: -4px;
+  font-family: 'PlayfairDisplay-Regular';
+  color: #247abc;
+  font-weight: normal;
+  font-size: 1.5em;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  opacity: 0.6;
+  letter-spacing: 0px;
+}
+form .form-group .password-cover {
+  position: relative;
+}
+form .form-group .password-cover span {
+  cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  right: 0;
+  width: 5%;
+}
+form .form-group .password-cover span img {
+  width: 100%;
+}
+form .from-btn-group {
+  position: relative;
+  float: left;
+  width: 100%;
+  margin-top: 10%;
 }
 .login-wrapper {
   position: fixed;
@@ -1074,6 +1191,22 @@ section.register .contact-form .form-group {
   float: left;
   width: 100%;
 }
+section.register .contact-form .form-group .select {
+  width: 100%;
+  min-width: auto;
+}
+section.register .contact-form .form-group .styledSelect {
+  padding-right: 70px;
+  padding-left: 14px;
+  margin-left: 0px;
+  font-size: 1.5em !important;
+}
+section.register .contact-form .form-group .styledSelect:after {
+  right: 0px;
+}
+section.register .contact-form .form-group .options li {
+  font-size: 1.5em !important;
+}
 section.register .contact-form .form-group input,
 section.register .contact-form .form-group textarea {
   font-family: 'PlayfairDisplay-Regular';
@@ -1179,17 +1312,250 @@ section.register .register-btn-group span.or {
   text-align: center;
   width: 6%;
 }
-section.register ul {
+section.register ul.login-dialog {
   list-style: none;
   float: left;
   margin-top: 8%;
 }
-section.register ul li {
+section.register ul.login-dialog li {
   display: inline-block;
   margin-left: 6px;
 }
-section.register ul li a {
+section.register ul.login-dialog li a {
   text-decoration: none;
+}
+.modal-dialog {
+  width: 30%;
+  position: fixed;
+  top: 20%;
+  -webkit-transform: translateY(-20%);
+     -moz-transform: translateY(-20%);
+      -ms-transform: translateY(-20%);
+       -o-transform: translateY(-20%);
+          transform: translateY(-20%);
+  left: 0;
+  right: 0px;
+  margin: 0px auto;
+}
+.modal-dialog .modal-content {
+  float: left;
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+  border: none;
+}
+.modal-dialog .modal-content .otp-wrapper {
+  float: left;
+  width: 100%;
+  -webkit-border-radius: 25px;
+     -moz-border-radius: 25px;
+          border-radius: 25px;
+  background-image: -moz-linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
+  background-image: -webkit-linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
+  -webkit-box-shadow: 2.5px 4.33px 10px 0px #247abc;
+     -moz-box-shadow: 2.5px 4.33px 10px 0px #247abc;
+          box-shadow: 2.5px 4.33px 10px 0px #247abc;
+  padding: 16% 10% 16% 10%;
+}
+.modal-dialog .modal-content .otp-wrapper button.modal-close {
+  border: none;
+  background: none;
+  outline: none;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 5%;
+  top: 5%;
+  background-image: url('../images/modal-close.png');
+  -webkit-background-size: 100% 100%;
+     -moz-background-size: 100% 100%;
+       -o-background-size: 100% 100%;
+          background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.modal-dialog .modal-content .otp-wrapper button.resendOtp {
+  border: none;
+  background: none;
+  outline: none;
+  font-family: 'Roboto-Bold';
+  color: #047BC1;
+  font-weight: normal;
+  font-size: 0.75em;
+  margin-top: 6%;
+}
+.modal-dialog .modal-content .otp-wrapper button.resendOtp span {
+  position: relative;
+  display: inline-block;
+  width: 18px;
+  height: 20px;
+  background-image: url('../images/resendOtp.png');
+  -webkit-background-size: 100% 100%;
+     -moz-background-size: 100% 100%;
+       -o-background-size: 100% 100%;
+          background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  top: 6px;
+  right: 5px;
+}
+.modal-dialog .modal-content .otp-wrapper .login-header .cloud1,
+.modal-dialog .modal-content .otp-wrapper .login-header .cloud2 {
+  position: absolute;
+  width: 20%;
+}
+.modal-dialog .modal-content .otp-wrapper .login-header .cloud1 img,
+.modal-dialog .modal-content .otp-wrapper .login-header .cloud2 img {
+  width: 100%;
+}
+.modal-dialog .modal-content .otp-wrapper .login-header .cloud1 {
+  top: 0px;
+  left: 3%;
+}
+.modal-dialog .modal-content .otp-wrapper .login-header .cloud2 {
+  bottom: -30%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.modal-dialog .modal-content .otp-wrapper .login-header p {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #010101;
+  font-weight: normal;
+  font-size: 1.5em;
+  margin-left: 10%;
+  margin-top: 9%;
+}
+.modal-dialog .modal-content .otp-wrapper .login-header .plane {
+  width: 38%;
+}
+.modal-dialog .modal-content .otp-wrapper .login-header .plane img {
+  width: 100%;
+}
+.modal-dialog .modal-content .otp-wrapper .otp-form {
+  width: 100%;
+  float: left;
+  padding-top: 24%;
+}
+.modal-dialog .modal-content .otp-wrapper .otp-form .form-group {
+  position: relative;
+  margin-bottom: 6%;
+}
+.modal-dialog .modal-content .otp-wrapper .otp-form .form-group:nth-child(2) {
+  margin-bottom: 0px;
+}
+.modal-dialog .modal-content .otp-wrapper .otp-form .form-group input {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #247abc;
+  font-weight: normal;
+  font-size: 1.25em;
+  width: 100%;
+  border: none;
+  outline: none;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(25%, #247abc), color-stop(0%, rgba(255, 255, 255, 0)));
+  background-image: -webkit-linear-gradient(left, #247abc 25%, rgba(255, 255, 255, 0) 0%);
+  background-image: -moz-linear-gradient(left, #247abc 25%, rgba(255, 255, 255, 0) 0%);
+  background-image: -o-linear-gradient(left, #247abc 25%, rgba(255, 255, 255, 0) 0%);
+  background-image: linear-gradient(to right, #247abc 25%, rgba(255, 255, 255, 0) 0%);
+  background-position: bottom;
+  -webkit-background-size: 6px 2px;
+     -moz-background-size: 6px 2px;
+       -o-background-size: 6px 2px;
+          background-size: 6px 2px;
+  background-repeat: repeat-x;
+  background-color: transparent;
+  padding-bottom: 2%;
+}
+.modal-dialog .modal-content .otp-wrapper .otp-form .form-group input:focus + label,
+.modal-dialog .modal-content .otp-wrapper .otp-form .form-group input:valid + label {
+  font-family: 'Roboto-Bold';
+  color: #247abc;
+  font-weight: normal;
+  font-size: 1em;
+  top: -72%;
+}
+.modal-dialog .modal-content .otp-wrapper .otp-form .form-group input + label {
+  position: absolute;
+  pointer-events: none;
+  top: -4px;
+  font-family: 'PlayfairDisplay-Regular';
+  color: #247abc;
+  font-weight: normal;
+  font-size: 1.5em;
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  opacity: 0.6;
+  letter-spacing: 0px;
+}
+.modal-dialog .modal-content .otp-wrapper .otp-form .form-group .password-cover {
+  position: relative;
+}
+.modal-dialog .modal-content .otp-wrapper .otp-form .form-group .password-cover span {
+  cursor: pointer;
+  position: absolute;
+  display: inline-block;
+  top: 0;
+  right: 0;
+  width: 5%;
+}
+.modal-dialog .modal-content .otp-wrapper .otp-form .form-group .password-cover span img {
+  width: 100%;
+}
+.modal-dialog .modal-content .otp-wrapper .login-btn-group {
+  position: relative;
+  float: left;
+  width: 100%;
+  margin-top: 10%;
+}
+.modal-dialog .modal-content .otp-wrapper .login-btn-group span {
+  display: inline-block;
+}
+.modal-dialog .modal-content .otp-wrapper .login-btn-group span.or {
+  font-family: 'Roboto-Bold';
+  color: #000;
+  font-weight: normal;
+  font-size: 0.75em;
+  display: inline-block;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+     -moz-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+       -o-transform: translateY(-50%);
+          transform: translateY(-50%);
+  left: 0px;
+  right: 0px;
+  text-align: center;
+  width: 6%;
+}
+/* Effect 1: Fade in and scale up */
+.fade-scale {
+  -webkit-transform: scale(0.7);
+  -moz-transform: scale(0.7);
+  -ms-transform: scale(0.7);
+  -o-transform: scale(0.7);
+     transform: scale(0.7);
+  opacity: 0;
+  -webkit-transition: all 0.3s;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  transition: all 0.3s;
+}
+.fade-scale.in {
+  -webkit-transform: scale(1);
+  -moz-transform: scale(1);
+  -ms-transform: scale(1);
+  -o-transform: scale(1);
+     transform: scale(1);
+  opacity: 1;
+}
+.modal-backdrop {
+  opacity: 1!important;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 .getStarted {
   padding-top: 4%;

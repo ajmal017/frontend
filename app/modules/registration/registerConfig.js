@@ -13,5 +13,10 @@
 		        templateUrl: 'modules/registration/views/register.html',
 		        controller: 'registerController'
 		    })
+		    .when('/otp', {
+				title : '',
+		        templateUrl: 'modules/registration/views/otp.html',
+		        controller: 'registerController'
+		    })
 		}
 })();

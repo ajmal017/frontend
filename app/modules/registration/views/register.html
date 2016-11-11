@@ -1,4 +1,4 @@
-<section class="register">
+<section class="fadeIn register">
   <div class="col-xs-12 col-sm-12 col-md-7 col-lg-7">
     <div class="row">
       <div class="col-xs-12">
@@ -7,8 +7,17 @@
 	      		<div class="contact-form">
 	      			<form name="registerForm" novalidate>
 	      				<div class="form-group">
-	      					<input type="text" ng-pattern="/^[0-9]+$/" name="phone" ng-model="register.phone_number" required>
-	      					<label>Phone No.</label>
+	      					<div class="col-xs-2">
+	      						<div class="row">
+		      						<select dropdown ng-model="prefix"><option selected value="+91">+91</option><option value="+71">+71</option></select>
+	      						</div>
+	      					</div>
+	      					<div class="col-xs-offset-1 col-xs-9">
+		      					<div class="row">
+									<input type="text" ng-pattern="/^[0-9]+$/" name="phone" maxLength="10" ng-model="register.phone_number" required>
+									<label>Phone No.</label>
+								</div>
+	      					</div>	      					
 	      				</div>
 	      				<div class="form-group">
 	      					<input type="text" ng-pattern="/^[_A-Za-z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[A-Za-z]{2,4})$/" name="email" ng-model="register.email" required>
@@ -17,10 +26,11 @@
 	      				<div class="form-group">
 							<div class="col-xs-12 password-cover" ng-init="defaultType = 'password'">
 								<div class="row">
-									<input type="{{defaultType}}" ng-model="register.password" name="password" required>
+									<input type="{{defaultType}}" ng-model="register.password" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/" name="password" required>
 									<label>Password</label>
 									<span class="show-password"><img src="assets/images/showPassword.png" ng-click="((defaultType =='password')?defaultType ='text':defaultType = 'password')"></span>
 								</div>
+								<span ng-show="registerForm.password.$error.pattern"></span>
 							</div>
 						</div>
 						<div class="form-group">
@@ -33,12 +43,12 @@
 							</div>
 						</div>
 	      				<div class="register-btn-group">
-							<button class="fin-app-btn fin-orange" ng-click="verifyLogin(user)" ng-disabled="registerForm.$invalid">REGISTER NOW</button>
+							<button class="fin-app-btn fin-orange" ng-click="userRegister(register)" ng-disabled="registerForm.$invalid">REGISTER NOW</button>
 							<span class="or">OR</span>
 							<button class="fin-app-btn fin-signIn"><span class="sign-img"><img src="assets/images/gSignIn.png"></span><span>SIGN IN WITH GOOGLE</span></button>
 						</div>
 	      			</form>
-					<ul>
+					<ul class="login-dialog">
 						<li><p>Already have an account?</p></li>
 						<li><a href="javascript:void(0)" click-redirect="/" class="fin-link log-in">LOG IN</a></li>
 					</ul>
@@ -65,3 +75,38 @@
     </div>
   </div>
 </section>
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade fade-scale" id="otpModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="fadeIn otp-wrapper">
+      <button data-dismiss="modal" class="modal-close"></button>
+	<header class="login-header col-xs-12">
+		<div class="row">
+			<div class="cloud1"><img src="assets/images/login_cloud1.png"></div>
+			<div class="header-intro col-xs-12">
+				<div class="row">
+					<p class="pull-left">One tiny step to go!</p>
+					<div class="plane pull-right"><img src="assets/images/loginPlane.png"></div>
+				</div>
+			</div>
+			<div class="cloud2"><img src="assets/images/login_cloud2.png"></div>
+		</div>
+	</header>
+	<div class="otp-form">
+		<form name="otpForm" novalidate>
+			<div class="form-group">
+				<input only-number type="text" name="email" ng-model="otp.sms_code" required>
+				<label>OTP</label>
+				<button class="resendOtp pull-right"><span class="resend-icon"></span>RESEND OTP</button>
+			</div>
+			<div class="login-btn-group">
+				<button ng-disabled="otpForm.$invalid" class="fin-app-btn fin-orange full-width" ng-click="verifyLogin(user)">COMPLETE REGISTRATION</button>
+			</div>
+		</form>
+	</div>
+</div>
+    </div>
+  </div>
+</div>

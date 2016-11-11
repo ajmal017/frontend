@@ -1,4 +1,4 @@
-<div ng-if="swiperName == 'riskAssesment1'" class="swiper-container customSwiper riskAssesment1">
+<div ng-if="swiperName == 'riskAssesment1'" class="fadeIn swiper-container customSwiper riskAssesment1">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <form name="riskAssesment1Form1" novalidate ng-init="step = 1">
@@ -64,7 +64,7 @@
                         <div class="col-xs-4" ng-if="result >= 0 && result <= 4">
                             <div class="title-image-cover" >
                                 <div class="time-image">
-                                    <img lazy-img="assets/images/categoryImage1.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage1.png">
                                 </div>
                                 <div class="point-range">
                                     <p><span>0.0</span> - <span>4.0</span></p>
@@ -74,7 +74,7 @@
                         <div class="col-xs-4" ng-if="result >= 4.1 && result <= 6.0">
                             <div class="title-image-cover">
                                 <div class="time-image">
-                                    <img lazy-img="assets/images/categoryImage3.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage3.png">
                                 </div>
                                 <div class="point-range">
                                     <p><span>4.1</span> - <span>6.0</span></p>
@@ -84,7 +84,7 @@
                         <div class="col-xs-4" ng-if="result >= 6.1 && result <= 7.5">
                             <div class="title-image-cover">
                                 <div class="time-image">
-                                    <img lazy-img="assets/images/assesmentCar.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/assesmentCar.png">
                                 </div>
                                 <div class="point-range">
                                     <p><span>6.1</span> - <span>7.5</span></p>
@@ -94,7 +94,7 @@
                         <div class="col-xs-4" ng-if="result >= 7.6 && result <= 9.0">
                             <div class="title-image-cover">
                                 <div class="time-image">
-                                    <img lazy-img="assets/images/categoryImage2.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage2.png">
                                 </div>
                                 <div class="point-range">
                                     <p><span>7.6</span> - <span>9.0</span></p>
@@ -104,7 +104,7 @@
                         <div class="col-xs-4" ng-if="result >= 9.1 && result <= 10.0">
                             <div class="title-image-cover">
                                 <div class="time-image">
-                                    <img lazy-img="assets/images/categoryImage4.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage4.png">
                                 </div>
                                 <div class="point-range">
                                     <p><span>9.1</span> - <span>10.0</span></p>
@@ -113,7 +113,7 @@
                         </div>
                         <div class="col-xs-3">
                             <h3>Your risk score is</h3>
-                            <p class="score">{{result}}</p>
+                            <p class="animated bounceIn score">{{result}}</p>
                         </div>
                         <div class="col-xs-5" ng-if="result >= 0 && result <= 4">
                             <h3>You are <span>Low</span> Risk Taker</h3>
@@ -148,7 +148,7 @@
                         <div class="col-xs-6 score-cover" ng-if="!(result >= 0 && result <= 4)">
                             <div class="col-xs-4">
                                 <div class="time-image">
-                                    <img src="assets/images/categoryImage1.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage1.png">
                                 </div>
                             </div>
                             <div class="col-xs-8">
@@ -162,7 +162,7 @@
                         <div class="col-xs-6 score-cover" ng-if="!(result >= 6.1 && result <= 7.5)">
                             <div class="col-xs-4">
                                 <div class="time-image">
-                                    <img src="assets/images/assesmentCar.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/assesmentCar.png">
                                 </div>
                             </div>
                             <div class="col-xs-8">
@@ -176,7 +176,7 @@
                         <div class="col-xs-6 score-cover" ng-if="!(result >= 4.1 && result <= 6.0)">
                             <div class="col-xs-4">
                                 <div class="time-image">
-                                    <img src="assets/images/categoryImage3.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage3.png">
                                 </div>
                             </div>
                             <div class="col-xs-8">
@@ -190,7 +190,7 @@
                         <div class="col-xs-6 score-cover" ng-if="!(result >= 7.6 && result <= 9.0)">
                             <div class="col-xs-4">
                                 <div class="time-image">
-                                    <img src="assets/images/categoryImage2.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage2.png">
                                 </div>
                             </div>
                             <div class="col-xs-8">
@@ -204,7 +204,7 @@
                         <div class="col-xs-6 score-cover" ng-if="!(result >= 9.1 && result <= 10.0)">
                             <div class="col-xs-4">
                                 <div class="time-image">
-                                    <img src="assets/images/categoryImage4.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage4.png">
                                 </div>
                             </div>
                             <div class="col-xs-8">
@@ -239,7 +239,7 @@
         <button ng-show="step == 5" ng-disabled="riskAssesment1Form4.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>
-<div ng-if="swiperName == 'riskAssesment2'" class="swiper-container customSwiper riskAssesment2" ng-init="step = 1">
+<div ng-if="swiperName == 'riskAssesment2'" class="fadeIn swiper-container customSwiper riskAssesment2" ng-init="step = 1">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <div class="swiper-content">
@@ -315,7 +315,7 @@
                         <div class="col-xs-4" ng-if="result >= 0 && result <= 4">
                             <div class="title-image-cover" >
                                 <div class="time-image">
-                                    <img lazy-img="assets/images/categoryImage1.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage1.png">
                                 </div>
                                 <div class="point-range">
                                     <p><span>0.0</span> - <span>4.0</span></p>
@@ -325,7 +325,7 @@
                         <div class="col-xs-4" ng-if="result >= 4.1 && result <= 6.0">
                             <div class="title-image-cover">
                                 <div class="time-image">
-                                    <img lazy-img="assets/images/categoryImage3.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage3.png">
                                 </div>
                                 <div class="point-range">
                                     <p><span>4.1</span> - <span>6.0</span></p>
@@ -335,7 +335,7 @@
                         <div class="col-xs-4" ng-if="result >= 6.1 && result <= 7.5">
                             <div class="title-image-cover">
                                 <div class="time-image">
-                                    <img lazy-img="assets/images/assesmentCar.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/assesmentCar.png">
                                 </div>
                                 <div class="point-range">
                                     <p><span>6.1</span> - <span>7.5</span></p>
@@ -345,7 +345,7 @@
                         <div class="col-xs-4" ng-if="result >= 7.6 && result <= 9.0">
                             <div class="title-image-cover">
                                 <div class="time-image">
-                                    <img lazy-img="assets/images/categoryImage2.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage2.png">
                                 </div>
                                 <div class="point-range">
                                     <p><span>7.6</span> - <span>9.0</span></p>
@@ -355,7 +355,7 @@
                         <div class="col-xs-4" ng-if="result >= 9.1 && result <= 10.0">
                             <div class="title-image-cover">
                                 <div class="time-image">
-                                    <img lazy-img="assets/images/categoryImage4.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage4.png">
                                 </div>
                                 <div class="point-range">
                                     <p><span>9.1</span> - <span>10.0</span></p>
@@ -399,7 +399,7 @@
                         <div class="col-xs-6 score-cover" ng-if="!(result >= 0 && result <= 4)">
                             <div class="col-xs-4">
                                 <div class="time-image">
-                                    <img src="assets/images/categoryImage1.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage1.png">
                                 </div>
                             </div>
                             <div class="col-xs-8">
@@ -413,7 +413,7 @@
                         <div class="col-xs-6 score-cover" ng-if="!(result >= 6.1 && result <= 7.5)">
                             <div class="col-xs-4">
                                 <div class="time-image">
-                                    <img src="assets/images/assesmentCar.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/assesmentCar.png">
                                 </div>
                             </div>
                             <div class="col-xs-8">
@@ -427,7 +427,7 @@
                         <div class="col-xs-6 score-cover" ng-if="!(result >= 4.1 && result <= 6.0)">
                             <div class="col-xs-4">
                                 <div class="time-image">
-                                    <img src="assets/images/categoryImage3.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage3.png">
                                 </div>
                             </div>
                             <div class="col-xs-8">
@@ -441,7 +441,7 @@
                         <div class="col-xs-6 score-cover" ng-if="!(result >= 7.6 && result <= 9.0)">
                             <div class="col-xs-4">
                                 <div class="time-image">
-                                    <img src="assets/images/categoryImage2.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage2.png">
                                 </div>
                             </div>
                             <div class="col-xs-8">
@@ -455,7 +455,7 @@
                         <div class="col-xs-6 score-cover" ng-if="!(result >= 9.1 && result <= 10.0)">
                             <div class="col-xs-4">
                                 <div class="time-image">
-                                    <img src="assets/images/categoryImage4.png">
+                                    <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage4.png">
                                 </div>
                             </div>
                             <div class="col-xs-8">

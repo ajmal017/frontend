@@ -58,10 +58,14 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		}
 
 		$rootScope.$on('userloggedIn', function(event, data) {
-
+			localStorage.setItem('userCredentials', JSON.stringify({'user':data}));
+			$location.path('/dashboard');
+			if(!$rootScope.$$phase)	$rootScope.$apply();
 		});
         $rootScope.$on('userloggedOut', function(event, args) {
-     
+        	$location.path('/');
+            localStorage.removeItem('userCredentials'); 
+            if(!$rootScope.$$phase)	$rootScope.$apply();       
         });
 
 		document.addEventListener("online", function() { 

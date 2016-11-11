@@ -1,0 +1,11 @@
+<div class="otp-wrapper">
+	<form>
+		<div class="form-group">
+			<input type="text" ng-pattern="/^[0-9]+$/" name="phone" maxLength="10" ng-model="otp.sms_code" required>
+		    <label>Enter OTP</label>
+		</div>
+		<div class="form-btn-group">
+			<button class="fin-app-btn fin-orange" ng-click="confirmOtp(otp)">CONFIRM</button>
+		</div>
+	</form>
+</div>
