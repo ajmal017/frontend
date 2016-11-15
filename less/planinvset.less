@@ -1,0 +1,136 @@
+section{
+	&.planinvest{
+		padding-top:3%;
+		padding-bottom:2%;
+		padding-left:6%;
+		padding-right:6%;
+		h1{
+			.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@black,normal);
+			.PIXEL2EM(36);
+			margin-top: 0;
+    		margin-bottom: 4%;
+    		opacity:0.7;
+		}
+		.invest-outer-cover{
+			.investCover{
+				position:relative;
+				width:100%;
+				height:234px;
+				margin:0 auto;
+				display:table;
+				.image-div{
+					display:table-cell;
+					vertical-align:middle;
+					width:100%;
+					margin:0 auto;
+					text-align:center;
+					img{
+						width:100%;
+					}
+				}
+				&.has-covered{
+					background-color: #f0f4f7;
+					.checkbox-cover{
+						display:block;
+					}
+				}
+				.checkbox-cover{
+					display:none;
+					position:absolute;
+					top:-10px;
+					left:0px;
+					right:0px;
+					text-align:center;
+					label{
+						opacity:1;
+						span{
+							background-color:#1a78b9;
+							opacity:1;
+							background-size:45% 36%;
+						}
+					}
+				}
+			}
+			button{
+				position: absolute;
+				bottom: -21px;
+				left: 0px;
+				right: 0px;
+				width: 87%;
+				margin-left: auto;
+				margin-right: auto;
+				padding: 3%;
+			}
+			&:nth-child(1){
+				.image-div{
+					img{
+						width:70%;
+					}
+				}
+			}
+			&:nth-child(2){
+				.image-div{
+					img{
+						width:57%;
+					}
+				}
+			}
+			&:nth-child(3){
+				.image-div{
+					img{
+						width:45%;
+					}
+				}
+			}
+			&:nth-child(4){
+				.image-div{
+					img{
+						width:80%;
+					}
+				}
+			}
+			.desc{
+				margin-top:20%;
+				p{
+					.GLOBAL_FONT_STYLE('Roboto-Light',#303030,normal);
+					.PIXEL2EM(16);	
+					margin-bottom: 12%;	
+					height:50px;			
+				}
+				h3{
+					.GLOBAL_FONT_STYLE('PlayfairDisplay-Bold',#303030,normal);
+					.PIXEL2EM(18);
+					margin-bottom:10px;
+				}
+				h4{
+					.GLOBAL_FONT_STYLE('Roboto-Light',@lochmaraapprox,normal);
+					.PIXEL2EM(18);	
+				}
+			}
+		}	
+		.bottom-desc{
+			text-align:center;
+			margin-top: 3%;
+			float: left;
+			p{
+				.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@black,normal);
+				.PIXEL2EM(24);
+				margin-bottom:2%;
+			}
+			.fin-btn-group{
+				text-align:center;
+				button{
+					float:none;
+					width:15%;
+					padding:20px 0px;
+				}
+			}
+			h4{
+				width:100%;
+				.GLOBAL_FONT_STYLE('Roboto-Bold',@flamingoapprox,normal);
+				.PIXEL2EM(16);
+				margin-top: 2%;
+			}
+		}	
+	}
+}

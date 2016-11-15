@@ -7,7 +7,8 @@
 			//'API_BASE_URL' : 'http://10.97.11.86/v3.0',
 			'API_BASE_URL' : 'http://54.169.104.90/v3.0',			
 			'restrictedPages' : [
-				'/dashboard'
+				'/dashboard',
+				'/planInvest'
 			],
 			'noTokenAPI':[
 				'/user/login/',

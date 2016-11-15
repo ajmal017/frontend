@@ -16,7 +16,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		'finApp.auth',
 		'finApp.registration',
 		'finApp.riskAssesment',
-		'finApp.dashboard'
+		'finApp.dashboard',
+		'finApp.planInvest'
 	])
 	.config(config)
 	.run(run);
@@ -56,6 +57,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		});
 		$rootScope.$on('$routeChangeSuccess', function(event, current, previous) {
 			$rootScope.title = $route.current.title;
+			$rootScope.subHeader = $route.current.subHeader;
+			$rootScope.redirectURL = $route.current.redirectUrl;
 			$rootScope.loggedIn = !!$rootScope.userDetails.user;
 			if(!$rootScope.loggedIn && $rootScope.isRestricted){
 				$location.path('/');
