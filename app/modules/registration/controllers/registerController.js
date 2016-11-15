@@ -4,24 +4,47 @@
 		.module('finApp.registration')
 		.controller('registerController',registerController);
 
-		registerController.$inject = ['$scope','$location','registerService']
-		function registerController($scope,$location,registerService){
+		registerController.$inject = ['$scope','$location','userDetailsService','registerService','authService']
+		function registerController($scope,$location,userDetailsService,registerService,authService){
 			$scope.userRegister = function(user){
 				registerService.registerUser(user).then(function(data){
 					if('success' in data){
+						$scope.succesData = data['success'];
 						$('#otpModal').modal('show');
 					}
 				});
 			}
+			
+			$scope.resendOtp = function(){
+				registerService.resendOtp($scope.succesData['tokens']).then(function(data){
+					alert(JSON.stringify(data));
+				})
+			}
+
 			$scope.confirmOtp = function(otp){
-				registerService.confirmOtp(otp).then(function(data){
+				registerService.confirmOtp(otp,$scope.succesData['tokens']).then(function(data){
 					if('success' in data){
 						$('#otpModal').modal('hide');
 						setTimeout(function(){
-							$location.path('/');
-						},3000);						
+							authService.submitSuccess($scope.succesData).then(function(data){
+								userDetailsService().then(function(userData){
+									$rootScope.$broadcast('refreshCredentials',userData['success'])
+									$location.path('/dashboard');
+									if(!$scope.$$phase)	$scope.$apply(); 
+								});
+							})
+						},1000);						
+					}else{
+						$scope.errorOtp = data['Message'];
 					}
 				})
+			}
+			$scope.gotoLogin = function(){
+				$('#otpModal').modal('hide');
+				setTimeout(function(){
+					$location.path('/');
+					if(!$scope.$$phase)	$scope.$apply(); 
+				},1000);
 			}
 		}
 })();

@@ -4,8 +4,8 @@
         .module('finApp.riskAssesment')
         .factory('riskService', riskService);
 
-        riskService.$inject = ['$resource','appConfig','$q'];
-        function riskService($resource,appConfig,$q){
+        riskService.$inject = ['$rootScope','$resource','appConfig','$q'];
+        function riskService($rootScope,$resource,appConfig,$q){
 
         	var assesObject = {};
         	
@@ -25,10 +25,11 @@
         	}
 
 	        function getAssesmentResult(params){
-
 					var defer = $q.defer();
+                    var url = ($rootScope.loggedIn)?'/core/assess/new/response/add/':
+                        '/core/assess/new/response/';
 					var postAPI = $resource( 
-						appConfig.API_BASE_URL+'/core/assess/new/response/', 
+						appConfig.API_BASE_URL+url, 
 						{}, {
 							Check: {
 								method:'POST',

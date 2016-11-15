@@ -14,31 +14,36 @@
 	      					</div>
 	      					<div class="col-xs-offset-1 col-xs-9">
 		      					<div class="row">
-									<input type="text" ng-pattern="/^[0-9]+$/" name="phone" maxLength="10" ng-model="register.phone_number" required>
+									<input ng-class="{'has-error':registerForm.phone.$error.pattern}" type="text" ng-pattern="/^[0-9]+$/" name="phone" maxLength="10" ng-model="register.phone_number" required>
 									<label>Phone No.</label>
+									<span class="error-text" ng-show="registerForm.phone.$error.pattern">Please enter valid number</span>
 								</div>
 	      					</div>	      					
 	      				</div>
 	      				<div class="form-group">
-	      					<input type="text" ng-pattern="/^[_A-Za-z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[A-Za-z]{2,4})$/" name="email" ng-model="register.email" required>
+	      					<input type="text" ng-class="{'has-error':registerForm.email.$error.pattern}" ng-pattern="/^[_A-Za-z0-9-]+(\.[_a-zA-Z0-9-]+)*@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*(\.[A-Za-z]{2,4})$/" name="email" ng-model="register.email" required>
 	      					<label>Email</label>
+	      					<span class="error-text" ng-show="registerForm.email.$error.pattern">Please enter valid email</span>
 	      				</div>
 	      				<div class="form-group">
-							<div class="col-xs-12 password-cover" ng-init="defaultType = 'password'">
+							<div class="col-xs-12 password-cover" ng-init="defaultType1 = 'password'">
 								<div class="row">
-									<input type="{{defaultType}}" ng-model="register.password" ng-pattern="/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/" name="password" required>
+									<input ng-class="{'has-error':registerForm.password.$error.pattern}" type="{{defaultType1}}" ng-model="register.password" check-password name="password" required>
 									<label>Password</label>
-									<span class="show-password"><img src="assets/images/showPassword.png" ng-click="((defaultType =='password')?defaultType ='text':defaultType = 'password')"></span>
-								</div>
-								<span ng-show="registerForm.password.$error.pattern"></span>
+									<span class="show-password"><img src="assets/images/showPassword.png" ng-click="((defaultType1 =='password')?defaultType1 ='text':defaultType1 = 'password')"></span>
+								        <span class="without-error" ng-class="{'error-text':registerForm.password.$error.oneNumber,'normal':reset}"><span ng-if="registerForm.password.$error.oneNumber" class="wrong"></span><span ng-if="!registerForm.password.$error.oneNumber" class="correct"></span>Please enter atleast one number</span>
+								        <span class="without-error" ng-class="{'error-text':registerForm.password.$error.oneUpper,'normal':reset}"><span ng-if="registerForm.password.$error.oneUpper" class="wrong"></span><span ng-if="!registerForm.password.$error.oneUpper" class="correct"></span>Please enter one upper case</span>
+								        <span class="without-error" ng-class="{'error-text':registerForm.password.$error.oneSmall,'normal':reset}"><span ng-if="registerForm.password.$error.oneSmall" class="wrong"></span><span ng-if="!registerForm.password.$error.oneSmall" class="correct"></span>Please enter atleast one small case</span>
+								        <span class="without-error" ng-class="{'error-text':registerForm.password.$error.minlength,'normal':reset}"><span ng-if="registerForm.password.$error.minlength" class="wrong"></span><span ng-if="!registerForm.password.$error.minlength" class="correct"></span>Please enter minimum 8 character's</span>
+								</div>								
 							</div>
 						</div>
 						<div class="form-group">
-							<div class="col-xs-12 password-cover" ng-init="defaultType = 'password'">
+							<div class="col-xs-12 password-cover" ng-init="defaultType2 = 'password'">
 								<div class="row">
-									<input validate-password="register.password" type="{{defaultType}}" ng-model="register.confirm_password" name="confirm_password" required>
+									<input validate-password="register.password" type="{{defaultType2}}" ng-model="register.confirm_password" name="confirm_password" required>
 									<label>Re-enter Password</label>
-									<span class="show-password"><img src="assets/images/showPassword.png" ng-click="((defaultType =='password')?defaultType ='text':defaultType = 'password')"></span>
+									<span class="show-password"><img src="assets/images/showPassword.png" ng-click="((defaultType2 =='password')?defaultType2 ='text':defaultType2 = 'password')"></span>
 								</div>
 							</div>
 						</div>
@@ -99,11 +104,13 @@
 			<div class="form-group">
 				<input only-number type="text" name="email" ng-model="otp.sms_code" required>
 				<label>OTP</label>
-				<button class="resendOtp pull-right"><span class="resend-icon"></span>RESEND OTP</button>
+				<button ng-click="resendOtp()" class="resendOtp pull-right"><span class="resend-icon"></span>RESEND OTP</button>
 			</div>
 			<div class="login-btn-group">
-				<button ng-disabled="otpForm.$invalid" class="fin-app-btn fin-orange full-width" ng-click="verifyLogin(user)">COMPLETE REGISTRATION</button>
+				<button ng-disabled="otpForm.$invalid" class="fin-app-btn fin-orange full-width" ng-click="confirmOtp(otp)">COMPLETE REGISTRATION</button>
 			</div>
+			<p class="verify-email pull-left">Facing OTP issues?<span class="nextline">Please verify email and</span><span class="redirect" ng-click="gotoLogin()">Login using Email</span></p>
+			<div class="form-error" ng-if="errorOtp"><p ng-bind="errorOtp"></p></div>
 		</form>
 	</div>
 </div>

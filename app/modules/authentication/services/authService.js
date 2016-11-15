@@ -4,10 +4,11 @@
         .module('finApp.auth')
         .factory('authService', authService);
 
-        authService.$inject = ['$resource','appConfig','$q'];
-        function authService($resource,appConfig,$q){
+        authService.$inject = ['$resource','$rootScope','appConfig','$q','riskService'];
+        function authService($resource,$rootScope,appConfig,$q,riskService){
         	return{
         		verifyLogin : verifyLogin,
+        		submitSuccess : submitSuccess
         	}
 
 	        function verifyLogin(params){
@@ -30,5 +31,21 @@
 				}); 
 				return defer.promise;
 	        }
-        }        
+
+	        function submitSuccess(params){
+        		var defer = $q.defer(); 
+        		$rootScope.$broadcast('userloggedIn', params['success']);
+					if(localStorage.getItem('riskData')){
+						$rootScope.loggedIn = true;
+						var riskData = JSON.parse(localStorage.getItem('riskData'));
+						riskService.getAssesmentResult(riskData).then(function(data){
+							if('success' in data){
+								localStorage.removeItem('riskData');
+							}
+						});
+					}
+				defer.resolve({'success':'success'});
+				return defer.promise;
+	        }
+        }     
 })();

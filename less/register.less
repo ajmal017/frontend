@@ -100,6 +100,51 @@ section{
 							top:-40%;
 						}
 					}
+					&.has-error{
+						background-image: linear-gradient(to right, #f24965  25%, rgba(255,255,255,0) 0%);
+					}
+				}
+				input[name="password"]{
+					&:focus,&:valid{
+						+ label{
+							.GLOBAL_FONT_STYLE('Roboto-Bold',@marinerapprox,normal);
+							.PIXEL2EM(16);
+							top:-18%;
+						}
+					}
+				}
+				span{
+					&.error-text{
+						position:relative!important;
+						color:#f24965!important;
+						width:100%!important;
+					}
+					&.without-error{
+						position:relative!important;
+						width:100%!important;
+						color:#dad6d6;
+					}
+					&.wrong{
+						position:relative!important;
+						width:10px;
+
+						&:after{
+							content:'\00d7';
+    						.PIXEL2EM(24);
+						}
+					}
+					&.normal{
+						color:#dad6d6!important;
+					}
+					&.correct{
+						position:relative!important;
+						width:10px;
+
+						&:after{
+							content:'\2713';
+    						.PIXEL2EM(24);
+						}
+					}
 				}
 				textarea{
 					resize: none;
@@ -199,7 +244,7 @@ section{
 			background-image: -moz-linear-gradient( 90deg, rgb( 245, 245, 245 ) 0%, rgb( 255, 255, 255 ) 100%);
   			background-image: -webkit-linear-gradient( 90deg, rgb( 245, 245, 245 ) 0%, rgb( 255, 255, 255 ) 100%);
   			box-shadow: 2.5px 4.33px 10px 0px rgb( 36, 122, 188 );
-			padding:16% 10% 16% 10%;
+			padding:16% 10% 8% 10%;
 			button{
 				&.modal-close{
 					border:none;
@@ -321,6 +366,12 @@ section{
 							}
 						}
 					}
+				}
+				.verify-email{
+					width:100%;
+					text-align:center;
+					margin-top:5%;
+					line-height: 18px;
 				}
 			}
 			.login-btn-group{

@@ -3,8 +3,8 @@
     <div class="close-btn">
       <p class="close-value"><span class="text">CLOSE</span><span class="close-cover"><span class="bar1"></span><span class="bar2"></span></span></p>
     </div>
-    <div class="list-cover" ng-init="default = false">
-      <ul id="accordion1" ng-if="default">
+    <div class="list-cover">
+      <ul id="accordion1" ng-if="!loggedIn">
         <li class="panel active"><a href="javascript:void(0)">Home</a></li>
         <li class="panel"><a href="javascript:void(0)">About Us</a></li>
         <li class="panel"><a href="javascript:void(0)">How It Works</a></li>
@@ -12,9 +12,9 @@
         <li class="panel"><a href="javascript:void(0)">FAQ</a></li>
         <li class="panel"><a href="javascript:void(0)">Blog</a></li>
         <li class="panel"><a href="javascript:void(0)">Contact Us</a></li>
-        <a href="#" class="fin-btn fin-start">GET STARTED NOW</a>
+        <a href="javascript:void(0)" click-redirect="/gettingStarted" class="fin-btn fin-start">GET STARTED NOW</a>
       </ul>
-      <ul id="accordion1" ng-if="!default">
+      <ul id="accordion1" ng-if="loggedIn">
         <li class="panel active"><a href="javascript:void(0)">Dashboard</a></li>
         <li class="panel"><a href="javascript:void(0)">Risk Assessment</a></li>
         <li class="panel"><a href="#secoundLink" data-toggle="collapse" data-parent="#accordion1">Build Financial Goals</a>

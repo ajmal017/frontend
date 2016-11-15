@@ -105,6 +105,11 @@
                     scope.appendValues = function(param){
                     	scope.currentViewValue = param;
                     }
+                    scope.decrementStep = function(){
+                    	alert('dfdf');
+                    	scope.step = scope.step - 1;
+                    	if(!scope.$$phase)	scope.$apply(); 
+                    }
 	            }
 			};
 		}

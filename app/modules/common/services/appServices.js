@@ -5,14 +5,39 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 (function() {
     'use strict';
     angular
-        .module('finApp.servies', [])
+        .module('finApp.services', [])
         .factory('checkPath', checkPath)
+        .factory('userDetailsService', userDetailsService)
         .factory('finWebInterCepter',finWebInterCepter);
 
         function checkPath() {
             return function(locationPath, pages) {
                 return ($.inArray("/" + locationPath.split("/")[1], pages) > -1);
             }
+        }
+
+        userDetailsService.$inject = ['$resource','$q','appConfig'];
+        function userDetailsService($resource,$q,appConfig){
+        	return function(){
+        		var defer = $q.defer();
+				var getAPI = $resource( 
+					appConfig.API_BASE_URL+'/user/profile/completeness/', 
+					{}, {
+						Check: {
+							method:'GET',
+						}
+					});
+				getAPI.Check({},function(data){
+					if(data.status_code == 200){
+						defer.resolve({'success':data.response});
+					}else{
+						defer.resolve({'Message':data.response['message']});
+					}				
+				}, function(err){
+					defer.reject(err);
+				}); 
+				return defer.promise;
+    		}
         }
 
 	    finWebInterCepter.$inject = ['$q', '$location', '$timeout', '$rootScope', 'appText', 'appConfig'];
@@ -24,20 +49,19 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 	        var promiseExit = [];
 	        var intercept = ["html", "less", "js", "css"];
 	        var hideLoading = [];
-	        var noTokenUrl = [];
+
 	        var _request = function(config) {
 	            var userID = "";
 	            var SessionToken = "";
 	            config.headers = config.headers || {};
 	            config.data = config.data || {};
 	            config.params = config.params || {};
-	            URL = config.url.split('/').pop().split("?")[0].toLowerCase();
-	            //$rootScope.globals = JSON.parse(localStorage.getItem('userCredentials')) || {};
-	            // if (!!$rootScope.globals.user) {
-	            //     userID = ($rootScope.globals.user != 'undefined') ? $rootScope.globals.user.userID : "";
-	            //     SessionToken = ($rootScope.globals.user != 'undefined') ? $rootScope.globals.user.sessionToken : "";
-	            // }
-
+	            URL = config.url.replace(appConfig.API_BASE_URL,'');
+	            
+	            $rootScope.userDetails = JSON.parse(sessionStorage.getItem('userDetails')) || {};
+	            if (!!$rootScope.userDetails.user) {
+	                SessionToken = ($rootScope.userDetails.user != 'undefined') ? JSON.parse(sessionStorage.getItem('tokens')) : "";
+	            }
 	            if ($.inArray(config.url.split('.').pop().split("?")[0].toLowerCase(), intercept) === -1) {
 	                config.timeout = 600000;
 	                if ($.inArray(URL, hideLoading) === -1) {
@@ -50,10 +74,9 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 	                    }, 600000);
 	                }
 	                console.log("\r\n\r\n******************** BEGIN REQUEST ***************************\r\n");
-	              if (URL.indexOf(noTokenUrl) == -1 && !!$rootScope.globals.user) {
-	                   
-	                    (userID) ? (config.data.UserID = userID) : "";
-	                    (SessionToken) ? (config.data.Token = SessionToken) : "";
+	              if (URL.indexOf(appConfig.noTokenAPI) == -1 && !!$rootScope.userDetails.user) {
+	              		console.log(">>>>>>>>>>>>>>>>>>>>>"+JSON.stringify(SessionToken));
+	                    (SessionToken) ? (config.headers['Authorization'] = SessionToken['tokens']['token_type']+' '+SessionToken['tokens']['access_token']) : "";
 	                    console.log("Time: " + Date() + "\r\n");
 	                    console.log("Request: " + JSON.stringify(config.url) + "\r\n");
 	                    console.log("Params: " + JSON.stringify(config) + "\r\n");

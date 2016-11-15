@@ -8,7 +8,8 @@
 		.directive('finCalendarForm',finCalendarForm)
 		.directive('dropdown',dropdown)
 		.directive('onlyNumber',onlyNumber)
-		.directive('validatePassword',validatePassword);
+		.directive('validatePassword',validatePassword)
+		.directive('checkPassword',checkPassword);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -26,27 +27,29 @@
 	        }
 	    }
 	    
-		function finHeader(){
+	    finHeader.$inject = ['$rootScope'];
+		function finHeader($rootScope){
 			return{
 				restrict : 'E',
 				replace:true,
 				templateUrl:'modules/common/views/header.html',
 				link: function($scope,$element,$attr){
 					 $('.menu,.drawer-overlay,.close-value').on('click',function(){
-				        drawerAnimate();
+				         $rootScope.drawerAnimate();
 				    });
 				}
 			};			
 		}
 
-		function finDrawer(){
+		finDrawer.$inject = ['$rootScope'];
+		function finDrawer($rootScope){
 			return{
 				restrict : 'E',
 				replace:true,
 				templateUrl:'modules/common/views/drawer.html',
 				link:function(){
 					$('.close-value').on('click',function(){
-				        drawerAnimate();
+				         $rootScope.drawerAnimate();
 				    });
 				}
 			};
@@ -191,6 +194,44 @@
 						var valid = (value === scope.$eval(attrs.validatePassword));
 						ngModel.$setValidity('equal', valid);
 						return valid ? value : undefined;
+					}
+					ngModel.$parsers.push(validate);
+					ngModel.$formatters.push(validate);
+				}
+		    };
+		}
+		// /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
+		function checkPassword(){
+			return {
+				restrict : 'EA',
+				require: 'ngModel',
+				link: function(scope, element, attrs, ngModel) {
+					if(!ngModel) return;
+					ngModel.$setValidity('oneNumber',false);
+					ngModel.$setValidity('oneUpper',false);
+					ngModel.$setValidity('oneSmall',false);
+					ngModel.$setValidity('minlength',false);
+					scope.reset = true;
+					function validate(value){
+						if(value){
+							scope.reset = false;
+							var atleastOneNumber = /^(?=.*\d)/.test(value);
+							ngModel.$setValidity('oneNumber',atleastOneNumber);
+							var atleastOneUpper = /^(?=.*[A-Z])/.test(value);
+							ngModel.$setValidity('oneUpper',atleastOneUpper);
+							var atleastOneSmall = /^(?=.*[a-z])/.test(value);
+							ngModel.$setValidity('oneSmall',atleastOneSmall);
+							var minlength = /^[0-9a-zA-Z]{8,}/.test(value);
+							ngModel.$setValidity('minlength',minlength);
+							return value;
+						}else{
+							scope.reset = true;
+							ngModel.$setValidity('oneNumber',false);
+							ngModel.$setValidity('oneUpper',false);
+							ngModel.$setValidity('oneSmall',false);
+							ngModel.$setValidity('minlength',false);
+						}					
+						console.log("Number--"+atleastOneNumber+"One Upper"+atleastOneUpper+"One Small"+atleastOneSmall+""+minlength);
 					}
 					ngModel.$parsers.push(validate);
 					ngModel.$formatters.push(validate);
