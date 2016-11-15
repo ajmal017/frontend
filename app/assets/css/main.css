@@ -2830,6 +2830,23 @@ section.planinvest .invest-outer-cover .investCover .checkbox-cover label span {
        -o-background-size: 45% 36%;
           background-size: 45% 36%;
 }
+section.planinvest .invest-outer-cover .investCover .cloud1,
+section.planinvest .invest-outer-cover .investCover .cloud2 {
+  position: absolute;
+}
+section.planinvest .invest-outer-cover .investCover .cloud1 {
+  bottom: 19%;
+  left: -22%;
+}
+section.planinvest .invest-outer-cover .investCover .cloud2 {
+  right: -20%;
+  top: 5%;
+}
+@media only screen and (min-width:1400px) {
+  section.planinvest .invest-outer-cover .investCover {
+    height: 350px;
+  }
+}
 section.planinvest .invest-outer-cover button {
   position: absolute;
   bottom: -21px;
