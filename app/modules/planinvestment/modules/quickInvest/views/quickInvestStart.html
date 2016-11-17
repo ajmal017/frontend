@@ -1,0 +1,26 @@
+<section class="quickInvest">
+    <form name="quickInvestForm1" novalidate>
+        <div class="content-main-header">
+            <div class="slider-entry-image">
+                <img src="assets/images/planInvestMent.png">
+            </div>
+            <h1 class="pull-left slider-description">Quick Invest</h1>
+            <h2 class="pull-left">Build wealth through setting up monthly SIP investment (Systematic Investment Plan)<span class="nextline">and/or make a one-time investment (Lumpsum)</span></h2>
+        </div>                
+        <div class="radio-cover">
+            <input type="radio" required id="option1Type1" name="option1" ng-model="modelVal.A8" value="op1"><label for="option1Type1"><span></span>I only want to make monthly investments</label>
+            <input type="radio" required id="option1Type2" name="opoption1Tion1" ng-model="modelVal.A8" value="op2"><label for="option1Type2"><span></span>I only want to make one-time investment</label>
+            <input type="radio" required id="option1Type3" name="option1" ng-model="modelVal.A8" value="op3"><label for="option1Type3"><span></span>I want to make one-time and monthly investments</label>
+        </div>
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="fin-btn-cover started">
+                    <div class="fin-btn-group">
+                        <button ng-click="back()" class="fin-link-btn"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+                        <button cng-disabled="quickInvestForm1.$invalid" class="fin-app-btn fin-orange" click-redirect="/quickInvest">CONTINUE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

@@ -977,6 +977,9 @@ button[disabled]:hover {
   display: inline-block;
   margin-right: 14px;
 }
+.width-100 {
+  width: 100%!important;
+}
 .radio-cover,
 .checkbox-cover {
   width: 100%;
@@ -993,7 +996,7 @@ button[disabled]:hover {
 .radio-cover input[type="checkbox"] + label,
 .checkbox-cover input[type="checkbox"] + label {
   font-family: 'PlayfairDisplay-Regular';
-  color: #010101;
+  color: #101010;
   font-weight: normal;
   font-size: 1.1875em;
   width: 100%;
@@ -1161,7 +1164,7 @@ form .from-btn-group {
   margin-top: 10%;
 }
 span.nextline {
-  display: block;
+  display: block!important;
 }
 span.redirect {
   cursor: pointer;
@@ -1331,7 +1334,7 @@ span.redirect {
 }
 .login-wrapper .login-header p {
   font-family: 'PlayfairDisplay-Regular';
-  color: #010101;
+  color: #101010;
   font-weight: normal;
   font-size: 1.5em;
   margin: 5% 0px;
@@ -1492,7 +1495,7 @@ section.register .contact-header .cloud2 {
 }
 section.register .contact-header p {
   font-family: 'PlayfairDisplay-Regular';
-  color: #010101;
+  color: #101010;
   font-weight: normal;
   font-size: 2.25em;
   margin: 5% 0px;
@@ -1789,7 +1792,7 @@ section.register ul.login-dialog li a {
 }
 .modal-dialog .modal-content .otp-wrapper .login-header p {
   font-family: 'PlayfairDisplay-Regular';
-  color: #010101;
+  color: #101010;
   font-weight: normal;
   font-size: 1.5em;
   margin-left: 10%;
@@ -1945,7 +1948,7 @@ section.register ul.login-dialog li a {
 }
 .getStarted .getStartDesc h1 {
   font-family: 'PlayfairDisplay-Regular';
-  color: #010101;
+  color: #101010;
   font-weight: normal;
   font-size: 1.875em;
 }
@@ -1953,7 +1956,7 @@ section.register ul.login-dialog li a {
   width: 97%;
   padding-top: 5%;
   font-family: 'PlayfairDisplay-Regular';
-  color: #010101;
+  color: #101010;
   font-weight: normal;
   font-size: 1.125em;
   opacity: 0.7;
@@ -2248,7 +2251,7 @@ section.register ul.login-dialog li a {
           align-items: center;
   position: absolute;
   right: -7px;
-  top: 180px;
+  top: 160px;
   width: 20px;
   z-index: 10;
 }
@@ -2308,28 +2311,31 @@ section.register ul.login-dialog li a {
   height: 6px;
 }
 .swiper-container.customSwiper .typeSwiper {
+  width: 133px;
   position: absolute;
   top: 0px;
   right: 0px;
 }
 .swiper-container.customSwiper .typeSwiper .image-backdrop {
-  margin-bottom: 20%;
+  text-align: right;
+  margin-bottom: 10%;
 }
 .swiper-container.customSwiper .typeSwiper .image-backdrop img {
-  width: 100%;
+  width: 80%;
 }
 .swiper-container.customSwiper .typeSwiper p {
   font-family: 'Roboto-Bold';
   color: #F26529;
   font-weight: normal;
   font-size: 16px;
+  text-align: right;
 }
 .swiper-container.customSwiper .swiper-content {
-  padding-bottom: 10%;
+  padding-bottom: 12%;
 }
 .swiper-container.customSwiper .swiper-content p {
   font-family: 'PlayfairDisplay-Regular';
-  color: #010101;
+  color: #101010;
   font-weight: normal;
   font-size: 1.125em;
   margin-bottom: 2%;
@@ -2341,6 +2347,25 @@ section.register ul.login-dialog li a {
   width: 4%;
   margin-left: 5px;
   margin-right: 5px;
+}
+.swiper-container.customSwiper .swiper-content p .swiper-input.year {
+  width: 10%;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.swiper-container.customSwiper .swiper-content p .swiper-input.normal input {
+  text-align: left!important;
+}
+.swiper-container.customSwiper .swiper-content p .swiper-input.normal.currency {
+  position: relative;
+}
+.swiper-container.customSwiper .swiper-content p .swiper-input.normal.currency input {
+  padding-left: 5%;
+}
+.swiper-container.customSwiper .swiper-content p .swiper-input.normal.currency span.currency {
+  position: absolute;
+  bottom: 3px;
+  color: #247abc;
 }
 .swiper-container.customSwiper .swiper-content p .swiper-input input {
   font-family: 'PlayfairDisplay-Regular';
@@ -2412,7 +2437,7 @@ section.register ul.login-dialog li a {
 }
 .swiper-container.customSwiper .swiper-content.content-6 .score-header h3 {
   font-family: 'PlayfairDisplay-Regular';
-  color: #010101;
+  color: #101010;
   font-weight: normal;
   font-size: 1.5em;
   margin-top: 0px;
@@ -2480,13 +2505,13 @@ section.register ul.login-dialog li a {
   margin-top: 2%;
   margin-bottom: 3%;
   font-family: 'PlayfairDisplay-Regular';
-  color: #010101;
+  color: #101010;
   font-weight: normal;
   font-size: 1.875em;
 }
 .swiper-container.customSwiper .swiper-content h2 {
   font-family: 'PlayfairDisplay-Regular';
-  color: #010101;
+  color: #101010;
   font-weight: normal;
   font-size: 1.125em;
   width: 80%;
@@ -2519,6 +2544,9 @@ section.register ul.login-dialog li a {
 .swiper-container.customSwiper .fin-btn-group.answer-more.addMargin .fin-link-btn {
   margin-top: 0px;
 }
+.swiper-slide {
+  overflow: hidden;
+}
 /*.swiper-slide {
     text-align: center;
     font-size: 18px;
@@ -2535,6 +2563,35 @@ section.register ul.login-dialog li a {
     -ms-flex-align: center;
     -webkit-align-items: center;
     align-items: center;
+}*/
+/*.type2Sliders{
+  .swiper-content{
+    float:left;
+    .content-main-header{
+      width:100%;
+      float:left;
+      .slider-entry-image{
+        width:10%;
+        float:left;
+        img{
+          width:100%;
+        }
+      }
+      h1{
+        width:100%;
+        .GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@blackapprox,normal);
+        .PIXEL2EM(36);
+      }
+      h2{
+        .GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@blackapprox,normal);
+        .PIXEL2EM(24);
+        opacity:0.7;
+        width:100%;
+        line-height: 26px;
+        margin-top: 1%;
+      }
+    }    
+  } 
 }*/
 .s-hidden {
   visibility: hidden;
@@ -2656,11 +2713,17 @@ section.dashboard .goals-outer-cover {
   width: 22%;
   float: left;
 }
+section.dashboard .goals-outer-cover:nth-child(1) .image-div img {
+  width: 104%;
+}
 section.dashboard .goals-outer-cover:nth-child(2) .image-div img {
   width: 85%;
 }
 section.dashboard .goals-outer-cover:nth-child(3) .image-div img {
-  width: 90%;
+  width: 95%;
+}
+section.dashboard .goals-outer-cover:nth-child(4) .image-div img {
+  width: 81%;
 }
 section.dashboard .goals-outer-cover:not(:last-child) {
   margin-right: 3%;
@@ -2703,7 +2766,7 @@ section.dashboard .goals-outer-cover p.text-score {
 }
 section.dashboard .goals-outer-cover h3 {
   font-family: 'PlayfairDisplay-Regular';
-  color: #010101;
+  color: #101010;
   font-weight: normal;
   font-size: 1.5em;
   margin-top: 0px;
@@ -2920,4 +2983,53 @@ section.planinvest .bottom-desc h4 {
   font-weight: normal;
   font-size: 1em;
   margin-top: 2%;
+}
+section.quickInvest {
+  padding-top: 3%;
+  padding-bottom: 2%;
+  padding-left: 6%;
+  padding-right: 6%;
+}
+section.quickInvest .started {
+  padding-left: 0px;
+  padding-top: 2%;
+}
+.type2Sliders .swiper-content {
+  float: left;
+}
+.type2Sliders .swiper-content p {
+  width: 86%;
+  font-size: 1.5em !important;
+}
+.type2Sliders .swiper-content span.normal {
+  font-size: 1.625em !important;
+}
+.content-main-header {
+  width: 100%;
+  float: left;
+}
+.content-main-header .slider-entry-image {
+  width: 10%;
+  float: left;
+}
+.content-main-header .slider-entry-image img {
+  width: 100%;
+}
+.content-main-header h1 {
+  width: 100%;
+  font-family: 'PlayfairDisplay-Regular';
+  color: #101010;
+  font-weight: normal;
+  font-size: 2.25em;
+}
+.content-main-header h2 {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #101010;
+  font-weight: normal;
+  font-size: 1.375em;
+  opacity: 0.7;
+  width: 100%;
+  line-height: 26px;
+  margin-top: 1%;
+  margin-bottom: 2%;
 }

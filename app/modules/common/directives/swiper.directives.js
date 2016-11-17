@@ -21,6 +21,7 @@
 	                indicatorEnd:'@',
 	                sendValues: '&callbackFn',
 	                result : '='
+
 	            },
 	            link: function(scope, element, attrs) {
 	                scope.defaultslidesPerView = 1;
@@ -35,18 +36,39 @@
 			                slidesPerView : 1,
 			                loop: false,
 			                simulateTouch:false,
+			                calculateHeight:true,
 			                nextButton: '.content-next',
                 			prevButton: '.content-prev',
+                			onInit : function(swiper){
+                				var mainSwiperHeight = $('.'+scope.swiperName).outerHeight();
+								var activeSlide = swiper.slides.eq(swiper.activeIndex);
+								var height = $(activeSlide).find('.swiper-content').outerHeight() + 50;
+								var applyHeight = height - 100;
+								 $('.'+scope.swiperName).css('height', applyHeight);
+        						 $('.'+scope.swiperName+'.swiper-wrapper').css('height', applyHeight);
+        						 $('.swiper-slide').css('height', '450px');
+        						 if(mainSwiperHeight < height){
+        						 	$(activeSlide).css('height', applyHeight);
+        						 }else{
+        						 	$('.'+scope.swiperName).css('height','450px');
+        						 }
+                			},
 			                onSlideChangeEnd: function(swiper){
 			                	$rootScope.lastSlide = true;
 								if(!$rootScope.$$phase)	$rootScope.$apply();
-			                	var mainSwiperHeight = $('.'+scope.swiperName).outerHeight();
-			                	var sliderHeight = $('.'+scope.swiperName+' .swiper-slide-active .swiper-content').outerHeight();
-			                	if(mainSwiperHeight < sliderHeight){
-			                		$('.'+scope.swiperName).css('height',sliderHeight);
-			                	}else{
-			                		$('.'+scope.swiperName).css('height','450px');
-			                	}
+								var mainSwiperHeight = $('.'+scope.swiperName).outerHeight();
+								var activeSlide = swiper.slides.eq(swiper.activeIndex);
+								var height = $(activeSlide).find('.swiper-content').outerHeight() + 50;
+								var applyHeight = height - 100;
+								 $('.'+scope.swiperName).css('height', applyHeight);
+        						 $('.'+scope.swiperName+'.swiper-wrapper').css('height', applyHeight);
+        						 $('.swiper-slide').css('height', '450px');
+        						 if(mainSwiperHeight < height){
+        						 	$(activeSlide).css('height', applyHeight);
+        						 }else{
+        						 	$('.'+scope.swiperName).css('height','450px');
+        						 }
+
   								$('.'+scope.swiperName+' .dot').removeClass('active');
   								$('.'+scope.swiperName+' .bubble .dot-cover').removeClass('showPseudo');
   								for(var i=0;i<=swiper.slides.length;i++){
@@ -80,6 +102,7 @@
 						    class: 'bubble'
 						});
 			            div.appendTo($(element).find("." + scope.swiperName));
+			            
 			            for(var i=0;i<swiper.slides.length;i++){
 			            	var divDotCover = $('<div/>',{
 			            		class : (i == 0)?'dot-cover showPseudo':'dot-cover'	,
@@ -90,8 +113,10 @@
 			            	});
 			            	divDot.appendTo(divDotCover)
 			            	divDotCover.appendTo(div);
-			            }         
+			            }      			            
                     }, 200);
+					
+
                     scope.gotoFirst = function(param){
                     	scope.modelVal = {};
                     	scope.result = 0;

@@ -491,3 +491,45 @@
         <button ng-show="step == 6" ng-disabled="riskAssesment2Form6.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>
+<div ng-if="swiperName == 'quickInvest'" class="fadeIn swiper-container customSwiper quickInvest type2Sliders" ng-init="step = 1">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <form name="quickInvestForm1" novalidate>
+                <div class="swiper-content content-1">
+                      <p>I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input indian-curenncy type="text" ame="year" required ng-model="modelVal.A1"></span>per person</p>
+                </div>
+            </form>
+        </div>
+        <div class="swiper-slide" ng-if="false">
+            <form name="quickInvestForm2" novalidate>
+                <div class="swiper-content content-1">
+                      <p class="width-100">I would like to continue monthly investments for <span class="nextline"><span class="swiper-input year"><input only-number type="text" name="year" required ng-model="modelVal.A2"></span>years</span></p>
+                </div>
+            </form>
+        </div>
+        <div class="swiper-slide">
+            <form name="quickInvestForm3" novalidate>
+            <div class="swiper-content content-1">
+                  <p>I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input indian-curenncy type="text" ame="year" required ng-model="modelVal.A3"></span>right now</p>
+            </div>
+            </form>
+        </div>
+        <div class="swiper-slide">
+            <form name="quickInvestForm3" novalidate>
+            <div class="swiper-content content-1">
+                  <p>I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input indian-curenncy type="text" ame="year" required ng-model="modelVal.A3"></span>right now</p>
+            </div>
+            </form>
+        </div>
+    </div>
+    <div class="typeSwiper">
+        <div class="image-backdrop"><img src="assets/images/planInvestMent.png"></div>
+        <p>Quick Invest</p>
+    </div>    
+    <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
+        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="step == 1" ng-disabled="quickInvestForm1.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="step == 2" ng-disabled="quickInvestForm2.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="step == 3" ng-disabled="quickInvestForm3.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
+</div>

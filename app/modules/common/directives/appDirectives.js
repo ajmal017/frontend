@@ -9,7 +9,8 @@
 		.directive('dropdown',dropdown)
 		.directive('onlyNumber',onlyNumber)
 		.directive('validatePassword',validatePassword)
-		.directive('checkPassword',checkPassword);
+		.directive('checkPassword',checkPassword)
+		.directive('indianCurenncy',indianCurenncy);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -200,7 +201,6 @@
 				}
 		    };
 		}
-		// /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{8,}$/
 		function checkPassword(){
 			return {
 				restrict : 'EA',
@@ -237,5 +237,32 @@
 					ngModel.$formatters.push(validate);
 				}
 		    };
+		}
+
+		function indianCurenncy(){
+			return {
+				restrict : 'EA',
+				require: 'ngModel',
+				link: function(scope, element, attrs, ngModel) {
+					if(!ngModel) return;
+					function validate(value){
+						if (value != '' && value !=undefined) {
+							value = value.replace(/,/g , "")
+							value = parseInt(value).toLocaleString()
+							ngModel.$setValidity('lessAmount',true);
+							ngModel.$setViewValue(value);
+                			ngModel.$render();
+                			return value;
+						}else{
+							ngModel.$setValidity('lessAmount',false);
+							ngModel.$setViewValue(0);
+                			ngModel.$render();
+                			return 0;
+						}
+					}
+					ngModel.$parsers.push(validate);
+					ngModel.$formatters.push(validate);
+				}
+			}
 		}
 })();
