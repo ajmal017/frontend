@@ -3033,3 +3033,185 @@ section.quickInvest .started {
   margin-top: 1%;
   margin-bottom: 2%;
 }
+.meter-widget-cover {
+  width: 100%;
+  float: left;
+  background-image: -moz-linear-gradient(90deg, #f9f9f9 0%, #ffffff 100%);
+  background-image: -webkit-linear-gradient(90deg, #f9f9f9 0%, #ffffff 100%);
+  -webkit-box-shadow: 0.5px 3.33px 12px -3px #247abc;
+     -moz-box-shadow: 0.5px 3.33px 12px -3px #247abc;
+          box-shadow: 0.5px 3.33px 12px -3px #247abc;
+  -webkit-border-radius: 25px;
+     -moz-border-radius: 25px;
+          border-radius: 25px;
+  padding-top: 2%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.meter-widget-cover .debt {
+  color: #62bb46;
+}
+.meter-widget-cover .equity {
+  color: #cb624d;
+}
+.meter-widget-cover .meter-header {
+  padding-bottom: 4%;
+}
+.meter-widget-cover .meter-header .text-right:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  height: 80%;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 1px;
+  background-color: #cbcbcb;
+}
+.meter-widget-cover .meter-header h2 {
+  font-family: 'Roboto-Bold';
+  font-size: 1em;
+  margin-bottom: 0px;
+}
+.meter-widget-cover .meter-header p {
+  font-family: 'PlayfairDisplay-Regular';
+  font-size: 2.25em;
+  line-height: 24px;
+  margin-top: 5px;
+}
+.meter-widget-cover .meter-header h4 {
+  font-family: 'Roboto-Bold';
+  font-size: 1.125em;
+  opacity: 0.6;
+}
+.meter-widget-cover .meter-header h4 span.currency {
+  margin-right: 3px;
+  font-family: 'PlayfairDisplay-Regular';
+}
+.meter-widget-cover .meter-header .edit {
+  position: absolute;
+  top: 31%;
+  right: 16%;
+  width: 30px;
+  background-image: url(../images/edit.png);
+  height: 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #fff;
+  border: none;
+  outline: none;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+  -webkit-background-size: 100% 100%;
+     -moz-background-size: 100%;
+       -o-background-size: 100%;
+          background-size: 100%;
+  cursor: pointer;
+  z-index: 1;
+}
+.meter-widget-cover .guage {
+  width: 276px;
+  height: 348px;
+  position: relative;
+  margin: 0 auto;
+  margin-top: 28%;
+}
+.meter-widget-cover .guage .guage-image {
+  position: absolute;
+  top: 0px;
+  overflow: hidden;
+}
+.meter-widget-cover .guage .guage-image img {
+  width: 100%;
+}
+.meter-widget-cover .guage .text {
+  font-family: 'Roboto-Bold';
+  color: #000;
+  font-weight: normal;
+  font-size: 1em;
+  position: absolute;
+  z-index: 1000;
+}
+.meter-widget-cover .guage .orbit {
+  width: 175px;
+  height: 175px;
+  margin: 0 auto;
+  margin-top: 50px;
+  position: relative;
+  z-index: 10000;
+  -webkit-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+.meter-widget-cover .guage .indicator {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background-image: -moz-linear-gradient(90deg, #f2f2f2 0%, #ffffff 100%);
+  background-image: -webkit-linear-gradient(90deg, #f2f2f2 0%, #ffffff 100%);
+  -webkit-box-shadow: 0.5px 3.33px 12px -3px #000000;
+     -moz-box-shadow: 0.5px 3.33px 12px -3px #000000;
+          box-shadow: 0.5px 3.33px 12px -3px #000000;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+}
+.meter-widget-cover .guage .meater-cover {
+  position: absolute;
+  bottom: -20%;
+  left: 0;
+  right: 0;
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: #f5f5f5;
+  margin-left: auto;
+  margin-right: auto;
+  z-index: 1;
+}
+.meter-widget-cover .guage .pointer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  width: 21px;
+  -webkit-transform-origin: bottom;
+     -moz-transform-origin: bottom;
+      -ms-transform-origin: bottom;
+       -o-transform-origin: bottom;
+          transform-origin: bottom;
+  -webkit-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+.meter-widget-cover .box-indicator {
+  position: absolute;
+  top: 46%;
+}
+.meter-widget-cover .box-indicator .checkbox-cover label span {
+  margin-right: 0px;
+}
+.meter-widget-cover .guageCalculator {
+  width: 30%;
+  margin: 0 auto;
+  margin-top: -8%;
+}
+.meter-widget-cover .guageCalculator img {
+  width: 100%;
+}
+.meter-widget-cover .bottom-text {
+  font-family: 'Roboto-Bold';
+  color: #000;
+  font-weight: normal;
+  font-size: 1em;
+  margin-top: 5px;
+  text-align: center;
+}

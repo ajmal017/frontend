@@ -18,3 +18,65 @@
     <option value="ooh">Ooh</option>
     <option value="whoop">Whoop</option>
 </select>
+<div class="col-xs-4">
+	<div class="meter-widget-cover">
+		<div class="col-xs-12 meter-header">
+			<button class="edit"></button>
+			<div class="row">
+				<div class="col-xs-6 text-right">
+					<h2 class="debt">Debt</h2>
+					<p class="debt">0%</p>
+					<h4 ><span class="currency">&#8377</span>0</h4>
+				</div>
+				<div class="col-xs-6 text-left">
+					<h2 class="equity">Equity</h2>
+					<p class="equity">100%</p>
+					<h4><span class="currency">&#8377</span>5000</h4>
+				</div>
+			</div>
+		</div>
+		<div class="guage clearfix" one-time-equity="20%" calculate-guage="80%">
+			<h4 class="text">Recommended</h4>
+			<div class="orbit">
+				<div class="indicator"></div>
+			</div>	
+			<div class="guage-image">
+				<img src="assets/images/guage.png">
+				<div class="meater-cover"></div>
+				<div class="pointer">
+					<img src="assets/images/pointer.png">
+				</div>
+			</div>
+			<div class="box-indicator col-xs-12">
+				<div class="row">
+					<div class="col-xs-4 text-left">
+						<div class="row">
+							<div class="checkbox-cover">
+								<input type="radio" name="type">
+								<label><span></span></label>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-4 text-center">
+						<div class="checkbox-cover">
+							<input ng-checked="true" type="radio" name="type">
+							<label><span></span></label>
+						</div>
+					</div>
+					<div class="col-xs-4 text-right">
+						<div class="row">
+							<div class="checkbox-cover">
+								<input type="radio" name="type">
+								<label><span></span></label>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="guageCalculator">
+				<img src="assets/images/guageCalculator.png">
+			</div>	
+			<p class="bottom-text">As per your risk profile</p>
+		</div>
+	</div>
+</div>

@@ -10,7 +10,8 @@
 		.directive('onlyNumber',onlyNumber)
 		.directive('validatePassword',validatePassword)
 		.directive('checkPassword',checkPassword)
-		.directive('indianCurenncy',indianCurenncy);
+		.directive('indianCurenncy',indianCurenncy)
+		.directive('calculateGuage',calculateGuage);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -262,6 +263,31 @@
 					}
 					ngModel.$parsers.push(validate);
 					ngModel.$formatters.push(validate);
+				}
+			}
+		}
+		function calculateGuage(){
+			return{
+				restrict : 'EA',
+				link : function(scope, element, attrs){
+					var equityValue = attrs['oneTimeEquity'];
+					equityValue = equityValue.replace('%','');
+					var arcPercentage = (180/100)*equityValue;
+					var arcPos = arcPercentage - 45;
+					element.find('.orbit').css('transform','rotate('+arcPos+'deg)');
+					var textTop = element.find('.indicator').position().top;
+					var textLeft = element.find('.indicator').position().left;
+					element.find('h4').css({
+						'top' : textTop + 35,
+						'left': textLeft + 70
+					});
+					attrs.$observe('calculateGuage', function () {
+		                var changedValue = attrs['calculateGuage'];
+		                changedValue = changedValue.replace('%','');
+						var poniterPercentage = (180/100)*changedValue;
+						var pointerPos = poniterPercentage - 90;
+						element.find('.pointer').css('transform','rotate('+pointerPos+'deg)');
+		            });
 				}
 			}
 		}
