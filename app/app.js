@@ -17,7 +17,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		'finApp.registration',
 		'finApp.riskAssesment',
 		'finApp.dashboard',
-		'finApp.planInvest'
+		'finApp.planInvest',
+		'finApp.goals'
 	])
 	.config(config)
 	.run(run);
