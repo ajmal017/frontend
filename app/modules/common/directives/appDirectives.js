@@ -10,7 +10,8 @@
 		.directive('onlyNumber',onlyNumber)
 		.directive('validatePassword',validatePassword)
 		.directive('checkPassword',checkPassword)
-		.directive('indianCurenncy',indianCurenncy)
+		//.directive('indianCurenncy',indianCurenncy)
+		.directive('format',format)
 		.directive('calculateGuage',calculateGuage);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
@@ -73,7 +74,8 @@
 					type : '@',
 					min : '=',
 					max : '=',
-					format : '@'
+					format : '@',
+					fontColor:'@'
 				},
 				templateUrl:'modules/common/views/partials/calendar.html',
 				link:function($scope,$element,$attr,ngModel){
@@ -82,6 +84,7 @@
 					ngModel.$render = function(){
 						$scope.model = ngModel.$viewValue || 0;
 						model = ngModel.$viewValue || 0;
+						ngModel.$setViewValue($scope.model);
 					}
 					$scope.doDecrement = function(){
 						var min = parseInt($scope.min);
@@ -117,6 +120,7 @@
 							$scope.model = parseInt($scope.min);
 							model = parseInt($scope.min);
 						}
+						ngModel.$setViewValue($scope.model);
 						$scope.$apply();					
 					})
 				}
@@ -246,7 +250,9 @@
 				require: 'ngModel',
 				link: function(scope, element, attrs, ngModel) {
 					if(!ngModel) return;
+					
 					function validate(value){
+						
 						if (value != '' && value !=undefined) {
 							value = value.replace(/,/g , "")
 							value = parseInt(value).toLocaleString()
@@ -266,12 +272,35 @@
 				}
 			}
 		}
+		format.$inject = ['$filter'];
+		function format($filter){
+			 return {
+		        require: '?ngModel',
+		        link: function (scope, elem, attrs, ctrl) {
+		            if (!ctrl) return;
+		            // ctrl.$formatters.unshift(function (a) {
+		            //     return $filter(attrs.format)(ctrl.$modelValue)
+		            // });
+
+		            ctrl.$parsers.unshift(function (viewValue) {
+		                console.log(viewValue);
+		                if(viewValue){
+		                    var plainNumber = viewValue.replace(/[^\d|\-+|\.+]/g, '');
+		                    elem.val($filter('number')(plainNumber));
+		                    return plainNumber;
+		                }else{
+		                    return '';
+		                }
+		            });
+		        }
+		    };
+		}
 		function calculateGuage(){
 			return{
 				restrict : 'EA',
 				link : function(scope, element, attrs){
 					var equityValue = attrs['oneTimeEquity'];
-					equityValue = equityValue.replace('%','');
+					// equityValue = equityValue.replace('%','');
 					var arcPercentage = (180/100)*equityValue;
 					var arcPos = arcPercentage - 45;
 					element.find('.orbit').css('transform','rotate('+arcPos+'deg)');
@@ -283,7 +312,7 @@
 					});
 					attrs.$observe('calculateGuage', function () {
 		                var changedValue = attrs['calculateGuage'];
-		                changedValue = changedValue.replace('%','');
+		                // changedValue = changedValue.replace('%','');
 						var poniterPercentage = (180/100)*changedValue;
 						var pointerPos = poniterPercentage - 90;
 						element.find('.pointer').css('transform','rotate('+pointerPos+'deg)');

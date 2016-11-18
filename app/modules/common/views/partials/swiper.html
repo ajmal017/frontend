@@ -493,33 +493,167 @@
 </div>
 <div ng-if="swiperName == 'quickInvest'" class="fadeIn swiper-container customSwiper quickInvest type2Sliders" ng-init="step = 1">
     <div class="swiper-wrapper">
-        <div class="swiper-slide">
+        <div ng-if="$root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op3'" class="swiper-slide">
             <form name="quickInvestForm1" novalidate>
                 <div class="swiper-content content-1">
-                      <p>I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input indian-curenncy type="text" ame="year" required ng-model="modelVal.A1"></span>per person</p>
+                      <p class="question">I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ame="year" required ng-init="modelVal.A1 = 0" ng-keyup="showMessage1 = true" ng-model="modelVal.A1"></span></p>
+                      <span class="error-text" ng-show="showMessage1 && (modelVal.A1 < 1000 || modelVal.A1 == undefined)">Minimum amount must be greater than or equal to 1000</span>
                 </div>
             </form>
         </div>
-        <div class="swiper-slide" ng-if="false">
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op3'">
             <form name="quickInvestForm2" novalidate>
                 <div class="swiper-content content-1">
-                      <p class="width-100">I would like to continue monthly investments for <span class="nextline"><span class="swiper-input year"><input only-number type="text" name="year" required ng-model="modelVal.A2"></span>years</span></p>
+                      <p class="question width-100">I would like to continue monthly investments for <span class="nextline"><span class="swiper-input year"><input only-number type="text" name="year" required ng-model="modelVal.A2"></span>years</span></p>
                 </div>
             </form>
         </div>
-        <div class="swiper-slide">
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2' || $root.selectedCriteria == 'op3'">
             <form name="quickInvestForm3" novalidate>
             <div class="swiper-content content-1">
-                  <p>I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input indian-curenncy type="text" ame="year" required ng-model="modelVal.A3"></span>right now</p>
+                  <p class="question">I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-init="modelVal.A3 = 0" ng-keyup="showMessage2 = true" type="text" ame="year" required ng-model="modelVal.A3"></span>right now</p>
+                  <span class="error-text" ng-show="showMessage2 && (modelVal.A1 < 10000 || modelVal.A1 == undefined)">Minimum amount must be greater than or equal to 10000</span>
             </div>
             </form>
         </div>
         <div class="swiper-slide">
-            <form name="quickInvestForm3" novalidate>
-            <div class="swiper-content content-1">
-                  <p>I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input indian-curenncy type="text" ame="year" required ng-model="modelVal.A3"></span>right now</p>
+            <div class="swiper-content swiper-guage">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="gauge-result">
+                            <div class="col-xs-12 result-header"><p><span class="pigy-icon"><img src="assets/images/pigyicon.png"></span>Equity/Debt Mix</p></div>
+                            <div class="meter-widget-cover">
+                                <div class="col-xs-12 meter-header">
+                                    <button class="edit" ng-click="callModel()"></button>
+                                    <div class="row">
+                                        <div class="col-xs-6 text-right">
+                                            <h2 class="debt">Debt</h2>
+                                            <p class="debt">0%</p>
+                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                        </div>
+                                        <div class="col-xs-6 text-left">
+                                            <h2 class="equity">Equity</h2>
+                                            <p class="equity">100%</p>
+                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
+                                    <h4 class="text">Recommended</h4>
+                                    <div class="orbit">
+                                        <div class="indicator"></div>
+                                    </div>  
+                                    <div class="guage-image">
+                                        <img src="assets/images/guage.png">
+                                        <div class="meater-cover"></div>
+                                        <div class="pointer">
+                                            <img src="assets/images/pointer.png">
+                                        </div>
+                                    </div>
+                                    <div class="box-indicator col-xs-12">
+                                        <div class="row">
+                                            <div class="col-xs-4 text-left">
+                                                <div class="row">
+                                                    <div class="checkbox-cover">
+                                                        <input type="radio" name="type">
+                                                        <label><span></span></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4 text-center">
+                                                <div class="checkbox-cover">
+                                                    <input ng-checked="true" type="radio" name="type">
+                                                    <label><span></span></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4 text-right">
+                                                <div class="row">
+                                                    <div class="checkbox-cover">
+                                                        <input type="radio" name="type">
+                                                        <label><span></span></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="guageCalculator">
+                                        <img src="assets/images/guageCalculator.png">
+                                    </div>  
+                                    <p class="bottom-text">As per your risk profile</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gauge-result">
+                            <div class="col-xs-12 result-header"><p><span class="pigy-icon"><img src="assets/images/pigyicon.png"></span>Projected Investment Growth</p></div>
+                            <div class="meter-widget-cover">
+                                <div class="col-xs-12 meter-header">
+                                    <button class="edit" ng-click="callModel()"></button>
+                                    <div class="row">
+                                        <div class="col-xs-6 text-right">
+                                            <h2 class="debt">Debt</h2>
+                                            <p class="debt">0%</p>
+                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                        </div>
+                                        <div class="col-xs-6 text-left">
+                                            <h2 class="equity">Equity</h2>
+                                            <p class="equity">100%</p>
+                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
+                                    <h4 class="text">Recommended</h4>
+                                    <div class="orbit">
+                                        <div class="indicator"></div>
+                                    </div>  
+                                    <div class="guage-image">
+                                        <img src="assets/images/guage.png">
+                                        <div class="meater-cover"></div>
+                                        <div class="pointer">
+                                            <img src="assets/images/pointer.png">
+                                        </div>
+                                    </div>
+                                    <div class="box-indicator col-xs-12">
+                                        <div class="row">
+                                            <div class="col-xs-4 text-left">
+                                                <div class="row">
+                                                    <div class="checkbox-cover">
+                                                        <input type="radio" name="type">
+                                                        <label><span></span></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4 text-center">
+                                                <div class="checkbox-cover">
+                                                    <input ng-checked="true" type="radio" name="type">
+                                                    <label><span></span></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4 text-right">
+                                                <div class="row">
+                                                    <div class="checkbox-cover">
+                                                        <input type="radio" name="type">
+                                                        <label><span></span></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="guageCalculator">
+                                        <img src="assets/images/guageCalculator.png">
+                                    </div>  
+                                    <p class="bottom-text">As per your risk profile</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fin-btn-group addMargin">
+                    <button click-redirect="/quickInvestStart" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
+                    <button click-redirect="/registration" class="fin-app-btn fin-blue">CONTINUE PLANING</button>
+                    <button click-redirect="/dashboard" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                </div>
             </div>
-            </form>
         </div>
     </div>
     <div class="typeSwiper">
@@ -528,8 +662,8 @@
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="step == 1" ng-disabled="quickInvestForm1.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="step == 2" ng-disabled="quickInvestForm2.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="step == 3" ng-disabled="quickInvestForm3.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op3')" ng-disabled="modelVal.A1 < 1000 || modelVal.A1 == undefined" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op3')" ng-disabled="(modelVal.A2 == undefined)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 1 && $root.selectedCriteria == 'op2')|| (step == 3 && $root.selectedCriteria == 'op3')" ng-disabled="modelVal.A3 < 10000 || modelVal.A3 == undefined" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>

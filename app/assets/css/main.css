@@ -1716,7 +1716,7 @@ section.register ul.login-dialog li a {
           box-shadow: none;
   border: none;
 }
-.modal-dialog .modal-content .otp-wrapper {
+.modal-dialog .modal-content .modal-wrapper {
   float: left;
   width: 100%;
   -webkit-border-radius: 25px;
@@ -1729,7 +1729,8 @@ section.register ul.login-dialog li a {
           box-shadow: 2.5px 4.33px 10px 0px #247abc;
   padding: 16% 10% 8% 10%;
 }
-.modal-dialog .modal-content .otp-wrapper button.modal-close {
+.modal-dialog .modal-content .modal-wrapper button.modal-close {
+  z-index: 1;
   border: none;
   background: none;
   outline: none;
@@ -1746,7 +1747,7 @@ section.register ul.login-dialog li a {
   background-repeat: no-repeat;
   background-position: center;
 }
-.modal-dialog .modal-content .otp-wrapper button.resendOtp {
+.modal-dialog .modal-content .modal-wrapper button.resendOtp {
   border: none;
   background: none;
   outline: none;
@@ -1756,7 +1757,7 @@ section.register ul.login-dialog li a {
   font-size: 0.75em;
   margin-top: 6%;
 }
-.modal-dialog .modal-content .otp-wrapper button.resendOtp span {
+.modal-dialog .modal-content .modal-wrapper button.resendOtp span {
   position: relative;
   display: inline-block;
   width: 18px;
@@ -1771,26 +1772,26 @@ section.register ul.login-dialog li a {
   top: 6px;
   right: 5px;
 }
-.modal-dialog .modal-content .otp-wrapper .login-header .cloud1,
-.modal-dialog .modal-content .otp-wrapper .login-header .cloud2 {
+.modal-dialog .modal-content .modal-wrapper .login-header .cloud1,
+.modal-dialog .modal-content .modal-wrapper .login-header .cloud2 {
   position: absolute;
   width: 20%;
 }
-.modal-dialog .modal-content .otp-wrapper .login-header .cloud1 img,
-.modal-dialog .modal-content .otp-wrapper .login-header .cloud2 img {
+.modal-dialog .modal-content .modal-wrapper .login-header .cloud1 img,
+.modal-dialog .modal-content .modal-wrapper .login-header .cloud2 img {
   width: 100%;
 }
-.modal-dialog .modal-content .otp-wrapper .login-header .cloud1 {
+.modal-dialog .modal-content .modal-wrapper .login-header .cloud1 {
   top: 0px;
   left: 3%;
 }
-.modal-dialog .modal-content .otp-wrapper .login-header .cloud2 {
+.modal-dialog .modal-content .modal-wrapper .login-header .cloud2 {
   bottom: -30%;
   left: 0;
   right: 0;
   margin: auto;
 }
-.modal-dialog .modal-content .otp-wrapper .login-header p {
+.modal-dialog .modal-content .modal-wrapper .login-header p {
   font-family: 'PlayfairDisplay-Regular';
   color: #101010;
   font-weight: normal;
@@ -1798,25 +1799,25 @@ section.register ul.login-dialog li a {
   margin-left: 10%;
   margin-top: 9%;
 }
-.modal-dialog .modal-content .otp-wrapper .login-header .plane {
+.modal-dialog .modal-content .modal-wrapper .login-header .plane {
   width: 38%;
 }
-.modal-dialog .modal-content .otp-wrapper .login-header .plane img {
+.modal-dialog .modal-content .modal-wrapper .login-header .plane img {
   width: 100%;
 }
-.modal-dialog .modal-content .otp-wrapper .otp-form {
+.modal-dialog .modal-content .modal-wrapper .otp-form {
   width: 100%;
   float: left;
   padding-top: 24%;
 }
-.modal-dialog .modal-content .otp-wrapper .otp-form .form-group {
+.modal-dialog .modal-content .modal-wrapper .otp-form .form-group {
   position: relative;
   margin-bottom: 6%;
 }
-.modal-dialog .modal-content .otp-wrapper .otp-form .form-group:nth-child(2) {
+.modal-dialog .modal-content .modal-wrapper .otp-form .form-group:nth-child(2) {
   margin-bottom: 0px;
 }
-.modal-dialog .modal-content .otp-wrapper .otp-form .form-group input {
+.modal-dialog .modal-content .modal-wrapper .otp-form .form-group input {
   font-family: 'PlayfairDisplay-Regular';
   color: #247abc;
   font-weight: normal;
@@ -1838,15 +1839,15 @@ section.register ul.login-dialog li a {
   background-color: transparent;
   padding-bottom: 2%;
 }
-.modal-dialog .modal-content .otp-wrapper .otp-form .form-group input:focus + label,
-.modal-dialog .modal-content .otp-wrapper .otp-form .form-group input:valid + label {
+.modal-dialog .modal-content .modal-wrapper .otp-form .form-group input:focus + label,
+.modal-dialog .modal-content .modal-wrapper .otp-form .form-group input:valid + label {
   font-family: 'Roboto-Bold';
   color: #247abc;
   font-weight: normal;
   font-size: 1em;
   top: -72%;
 }
-.modal-dialog .modal-content .otp-wrapper .otp-form .form-group input + label {
+.modal-dialog .modal-content .modal-wrapper .otp-form .form-group input + label {
   position: absolute;
   pointer-events: none;
   top: -4px;
@@ -1861,10 +1862,10 @@ section.register ul.login-dialog li a {
   opacity: 0.6;
   letter-spacing: 0px;
 }
-.modal-dialog .modal-content .otp-wrapper .otp-form .form-group .password-cover {
+.modal-dialog .modal-content .modal-wrapper .otp-form .form-group .password-cover {
   position: relative;
 }
-.modal-dialog .modal-content .otp-wrapper .otp-form .form-group .password-cover span {
+.modal-dialog .modal-content .modal-wrapper .otp-form .form-group .password-cover span {
   cursor: pointer;
   position: absolute;
   display: inline-block;
@@ -1872,25 +1873,25 @@ section.register ul.login-dialog li a {
   right: 0;
   width: 5%;
 }
-.modal-dialog .modal-content .otp-wrapper .otp-form .form-group .password-cover span img {
+.modal-dialog .modal-content .modal-wrapper .otp-form .form-group .password-cover span img {
   width: 100%;
 }
-.modal-dialog .modal-content .otp-wrapper .otp-form .verify-email {
+.modal-dialog .modal-content .modal-wrapper .otp-form .verify-email {
   width: 100%;
   text-align: center;
   margin-top: 5%;
   line-height: 18px;
 }
-.modal-dialog .modal-content .otp-wrapper .login-btn-group {
+.modal-dialog .modal-content .modal-wrapper .login-btn-group {
   position: relative;
   float: left;
   width: 100%;
   margin-top: 10%;
 }
-.modal-dialog .modal-content .otp-wrapper .login-btn-group span {
+.modal-dialog .modal-content .modal-wrapper .login-btn-group span {
   display: inline-block;
 }
-.modal-dialog .modal-content .otp-wrapper .login-btn-group span.or {
+.modal-dialog .modal-content .modal-wrapper .login-btn-group span.or {
   font-family: 'Roboto-Bold';
   color: #000;
   font-weight: normal;
@@ -1934,6 +1935,11 @@ section.register ul.login-dialog li a {
 .modal-backdrop {
   opacity: 1!important;
   background-color: rgba(255, 255, 255, 0.9);
+}
+span.error-text {
+  position: relative!important;
+  color: #f24965!important;
+  width: 100%!important;
 }
 .getStarted {
   padding-top: 4%;
@@ -2153,6 +2159,9 @@ section.register ul.login-dialog li a {
   width: 50%;
   float: left;
   min-height: 56px;
+}
+.calendar-cover .calendar-footer button img {
+  width: 35%;
 }
 .calendar-cover .calendar-footer button span {
   display: inline-block;
@@ -2547,52 +2556,55 @@ section.register ul.login-dialog li a {
 .swiper-slide {
   overflow: hidden;
 }
-/*.swiper-slide {
-    text-align: center;
-    font-size: 18px;
-    background: #fff;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
-    -webkit-align-items: center;
-    align-items: center;
-}*/
-/*.type2Sliders{
-  .swiper-content{
-    float:left;
-    .content-main-header{
-      width:100%;
-      float:left;
-      .slider-entry-image{
-        width:10%;
-        float:left;
-        img{
-          width:100%;
-        }
-      }
-      h1{
-        width:100%;
-        .GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@blackapprox,normal);
-        .PIXEL2EM(36);
-      }
-      h2{
-        .GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@blackapprox,normal);
-        .PIXEL2EM(24);
-        opacity:0.7;
-        width:100%;
-        line-height: 26px;
-        margin-top: 1%;
-      }
-    }    
-  } 
-}*/
+.swiper-guage {
+  width: 100%;
+  padding-top: 1%;
+  padding-left: 1%;
+  padding-right: 1%;
+}
+.swiper-guage .gauge-result {
+  width: 35%;
+  margin-right: 6%;
+  float: left;
+}
+.swiper-guage .gauge-result .result-header {
+  padding-bottom: 5%;
+}
+.swiper-guage .gauge-result .result-header p {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #101010;
+  font-weight: normal;
+  font-size: 1.875em;
+}
+.swiper-guage .gauge-result .result-header p span.pigy-icon {
+  display: inline-block;
+  width: 44px;
+  margin-right: 6%;
+}
+.swiper-guage .gauge-result .result-header p span.pigy-icon img {
+  width: 100%;
+}
+.swiper-guage .fin-btn-group {
+  margin-top: 5%;
+  width: 70%;
+}
+.swiper-guage .fin-btn-group .fin-app-btn,
+.swiper-guage .fin-btn-group .fin-link-btn {
+  width: 23%;
+  padding: 1.5%;
+}
+.swiper-guage .fin-btn-group button:first-child {
+  padding-left: 0px;
+  text-align: left;
+  margin-right: 0px;
+}
+.swiper-guage .fin-btn-group button:not(:first-child) {
+  margin-right: 2%;
+  font-family: 'Roboto-Bold';
+  color: #fff;
+  font-weight: normal;
+  font-size: 0.75em;
+}
 .s-hidden {
   visibility: hidden;
   padding-right: 10px;
@@ -2997,12 +3009,12 @@ section.quickInvest .started {
 .type2Sliders .swiper-content {
   float: left;
 }
-.type2Sliders .swiper-content p {
+.type2Sliders .swiper-content p.question {
   width: 86%;
   font-size: 1.5em !important;
 }
 .type2Sliders .swiper-content span.normal {
-  font-size: 1.625em !important;
+  font-size: 1.625em;
 }
 .content-main-header {
   width: 100%;
@@ -3033,6 +3045,63 @@ section.quickInvest .started {
   margin-top: 1%;
   margin-bottom: 2%;
 }
+#equiDeptModal .modal-dialog {
+  width: 35%;
+}
+#equiDeptModal .modal-dialog .modal-wrapper {
+  padding: 2% 5% 6% 5%;
+}
+#equiDeptModal .modal-dialog .modal-wrapper h2 {
+  font-family: 'PlayfairDisplay-Regular';
+  font-size: 1.5em;
+}
+#equiDeptModal .modal-dialog .modal-wrapper .calendar-cover {
+  border: 1px solid #e2e7ec;
+  -webkit-box-shadow: none;
+     -moz-box-shadow: none;
+          box-shadow: none;
+}
+#equiDeptModal .modal-dialog .modal-wrapper .bottom-desc {
+  text-align: center;
+  padding-top: 6%;
+}
+#equiDeptModal .modal-dialog .modal-wrapper .bottom-desc span.currency {
+  font-family: 'PlayfairDisplay-Regular';
+  margin-right: 3px;
+}
+#equiDeptModal .modal-dialog .modal-wrapper .bottom-desc span.amount-cover {
+  display: inline-block;
+  float: right;
+}
+#equiDeptModal .modal-dialog .modal-wrapper .bottom-desc span.amount-cover.less {
+  color: #da2128;
+}
+#equiDeptModal .modal-dialog .modal-wrapper .bottom-desc span.amount {
+  text-align: right;
+}
+#equiDeptModal .modal-dialog .modal-wrapper .bottom-desc p {
+  line-height: 19px;
+  margin-bottom: 4%;
+  width: 62%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'PlayfairDisplay-Regular';
+  color: #000;
+  font-weight: normal;
+  font-size: 1.5em;
+  text-align: center;
+}
+#equiDeptModal .modal-dialog .modal-wrapper .bottom-desc p.note {
+  width: 100%;
+  font-family: 'Roboto-Regular';
+  color: #ca1e24;
+  font-weight: normal;
+  font-size: 1em;
+}
+#equiDeptModal .modal-dialog .modal-wrapper .bottom-desc .fin-app-btn {
+  float: none;
+  margin-top: 1%;
+}
 .meter-widget-cover {
   width: 100%;
   float: left;
@@ -3049,10 +3118,10 @@ section.quickInvest .started {
   padding-right: 5%;
 }
 .meter-widget-cover .debt {
-  color: #62bb46;
+  color: #62bb46!important;
 }
 .meter-widget-cover .equity {
-  color: #cb624d;
+  color: #cb624d!important;
 }
 .meter-widget-cover .meter-header {
   padding-bottom: 4%;
@@ -3070,20 +3139,22 @@ section.quickInvest .started {
   background-color: #cbcbcb;
 }
 .meter-widget-cover .meter-header h2 {
-  font-family: 'Roboto-Bold';
-  font-size: 1em;
-  margin-bottom: 0px;
+  font-family: 'Roboto-Bold' !important;
+  font-size: 1em !important;
+  margin-bottom: 0px!important;
+  width: 100%!important;
 }
 .meter-widget-cover .meter-header p {
-  font-family: 'PlayfairDisplay-Regular';
-  font-size: 2.25em;
-  line-height: 24px;
-  margin-top: 5px;
+  font-family: 'PlayfairDisplay-Regular' !important;
+  font-size: 2.25em !important;
+  line-height: 24px!important;
+  margin-top: 5px!important;
+  width: 100%!important;
 }
 .meter-widget-cover .meter-header h4 {
-  font-family: 'Roboto-Bold';
-  font-size: 1.125em;
-  opacity: 0.6;
+  font-family: 'Roboto-Bold' !important;
+  font-size: 1.125em !important;
+  opacity: 0.6!important;
 }
 .meter-widget-cover .meter-header h4 span.currency {
   margin-right: 3px;
@@ -3211,7 +3282,8 @@ section.quickInvest .started {
   font-family: 'Roboto-Bold';
   color: #000;
   font-weight: normal;
-  font-size: 1em;
+  font-size: 1em !important;
   margin-top: 5px;
   text-align: center;
+  width: 100%!important;
 }

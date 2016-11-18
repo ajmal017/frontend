@@ -80,3 +80,31 @@
 		</div>
 	</div>
 </div>
+
+<div class="modal fade fade-scale" id="equiDeptModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+		<div class="fadeIn modal-wrapper">
+		<button data-dismiss="modal" class="modal-close"></button>
+			<div class="col-xs-12">
+				<div class="col-xs-6">
+					<h2 ng-style="{'color':'#62bb46'}" class="text-center">Debt</h2>
+					<fin-calendar-form ng-model="equity" format="percent" type="#ddffd3" font-color="#62bb46" min="0" max="100"></fin-calendar-form>
+				</div>
+				<div class="col-xs-6">
+					<h2 ng-style="{'color':'#047bc1'}" class="text-center">Equity</h2>
+					<fin-calendar-form font-color="#047bc1" ng-model="equity2" format="percent" type="#e6f6ff" min="0" max="50"></fin-calendar-form>
+				</div>
+			</div>
+			<div class="col-xs-12 bottom-desc">
+				<p><span class="bottom-label">Amount in Debt:</span><span class="amount-cover less"><span class="currency">&#8377</span><span class="amount">800</span></span></p>
+				<p><span class="bottom-label">Amount in Equity:</span><span class="amount-cover"><span class="currency">&#8377</span><span ng-bind="equityValue|currency:''"></span><span class="amount">1250</span></p>
+				<p class="note" ng-if="false">Note: Investment in Debt and Equity funds below minimum limit <span class="currency">&#8377</span><span class="amount"><span class="amount">1000</span></span></p>
+				<p class="note" ng-if="true">Note: Investment in Debt funds below minimum limit <span class="currency">&#8377</span><span class="amount">1000</span></p>
+				<p class="note" ng-if="false">Note: Investment in Equity funds below minimum limit <span class="currency">&#8377</span><span class="amount">1000</span></p>
+				<button class="fin-app-btn fin-orange" click-redirect="/quickInvest">SAVE MIX</button>
+			</div>
+		</div>
+    </div>
+  </div>
+</div>

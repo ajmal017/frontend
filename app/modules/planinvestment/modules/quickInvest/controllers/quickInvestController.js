@@ -9,5 +9,8 @@
 			$scope.appendFormValues = function(data){
 				alert(JSON.stringify(data));
 			}
+			$scope.showEquityModal = function(){
+				$('#equiDeptModal').modal('show');
+			}
 		}
 })();

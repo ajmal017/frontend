@@ -4,8 +4,8 @@
 		.module('finApp.directives')
 		.directive('swiper',swiper);
 
-		swiper.$inject = ['$rootScope','$location'];
-		function swiper($rootScope,$location){
+		swiper.$inject = ['$rootScope','$location','$compile'];
+		function swiper($rootScope,$location,$compile){
 			return{
 				replace:false,
 				templateUrl:'modules/common/views/partials/swiper.html',
@@ -20,8 +20,8 @@
 	                swiperFallback: '@',
 	                indicatorEnd:'@',
 	                sendValues: '&callbackFn',
-	                result : '='
-
+	                result : '=',
+	                callModel: '&callmodalFn'
 	            },
 	            link: function(scope, element, attrs) {
 	                scope.defaultslidesPerView = 1;
@@ -52,6 +52,10 @@
         						 }else{
         						 	$('.'+scope.swiperName).css('height','450px');
         						 }
+        	// 					 var markup = '<button class="fin-link-btn content-prev" ng-click="test()"><span><img src="assets/images/startedArrow.png"></span>BACK</button>';
+								 // var compliled = $compile(markup)(scope);
+									// compliled.appendTo($('.fin-btn-group'));
+								
                 			},
 			                onSlideChangeEnd: function(swiper){
 			                	$rootScope.lastSlide = true;
@@ -123,6 +127,9 @@
                     	setTimeout(function(){
                     		swiper.slideTo(param,0,true);
                     	},0)                    	
+                    }
+                    scope.test = function(){
+                    	swiper.slideTo(swiper.activeIndex - 1);
                     }
                     scope.gotoMoreQuestion = function(){
                     	$location.path('riskAssesmentMoreQuestions');                    	

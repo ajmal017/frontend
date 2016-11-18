@@ -237,7 +237,7 @@ section{
 		float: left;
 		box-shadow: none;
 		border:none;
-		.otp-wrapper{
+		.modal-wrapper{
 			float: left;
 			width:100%;
 			border-radius: 25px;
@@ -247,6 +247,7 @@ section{
 			padding:16% 10% 8% 10%;
 			button{
 				&.modal-close{
+					z-index:1;
 					border:none;
 					background: none;
 					outline: none;
@@ -423,4 +424,11 @@ section{
 .modal-backdrop{
 	opacity: 1!important;
 	background-color:rgba(255,255,255,0.9);
+}
+span{
+	&.error-text{
+		position:relative!important;
+		color:#f24965!important;
+		width:100%!important;
+	}
 }

@@ -46,6 +46,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 	function run($route,$routeParams,$rootScope,$location,appConfig,checkPath){
 		$rootScope.userDetails = JSON.parse(sessionStorage.getItem('userDetails'))||{};
 		$rootScope.drawerOpen = false;
+		$rootScope.selectedCriteria = null;
 		var history = [],prevUrl,pos;
 		$rootScope.$on('$locationChangeStart', function(event, current, previous) {
 			if($rootScope.drawerOpen == true) $rootScope.drawerAnimate();

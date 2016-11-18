@@ -1,0 +1,56 @@
+#equiDeptModal{
+	.modal-dialog{
+		width:35%;
+		.modal-wrapper{
+			padding:2% 5% 6% 5%;
+			h2{
+				font-family:'PlayfairDisplay-Regular';
+				.PIXEL2EM(24);
+			}
+			.calendar-cover{
+				border:1px solid #e2e7ec;
+				box-shadow:none;
+			}
+			
+			.bottom-desc{
+				text-align:center;
+				padding-top:6%;
+				span{
+					&.currency{
+						font-family:'PlayfairDisplay-Regular';
+						margin-right:3px;
+					}
+					&.amount-cover{
+						display:inline-block;
+						float:right;
+						&.less{
+							color:#da2128;
+						}
+					}
+					&.amount{
+						text-align:right;
+					}
+				}	
+				p{
+					line-height:19px;
+					margin-bottom: 4%;
+					width:62%;
+					margin-left:auto;
+					margin-right:auto;
+					.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@black,normal);
+	            	.PIXEL2EM(24);
+	            	text-align:center;
+	            	&.note{
+	            		width:100%;
+	            		.GLOBAL_FONT_STYLE('Roboto-Regular',#ca1e24,normal);
+	            		.PIXEL2EM(16);
+	            	}
+				}
+				.fin-app-btn{
+					float:none;
+					margin-top:1%;
+				}
+			}			
+		}		
+	}	
+}
