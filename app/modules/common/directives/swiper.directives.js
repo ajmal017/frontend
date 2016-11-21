@@ -51,11 +51,7 @@
         						 	$(activeSlide).css('height', applyHeight);
         						 }else{
         						 	$('.'+scope.swiperName).css('height','450px');
-        						 }
-        	// 					 var markup = '<button class="fin-link-btn content-prev" ng-click="test()"><span><img src="assets/images/startedArrow.png"></span>BACK</button>';
-								 // var compliled = $compile(markup)(scope);
-									// compliled.appendTo($('.fin-btn-group'));
-								
+        						 }							
                 			},
 			                onSlideChangeEnd: function(swiper){
 			                	$rootScope.lastSlide = true;
@@ -63,7 +59,7 @@
 								var mainSwiperHeight = $('.'+scope.swiperName).outerHeight();
 								var activeSlide = swiper.slides.eq(swiper.activeIndex);
 								var height = $(activeSlide).find('.swiper-content').outerHeight() + 50;
-								var applyHeight = height - 100;
+								var applyHeight = height - 50;
 								 $('.'+scope.swiperName).css('height', applyHeight);
         						 $('.'+scope.swiperName+'.swiper-wrapper').css('height', applyHeight);
         						 $('.swiper-slide').css('height', '450px');

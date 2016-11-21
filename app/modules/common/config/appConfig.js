@@ -9,7 +9,7 @@
 			'restrictedPages' : [
 				// '/dashboard',
 				// '/planInvest',
-				'/quickInvest',
+				// '/quickInvest',
 				'/quickInvestStart'
 			],
 			'noTokenAPI':[

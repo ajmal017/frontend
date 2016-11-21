@@ -704,6 +704,19 @@ section{
 			box-shadow: 0px 5px 4px 0px rgb( 242, 101, 41 );
 		}
 	}
+	&.fin-btn-white{
+		display:inline-block;
+		padding:18px 0px;
+		.GLOBAL_FONT_STYLE('Roboto-Bold',@lochmaraapprox,normal);
+		.PIXEL2EM(10);
+		min-width:247px;
+		float:left;
+		background-image: -webkit-linear-gradient( 90deg, rgb( 249, 249, 249 ) 0%, rgb( 255, 255, 255 ) 100%);
+  		box-shadow: 0px 1px 2px 0px rgb( 36, 122, 188 );	
+		&:hover{
+			box-shadow: 1px 5.33px 11px -4px rgb( 36, 122, 188 );
+		}
+	}
 	&.fin-signIn{
 		position:relative;
 		.GLOBAL_FONT_STYLE('Roboto-Bold',@lochmaraapprox,normal);
@@ -890,10 +903,45 @@ form{
 span.nextline{
 	display:block!important;
 }
+span.placeholder{
+	display:inline-block;
+	width:100%;
+	opacity:0.7;
+}
 span.redirect{
 	cursor:pointer;
 	.GLOBAL_FONT_STYLE('Roboto-Regular',@lochmaraapprox,normal);
 	.PIXEL2EM(16);
+}
+span.or{
+	display:inline-block;
+	margin-right:10px;
+	margin-left:10px;
+	.GLOBAL_FONT_STYLE('Roboto-Bold',@black,normal);
+	.PIXEL2EM(10);
+	opacity:0.7;
+}
+span{
+	&.currency{
+		margin-right:3px;
+		font-family: 'PlayfairDisplay-Regular'!important;
+	}
+}
+span{
+	&.currencyInput{
+		margin-right:3px;
+		font-family: 'PlayfairDisplay-Regular'!important;
+		position:absolute;
+		bottom:3px;
+	}
+	+ input{
+		padding-left:5%;
+		.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@marinerapprox,normal);
+        .PIXEL2EM(20)!important;
+	}
+}
+span.highlight{
+	color:#f26529;
 }
 .form-error{
 	width:100%;
@@ -909,7 +957,15 @@ span.redirect{
 		margin-bottom:0px;
 	}	
 }
-
+.width-auto{
+	width:auto!important;
+}
+.width-60{
+	width:60%!important;
+}
+.remove-right{
+	right:0px!important;
+}
 @keyframes makeDropdown{
 
   /*0%{

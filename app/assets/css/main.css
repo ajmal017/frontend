@@ -894,6 +894,25 @@ section.introduction.about-app a {
      -moz-box-shadow: 0px 5px 4px 0px #f26529;
           box-shadow: 0px 5px 4px 0px #f26529;
 }
+.fin-app-btn.fin-btn-white {
+  display: inline-block;
+  padding: 18px 0px;
+  font-family: 'Roboto-Bold';
+  color: #047BC1;
+  font-weight: normal;
+  font-size: 0.625em;
+  min-width: 247px;
+  float: left;
+  background-image: -webkit-linear-gradient(90deg, #f9f9f9 0%, #ffffff 100%);
+  -webkit-box-shadow: 0px 1px 2px 0px #247abc;
+     -moz-box-shadow: 0px 1px 2px 0px #247abc;
+          box-shadow: 0px 1px 2px 0px #247abc;
+}
+.fin-app-btn.fin-btn-white:hover {
+  -webkit-box-shadow: 1px 5.33px 11px -4px #247abc;
+     -moz-box-shadow: 1px 5.33px 11px -4px #247abc;
+          box-shadow: 1px 5.33px 11px -4px #247abc;
+}
 .fin-app-btn.fin-signIn {
   position: relative;
   font-family: 'Roboto-Bold';
@@ -1166,12 +1185,47 @@ form .from-btn-group {
 span.nextline {
   display: block!important;
 }
+span.placeholder {
+  display: inline-block;
+  width: 100%;
+  opacity: 0.7;
+}
 span.redirect {
   cursor: pointer;
   font-family: 'Roboto-Regular';
   color: #047BC1;
   font-weight: normal;
   font-size: 1em;
+}
+span.or {
+  display: inline-block;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-family: 'Roboto-Bold';
+  color: #000;
+  font-weight: normal;
+  font-size: 0.625em;
+  opacity: 0.7;
+}
+span.currency {
+  margin-right: 3px;
+  font-family: 'PlayfairDisplay-Regular' !important;
+}
+span.currencyInput {
+  margin-right: 3px;
+  font-family: 'PlayfairDisplay-Regular' !important;
+  position: absolute;
+  bottom: 3px;
+}
+span + input {
+  padding-left: 5%;
+  font-family: 'PlayfairDisplay-Regular';
+  color: #247abc;
+  font-weight: normal;
+  font-size: 1.25em !important;
+}
+span.highlight {
+  color: #f26529;
 }
 .form-error {
   width: 100%;
@@ -1188,6 +1242,15 @@ span.redirect {
   color: #F26529;
   text-align: center;
   margin-bottom: 0px;
+}
+.width-auto {
+  width: auto!important;
+}
+.width-60 {
+  width: 60%!important;
+}
+.remove-right {
+  right: 0px!important;
 }
 @-webkit-keyframes makeDropdown {
   /*0%{
@@ -2229,6 +2292,22 @@ span.error-text {
   background-repeat: repeat-x;
   background-color: transparent;
 }
+.retirement .calender-outer-cover {
+  margin-top: 20px;
+  padding-bottom: 3%;
+}
+.retirement .calender-outer-cover .calendarHeader {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #101010;
+  font-weight: normal;
+  opacity: 0.7;
+  font-size: 1.5em;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+.retirement .calender-outer-cover .calendar-divider {
+  margin-top: 30%;
+}
 .swiper-container {
   width: 100%;
   height: 450px;
@@ -2336,8 +2415,32 @@ span.error-text {
   font-family: 'Roboto-Bold';
   color: #F26529;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 1em;
   text-align: right;
+}
+.swiper-container.customSwiper.retirement .typeSwiper {
+  width: 171px;
+}
+.swiper-container.customSwiper.retirement .typeSwiper .image-backdrop img {
+  width: 97%;
+}
+.swiper-container.customSwiper.retirement .swiper-slide .question {
+  position: relative;
+  margin-top: 11%;
+  width: 100%;
+}
+.swiper-container.customSwiper.retirement .swiper-slide .question .swiper-input input {
+  text-align: left;
+}
+.swiper-container.customSwiper.retirement .swiper-slide .question .global-input {
+  width: 46%;
+}
+.swiper-container.customSwiper.retirement .swiper-slide .question .global-input input {
+  text-align: left;
+}
+.swiper-container.customSwiper.retirement .swiper-slide .question .fin-btn-white {
+  position: absolute;
+  right: -35%;
 }
 .swiper-container.customSwiper .swiper-content {
   padding-bottom: 12%;
@@ -2398,6 +2501,37 @@ span.error-text {
   background-color: transparent;
   padding-bottom: 5px;
   text-align: center;
+}
+.swiper-container.customSwiper .swiper-content p.multiple {
+  font-family: 'PlayfairDisplay-Regular' !important;
+  color: #101010 !important;
+  font-weight: normal !important;
+  font-size: 1.875em !important;
+  margin-top: 1%!important;
+  margin-bottom: 0px;
+}
+.swiper-container.customSwiper .swiper-content p.multiple span.swiper-input {
+  width: 40%;
+  font-size: 1.25em !important;
+}
+.swiper-container.customSwiper .swiper-content .topHeader {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #101010;
+  font-weight: normal;
+  font-size: 1.875em;
+  margin-top: 0px;
+}
+.swiper-container.customSwiper .swiper-content.retirement-content span.swiper-input {
+  width: 67%!important;
+}
+.swiper-container.customSwiper .swiper-content.retirement-content span.swiper-input input {
+  padding-left: 22px!important;
+}
+.swiper-container.customSwiper .swiper-content.retirement-content p.question:last-child {
+  margin-top: 5%;
+}
+.swiper-container.customSwiper .swiper-content.retirement-content p.question .highlight {
+  font-size: 1.5em;
 }
 .swiper-container.customSwiper .swiper-content.content-1 {
   position: absolute;
@@ -2517,6 +2651,78 @@ span.error-text {
   color: #101010;
   font-weight: normal;
   font-size: 1.875em;
+}
+.swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate {
+  padding-top: 3%;
+}
+.swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover {
+  position: relative;
+  -webkit-border-radius: 25px;
+     -moz-border-radius: 25px;
+          border-radius: 25px;
+  margin-right: 4%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  border: 3px solid #f0f4f7;
+}
+.swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover .image-div {
+  padding-top: 20%;
+  padding-bottom: 20%;
+  width: 60%;
+  margin: 0 auto;
+}
+.swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover .image-div img {
+  width: 84%;
+}
+.swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover h3,
+.swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover h4 {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #000;
+  font-weight: normal;
+}
+.swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover h3 {
+  font-size: 1.5em;
+  margin-bottom: 2px;
+}
+.swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover h4 {
+  font-size: 1.375em;
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+.swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover:nth-child(3) .image-div img {
+  width: 74%!important;
+}
+.swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover p {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #247abc;
+  font-weight: normal;
+  font-size: 1.125em;
+}
+.swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover .checkbox-cover {
+  text-align: center;
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  bottom: -19px;
+}
+.swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover .checkbox-cover label {
+  opacity: 1;
+}
+.swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover .checkbox-cover label span {
+  margin-right: 0px;
+  opacity: 1;
+}
+.swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover.active {
+  background-color: #f0f4f7;
+}
+.swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover .pigy {
+  width: 16%;
+  position: absolute;
+  top: 8%;
+  right: 8%;
+}
+.swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover .pigy img {
+  width: 100%;
 }
 .swiper-container.customSwiper .swiper-content h2 {
   font-family: 'PlayfairDisplay-Regular';
@@ -3124,6 +3330,9 @@ section.quickInvest .started {
   font-weight: normal;
   font-size: 1em;
   margin-top: 2%;
+}
+.retirement .content-main-header .slider-entry-image {
+  width: 20%;
 }
 #equiDeptModal .modal-dialog {
   width: 35%;

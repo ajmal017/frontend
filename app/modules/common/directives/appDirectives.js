@@ -74,7 +74,7 @@
 					type : '@',
 					min : '=',
 					max : '=',
-					format : '@',
+					formatSymbol : '@',
 					fontColor:'@'
 				},
 				templateUrl:'modules/common/views/partials/calendar.html',
