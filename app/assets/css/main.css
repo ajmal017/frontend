@@ -3045,6 +3045,86 @@ section.quickInvest .started {
   margin-top: 1%;
   margin-bottom: 2%;
 }
+.goals .goal-section:nth-child(1) .goals-outer-cover:nth-child(1) .image-div img {
+  width: 66%!important;
+}
+.goals .goal-section:nth-child(1) .goals-outer-cover:nth-child(2) .image-div img {
+  width: 54%!important;
+}
+.goals .goal-section:nth-child(1) .goals-outer-cover:nth-child(3) .image-div img {
+  width: 80%!important;
+}
+.goals .goal-section:nth-child(1) .goals-outer-cover:nth-child(4) .image-div img {
+  width: 58%!important;
+}
+.goals .goal-section:nth-child(2) .goals-outer-cover:nth-child(1) .image-div img {
+  width: 58%!important;
+}
+.goals .goal-section:nth-child(2) .goals-outer-cover:nth-child(2) .image-div img {
+  width: 60%!important;
+}
+.goals .goal-section:nth-child(2) .goals-outer-cover:nth-child(3) .image-div img {
+  width: 60%!important;
+}
+.goals .goals-outer-cover .goals-cover {
+  height: 218px;
+  display: table;
+}
+.goals .goals-outer-cover .goals-cover .image-div {
+  display: table-cell !important;
+  vertical-align: middle;
+  width: 100%!important;
+}
+@media only screen and (max-width:768px) {
+  .goals .goals-outer-cover {
+    width: 50%!important;
+    margin: 0 auto!important;
+    float: none;
+  }
+}
+@media only screen and (max-width:600px) {
+  .goals .goals-outer-cover {
+    width: 100%!important;
+    margin: 0 auto!important;
+    float: none;
+  }
+}
+.goals .bottom-desc {
+  text-align: center;
+  margin-top: 3%;
+  margin-left: 2%;
+  float: left;
+}
+.goals .bottom-desc p {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #000;
+  font-weight: normal;
+  font-size: 1.5em;
+  margin-bottom: 2%;
+}
+.goals .bottom-desc .fin-btn-group button {
+  float: none;
+  width: 15%;
+  padding: 20px 0px;
+}
+@media only screen and (max-width:768px) {
+  .goals .bottom-desc .fin-btn-group button {
+    width: 45%;
+  }
+}
+@media only screen and (max-width:600px) {
+  .goals .bottom-desc .fin-btn-group button {
+    width: 100%!important;
+  }
+}
+.goals .bottom-desc h4 {
+  width: 100%;
+  font-family: 'Roboto-Bold';
+  color: #F26529;
+  font-weight: normal;
+  font-size: 1em;
+  margin-top: 2%;
+}
 #equiDeptModal .modal-dialog {
   width: 35%;
 }
