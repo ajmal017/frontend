@@ -4,8 +4,8 @@
 		.module('finApp.directives')
 		.directive('swiper',swiper);
 
-		swiper.$inject = ['$rootScope','$location','$compile'];
-		function swiper($rootScope,$location,$compile){
+		swiper.$inject = ['$rootScope','$location','$compile','$parse','appConfig'];
+		function swiper($rootScope,$location,$compile,$parse,appConfig){
 			return{
 				replace:false,
 				templateUrl:'modules/common/views/partials/swiper.html',
@@ -23,6 +23,8 @@
 	                result : '=',
 	                callModel: '&callmodalFn'
 	            },
+	            controller:'@',
+	            name:"controllerName",
 	            link: function(scope, element, attrs) {
 	                scope.defaultslidesPerView = 1;
 	                scope.defaultspaceBetween = 0;
@@ -30,6 +32,7 @@
 	                $rootScope.lastSlide = true;
 	                var swiper = null;
 	                scope.modelVal = {};
+
 	                setTimeout(function() {
                         swiper = $(element).find("." + scope.swiperName).swiper({
 			                direction : 'vertical',
@@ -40,8 +43,14 @@
 			                nextButton: '.content-next',
                 			prevButton: '.content-prev',
                 			onInit : function(swiper){
+                				var activeSlide = swiper.slides.eq(swiper.activeIndex);
+                				if($(activeSlide).data('key') !=undefined){
+                					var dataString = $(activeSlide).data('key').split(':');
+                					$rootScope.tipData = appConfig[dataString[0]][dataString[1]];
+                				}else{
+                					$rootScope.tipData = undefined;
+                				}
                 				var mainSwiperHeight = $('.'+scope.swiperName).outerHeight();
-								var activeSlide = swiper.slides.eq(swiper.activeIndex);
 								var height = $(activeSlide).find('.swiper-content').outerHeight() + 50;
 								var applyHeight = height - 100;
 								 $('.'+scope.swiperName).css('height', applyHeight);
@@ -51,13 +60,27 @@
         						 	$(activeSlide).css('height', applyHeight);
         						 }else{
         						 	$('.'+scope.swiperName).css('height','450px');
-        						 }							
+        						 }	
+        						 if(!$rootScope.$$phase) $rootScope.$apply();						
                 			},
 			                onSlideChangeEnd: function(swiper){
 			                	$rootScope.lastSlide = true;
 								if(!$rootScope.$$phase)	$rootScope.$apply();
 								var mainSwiperHeight = $('.'+scope.swiperName).outerHeight();
 								var activeSlide = swiper.slides.eq(swiper.activeIndex);
+
+								if(($(activeSlide).data('key') !=undefined) && ($(activeSlide).data('key').indexOf('calculate') == -1)){
+                					var dataString = $(activeSlide).data('key').split(':');
+                					$rootScope.tipData = appConfig[dataString[0]][dataString[1]];
+                				}else if(($(activeSlide).data('key') !=undefined) 
+                						&& ($(activeSlide).data('key').indexOf('calculate') > -1)){
+                					var dataString = $(activeSlide).attr('data-key').split(':');
+                					scope.calculate(dataString[1],dataString[2]);
+                					//$rootScope.tipData = appConfig[dataString[0]][dataString[1]];
+                				}else{
+                					$rootScope.tipData = undefined;
+                				}
+                				if(!$rootScope.$$phase) $rootScope.$apply();
 								var height = $(activeSlide).find('.swiper-content').outerHeight() + 50;
 								var applyHeight = height - 50;
 								 $('.'+scope.swiperName).css('height', applyHeight);
@@ -116,6 +139,8 @@
 			            }      			            
                     }, 200);
 					
+					scope.calculate = function(type,value){
+					}
 
                     scope.gotoFirst = function(param){
                     	scope.modelVal = {};
@@ -124,20 +149,15 @@
                     		swiper.slideTo(param,0,true);
                     	},0)                    	
                     }
-                    scope.test = function(){
-                    	swiper.slideTo(swiper.activeIndex - 1);
-                    }
+
                     scope.gotoMoreQuestion = function(){
                     	$location.path('riskAssesmentMoreQuestions');                    	
                     }
+
                     scope.appendValues = function(param){
                     	scope.currentViewValue = param;
                     }
-                    scope.decrementStep = function(){
-                    	alert('dfdf');
-                    	scope.step = scope.step - 1;
-                    	if(!scope.$$phase)	scope.$apply(); 
-                    }
+
 	            }
 			};
 		}

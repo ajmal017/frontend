@@ -45,6 +45,9 @@
 }
 .options {
     display:none;
+    //height: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
     position:absolute;
     top:100%;
     right:0;
@@ -56,13 +59,13 @@
     background-color:white;
     box-shadow: 1.5px 2.33px 8px -2px #247abc;
     border-radius: 10px;
-    overflow:hidden;
 }
 .options li {.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@marinerapprox,normal);
     .PIXEL2EM(18)!important;
     padding:0 6px;
     margin:0 0;
     padding: 2% 11%;
+    overflow:hidden;
 }
 .options li:hover {
     background-color:#39f;

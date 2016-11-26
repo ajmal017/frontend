@@ -1,0 +1,79 @@
+<section class="fadeIn quickInvest registerInvestor">
+    <form name="quickInvestForm1" novalidate>
+        <div class="content-main-header">
+            <div class="slider-entry-image">
+                <img src="assets/images/investerRegistration.png">
+            </div>
+            <h1 class="pull-left slider-description">Investor Registration</h1>
+            <h2 class="pull-left">Please keep the following ready at hand.</h2>
+            <div class="col-xs-12 documents-outer-cover">
+                <div class="row">
+                    <div class="col-xs-4 documents-cover">
+                        <div class="row">
+                            <div class="col-xs-4 documents-each">
+                                <div class="image-outer-cover">
+                                    <div class="image-div">
+                                        <img src="assets/images/pancard.png">
+                                    </div>
+                                </div> 
+                                <p>PAN Card</p>
+                            </div>
+                            <div class="col-xs-4 documents-each">
+                                <div class="image-outer-cover">
+                                    <div class="image-div">
+                                        <img src="assets/images/chequeBook.png">
+                                    </div> 
+                                </div>
+                                <p>Cheque Book</p>
+                            </div>
+                            <div class="col-xs-4 documents-each">
+                                <div class="image-outer-cover">
+                                    <div class="image-div">
+                                        <img src="assets/images/addressProof.png">
+                                    </div> 
+                                </div>
+                                <p>Address Proof</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="checklist-cover col-xs-12">
+                <div class="row">
+                    <div class="col-xs-6">
+                        <div class="row">
+                            <div class="checklist">
+                                <div class="checkedList">
+                                    <div class="image-div">
+                                        <img ng-if="false" src="assets/images/checkBlue.png">
+                                    </div>
+                                </div>
+                                <p class="not-verified"><span class="content">Email Status</span><span ng-if="false" class="nextline highlight placeholder  addOnlyBold">VERIFIED</span>
+                                <span ng-if="true" class="nextline not-verified placeholder  addOnlyBold">VERIFY NOW</span></p>
+                            </div>
+                            <div class="checklist">
+                                <div class="checkedList">
+                                    <div class="image-div">
+                                        <img src="assets/images/checkBlue.png">
+                                    </div>
+                                </div>
+                                <p><span class="content">Phone Status</span><span class="nextline highlight placeholder addOnlyBold">VERIFIED</span>
+                                <span ng-if="false" class="nextline not-verified placeholder addOnlyBold">VERIFY NOW</span></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>                
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="fin-btn-cover started">
+                    <div class="fin-btn-group">
+                        <button ng-click="back()" class="fin-link-btn"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+                        <button ng-disabled="quickInvestForm1.$invalid" class="fin-app-btn fin-orange" click-redirect="/registerInvestorInfo">CONTINUE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

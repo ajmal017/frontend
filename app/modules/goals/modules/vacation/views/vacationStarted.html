@@ -1,0 +1,26 @@
+<section class="fadeIn quickInvest">
+    <form name="quickInvestForm1" novalidate>
+        <div class="content-main-header">
+            <div class="slider-entry-image">
+                <img src="assets/images/vacation.png">
+            </div>
+            <h1 class="pull-left slider-description">Vacation</h1>
+            <h2 class="pull-left">Life is a trip,and everyone needs vacations.Invest for the next dream vacation<span class="nextline">you always wanted,and let finances not force you to make a compromise.</span></span></h2>
+        </div>                
+        <div class="radio-cover">
+            <input type="radio" required id="option1Type1" name="option1" ng-model="$root.selectedCriteria" value="op1"><label for="option1Type1"><span></span>I want to select my target savings for my dream vacation,show me how much i need to save every month</label>
+            <input type="radio" required id="option1Type2" name="opoption1Tion1" ng-model="$root.selectedCriteria" value="op2"><label for="option1Type2"><span></span>I want to save a specific amount per month,show me how much will I get when i purchase the vehicle</label>
+            <input type="radio" required id="option1Type3" name="option1" ng-model="$root.selectedCriteria" value="op3"><label for="option1Type3"><span></span>Please help me estimate my vacation expense plan</label>
+        </div>
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="fin-btn-cover started">
+                    <div class="fin-btn-group">
+                        <button ng-click="back()" class="fin-link-btn"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+                        <button ng-disabled="quickInvestForm1.$invalid" class="fin-app-btn fin-orange" click-redirect="/vacation">CONTINUE</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</section>

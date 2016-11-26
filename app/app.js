@@ -8,6 +8,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		'ngRoute',
 		'ngResource',
 		'ngSanitize',
+		'ngScrollbars',
+		'datepicker',
 		'finApp.config',
 		'finApp.directives',
 		'finApp.text',
@@ -18,13 +20,14 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		'finApp.riskAssesment',
 		'finApp.dashboard',
 		'finApp.planInvest',
-		'finApp.goals'
+		'finApp.goals',
+		'finApp.registerInvestor'
 	])
 	.config(config)
 	.run(run);
 
-	config.$inject = ['$routeProvider','$httpProvider','$resourceProvider'];
-	function config($routeProvider,$httpProvider,$resourceProvider){
+	config.$inject = ['$routeProvider','$httpProvider','$resourceProvider','ScrollBarsProvider'];
+	function config($routeProvider,$httpProvider,$resourceProvider,ScrollBarsProvider){
 		$routeProvider
 			.when('/', {
 				title : '',
@@ -42,6 +45,13 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
             });
 		$httpProvider.interceptors.push('finWebInterCepter');
 		$resourceProvider.defaults.stripTrailingSlashes = false;
+		ScrollBarsProvider.defaults = {
+	        scrollButtons: {
+	            scrollAmount: 'auto', // scroll amount when button pressed
+	            enable: true // enable scrolling buttons by default
+	        },
+	        axis: 'y' // enable 2 axis scrollbars by default
+	    };
 	}
 	run.$inject = ['$route','$routeParams','$rootScope','$location','appConfig','checkPath'];
 	function run($route,$routeParams,$rootScope,$location,appConfig,checkPath){

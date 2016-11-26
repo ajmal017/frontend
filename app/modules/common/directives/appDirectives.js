@@ -10,9 +10,12 @@
 		.directive('onlyNumber',onlyNumber)
 		.directive('validatePassword',validatePassword)
 		.directive('checkPassword',checkPassword)
+		.directive('showTip',showTip)
+		.directive('infoTip',infoTip)
 		//.directive('indianCurenncy',indianCurenncy)
 		.directive('format',format)
-		.directive('calculateGuage',calculateGuage);
+		.directive('calculateGuage',calculateGuage)
+		.directive('validatePan',validatePan);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -75,16 +78,28 @@
 					min : '=',
 					max : '=',
 					formatSymbol : '@',
-					fontColor:'@'
+					fontColor:'@',
+					yearMax : '@',
+					year : '@'
 				},
 				templateUrl:'modules/common/views/partials/calendar.html',
 				link:function($scope,$element,$attr,ngModel){
 					var model = null;
 					if (!ngModel) return; 
-					ngModel.$render = function(){
-						$scope.model = ngModel.$viewValue || 0;
-						model = ngModel.$viewValue || 0;
-						ngModel.$setViewValue($scope.model);
+					ngModel.$render = function(){						
+						if($scope.year == 'true'){
+							var currentDate = new Date();
+							var currentYear = currentDate.getFullYear();
+							$scope.max = currentYear + parseInt($scope.yearMax);
+							$scope.min = currentYear + 1;
+							model = $scope.min;
+							$scope.model = $scope.min;
+							ngModel.$setViewValue($scope.model);
+						}else{
+							$scope.model = ngModel.$viewValue || 0;
+							model = ngModel.$viewValue || 0;
+							ngModel.$setViewValue($scope.model);
+						}
 					}
 					$scope.doDecrement = function(){
 						var min = parseInt($scope.min);
@@ -142,20 +157,23 @@
 	    	}
 	    }
 
-	    function dropdown(){
+	    dropdown.$inject = ['$compile'];
+	    function dropdown($compile){
 	    	return{
 	    		restrict : 'EA',
 	    		require : 'ngModel',
 	    		link : function($scope,$element,$attr,ngModel){
-	    			var $this = $element,
+	    			setTimeout(function(){
+	    				var $this = $element,
         			numberOfOptions = $this.children('option').length;
     				$this.addClass('s-hidden');
     				$this.wrap('<div class="select"></div>');
     				$this.after('<div class="styledSelect"></div>');
     				var $styledSelect = $this.next('div.styledSelect');   				
 				    var $list = $('<ul />', {
-				        'class': 'options'
+				        'class': 'options',
 				    }).insertAfter($styledSelect);
+				    var compiled = $compile($list)($scope);
 				    for (var i = 0; i < numberOfOptions; i++) {
 				        $('<li />', {
 				            text: $this.children('option').eq(i).text(),
@@ -165,6 +183,7 @@
 				        ngModel.$setViewValue($this.children('option[selected]').val());
 				    }
 				    var $listItems = $list.children('li');
+				    $listItems.eq(0).remove();			    
 				    $styledSelect.click(function (e) {
 				        e.stopPropagation();
 				        $('.customSwiper .fin-btn-group').css('z-index',0);
@@ -186,6 +205,14 @@
 				        $('.customSwiper .fin-btn-group').css('z-index',1000);
 				        $list.hide();
 				    });
+				    if(parseInt($list.outerHeight()) > 400){
+				    	$this.parent().find('.options').mCustomScrollbar({setHeight:300,axis:"y"});
+				    }
+				    console.log($attr['scrollHeight']);
+				    if($attr['scrollHeight'] != undefined){
+				    	$this.parent().find('.options').mCustomScrollbar({setHeight:parseInt($attr['scrollHeight']),axis:"y"})
+				    }				    		    
+				},0);	    			
 	    		}
 	    	}
 	    }
@@ -272,6 +299,56 @@
 				}
 			}
 		}
+
+		infoTip.$inject = [];
+		function infoTip(){
+			return{
+				restrict : 'EA',
+			 	templateUrl:'modules/common/views/partials/info.html',
+			 	scope : {
+			 		quickTipData : '=',
+			 		infoWidth : '@',
+			 		className:'@'
+			 	},
+			 	link: function (scope, element, attrs) {
+			 		element.find('.infoTip').addClass('hide');	
+			 		element.find('.info-tip-outer-cover').addClass(scope.className);
+			 		element.find('.infoImage').bind({
+			 			'click':function(){
+			 				if(element.find('.infoTip').hasClass('show')){
+			 					element.find('.infoTip').addClass('bounceOut').removeClass('bounceIn show');
+			 				}else{
+			 					element.find('.infoTip').addClass('show bounceIn').removeClass('hide bounceOut');
+			 				}			 				
+			 			}
+			 		});	 		
+			 	}
+			}
+		}
+
+		showTip.$inject = [];
+		function showTip(){
+			 return {
+			 	restrict : 'EA',
+			 	templateUrl:'modules/common/views/partials/tip.html',
+			 	scope : {
+			 		quickTipData : '='
+			 	},
+			 	link: function (scope, element, attrs) {
+			 		element.find('.message').addClass('hide');
+			 		element.find('.tip').bind({
+			 			'click':function(){
+			 				if(element.find('.message').hasClass('show')){
+			 					element.find('.message').addClass('bounceOut').removeClass('bounceIn show');
+			 				}else{
+			 					element.find('.message').addClass('show bounceIn').removeClass('hide bounceOut');
+			 				}			 				
+			 			}
+			 		})
+			 	}
+			 }
+		}
+
 		format.$inject = ['$filter'];
 		function format($filter){
 			 return {
@@ -320,4 +397,35 @@
 				}
 			}
 		}
+
+		validatePan.$inject=['$rootScope'];
+		function validatePan($rootScope){
+	        return {
+	            restrict: 'A',
+	            require: 'ngModel',
+	            link: link,
+	            scope:true
+	        }
+	        function link(scope, elem, attr, ctrl) {
+	            ctrl.$parsers.unshift(function(value) {
+
+	                value = value.toUpperCase();
+	                var regpan = /^([A-Z a-z]){5}([0-9]){4}([A-Z a-z]){1}?$/;
+	                if (regpan.test(value) == false) {
+	                    ctrl.$setValidity('invalidPan', false);
+	                } else {
+	                	$rootScope.verify = true;
+	                    ctrl.$setValidity('invalidPan', true);
+	                }
+	                if (value == '') {
+	                	$rootScope.verify = undefined;
+	                    ctrl.$setValidity('invalidPan', true);
+	                }
+	                ctrl.$setViewValue(value);
+	                ctrl.$render();
+	                return value;
+	            });
+
+	        }
+    	}
 })();

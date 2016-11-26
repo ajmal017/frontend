@@ -10,7 +10,7 @@
 				// '/dashboard',
 				// '/planInvest',
 				// '/quickInvest',
-				'/quickInvestStart'
+				// '/quickInvestStart'
 			],
 			'noTokenAPI':[
 				'/user/login/',
@@ -25,6 +25,18 @@
 			],
 			'pagesWithOnlyMenu':[
 				'/registration'
-			]
+			],
+			'retirement' : {
+				'0' : [
+					{
+						'tip' : 'Starting early in retirement goal can make a big difference to your corpus at the time of retirement.',
+					}
+				],
+				'1' : [
+					{
+						'tip' : '<span class="currency">&#8377</span>1 Crore in 20',
+					},
+				]
+			}
 		});
 })();

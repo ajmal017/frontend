@@ -6,8 +6,8 @@
 
 		dashboardController.$inject = ['$scope','$rootScope','$location','dashboardService']
 		function dashboardController($scope,$rootScope,$location,dashboardService){
-			dashboardService.getDashboardDetails($rootScope.userFlags,function(data){
-				$scope.dashCounts = data;
-			})
+			// dashboardService.getDashboardDetails($rootScope.userFlags,function(data){
+			// 	$scope.dashCounts = data;
+			// })
 		}
 })();

@@ -7,6 +7,7 @@
 		riskController.$inject = ['$rootScope','$scope','riskService'];
 		function riskController($rootScope,$scope,riskService){
 			$scope.resultObject = '0';
+
 			$scope.appendFormValues = function(data){
 				riskService.setAssesmentObject(JSON.parse(data));
 				var assesValues = riskService.getAssesmentObject();
