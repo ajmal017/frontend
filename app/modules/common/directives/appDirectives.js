@@ -15,7 +15,9 @@
 		//.directive('indianCurenncy',indianCurenncy)
 		.directive('format',format)
 		.directive('calculateGuage',calculateGuage)
-		.directive('validatePan',validatePan);
+		.directive('validatePan',validatePan)
+		.directive('bubbleGen',bubbleGen)
+		.directive('hcChart',hcChart);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -427,5 +429,112 @@
 	            });
 
 	        }
+    	}
+
+    	function bubbleGen(){
+    		return {
+	            restrict: 'E',
+	            link: link,
+	            scope:{
+	            	length : '=',
+	            	goal : '='
+	            }
+	        }
+
+	        function link(scope, elem, attr, ctrl){
+	        	var div = $('<div/>', {
+				    class: 'bubble'
+				});
+	            div.appendTo($('.typeSwiper'));
+	            for(var i=0;i<scope.length;i++){
+	            	var divDotCover = $('<div/>',{
+	            		class : (i == scope.length - 1)?'dot-cover showPseudo':'dot-cover',
+	            		'data-content' : (i == scope.length - 1)?scope.goal:''
+	            	});
+	            	var divDot = $('<div/>',{
+	            		class : 'dot active ani'			            		
+	            	});
+	            	divDot.appendTo(divDotCover)
+	            	divDotCover.appendTo(div);
+	        	}
+    		}
+    	}
+
+    	hcChart.$inject = ['$rootScope'];
+    	function hcChart($rootScope){
+    		return {
+                restrict: 'E',
+                template: '<div></div>',
+                scope: {
+                    items: '=',
+                    control : '='
+                },
+                link: function (scope, element) {       	
+                    var chart = Highcharts.chart(element[0], {
+                    	chart: {
+			    			backgroundColor : null,
+			    			spacingBottom: 10,
+					        spacingTop: 20,
+					        spacingLeft: 10,
+					        spacingRight: 10,
+					        height: 300,
+					        type: 'line'
+						},
+						title: {
+							text: ''
+						},
+						yAxis:{
+							title:{
+								text : ''
+							}
+						},
+						xAxis: {
+							categories: [''],
+							labels:{enabled: false},
+							tickLength: 0
+						},
+						legend:{
+							align:'left'
+						},
+						tooltip: {
+							backgroundColor: '#fdfdfd',
+							borderRadius: 10,
+							borderWidth: 0,
+							formatter: function() {
+								scope.calculateAmount(this.y,this.point.date);
+								return "<span class='nextline text-center'>"+this.point.date+"</span><br><span class='nextline'>"+this.y+"</span>";
+							}
+						},
+						plotOptions: {
+							line: {
+								allowPointSelect: true,
+								cursor: 'pointer',
+								marker: {
+								enabled: false
+								}
+							},
+							series: {
+								states: {
+									hover: {
+										enabled: false
+									}
+								}
+							}
+						},
+						series : scope.items
+                    });
+                    $('.chart-tabs li').click(function(){
+                    	for(var i=0;i<scope.items.length;i++){
+                    		chart.series[i].update(scope.items[i]);
+                    	} 
+                    })
+                    scope.calculateAmount = function(nav,date){
+                    	$rootScope.nav = {};
+                    	$rootScope.nav['amount'] = nav * 100;
+                    	$rootScope.nav['date'] = date;
+                    	if(!$rootScope.$$phase) $rootScope.$apply();
+                    }
+                }
+            };
     	}
 })();

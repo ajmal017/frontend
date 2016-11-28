@@ -21,7 +21,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		'finApp.dashboard',
 		'finApp.planInvest',
 		'finApp.goals',
-		'finApp.registerInvestor'
+		'finApp.registerInvestor',
+		'finApp.smartPortFolio'
 	])
 	.config(config)
 	.run(run);
@@ -45,13 +46,6 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
             });
 		$httpProvider.interceptors.push('finWebInterCepter');
 		$resourceProvider.defaults.stripTrailingSlashes = false;
-		ScrollBarsProvider.defaults = {
-	        scrollButtons: {
-	            scrollAmount: 'auto', // scroll amount when button pressed
-	            enable: true // enable scrolling buttons by default
-	        },
-	        axis: 'y' // enable 2 axis scrollbars by default
-	    };
 	}
 	run.$inject = ['$route','$routeParams','$rootScope','$location','appConfig','checkPath'];
 	function run($route,$routeParams,$rootScope,$location,appConfig,checkPath){

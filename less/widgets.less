@@ -367,3 +367,68 @@ input{
 		}
 	}
 }
+.highcharts-background{
+	background-color:red!important;
+}
+.highcharts-container{
+	margin:0 auto;	
+}
+.highcharts-credits{
+	display:none!important;	
+}
+.highcharts-legend{
+	.highcharts-graph{
+		stroke-width:10;
+	}
+}
+.highcharts-tooltip{
+	background-image: -moz-linear-gradient( 90deg, rgb( 245, 245, 245 ) 0%, rgb( 255, 255, 255 ) 100%);
+	background-image: -webkit-linear-gradient( 90deg, rgb( 245, 245, 245 ) 0%, rgb( 255, 255, 255 ) 100%);
+	box-shadow: 2.5pt 4.33pt 4pt 0pt rgb( 4, 123, 193 );	
+}
+.highcharts-legend-item{
+	text{
+		.GLOBAL_FONT_STYLE('Roboto-Regular',@black,normal)!important;
+		opacity:0.8;
+		fill:black!important;
+	}	
+}
+.highcharts-yaxis-labels{
+	.GLOBAL_FONT_STYLE('Roboto-Regular',@black,normal)!important;
+	opacity:0.8;
+	fill:black!important;
+}
+.chart-main-tabs{
+	list-style-type:none;
+	margin-bottom:20px;
+	li{
+		display:inline-block;
+		margin-left:5%;
+		a{
+			.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@marinerapprox,normal);
+			font-size:14px;
+			text-decoration:none;
+			opacity:0.5;
+		}
+		&.activeli{
+			a{
+				position:relative;
+				opacity:1;
+				&:after{
+					left: 0;
+			    content: '';
+			    position: absolute;
+			    width: 0;
+			    height: 0;
+			    border-left: 5px solid transparent;
+			    border-right: 5px solid transparent;
+			    border-top: 8px solid #047bc1;
+			    right: 0;
+			    margin-right: auto;
+			    margin-left: auto;
+			    top: 20px;
+				}
+			}
+		}
+	}	
+}
