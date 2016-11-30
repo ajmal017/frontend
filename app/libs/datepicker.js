@@ -92,9 +92,12 @@ Datepicker.prototype.init = function() {
     .addClass(self.options.theme)
     .append(self.$input);
     // .append(self.$picker);
-    $('body').append(self.$picker);
-
-
+    if($('body .picker').length > 0){
+        $('body .picker').remove();
+    }else{
+        $('body').append(self.$picker);
+    }
+    
     self.$element
     .attr('readonly', 'readonly')
     .addClass('hasDatepicker')
@@ -121,7 +124,6 @@ Datepicker.prototype.init = function() {
     .on('hidedatepicker.datepicker', function() {
         self.displayed = null;
         self.$picker.hide();
-
         //global events
         $(document).off('.datepicker');
     })
