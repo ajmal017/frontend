@@ -12,12 +12,13 @@
 		.directive('checkPassword',checkPassword)
 		.directive('showTip',showTip)
 		.directive('infoTip',infoTip)
-		//.directive('indianCurenncy',indianCurenncy)
 		.directive('format',format)
 		.directive('calculateGuage',calculateGuage)
 		.directive('validatePan',validatePan)
 		.directive('bubbleGen',bubbleGen)
-		.directive('hcChart',hcChart);
+		.directive('hcChart',hcChart)
+		.directive('investPieChart',investPieChart)
+		.directive('customScrollBar',customScrollBar);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -273,35 +274,6 @@
 		    };
 		}
 
-		function indianCurenncy(){
-			return {
-				restrict : 'EA',
-				require: 'ngModel',
-				link: function(scope, element, attrs, ngModel) {
-					if(!ngModel) return;
-					
-					function validate(value){
-						
-						if (value != '' && value !=undefined) {
-							value = value.replace(/,/g , "")
-							value = parseInt(value).toLocaleString()
-							ngModel.$setValidity('lessAmount',true);
-							ngModel.$setViewValue(value);
-                			ngModel.$render();
-                			return value;
-						}else{
-							ngModel.$setValidity('lessAmount',false);
-							ngModel.$setViewValue(0);
-                			ngModel.$render();
-                			return 0;
-						}
-					}
-					ngModel.$parsers.push(validate);
-					ngModel.$formatters.push(validate);
-				}
-			}
-		}
-
 		infoTip.$inject = [];
 		function infoTip(){
 			return{
@@ -467,7 +439,6 @@
                 template: '<div></div>',
                 scope: {
                     items: '=',
-                    control : '='
                 },
                 link: function (scope, element) {       	
                     var chart = Highcharts.chart(element[0], {
@@ -536,5 +507,79 @@
                     }
                 }
             };
+    	}
+
+    	function investPieChart(){
+    		return{
+    			restrict : 'EA',
+    			scope:{
+    				items : '=',
+    				title : '='
+    			},
+    			link: function (scope, element){
+    				var chart = new Highcharts.Chart(element[0],{
+					    chart: {
+					        plotBackgroundColor: null,
+					        plotBorderWidth: null,
+					        plotShadow: false,
+					        width: 320,
+					        height: 300,
+					        spacingLeft: 0,
+					    },
+					    title: {
+					    	useHTML: true,
+					        text: scope.title,
+					        align: 'center',
+					        verticalAlign: 'middle',
+					        y: -20,
+					        x: -15
+					    },
+					    tooltip: {
+					        formatter: function() {
+					            return '<b>'+ this.point.name +'</b>: '+ parseFloat(this.percentage).toFixed(0) +' %';
+					        }
+					    },
+					    plotOptions: {
+					        pie: {
+					            allowPointSelect: false,
+					            cursor: 'pointer',
+					            dataLabels: {
+					                enabled: false,
+					            }
+					        },
+					        series: {
+								states: {
+									hover: {
+										enabled: false
+									}
+								}
+							}
+					    },
+					    series: [{
+					        type: 'pie',
+					        name: 'Browser share',
+					        innerSize: '50%',
+					        data: scope.items
+					    }]
+					});       
+    			}
+    		}
+    	}
+
+    	function customScrollBar(){
+    		return {
+	            restrict: 'EA',
+	            link: function(scope, element){
+	            	$(element).mCustomScrollbar({ 
+	            		advanced: { 
+	            			updateOnContentResize: true, 
+	            			updateOnBrowserResize: true 
+	            		} 
+	            	});
+	            	$(window).on('resize',function(){
+	            		$(element).mCustomScrollbar("update");
+	            	})
+	            }
+	        }
     	}
 })();

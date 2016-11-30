@@ -22,7 +22,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		'finApp.planInvest',
 		'finApp.goals',
 		'finApp.registerInvestor',
-		'finApp.smartPortFolio'
+		'finApp.smartPortFolio',
+		'finApp.investWithdraw'
 	])
 	.config(config)
 	.run(run);

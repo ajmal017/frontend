@@ -8,13 +8,13 @@
 		
 		function config($routeProvider,$httpProvider){
 		$routeProvider
-			.when('/registerInvestor', {
-				title : 'Investor Registration',
-				subHeader : 'GO BACK TO DASHBOARD',
-				redirectUrl : '/dashboard',
-		        templateUrl: 'modules/registerinvestor/views/registerInvestor.html',
-		        controller: 'registerInvestorController'
-		    })
+			// .when('/registerInvestor', {
+			// 	title : 'Investor Registration',
+			// 	subHeader : 'GO BACK TO DASHBOARD',
+			// 	redirectUrl : '/dashboard',
+		 //        templateUrl: 'modules/registerinvestor/views/registerInvestor.html',
+		 //        controller: 'registerInvestorController'
+		 //    })
 		    .when('/registerInvestorStart', {
 		    	title : 'Investor Registration',
 		    	subHeader : 'GO BACK TO DASHBOARD',

@@ -87,33 +87,33 @@
     <div class="modal-content">
       <div class="fadeIn modal-wrapper">
       <button data-dismiss="modal" class="modal-close"></button>
-	<header class="login-header col-xs-12">
-		<div class="row">
-			<div class="cloud1"><img src="assets/images/login_cloud1.png"></div>
-			<div class="header-intro col-xs-12">
-				<div class="row">
-					<p class="pull-left">One tiny step to go!</p>
-					<div class="plane pull-right"><img src="assets/images/loginPlane.png"></div>
+		<header class="login-header col-xs-12">
+			<div class="row">
+				<div class="cloud1"><img src="assets/images/login_cloud1.png"></div>
+				<div class="header-intro col-xs-12">
+					<div class="row">
+						<p class="pull-left">One tiny step to go!</p>
+						<div class="plane pull-right"><img src="assets/images/loginPlane.png"></div>
+					</div>
 				</div>
+				<div class="cloud2"><img src="assets/images/login_cloud2.png"></div>
 			</div>
-			<div class="cloud2"><img src="assets/images/login_cloud2.png"></div>
+		</header>
+		<div class="otp-form">
+			<form name="otpForm" novalidate>
+				<div class="form-group">
+					<input only-number type="text" name="email" ng-model="otp.sms_code" required>
+					<label>OTP</label>
+					<button ng-click="resendOtp()" class="resendOtp pull-right"><span class="resend-icon"></span>RESEND OTP</button>
+				</div>
+				<div class="login-btn-group">
+					<button ng-disabled="otpForm.$invalid" class="fin-app-btn fin-orange full-width" ng-click="confirmOtp(otp)">COMPLETE REGISTRATION</button>
+				</div>
+				<p class="verify-email pull-left">Facing OTP issues?<span class="nextline">Please verify email and</span><span class="redirect" ng-click="gotoLogin()">Login using Email</span></p>
+				<div class="form-error" ng-if="errorOtp"><p ng-bind="errorOtp"></p></div>
+			</form>
 		</div>
-	</header>
-	<div class="otp-form">
-		<form name="otpForm" novalidate>
-			<div class="form-group">
-				<input only-number type="text" name="email" ng-model="otp.sms_code" required>
-				<label>OTP</label>
-				<button ng-click="resendOtp()" class="resendOtp pull-right"><span class="resend-icon"></span>RESEND OTP</button>
-			</div>
-			<div class="login-btn-group">
-				<button ng-disabled="otpForm.$invalid" class="fin-app-btn fin-orange full-width" ng-click="confirmOtp(otp)">COMPLETE REGISTRATION</button>
-			</div>
-			<p class="verify-email pull-left">Facing OTP issues?<span class="nextline">Please verify email and</span><span class="redirect" ng-click="gotoLogin()">Login using Email</span></p>
-			<div class="form-error" ng-if="errorOtp"><p ng-bind="errorOtp"></p></div>
-		</form>
-	</div>
-</div>
+		</div>
     </div>
   </div>
 </div>

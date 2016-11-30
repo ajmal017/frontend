@@ -241,13 +241,232 @@
 			}
 		}
 	}
+	&.investNowTable{
+		width:100%;
+		.seperate-cover{
+			width:100%;
+			float:left;
+			height:200px;
+		}
+		.thead{
+			width:96%;
+			.th{
+				width:20%;
+			}
+		}
+		.tbody{
+			width:96%;
+			.td{
+				width:20%;
+			}
+		}
+		.tfooter{
+			border-top:1px solid #e0e0e0;
+			width:96%;
+			float:left;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			.total{
+				float:left;
+				width:60%;
+			}
+			.sipTotal{
+				width:20%;
+				float:left;
+			}
+			.lumpSumTotal{
+				width:20%;
+				float:left;
+			}
+		}
+	}
+	&.reviewInvest{
+		width:100%;
+		margin-bottom:5%;
+		.seperate-cover{
+			width:100%;
+			float:left;
+			height:250px;
+			h4{
+				.PIXEL2EM(18);
+				margin-bottom:20px;
+			}
+		}
+		.thead{
+			width:96%;
+			.th{
+				&:nth-child(1){
+					width:40%;
+				}
+				&:nth-child(2){
+					width:20%;
+				}
+				&:nth-child(3){
+					width:20%;
+				}
+				&:nth-child(4){
+					width:20%;
+				}
+			}
+		}
+		.tbody{
+			width:96%;
+			.td{
+				&:nth-child(1){
+					width:40%;
+				}
+				&:nth-child(2){
+					width:20%;
+				}
+				&:nth-child(3){
+					width:20%;
+				}
+				&:nth-child(4){
+					width:20%;
+				}
+			}
+		}
+		.tfooter{
+			border-top:1px solid #e0e0e0;
+			width:96%;
+			float:left;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			.total{
+				float:left;
+				width:60%;
+			}
+			.sipTotal{
+				width:20%;
+				float:left;
+			}
+			.lumpSumTotal{
+				width:20%;
+				float:left;
+			}
+		}
+	}
+	&.withdraw{
+		width:100%;
+		margin-bottom:5%;
+		.seperate-cover{
+			width:100%;
+			float:left;
+			height:300px;
+			h4{
+				.PIXEL2EM(18);
+				margin-bottom:20px;
+			}
+		}
+		.thead{
+			width:96%;
+			.th{
+				&:nth-child(1){
+					width:25%;
+				}
+				&:nth-child(2){
+					width:25%;
+				}
+				&:nth-child(3){
+					width:10%;
+				}
+				&:nth-child(4){
+					width:20%;
+				}
+				&:nth-child(5){
+					width:16%;
+				}
+			}
+		}
+		.tbody{
+			width:96%;
+			.tr{
+				padding:1% 0px;
+			}
+			.td{
+				&:nth-child(1){
+					width:25%;
+				}
+				&:nth-child(2){
+					width:25%;
+				}
+				&:nth-child(3){
+					width:10%;
+				}
+				&:nth-child(4){
+					width:20%;
+				}
+				&:nth-child(5){
+					width:16%;
+				}
+			}
+			.checkbox-cover{
+				label{
+					span{
+						margin-right:0px;
+					}
+				}
+			}
+			.input-cover{
+				width:100%;
+				float:left;
+				position:relative;
+				span{
+					&.currency{
+						position:absolute;
+						top:4px;
+					}
+				}
+			}
+			
+			input[type="text"]{
+				.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@marinerapprox,normal);
+				.PIXEL2EM(20)!important;
+				width:100%;
+				border:none;
+				outline:none;
+				background-image: linear-gradient(to right, @marinerapprox 25%, rgba(255,255,255,0) 0%);
+				background-position: bottom;
+				background-size: 6px 2px;
+				background-repeat: repeat-x;
+				background-color:transparent;
+				padding-left:12px;
+				padding-bottom:5px;
+				text-align:left;
+			}
+			
+		}
+		.tfooter{
+			border-top:1px solid #e0e0e0;
+			width:96%;
+			float:left;
+			padding-top: 10px;
+			padding-bottom: 10px;
+			p{
+				.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@black,normal);
+				.PIXEL2EM(18);
+			}
+			.total{
+				float:left;
+				width:48%;
+			}
+			.sipTotal{
+				width:29%;
+				float:left;
+			}
+			.lumpSumTotal{
+				width:20%;
+				float:left;
+			}
+		}
+	}
 }
 .table-seperate{
 	width: 95%;
 	float: left;
 	padding-bottom:2%;
 	padding-top:2%;
-	&:nth-child(1){
+	&:not(:last-child){
 		border-bottom:2px solid #e1e1e1;
 	}
 	.tr{
