@@ -4016,6 +4016,22 @@ section.quickInvest .started {
 #withdrawModal .modal-dialog .modal-wrapper .withdrawModalTable .seperate-cover {
   width: 100%;
 }
+#withdrawModal .modal-dialog .modal-wrapper .withdrawModalTable .thead .th:nth-child(1) {
+  width: 40%;
+  float: left;
+}
+#withdrawModal .modal-dialog .modal-wrapper .withdrawModalTable .thead .th:nth-child(2) {
+  width: 20%;
+  float: left;
+}
+#withdrawModal .modal-dialog .modal-wrapper .withdrawModalTable .thead .th:nth-child(3) {
+  width: 20%;
+  float: left;
+}
+#withdrawModal .modal-dialog .modal-wrapper .withdrawModalTable .thead .th:nth-child(4) {
+  width: 20%;
+  float: left;
+}
 .meter-widget-cover {
   width: 100%;
   float: left;
