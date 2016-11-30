@@ -4560,6 +4560,7 @@ section.registerInvestor .checklist-cover {
   padding-bottom: 2%;
 }
 section.registerInvestor .checklist-cover .checklist {
+  cursor: pointer;
   width: 100%;
   float: left;
 }
