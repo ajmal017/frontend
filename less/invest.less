@@ -10,12 +10,77 @@ section{
 				.highcharts-title{
 					text-align:center;
 					span{
+						.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@black,normal);
 						&.content{
-							font-size:32px;
+							display:inline-block;
+							position:relative;
+							font-size:50px;
 						}
 						&.nextline{
+							position:absolute;
+							left:0px;
+							right:0px;
 							line-height:14px;
 							font-size:14px;
+						}
+					}
+				}
+			}
+			.placeholder{
+				&.bottom{
+					margin-top:10px;
+					margin-left:48px;
+				}				
+			}
+			.pie-chart-legend{
+				.label-cover{
+					.content{
+						.GLOBAL_FONT_STYLE('Roboto-Regular',@black,normal);
+						.PIXEL2EM(18);
+						display:inline-block;
+						min-width:38px;
+					}
+					.value-cover{
+						.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@black,normal);
+						.PIXEL2EM(24);
+					}
+					.legend-cover{
+						display:inline-block;
+						margin-left:10px;
+						span{
+							display:inline-block;
+						}
+						min-width:146px;
+						.legend-main{
+							height:18px;
+						    position:relative;
+							top: 6px;
+							display:table;
+						    .right{
+								position:absolute;
+								left:0px;
+								top:0px;
+								border-top: 9px solid transparent;
+								border-left: 10px solid #fff;
+								border-bottom: 9px solid transparent;
+							}
+							.left{
+								position:absolute;
+								right:-10px;
+								top:0px;
+								border-top: 9px solid transparent;
+								border-bottom: 9px solid transparent;
+							}
+							span{
+								&.value{
+									display:table-cell;
+									.GLOBAL_FONT_STYLE('Roboto-Regular',@white,normal);
+									.PIXEL2EM(12);
+									text-align:center;
+									vertical-align:middle;
+									padding-left:8px;
+								}
+							}
 						}
 					}
 				}
@@ -40,6 +105,11 @@ section{
 					.PIXEL2EM(30);
 				}
 			}
+		}
+		.pie-header{
+			.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@black,normal);
+			.PIXEL2EM(22);
+			opacity:0.5;
 		}
 	}
 }

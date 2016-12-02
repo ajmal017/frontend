@@ -18,7 +18,8 @@
 		.directive('bubbleGen',bubbleGen)
 		.directive('hcChart',hcChart)
 		.directive('investPieChart',investPieChart)
-		.directive('customScrollBar',customScrollBar);
+		.directive('customScrollBar',customScrollBar)
+		.directive('accordian',accordian);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -442,6 +443,20 @@
                 },
                 link: function (scope, element) {       	
                     var chart = Highcharts.chart(element[0], {
+                    	responsive: {
+						  rules: [
+							  {
+							    condition: {
+							      maxWidth: 600
+							    },
+							    chartOptions: {
+							      chart: {
+							        width: 500
+							      }
+							    }
+							  }
+						  ]
+						},
                     	chart: {
 			    			backgroundColor : null,
 			    			spacingBottom: 10,
@@ -517,6 +532,19 @@
     				title : '='
     			},
     			link: function (scope, element){
+    				 Highcharts.getOptions().colors = Highcharts.map(['#0580c3', '#0c4f74', '#f26928', '#87350f'], function (color) {
+				        return {
+				            radialGradient: {
+				                cx: 0.6,
+				                cy: 0.3,
+				                r: 0.7
+				            },
+				            stops: [
+				                [0, color],
+				                [1, Highcharts.Color(color).brighten(0.3).get('rgb')]
+				            ]
+				        };
+    });
     				var chart = new Highcharts.Chart(element[0],{
 					    chart: {
 					        plotBackgroundColor: null,
@@ -526,13 +554,14 @@
 					        height: 300,
 					        spacingLeft: 0,
 					    },
+					    //colors: ['#248cc9', '#f5834d', '#FF0000', '#FFC0CB', '#00FF00'],
 					    title: {
 					    	useHTML: true,
 					        text: scope.title,
 					        align: 'center',
 					        verticalAlign: 'middle',
-					        y: -20,
-					        x: -15
+					        y: -28,
+					        x: -18
 					    },
 					    tooltip: {
 					        formatter: function() {
@@ -543,9 +572,11 @@
 					        pie: {
 					            allowPointSelect: false,
 					            cursor: 'pointer',
+					            shadow: false,
 					            dataLabels: {
 					                enabled: false,
-					            }
+					            },
+					            borderWidth: 0
 					        },
 					        series: {
 								states: {
@@ -582,4 +613,21 @@
 	            }
 	        }
     	}
+
+    	function accordian() {
+	        return {
+	            restrict: 'EA',
+	            link: link
+	        }
+	        function link(scope, elem, attr) {
+	            elem.on('shown.bs.collapse', function(e) {
+	                elem.parent().find(".panel-title a").addClass("rotate");
+	                elem.parent().find(".panel-title a").text('COLLAPSE');
+	            });
+	            elem.on('hidden.bs.collapse', function(e) {
+	            	elem.parent().find(".panel-title a").removeClass("rotate");
+	            	elem.parent().find(".panel-title a").text('EXPAND');
+	            });
+	        }
+	    }
 })();

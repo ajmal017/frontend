@@ -1,0 +1,4 @@
+# 1 Month for most static assets (Leverage browser caching)
+<filesMatch ".(css|jpg|jpeg|png|gif|js|ico)$">
+    Header set Cache-Control "max-age=2592000, public"
+</filesMatch>

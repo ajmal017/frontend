@@ -14,6 +14,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		'finApp.directives',
 		'finApp.text',
 		'finApp.services',
+		'finApp.filters',
 		'angularLazyImg',
 		'finApp.auth',
 		'finApp.registration',
@@ -23,7 +24,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		'finApp.goals',
 		'finApp.registerInvestor',
 		'finApp.smartPortFolio',
-		'finApp.investWithdraw'
+		'finApp.investWithdraw',
+		'finApp.trackPerformance'
 	])
 	.config(config)
 	.run(run);
