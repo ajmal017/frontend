@@ -18,6 +18,7 @@
 		.directive('bubbleGen',bubbleGen)
 		.directive('hcChart',hcChart)
 		.directive('investPieChart',investPieChart)
+		.directive('schemeChart',schemeChart)
 		.directive('customScrollBar',customScrollBar)
 		.directive('accordian',accordian);
 
@@ -532,7 +533,7 @@
     				title : '='
     			},
     			link: function (scope, element){
-    				 Highcharts.getOptions().colors = Highcharts.map(['#0580c3', '#0c4f74', '#f26928', '#87350f'], function (color) {
+					Highcharts.getOptions().colors = Highcharts.map(['#0580c3', '#0c4f74', '#f26928', '#87350f'], function (color) {
 				        return {
 				            radialGradient: {
 				                cx: 0.6,
@@ -544,7 +545,7 @@
 				                [1, Highcharts.Color(color).brighten(0.3).get('rgb')]
 				            ]
 				        };
-    });
+					});
     				var chart = new Highcharts.Chart(element[0],{
 					    chart: {
 					        plotBackgroundColor: null,
@@ -554,7 +555,6 @@
 					        height: 300,
 					        spacingLeft: 0,
 					    },
-					    //colors: ['#248cc9', '#f5834d', '#FF0000', '#FFC0CB', '#00FF00'],
 					    title: {
 					    	useHTML: true,
 					        text: scope.title,
@@ -590,6 +590,83 @@
 					        type: 'pie',
 					        name: 'Browser share',
 					        innerSize: '50%',
+					        data: scope.items
+					    }]
+					});       
+    			}
+    		}
+    	}
+
+    	schemeChart.$inject = ['$compile']
+    	function schemeChart($compile){
+    		return{
+    			restrict : 'EA',
+    			scope:{
+    				items : '=',
+    				title : '=',
+    				colors : '='
+    			},
+    			link: function (scope, element){
+    				var itemLength = scope.items;
+					Highcharts.getOptions().colors = Highcharts.map(scope.colors, function (color) {
+				        return {
+				            radialGradient: {
+				                cx: 0.6,
+				                cy: 0.3,
+				                r: 0.7
+				            },
+				            stops: [
+				                [0, color],
+				                [1, Highcharts.Color(color).brighten(0.3).get('rgb')]
+				            ]
+				        };
+					});
+    				var chart = new Highcharts.Chart(element[0],{
+					    chart: {
+					        backgroundColor : null,
+					        plotBorderWidth: null,
+					        plotShadow: false,
+					        width: 250,
+					        height: 250,
+					        spacingBottom: 0,
+					        spacingTop: 0,
+					        spacingLeft: -20,
+					        spacingRight: 0,
+					    },
+					    title: {
+					    	useHTML: true,
+					        text: scope.title,
+					        align: 'center',
+					        verticalAlign: 'middle',
+					        y: -5,
+					        x: 0
+					    },
+					    tooltip: {
+					        formatter: function() {
+					            return '<b>'+ this.point.name +'</b>: '+ parseFloat(this.percentage).toFixed(0) +' %';
+					        }
+					    },
+					    plotOptions: {
+					        pie: {
+					            allowPointSelect: false,
+					            cursor: 'pointer',
+					            shadow: false,
+					            dataLabels: {
+					                enabled: false,
+					            },
+					            borderWidth: 0
+					        },
+					        series: {
+								states: {
+									hover: {
+										enabled: false
+									}
+								}
+							}
+					    },
+					    series: [{
+					        type: 'pie',
+					        innerSize: '60%',
 					        data: scope.items
 					    }]
 					});       

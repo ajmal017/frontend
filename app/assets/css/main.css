@@ -4579,6 +4579,9 @@ input.datepicker::placeholder {
   width: 100%;
   float: left;
 }
+.customPanel.panel-group .panel {
+  background: transparent;
+}
 .customPanel.panel-group .panel + .panel {
   margin-top: 3px;
 }
@@ -4605,32 +4608,40 @@ input.datepicker::placeholder {
   color: #000;
   font-weight: normal;
   font-size: 1.125em;
+  margin-right: 0px;
 }
 .customPanel .panel-heading .panel-title p a {
   position: relative;
   font-family: 'Roboto-Regular';
   color: #247abc;
   font-weight: normal;
-  font-size: 0.875em;
+  font-size: 12px!important;
   text-decoration: none;
 }
 .customPanel .panel-heading .panel-title p a:after {
+  content: '';
   display: inline-block;
-  content: url('../images/accordian-dropdown.png');
+  background-image: url('../images/accordian-dropdown.png');
+  -webkit-background-size: 100% 100%;
+     -moz-background-size: 100%;
+       -o-background-size: 100%;
+          background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
   position: absolute;
   width: 10px;
   height: 10px;
-  top: -18px;
+  top: -10px;
   right: 0;
   -webkit-transition: all 0.2s ease;
   -o-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
   transition: all 0.2s ease;
-  -webkit-transform-origin: bottom;
-     -moz-transform-origin: bottom;
-      -ms-transform-origin: bottom;
-       -o-transform-origin: bottom;
-          transform-origin: bottom;
+  -webkit-transform-origin: center;
+     -moz-transform-origin: center;
+      -ms-transform-origin: center;
+       -o-transform-origin: center;
+          transform-origin: center;
 }
 .customPanel .panel-heading .panel-title p a.rotate:after {
   -webkit-transform: rotate(180deg);
@@ -6209,10 +6220,16 @@ section.trackPerformance .chart-cover.finance-cover {
   height: 517px;
   padding-top: 30px;
   padding-bottom: 30px;
-  padding-left: 30px;
+  padding-left: 0px;
 }
 section.trackPerformance .chart-cover.finance-cover #mCSB_1_container {
   left: -32px !important;
+}
+section.trackPerformance .chart-cover.finance-cover .mCSB_container_wrapper > .mCSB_container {
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 section.trackPerformance .chart-cover.finance-cover .seperater {
   width: 100%;
@@ -6292,6 +6309,35 @@ section.trackPerformance .chart-cover.finance-cover .progress .progress-bar:befo
   content: attr(data-percentage);
   position: absolute;
   right: 0;
+}
+section.trackPerformance .chart-cover.scheme-pie {
+  height: 517px;
+  padding-bottom: 2%;
+}
+section.trackPerformance .chart-cover.scheme-pie .mCSB_container_wrapper > .mCSB_container {
+  -webkit-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+}
+section.trackPerformance .chart-cover.scheme-pie .scheme-chart p {
+  font-family: 'PlayfairDisplay-Regular';
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  margin: 0px auto;
+}
+section.trackPerformance .chart-cover.scheme-pie .scheme-chart p span.content {
+  font-size: 30px;
+}
+section.trackPerformance .chart-cover.scheme-pie .scheme-chart p span.currency {
+  font-size: 20px;
+}
+section.trackPerformance .chart-cover.scheme-pie .scheme-chart p span.nextline {
+  font-size: 16px;
+}
+section.trackPerformance .chart-cover.scheme-pie .customPanel {
+  padding-top: 40px;
 }
 section.trackPerformance .chart-main-tabs li {
   margin-left: 0px;
