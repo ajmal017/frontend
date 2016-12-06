@@ -23,7 +23,7 @@
     <div class="page-wrapper">
         <fin-header></fin-header>
         <div class="drawer-overlay"></div>
-        <fin-loader></fin-loader>
+        <fin-loader ng-if="showLoader"></fin-loader>
         <div ng-view autoscroll="true"></div>
     </div>
     <fin-drawer></fin-drawer>

@@ -5,6 +5,7 @@
 		.directive('clickRedirect',clickRedirect)
 		.directive('finHeader',finHeader)
 		.directive('finDrawer',finDrawer)
+		.directive('finLoader',finLoader)
 		.directive('finCalendarForm',finCalendarForm)
 		.directive('dropdown',dropdown)
 		.directive('onlyNumber',onlyNumber)
@@ -72,6 +73,14 @@
 	        $('.page-wrapper').toggleClass('open');
 	        $('.bar1,.bar2').toggleClass('open');
 	    };
+
+	    function finLoader(){
+	    	return{
+				restrict : 'E',
+				replace:true,
+				templateUrl:'modules/common/views/partials/loader.html'
+			};
+	    }
 
 	    function finCalendarForm(){
 	    	return{

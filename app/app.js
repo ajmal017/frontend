@@ -50,8 +50,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		$httpProvider.interceptors.push('finWebInterCepter');
 		$resourceProvider.defaults.stripTrailingSlashes = false;
 	}
-	run.$inject = ['$route','$routeParams','$rootScope','$location','appConfig','checkPath'];
-	function run($route,$routeParams,$rootScope,$location,appConfig,checkPath){
+	run.$inject = ['$route','$routeParams','$rootScope','$location','appConfig','checkPath','busyIndicator'];
+	function run($route,$routeParams,$rootScope,$location,appConfig,checkPath,busyIndicator){
 		$rootScope.userDetails = JSON.parse(sessionStorage.getItem('userDetails'))||{};
 		$rootScope.drawerOpen = false;
 		$rootScope.selectedCriteria = null;
@@ -105,11 +105,11 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 				object[compare][key] = value; 
 			}
 		}
-		document.addEventListener("online", function() { 
+		window.addEventListener("online", function() { 
 			$rootScope.online = true;  
 		}, false);
 
-		document.addEventListener("offline", function() { 
+		window.addEventListener("offline", function() { 
 			$rootScope.online = false;   
 		}, false);
 

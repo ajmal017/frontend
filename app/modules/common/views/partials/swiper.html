@@ -705,7 +705,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'" data-key="calculate:year:{{equity}}">
             <form name="retirementForm3" novalidate>
                 <div class="swiper-content retirement-amount">
-                      <h1 class="topHeader">My target savings on retirement in <span class="calculatedAge" ng-bind="retirement.calculateYear"></span></h1>
+                      <h1 class="topHeader">My target savings on retirement in <span class="highlight calculatedAge" ng-bind="retirement.calculateYear"></span></h1>
                       <p class="question width-auto"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A4" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2')">PLEASE HELP ME ESTIMATE</button></p>
                 </div>
             </form>
@@ -713,9 +713,8 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
             <form name="retirementForm4" novalidate>
                 <div class="swiper-content">
-                      <h1 class="topHeader">To have savings amount of <span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="modelVal.A4 | amountSeffix"></span></span> by <span class="highlight"><span class="calculatedAge" ng-bind="retirement.calculateYear"></span></span>,<span class="nextline">I am willing to set aside</span></h1>
-                      <p class="question width-auto"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A5" type="text" ame="year" required></span> per month</p>
-                      <p class="question">Recommended investment anmount <span class="highlight"><span class="currency">&#8377</span>3.0 Cr</span></span> per month</p>
+                      <p class="question width-auto"><span class="content nextline">I am willing to set aside</span><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A5" type="text" ame="year" required></span> per month<span class="nextline">for the target amount<span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="modelVal.A4 | amountSeffix"></span></span> by <span class="highlight"><span class="calculatedAge" ng-bind="retirement.calculateYear"></span></span></span></p>
+                      <p class="question" ng-show="showMessage3">Recommended monthly investment amount <span class="highlight"><span class="currency">&#8377</span><span class="content" ng-init="retirement.perMonth = 100000" ng-bind="retirement.perMonth | currency:''"></span></span></span> for target amount <span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="modelVal.A4 | amountSeffix"></span></span> by <span class="highlight" ng-bind="retirement.calculateYear"></span></p>
                 </div>
             </form>
         </div>
@@ -734,7 +733,6 @@
             <form name="retirementForm6" novalidate>
                 <div class="swiper-content content-6 total-estimation">
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
-                      <p class="question multiple"><span class="content">I would like to save the following amount per month</span></p>
                        <div class="col-xs-9 estimate">
                         <div class="row">
                             <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='BUDGET'}" ng-click="activeTab = 'BUDGET'">
@@ -778,8 +776,7 @@
                             </div>
                         </div>
                       </div>
-                      <p class="question full-width pull-left addOpacity7"><span class="content">Thanks for the guidance. I would like to save the following amount per month:</span> <span class="swiper-input"><input format="number" ng-model="modelVal.A4" type="text" name="year" required></span></p>
-                      <p class="question pull-left">Estimated savings amount in<span class="nextline highlight"><span class="calculatedAge">2041</span>-<span class="amount"><span class="currency">&#8377</span>3.0 Cr</span></span></p>
+                      <p class="question addPadding-4Per full-width pull-left addOpacity7"><span class="content">Thanks for the guidance.<span class="nextline">I am willing to set aside <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A6" type="text" required></span> per month</span><span class="nextline">for target amount <span class="highlight"><span class="currency">&#8377</span>1.0 Cr</span> by <span class="highlight" ng-bind="retirement.calculateYear"></span></span></span></p>
                 </div>
             </form>
         </div>
