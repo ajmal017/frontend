@@ -4,8 +4,8 @@
 		.module('finApp.registration')
 		.controller('registerController',registerController);
 
-		registerController.$inject = ['$scope','$location','userDetailsService','registerService','authService']
-		function registerController($scope,$location,userDetailsService,registerService,authService){
+		registerController.$inject = ['$scope','$rootScope','$location','userDetailsService','registerService','authService']
+		function registerController($scope,$rootScope,$location,userDetailsService,registerService,authService){
 			$scope.userRegister = function(user){
 				registerService.registerUser(user).then(function(data){
 					if('success' in data){

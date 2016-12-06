@@ -31,7 +31,6 @@
 	                scope.swiperName = attrs.swiperName;
 	                $rootScope.lastSlide = true;
 	                var swiper = null;
-	                scope.modelVal = {};
 
 	                setTimeout(function() {
                         swiper = $(element).find("." + scope.swiperName).swiper({
@@ -43,6 +42,7 @@
 			                nextButton: '.content-next',
                 			prevButton: '.content-prev',
                 			onInit : function(swiper){
+                				
                 				var activeSlide = swiper.slides.eq(swiper.activeIndex);
                 				if($(activeSlide).data('key') !=undefined){
                 					var dataString = $(activeSlide).data('key').split(':');
@@ -61,7 +61,25 @@
         						 }else{
         						 	$('.'+scope.swiperName).css('height','450px');
         						 }	
-        						 if(!$rootScope.$$phase) $rootScope.$apply();						
+        						 if(!$rootScope.$$phase) $rootScope.$apply();
+									var div = $('<div/>', {
+									class: 'bubble'
+									});
+									div.appendTo($(element).find("." + scope.swiperName));
+									for(var i=0;i<swiper.slides.length;i++){
+									var divDotCover = $('<div/>',{
+										class : (i == 0)?'dot-cover showPseudo':'dot-cover'	,
+										'data-content' : (i == 0)?'Step 01':''
+									});
+									var divDot = $('<div/>',{
+										class : (i == 0)?'dot active':'dot'			            		
+									});
+									divDot.appendTo(divDotCover)
+									divDotCover.appendTo(div);
+									}
+									if($rootScope.slideTobeChanged > 0){
+				                    	swiper.slideTo($rootScope.slideTobeChanged ,0,true);
+	                				}				
                 			},
 			                onSlideChangeEnd: function(swiper){
 			                	$rootScope.lastSlide = true;
@@ -121,26 +139,13 @@
   								}
 			                }
 			            });
-			            var div = $('<div/>', {
-						    class: 'bubble'
-						});
-			            div.appendTo($(element).find("." + scope.swiperName));
-			            
-			            for(var i=0;i<swiper.slides.length;i++){
-			            	var divDotCover = $('<div/>',{
-			            		class : (i == 0)?'dot-cover showPseudo':'dot-cover'	,
-			            		'data-content' : (i == 0)?'Step 01':''
-			            	});
-			            	var divDot = $('<div/>',{
-			            		class : (i == 0)?'dot active':'dot'			            		
-			            	});
-			            	divDot.appendTo(divDotCover)
-			            	divDotCover.appendTo(div);
-			            }      			            
+			                  			            
                     }, 200);
 					
 					scope.calculate = function(type,value){
 					}
+
+					
 
                     scope.gotoFirst = function(param){
                     	scope.modelVal = {};
