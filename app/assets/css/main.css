@@ -4759,6 +4759,9 @@ section.registerInvestor .checklist-cover {
   padding-top: 1%;
   padding-bottom: 2%;
 }
+section.goal-loading-container {
+  padding: 3% 6%;
+}
 section.registerInvestor .checklist-cover .checklist {
   cursor: pointer;
   width: 100%;
@@ -4791,6 +4794,9 @@ section.registerInvestor .checklist-cover .checklist .checkedList .image-div img
 section.registerInvestor .checklist-cover .checklist p {
   float: left;
   margin-bottom: 0px;
+}
+section.goal-loading-container .checklist-cover .checklist p {
+  padding-top: 7px;
 }
 section.registerInvestor .checklist-cover .checklist p span {
   opacity: 1;

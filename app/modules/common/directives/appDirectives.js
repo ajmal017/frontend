@@ -20,7 +20,8 @@
 		.directive('investPieChart',investPieChart)
 		.directive('schemeChart',schemeChart)
 		.directive('customScrollBar',customScrollBar)
-		.directive('accordian',accordian);
+		.directive('accordian',accordian)
+		.directive('goalLoading',goalLoading);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -707,4 +708,28 @@
 	            });
 	        }
 	    }
+
+	    goalLoading.$inject = [];
+		function goalLoading(){
+			return{
+				restrict : 'EA',
+			 	templateUrl:'modules/common/views/partials/goalloading.html',
+			 	scope : {
+			 		
+			 	},
+			 	link: function (scope, element, attrs) {
+			 		element.find('.infoTip').addClass('hide');	
+			 		element.find('.info-tip-outer-cover').addClass(scope.className);
+			 		element.find('.infoImage').bind({
+			 			'click':function(){
+			 				if(element.find('.infoTip').hasClass('show')){
+			 					element.find('.infoTip').addClass('bounceOut').removeClass('bounceIn show');
+			 				}else{
+			 					element.find('.infoTip').addClass('show bounceIn').removeClass('hide bounceOut');
+			 				}			 				
+			 			}
+			 		});	 		
+			 	}
+			}
+		}
 })();
