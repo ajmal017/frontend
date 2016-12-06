@@ -1294,6 +1294,9 @@ span.highlight {
 .width-67 {
   width: 67%!important;
 }
+.width-44Per {
+  width: 44%;
+}
 .remove-right {
   right: 0px!important;
 }
@@ -2974,6 +2977,9 @@ span.error-text {
   position: absolute;
   bottom: -3%;
   left: 0;
+}
+.swiper-container.customSwiper.retirement .retirement-amount {
+  width: 45%;
 }
 .swiper-container.customSwiper .swiper-content {
   padding-bottom: 12%;

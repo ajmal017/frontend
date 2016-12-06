@@ -9,8 +9,5 @@
 			$http.get('modules/common/config/contry.json').success(function(response) {
 		        $scope.countryList = response;
 		    });
-		    $scope.test = function(){
-		    	alert('dfdfdf');
-		    }
 		}
 })();

@@ -8,7 +8,7 @@
 		
 		function config($routeProvider,$httpProvider){
 		$routeProvider
-			.when('/investWindrawStart', {
+			.when('/investWithdrawStart', {
 				title : 'Invest/Withdraw',
 				subHeader : 'GO BACK TO DASHBOARD',
 				redirectUrl : '/dashboard',
