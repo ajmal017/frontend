@@ -10,6 +10,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		'ngSanitize',
 		'ngScrollbars',
 		'datepicker',
+		'google-signin',
 		'finApp.config',
 		'finApp.directives',
 		'finApp.text',
@@ -30,8 +31,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 	.config(config)
 	.run(run);
 
-	config.$inject = ['$routeProvider','$httpProvider','$resourceProvider','ScrollBarsProvider'];
-	function config($routeProvider,$httpProvider,$resourceProvider,ScrollBarsProvider){
+	config.$inject = ['$routeProvider','$httpProvider','$resourceProvider','ScrollBarsProvider','GoogleSigninProvider','$locationProvider'];
+	function config($routeProvider,$httpProvider,$resourceProvider,ScrollBarsProvider,GoogleSigninProvider,$locationProvider){
 		$routeProvider
 			.when('/', {
 				title : '',
@@ -49,6 +50,14 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
             });
 		$httpProvider.interceptors.push('finWebInterCepter');
 		$resourceProvider.defaults.stripTrailingSlashes = false;
+		GoogleSigninProvider.init({
+			client_id: '437470809059-abus39vv82rogh0i9nmvehq0bkiq65b0.apps.googleusercontent.com',
+		});
+		//FOR REMOVING HASH FOR PRODUCTION//
+		// $locationProvider.html5Mode({
+		//           enabled: true,
+		//           requireBase: false
+		//       });
 	}
 	run.$inject = ['$route','$routeParams','$rootScope','$location','appConfig','checkPath','busyIndicator'];
 	function run($route,$routeParams,$rootScope,$location,appConfig,checkPath,busyIndicator){
