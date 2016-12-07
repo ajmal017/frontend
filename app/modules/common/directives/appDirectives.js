@@ -18,6 +18,7 @@
 		.directive('validatePan',validatePan)
 		.directive('bubbleGen',bubbleGen)
 		.directive('hcChart',hcChart)
+		.directive('goalChart',goalChart)
 		.directive('investPieChart',investPieChart)
 		.directive('schemeChart',schemeChart)
 		.directive('customScrollBar',customScrollBar)
@@ -531,6 +532,215 @@
                     	$rootScope.nav['date'] = date;
                     	if(!$rootScope.$$phase) $rootScope.$apply();
                     }
+                }
+            };
+    	}
+
+    	function goalChart(){
+    		var chart = null;
+    		return {
+                restrict: 'E',
+                template: '<div></div>',
+                scope: {
+                    items: '=',
+                    tooltipData :'='
+                },
+                link: function (scope, element) {       	
+                	chart = Highcharts.chart(element[0], {
+			        chart: {
+			        	backgroundColor : null,
+			            type: 'spline',
+			            events:{
+			            	load:function(){
+			            		var outerWidth = parseInt($(element).parent().outerWidth());
+                				var applyWidth = outerWidth - 50;
+                				setTimeout(function(){
+                					chart.setSize(applyWidth,300);
+                				},100);			            		
+			            	}
+			            }
+			        },
+			        colors:['#4ea1d2','#aedba0'],
+			        legend:false,
+			        credits:{
+			        	enabled : false
+			        },
+			        title: {
+			            text: ''
+			        },
+			        xAxis: {
+			        		categories: ['2016', '2017', '2018', '2019', '2020','2016', '2017', '2018', '2019', '2020'],
+			            labels: {
+			                align: 'left'
+			            },
+			            tickLength: 0,
+			            tickInterval:1
+			        },
+			        yAxis: [{
+			        		opposite:true,
+			            title: {
+			                text: '54.4 lakh'
+			            },
+			            labels: {
+			                enabled: false
+			            },
+			            gridLineWidth: 1,
+			            gridLineDashStyle: 'dash',
+			            lineWidth: 1
+			        }],
+			        tooltip: {
+			           useHTML: true,
+			            borderWidth: 0,
+			            borderRadius: 10,
+			            followTouchMove:true,
+			            shadow: false,
+             			backgroundColor: "rgba(245,245,245,1)",
+			            style: {
+			                padding: 40,
+			            },
+			            formatter: function() {
+			                 return '<span class="chartTooltip">'
+			                 +'<span class="chartYear">'+this.x+'</span>'
+				 				+'<span class="nextline content-first">'
+					 				+'<span class="content">Invested</span>'
+					 				+'<span class="currency">&#8377;</span>'
+					 				+'<span class="amount">'+this.point.invested+'</span>'
+				 				+'</span>'
+								+'<span class="nextline content-secound">'
+				 				+'<span class="content">Projected</span>'
+				 				+'<span class="currency">&#8377;</span>'
+				 				+'<span class="amount">'+this.point.projected+'</span>'
+				 				+'</span></span>';
+						}
+			        },
+			        plotOptions: {
+			            spline: {
+			                lineWidth: 4,
+			                states: {
+			                    hover: {
+			                        lineWidth: 2,
+			                        enabled: true,		                        
+			                    }
+			                },
+			                allowPointSelect: true,
+							cursor: 'pointer',
+							marker: {
+								enabled: false
+							}
+			            },
+			            series:{
+			            	lineWidth:2,
+			            	marker: {
+			             		 states: {
+			                 	hover: {
+			                      enabled: true,
+			                      radiusPlus: 10,
+			                      fillColor: '#f9f9f9',
+			                  }
+			                 },
+			                 symbol:'circle'
+			              }
+			            }
+			        },
+			        series: [{
+			            data:[
+			              {
+			                y:0.7,
+			                invested : '14lakh',
+			                projected :'50lakh'
+			              },
+			              {
+			                y:4,
+			                invested : '14lakh',
+			                projected :'50lakh'
+			              },
+			              {
+			                y:0.2,
+			                invested : '14lakh',
+			                projected :'50lakh'
+			              },
+			              {
+			                y:0.5,
+			                invested : '14lakh',
+			                projected :'50lakh'
+			              },
+			              {
+			                y:0.7,
+			                invested : '14lakh',
+			                projected :'50lakh'
+			              },
+			              {
+			                y:4,
+			                invested : '14lakh',
+			                projected :'50lakh'
+			              },
+			              {
+			                y:0.2,
+			                invested : '14lakh',
+			                projected :'50lakh'
+			              },
+			              {
+			                y:0.5,
+			                invested : '14lakh',
+			                projected :'50lakh'
+			              }
+			            ]
+			        }, {
+			            data:[
+			              {
+			                y:0.2,
+			                invested : '14lakh',
+			                projected :'50lakh'
+			              },
+			              {
+			                y:0.5,
+			                invested : '14lakh',
+			                projected :'50lakh'
+			              },
+			              {
+			                y:1,
+			                invested : '14lakh',
+			                projected :'50lakh'
+			              },
+			              {
+			                y:2,
+			                invested : '14lakh',
+			                projected :'50lakh'
+			              },
+			              {
+			                y:0.7,
+			                invested : '14lakh',
+			                projected :'50lakh'
+			              },
+			              {
+			                y:4,
+			                invested : '14lakh',
+			                projected :'50lakh'
+			              },
+			              {
+			                y:0.2,
+			                invested : '14lakh',
+			                projected :'50lakh'
+			              },
+			              {
+			                y:0.5,
+			                invested : '14lakh',
+			                projected :'50lakh'
+			              }
+			            ],
+			            dashStyle:'ShortDash',
+			        }]
+			    	});
+					$(window).on('resize',function(){
+                    	var outerWidth = parseInt($(element).parent().outerWidth());
+                		var applyWidth = outerWidth - 50;
+                		setTimeout(function(){
+                			chart.setSize(applyWidth, 300);
+                			setTimeout(function(){
+                				chart.setSize(applyWidth, 300);
+                			},100);
+                		},0);
+	            	});
                 }
             };
     	}
