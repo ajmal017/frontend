@@ -482,7 +482,8 @@
 						yAxis:{
 							title:{
 								text : ''
-							}
+							},
+							lineWidth: 1
 						},
 						xAxis: {
 							categories: [''],
