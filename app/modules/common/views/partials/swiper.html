@@ -2611,7 +2611,7 @@
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content noPadding">
                      <p class="question">I was born in the city of <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
-                     <p class="question">In the country: <select ng-if="countryList" dropdown ng-model="modelVal.A7"><option ng-selected="$index == 0" ng-repeat="country in countryList" value="{{country.value}}">{{country.value}}</option></select></p>
+                     <p class="question">In the country: <select ng-if="countryList" dropdown scroll-height="250" ng-model="modelVal.A7"><option ng-selected="$index == 0" ng-repeat="country in countryList" value="{{country.value}}">{{country.value}}</option></select></p>
                       <p class="question">I worked as a <select dropdown ng-model="modelVal.A1"><option selected value="op1">Consultant</option><option value="op2">International</option></select></p>
                       <p class="question">And I make <select dropdown ng-model="modelVal.A1" scroll-height="120"><option selected value="op1">&lt; 1 Lakhs</option><option value="op2">1-5 Lakhs</option><option value="op2">5-10 Lakhs</option><option value="op2">10-25 Lakhs</option><option value="op2">25-100 Lakhs</option><option value="op2">&gt; 100 Lakhs</option></select>per year</p>
                 </div>

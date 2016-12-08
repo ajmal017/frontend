@@ -234,10 +234,10 @@
 				        $('.customSwiper .fin-btn-group').css('z-index',1000);
 				        $list.hide();
 				    });
-				    if(parseInt($list.outerHeight()) > 400){
+				    if(parseInt($list.outerHeight()) > 400 && $attr['scrollHeight'] == undefined){
 				    	$this.parent().find('.options').mCustomScrollbar({setHeight:300,axis:"y"});
 				    }
-				    console.log($attr['scrollHeight']);
+				    
 				    if($attr['scrollHeight'] != undefined){
 				    	$this.parent().find('.options').mCustomScrollbar({setHeight:parseInt($attr['scrollHeight']),axis:"y"})
 				    }				    		    
