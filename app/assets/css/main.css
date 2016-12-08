@@ -4799,6 +4799,19 @@ input.datepicker::placeholder {
 .customPanel .panel-table .tbody .tr .td:nth-child(4) .money-value {
   float: right;
 }
+#signitureModal .modal-dialog {
+  width: 30%;
+}
+#signitureModal .modal-content {
+  width: 100%;
+}
+#signitureModal .modal-wrapper {
+  padding: 20px;
+}
+#signitureModal .signature {
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
 section.registerInvestor .content-main-header .slider-entry-image {
   width: 16%;
 }
