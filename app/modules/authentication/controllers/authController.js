@@ -4,8 +4,8 @@
 		.module('finApp.auth')
 		.controller('authController',authController);
 
-		authController.$inject = ['$scope','$rootScope','$location','userDetailsService','authService','riskService']
-		function authController($scope,$rootScope,$location,userDetailsService,authService,riskService){
+		authController.$inject = ['$scope','$rootScope','$location','userDetailsService','authService','riskService','GoogleSignin']
+		function authController($scope,$rootScope,$location,userDetailsService,authService,riskService,GoogleSignin){
 			$scope.verifyLogin = function(user){
 				authService.verifyLogin(user).then(function(data){
 					if('success' in data){
@@ -19,6 +19,13 @@
 						$scope.errorMessage = data['Message'];
 					}
 				});
+			}
+			$scope.googleSignIn = function(){
+				GoogleSignin.signIn().then(function (user) {
+		            console.log(JSON.stringify(user));
+		        }, function (err) {
+		            alert(JSON.stringify(err));
+		        });
 			}
 		}
 })();

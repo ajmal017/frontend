@@ -7,6 +7,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
     angular
         .module('finApp.services', [])
         .factory('checkPath', checkPath)
+        .factory('busyIndicator',busyIndicator)
         .factory('userDetailsService', userDetailsService)
         .factory('finWebInterCepter',finWebInterCepter);
 
@@ -16,6 +17,21 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
             }
         }
 
+        busyIndicator.$inject = ['$rootScope'];
+	    function busyIndicator($rootScope) {
+	        return {
+	            show: show,
+	            hide: hide
+	        }
+	        function show() {
+	            $rootScope.showLoader = true;
+	            $('body').addClass('disable-scroll');
+	        }
+	        function hide() {
+	            $rootScope.showLoader = false;
+	            $('body').removeClass('disable-scroll');
+	        }
+	    }
         userDetailsService.$inject = ['$resource','$q','appConfig'];
         function userDetailsService($resource,$q,appConfig){
         	return function(){

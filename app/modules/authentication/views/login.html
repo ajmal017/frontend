@@ -29,7 +29,7 @@
 			<div class="login-btn-group">
 				<button class="fin-app-btn fin-orange" ng-click="verifyLogin(user)">LOGIN</button>
 				<span class="or">OR</span>
-				<button class="fin-app-btn fin-signIn"><span class="sign-img"><img src="assets/images/gSignIn.png"></span><span>SIGN IN WITH GOOGLE</span></button>
+				<button class="fin-app-btn fin-signIn" ng-click="googleSignIn()"><span class="sign-img"><img src="assets/images/gSignIn.png"></span><span>SIGN IN WITH GOOGLE</span></button>
 			</div>
 		</form>
 		<div ng-if="errorMessage" class="form-error"><p ng-bind="errorMessage"></p></div>

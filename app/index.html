@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <!-- <base href="/"> -->
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Finaskus</title>
     <link rel="stylesheet" type="text/css" href="libs/bootstrap.min.css">
@@ -23,7 +24,7 @@
     <div class="page-wrapper">
         <fin-header></fin-header>
         <div class="drawer-overlay"></div>
-        <fin-loader></fin-loader>
+        <fin-loader ng-if="showLoader"></fin-loader>
         <div ng-view autoscroll="true"></div>
     </div>
     <fin-drawer></fin-drawer>
@@ -35,7 +36,8 @@
     <script type="text/javascript" src="libs/angular-route.min.js"></script>
     <script type="text/javascript" src="libs/angular-sanitize.min.js"></script>
     <script type="text/javascript" src="libs/swiper.jquery.min.js"></script> 
-    <script type="text/javascript" src="libs/angular-lazy-img.min.js"></script>    
+    <script type="text/javascript" src="libs/angular-lazy-img.min.js"></script>   
+    <script type="text/javascript" src="libs/ng-google-signin.min.js"></script>     
     <script src="libs/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="libs/scrollbars.min.js"></script>
     <script src="libs/moment.min.js"></script>

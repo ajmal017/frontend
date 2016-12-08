@@ -79,6 +79,7 @@
 									}
 									if($rootScope.slideTobeChanged > 0){
 				                    	swiper.slideTo($rootScope.slideTobeChanged ,0,true);
+				                    	$rootScope.slideTobeChanged = undefined;
 	                				}				
                 			},
 			                onSlideChangeEnd: function(swiper){

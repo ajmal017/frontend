@@ -588,6 +588,51 @@
         }
       }
     }
+    &:last-child{
+      margin-right:0px;
+      width:40%;
+      .meter-widget-cover{
+        height:456px;
+        padding-left: 7%;
+        .highcharts-xaxis-labels{
+          .GLOBAL_FONT_STYLE('Roboto-Bold',@black,normal);
+          .PIXEL2EM(14);
+        }
+        .highcharts-yaxis{
+          .highcharts-axis-title{
+            .GLOBAL_FONT_STYLE('Roboto-Bold',@black,normal);
+            .PIXEL2EM(16);
+          }          
+        }
+        .chartTooltip{
+          display:inline-block;
+          span{
+            &.chartYear{
+              font-family:'Roboto-Regular';
+              font-size:12px;
+            }
+            &.content{
+              font-family:'Roboto-Bold';
+              margin-right:10px;
+            }
+          }
+          .content-first{
+            span{
+              &.currency,&.amount{
+                color:#62bb46;
+              }
+            }
+          }
+          .content-secound{
+            span{
+              &.currency,&.amount{
+                color:#047bc1;
+              }
+            }
+          }
+        }
+      }
+    }
   }
   .fin-btn-group{
     margin-top:5%;

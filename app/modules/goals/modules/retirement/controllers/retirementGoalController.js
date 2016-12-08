@@ -24,6 +24,5 @@
 				var currentYear = new Date();				
 				$scope.retirement['calculateYear'] = currentYear.getFullYear() + (to - from);
 			}
-
 		}
 })();
