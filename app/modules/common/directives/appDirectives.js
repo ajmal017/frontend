@@ -178,6 +178,9 @@
 	    	return{
 	    		restrict : 'EA',
 	    		require : 'ngModel',
+	    		scope:{
+	    			disabled : '=dropdownDisable'
+	    		},	
 	    		link : function($scope,$element,$attr,ngModel){
 	    			setTimeout(function(){
 	    				var $this = $element,
@@ -195,6 +198,11 @@
 				            text: $this.children('option').eq(i).text(),
 				            rel: $this.children('option').eq(i).val()
 				        }).appendTo($list);
+				        if($this.children('option').eq(i).val() ==  ngModel.$viewValue){
+				        	$this.children('option').eq(i).attr('selected', true);	
+				        }else if($scope.disabled != undefined){
+				        	$this.children('option').eq(1).attr('selected', true);
+				        }
 				        $styledSelect.text($this.children('option[selected]').text());
 				        ngModel.$setViewValue($this.children('option[selected]').val());
 				    }
@@ -202,11 +210,16 @@
 				    $listItems.eq(0).remove();			    
 				    $styledSelect.click(function (e) {
 				        e.stopPropagation();
-				        $('.customSwiper .fin-btn-group').css('z-index',0);
-				        $('div.styledSelect.active').each(function () {
-				            $(this).removeClass('active').next('ul.options').hide();
-				        });
-				        $(this).toggleClass('active').next('ul.options').toggle();
+				        if($scope.disabled != undefined && $scope.disabled =='locked'){
+				        	e.stopPropagation();
+				        	e.preventDefault();
+				        }else{
+				        	$('.customSwiper .fin-btn-group').css('z-index',0);
+				        	$('div.styledSelect.active').each(function () {
+				            	$(this).removeClass('active').next('ul.options').hide();
+				        	});
+				        	$(this).toggleClass('active').next('ul.options').toggle();
+				        }			        
 				    });
 				    $listItems.click(function (e) {
 				        e.stopPropagation();
@@ -564,10 +577,12 @@
                 restrict: 'E',
                 template: '<div></div>',
                 scope: {
-                    items: '=',
-                    tooltipData :'='
+                	title:'=',
+                    series : '=',
+                    categories : '=',
+                    interval:'='
                 },
-                link: function (scope, element) {       	
+                link: function (scope, element) {  
                 	chart = Highcharts.chart(element[0], {
 			        chart: {
 			        	backgroundColor : null,
@@ -591,17 +606,17 @@
 			            text: ''
 			        },
 			        xAxis: {
-			        		categories: ['2016', '2017', '2018', '2019', '2020','2016', '2017', '2018', '2019', '2020'],
+			        		categories: scope.categories,
 			            labels: {
 			                align: 'left'
 			            },
 			            tickLength: 0,
-			            tickInterval:1
+			            tickInterval:scope.interval
 			        },
 			        yAxis: [{
 			        		opposite:true,
 			            title: {
-			                text: '54.4 lakh'
+			                text: scope.title
 			            },
 			            labels: {
 			                enabled: false
@@ -664,94 +679,7 @@
 			              }
 			            }
 			        },
-			        series: [{
-			            data:[
-			              {
-			                y:0.7,
-			                invested : '14lakh',
-			                projected :'50lakh'
-			              },
-			              {
-			                y:4,
-			                invested : '14lakh',
-			                projected :'50lakh'
-			              },
-			              {
-			                y:0.2,
-			                invested : '14lakh',
-			                projected :'50lakh'
-			              },
-			              {
-			                y:0.5,
-			                invested : '14lakh',
-			                projected :'50lakh'
-			              },
-			              {
-			                y:0.7,
-			                invested : '14lakh',
-			                projected :'50lakh'
-			              },
-			              {
-			                y:4,
-			                invested : '14lakh',
-			                projected :'50lakh'
-			              },
-			              {
-			                y:0.2,
-			                invested : '14lakh',
-			                projected :'50lakh'
-			              },
-			              {
-			                y:0.5,
-			                invested : '14lakh',
-			                projected :'50lakh'
-			              }
-			            ]
-			        }, {
-			            data:[
-			              {
-			                y:0.2,
-			                invested : '14lakh',
-			                projected :'50lakh'
-			              },
-			              {
-			                y:0.5,
-			                invested : '14lakh',
-			                projected :'50lakh'
-			              },
-			              {
-			                y:1,
-			                invested : '14lakh',
-			                projected :'50lakh'
-			              },
-			              {
-			                y:2,
-			                invested : '14lakh',
-			                projected :'50lakh'
-			              },
-			              {
-			                y:0.7,
-			                invested : '14lakh',
-			                projected :'50lakh'
-			              },
-			              {
-			                y:4,
-			                invested : '14lakh',
-			                projected :'50lakh'
-			              },
-			              {
-			                y:0.2,
-			                invested : '14lakh',
-			                projected :'50lakh'
-			              },
-			              {
-			                y:0.5,
-			                invested : '14lakh',
-			                projected :'50lakh'
-			              }
-			            ],
-			            dashStyle:'ShortDash',
-			        }]
+			        series: scope.series
 			    	});
 					$(window).on('resize',function(){
                     	var outerWidth = parseInt($(element).parent().outerWidth());
