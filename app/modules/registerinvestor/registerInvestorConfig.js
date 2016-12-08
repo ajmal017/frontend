@@ -47,5 +47,11 @@
 				redirectUrl : '/dashboard',
 		        templateUrl: 'modules/registerinvestor/views/nomineeInfo.html',
 		    })
+		    .when('/registerInvestorConfirm', {
+		    	title : 'Investor Registration',
+		    	subHeader : 'GO BACK TO DASHBOARD',
+				redirectUrl : '/dashboard',
+		        templateUrl: 'modules/registerinvestor/views/registerInvestorConfirmation.html',
+		    })
 		}
 })();

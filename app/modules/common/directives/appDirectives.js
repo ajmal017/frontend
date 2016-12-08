@@ -456,29 +456,23 @@
                 },
                 link: function (scope, element) {       	
                     chart = Highcharts.chart(element[0], {
-                    	responsive: {
-						  rules: [
-							  {
-							    condition: {
-							       maxWidth: 400
-							    },
-							    chartOptions: {
-							      chart: {
-							         width: 300
-							      }
-							    }
-							  }
-						  ]
-						},
+                    	
                     	chart: {
 			    			backgroundColor : null,
 			    			spacingBottom: 10,
 					        spacingTop: 20,
 					        spacingLeft: 10,
 					        spacingRight: 10,
-					        //width:500,
-					        //height: 300,
-					        type: 'line'
+					        type: 'line',
+					        events:{
+				            	load:function(){
+				            		var outerWidth = parseInt($(element).parent().outerWidth());
+	                				var applyWidth = outerWidth - 100;
+	                				setTimeout(function(){
+	                					chart.setSize(applyWidth,300);
+	                				},100);			            		
+				            	}
+			            	}
 						},
 						title: {
 							text: ''
@@ -529,13 +523,6 @@
                     		chart.series[i].update(scope.items[i]);
                     	} 
                     })
-                    $(window).on('load',function(){
-                    	var outerWidth = parseInt($(element).parent().outerWidth());
-                		var applyWidth = outerWidth - 100;
-                		setTimeout(function(){
-                			chart.setSize(applyWidth, 300);
-                		},100);	             	
-	            	});
                     $(window).on('resize',function(){
                     	var outerWidth = parseInt($(element).parent().outerWidth());
                 		var applyWidth = outerWidth - 100;

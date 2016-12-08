@@ -1316,7 +1316,7 @@ span.highlight {
   color: #f22929;
 }
 .no-padding {
-  padding: 0px;
+  padding: 0px !important;
 }
 .disable-scroll {
   overflow: hidden!important;
@@ -4874,6 +4874,9 @@ section.registerInvestor .checklist-cover .checklist p.not-verified span.content
 section.registerInvestor .checklist-cover .checklist span.not-verified {
   color: #046baa;
   cursor: pointer;
+}
+section.registerInvestor .registerInvestorConfirm {
+  height: auto;
 }
 .table-outer-cover {
   width: 50%;
