@@ -2,8 +2,8 @@
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <form name="riskAssesment1Form1" novalidate ng-init="step = 1">
-            <div class="swiper-content content-1">
-                <p>I am a <span class="swiper-input age"><input only-number type="text" name="year" required ng-model="modelVal.A1"></span> years old<select dropdown ng-model="modelVal.A7"><option selected value="op1">Male</option><option value="op2">Female</option></select> and I am <select dropdown ng-model="modelVal.A17"><option selected value="op1">Single</option><option value="op2">Married</option></select></p>
+            <div class="swiper-content content-1" ng-init="disabled = 'locked'">
+                <p>I am a <span class="swiper-input age"><input only-number type="text" name="year" required ng-model="modelVal.A1"></span> years old<select dropdown dropdown-disable="disabled" ng-model="modelVal.A7"><option value="op1">Male</option><option value="op2">Female</option></select> and I am <select dropdown ng-model="modelVal.A17"><option selected value="op1">Single</option><option value="op2">Married</option></select></p>
                 <p>with <select dropdown ng-model="modelVal.A15"><option selected value="op1">No</option><option value="op2">1</option>
                 <option value="op3">2</option><option value="op4">2+</option></select>kids,<select dropdown ng-model="modelVal.A16"><option selected value="op1">No</option><option value="op2">1</option>
                 <option value="op3">2</option></select>dependent parents</p>
@@ -866,7 +866,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <goal-chart></goal-chart>
+                                <goal-chart title="graphObject.title" series="graphObject.series" categories="graphObject.catergory" interval="graphObject.interval"></goal-chart>
                             </div>
                         </div>
                     </div>
