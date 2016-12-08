@@ -1323,6 +1323,9 @@ span.highlight {
 .no-padding {
   padding: 0px !important;
 }
+.paddingTop2 {
+  padding-top: 2% !important;
+}
 .disable-scroll {
   overflow: hidden!important;
 }
@@ -4795,6 +4798,9 @@ input.datepicker::placeholder {
 }
 section.registerInvestor .content-main-header .slider-entry-image {
   width: 16%;
+}
+section.registerInvestor .reviewList p {
+  color: #046baa;
 }
 section.registerInvestor .documents-outer-cover .documents-cover:first-child {
   padding-left: 0px;
