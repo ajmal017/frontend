@@ -1312,6 +1312,12 @@ span.highlight {
 .swiperReduceBottomPadding {
   padding-bottom: 6%!important;
 }
+.fg-red {
+  color: #f22929;
+}
+.no-padding {
+  padding: 0px;
+}
 @-webkit-keyframes makeDropdown {
   /*0%{
   	padding-top: 0%;
@@ -4765,9 +4771,6 @@ section.registerInvestor .checklist-cover {
   padding-top: 1%;
   padding-bottom: 2%;
 }
-section.goal-loading-container {
-  padding: 3% 6%;
-}
 section.registerInvestor .checklist-cover .checklist {
   cursor: pointer;
   width: 100%;
@@ -4800,9 +4803,6 @@ section.registerInvestor .checklist-cover .checklist .checkedList .image-div img
 section.registerInvestor .checklist-cover .checklist p {
   float: left;
   margin-bottom: 0px;
-}
-section.goal-loading-container .checklist-cover .checklist p {
-  padding-top: 7px;
 }
 section.registerInvestor .checklist-cover .checklist p span {
   opacity: 1;
@@ -5776,6 +5776,19 @@ section.compareSchemes .schemes-cover .schemes-inner {
   background-color: #f0f4f7;
   margin-bottom: 10px;
   width: 92%;
+}
+section.compareSchemes .scheme-compare-other {
+  height: 398px !important;
+  padding: 4% 8% !important;
+}
+section.compareSchemes .schemeRating {
+  width: 20%;
+  padding-top: 10%;
+}
+section.compareSchemes .sensex-status {
+  font-size: 48px;
+  font-family: "PlayfairDisplay";
+  line-height: 0.75;
 }
 .retirement .typeSwiper,
 .education .typeSwiper,

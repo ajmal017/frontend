@@ -2802,4 +2802,43 @@
         <button ng-show="(step == 2)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>
+<div ng-if="swiperName == 'earnInterest'" class="fadeIn swiper-container customSwiper earnInterest type2Sliders" ng-init="step = 1">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <form name="quickInvestForm1" novalidate>
+                <div class="swiper-content content-1">
+                  <p class="question">I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ame="year" required ng-init="modelVal.A1 = 0" ng-keyup="showMessage1 = true" ng-model="modelVal.A1"></span></p>
+                  <span class="error-text" ng-show="showMessage1 && (modelVal.A1 < 1000 || modelVal.A1 == undefined)">Minimum amount must be greater than or equal to 1000</span>
+                </div>
+            </form>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-content swiper-guage">
+                <div class="gauge-result">
+                    <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></span>Projected Interest Gains</p></div>
+                    
+                    <p><span class="placeholder addPadding-4Per addPaddingLeft-20Per">You will gain additional x% per year<span class="nextline">from this investment compared to</span><span class="nextline">Savings A/C interest of 4%</span></span></p>
+
+                    <p><span class="placeholder addPadding-4Per addPaddingLeft-20Per">Note: This amount will be invested in Equity Linked<span class="nextline">Savings Schemes (ELSS) of reputed asset</span><span class="nextline">management companies,to maximize your</span>tax savings.</span></p>
+                </div>
+                <div class="gauge-result">Graph</div>
+                <div class="fin-btn-group addMargin">
+                    <button click-redirect="/quickInvestStart" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
+                    <button click-redirect="/goals" class="fin-app-btn fin-orange">CONTINUE PLANING</button>
+                    <button ng-click="portfolioFactoring()" class="fin-app-btn fin-blue">CONTINUE TO FUND SELECTION</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="typeSwiper">
+        <div class="image-backdrop"><img src="assets/images/planInvestMent.png"></div>
+        <p>Earn Higher Interest</p>
+    </div>    
+    <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
+        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step == 1)" ng-disabled="modelVal.A1 < 1000 || modelVal.A1 == undefined" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2)" ng-disabled="(modelVal.A2 == undefined)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        
+    </div>
+</div>
 <show-tip ng-if="$root.tipData" quick-tip-data="$root.tipData"></show-tip>

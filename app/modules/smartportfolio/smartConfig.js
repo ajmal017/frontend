@@ -29,5 +29,12 @@
 		        templateUrl: 'modules/smartportfolio/views/schemeComparision.html',
 		        controller: 'recommendedController'
 		    })
+		    .when('/schemeFactsheet', {
+				title : 'Scheme Factsheet',
+				subHeader : 'GO BACK TO RECOMMENDED SCHEMES',
+				redirectUrl : '/recommendedSchemes',
+		        templateUrl: 'modules/smartportfolio/views/schemeFactsheet.html',
+		        controller: 'recommendedController'
+		    })
 		}
 })();

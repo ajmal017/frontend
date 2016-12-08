@@ -82,7 +82,7 @@
 	                				}				
                 			},
 			                onSlideChangeEnd: function(swiper){
-			                	$rootScope.lastSlide = true;
+			                	$rootScope.lastSlide = true; 
 								if(!$rootScope.$$phase)	$rootScope.$apply();
 								var mainSwiperHeight = $('.'+scope.swiperName).outerHeight();
 								var activeSlide = swiper.slides.eq(swiper.activeIndex);

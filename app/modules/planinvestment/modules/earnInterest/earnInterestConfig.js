@@ -15,12 +15,11 @@
 		        templateUrl: 'modules/planinvestment/modules/earnInterest/views/earnInterestStart.html',
 		        controller: 'earnInterestController'
 		    })
-		  //   .when('/quickInvestStart', {
-				// title : 'Quick Invest',
-				// subHeader : 'GO BACK TO DASHBOARD',
-				// redirectUrl : '/dashboard',
-		  //       templateUrl: 'modules/planinvestment/modules/quickInvest/views/quickInvestStart.html',
-		  //       controller: 'quickInvestController'
-		  //   })
+		    .when('/earnInterest', {
+				title : 'Earn Higher Interest',
+				subHeader : 'GO BACK TO DASHBOARD',
+				redirectUrl : '/dashboard',
+		        templateUrl: 'modules/planinvestment/modules/earnInterest/views/earnInterest.html'
+		    })
 		}
 })();

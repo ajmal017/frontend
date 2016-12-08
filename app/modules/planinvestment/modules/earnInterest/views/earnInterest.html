@@ -1,3 +1,7 @@
-<section class="swiper-outer-cover">
-	<swiper swiper-name="earnInterest" controller-name="quickInvestController" reduce="true" result="resultObject" callback-fn="appendFormValues(data)" callmodal-fn="showEquityModal()" indicator-end="Review"></swiper>
+<section class="fadeIn swiper-outer-cover">
+	<swiper swiper-name="earnInterest" ng-show="showPortfolioFactoring" controller-name="earnInterestController" indicator-end="Review"></swiper>
+	<div ng-show="!showPortfolioFactoring">
+		<goal-loading></goal-loading>
+	</div>
 </section>
+

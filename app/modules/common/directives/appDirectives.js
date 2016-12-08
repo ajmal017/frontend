@@ -437,6 +437,7 @@
 
     	hcChart.$inject = ['$rootScope'];
     	function hcChart($rootScope){
+    		var chart = null;
     		return {
                 restrict: 'E',
                 template: '<div></div>',
@@ -444,16 +445,16 @@
                     items: '=',
                 },
                 link: function (scope, element) {       	
-                    var chart = Highcharts.chart(element[0], {
+                    chart = Highcharts.chart(element[0], {
                     	responsive: {
 						  rules: [
 							  {
 							    condition: {
-							      maxWidth: 600
+							       maxWidth: 400
 							    },
 							    chartOptions: {
 							      chart: {
-							        width: 500
+							         width: 300
 							      }
 							    }
 							  }
@@ -465,7 +466,8 @@
 					        spacingTop: 20,
 					        spacingLeft: 10,
 					        spacingRight: 10,
-					        height: 300,
+					        //width:500,
+					        //height: 300,
 					        type: 'line'
 						},
 						title: {
@@ -516,6 +518,25 @@
                     		chart.series[i].update(scope.items[i]);
                     	} 
                     })
+                    $(window).on('load',function(){
+                    	var outerWidth = parseInt($(element).parent().outerWidth());
+                		var applyWidth = outerWidth - 100;
+                		setTimeout(function(){
+                			chart.setSize(applyWidth, 300);
+                		},100);	             	
+	            	});
+                    $(window).on('resize',function(){
+                    	var outerWidth = parseInt($(element).parent().outerWidth());
+                		var applyWidth = outerWidth - 100;
+                		
+                		setTimeout(function(){
+                			chart.setSize(applyWidth, 300);
+                			setTimeout(function(){
+                				chart.setSize(applyWidth, 300);
+                			},100);
+                		},0);
+                    		             	
+	            	});
                     scope.calculateAmount = function(nav,date){
                     	$rootScope.nav = {};
                     	$rootScope.nav['amount'] = nav * 100;
