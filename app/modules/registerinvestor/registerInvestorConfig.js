@@ -52,6 +52,7 @@
 		    	subHeader : 'GO BACK TO DASHBOARD',
 				redirectUrl : '/dashboard',
 		        templateUrl: 'modules/registerinvestor/views/registerInvestorConfirmation.html',
+		        controller : 'registerSignatureController'
 		    })
 		    .when('/registerInvestorReview', {
 		    	title : 'Investor Registration',

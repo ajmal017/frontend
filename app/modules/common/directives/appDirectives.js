@@ -23,7 +23,8 @@
 		.directive('schemeChart',schemeChart)
 		.directive('customScrollBar',customScrollBar)
 		.directive('accordian',accordian)
-		.directive('goalLoading',goalLoading);
+		.directive('goalLoading',goalLoading)
+		.directive('uploadFile',uploadFile);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -888,4 +889,15 @@
 			 	}
 			}
 		}
+
+		function uploadFile(){
+            return {
+              restrict: 'A',
+              link: function(scope, element,attrs) {
+                element.bind('click', function() {
+                    angular.element('#'+attrs.uploadFile).trigger('click');
+                });
+              }
+            };
+        }
 })();

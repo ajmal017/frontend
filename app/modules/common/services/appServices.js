@@ -9,6 +9,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
         .factory('checkPath', checkPath)
         .factory('busyIndicator',busyIndicator)
         .factory('userDetailsService', userDetailsService)
+        .factory('fileUpload',fileUpload)
         .factory('finWebInterCepter',finWebInterCepter);
 
         function checkPath() {
@@ -44,6 +45,37 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 						}
 					});
 				getAPI.Check({},function(data){
+					if(data.status_code == 200){
+						defer.resolve({'success':data.response});
+					}else{
+						defer.resolve({'Message':data.response['message']});
+					}				
+				}, function(err){
+					defer.reject(err);
+				}); 
+				return defer.promise;
+    		}
+        }
+
+
+        function fileUpload(params){
+        	return function(){
+        		var defer = $q.defer();
+				var getAPI = $resource( 
+					appConfig.API_BASE_URL+'/fileUpload', 
+					{}, {
+						Check: {
+							method:'POST',
+							transformRequest:function(data){
+								var fd = new FormData();
+								angular.forEach(data, function(value, key) {
+									fd.append(key, value);
+								});
+								return fd;
+							}
+						}
+					});
+				getAPI.Check(params,function(data){
 					if(data.status_code == 200){
 						defer.resolve({'success':data.response});
 					}else{

@@ -8,7 +8,8 @@
                     <h2 class="slider-description">Please sign or upload a photo of your signature</h2>
                   </div>
                   <div class="col-xs-4">
-                    <div class="upload-image-cover">
+                    <div class="upload-image-cover" ng-click="showSigniture()">
+
                       <div class="image-div">
                           <img src="assets/images/investorregistration_sign.png">
                       </div>
@@ -56,11 +57,27 @@
         <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
         <p>Investor Registration</p>
     </div>
+
     <div class="col-xs-12">
         <div class="fin-btn-group">
             <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>REVIEW INFO</button>
             <button ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         </div>
     </div>
+
 </div>
+  <div class="modal fade fade-scale" id="signitureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="fadeIn modal-wrapper">
+        <button data-dismiss="modal" class="modal-close"></button>
+        <signature-pad accept="accept" clear="clear" height="250" width="320"></signature-pad>
+        <div class="fin-btn-group">
+          <button class="fin-app-btn fin-skip-btn pull-left" ng-click="clear()">CLEAR</button>
+          <button class="fin-app-btn fin-orange pull-right" ng-click="done()">DONE</button>
+        </div>        
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

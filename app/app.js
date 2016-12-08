@@ -11,6 +11,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		'ngScrollbars',
 		'datepicker',
 		'google-signin',
+		'signature',
 		'finApp.config',
 		'finApp.directives',
 		'finApp.text',
