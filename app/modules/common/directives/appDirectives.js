@@ -479,11 +479,11 @@
 					        type: 'line',
 					        events:{
 				            	load:function(){
-				            		var outerWidth = parseInt($(element).parent().outerWidth());
+				            		var outerWidth = parseInt($('.chart-cover').outerWidth());
 	                				var applyWidth = outerWidth - 100;
 	                				setTimeout(function(){
 	                					chart.setSize(applyWidth,300);
-	                				},100);			            		
+	                				},0);			            		
 				            	}
 			            	}
 						},
