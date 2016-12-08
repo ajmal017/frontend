@@ -2633,9 +2633,13 @@
         <div class="swiper-slide">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content noPadding swiperReduceBottomPadding">
-                    <div class="upload-image-cover">
+                    <input id='upload' accept=".jpg, .png, .jpeg" style="display:none" onchange="angular.element(this).scope().imageUpload(this)" type='file'/>
+                    <div class="upload-image-cover" upload-file="upload">
                         <div class="image-div">
                             <img src="assets/images/uploadPic.png">
+                        </div>
+                        <div ng-if="imageUrlOrBase64" class="imageThumbnail">
+                            <img width="100%" ng-src="{{imageUrlOrBase64}}">
                         </div>
                         <p class="text-center">Upload Pan</p>
                     </div> 

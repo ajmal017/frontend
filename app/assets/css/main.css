@@ -1268,6 +1268,12 @@ span + input {
   font-weight: normal;
   font-size: 1.25em !important;
 }
+.imageThumbnail {
+  position: absolute;
+  top: 9%;
+  left: 22%;
+  width: 100px;
+}
 span.highlight {
   color: #f26529;
 }
