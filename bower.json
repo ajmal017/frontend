@@ -21,6 +21,7 @@
     "angular-route": "1.5.8",
     "angular-sanitize": "^1.5.8",
     "angular-lazy-img": "^1.2.2",
-    "angular-signature": "^1.0.0"
+    "angular-signature": "^1.0.0",
+    "videojs-record": "^1.5.1"
   }
 }

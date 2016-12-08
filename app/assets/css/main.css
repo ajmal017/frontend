@@ -4814,6 +4814,12 @@ input.datepicker::placeholder {
 #signitureModal .signature {
   margin: 0 auto;
   margin-bottom: 20px;
+  width: 320px!important;
+  height: 250px!important;
+}
+#signitureModal .signature canvas {
+  width: 320px!important;
+  height: 250px!important;
 }
 section.registerInvestor .content-main-header .slider-entry-image {
   width: 16%;
