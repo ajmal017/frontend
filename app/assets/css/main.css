@@ -4821,6 +4821,21 @@ input.datepicker::placeholder {
   width: 320px!important;
   height: 250px!important;
 }
+/* place fullscreen control on right side of the player */
+.video-js .vjs-control.vjs-fullscreen-control {
+  position: absolute;
+  right: 0;
+}
+/* make sure the custom controls are always visible because
+   the plugin hides and replace the video.js native mobile
+   controls */
+.vjs-using-native-controls .vjs-control-bar {
+  display: -webkit-box !important;
+  display: -webkit-flex !important;
+  display: -moz-box !important;
+  display: -ms-flexbox !important;
+  display: flex !important;
+}
 section.registerInvestor .content-main-header .slider-entry-image {
   width: 16%;
 }
