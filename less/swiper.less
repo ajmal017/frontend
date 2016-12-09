@@ -269,6 +269,19 @@
             }
           }
         }  
+        .videoSelfieConditions {
+          list-style: none;
+          li{
+            font-size: 16px;
+          }
+            li:before {
+              content: '• ';
+              padding-right: 1em;
+              font-size: 20px;
+              color: rgb( 4, 123, 193 );
+            }
+          
+        }
         .topHeader{
           .GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@blackapprox,normal);
               .PIXEL2EM(30);
@@ -514,7 +527,7 @@
         }   
         h2{
           .GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@blackapprox,normal);
-          .PIXEL2EM(18);
+          .PIXEL2EM(24);
           width:80%;
           line-height:22px;
           margin-bottom: 3%;

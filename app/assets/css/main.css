@@ -3092,6 +3092,18 @@ span.error-text {
   width: 40%;
   font-size: 1.25em !important;
 }
+.swiper-container.customSwiper .swiper-content .videoSelfieConditions {
+  list-style: none;
+}
+.swiper-container.customSwiper .swiper-content .videoSelfieConditions li {
+  font-size: 16px;
+}
+.swiper-container.customSwiper .swiper-content .videoSelfieConditions li:before {
+  content: '• ';
+  padding-right: 1em;
+  font-size: 20px;
+  color: #047bc1;
+}
 .swiper-container.customSwiper .swiper-content .topHeader {
   font-family: 'PlayfairDisplay-Regular';
   color: #101010;
@@ -3341,7 +3353,7 @@ span.error-text {
   font-family: 'PlayfairDisplay-Regular';
   color: #101010;
   font-weight: normal;
-  font-size: 1.125em;
+  font-size: 1.5em;
   width: 80%;
   line-height: 22px;
   margin-bottom: 3%;
@@ -6457,6 +6469,12 @@ section.trackPerformance .chart-main-tabs li {
 }
 section.trackPerformance .chart-main-tabs li a {
   font-size: 13px;
+}
+#finGoalStatusModal .modal-dialog {
+  width: 60%;
+}
+#finGoalStatusModal .modal-dialog .modal-content .modal-wrapper {
+  padding: 7% 4% 8% 4%;
 }
 .loader {
   position: fixed;

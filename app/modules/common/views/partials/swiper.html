@@ -2801,4 +2801,58 @@
         
     </div>
 </div>
+<div ng-if="swiperName == 'videoSelfie'" class="fadeIn swiper-container customSwiper videoSelfie type2Sliders" ng-init="step = 1">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <form name="invertorInfoForm1" novalidate>
+                <div class="swiper-content">
+                  <div class="col-xs-12">
+                    <h2 class="slider-description">To complete your KYC process, please take a short video (10-20 sec) of yourself<span class="nextline"> with the following:</span></h2>
+                  </div>
+                  <div class="col-xs-12">
+                      <ul class="videoSelfieConditions">
+                          <li>Hold PAN card next to yourself</li>
+                          <li>State your name</li>
+                          <li>Hold your address proof next to yourself</li>
+                      </ul>
+                  </div>
+                  <div class="col-xs-4">
+                    <div class="upload-image-cover">
+                      <div class="image-div">
+                          <img src="assets/images/investorregistration_video.png">
+                          <img ng-if="user_female" src="assets/images/investorregistration_video.png">
+                      </div>
+                      <p class="text-center">Tap to Record</p>
+                    </div>
+                  </div>
+                </div>
+            </form>
+        </div>
+        <div class="swiper-slide">
+            <form name="retirementForm1" novalidate>
+                <div class="swiper-content">
+                    <div class="col-xs-2">
+                        <img class="img img-responsive" src="assets/images/investorregistration_confirmed_thumbs.png" />
+                    </div>
+                    <div class="col-xs-12">
+                    <p>
+                        <h2 class="slider-description">We will notify you once your KYC verification is completed.</h2>
+                        <h2 class="slider-description" ng-if="kycVerified">You are now ready to invest!</h2>
+                    </p>
+                  </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="typeSwiper">
+        <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
+        <p>Video Selfie</p>
+    </div>    
+    <div class="fin-btn-group gotoPages">
+        <button class="fin-link-btn content-prev" ng-show="(step == 1)" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>DO IT LATER</button>
+        <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE TO DASHBOARD</button>
+    </div>
+</div>
+
 <show-tip ng-if="$root.tipData" quick-tip-data="$root.tipData"></show-tip>
