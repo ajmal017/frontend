@@ -34,5 +34,8 @@
 			var pieCurrency =  $filter('amountSeffix')(1200000);
 			$scope.pieTitle = "<p><span class='currency'>&#8377;</span><span class='content'>"+pieCurrency+"</span><span class='nextline'>Returns 0%</span></p>";
 			
+			$scope.showFinancialGoalModal = function () {
+				$('#finGoalStatusModal').modal('show');
+			}
 		}
 })();

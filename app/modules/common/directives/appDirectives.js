@@ -24,7 +24,8 @@
 		.directive('customScrollBar',customScrollBar)
 		.directive('accordian',accordian)
 		.directive('goalLoading',goalLoading)
-		.directive('uploadFile',uploadFile);
+		.directive('uploadFile',uploadFile)
+		.directive('captureVideo',captureVideo);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -897,6 +898,43 @@
                 element.bind('click', function() {
                     angular.element('#'+attrs.uploadFile).trigger('click');
                 });
+              }
+            };
+        }
+
+        function captureVideo(){
+        	return {
+              restrict: 'A',
+              scope:{
+              	capturedFile : '='
+              },
+              link: function(scope, element,attrs) {
+                var player = videojs(element[0], {
+				    controls: true,
+				    width: 320,
+				    height: 240,
+				    plugins: {
+				        record: {
+				            audio: true,
+				            video: true,
+				            maxLength: 10,
+				            debug: true,
+				            videoMimeType:'video/mp4'
+				        }
+				    }
+				});
+				player.on('deviceError', function(){
+				    console.log('device error:', player.deviceErrorCode);
+				});
+
+				player.on('startRecord', function(){
+				    console.log('started recording!');
+				});
+				player.on('finishRecord', function(){
+					scope.$apply(function () {
+			        	scope.capturedFile = player.recordedData;
+			        });					
+				});
               }
             };
         }

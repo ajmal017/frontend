@@ -433,7 +433,7 @@
 								</div>
 							</div>
 							<div class="col-xs-6">
-								<p class="finance-desc"><span class="content">Tax Saving Plan</span><span class="nextline placeholder addOnlyBold">ON TRACK</span></p>
+								<p class="finance-desc" ng-click="showFinancialGoalModal()"><span class="content">Tax Saving Plan</span><span class="nextline placeholder addOnlyBold">ON TRACK</span></p>
 							</div>
 							<div class="col-xs-4">
 								<p class="target-amount"><span class="content highlight"><span class="currency">&#8377;</span><span class="content">{{1690000 | amountSeffix}}</span></span><span class="nextline placeholder">08/11/2016</span></p>
@@ -505,3 +505,47 @@
 		</div>
 	</div>
 </section>
+<div class="modal fade fade-scale" id="finGoalStatusModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+		<div class="fadeIn modal-wrapper">
+			<div class="col-xs-12">
+				<div class="col-xs-2">
+					<img src="assets/images/saveTax.png" class="img img-responsive">
+				</div>
+				<div class="col-xs-10">
+					<div class="form-group">
+						<div class="col-xs-9 no-padding">
+							<p class="finance-desc"><span class="content">Tax Saving Plan</span><span class="nextline placeholder addOnlyBold">ON TRACK</span></p>
+						</div>
+						<div class="col-xs-3 no-padding">
+							<p><span class="placeholder">Expected corpus in 2021</span></p>
+							<p class="target-amount"><span class="content highlight"><span class="currency">&#8377</span><span class="content ng-binding">16.90 L</span></span></p>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-xs-12">
+							<div class="progress">
+							    <div class="progress-bar" role="progressbar" ng-style="{'width':'71.2%'}" style="width: 71.2%;">
+							    <span class="progress-price"><span class="currency">₹</span><span class="amount ng-binding">12.00 L</span></span>
+							    <span class="progress-percentage placeholder">71.2%</span>
+							    </div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="col-xs-12 bottom-desc">
+				<p><span class="bottom-label">Amount in Debt:</span><span class="amount-cover less"><span class="currency">&#8377</span><span class="amount">800</span></span></p>
+				<p><span class="bottom-label">Amount in Equity:</span><span class="amount-cover"><span class="currency">&#8377</span><span ng-bind="equityValue|currency:''"></span><span class="amount">1250</span></p>
+				<p class="note" ng-if="false">Note: Investment in Debt and Equity funds below minimum limit <span class="currency">&#8377</span><span class="amount"><span class="amount">1000</span></span></p>
+				<p class="note" ng-if="true">Note: Investment in Debt funds below minimum limit <span class="currency">&#8377</span><span class="amount">1000</span></p>
+				<p class="note" ng-if="false">Note: Investment in Equity funds below minimum limit <span class="currency">&#8377</span><span class="amount">1000</span></p>
+				<button class="fin-app-btn fin-orange" click-redirect="/quickInvest">SAVE MIX</button>
+			</div>
+		</div>
+    </div>
+  </div>
+</div>

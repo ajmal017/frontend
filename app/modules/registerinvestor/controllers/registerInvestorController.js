@@ -9,7 +9,6 @@
 			$http.get('modules/common/config/contry.json').success(function(response) {
 		        $scope.countryList = response;
 		    });
-
 		    $scope.imageUpload = function(element){
 	            var file=element.files[0];
 	            var ext = file.name.substr(file.name.lastIndexOf('.')+1,file.name.length);

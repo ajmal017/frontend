@@ -1,3 +1,5 @@
+<video capture-video captured-file=""class="video-js vjs-default-skin"></video>
+{{outputFile}}
 <div class="panel-group customPanel" id="accordion" role="tablist" aria-multiselectable="true">
   <div class="panel panel-default">
     <div class="panel-heading" role="tab" id="headingOne">
@@ -486,5 +488,41 @@
 </div>
 
 <input type="text" class="datepicker" placeholder="DD/MM/YYYY" data-datepicker="{theme: 'flat',dateformat: 'DD/MM/YYYY'}" data-ng-model="value1">
+
+<!-- <script>
+var player = videojs("myVideo",
+{
+    controls: true,
+    width: 320,
+    height: 240,
+    plugins: {
+        record: {
+        	image: false,
+            audio: true,
+            video: true,
+            maxLength: 10,
+            debug: true,
+            videoMimeType:'video/mp4'
+        }
+    }
+});
+console.log(player);
+navigator.getUserMedia = (navigator.getUserMedia ||
+                            navigator.webkitGetUserMedia ||
+                            navigator.mozGetUserMedia || 
+                            navigator.msGetUserMedia);
+
+
+player.on('deviceError', function(){
+    console.log('device error:', player.deviceErrorCode);
+});
+
+player.on('startRecord', function(){
+    console.log('started recording!');
+});
+player.on('finishRecord', function(){
+    console.log('finished recording: ', player.recordedData);
+});
+</script> -->
 
 
