@@ -10,6 +10,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		'ngSanitize',
 		'ngScrollbars',
 		'datepicker',
+		'google-signin',
+		'signature',
 		'finApp.config',
 		'finApp.directives',
 		'finApp.text',
@@ -30,8 +32,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 	.config(config)
 	.run(run);
 
-	config.$inject = ['$routeProvider','$httpProvider','$resourceProvider','ScrollBarsProvider'];
-	function config($routeProvider,$httpProvider,$resourceProvider,ScrollBarsProvider){
+	config.$inject = ['$routeProvider','$httpProvider','$resourceProvider','ScrollBarsProvider','GoogleSigninProvider','$locationProvider'];
+	function config($routeProvider,$httpProvider,$resourceProvider,ScrollBarsProvider,GoogleSigninProvider,$locationProvider){
 		$routeProvider
 			.when('/', {
 				title : '',
@@ -49,9 +51,17 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
             });
 		$httpProvider.interceptors.push('finWebInterCepter');
 		$resourceProvider.defaults.stripTrailingSlashes = false;
+		GoogleSigninProvider.init({
+			client_id: '437470809059-abus39vv82rogh0i9nmvehq0bkiq65b0.apps.googleusercontent.com',
+		});
+		//FOR REMOVING HASH FOR PRODUCTION//
+		// $locationProvider.html5Mode({
+		//           enabled: true,
+		//           requireBase: false
+		//       });
 	}
-	run.$inject = ['$route','$routeParams','$rootScope','$location','appConfig','checkPath'];
-	function run($route,$routeParams,$rootScope,$location,appConfig,checkPath){
+	run.$inject = ['$route','$routeParams','$rootScope','$location','appConfig','checkPath','busyIndicator'];
+	function run($route,$routeParams,$rootScope,$location,appConfig,checkPath,busyIndicator){
 		$rootScope.userDetails = JSON.parse(sessionStorage.getItem('userDetails'))||{};
 		$rootScope.assetAllocationTables = JSON.parse(sessionStorage.getItem('assetAllocationTables'))||[];
 		$rootScope.drawerOpen = false;
@@ -108,11 +118,11 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 				object[compare][key] = value; 
 			}
 		}
-		document.addEventListener("online", function() { 
+		window.addEventListener("online", function() { 
 			$rootScope.online = true;  
 		}, false);
 
-		document.addEventListener("offline", function() { 
+		window.addEventListener("offline", function() { 
 			$rootScope.online = false;   
 		}, false);
 

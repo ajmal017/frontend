@@ -2,8 +2,8 @@
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <form name="riskAssesment1Form1" novalidate ng-init="step = 1">
-            <div class="swiper-content content-1">
-                <p>I am a <span class="swiper-input age"><input only-number type="text" name="year" required ng-model="modelVal.A1"></span> years old<select dropdown ng-model="modelVal.A7"><option selected value="op1">Male</option><option value="op2">Female</option></select> and I am <select dropdown ng-model="modelVal.A17"><option selected value="op1">Single</option><option value="op2">Married</option></select></p>
+            <div class="swiper-content content-1" ng-init="disabled = 'locked'">
+                <p>I am a <span class="swiper-input age"><input only-number type="text" name="year" required ng-model="modelVal.A1"></span> years old<select dropdown dropdown-disable="disabled" ng-model="modelVal.A7"><option value="op1">Male</option><option value="op2">Female</option></select> and I am <select dropdown ng-model="modelVal.A17"><option selected value="op1">Single</option><option value="op2">Married</option></select></p>
                 <p>with <select dropdown ng-model="modelVal.A15"><option selected value="op1">No</option><option value="op2">1</option>
                 <option value="op3">2</option><option value="op4">2+</option></select>kids,<select dropdown ng-model="modelVal.A16"><option selected value="op1">No</option><option value="op2">1</option>
                 <option value="op3">2</option></select>dependent parents</p>
@@ -601,7 +601,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
+                                <div class="guage clearfix" one-time-equity="80" calculate-guage="50">
                                     <h4 class="text">Recommended</h4>
                                     <div class="orbit">
                                         <div class="indicator"></div>
@@ -672,13 +672,13 @@
         <div class="swiper-slide">
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
-                      <p class="question">My goal name is <span class="swiper-input global-input"><input type="text" name="year" required ng-model="modelVal.A1"></span></p>
+                      <p class="question">My goal name is <span class="swiper-input global-input"><input type="text"  required ng-model="modelVal.A1"></span></p>
                       <span class="placeholder">Use minimum 20 characters,alphabets and/or numbers</span>
                 </div>
             </form>
         </div>
         <div class="swiper-slide" data-key="retirement:0">
-            <form name="quickInvestForm2" novalidate>
+            <form name="retirementForm2" novalidate>
                 <div class="swiper-content">
                     <h1 class="topHeader">I would like to plan my retirement at the following age</h1>
                     <span class="placeholder">Click to edit</span>
@@ -687,14 +687,14 @@
                             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <div class="row">
                                     <h3 class="calendarHeader">Current Age</h3>
-                                    <fin-calendar-form ng-model="equity" format-symbol="none" type="#f0f4f7" font-color="#047bc1" min="0" max="100"></fin-calendar-form>
+                                    <fin-calendar-form ng-model="modelVal.A2" format-symbol="none" type="#f0f4f7" font-color="#047bc1" min="0" max="100"></fin-calendar-form>
                                 </div>
                             </div>
                             <div class="col-xs-4 calendar-divider"><span></span></div>
                             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <div class="row">
                                     <h3 class="calendarHeader">Retirement Age</h3>
-                                    <fin-calendar-form ng-init="equity2 = 60" ng-model="equity2" format-symbol="none" type="#fde8de" font-color="#f26529" min="0" max="100"></fin-calendar-form>
+                                    <fin-calendar-form ng-init="modelVal.A3 = 60" ng-model="modelVal.A3" format-symbol="none" type="#fde8de" font-color="#f26529" min="0" max="100"></fin-calendar-form>
                                 </div>
                             </div>
                         </div>
@@ -702,47 +702,37 @@
                 </div>
             </form>
         </div>
-        <div class="swiper-slide" data-key="calculate:year:{{equity}}">
-            <form name="quickInvestForm3" novalidate>
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'" data-key="calculate:year:{{equity}}">
+            <form name="retirementForm3" novalidate>
+                <div class="swiper-content retirement-amount">
+                      <h1 class="topHeader">My target savings on retirement in <span class="highlight calculatedAge" ng-bind="retirement.calculateYear"></span></h1>
+                      <p class="question width-auto"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A4" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2')">PLEASE HELP ME ESTIMATE</button></p>
+                </div>
+            </form>
+        </div>
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
+            <form name="retirementForm4" novalidate>
                 <div class="swiper-content">
-                      <h1 class="topHeader">My target savings on retirement in <span class="calculatedAge">2041</span></h1>
-                      <p class="question width-auto"><span class="swiper-input"><input type="text" name="year" required ng-model="modelVal.A1"></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white">PLEASE HELP ME ESTIMATE</button></p>
+                      <p class="question width-auto"><span class="content nextline">I am willing to set aside</span><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A5" type="text" ame="year" required></span> per month<span class="nextline">for the target amount<span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="modelVal.A4 | amountSeffix"></span></span> by <span class="highlight"><span class="calculatedAge" ng-bind="retirement.calculateYear"></span></span></span></p>
+                      <p class="question" ng-show="showMessage3">Recommended monthly investment amount <span class="highlight"><span class="currency">&#8377</span><span class="content" ng-init="retirement.perMonth = 100000" ng-bind="retirement.perMonth | currency:''"></span></span></span> for target amount <span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="modelVal.A4 | amountSeffix"></span></span> by <span class="highlight" ng-bind="retirement.calculateYear"></span></p>
                 </div>
             </form>
         </div>
-        <div class="swiper-slide">
-            <form name="quickInvestForm3" novalidate>
-                <div class="swiper-content">
-                      <h1 class="topHeader">To have savings amount of <span class="highlight"><span class="currency">&#8377</span>3.0 Cr</span> by <span class="highlight"><span class="calculatedAge">2014</span></span>,<span class="nextline">I am willing to set aside</span></h1>
-                      <p class="question width-auto"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A3" ng-init="modelVal.A3 = 0" ng-keyup="showMessage2 = true" type="text" ame="year" required></span> per month</p>
-                </div>
-            </form>
-        </div>
-        <div class="swiper-slide">
-            <form name="quickInvestForm3" novalidate>
-                <div class="swiper-content retirement-content">
-                      <h1 class="topHeader">I would like to save the following amount per month for my retirement</h1>
-                      <p class="question width-60"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A3" type="text" ame="year" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white">PLEASE HELP ME ESTIMATE</button></p>
-                      <p class="question">Estimated savings amount in<span class="nextline highlight"><span class="calculatedAge">2041</span>-<span class="amount"><span class="currency">&#8377</span>3.0 Cr</span></span></p>
-                </div>
-            </form>
-        </div>
-        <div class="swiper-slide">
-            <form name="quickInvestForm3" novalidate>
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
+            <form name="retirementForm5" novalidate>
                 <div class="swiper-content">
                       <info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="48px" class-name="marginNegative60"></info-tip>
-                      <p class="question multiple"><span class="content">What is your pre-tax annual income?</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A4" type="text" name="year" required></span></p>
-                      <p class="question multiple"><span class="content">How much do you currently spend monthly?</span> <span class="swiper-input normal"><input format="number" ng-model="modelVal.A4" type="text" name="year" required></span></p>
-                      <p class="question multiple"><span class="content">How much have you saved for rest of the retirement?</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A4" type="text" name="year" required></span></p>
+                      <p class="question multiple"><span class="content">What is your pre-tax annual income?</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A6" type="text" required></span></p>
+                      <p class="question multiple"><span class="content">How much do you currently spend monthly?</span> <span class="swiper-input normal"><input format="number" ng-model="modelVal.A7" type="text" required></span></p>
+                      <p class="question multiple"><span class="content">How much have you saved for rest of the retirement?</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A8" type="text" required></span></p>
                       <span class="placeholder">Add total of your PPF,EPF,NPS, and other retirement savings</span>
                 </div>
             </form>
         </div>
-        <div class="swiper-slide">
-            <form name="quickInvestForm3" novalidate>
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
+            <form name="retirementForm6" novalidate>
                 <div class="swiper-content content-6 total-estimation">
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
-                      <p class="question multiple"><span class="content">I would like to save the following amount per month</span></p>
                        <div class="col-xs-9 estimate">
                         <div class="row">
                             <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='BUDGET'}" ng-click="activeTab = 'BUDGET'">
@@ -786,8 +776,7 @@
                             </div>
                         </div>
                       </div>
-                      <p class="question full-width pull-left addOpacity7"><span class="content">Thanks for the guidance. I would like to save the following amount per month:</span> <span class="swiper-input"><input format="number" ng-model="modelVal.A4" type="text" name="year" required></span></p>
-                      <p class="question pull-left">Estimated savings amount in<span class="nextline highlight"><span class="calculatedAge">2041</span>-<span class="amount"><span class="currency">&#8377</span>3.0 Cr</span></span></p>
+                      <p class="question addPadding-4Per full-width pull-left addOpacity7"><span class="content">Thanks for the guidance.<span class="nextline">I am willing to set aside <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A6" type="text" required></span> per month</span><span class="nextline">for target amount <span class="highlight"><span class="currency">&#8377</span>1.0 Cr</span> by <span class="highlight" ng-bind="retirement.calculateYear"></span></span></span></p>
                 </div>
             </form>
         </div>
@@ -861,64 +850,23 @@
                         <div class="gauge-result">
                             <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></span>Projected Investment Growth</p></div>
                             <div class="meter-widget-cover">
-                                <div class="col-xs-12 meter-header">
-                                    <button class="edit" ng-click="callModel()"></button>
+                                <div class="col-xs-12 graph-header">
                                     <div class="row">
-                                        <div class="col-xs-6 text-right">
-                                            <h2 class="debt">Debt</h2>
-                                            <p class="debt">0%</p>
-                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                        <div class="col-xs-6">
+                                            <div class="row">
+                                                <h4>Investment till October 2030</h4>
+                                                <p><span class="highlight">20.4 lakh</span></p>
+                                            </div>
                                         </div>
-                                        <div class="col-xs-6 text-left">
-                                            <h2 class="equity">Equity</h2>
-                                            <p class="equity">100%</p>
-                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                        <div class="col-xs-6">
+                                            <div class="row">
+                                                <h4>Investment till October 2030</h4>
+                                                <p><span class="highlight">1.80 crore</span></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
-                                    <h4 class="text">Recommended</h4>
-                                    <div class="orbit">
-                                        <div class="indicator"></div>
-                                    </div>  
-                                    <div class="guage-image">
-                                        <img src="assets/images/guage.png">
-                                        <div class="meater-cover"></div>
-                                        <div class="pointer">
-                                            <img src="assets/images/pointer.png">
-                                        </div>
-                                    </div>
-                                    <div class="box-indicator col-xs-12">
-                                        <div class="row">
-                                            <div class="col-xs-4 text-left">
-                                                <div class="row">
-                                                    <div class="checkbox-cover">
-                                                        <input type="radio" name="type">
-                                                        <label><span></span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <div class="checkbox-cover">
-                                                    <input ng-checked="true" type="radio" name="type">
-                                                    <label><span></span></label>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 text-right">
-                                                <div class="row">
-                                                    <div class="checkbox-cover">
-                                                        <input type="radio" name="type">
-                                                        <label><span></span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="guageCalculator">
-                                        <img src="assets/images/guageCalculator.png">
-                                    </div>  
-                                    <p class="bottom-text">As per your risk profile</p>
-                                </div>
+                                <goal-chart title="graphObject.title" series="graphObject.series" categories="graphObject.catergory" interval="graphObject.interval"></goal-chart>
                             </div>
                         </div>
                     </div>
@@ -937,13 +885,12 @@
     </div> 
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 3)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 5)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 6)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 7)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-disabled="retirementForm1.$invalid" ng-click="sendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="sendValues(modelVal);(step = step + 1);calculateYear(modelVal.A2,modelVal.A3)" ng-disabled="(modelVal.A2 == 0)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-click="sendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)">CONTINUE</button>
+        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="sendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)">CONTINUE</button>
+        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op2')" ng-click="sendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="((modelVal.A6 == 0)||(modelVal.A6 == undefined))||((modelVal.A7 == 0)||(modelVal.A7 == undefined))||((modelVal.A8 == 0)||(modelVal.A8 == undefined))">CONTINUE</button>
+        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op2')" ng-click="sendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>
 <div ng-if="swiperName == 'education'" class="fadeIn swiper-container customSwiper education type2Sliders" ng-init="step = 1">
@@ -1766,7 +1713,7 @@
                 <div class="fin-btn-group addMargin">
                     <button click-redirect="/automobileStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
                     <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button>
-                    <button click-redirect="/dashboard" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    <button ng-click="portfolioFactoring()" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
                 </div>
             </div>
         </div>
@@ -2664,7 +2611,7 @@
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content noPadding">
                      <p class="question">I was born in the city of <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
-                     <p class="question">In the country: <select ng-if="countryList" dropdown ng-model="modelVal.A7"><option ng-selected="$index == 0" ng-repeat="country in countryList" value="{{country.value}}">{{country.value}}</option></select></p>
+                     <p class="question">In the country: <select ng-if="countryList" dropdown scroll-height="250" ng-model="modelVal.A7"><option ng-selected="$index == 0" ng-repeat="country in countryList" value="{{country.value}}">{{country.value}}</option></select></p>
                       <p class="question">I worked as a <select dropdown ng-model="modelVal.A1"><option selected value="op1">Consultant</option><option value="op2">International</option></select></p>
                       <p class="question">And I make <select dropdown ng-model="modelVal.A1" scroll-height="120"><option selected value="op1">&lt; 1 Lakhs</option><option value="op2">1-5 Lakhs</option><option value="op2">5-10 Lakhs</option><option value="op2">10-25 Lakhs</option><option value="op2">25-100 Lakhs</option><option value="op2">&gt; 100 Lakhs</option></select>per year</p>
                 </div>
@@ -2686,9 +2633,13 @@
         <div class="swiper-slide">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content noPadding swiperReduceBottomPadding">
-                    <div class="upload-image-cover">
+                    <input id='upload' accept=".jpg, .png, .jpeg" style="display:none" onchange="angular.element(this).scope().imageUpload(this)" type='file'/>
+                    <div class="upload-image-cover" upload-file="upload">
                         <div class="image-div">
                             <img src="assets/images/uploadPic.png">
+                        </div>
+                        <div ng-if="imageUrlOrBase64" class="imageThumbnail">
+                            <img width="100%" ng-src="{{imageUrlOrBase64}}">
                         </div>
                         <p class="text-center">Upload Pan</p>
                     </div> 
@@ -2809,6 +2760,45 @@
         <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 2)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
+</div>
+<div ng-if="swiperName == 'earnInterest'" class="fadeIn swiper-container customSwiper earnInterest type2Sliders" ng-init="step = 1">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <form name="quickInvestForm1" novalidate>
+                <div class="swiper-content content-1">
+                  <p class="question">I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ame="year" required ng-init="modelVal.A1 = 0" ng-keyup="showMessage1 = true" ng-model="modelVal.A1"></span></p>
+                  <span class="error-text" ng-show="showMessage1 && (modelVal.A1 < 1000 || modelVal.A1 == undefined)">Minimum amount must be greater than or equal to 1000</span>
+                </div>
+            </form>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-content swiper-guage">
+                <div class="gauge-result">
+                    <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></span>Projected Interest Gains</p></div>
+                    
+                    <p><span class="placeholder addPadding-4Per addPaddingLeft-20Per">You will gain additional x% per year<span class="nextline">from this investment compared to</span><span class="nextline">Savings A/C interest of 4%</span></span></p>
+
+                    <p><span class="placeholder addPadding-4Per addPaddingLeft-20Per">Note: This amount will be invested in Equity Linked<span class="nextline">Savings Schemes (ELSS) of reputed asset</span><span class="nextline">management companies,to maximize your</span>tax savings.</span></p>
+                </div>
+                <div class="gauge-result">Graph</div>
+                <div class="fin-btn-group addMargin">
+                    <button click-redirect="/quickInvestStart" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
+                    <button click-redirect="/goals" class="fin-app-btn fin-orange">CONTINUE PLANING</button>
+                    <button ng-click="portfolioFactoring()" class="fin-app-btn fin-blue">CONTINUE TO FUND SELECTION</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="typeSwiper">
+        <div class="image-backdrop"><img src="assets/images/planInvestMent.png"></div>
+        <p>Earn Higher Interest</p>
+    </div>    
+    <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
+        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step == 1)" ng-disabled="modelVal.A1 < 1000 || modelVal.A1 == undefined" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2)" ng-disabled="(modelVal.A2 == undefined)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        
     </div>
 </div>
 <show-tip ng-if="$root.tipData" quick-tip-data="$root.tipData"></show-tip>

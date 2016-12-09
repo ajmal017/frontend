@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no,minimum-scale=1.0,maximum-scale=1.0">
+    <!-- <base href="/"> -->
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Finaskus</title>
     <link rel="stylesheet" type="text/css" href="libs/bootstrap.min.css">
@@ -23,6 +24,7 @@
     <div class="page-wrapper">
         <fin-header></fin-header>
         <div class="drawer-overlay"></div>
+        <fin-loader ng-if="showLoader"></fin-loader>
         <div ng-view autoscroll="true"></div>
     </div>
     <fin-drawer></fin-drawer>
@@ -34,12 +36,15 @@
     <script type="text/javascript" src="libs/angular-route.min.js"></script>
     <script type="text/javascript" src="libs/angular-sanitize.min.js"></script>
     <script type="text/javascript" src="libs/swiper.jquery.min.js"></script> 
-    <script type="text/javascript" src="libs/angular-lazy-img.min.js"></script>    
+    <script type="text/javascript" src="libs/angular-lazy-img.min.js"></script>   
+    <script type="text/javascript" src="libs/ng-google-signin.min.js"></script>     
     <script src="libs/jquery.mCustomScrollbar.concat.min.js"></script>
     <script src="libs/scrollbars.min.js"></script>
     <script src="libs/moment.min.js"></script>
     <script src="libs/datepicker.js"></script>
     <script src="libs/highcharts.min.js"></script>
+    <script src="libs/signature_pad.min.js"></script>
+    <script src="libs/signature.js"></script>
     <!--Library Files End-->
     <!-- Main File-->
     <script type="text/javascript" src="app.js"></script>
@@ -81,6 +86,11 @@
     <script type="text/javascript" src="modules/planinvestment/modules/quickInvest/services/quickInvestService.js"></script>
     <script type="text/javascript" src="modules/planinvestment/modules/quickInvest/controllers/quickInvestController.js"></script>
     <!--Quick Invest Module End-->
+    <!--Earn Interest Module Start-->
+    <script type="text/javascript" src="modules/planinvestment/modules/earnInterest/earnInterestConfig.js"></script>
+    <script type="text/javascript" src="modules/planinvestment/modules/earnInterest/services/earnInterestService.js"></script>
+    <script type="text/javascript" src="modules/planinvestment/modules/earnInterest/controllers/earnInterestController.js"></script>
+    <!--Earn Interest Module End-->
     <!--Tax saving Module Start-->
     <script type="text/javascript" src="modules/planinvestment/modules/taxsaving/taxsavingConfig.js"></script>
     <script type="text/javascript" src="modules/planinvestment/modules/taxsaving/services/taxsavingService.js"></script>
@@ -131,6 +141,7 @@
     <script type="text/javascript" src="modules/registerinvestor/registerInvestorConfig.js"></script>
     <script type="text/javascript" src="modules/registerinvestor/services/registerInvestorService.js"></script>
     <script type="text/javascript" src="modules/registerinvestor/controllers/registerInvestorController.js"></script>
+    <script type="text/javascript" src="modules/registerinvestor/controllers/registerSignitureController.js"></script>
     <!--Investor Register Module Start-->
     <!--Smart portfolio Module Start-->
     <script type="text/javascript" src="modules/smartportfolio/smartConfig.js"></script>

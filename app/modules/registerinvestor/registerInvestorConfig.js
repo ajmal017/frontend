@@ -47,5 +47,24 @@
 				redirectUrl : '/dashboard',
 		        templateUrl: 'modules/registerinvestor/views/nomineeInfo.html',
 		    })
+		    .when('/registerInvestorConfirm', {
+		    	title : 'Investor Registration',
+		    	subHeader : 'GO BACK TO DASHBOARD',
+				redirectUrl : '/dashboard',
+		        templateUrl: 'modules/registerinvestor/views/registerInvestorConfirmation.html',
+		        controller : 'registerSignatureController'
+		    })
+		    .when('/registerInvestorReview', {
+		    	title : 'Investor Registration',
+		    	subHeader : 'GO BACK TO DASHBOARD',
+				redirectUrl : '/dashboard',
+		        templateUrl: 'modules/registerinvestor/views/registerInvestorReview.html',
+		    })
+		    .when('/completeVideoSelfie', {
+		    	title : 'Investor Registration',
+		    	subHeader : 'GO BACK TO DASHBOARD',
+				redirectUrl : '/dashboard',
+		        templateUrl: 'modules/registerinvestor/views/completeVideoSelfie.html',
+		    })
 		}
 })();

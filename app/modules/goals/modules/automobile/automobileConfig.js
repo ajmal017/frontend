@@ -20,7 +20,6 @@
 				subHeader : 'GO BACK TO FINANCIAL GOALS',
 				redirectUrl : '/planInvest',
 		        templateUrl: 'modules/goals/modules/automobile/views/automobile.html',
-		        controller: 'automobileController'
 		    })
 		}
 })();

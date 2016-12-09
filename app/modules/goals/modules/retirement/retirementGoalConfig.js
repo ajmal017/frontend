@@ -20,7 +20,6 @@
 				subHeader : 'GO BACK TO FINANCIAL GOALS',
 				redirectUrl : '/planInvest',
 		        templateUrl: 'modules/goals/modules/retirement/views/retirement.html',
-		        controller: 'retirementGoalsController'
 		    })
 		}
 })();

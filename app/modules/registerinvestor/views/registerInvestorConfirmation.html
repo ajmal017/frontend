@@ -1,0 +1,83 @@
+<section class="fadeIn quickInvest registerInvestor">
+<div class="fadeIn swiper-container registerInvestorConfirm customSwiper investorInfo type2Sliders" ng-init="step = 1">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide content-main-header">
+            <form name="invertorInfoForm1" novalidate>
+                <div class="swiper-content no-padding">
+                  <div class="col-xs-12">
+                    <h2 class="slider-description">Please sign or upload a photo of your signature</h2>
+                  </div>
+                  <div class="col-xs-4">
+                    <div class="upload-image-cover" ng-click="showSigniture()">
+
+                      <div class="image-div">
+                          <img src="assets/images/investorregistration_sign.png">
+                      </div>
+                      <p class="text-center">Sign</p>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <p>Note: The above signature will be used to digitally sign the investor application form</p>
+                  </div>
+                  <div class="col-xs-12">
+                  <p>
+                    <div class="checkbox-cover">
+                        <input type="checkbox" required id="option1Type1" name="option1" ng-model="modelVal.A8" value="op1">
+                        <label for="option1Type1"><span></span>I certify that all information provided for registration is true.</label>
+                    </div>
+                  </p>
+                  <p>
+                    <div class="checkbox-cover">
+                        <input type="checkbox" required id="option1Type2" name="option1" ng-model="modelVal.A9" value="op1">
+                        <label class="" for="option1Type2">
+                          <div class="pull-left checkbox-width">
+                            <span></span>
+                          </div>
+                          <div class="col-xs-5 no-padding ">
+                          I have read the Terms & Conditions of Use, and I hereby allow Finaskus Technologies Pvt Ltd to utilize the information preceding to fulfill my investment request and comply with the legal and regulatory requirements.
+                          </div>
+                        </label>
+                    </div>
+                  </p>
+                  </div>
+                </div>
+            </form>
+            <div class="bubble">
+              
+              <div class="dot-cover showPseudo" data-content="Confirmation">
+                <div class="dot active">
+
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="typeSwiper">
+        <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
+        <p>Investor Registration</p>
+    </div>
+
+    <div class="col-xs-12">
+        <div class="fin-btn-group">
+            <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>REVIEW INFO</button>
+            <button ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        </div>
+    </div>
+
+</div>
+  <div class="modal fade fade-scale" id="signitureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="fadeIn modal-wrapper">
+        <button data-dismiss="modal" class="modal-close"></button>
+        <signature-pad accept="accept" clear="clear" height="250" width="320"></signature-pad>
+        <div class="fin-btn-group">
+          <button class="fin-app-btn fin-skip-btn pull-left" ng-click="clear()">CLEAR</button>
+          <button class="fin-app-btn fin-orange pull-right" ng-click="done()">DONE</button>
+        </div>        
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

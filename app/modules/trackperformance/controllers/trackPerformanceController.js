@@ -14,6 +14,7 @@
 		    $scope.populateGraph = function(year){
 		    	recommendedService.getGraphResultSet($scope.response,year).then(function(data){
 		    		$scope.resultSet = data;
+		    		console.log('$scope.resultSet',$scope.resultSet);
 		    		if(!$scope.$$phase) $scope.$apply();
 		    	})
 		    }

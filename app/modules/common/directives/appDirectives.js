@@ -5,6 +5,7 @@
 		.directive('clickRedirect',clickRedirect)
 		.directive('finHeader',finHeader)
 		.directive('finDrawer',finDrawer)
+		.directive('finLoader',finLoader)
 		.directive('finCalendarForm',finCalendarForm)
 		.directive('dropdown',dropdown)
 		.directive('onlyNumber',onlyNumber)
@@ -17,10 +18,13 @@
 		.directive('validatePan',validatePan)
 		.directive('bubbleGen',bubbleGen)
 		.directive('hcChart',hcChart)
+		.directive('goalChart',goalChart)
 		.directive('investPieChart',investPieChart)
 		.directive('schemeChart',schemeChart)
 		.directive('customScrollBar',customScrollBar)
-		.directive('accordian',accordian);
+		.directive('accordian',accordian)
+		.directive('goalLoading',goalLoading)
+		.directive('uploadFile',uploadFile);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -73,6 +77,14 @@
 	        $('.bar1,.bar2').toggleClass('open');
 	    };
 
+	    function finLoader(){
+	    	return{
+				restrict : 'E',
+				replace:true,
+				templateUrl:'modules/common/views/partials/loader.html'
+			};
+	    }
+
 	    function finCalendarForm(){
 	    	return{
 				restrict : 'EA',
@@ -110,8 +122,8 @@
 						var min = parseInt($scope.min);
 						if(min <  model){
 							model = model - 1;
-							ngModel.$setViewValue($scope.model);
 							$scope.model = model;
+							ngModel.$setViewValue($scope.model);
 						}else{
 							ngModel.$setViewValue(min);
 							model = min;
@@ -167,6 +179,9 @@
 	    	return{
 	    		restrict : 'EA',
 	    		require : 'ngModel',
+	    		scope:{
+	    			disabled : '=dropdownDisable'
+	    		},	
 	    		link : function($scope,$element,$attr,ngModel){
 	    			setTimeout(function(){
 	    				var $this = $element,
@@ -184,6 +199,11 @@
 				            text: $this.children('option').eq(i).text(),
 				            rel: $this.children('option').eq(i).val()
 				        }).appendTo($list);
+				        if($this.children('option').eq(i).val() ==  ngModel.$viewValue){
+				        	$this.children('option').eq(i).attr('selected', true);	
+				        }else if($scope.disabled != undefined){
+				        	$this.children('option').eq(1).attr('selected', true);
+				        }
 				        $styledSelect.text($this.children('option[selected]').text());
 				        ngModel.$setViewValue($this.children('option[selected]').val());
 				    }
@@ -191,11 +211,16 @@
 				    $listItems.eq(0).remove();			    
 				    $styledSelect.click(function (e) {
 				        e.stopPropagation();
-				        $('.customSwiper .fin-btn-group').css('z-index',0);
-				        $('div.styledSelect.active').each(function () {
-				            $(this).removeClass('active').next('ul.options').hide();
-				        });
-				        $(this).toggleClass('active').next('ul.options').toggle();
+				        if($scope.disabled != undefined && $scope.disabled =='locked'){
+				        	e.stopPropagation();
+				        	e.preventDefault();
+				        }else{
+				        	$('.customSwiper .fin-btn-group').css('z-index',0);
+				        	$('div.styledSelect.active').each(function () {
+				            	$(this).removeClass('active').next('ul.options').hide();
+				        	});
+				        	$(this).toggleClass('active').next('ul.options').toggle();
+				        }			        
 				    });
 				    $listItems.click(function (e) {
 				        e.stopPropagation();
@@ -210,10 +235,10 @@
 				        $('.customSwiper .fin-btn-group').css('z-index',1000);
 				        $list.hide();
 				    });
-				    if(parseInt($list.outerHeight()) > 400){
+				    if(parseInt($list.outerHeight()) > 400 && $attr['scrollHeight'] == undefined){
 				    	$this.parent().find('.options').mCustomScrollbar({setHeight:300,axis:"y"});
 				    }
-				    console.log($attr['scrollHeight']);
+				    
 				    if($attr['scrollHeight'] != undefined){
 				    	$this.parent().find('.options').mCustomScrollbar({setHeight:parseInt($attr['scrollHeight']),axis:"y"})
 				    }				    		    
@@ -331,9 +356,9 @@
 		        require: '?ngModel',
 		        link: function (scope, elem, attrs, ctrl) {
 		            if (!ctrl) return;
-		            // ctrl.$formatters.unshift(function (a) {
-		            //     return $filter(attrs.format)(ctrl.$modelValue)
-		            // });
+		            ctrl.$formatters.unshift(function (a) {
+		                return $filter(attrs.format)(ctrl.$modelValue)
+		            });
 
 		            ctrl.$parsers.unshift(function (viewValue) {
 		                console.log(viewValue);
@@ -436,6 +461,7 @@
 
     	hcChart.$inject = ['$rootScope'];
     	function hcChart($rootScope){
+    		var chart = null;
     		return {
                 restrict: 'E',
                 template: '<div></div>',
@@ -443,29 +469,24 @@
                     items: '=',
                 },
                 link: function (scope, element) {       	
-                    var chart = Highcharts.chart(element[0], {
-                    	responsive: {
-						  rules: [
-							  {
-							    condition: {
-							      maxWidth: 600
-							    },
-							    chartOptions: {
-							      chart: {
-							        width: 500
-							      }
-							    }
-							  }
-						  ]
-						},
+                    chart = Highcharts.chart(element[0], {
+                    	
                     	chart: {
 			    			backgroundColor : null,
 			    			spacingBottom: 10,
 					        spacingTop: 20,
 					        spacingLeft: 10,
 					        spacingRight: 10,
-					        height: 300,
-					        type: 'line'
+					        type: 'line',
+					        events:{
+				            	load:function(){
+				            		var outerWidth = parseInt($('.chart-cover').outerWidth());
+	                				var applyWidth = outerWidth - 100;
+	                				setTimeout(function(){
+	                					chart.setSize(applyWidth,300);
+	                				},0);			            		
+				            	}
+			            	}
 						},
 						title: {
 							text: ''
@@ -473,7 +494,8 @@
 						yAxis:{
 							title:{
 								text : ''
-							}
+							},
+							lineWidth: 1
 						},
 						xAxis: {
 							categories: [''],
@@ -515,12 +537,148 @@
                     		chart.series[i].update(scope.items[i]);
                     	} 
                     })
+                    $(window).on('resize',function(){
+                    	var outerWidth = parseInt($(element).parent().outerWidth());
+                		var applyWidth = outerWidth - 100;
+                		
+                		setTimeout(function(){
+                			chart.setSize(applyWidth, 300);
+                			setTimeout(function(){
+                				chart.setSize(applyWidth, 300);
+                			},100);
+                		},0);
+                    		             	
+	            	});
                     scope.calculateAmount = function(nav,date){
                     	$rootScope.nav = {};
                     	$rootScope.nav['amount'] = nav * 100;
                     	$rootScope.nav['date'] = date;
                     	if(!$rootScope.$$phase) $rootScope.$apply();
                     }
+                }
+            };
+    	}
+
+    	function goalChart(){
+    		var chart = null;
+    		return {
+                restrict: 'E',
+                template: '<div></div>',
+                scope: {
+                	title:'=',
+                    series : '=',
+                    categories : '=',
+                    interval:'='
+                },
+                link: function (scope, element) {  
+                	chart = Highcharts.chart(element[0], {
+			        chart: {
+			        	backgroundColor : null,
+			            type: 'spline',
+			            events:{
+			            	load:function(){
+			            		var outerWidth = parseInt($(element).parent().outerWidth());
+                				var applyWidth = outerWidth - 50;
+                				setTimeout(function(){
+                					chart.setSize(applyWidth,300);
+                				},100);			            		
+			            	}
+			            }
+			        },
+			        colors:['#4ea1d2','#aedba0'],
+			        legend:false,
+			        credits:{
+			        	enabled : false
+			        },
+			        title: {
+			            text: ''
+			        },
+			        xAxis: {
+			        		categories: scope.categories,
+			            labels: {
+			                align: 'left'
+			            },
+			            tickLength: 0,
+			            tickInterval:scope.interval
+			        },
+			        yAxis: [{
+			        		opposite:true,
+			            title: {
+			                text: scope.title
+			            },
+			            labels: {
+			                enabled: false
+			            },
+			            gridLineWidth: 1,
+			            gridLineDashStyle: 'dash',
+			            lineWidth: 1
+			        }],
+			        tooltip: {
+			           useHTML: true,
+			            borderWidth: 0,
+			            borderRadius: 10,
+			            followTouchMove:true,
+			            shadow: false,
+             			backgroundColor: "rgba(245,245,245,1)",
+			            style: {
+			                padding: 40,
+			            },
+			            formatter: function() {
+			                 return '<span class="chartTooltip">'
+			                 +'<span class="chartYear">'+this.x+'</span>'
+				 				+'<span class="nextline content-first">'
+					 				+'<span class="content">Invested</span>'
+					 				+'<span class="currency">&#8377;</span>'
+					 				+'<span class="amount">'+this.point.invested+'</span>'
+				 				+'</span>'
+								+'<span class="nextline content-secound">'
+				 				+'<span class="content">Projected</span>'
+				 				+'<span class="currency">&#8377;</span>'
+				 				+'<span class="amount">'+this.point.projected+'</span>'
+				 				+'</span></span>';
+						}
+			        },
+			        plotOptions: {
+			            spline: {
+			                lineWidth: 4,
+			                states: {
+			                    hover: {
+			                        lineWidth: 2,
+			                        enabled: true,		                        
+			                    }
+			                },
+			                allowPointSelect: true,
+							cursor: 'pointer',
+							marker: {
+								enabled: false
+							}
+			            },
+			            series:{
+			            	lineWidth:2,
+			            	marker: {
+			             		 states: {
+			                 	hover: {
+			                      enabled: true,
+			                      radiusPlus: 10,
+			                      fillColor: '#f9f9f9',
+			                  }
+			                 },
+			                 symbol:'circle'
+			              }
+			            }
+			        },
+			        series: scope.series
+			    	});
+					$(window).on('resize',function(){
+                    	var outerWidth = parseInt($(element).parent().outerWidth());
+                		var applyWidth = outerWidth - 50;
+                		setTimeout(function(){
+                			chart.setSize(applyWidth, 300);
+                			setTimeout(function(){
+                				chart.setSize(applyWidth, 300);
+                			},100);
+                		},0);
+	            	});
                 }
             };
     	}
@@ -707,4 +865,39 @@
 	            });
 	        }
 	    }
+
+	    goalLoading.$inject = [];
+		function goalLoading(){
+			return{
+				restrict : 'EA',
+			 	templateUrl:'modules/common/views/partials/goalloading.html',
+			 	scope : {
+			 		
+			 	},
+			 	link: function (scope, element, attrs) {
+			 		element.find('.infoTip').addClass('hide');	
+			 		element.find('.info-tip-outer-cover').addClass(scope.className);
+			 		element.find('.infoImage').bind({
+			 			'click':function(){
+			 				if(element.find('.infoTip').hasClass('show')){
+			 					element.find('.infoTip').addClass('bounceOut').removeClass('bounceIn show');
+			 				}else{
+			 					element.find('.infoTip').addClass('show bounceIn').removeClass('hide bounceOut');
+			 				}			 				
+			 			}
+			 		});	 		
+			 	}
+			}
+		}
+
+		function uploadFile(){
+            return {
+              restrict: 'A',
+              link: function(scope, element,attrs) {
+                element.bind('click', function() {
+                    angular.element('#'+attrs.uploadFile).trigger('click');
+                });
+              }
+            };
+        }
 })();

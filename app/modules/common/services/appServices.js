@@ -7,9 +7,11 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
     angular
         .module('finApp.services', [])
         .factory('checkPath', checkPath)
+        .factory('busyIndicator',busyIndicator)
         .factory('userDetailsService', userDetailsService)
-        .factory('finWebInterCepter',finWebInterCepter)
-        .factory('riskProfileService', riskProfileService);
+        .factory('riskProfileService', riskProfileService)
+        .factory('fileUpload',fileUpload)
+        .factory('finWebInterCepter',finWebInterCepter);
 
         function checkPath() {
             return function(locationPath, pages) {
@@ -17,6 +19,21 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
             }
         }
 
+        busyIndicator.$inject = ['$rootScope'];
+	    function busyIndicator($rootScope) {
+	        return {
+	            show: show,
+	            hide: hide
+	        }
+	        function show() {
+	            $rootScope.showLoader = true;
+	            $('body').addClass('disable-scroll');
+	        }
+	        function hide() {
+	            $rootScope.showLoader = false;
+	            $('body').removeClass('disable-scroll');
+	        }
+	    }
         userDetailsService.$inject = ['$resource','$q','appConfig'];
         function userDetailsService($resource,$q,appConfig){
         	return function(){
@@ -70,6 +87,36 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
         	}
         }
         
+        function fileUpload(params){
+        	return function(){
+        		var defer = $q.defer();
+				var getAPI = $resource( 
+					appConfig.API_BASE_URL+'/fileUpload', 
+					{}, {
+						Check: {
+							method:'POST',
+							transformRequest:function(data){
+								var fd = new FormData();
+								angular.forEach(data, function(value, key) {
+									fd.append(key, value);
+								});
+								return fd;
+							}
+						}
+					});
+				getAPI.Check(params,function(data){
+					if(data.status_code == 200){
+						defer.resolve({'success':data.response});
+					}else{
+						defer.resolve({'Message':data.response['message']});
+					}				
+				}, function(err){
+					defer.reject(err);
+				}); 
+				return defer.promise;
+    		}
+        }
+
 	    finWebInterCepter.$inject = ['$q', '$location', '$timeout', '$rootScope', 'appText', 'appConfig'];
 
 	    function finWebInterCepter($q, $location, $timeout, $rootScope, appText, appConfig) {

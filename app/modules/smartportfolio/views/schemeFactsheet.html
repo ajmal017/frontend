@@ -1,0 +1,108 @@
+<section class="compareSchemes">
+<div class="col-md-5 col-lg-5 col-sm-6 col-xs-12">
+		<div class="form-group">
+			<div class="row">
+				<div class="col-xs-4">
+					<img class="img img-responsive" src="assets/images/schemeLogo.png">
+					<p>
+						<img class="schemeRating" src="assets/images/schemeRating.png" ng-repeat="i in [1,2,3,4,5]" />
+					</p>
+					<p>By Morningstar</p>
+				</div>
+				<div class="col-xs-8">
+					<h4>Birla Sun Life Treasury Optimizer Plan - Growth - Regular Plan</h4>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="row">
+				<div class="col-xs-6">
+					<p class="text-center">Moderate</p>
+					<p><img class="img img-responsive" src="assets/images/schemeMeter.png" /></p>
+					<p>Investors understand that their principal will be at moderate risk</p>
+				</div>
+				<div class="col-xs-5 pull-right">
+					<p class="text-right"><span class="sensex-status fg-red">203.5945</span></p>
+
+					<p class="fg-red text-right"><span class="sensex-down"></span>-0.05(-0.03%)</p>
+					<p class="text-right">NAV as of 11-10-2016</p>
+					<p class="text-right">AUM: 6893 Cr</p>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-xs-12 no-padding">
+				<p class="col-md-5 col-sm-5 col-xs-4 no-padding">11.92%</p>
+				<p class="col-md-5 col-sm-5 col-xs-4 no-padding">11.32%</p>
+				<p class="col-md-2 col-sm-2 col-xs-4 no-padding text-center">10.66%</p>
+			</div>
+			<div class="col-xs-12">
+				<img src="assets/images/schemeReturnsPercent.png" class="img img-responsive">
+			</div>
+			<div class="col-xs-12 no-padding">
+				<p class="col-md-5 col-sm-5 col-xs-4 no-padding">1 Year Return</p>
+				<p class="col-md-3 col-sm-3 col-xs-4 no-padding">3 Year Return</p>
+				<p class="col-md-4 col-sm-4 col-xs-4 no-padding text-right">5 Year Return</p>
+				
+			</div>
+		</div>
+</div>
+	<div class="col-md-7 col-lg-7 col-sm-6 col-xs-12">
+		<ul class="chart-main-tabs" ng-init="setChartValue = 'HISTORIC'">
+			<li ng-click="setChartValue = 'HISTORIC'" ng-class="{'activeli':setChartValue == 'HISTORIC'}"><a href="javascript:void(0)" >Historic Performance</a></li>
+			<li ng-click="setChartValue = 'OTHERS'" ng-class="{'activeli':setChartValue == 'OTHERS'}"><a href="javascript:void(0)">Other Comparison</a></li>
+		</ul>
+		<div class="chart-cover" ng-show="setChartValue == 'HISTORIC'" >
+			<ul class="chart-tabs" ng-init="setvalue='3years'">
+				<li ng-click="setvalue = '1month';"><a href="javascript:void(0)" ng-class="{'active':setvalue =='1month'}">1 month</a></li>
+				<li ng-click="setvalue = '3month'" ng-class="{'active':setvalue =='3month'}"><a href="javascript:void(0)">3 month</a></li>
+				<li ng-click="setvalue = '1year';populateGraph('one_year')" ng-class="{'active':setvalue =='1year'}"><a href="javascript:void(0)">1 year</a></li>
+				<li ng-click="setvalue = '3years';populateGraph('three_year')" ng-class="{'active':setvalue =='3years'}"><a href="javascript:void(0)">3 years</a></li>
+				<li ng-click="setvalue = '5years'" ng-class="{'active':setvalue =='5years'}"><a href="javascript:void(0)">5 years</a></li>
+			</ul>
+			<hc-chart ng-if="resultSet" items="resultSet"></hc-chart>
+			<p class="text-right"><span class="addOnlyBold">Rs 10,000</span> invested on {{resultSet[0]['data'][0]['date']}} would be <span class="content" ng-if="$root.nav">Rs.<span class="addOnlyBold">{{$root.nav.amount | currency:''}}</span> on {{$root.nav.date}}</span></p>
+		</div>	
+		<div class="schemes-cover chart-cover scheme-compare-other" ng-show="setChartValue == 'OTHERS'" >
+			<div class="schemes-inner col-xs-12">
+				<div class="col-xs-12">
+					
+					<h3 class="pull-left">SBI Bluechip Fund Regular Growth</h3>
+					<p class="pull-right">AUM Size
+					<span class="highlight nextline">9534 Cr</span>
+					</p>
+					<div class="list-details">
+						<div class="table schemeCompareTable">
+							<div class="thead">
+								<div class="tr">
+									<div class="th">
+										<p>1 Year Return</p>
+									</div>
+									<div class="th">
+										<p>3 Year Return</p>
+									</div>
+									<div class="th">
+										<p>5 Year Return</p>
+									</div>
+								</div>
+							</div>
+							<div class="tbody">
+								<div class="tr">
+									<div class="td">
+										<p>14.30%</p>
+									</div>
+									<div class="td">
+										<p>14.30%</p>
+									</div>
+									<div class="td">
+										<p>14.30%</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>	
+	</div>
+</section>
