@@ -37,6 +37,18 @@
 						'tip' : '<span class="currency">&#8377</span>1 Crore in 20',
 					},
 				]
+			},
+			'riskProfile' : {
+				'low' : 'Low Risk Taker',
+				'belowAverage' : 'Below Average Risk Taker',
+				'average' : 'Average Risk Taker',
+				'aboveAverage' : 'Above Average Risk Taker',
+				'high' : 'High Risk Taker'
+			},
+			'returnRate' : {
+				'equity' : 12,
+				'debt' : 8
 			}
+			
 		});
 })();

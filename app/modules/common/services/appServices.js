@@ -8,7 +8,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
         .module('finApp.services', [])
         .factory('checkPath', checkPath)
         .factory('userDetailsService', userDetailsService)
-        .factory('finWebInterCepter',finWebInterCepter);
+        .factory('finWebInterCepter',finWebInterCepter)
+        .factory('riskProfileService', riskProfileService);
 
         function checkPath() {
             return function(locationPath, pages) {
@@ -40,6 +41,35 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
     		}
         }
 
+        riskProfileService.$inject = ['$rootScope','appConfig'];
+        function riskProfileService($rootScope, appConfig){
+        	return function(){
+        		var risk_score = 7.0,
+        			riskProfile;
+        		if ($rootScope.userFlags && $rootScope.userFlags['risk_score']) {
+        			risk_score = $rootScope.userFlags['risk_score'];
+        		}
+
+        		if (risk_score <= 4) {
+        			riskProfile = appConfig.riskProfile.low;
+        		}
+        		else if (risk_score <= 6) {
+        			riskProfile = appConfig.riskProfile.belowAverage;
+        		}
+        		else if (risk_score <= 7.5) {
+        			riskProfile = appConfig.riskProfile.average;
+        		}
+        		else if (risk_score <= 8.5) {
+        			riskProfile = appConfig.riskProfile.aboveAverage;
+        		}
+        		else {
+        			riskProfile = appConfig.riskProfile.high;
+        		}
+        		
+        		return riskProfile;
+        	}
+        }
+        
 	    finWebInterCepter.$inject = ['$q', '$location', '$timeout', '$rootScope', 'appText', 'appConfig'];
 
 	    function finWebInterCepter($q, $location, $timeout, $rootScope, appText, appConfig) {
