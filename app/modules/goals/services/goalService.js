@@ -31,8 +31,7 @@
         	
             return{
         		computeAssetAllocationCategory : computeAssetAllocationCategory,
-        		computeAssetAllocation : computeAssetAllocation,
-        		computeSIP : computeSIP
+        		computeAssetAllocation : computeAssetAllocation
         	}
 
 	        function computeAssetAllocationCategory(tenure){
@@ -60,7 +59,7 @@
 	        	var assetAllocationTables = $rootScope.assetAllocationTables,
 	        		assetAllocation = {"debt": 100, "equity" : 0},
 	        		tableIndex = -1,
-	        		miSip = 0, minLumpsum = 0;
+	        		minSIP = 0, minLumpsum = 0;
 
 	        	if (typeof(asset_allocation_category) !== "undefined" && asset_allocation_category && assetAllocationTables.length > 0 && asset_allocation_category !== "OnlyDebt") { 
 		        	if (asset_allocation_category === "OnlyEquity") {

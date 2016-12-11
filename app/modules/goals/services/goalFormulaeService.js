@@ -2,7 +2,7 @@
     'use strict';
     angular
         .module('finApp.goals')
-        .factory('goalFormulaeService', goalsService)
+        .factory('goalFormulaeService', goalFormulaeService)
 
         goalFormulaeService.$inject = ['$resource','$rootScope','appConfig','$q', 'assetAllocationService'];
         function goalFormulaeService($resource,$rootScope,appConfig,$q, assetAllocationService){
@@ -12,9 +12,9 @@
         	
 	        	var years = tenure || 0,
 	        	    months = years * 12,
-	        	    monthlyRatePlus1 = float(1 + monthlyRate);
+	        	    monthlyRatePlus1 = parseFloat(1 + monthlyRate);
 
-	        	var assetPercentageNorm = float((assetPercentage)/100),
+	        	var assetPercentageNorm = parseFloat((assetPercentage)/100),
 	        		
 	        		assetPow = Math.pow(monthlyRatePlus1, months);
 	        	
@@ -36,8 +36,8 @@
 	        		return 0;
 	        	}
 	        	
-	        	var MONTH_FRACTION = float(1/12),
-	        		yearlyRate = float(yearlyRatePercentage/100);
+	        	var MONTH_FRACTION = parseFloat(1/12),
+	        		yearlyRate = parseFloat(yearlyRatePercentage/100);
 	        	
 	        	return Math.pow((1 + yearlyRate), MONTH_FRACTION) - 1;
 	        }
@@ -51,15 +51,15 @@
 
 	        	var years = goalData.tenure || 0,
 	        	    corpus = goalData.corpus || 0,
-	        	    lumpsum = goal.lumpsum || 0;
+	        	    lumpsum = goalData.lumpsum || 0;
 	        	
 
 	        	var assetAllocationData = assetAllocationService.computeAssetAllocation(assetAllocationCategory, 0, lumpsum),
 	        		assetAllocation = assetAllocationData.assetAllocation;
 	        	
 	        	
-	        	var equityPercentage = float(assetAllocation.equity || 0),
-	        		debtPercentage = float(assetAllocation.debt || 100);
+	        	var equityPercentage = parseFloat(assetAllocation.equity || 0),
+	        		debtPercentage = parseFloat(assetAllocation.debt || 100);
 	        		
 	        	var equityComponents = computeFVComponents.call(this, appConfig.returnRate.equity, equityPercentage, years),
 	        		debtComponents = computeFVComponents.call(this, appConfig.returnRate.debt, debtPercentage, years);
@@ -91,15 +91,15 @@
 
 	        	var years = goalData.tenure || 0,
 	        	    sip = goalData.sip || 0,
-	        	    lumpsum = goal.lumpsum || 0;
+	        	    lumpsum = goalData.lumpsum || 0;
 	        	
 
 	        	var assetAllocationData = assetAllocationService.computeAssetAllocation(assetAllocationCategory, sip, lumpsum),
 	        		assetAllocation = assetAllocationData.assetAllocation;
 	        	
 	        	
-	        	var equityPercentage = float(assetAllocation.equity || 0),
-	        		debtPercentage = float(assetAllocation.debt || 100);
+	        	var equityPercentage = parseFloat(assetAllocation.equity || 0),
+	        		debtPercentage = parseFloat(assetAllocation.debt || 100);
 	        		
 	        	var equityComponents = computeFVComponents.call(this, appConfig.returnRate.equity, equityPercentage, years),
 	        		debtComponents = computeFVComponents.call(this, appConfig.returnRate.debt, debtPercentage, years);

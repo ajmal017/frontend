@@ -38,15 +38,15 @@
 					else {
 						$scope.retirement['assetAllocationCategory'] = "A"; //TODO define constants, default category
 					}
-					$scope.broadcast('assetAllocationCategoryChanged');
-					if(!$scope.$$phase)	$scope.$apply();
+					$scope.$broadcast('assetAllocationCategoryChanged');
 				});
 
 			}
 			$scope.calculateRecommendedSIP = function(corpus) {
-				var calculateSIP - function() {
+				var calculateSIP = function() {
 					$scope.retirement['perMonth'] = goalFormulaeService.computeSIPForCorpus({'corpus': corpus, 'tenure': $scope.retirement['tenure'] }, $scope.retirement['assetAllocationCategory']);
-					if(!$scope.$$phase)	$scope.$apply();
+					$scope.modelVal.A5 = $scope.retirement['perMonth']; 
+					$scope.retirement['corpus'] = corpus;
 				};
 				
 				if (!$scope.retirement['assetAllocationCategory']) {
@@ -58,9 +58,8 @@
 			}
 
 			$scope.calculateCorpus = function(sipAmount) {
-				var calculateCorpus - function() {
-					goalFormulaeService.computeSIPForCorpus({'sip': sipAmount, 'tenure': $scope.retirement['tenure'] }, $scope.retirement['assetAllocationCategory']);
-					if(!$scope.$$phase)	$scope.$apply();
+				var calculateCorpus = function() {
+					$scope.retirement['corpus'] = goalFormulaeService.computeCorpusForSIP({'sip': sipAmount, 'tenure': $scope.retirement['tenure'] }, $scope.retirement['assetAllocationCategory']);
 				};
 				
 				if (!$scope.retirement['assetAllocationCategory']) {
