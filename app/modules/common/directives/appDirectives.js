@@ -25,6 +25,7 @@
 		.directive('accordian',accordian)
 		.directive('goalLoading',goalLoading)
 		.directive('uploadFile',uploadFile)
+		.directive('getFileUploaded',getFileUploaded)
 		.directive('captureVideo',captureVideo);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
@@ -902,12 +903,41 @@
             };
         }
 
-        function captureVideo(){
+        function getFileUploaded(){
         	return {
               restrict: 'A',
-              scope:{
-              	capturedFile : '='
-              },
+
+              link: function(scope, element,attrs) {
+                element.on('change', function() {
+                	var file = element[0].files[0];
+                	var outVideo = document.getElementById('outputVideo');
+                	var thumbnail = document.getElementById('outputImage');
+                	var videoSrc = URL.createObjectURL(file);
+                	outVideo.src = videoSrc;
+                	var canvas = document.createElement("canvas");
+                	canvas.width = 100;
+                	canvas.height = 100;
+                	outVideo.currentTime = 10;
+                	setTimeout(function(){
+                		canvas.getContext('2d').drawImage(outVideo, 0, 0, canvas.width, canvas.height);
+	                	var img = document.createElement("img");
+	        			img.src = canvas.toDataURL();
+	        			console.log(img.src);
+	        			thumbnail.prepend(img);
+	        			$rootScope.capturedFile = {
+			        		'blob' : file,
+			        		'thumbnail' : img.src
+			        	};
+                	},1000);                	
+                });
+              }
+            };
+        }
+
+        captureVideo.$inject = ['$rootScope'];
+        function captureVideo($rootScope){
+        	return {
+              restrict: 'A',
               link: function(scope, element,attrs) {
                 var player = videojs(element[0], {
 				    controls: true,
@@ -919,7 +949,8 @@
 				            video: true,
 				            maxLength: 10,
 				            debug: true,
-				            videoMimeType:'video/mp4'
+				            videoMimeType:'video/mp4',
+				            maxLength: 60,
 				        }
 				    }
 				});
@@ -931,8 +962,26 @@
 				    console.log('started recording!');
 				});
 				player.on('finishRecord', function(){
-					scope.$apply(function () {
-			        	scope.capturedFile = player.recordedData;
+					$rootScope.$apply(function () {
+			        	var outVideo = document.getElementById('outputVideo');
+	                	var thumbnail = document.getElementById('outputImage');
+	                	outVideo.src = $('.vjs-tech').attr('src');
+	                	var canvas = document.createElement("canvas");
+	                	canvas.width = 100;
+	                	canvas.height = 100;
+	                	outVideo.currentTime = 2;
+	                	setTimeout(function(){
+	                		canvas.getContext('2d').drawImage(outVideo, 0, 0, canvas.width, canvas.height);
+		                	var img = document.createElement("img");
+		        			img.src = canvas.toDataURL();
+		        			console.log(img.src);
+		        			thumbnail.prepend(img);
+		        			$rootScope.capturedFile = {
+				        		'blob' : player.recordedData,
+				        		'thumbnail' : img.src
+				        	};
+	                	},1000); 
+
 			        });					
 				});
               }

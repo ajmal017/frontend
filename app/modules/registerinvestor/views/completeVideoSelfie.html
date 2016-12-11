@@ -1,3 +1,21 @@
 <section class="swiper-outer-cover">
-	<swiper swiper-name="videoSelfie" controller-name="registerInvestorController" result="resultObject" callback-fn="appendFormValues(data)" indicator-end="Video Selfie"></swiper>
+	<swiper swiper-name="videoSelfie" controller-name="registerInvestorController" indicator-end="Video Selfie"></swiper>
+</section>
+<div class="modal fade fade-scale" id="videoCapptureModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="fadeIn modal-wrapper">
+        <button data-dismiss="modal" class="modal-close"></button>
+        <input get-file-uploaded id="uploadVideo" accept="video/*" style="display:none" type='file'/>
+        <video capture-video class="video-js vjs-default-skin"></video>
+        <div class="fin-btn-group">
+        <video style="display:none" id="outputVideo"></video>
+        <div id="outputImage"></div>
+          <button class="fin-app-btn fin-skip-btn pull-left" ng-click="clear()">SAVE RECORDED VIDEO</button>
+          <button class="fin-app-btn fin-orange pull-right" ng-click="done()" upload-file="uploadVideo">UPLOAD FROM GALLERY</button>
+        </div>        
+        </div>
+      </div>
+    </div>
+  </div>
 </section>

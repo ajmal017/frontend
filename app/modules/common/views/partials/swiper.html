@@ -2633,7 +2633,7 @@
         <div class="swiper-slide">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content noPadding swiperReduceBottomPadding">
-                    <input id='upload' accept=".jpg, .png, .jpeg" style="display:none" onchange="angular.element(this).scope().imageUpload(this)" type='file'/>
+                    <input id='upload' accept=".jpg, .png, .jpeg" style="display:none" autoplay onchange="angular.element(this).scope().imageUpload(this)" type='file'/>
                     <div class="upload-image-cover" upload-file="upload">
                         <div class="image-div">
                             <img src="assets/images/uploadPic.png">
@@ -2817,7 +2817,7 @@
                       </ul>
                   </div>
                   <div class="col-xs-4">
-                    <div class="upload-image-cover">
+                    <div class="upload-image-cover" ng-click="showVideoPopup()">
                       <div class="image-div">
                           <img src="assets/images/investorregistration_video.png">
                           <img ng-if="user_female" src="assets/images/investorregistration_video.png">

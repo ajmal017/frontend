@@ -47,5 +47,8 @@
 	        $scope.uploadFileToServer = function(){
 
 	        }
+	        $scope.showVideoPopup = function(){
+	        	$('#videoCapptureModal').modal('show');
+	        }
 		}
 })();

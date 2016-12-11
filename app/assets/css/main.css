@@ -4814,24 +4814,37 @@ input.datepicker::placeholder {
 .customPanel .panel-table .tbody .tr .td:nth-child(4) .money-value {
   float: right;
 }
-#signitureModal .modal-dialog {
+#signitureModal .modal-dialog,
+#videoCapptureModal .modal-dialog {
   width: 30%;
 }
-#signitureModal .modal-content {
+#signitureModal .modal-content,
+#videoCapptureModal .modal-content {
   width: 100%;
 }
-#signitureModal .modal-wrapper {
+#signitureModal .modal-wrapper,
+#videoCapptureModal .modal-wrapper {
   padding: 20px;
 }
-#signitureModal .signature {
+#signitureModal .signature,
+#videoCapptureModal .signature {
   margin: 0 auto;
   margin-bottom: 20px;
   width: 320px!important;
   height: 250px!important;
 }
-#signitureModal .signature canvas {
+#signitureModal .signature canvas,
+#videoCapptureModal .signature canvas {
   width: 320px!important;
   height: 250px!important;
+}
+#videoCapptureModal .modal-dialog .modal-wrapper {
+  padding: 40px;
+  padding-top: 56px;
+}
+#videoCapptureModal .modal-dialog .video-js {
+  margin: 0 auto;
+  margin-bottom: 10px!important;
 }
 /* place fullscreen control on right side of the player */
 .video-js .vjs-control.vjs-fullscreen-control {
