@@ -33,6 +33,7 @@
 				
 				assetAllocationService.computeAssetAllocationCategory(tenure).then(function(data){
 					if('success' in data){
+						console.log("Success asset category: " + data.success['asset_allocation_category']);
 						$scope.retirement['assetAllocationCategory'] = data.success['asset_allocation_category'];
 					}
 					else {
@@ -44,7 +45,9 @@
 			}
 			$scope.calculateRecommendedSIP = function(corpus) {
 				var calculateSIP = function() {
-					$scope.retirement['perMonth'] = goalFormulaeService.computeSIPForCorpus({'corpus': corpus, 'tenure': $scope.retirement['tenure'] }, $scope.retirement['assetAllocationCategory']);
+					var computedSIPData = goalFormulaeService.computeSIPForCorpus({'corpus': corpus, 'tenure': $scope.retirement['tenure'] }, $scope.retirement['assetAllocationCategory']);
+					$scope.retirement['perMonth'] = computedSIPData.computedSIP;
+					$scope.retirement['assetAllocation'] = computedSIPData.assetAllocation;
 					$scope.modelVal.A5 = $scope.retirement['perMonth']; 
 					$scope.retirement['corpus'] = corpus;
 				};
@@ -59,7 +62,10 @@
 
 			$scope.calculateCorpus = function(sipAmount) {
 				var calculateCorpus = function() {
-					$scope.retirement['corpus'] = goalFormulaeService.computeCorpusForSIP({'sip': sipAmount, 'tenure': $scope.retirement['tenure'] }, $scope.retirement['assetAllocationCategory']);
+					var computedSIPData = goalFormulaeService.computeCorpusForSIP({'sip': sipAmount, 'tenure': $scope.retirement['tenure'] }, $scope.retirement['assetAllocationCategory']);
+					$scope.retirement['corpus'] = computedSIPData.computedCorpus;
+					$scope.retirement['assetAllocation'] = computedSIPData.assetAllocation;
+					console.log("calculateCorpus: " + JSON.stringify(computedSIPData.assetAllocation) + " corpus: " + computedSIPData.computedCorpus);
 				};
 				
 				if (!$scope.retirement['assetAllocationCategory']) {

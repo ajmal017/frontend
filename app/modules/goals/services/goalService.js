@@ -31,7 +31,8 @@
         	
             return{
         		computeAssetAllocationCategory : computeAssetAllocationCategory,
-        		computeAssetAllocation : computeAssetAllocation
+        		computeAssetAllocation : computeAssetAllocation,
+        		getPossibleAssetAllocations : getPossibleAssetAllocations 
         	}
 
 	        function computeAssetAllocationCategory(tenure){
@@ -55,21 +56,19 @@
 				return defer.promise;
 	        }
 
-	        function computeAssetAllocation(asset_allocation_category, sip, lumpsum){
+	        function computeAssetAllocation(assetAllocationCategory, sip, lumpsum){
 	        	var assetAllocationTables = $rootScope.assetAllocationTables,
 	        		assetAllocation = {"debt": 100, "equity" : 0},
 	        		tableIndex = -1,
 	        		minSIP = 0, minLumpsum = 0;
 
-	        	if (typeof(asset_allocation_category) !== "undefined" && asset_allocation_category && assetAllocationTables.length > 0 && asset_allocation_category !== "OnlyDebt") { 
-		        	if (asset_allocation_category === "OnlyEquity") {
+	        	if (typeof(assetAllocationCategory) !== "undefined" && assetAllocationCategory && assetAllocationTables.length > 0 && assetAllocationCategory !== appConfig.assetAllocationCategory.OnlyDebt) { 
+		        	if (assetAllocationCategory === appConfig.assetAllocationCategory.OnlyEquity) {
 		        		assetAllocation = {"debt": 0, "equity" : 100};
 		        	}
 		        	else {
-			        	if (sip == 0 && lumpsum == 0) {
-			        		tableIndex = assetAllocationTables.length - 1;
-			        	}
-			        	else {
+		        		tableIndex = assetAllocationTables.length - 1;
+		        		if (sip != 0 || lumpsum != 0) {
 				        	for(var i=0; i< assetAllocationTables.length; i++) {
 				        		if (sip <= assetAllocationTables[i].sip_max && lumpsum <= assetAllocationTables[i].lumpsum_max) {
 				        			tableIndex = i;
@@ -77,7 +76,8 @@
 				        		}
 				        	}
 			        	}
-			        	assetAllocation = assetAllocationTables[tableIndex]['table'][asset_allocation_category];
+			        	
+			        	assetAllocation = assetAllocationTables[tableIndex]['table'][assetAllocationCategory];
 			        	
 			        	if (tableIndex > 0) {
 			        		minSIP = assetAllocationTables[tableIndex - 1].sip_max + 1;
@@ -86,6 +86,40 @@
 		        	}
 	        	}
 	        	return {"assetAllocation" : assetAllocation, "tableIndex" : tableIndex, "minSIP" : minSIP, "minLumpsum" : minLumpsum};
+	        }
+	        
+	        function getPossibleAssetAllocations(assetAllocationCategory, sip, lumpsum) {
+	        	var assetAllocationTables = $rootScope.assetAllocationTables,
+	        	possibleAssetAllocations = [],
+	        	assetAllocation,
+        		minSIP = 0, minLumpsum = 0;
+
+	        	if (typeof(assetAllocationCategory) !== "undefined" && assetAllocationCategory && assetAllocationTables.length > 0 ) { 
+	        		if (assetAllocationCategory === appConfig.assetAllocationCategory.OnlyDebt) {
+	        			assetAllocation = {"debt": 100, "equity" : 0};
+	        			possibleAssetAllocations.push({"assetAllocation" : assetAllocation, "tableIndex" : -1, "minSIP" : minSIP, "minLumpsum" : minLumpsum});
+	        		}
+	        		else if (assetAllocationCategory === appConfig.assetAllocationCategory.OnlyEquity) {
+		        		assetAllocation = {"debt": 0, "equity" : 100};
+		        		possibleAssetAllocations.push({"assetAllocation" : assetAllocation, "tableIndex" : -1, "minSIP" : minSIP, "minLumpsum" : minLumpsum});
+		        	}
+		        	else {
+		        		console.log("in possible allocations: " + assetAllocationTables.length);
+			        	for(var i=0; i< assetAllocationTables.length; i++) {
+			        		if ((sip == 0 || sip <= assetAllocationTables[i].sip_max) && (lumpsum == 0 || lumpsum <= assetAllocationTables[i].lumpsum_max)) {
+					        	if (i > 0) {
+					        		minSIP = assetAllocationTables[i - 1].sip_max + 1;
+					        		minLumpsum = assetAllocationTables[i - 1].lumpsum_max + 1;
+					        	}
+
+					        	assetAllocation = assetAllocationTables[i]['table'][assetAllocationCategory];
+			        			possibleAssetAllocations.push({"assetAllocation" : assetAllocation, "tableIndex" : i, "minSIP" : minSIP, "minLumpsum" : minLumpsum});
+			        		}
+			        	}
+		        	}
+		        }
+		        return possibleAssetAllocations;
+	        	
 	        }
         }     
 

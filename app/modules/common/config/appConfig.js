@@ -48,6 +48,15 @@
 			'returnRate' : {
 				'equity' : 12,
 				'debt' : 8
+			},
+			'assetAllocationCategory' : {
+				'OnlyEquity' : 'OnlyEquity',
+				'OnlyDebt' : 'OnlyDebt',
+				'A' : 'A',
+				'B' : 'B',
+				'C' : 'C',
+				'D' : 'D',
+				'E' : 'E'
 			}
 			
 		});
