@@ -9,6 +9,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
         .factory('checkPath', checkPath)
         .factory('busyIndicator',busyIndicator)
         .factory('userDetailsService', userDetailsService)
+        .factory('riskProfileService', riskProfileService)
         .factory('fileUpload',fileUpload)
         .factory('finWebInterCepter',finWebInterCepter);
 
@@ -57,7 +58,35 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
     		}
         }
 
+        riskProfileService.$inject = ['$rootScope','appConfig'];
+        function riskProfileService($rootScope, appConfig){
+        	return function(){
+        		var risk_score = 7.0,
+        			riskProfile;
+        		if ($rootScope.userFlags && $rootScope.userFlags['risk_score']) {
+        			risk_score = $rootScope.userFlags['risk_score'];
+        		}
 
+        		if (risk_score <= 4) {
+        			riskProfile = appConfig.riskProfile.low;
+        		}
+        		else if (risk_score <= 6) {
+        			riskProfile = appConfig.riskProfile.belowAverage;
+        		}
+        		else if (risk_score <= 7.5) {
+        			riskProfile = appConfig.riskProfile.average;
+        		}
+        		else if (risk_score <= 8.5) {
+        			riskProfile = appConfig.riskProfile.aboveAverage;
+        		}
+        		else {
+        			riskProfile = appConfig.riskProfile.high;
+        		}
+        		
+        		return riskProfile;
+        	}
+        }
+        
         function fileUpload(params){
         	return function(){
         		var defer = $q.defer();

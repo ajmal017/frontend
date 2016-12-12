@@ -63,6 +63,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 	run.$inject = ['$route','$routeParams','$rootScope','$location','appConfig','checkPath','busyIndicator'];
 	function run($route,$routeParams,$rootScope,$location,appConfig,checkPath,busyIndicator){
 		$rootScope.userDetails = JSON.parse(sessionStorage.getItem('userDetails'))||{};
+		$rootScope.assetAllocationTables = JSON.parse(sessionStorage.getItem('assetAllocationTables'))||[];
 		$rootScope.drawerOpen = false;
 		$rootScope.selectedCriteria = null;
 		var history = [],prevUrl,pos;
@@ -94,6 +95,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		$rootScope.$on('userloggedIn', function(event, data) {
 			sessionStorage.setItem('userDetails', JSON.stringify({'user':data['user']}));
 			sessionStorage.setItem('tokens', JSON.stringify({'tokens':data['tokens']}));
+			sessionStorage.setItem('assetAllocationTables', JSON.stringify(data['asset_allocation_tables']));
+			$rootScope.assetAllocationTables = JSON.parse(sessionStorage.getItem('assetAllocationTables'))||[];
 		});
 		$rootScope.$on('refreshCredentials', function(event, data) {
 			sessionStorage.setItem('userFlags', JSON.stringify(data));

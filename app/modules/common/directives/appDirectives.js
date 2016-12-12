@@ -24,7 +24,9 @@
 		.directive('customScrollBar',customScrollBar)
 		.directive('accordian',accordian)
 		.directive('goalLoading',goalLoading)
-		.directive('uploadFile',uploadFile);
+		.directive('uploadFile',uploadFile)
+		.directive('getFileUploaded',getFileUploaded)
+		.directive('captureVideo',captureVideo);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -897,6 +899,91 @@
                 element.bind('click', function() {
                     angular.element('#'+attrs.uploadFile).trigger('click');
                 });
+              }
+            };
+        }
+
+        function getFileUploaded(){
+        	return {
+              restrict: 'A',
+
+              link: function(scope, element,attrs) {
+                element.on('change', function() {
+                	var file = element[0].files[0];
+                	var outVideo = document.getElementById('outputVideo');
+                	var thumbnail = document.getElementById('outputImage');
+                	var videoSrc = URL.createObjectURL(file);
+                	outVideo.src = videoSrc;
+                	var canvas = document.createElement("canvas");
+                	canvas.width = 100;
+                	canvas.height = 100;
+                	outVideo.currentTime = 10;
+                	setTimeout(function(){
+                		canvas.getContext('2d').drawImage(outVideo, 0, 0, canvas.width, canvas.height);
+	                	var img = document.createElement("img");
+	        			img.src = canvas.toDataURL();
+	        			console.log(img.src);
+	        			thumbnail.prepend(img);
+	        			$rootScope.capturedFile = {
+			        		'blob' : file,
+			        		'thumbnail' : img.src
+			        	};
+                	},1000);                	
+                });
+              }
+            };
+        }
+
+        captureVideo.$inject = ['$rootScope'];
+        function captureVideo($rootScope){
+        	return {
+              restrict: 'A',
+              link: function(scope, element,attrs) {
+                var player = videojs(element[0], {
+				    controls: true,
+				    width: 320,
+				    height: 240,
+				    plugins: {
+				        record: {
+				            audio: true,
+				            video: true,
+				            maxLength: 10,
+				            debug: true,
+				            videoMimeType:'video/mp4',
+				            maxLength: 60,
+				        }
+				    }
+				});
+				player.on('deviceError', function(){
+				    console.log('device error:', player.deviceErrorCode);
+				});
+
+				player.on('startRecord', function(){
+				    console.log('started recording!');
+				});
+				player.on('finishRecord', function(){
+					$rootScope.$apply(function () {
+			        	var outVideo = document.getElementById('outputVideo');
+	                	var thumbnail = document.getElementById('outputImage');
+	                	outVideo.src = $('.vjs-tech').attr('src');
+	                	var canvas = document.createElement("canvas");
+	                	canvas.width = 100;
+	                	canvas.height = 100;
+	                	outVideo.currentTime = 2;
+	                	setTimeout(function(){
+	                		canvas.getContext('2d').drawImage(outVideo, 0, 0, canvas.width, canvas.height);
+		                	var img = document.createElement("img");
+		        			img.src = canvas.toDataURL();
+		        			console.log(img.src);
+		        			thumbnail.prepend(img);
+		        			$rootScope.capturedFile = {
+				        		'blob' : player.recordedData,
+				        		'thumbnail' : img.src
+				        	};
+	                	},1000); 
+
+			        });					
+				});
               }
             };
         }
