@@ -87,7 +87,7 @@
 							goalEstimates = {};
 						
 						for (var i=0; i<goalCorpusEstimates.length; i++) {
-							var computedSIPData = goalFormulaeService.computeSIPForCorpus({'corpus': goalCorpusEstimates[i].corpus, 'tenure': $scope.retirement['tenure'] }, $scope.retirement['assetAllocationCategory']);
+							var computedSIPData = goalFormulaeService.computeSIPForCorpus({'corpus': goalCorpusEstimates[i].corpus, 'tenure': retirementAge - currentAge }, $scope.retirement['assetAllocationCategory']);
 							goalEstimates[goalCorpusEstimates[i].estimate_type] = {'corpus': goalCorpusEstimates[i].corpus,
 																'sip' : computedSIPData.computedSIP,
 																'assetAllocation' : computedSIPData.assetAllocation};

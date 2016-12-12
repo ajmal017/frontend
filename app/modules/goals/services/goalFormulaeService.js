@@ -26,8 +26,8 @@
         	},
         	
         	calculateSIP = function(years, corpus, lumpsum, assetAllocation) {
-	        	var equityPercentage = parseFloat(assetAllocation.equity || 0),
-        			debtPercentage = parseFloat(assetAllocation.debt || 100);
+	        	var equityPercentage = parseFloat(assetAllocation.equity),
+        			debtPercentage = parseFloat(assetAllocation.debt);
         		
 	        	var equityComponents = computeFVComponents.call(this, appConfig.returnRate.equity, equityPercentage, years),
 	        		debtComponents = computeFVComponents.call(this, appConfig.returnRate.debt, debtPercentage, years);
@@ -135,8 +135,8 @@
 	        		assetAllocation = assetAllocationData.assetAllocation;
 	        	
 	        	
-	        	var equityPercentage = parseFloat(assetAllocation.equity || 0),
-	        		debtPercentage = parseFloat(assetAllocation.debt || 100);
+	        	var equityPercentage = parseFloat(assetAllocation.equity),
+	        		debtPercentage = parseFloat(assetAllocation.debt);
 	        		
 	        	var equityComponents = computeFVComponents.call(this, appConfig.returnRate.equity, equityPercentage, years),
 	        		debtComponents = computeFVComponents.call(this, appConfig.returnRate.debt, debtPercentage, years);
