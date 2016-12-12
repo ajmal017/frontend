@@ -5,9 +5,9 @@
 		.controller('retirementGoalsController',retirementGoalsController);
 
 		retirementGoalsController.$inject = ['$scope','$rootScope','$route','$location',
-		                                     'goalsService','retirementGoalsService', 'assetAllocationService', 'goalFormulaeService']
+		                                     'goalsService','retirementGoalsService', 'assetAllocationService', 'goalFormulaeService', 'appConfig']
 		function retirementGoalsController($scope,$rootScope,$route,$location,goalsService,retirementGoalsService, 
-											assetAllocationService, goalFormulaeService) {
+											assetAllocationService, goalFormulaeService, appConfig) {
 			$scope.retirement = {};
 			$scope.modelVal = retirementGoalsService.getSavedValues();
 			$scope.showEquityModal = function(){
@@ -48,7 +48,7 @@
 					var computedSIPData = goalFormulaeService.computeSIPForCorpus({'corpus': corpus, 'tenure': $scope.retirement['tenure'] }, $scope.retirement['assetAllocationCategory']);
 					$scope.retirement['perMonth'] = computedSIPData.computedSIP;
 					$scope.retirement['assetAllocation'] = computedSIPData.assetAllocation;
-					$scope.modelVal.A5 = $scope.retirement['perMonth']; 
+					$scope.modelVal.A5 = $scope.modelVal.A5 || $scope.retirement['perMonth']; 
 					$scope.retirement['corpus'] = corpus;
 				};
 				
@@ -68,12 +68,47 @@
 					console.log("calculateCorpus: " + JSON.stringify(computedSIPData.assetAllocation) + " corpus: " + computedSIPData.computedCorpus);
 				};
 				
+				if ($scope.modelVal.A5 == $scope.retirement.perMonth)
+					return;
+				
 				if (!$scope.retirement['assetAllocationCategory']) {
 					$scope.$on('assetAllocationCategoryChanged', calculateCorpus);
 				}
 				else {
 					calculateCorpus();
 				}
+			}
+			
+			$scope.calculateEstimates = function(currentAge, retirementAge, monthlyIncome, amountSaved) {
+				retirementGoalsService.getCorpusEstimates(currentAge, retirementAge, monthlyIncome, amountSaved).then(function(data){
+					if('success' in data){
+						console.log("Success goal_estimation: " + data.success['goal_estimation']);
+						var goalCorpusEstimates = data.success['goal_estimation'],
+							goalEstimates = {};
+						
+						for (var i=0; i<goalCorpusEstimates.length; i++) {
+							var computedSIPData = goalFormulaeService.computeSIPForCorpus({'corpus': goalCorpusEstimates[i].corpus, 'tenure': $scope.retirement['tenure'] }, $scope.retirement['assetAllocationCategory']);
+							goalEstimates[goalCorpusEstimates[i].estimate_type] = {'corpus': goalCorpusEstimates[i].corpus,
+																'sip' : computedSIPData.computedSIP,
+																'assetAllocation' : computedSIPData.assetAllocation};
+						}
+						
+						$scope.retirement['goalEstimates'] = goalEstimates;
+						if (!$scope.activeTab) {
+							$scope.activeTab = "COMFORT";
+							$scope.estimateSelectionChanged(appConfig.estimateType.COMFORTABLE);
+						}
+					}
+				});
+			}
+			
+			$scope.estimateSelectionChanged = function(selectionType) {
+				
+				$scope.modelVal.A4 = $scope.retirement.goalEstimates[selectionType].corpus;
+				$scope.modelVal.A5 = $scope.retirement.goalEstimates[selectionType].sip;
+				$scope.retirement['corpus'] = $scope.retirement.goalEstimates[selectionType].corpus;
+				$scope.retirement['perMonth'] = $scope.retirement.goalEstimates[selectionType].sip;
+				$scope.retirement['assetAllocation'] = $scope.retirement.goalEstimates[selectionType].assetAllocation;
 			}
 
 			$scope.graphObject = goalsService.getGoalGraphDetails();
