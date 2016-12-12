@@ -145,6 +145,7 @@
 							</div>
 						</div>
 						<div class="col-xs-6">
+							
 						</div>
 						<div class="panel-group customPanel" id="accordion" role="tablist" aria-multiselectable="true">
 						  <div class="panel panel-default">
@@ -496,6 +497,45 @@
 						 </div>
 					</div>							
 				</div>	
+				<div class="chart-cover transaction-cover" ng-show="setChartValue == 'TRANSACTION'" custom-scroll-bar>
+					<div class="schemes-inner col-xs-12">
+						<div class="col-xs-12">
+							
+							<h2 class="pull-left">SBI Bluechip Fund Regular Growth</h3>
+							<p class="target-amount"><span class="content highlight"><span class="currency">&#8377;</span><span class="content ng-binding">16.90 L</span></span></p>
+							<div class="list-details">
+								<div class="table schemeCompareTable">
+									<div class="thead">
+										<div class="tr">
+											<div class="th">
+												<p>1 Year Return</p>
+											</div>
+											<div class="th">
+												<p>3 Year Return</p>
+											</div>
+											<div class="th">
+												<p>5 Year Return</p>
+											</div>
+										</div>
+									</div>
+									<div class="tbody">
+										<div class="tr">
+											<div class="td">
+												<p>14.30%</p>
+											</div>
+											<div class="td">
+												<p>14.30%</p>
+											</div>
+											<div class="td">
+												<p>14.30%</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="chart-cover" ng-show="setChartValue == 'PORFOLIO_TRACKER'" >
 					<h3 class="chart-main-header">Portfolio Performance Since Inception</h3>
 					<hc-chart ng-if="resultSet" items="resultSet"></hc-chart>
@@ -514,37 +554,166 @@
 					<img src="assets/images/saveTax.png" class="img img-responsive">
 				</div>
 				<div class="col-xs-10">
-					<div class="form-group">
+					<div class="row">
 						<div class="col-xs-9 no-padding">
 							<p class="finance-desc"><span class="content">Tax Saving Plan</span><span class="nextline placeholder addOnlyBold">ON TRACK</span></p>
 						</div>
 						<div class="col-xs-3 no-padding">
-							<p><span class="placeholder">Expected corpus in 2021</span></p>
+							<p class="no-margin"><span class="placeholder">Expected corpus in 2021</span></p>
 							<p class="target-amount"><span class="content highlight"><span class="currency">&#8377</span><span class="content ng-binding">16.90 L</span></span></p>
 						</div>
 					</div>
 
-					<div class="form-group">
-						<div class="col-xs-12">
+					<div class="row">
+						<div class="no-padding col-xs-12">
 							<div class="progress">
 							    <div class="progress-bar" role="progressbar" ng-style="{'width':'71.2%'}" style="width: 71.2%;">
-							    <span class="progress-price"><span class="currency">₹</span><span class="amount ng-binding">12.00 L</span></span>
+							    <span class="progress-price"><span class="currency">&#8377</span><span class="amount ng-binding">12.00 L</span></span>
 							    <span class="progress-percentage placeholder">71.2%</span>
 							    </div>
 							</div>
 						</div>
 					</div>
-
+					<div class="row">
+						<div class="table-outer-cover schemeTable finGoalStatusTable">
+							<div class="thead">
+								<div class="tr">
+									<div class="col-xs-3">
+										<p>Lumpsum</p>
+									</div>
+									<div class="col-xs-3">
+										<p>SIP</p>
+									</div>
+									<div class="col-xs-2">
+										<p>Duration</p>
+									</div>
+									<div class="col-xs-4">
+										<p>Asset Allocation</p>
+									</div>
+								</div>
+							</div>
+							<div class="tbody">
+								<div class="tr">
+									<div class="col-xs-3">
+										<p><span class="currency">&#8377;</span>1000000</p>
+									</div>
+									<div class="col-xs-3">
+										<p><span class="currency">&#8377;</span>10000</p>
+									</div>
+									<div class="col-xs-2">
+										<p>5 years</p>
+									</div>
+									<div class="col-xs-4">
+										<span class="debt_percent">Debt 20%</span>
+										<span class="equity_percent">Equity 80%</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="col-xs-12 bottom-desc">
-				<p><span class="bottom-label">Amount in Debt:</span><span class="amount-cover less"><span class="currency">&#8377</span><span class="amount">800</span></span></p>
-				<p><span class="bottom-label">Amount in Equity:</span><span class="amount-cover"><span class="currency">&#8377</span><span ng-bind="equityValue|currency:''"></span><span class="amount">1250</span></p>
-				<p class="note" ng-if="false">Note: Investment in Debt and Equity funds below minimum limit <span class="currency">&#8377</span><span class="amount"><span class="amount">1000</span></span></p>
-				<p class="note" ng-if="true">Note: Investment in Debt funds below minimum limit <span class="currency">&#8377</span><span class="amount">1000</span></p>
-				<p class="note" ng-if="false">Note: Investment in Equity funds below minimum limit <span class="currency">&#8377</span><span class="amount">1000</span></p>
-				<button class="fin-app-btn fin-orange" click-redirect="/quickInvest">SAVE MIX</button>
+			<div class="col-xs-12 taxPlanSchemeListTable" custom-scroll-bar>
+			<div class="panel-group customPanel" id="accordionModal" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab">
+    	<div class="panel-title">
+    		<p>Equity Schemes <span class="pull-right"><a role="button" data-toggle="collapse" data-parent="#accordionModal" href="javascript:void(0)" data-target="#collapseOneModal" aria-expanded="true" aria-controls="collapseOne">
+          EXPAND
+        </a></span></p>
+    	</div>
+    	<div class="panel-description">
+    		<div class="table-outer-cover panel-table">
+				<div class="thead">
+					<div class="tr">
+						<div class="th">
+							<p>% Holding</p>
+						</div>
+						<div class="th">
+							<p>Invested Value</p>
+						</div>
+						<div class="th">
+							<p>Current Value</p>
+						</div>
+						<div class="th">
+							<div class="money-value">
+								<p class="gain types">
+								<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
+								<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="tbody">
+					<div class="tr">
+						<div class="td">
+							<p>25%</p>
+						</div>
+						<div class="td">
+							<p><span class="currency">&#8377;</span><span class="amount">10,03,138</span></p>
+						</div>
+						<div class="td">
+							<div class="money-value">
+								<p class="gain types">
+								<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
+								<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
+							</div>
+						</div>
+						<div class="td">
+							<div class="money-value">
+								<p class="gain types">
+								<span class="percentage">10%</span></p>
+								<p ng-if="false" class="loss types">( <span class="percentage">10%</span> )</p>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+    	</div>
+    </div>
+    <div id="collapseOneModal" accordian class="panel-collapse collapse" role="tabpanel">
+      <div class="panel-body">
+        <div class="table-outer-cover panel-table">
+				<p class="schemes">DSP Black Rock Micro Cap Fund<span class="money-value">
+					<span class="gain types">
+					<span class="currency">&#8377;</span><span class="percentage">10,200</span></span>
+				</span></p>
+				<div class="tbody">
+					<div class="tr">
+						<div class="td">
+							<p><span class="pie-circle" ng-style="{'background-color':'#047ac1'}"></span><span class="content">25%</span></p>
+						</div>
+						<div class="td">
+							<p><span class="currency">&#8377;</span><span class="amount">10,03,138</span></p>
+						</div>
+						<div class="td">
+							<div class="money-value">
+								<p class="gain types">
+								<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
+								<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
+							</div>
+						</div>
+						<div class="td">
+							<div class="money-value">
+								<p class="gain types">
+								<span class="percentage">10%</span></p>
+								<p ng-if="false" class="loss types">( <span class="percentage">10%</span> )</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<div class="col-xs-12">
+	<div class="fin-btn-group addMargin investStep1 ng-scope">
+    <button data-dismiss="modal" class="fin-link-btn content-prev">BACK</button>
+    <!-- <button data-toggle="modal" data class="fin-app-btn fin-orange">TOP UP GOAL</button> -->
+</div>
+</div>
 		</div>
     </div>
   </div>
