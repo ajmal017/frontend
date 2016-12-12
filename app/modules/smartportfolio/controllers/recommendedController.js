@@ -10,7 +10,7 @@
 			setTimeout(function(){
 				$('.schemes-cover').mCustomScrollbar();
 			},10);
-
+			$('.scheme-compare-other').mCustomScrollbar();
 			$http.get('modules/common/config/test.json').success(function(response) {
 				$scope.response = response;
 				var defaultYear = 'three_year';

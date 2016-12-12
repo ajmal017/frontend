@@ -144,8 +144,18 @@
 								<scheme-chart title="pieTitle" items="resultPercentage" colors="colors"></scheme-chart>
 							</div>
 						</div>
-						<div class="col-xs-6">
-							
+						<div class="col-xs-6 trackPerformanceLegendCont">
+						<div class="trackPerformanceLegends">
+							<p ng-repeat="legend in legends" class="no-padding"><span class="content"></span><span class="legend-cover">
+								<span class="legend-cover">
+									<span class="legend-main" ng-style="{'background-color':legend.color,'width':legend.value+'%'}">
+										<span class="right"></span>
+										<span class="left" ng-style="{'border-left':legend.borderColor}"></span>
+										<span class="value" ng-bind="legend.value+' %'"></span>
+									</span>
+								</span>
+							</p>
+						</div>
 						</div>
 						<div class="panel-group customPanel" id="accordion" role="tablist" aria-multiselectable="true">
 						  <div class="panel panel-default">

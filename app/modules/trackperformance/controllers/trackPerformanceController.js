@@ -25,17 +25,38 @@
 				['LIQUID',     25]
 			];
 			$scope.colors = [];
+			$scope.legendColors = [];
 			var init = 0.2;
 			for(var i=0;i<$scope.resultPercentage.length;i++){
 				init = init - 0.1 ;
 				var color = trackPerformanceService.getHexcolors('#047ac1',init);
 				$scope.colors.push(color);
 			}
+			$scope.legendColors = $scope.colors;
 			var pieCurrency =  $filter('amountSeffix')(1200000);
 			$scope.pieTitle = "<p><span class='currency'>&#8377;</span><span class='content'>"+pieCurrency+"</span><span class='nextline'>Returns 0%</span></p>";
 			
 			$scope.showFinancialGoalModal = function () {
 				$('#finGoalStatusModal').modal('show');
+			}
+			$scope.legends = [];
+			var init = 0.2;
+			for(var i=0;i<$scope.resultPercentage.length;i++){
+				init = init - 0.1 ;
+				var color = trackPerformanceService.getHexcolors('#047ac1',init);
+				$scope.legendColors.push(color);
+			}
+			
+			var price = ['524920030', '1020320030', '1020320030', '1020320030'];
+			for(var i=0;i<$scope.resultPercentage.length;i++){
+				var legendObject = {};
+				legendObject['name'] = $scope.resultPercentage[i][0];
+				legendObject['value'] = $scope.resultPercentage[i][1];
+				legendObject['price'] = price.splice(0,1).toString();
+				legendObject['color'] = $scope.legendColors.splice(0,1).toString();
+				legendObject['borderColor'] = '10px solid '+legendObject['color'];
+				$scope.legends.push(legendObject);
+				console.log('Legends',$scope.legends);
 			}
 		}
 })();

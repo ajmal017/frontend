@@ -290,10 +290,60 @@ section{
 							}
 						}
 					}
+					
 				}
 				.customPanel{
 					padding-top:40px;
 				}
+				.trackPerformanceLegends{
+					margin-top: 50%;
+					float: left;
+					p{
+						width: 50%;
+						float: left;
+						margin-right: 0;
+					}
+					.legend-cover{
+						float: left;
+						margin-left:10px;
+						span{
+							
+						}
+						min-width:146px;
+						.legend-main{
+							height:18px;
+						    position:relative;
+							top: 6px;
+							display:table;
+							float:left;
+						    .right{
+								position:absolute;
+								left:0px;
+								top:0px;
+								border-top: 9px solid transparent;
+								border-left: 10px solid #fff;
+								border-bottom: 9px solid transparent;
+							}
+							.left{
+								position:absolute;
+								right:-10px;
+								top:0px;
+								border-top: 9px solid transparent;
+								border-bottom: 9px solid transparent;
+							}
+							span{
+								&.value{
+									display:table-cell;
+									.GLOBAL_FONT_STYLE('Roboto-Regular',@white,normal);
+									.PIXEL2EM(12);
+									text-align:center;
+									vertical-align:middle;
+									padding-left:8px;
+								}
+							}
+						}
+					}
+				}	
 			}
 			&.transaction-cover{
 				height:517px;
