@@ -20,8 +20,8 @@
 	                swiperFallback: '@',
 	                indicatorEnd:'@',
 	                sendValues: '&callbackFn',
-	                result : '=',
-	                callModel: '&callmodalFn'
+	                result : '='
+	                // callModel: '&callmodalFn'
 	            },
 	            controller:'@',
 	            name:"controllerName",
@@ -145,8 +145,6 @@
 					
 					scope.calculate = function(type,value){
 					}
-
-					
 
                     scope.gotoFirst = function(param){
                     	scope.modelVal = {};

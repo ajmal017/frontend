@@ -65,6 +65,7 @@
 	        	return Math.pow((1 + yearlyRate), MONTH_FRACTION) - 1;
 	        }
 	        
+	        //This calculates recommended value
 	        function computeSIPForCorpus(goalData, assetAllocationCategory) {
 	        	//FV = A x (1+R) x (((1+R) ^ n) – 1)/R
 	        	if (typeof(goalData) === "undefined" || typeof(assetAllocationCategory) === "undefined" ||
@@ -120,6 +121,7 @@
 	        	
 	        }
 	        
+	        //This is used when user changes SIP value
 	        function computeCorpusForSIP(goalData, assetAllocationCategory) {
 	        	//FV = A x (1+R) x (((1+R) ^ n) – 1)/R
 	        	if (typeof(goalData) === "undefined" || typeof(assetAllocationCategory) === "undefined" ||
