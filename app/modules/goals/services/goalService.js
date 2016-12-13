@@ -9,7 +9,8 @@
         function goalsService($resource,$rootScope,appConfig,$q){
         	
             return{
-        		getGoalGraphDetails : getGoalGraphDetails
+        		getGoalGraphDetails : getGoalGraphDetails,
+        		getFundSelection : getFundSelection
         	}
 
 	        function getGoalGraphDetails(){ 
@@ -24,8 +25,28 @@
                     interval : interval
                 }            
 	        }
+
+	        function getFundSelection(goalType) {
+	        	var defer = $q.defer();
+				var getAPI = $resource( 
+					appConfig.API_BASE_URL+'/core/portfolio/goal/' + goalType + '/recommended/', 
+					{}, {
+						Check: {
+							method:'GET',
+						}
+					});
+				getAPI.Check({},function(data){
+					if(data.status_code == 200){
+						defer.resolve({'success':data.response});
+					}else{
+						defer.resolve({'Message':data.response['message']});
+					}				
+				}, function(err){
+					defer.reject(err);
+				}); 
+				return defer.promise;
+	        }
         }
-        
         assetAllocationService.$inject = ['$resource','$q', 'appConfig', '$rootScope'];
         function assetAllocationService($resource, $q, appConfig, $rootScope){
         	

@@ -788,21 +788,21 @@
                             <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></info-tip></span>Equity/Debt Mix</p></div>
                             <div class="meter-widget-cover">
                                 <div class="col-xs-12 meter-header">
-                                    <button class="edit" ng-click="callModel()"></button>
+                                    <button class="edit" ng-click="callModel(modelVal.assetAllocation.debt, modelVal.assetAllocation.equity, modelVal.A5)"></button>
                                     <div class="row">
                                         <div class="col-xs-6 text-right">
                                             <h2 class="debt">Debt</h2>
-                                            <p class="debt">0%</p>
-                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                            <p class="debt">{{modelVal.assetAllocation.debt}}%</p>
+                                            <h4 ><span class="currency">&#8377</span>{{modelVal.debtAmount}}</h4>
                                         </div>
                                         <div class="col-xs-6 text-left">
                                             <h2 class="equity">Equity</h2>
-                                            <p class="equity">100%</p>
-                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                            <p class="equity">{{modelVal.assetAllocation.equity}}%</p>
+                                            <h4><span class="currency">&#8377</span>{{modelVal.equityAmount}}</h4>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
+                                <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.debt}} calculate-guage={{modelVal.assetAllocation.debt}}>
                                     <h4 class="text">Recommended</h4>
                                     <div class="orbit">
                                         <div class="indicator"></div>
@@ -841,7 +841,12 @@
                                         </div>
                                     </div>
                                     <div class="guageCalculator">
-                                        <img src="assets/images/guageCalculator.png">
+                                        <img src="assets/images/categoryImage1.png" ng-if="riskTaker == 'low'">
+                                        <img src="assets/images/categoryImage3.png" ng-if="riskTaker == 'below_average'">
+                                        <img src="assets/images/assesmentCar.png" ng-if="riskTaker == 'average'">
+                                        <img src="assets/images/categoryImage2.png" ng-if="riskTaker == 'above_average'">
+                                        <img src="assets/images/categoryImage4.png" ng-if="riskTaker == 'high'">
+                                        <img src="assets/images/assesmentCar.png">
                                     </div>  
                                     <p class="bottom-text">As per your risk profile</p>
                                 </div>
@@ -873,8 +878,8 @@
                 </div>
                 <div class="fin-btn-group addMargin">
                     <button click-redirect="/retirementGoalsStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button>
-                    <button click-redirect="/dashboard" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                    <button ng-click="fundSelection(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
                 </div>
             </div>
         </div>
@@ -2834,3 +2839,30 @@
 </div>
 
 <show-tip ng-if="$root.tipData" quick-tip-data="$root.tipData"></show-tip>
+<div class="modal fade fade-scale" id="equiDeptModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="fadeIn modal-wrapper">
+        <button data-dismiss="modal" class="modal-close"></button>
+            <div class="col-xs-12">
+                <div class="col-xs-6">
+                    <h2 ng-style="{'color':'#62bb46'}" class="text-center">Debt</h2>
+                    <fin-calendar-form ng-model="equity" ng-change="changeDebtModal()" format-symbol="percent" type="#ddffd3" font-color="#62bb46" min="0" max="100"></fin-calendar-form>
+                </div>
+                <div class="col-xs-6">
+                    <h2 ng-style="{'color':'#047bc1'}" class="text-center">Equity</h2>
+                    <fin-calendar-form font-color="#047bc1" ng-model="equity2" ng-change="changeEquityModal()" format-symbol="percent" type="#e6f6ff" min="0" max="100"></fin-calendar-form>
+                </div>
+            </div>
+            <div class="col-xs-12 bottom-desc">
+                <p><span class="bottom-label">Amount in Debt:</span><span class="amount-cover less"><span class="currency">&#8377</span><span class="amount">{{debtAmountModal}}</span></span></p>
+                <p><span class="bottom-label">Amount in Equity:</span><span class="amount-cover"><span class="currency">&#8377</span><span ng-bind="equityValue|currency:''"></span><span class="amount">{{equityAmountModal}}</span></p>
+                <p class="note" ng-if="false">Note: Investment in Debt and Equity funds below minimum limit <span class="currency">&#8377</span><span class="amount"><span class="amount">1000</span></span></p>
+                <p class="note" ng-if="true">Note: Investment in Debt funds below minimum limit <span class="currency">&#8377</span><span class="amount">1000</span></p>
+                <p class="note" ng-if="false">Note: Investment in Equity funds below minimum limit <span class="currency">&#8377</span><span class="amount">1000</span></p>
+                <button class="fin-app-btn fin-orange" ng-disabled="(equityAmountModal < 1000 && debtAmountModal < 1000)" ng-click="saveEquityDebtMix(equity, equity2)">SAVE MIX</button>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

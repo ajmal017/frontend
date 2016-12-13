@@ -10,6 +10,7 @@
             return{
         		getSavedValues : getSavedValues,
                 setSavedValues : setSavedValues,
+                addRetirementGoal : addRetirementGoal,
                 getCorpusEstimates : getCorpusEstimates
         	}
 	        function getSavedValues(){  
@@ -17,6 +18,27 @@
 	        }
             function setSavedValues(value){  
                 modelObject = value;
+            }
+
+            function addRetirementGoal(dataObj){
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    appConfig.API_BASE_URL+'/core/retirement/new/response/add/', 
+                    {}, {
+                        Check: {
+                            method:'POST',
+                        }
+                    });
+                getAPI.Check(dataObj,function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
             }
             
             function getCorpusEstimates(currentAge, retirementAge, monthlyIncome, amountSaved) {
