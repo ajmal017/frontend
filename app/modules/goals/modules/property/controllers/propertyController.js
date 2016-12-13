@@ -4,9 +4,9 @@
 		.module('finApp.goals')
 		.controller('propertyController',propertyController);
 
-		propertyController.$inject = ['$scope','$rootScope','$route','$location','propertyService',
+		propertyController.$inject = ['$scope','$rootScope','$route','$location', '$timeout', 'propertyService',
 		                              'goalsService', 'assetAllocationService', 'goalFormulaeService', 'appConfig'];
-		function propertyController($scope,$rootScope,$route,$location,propertyService,
+		function propertyController($scope,$rootScope,$route,$location,$timeout,propertyService,
 				goalsService, assetAllocationService, goalFormulaeService, appConfig) {
 			
 			this.scope = $scope;
@@ -19,6 +19,8 @@
 			this.rootScope = $rootScope;
 			this.route = $route;
 			this.location = $location,
+			this.timeout = $timeout,
+			
 			this.goalsService = goalsService;
 			this.assetAllocationService = assetAllocationService;
 			this.goalFormulaeService = goalFormulaeService;
@@ -32,29 +34,14 @@
 			this.scope.calculateRecommendedSIP = angular.bind( this, this.calculateRecommendedSIP );
 			this.scope.calculateCorpus = angular.bind( this, this.calculateCorpus);
 			this.scope.estimateSelectionChanged = angular.bind( this, this.estimateSelectionChanged);
-
+			this.scope.handleGoalEstimatesResponse = angular.bind( this, this.handleGoalEstimatesResponse);
 			
+			this.rootScope.showPortfolioFactoring = true;
+
 			this.scope.calculateEstimates = function() {
-				propertyService.getCorpusEstimates($scope.property['tenure'], $scope.modelVal.A5, $scope.modelVal.A6, $scope.modelVal.A7).then(function(data){
-					if('success' in data){
-						console.log("Success goal_estimation: " + data.success['goal_estimation']);
-						var goalCorpusEstimates = data.success['goal_estimation'],
-							goalEstimates = {};
-						
-						for (var i=0; i<goalCorpusEstimates.length; i++) {
-							var computedSIPData = goalFormulaeService.computeSIPForCorpus({'corpus': goalCorpusEstimates[i].corpus, 'tenure': $scope.property['tenure'] }, $scope.property['assetAllocationCategory']);
-							goalEstimates[goalCorpusEstimates[i].estimate_type] = {'corpus': goalCorpusEstimates[i].corpus,
-																'sip' : computedSIPData.computedSIP,
-																'assetAllocation' : computedSIPData.assetAllocation};
-						}
-						
-						$scope.property['goalEstimates'] = goalEstimates;
-						if (!$scope.activeTab) {
-							$scope.activeTab = "COMFORT";
-							$scope.estimateSelectionChanged(appConfig.estimateType.COMFORTABLE);
-						}
-					}
-				});
+				var self = this;
+				propertyService.getCorpusEstimates($scope.property['tenure'], $scope.modelVal.A5, $scope.modelVal.A6, $scope.modelVal.A7)
+				.then(self.handleGoalEstimatesResponse);
 			}
 			
 			$scope.graphObject = goalsService.getGoalGraphDetails();

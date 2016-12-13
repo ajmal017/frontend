@@ -18,6 +18,17 @@ var finApp = finApp || {};
 				this.goalTypeService.setSavedValues(value);
 			},
 			
+			portfolioFactoring : function() {
+				var self = this;
+				this.rootScope.showPortfolioFactoring = false;
+				
+				this.timeout(function() {
+					self.location.path('/dashboard');
+
+					self.scope.$apply();
+				},5000)
+			},
+
 			getAssetAllocationCategory : function(){
 				var currentYear = new Date(),
 					tenure = this.scope.modelVal.A2 - currentYear.getFullYear(),
@@ -76,6 +87,29 @@ var finApp = finApp || {};
 				else {
 					calculateCorpus();
 				}
+			},
+			
+			handleGoalEstimatesResponse : function(data) {
+				var self = this;
+				if('success' in data){
+					console.log("Success goal_estimation: " + data.success['goal_estimation']);
+					var goalCorpusEstimates = data.success['goal_estimation'],
+						goalEstimates = {};
+					
+					for (var i=0; i<goalCorpusEstimates.length; i++) {
+						var computedSIPData = self.goalFormulaeService.computeSIPForCorpus({'corpus': goalCorpusEstimates[i].corpus, 'tenure': self.goalModelObject['tenure'] }, self.goalModelObject['assetAllocationCategory']);
+						goalEstimates[goalCorpusEstimates[i].estimate_type] = {'corpus': goalCorpusEstimates[i].corpus,
+															'sip' : computedSIPData.computedSIP,
+															'assetAllocation' : computedSIPData.assetAllocation};
+					}
+					
+					self.goalModelObject['goalEstimates'] = goalEstimates;
+					if (!self.scope.activeTab) {
+						self.scope.activeTab = "COMFORT";
+						self.scope.estimateSelectionChanged(self.appConfig.estimateType.COMFORTABLE);
+					}
+				}
+				
 			},
 			
 			estimateSelectionChanged : function(selectionType) {

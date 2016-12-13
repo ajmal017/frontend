@@ -4,10 +4,10 @@
 		.module('finApp.goals')
 		.controller('educationController',educationController);
 
-		educationController.$inject = ['$scope','$rootScope','$route','$location',
+		educationController.$inject = ['$scope','$rootScope','$route','$location', '$timeout',
 	                                     'goalsService','educationService', 'assetAllocationService', 'goalFormulaeService', 'appConfig'];
 		                               
-		function educationController($scope,$rootScope, $route, $location,
+		function educationController($scope,$rootScope, $route, $location, $timeout,
 				goalsService, educationService, assetAllocationService, goalFormulaeService, appConfig) {
 			
 			this.scope = $scope;
@@ -20,6 +20,7 @@
 			this.rootScope = $rootScope;
 			this.route = $route;
 			this.location = $location,
+			this.timeout = $timeout,
 			this.goalsService = goalsService;
 			this.assetAllocationService = assetAllocationService;
 			this.goalFormulaeService = goalFormulaeService;
@@ -33,31 +34,15 @@
 			this.scope.calculateRecommendedSIP = angular.bind( this, this.calculateRecommendedSIP );
 			this.scope.calculateCorpus = angular.bind( this, this.calculateCorpus);
 			this.scope.estimateSelectionChanged = angular.bind( this, this.estimateSelectionChanged);
+			this.scope.portfolioFactoring = angular.bind( this, this.portfolioFactoring);
+			this.scope.handleGoalEstimatesResponse = angular.bind( this, this.handleGoalEstimatesResponse);
 			
-			
+			this.rootScope.showPortfolioFactoring = true;
+
 			this.scope.calculateEstimates = function() {
-				
-				educationService.getCorpusEstimates($scope.education['tenure'], $scope.modelVal.A5, $scope.modelVal.A6, $scope.modelVal.A7).then(function(data){
-					if('success' in data){
-						console.log("Success goal_estimation: " + data.success['goal_estimation']);
-						var goalCorpusEstimates = data.success['goal_estimation'],
-							goalEstimates = {};
-						
-						for (var i=0; i<goalCorpusEstimates.length; i++) {
-							var computedSIPData = goalFormulaeService.computeSIPForCorpus({'corpus': goalCorpusEstimates[i].corpus, 'tenure': $scope.education['tenure'] }, $scope.education['assetAllocationCategory']);
-							goalEstimates[goalCorpusEstimates[i].estimate_type] = {'corpus': goalCorpusEstimates[i].corpus,
-																'sip' : computedSIPData.computedSIP,
-																'assetAllocation' : computedSIPData.assetAllocation};
-						}
-						
-						$scope.education['goalEstimates'] = goalEstimates;
-						if (!$scope.activeTab) {
-							$scope.activeTab = "COMFORT";
-							$scope.estimateSelectionChanged(appConfig.estimateType.COMFORTABLE);
-						}
-					}
-				});
-			}
+				var self = this;
+				educationService.getCorpusEstimates($scope.education['tenure'], $scope.modelVal.A5, $scope.modelVal.A6, $scope.modelVal.A7).
+				then(self.handleGoalEstimatesResponse);			}
 			
 			$scope.graphObject = goalsService.getGoalGraphDetails();
 
