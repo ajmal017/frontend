@@ -78,7 +78,7 @@
 				}
 			}
 			
-			$scope.calculateEstimates = function(currentAge, retirementAge, monthlyIncome, amountSaved) {
+			$scope.calculateEstimates = function() {
 				educationService.getCorpusEstimates($scope.education['tenure'], $scope.modelVal.A5, $scope.modelVal.A6, $scope.modelVal.A7).then(function(data){
 					if('success' in data){
 						console.log("Success goal_estimation: " + data.success['goal_estimation']);
