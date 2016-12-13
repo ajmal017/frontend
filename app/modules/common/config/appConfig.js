@@ -57,6 +57,11 @@
 				'C' : 'C',
 				'D' : 'D',
 				'E' : 'E'
+			},
+			'estimateType' : {
+				'BUDGET' : 'budget',
+				'COMFORTABLE': 'comfortable',
+				'LUXURY' : 'luxury'
 			}
 			
 		});
