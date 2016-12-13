@@ -2250,7 +2250,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                                 <div class="row">
-                                    <fin-calendar-form year="true" year-max="50" ng-model="equity2" format-symbol="none" type="#fde8de" font-color="#f26529" min="0" max="100"></fin-calendar-form>
+                                    <fin-calendar-form year="true" year-max="50" ng-model="modelVal.A2" format-symbol="none" type="#fde8de" font-color="#f26529" min="0" max="100"></fin-calendar-form>
                                 </div>
                             </div>
                         </div>
@@ -2262,16 +2262,15 @@
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
                       <h1 class="topHeader">I would like to save following amount for my goal</span></h1>
-                      <p class="question width-more"><span class="swiper-input"><input type="text" name="year" required ng-model="modelVal.A1"></span></p>
+                      <p class="question width-more"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required/></span></span></p>
                 </div>
             </form>
         </div>
         <div class="swiper-slide">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content retirement-content">
-                      <h1 class="topHeader">To have savings amount of <span class="highlight"><span class="currency">&#8377</span>3.0 Cr</span> by <span class="highlight"><span class="calculatedAge">2014</span></span>,<span class="nextline">I am willing to set aside</span></h1>
-                      <p class="question width-auto"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A3" ng-init="modelVal.A3 = 0" ng-keyup="showMessage2 = true" type="text" ame="year" required></span> per month</p>
-                      <p ng-show="showMessage2" class="question">Estimated savings amount in<span class="nextline highlight"><span class="calculatedAge">2041</span>-<span class="amount"><span class="currency">&#8377</span>3.0 Cr</span></span></p>
+                      <p class="question width-auto"><span class="content nextline">I am willing to set aside</span><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A4" ng-change="calculateCorpus(modelVal.A4)" type="text" ame="year" required></span> per month<span class="nextline">for the target amount<span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="others.corpus | amountSeffix"></span></span> by <span class="highlight"><span class="calculatedAge" ng-bind="modelVal.A2"></span></span></span></p>
+                      <p class="question" ng-show="modelVal.A4!=others.perMonth">Recommended monthly investment amount <span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="others.perMonth | currency:''"></span></span></span> for target amount <span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="modelVal.A3 | amountSeffix"></span></span> by <span class="highlight" ng-bind="modelVal.A2"></span></p>
                 </div>
             </form>
         </div>
@@ -2421,13 +2420,10 @@
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 3)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 5)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 6)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 7)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 3)" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 4)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)">CONTINUE</button>
     </div>
 </div>
 <div ng-if="swiperName == 'taxsaving'" class="fadeIn swiper-container customSwiper taxsaving type2Sliders" ng-init="step = 1">
