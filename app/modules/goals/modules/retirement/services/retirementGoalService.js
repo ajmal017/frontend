@@ -14,7 +14,18 @@
                 getCorpusEstimates : getCorpusEstimates
         	}
 	        function getSavedValues(){  
+                var retirementAnswers = {};
+                retirementAnswers = $rootScope.userFlags['user_answers']['retirement'];
+                modelObject.A1 = retirementAnswers['goal_name'];
+                modelObject.A2 = retirementAnswers['current_age'];
+                modelObject.A3 = retirementAnswers['retirement_age'];
+                modelObject.A4 = retirementAnswers['corpus'];
+                modelObject.A6 = retirementAnswers['monthly_income'];
+                modelObject.A8 = retirementAnswers['amount_saved'];
+                modelObject.estimate_selection_type = retirementAnswers['estimate_selection_type'];
+                modelObject.A5 = retirementAnswers['monthly_investment'];
                 return modelObject;
+                
 	        }
             function setSavedValues(value){  
                 modelObject = value;

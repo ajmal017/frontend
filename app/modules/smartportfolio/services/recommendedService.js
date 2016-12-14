@@ -8,7 +8,11 @@
         function recommendedService($resource,$rootScope,appConfig,$q){
         	
             return{
-        		getGraphResultSet : getGraphResultSet
+        		getGraphResultSet : getGraphResultSet,
+                resetCompareScheme : resetCompareScheme,
+                getFundsForGoal : getFundsForGoal,
+                saveCompareModifyScheme : saveCompareModifyScheme,
+                validateCompareModifyScheme : validateCompareModifyScheme
         	}
 
 	        function getGraphResultSet(response,year){
@@ -73,5 +77,89 @@
                 defer.resolve(resultSet);                
                 return defer.promise;
 	        }
+
+            function resetCompareScheme(goalType, assetType){
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    appConfig.API_BASE_URL+'/core/reset/goal/' + goalType + '/?reset=' + assetType, 
+                    {}, {
+                        Check: {
+                            method:'GET',
+                        }
+                    });
+                getAPI.Check({},function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
+            }
+
+            function getFundsForGoal(goalType){
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    appConfig.API_BASE_URL+'/core/funds/goal/'+ goalType +'/get/all/', 
+                    {}, {
+                        Check: {
+                            method:'GET',
+                        }
+                    });
+                getAPI.Check({},function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
+            }
+
+            function validateCompareModifyScheme(dataObj){
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    appConfig.API_BASE_URL+'/core/funds/distribution/goal/retirement/validate/', 
+                    {}, {
+                        Check: {
+                            method:'POST',
+                        }
+                    });
+                getAPI.Check(dataObj,function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
+            }
+
+            function saveCompareModifyScheme(dataObj){
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    appConfig.API_BASE_URL+'/core/portfolio/goal/retirement/change/', 
+                    {}, {
+                        Check: {
+                            method:'POST',
+                        }
+                    });
+                getAPI.Check(dataObj,function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
+            }
         }     
 })();

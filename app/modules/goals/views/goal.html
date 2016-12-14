@@ -1,12 +1,12 @@
 <section class="fadeIn dashboard goals">
 	<div class="col-xs-12 goal-section">
 		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 goals-outer-cover" click-redirect="/retirementGoalsStarted">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 goals-outer-cover" ng-click=startGoalAdd('retirement')>
 				<div class="goals-cover">
 						<div class="image-div">
 							<img src="assets/images/retirement.png">
 						</div>
-					<div class="checkbox-cover">
+					<div class="checkbox-cover" ng-if="$root.goalAnswered['retirement']">
 						<input type="radio" name>
 						<label><span></span></label>
 					</div>
@@ -18,7 +18,7 @@
 					<div class="image-div">
 						<img src="assets/images/education.png">
 					</div>
-					<div class="checkbox-cover">
+					<div class="checkbox-cover" ng-if="$root.goalAnswered['education']">
 						<input type="radio" name>
 						<label><span></span></label>
 					</div>
@@ -30,7 +30,7 @@
 					<div class="image-div">
 						<img src="assets/images/property.png">
 					</div>
-					<div class="checkbox-cover">
+					<div class="checkbox-cover" ng-if="$root.goalAnswered['property']">
 						<input type="radio" name>
 						<label><span></span></label>
 					</div>
@@ -42,7 +42,7 @@
 					<div class="image-div">
 						<img src="assets/images/automobile.png">
 					</div>
-					<div class="checkbox-cover">
+					<div class="checkbox-cover" ng-if="$root.goalAnswered['automobile']">
 						<input type="radio" name>
 						<label><span></span></label>
 					</div>
@@ -58,7 +58,7 @@
 						<div class="image-div">
 							<img src="assets/images/vacation.png">
 						</div>
-					<div class="checkbox-cover">
+					<div class="checkbox-cover" ng-if="$root.goalAnswered['vacation']">
 						<input type="radio" name>
 						<label><span></span></label>
 					</div>
@@ -70,7 +70,7 @@
 					<div class="image-div">
 						<img src="assets/images/wedding.png">
 					</div>
-					<div class="checkbox-cover">
+					<div class="checkbox-cover" ng-if="$root.goalAnswered['wedding']">
 						<input type="radio" name>
 						<label><span></span></label>
 					</div>
@@ -82,7 +82,7 @@
 					<div class="image-div">
 						<img src="assets/images/others.png">
 					</div>
-					<div class="checkbox-cover">
+					<div class="checkbox-cover" ng-if="$root.goalAnswered['event']">
 						<input type="radio" name>
 						<label><span></span></label>
 					</div>

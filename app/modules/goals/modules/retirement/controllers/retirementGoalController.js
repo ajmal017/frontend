@@ -12,6 +12,22 @@
 			$scope.modelVal = retirementGoalsService.getSavedValues();
 			$rootScope.setFundData = {};
 
+			$scope.loadDefaultValues = function() {
+				if($rootScope.userFlags['user_answers']['retirement']['goal_plan_type'] == 'op2')
+                {
+                    $rootScope.selectedCriteria = 'op2';
+                }
+				if($rootScope.userFlags['user_answers']['retirement']['goal_plan_type'] == 'op1')
+                { 
+                    $rootScope.selectedCriteria = 'op1';
+                } 
+
+			}
+
+			if($location.$$path == '/retirementGoalsStarted'){
+				$scope.loadDefaultValues();
+			}
+			
 			$scope.reloadRoute = function(param) {
 				$rootScope.selectedCriteria = param;
 				if(!$rootScope.$$phase) $rootScope.$apply();
@@ -20,6 +36,7 @@
 			}
 			$scope.sendValues = function(value){
 				console.log('Send values',value);
+				value.goal_plan_type = $rootScope.selectedCriteria;
 				retirementGoalsService.setSavedValues(value);
 			}
 			$scope.calculateYear = function(from,to){
@@ -89,6 +106,7 @@
 
 			$scope.setModelVal = function(assetAllocationObj, sipAmount) {
 				$scope.modelVal.assetAllocation = assetAllocationObj;
+				$scope.modelVal.assetAllocation.equityInitial = assetAllocationObj.equity;
 					var debtAmount = (assetAllocationObj.debt/100) * sipAmount;
 					var equityAmount = (assetAllocationObj.equity/100) * sipAmount;
 					$scope.modelVal.debtAmount = debtAmount;
@@ -108,10 +126,10 @@
 																'sip' : computedSIPData.computedSIP,
 																'assetAllocation' : computedSIPData.assetAllocation};
 						}
-						
+						$scope.setModelVal(computedSIPData.assetAllocation, computedSIPData.computedSIP);
 						$scope.retirement['goalEstimates'] = goalEstimates;
 						if (!$scope.activeTab) {
-							$scope.activeTab = "COMFORT";
+							$scope.modelVal.estimate_selection_type = 'op2';
 							$scope.estimateSelectionChanged(appConfig.estimateType.COMFORTABLE);
 						}
 					}
@@ -169,25 +187,52 @@
 				$scope.debtAmountModal = ($scope.equity/100) * $scope.amount;
 			}
 
-			$scope.fundSelection = function(modelVal) {
+			$scope.fundSelectionRetirement = function(modelVal) {
 				console.log("In fund selection", modelVal);
+				console.log('Selected criteria', $rootScope.selectedCriteria);
+
 				var fundSelectionObj = {};
-				fundSelectionObj.current_age = modelVal.A2;
-				fundSelectionObj.floating_sip = false;
-				fundSelectionObj.grow_sip = '0';
-				fundSelectionObj.monthly_investment = modelVal.A5;
-				fundSelectionObj.retirement_age = modelVal.A3;
-				fundSelectionObj.allocation = {
-					"debt" : modelVal.assetAllocation.debt,
-					"equity" : modelVal.assetAllocation.equity,
-					"elss" : "0",
-					"liquid" : "0"
-				},
-				fundSelectionObj.goal_name = modelVal.A1;
+				if($rootScope.selectedCriteria == 'op1') {
+					fundSelectionObj.goal_plan_type = modelVal.goal_plan_type;
+					fundSelectionObj.current_age = modelVal.A2;
+					fundSelectionObj.floating_sip = false;
+					fundSelectionObj.grow_sip = '0';
+					fundSelectionObj.monthly_investment = modelVal.A5;
+					fundSelectionObj.corpus = modelVal.A4;
+					fundSelectionObj.retirement_age = modelVal.A3;
+					fundSelectionObj.allocation = {
+						"debt" : modelVal.assetAllocation.debt,
+						"equity" : modelVal.assetAllocation.equity,
+						"elss" : "0",
+						"liquid" : "0"
+					},
+					fundSelectionObj.goal_name = modelVal.A1;
+				}
+
+				if($rootScope.selectedCriteria == 'op2') {
+					fundSelectionObj.goal_plan_type = modelVal.goal_plan_type;
+					fundSelectionObj.amount_saved = modelVal.A8;
+					fundSelectionObj.estimate_selection_type = modelVal.estimate_selection_type;
+					fundSelectionObj.current_age = modelVal.A2;
+					fundSelectionObj.floating_sip = false;
+					fundSelectionObj.grow_sip = '0';
+					fundSelectionObj.monthly_income = modelVal.A6;
+					fundSelectionObj.monthly_investment = modelVal.A5;
+					fundSelectionObj.corpus = modelVal.A4;
+					fundSelectionObj.retirement_age = modelVal.A3;
+					fundSelectionObj.allocation = {
+						"debt" : modelVal.assetAllocation.debt,
+						"equity" : modelVal.assetAllocation.equity,
+						"elss" : "0",
+						"liquid" : "0"
+					}
+				}
+
 				busyIndicator.show();
 				retirementGoalsService.addRetirementGoal(fundSelectionObj).then(function(data){
 					if('success' in data) {
 						console.log('Goal added successfully');
+						
 						$scope.getFundData('retirement');
 					}
 					else {
@@ -197,6 +242,7 @@
 			}
 
 			$scope.getFundData = function(goalType) {
+				
 				goalsService.getFundSelection(goalType).then(function(data){
 					if('success' in data){
 						busyIndicator.hide();

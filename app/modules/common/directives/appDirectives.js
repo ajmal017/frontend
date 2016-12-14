@@ -379,16 +379,17 @@
 			return{
 				restrict : 'EA',
 				link : function(scope, element, attrs){
-					var equityValue = attrs['oneTimeEquity'];
-					// equityValue = equityValue.replace('%','');
-					var arcPercentage = (180/100)*equityValue;
-					var arcPos = arcPercentage - 45;
-					element.find('.orbit').css('transform','rotate('+arcPos+'deg)');
-					var textTop = element.find('.indicator').position().top;
-					var textLeft = element.find('.indicator').position().left;
-					element.find('h4').css({
-						'top' : textTop + 35,
-						'left': textLeft + 70
+					attrs.$observe('oneTimeEquity', function () {
+						var equityValue = attrs['oneTimeEquity'];
+						var arcPercentage = (180/100)*equityValue;
+						var arcPos = arcPercentage - 45;
+						element.find('.orbit').css('transform','rotate('+arcPos+'deg)');
+						var textTop = element.find('.indicator').position().top;
+						var textLeft = element.find('.indicator').position().left;
+						element.find('h4').css({
+							'top' : textTop + 35,
+							'left': textLeft + 70
+						});
 					});
 					attrs.$observe('calculateGuage', function () {
 		                var changedValue = attrs['calculateGuage'];

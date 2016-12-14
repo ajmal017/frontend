@@ -62,7 +62,8 @@
 				'BUDGET' : 'budget',
 				'COMFORTABLE': 'comfortable',
 				'LUXURY' : 'luxury'
-			}
+			},
+			'currentGoals' : ['retirement','education','property','automobile','vacation','wedding','event']
 			
 		});
 })();
