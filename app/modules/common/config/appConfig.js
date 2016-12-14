@@ -39,11 +39,11 @@
 				]
 			},
 			'riskProfile' : {
-				'low' : 'Low Risk Taker',
-				'belowAverage' : 'Below Average Risk Taker',
-				'average' : 'Average Risk Taker',
-				'aboveAverage' : 'Above Average Risk Taker',
-				'high' : 'High Risk Taker'
+				'low' : 'low',
+				'belowAverage' : 'belowAverage',
+				'average' : 'average',
+				'aboveAverage' : 'aboveAverage',
+				'high' : 'high'
 			},
 			'returnRate' : {
 				'equity' : 12,
@@ -57,6 +57,13 @@
 				'C' : 'C',
 				'D' : 'D',
 				'E' : 'E'
+			},
+			'riskProfileToAssetAllocationCategory' : {
+				'low' : 'A',
+				'belowAverage' : 'B',
+				'average' : 'C',
+				'aboveAverage' : 'D',
+				'high' : 'E'
 			},
 			'estimateType' : {
 				'BUDGET' : 'budget',

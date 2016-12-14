@@ -493,26 +493,34 @@
 </div>
 <div ng-if="swiperName == 'quickInvest'" class="fadeIn swiper-container customSwiper quickInvest type2Sliders" ng-init="step = 1">
     <div class="swiper-wrapper">
-        <div ng-if="$root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op3'" class="swiper-slide">
+        <div class="swiper-slide">
+            <form name="retirementForm1" novalidate>
+                <div class="swiper-content content-1">
+                      <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" required ng-model="modelVal.A1"/></span></p>
+                      <span class="placeholder">Use minimum 20 characters, alphabets and/or numbers</span>
+                </div>
+            </form>
+        </div>
+        <div ng-if="$root.selectedCriteria == 'op1'" class="swiper-slide">
             <form name="quickInvestForm1" novalidate>
                 <div class="swiper-content content-1">
-                      <p class="question">I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ame="year" required ng-init="modelVal.A1 = 0" ng-keyup="showMessage1 = true" ng-model="modelVal.A1"></span></p>
-                      <span class="error-text" ng-show="showMessage1 && (modelVal.A1 < 1000 || modelVal.A1 == undefined)">Minimum amount must be greater than or equal to 1000</span>
+                      <p class="question">I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ame="year" required ng-keyup="showMessage1 = true" ng-model="modelVal.A2"></span>per month</p>
+                      <span class="error-text" ng-show="showMessage1 && (modelVal.A2 < 1000 || modelVal.A2 == undefined)">Minimum amount must be greater than or equal to 1000</span>
                 </div>
             </form>
         </div>
-        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op3'">
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
             <form name="quickInvestForm2" novalidate>
                 <div class="swiper-content content-1">
-                      <p class="question width-100">I would like to continue monthly investments for <span class="nextline"><span class="swiper-input year"><input only-number type="text" name="year" required ng-model="modelVal.A2"></span>years</span></p>
+                      <p class="question width-100">I would like to continue monthly investments for <span class="nextline"><span class="swiper-input year"><input only-number type="text" name="year" required ng-model="modelVal.A3"></span>years</span></p>
                 </div>
             </form>
         </div>
-        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2' || $root.selectedCriteria == 'op3'">
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
             <form name="quickInvestForm3" novalidate>
             <div class="swiper-content content-1">
-                  <p class="question">I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-init="modelVal.A3 = 0" ng-keyup="showMessage2 = true" type="text" ame="year" required ng-model="modelVal.A3"></span>right now</p>
-                  <span class="error-text" ng-show="showMessage2 && (modelVal.A1 < 10000 || modelVal.A1 == undefined)">Minimum amount must be greater than or equal to 10000</span>
+                  <p class="question">I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-keyup="showMessage2 = true" type="text" ame="year" required ng-model="modelVal.A4"></span>right now</p>
+                  <span class="error-text" ng-show="showMessage2 && (modelVal.A4 < 5000 || modelVal.A4 == undefined)">Minimum amount must be greater than or equal to 5000</span>
             </div>
             </form>
         </div>
@@ -662,9 +670,10 @@
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op3')" ng-disabled="modelVal.A1 < 1000 || modelVal.A1 == undefined" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op3')" ng-disabled="(modelVal.A2 == undefined)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 1 && $root.selectedCriteria == 'op2')|| (step == 3 && $root.selectedCriteria == 'op3')" ng-disabled="modelVal.A3 < 10000 || modelVal.A3 == undefined" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-disabled="quickInvestForm1.$invalid" ng-click="sendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1')" ng-disabled="modelVal.A1 < 1000 || modelVal.A1 == undefined" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-disabled="(modelVal.A2 == undefined)" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2 && $root.selectedCriteria == 'op2')" ng-disabled="modelVal.A4 < 5000 || modelVal.A4 == undefined" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>
 <div ng-if="swiperName == 'retirement'" class="fadeIn swiper-container customSwiper retirement type2Sliders" ng-init="step = 1">
@@ -673,7 +682,7 @@
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
                       <p class="question">My goal name is <span class="swiper-input global-input"><input type="text"  required ng-model="modelVal.A1"></span></p>
-                      <span class="placeholder">Use minimum 20 characters,alphabets and/or numbers</span>
+                      <span class="placeholder">Use minimum 20 characters, alphabets and/or numbers</span>
                 </div>
             </form>
         </div>
@@ -904,8 +913,8 @@
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
                       <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" required ng-model="modelVal.A1"></span></p>
-                      <span class="placeholder">Use minimum 20 characters,alphabets and/or numbers</span>
-                      <span class="placeholder">We recommended naming the goal after your child for whom the goal is being setup</span>
+                      <span class="placeholder">Use minimum 20 characters, alphabets and/or numbers</span>
+                      <span class="placeholder">We recommend naming the goal after the person for whom the goal is being setup</span>
                 </div>
             </form>
         </div>
@@ -928,7 +937,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                      <h1 class="topHeader">I would like to save the following amount for my<span class="nextline">Educational goal</span></h1>
+                      <h1 class="topHeader">I would like to save the following amount for this<span class="nextline">Educational goal</span></h1>
                       <p class="question width-auto"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2')">PLEASE HELP ME ESTIMATE</button></p>
                 </div>
             </form>
