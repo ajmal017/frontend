@@ -1744,7 +1744,7 @@
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
                       <h1 class="topHeader">I would like to save following amount<span class="nextline">for my dream vacation</span></h1>
-                      <p class="question width-more"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white">PLEASE HELP ME ESTIMATE</button></p>
+                      <p class="question width-more"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2')">PLEASE HELP ME ESTIMATE</button></p>
                 </div>
             </form>
         </div>
@@ -2003,7 +2003,7 @@
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
                       <h1 class="topHeader">I would like to save following amount<span class="nextline">for this wedding</span></h1>
-                      <p class="question width-more"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white">PLEASE HELP ME ESTIMATE</button></p>
+                      <p class="question width-more"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2')">PLEASE HELP ME ESTIMATE</button></p>
                 </div>
             </form>
         </div>
@@ -2437,32 +2437,32 @@
                 </div>
             </form>
         </div>
-        <div class="swiper-slide">
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                      <h1 class="topHeader">You can invest upto Rs 1,50,000 to maximise your tax<span class="nextline">savings. Enter the amount to invest.</span></h1>
-                      <p class="question width-67"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" name="year" required ng-model="modelVal.A1"></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white">PLEASE HELP ME ESTIMATE</button></p>
-                      <span class="placeholder addPadding-4Per">Note:This amount will be invested in Equity Linked Savings Schemes (ELSS) of reputed asset management companies,to maximize your tax savings.</span>
+                      <h1 class="topHeader">You can invest upto Rs 1,50,000 to maximize your tax<span class="nextline">savings.</span><span class="nextline">I would like to invest</span></h1>
+                      <p class="question width-67"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" name="year" required ng-model="modelVal.A2"></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2', 1)">PLEASE HELP ME ESTIMATE</button></p>
+                      <span class="placeholder addPadding-4Per">Note: This amount will be invested in Equity Linked Savings Schemes (ELSS) of reputed asset management companies, to maximize your tax savings.</span>
                 </div>
             </form>
         </div>
-        <div class="swiper-slide">
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
                     <info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="48px" class-name="marginNegative60"></info-tip>
                     <h1 class="topHeader">I have following other tax-saving investments<span class="nextline">u/s 80C for current financial year</span></h1>
                     <p class="question multiple"><span class="content">
-                    1. PF / PPF investments</span> <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
+                    1. PF / PPF investments</span> <span class="swiper-input"><input ng-model="modelVal.A3" ng-change="computeFutureEligibility()" type="text" name="year" required></span></p>
                     <p class="question multiple"><span class="content">
-                    2. Life Insurance Premium</span> <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
+                    2. Life Insurance Premium</span> <span class="swiper-input"><input ng-model="modelVal.A4" ng-change="computeFutureEligibility()" type="text" name="year" required></span></p>
                     <p class="question multiple"><span class="content">
-                    3. Home loan principal</span> <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
+                    3. Home loan principal</span> <span class="swiper-input"><input ng-model="modelVal.A5" ng-change="computeFutureEligibility()" type="text" name="year" required></span></p>
                     <p class="question multiple"><span class="content">
-                    4. Other tax saving / ELSS</span> <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
+                    4. Other tax saving / ELSS</span> <span class="swiper-input"><input ng-model="modelVal.A6" ng-change="computeFutureEligibility()" type="text" name="year" required></span></p>
                     <span class="placeholder addPadding-4Per">Further eligiblity</span>
                     <p class="question multiple"><span class="content">
-                    Thanks for the guidance.I would like to save<span class="nextline">the following amount per month <span class="currency swiper-input normal"><span class="currency">&#8377</span><input ng-model="modelVal.A4" format="number" type="text" name="year" required></span></span></span></p>
-                    <p><span class="placeholder addPadding-4Per addOnlyBold">Your potetial tax benigit is <span class="highlight"><span class="currency">&#8377</span><span class="amount">65,000</span></span></span></p>
+                    Thanks for the guidance.I would like to save<span class="nextline">the following amount per month <span class="currency swiper-input normal"><span class="currency">&#8377</span><input ng-model="modelVal.A2" ng-change="computeTaxBenefit()" format="number" type="text" name="year" required></span></span></span></p>
+                    <p><span class="placeholder addPadding-4Per addOnlyBold">Your potential tax benefit is <span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="taxsaving.taxBenefit | currency:''"></span></span></p>
                 </div>
             </form>
         </div>
@@ -2552,13 +2552,9 @@
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 3)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 5)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 6)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 7)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);" ng-disabled="(modelVal.A2 == 0)||(modelVal.A2 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="(modelVal.A2 == 0)||(modelVal.A2 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>
 <div ng-if="swiperName == 'investorInfo'" class="fadeIn swiper-container customSwiper investorInfo type2Sliders" ng-init="step = 1">

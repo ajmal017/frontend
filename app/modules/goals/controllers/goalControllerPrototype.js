@@ -7,10 +7,13 @@ var finApp = finApp || {};
 				$('#equiDeptModal').modal('show');
 			},
 			
-			reloadRoute : function(param) {
+			reloadRoute : function(param, slideNumber) {
 				this.rootScope.selectedCriteria = param;
 				if(!this.rootScope.$$phase) this.rootScope.$apply();
-				this.rootScope.slideTobeChanged = 2;
+				if (typeof(slideNumber) === "undefined")
+					slideNumber = 2;
+				
+				this.rootScope.slideTobeChanged = slideNumber;
 			    this.route.reload();
 			},
 			
