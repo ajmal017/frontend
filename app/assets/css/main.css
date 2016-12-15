@@ -4355,19 +4355,6 @@ section.quickInvest .started {
   width: 30%;
   margin: 0 auto;
   margin-top: -8%;
-  position: relative;
-  width: 100%;
-  -webkit-border-radius: 25px;
-  -moz-border-radius: 25px;
-  border-radius: 25px;
-  margin-bottom: 12%;
-  float: left;
-  background-image: -moz-linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
-  background-image: -webkit-linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
-  -webkit-box-shadow: 1px 5.33px 11px -4px #247abc;
-  -moz-box-shadow: 1px 5.33px 11px -4px #247abc;
-  box-shadow: 1px 5.33px 11px -4px #247abc; 
-}
 }
 .meter-widget-cover .guageCalculator img {
   width: 100%;
@@ -5630,6 +5617,7 @@ section.recommended .recommended-table-section {
   padding-left: 6%;
   padding-right: 6%;
   padding-bottom: 4%;
+  min-height: 430px;
 }
 section.recommended .recommended-table-section .schemeTable {
   margin-bottom: 2%;

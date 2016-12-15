@@ -753,7 +753,7 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="retirement.goalEstimates.budget.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="retirement.goalEstimates.budget.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='BUDGET')" id="budget" name="estimateNow">
+                                <input type="radio" id="budget" name="estimateNow" ng-model="modelVal.estimate_selection_type" value="op1">
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
@@ -766,7 +766,7 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="retirement.goalEstimates.comfortable.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="retirement.goalEstimates.comfortable.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='COMFORT')" id="confort" name="estimateNow">
+                                <input type="radio" id="confort" name="estimateNow" ng-model="modelVal.estimate_selection_type" value="op2">
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
@@ -779,7 +779,7 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="retirement.goalEstimates.luxury.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="retirement.goalEstimates.luxury.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='LUXURIOUS')" id="luxurious" name="estimateNow">
+                                <input type="radio" id="luxurious" name="estimateNow" ng-model="modelVal.estimate_selection_type" value="op3">
                                 <label for="luxurious"><span></span></label>
                             </div>
                             </div>
@@ -811,7 +811,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.debt}} calculate-guage={{modelVal.assetAllocation.debt}}>
+                                <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.equityInitial}} calculate-guage={{modelVal.assetAllocation.equity}}>
                                     <h4 class="text">Recommended</h4>
                                     <div class="orbit">
                                         <div class="indicator"></div>
@@ -888,7 +888,7 @@
                 <div class="fin-btn-group addMargin">
                     <button click-redirect="/retirementGoalsStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
                     <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
-                    <button ng-click="fundSelection(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    <button ng-click="fundSelectionRetirement(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
                 </div>
             </div>
         </div>
