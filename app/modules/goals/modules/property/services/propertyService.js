@@ -27,7 +27,12 @@
                 modelObject.A5 = propertyAnswers['current_price'];
                 modelObject.A6 = propertyAnswers['prop_of_purchase_cost']
                 modelObject.A7 = propertyAnswers['amount_saved'];
-                modelObject.A2 = parseInt(d.getFullYear() + propertyAnswers['term']);
+                if (propertyAnswers['term']) {
+                	modelObject.A2 = parseInt(d.getFullYear() + propertyAnswers['term']);
+                }
+                else {
+                	modelObject.A2 = undefined;
+                }
 	        	return modelObject;
 	        }
 

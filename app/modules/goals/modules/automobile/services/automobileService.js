@@ -27,7 +27,12 @@
                 modelObject.A5 = automobileAnswers['current_price'];
                 modelObject.A6 = automobileAnswers['prop_of_purchase_cost']
                 modelObject.A7 = automobileAnswers['amount_saved'];
-                modelObject.A2 = parseInt(d.getFullYear() + automobileAnswers['term']);
+                if (automobileAnswers['term']) {
+                	modelObject.A2 = parseInt(d.getFullYear() + automobileAnswers['term']);
+                }
+                else {
+                	modelObject.A2 = undefined;
+                }
 	        	return modelObject;
 	        }
 

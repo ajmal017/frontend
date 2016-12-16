@@ -24,7 +24,12 @@
                 modelObject.A5 = educationAnswers['location'];
                 modelObject.A6 = educationAnswers['field']
                 modelObject.A7 = educationAnswers['amount_saved'];
-                modelObject.A2 = parseInt(d.getFullYear() + educationAnswers['term']);
+                if (educationAnswers['term']) {
+                	modelObject.A2 = parseInt(d.getFullYear() + educationAnswers['term']);
+                }
+                else {
+                	modelObject.A2 = undefined;
+                }
                 return modelObject;
 	        }
 
