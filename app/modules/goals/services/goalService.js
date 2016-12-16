@@ -62,7 +62,7 @@
                 	seriesProjected.data.push({y:expectedCorpus, invested:investedValueStr,projected:expectedCorpusStr});
                 	seriesInvested.data.push({y:investedValue, invested:investedValueStr,projected:expectedCorpusStr});
                 }
-                var interval = parseInt((category.length)/8),
+                var interval = parseInt(Math.ceil(parseFloat((category.length)/8))),
                 	toDateStr = currentMonth + ' ' + String(currentYear + tenure);
 
                 graphObject.interval = interval;

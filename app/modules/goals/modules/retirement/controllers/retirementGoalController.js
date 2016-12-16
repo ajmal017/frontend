@@ -11,10 +11,6 @@
 			$scope.retirement = {};
 			$scope.modelVal = retirementGoalsService.getSavedValues();
 			$rootScope.setFundData = {};
-            var category = ['2016', '2017', '2018', '2019', '2020','2021', '2022'];
-            var series = [{data:[{y:0.7,invested:'14lakh',projected:'50lakh'},{y:4,invested:'14lakh',projected:'50lakh'},{y:0.2,invested:'14lakh',projected:'50lakh'},{y:0.5,invested:'14lakh',projected:'50lakh'},{y:0.7,invested:'14lakh',projected:'50lakh'},{y:4,invested:'14lakh',projected:'50lakh'},{y:0.2,invested:'14lakh',projected:'50lakh'}]},{data:[{y:0.2,invested:'14lakh',projected:'50lakh'},{y:0.5,invested:'14lakh',projected:'50lakh'},{y:1,invested:'14lakh',projected:'50lakh'},{y:2,invested:'14lakh',projected:'50lakh'},{y:0.7,invested:'14lakh',projected:'50lakh'},{y:4,invested:'14lakh',projected:'50lakh'},{y:0.2,invested:'14lakh',projected:'50lakh'}],dashStyle:'ShortDash'}];
-            var title = '54.4 lakh';
-
 			
 			$scope.loadDefaultValues = function() {
 				if($rootScope.userFlags['user_answers']['retirement']['goal_plan_type'] == 'op2')

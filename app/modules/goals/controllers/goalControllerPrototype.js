@@ -126,6 +126,7 @@ var finApp = finApp || {};
 				this.goalModelObject['perMonth'] = this.goalModelObject.goalEstimates[selectionType].sip;
 				this.goalModelObject['assetAllocation'] = this.goalModelObject.goalEstimates[selectionType].assetAllocation;
 				
+				this.scope.setModelVal(this.goalModelObject['assetAllocation'], this.goalModelObject['perMonth']);
 			},
 
 			callModel : function(debtValue, equityValue, amount) {
@@ -149,6 +150,7 @@ var finApp = finApp || {};
 				var equityAmount = (assetAllocationObj.equity/100) * sipAmount;
 				this.scope.modelVal.debtAmount = debtAmount;
 				this.scope.modelVal.equityAmount = equityAmount;
+				this.scope.getGoalGraphDetails();
 			},
 
 			changeDebtModal : function() {
@@ -188,7 +190,22 @@ var finApp = finApp || {};
 						console.log(data.Message);
 					}
 				});
+			},
+			
+			getGraphObject : function() {
+				if (!this.scope.graphObject) {
+					this.scope.graphObject = this.goalsService.initGoalGraphDetails();
+				}
+				return this.scope.graphObject;
+			},
+			
+			getGoalGraphDetails : function() {
+				this.goalsService.getGoalGraphDetails(this.scope.graphObject, this.scope.modelVal.assetAllocation, this.scope.modelVal.A4, 0, this.goalModelObject['tenure']);
+
+				console.log('$scope.graphObject',this.scope.graphObject);
 			}
+
+
 			
 	};
 })();
