@@ -126,7 +126,7 @@ var finApp = finApp || {};
 				this.goalModelObject['perMonth'] = this.goalModelObject.goalEstimates[selectionType].sip;
 				this.goalModelObject['assetAllocation'] = this.goalModelObject.goalEstimates[selectionType].assetAllocation;
 				
-				this.scope.setModelVal(this.goalModelObject['assetAllocation'], this.goalModelObject['perMonth']);
+				this.setModelVal(this.goalModelObject['assetAllocation'], this.goalModelObject['perMonth']);
 			},
 
 			callModel : function(debtValue, equityValue, amount) {

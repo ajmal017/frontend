@@ -891,9 +891,9 @@
         </div>
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
             <form name="quickInvestForm3" novalidate>
-                <div class="swiper-content">
+                <div class="swiper-content retirement-amount">
                       <h1 class="topHeader">I would like to save the following amount for this<span class="nextline">Educational goal</span></h1>
-                      <p class="question width-auto"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2')">PLEASE HELP ME ESTIMATE</button></p>
+                      <p class="question width-auto"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required></span><span class="or">OR </span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2')">PLEASE HELP ME ESTIMATE</button></p>
                 </div>
             </form>
         </div>
@@ -2248,21 +2248,21 @@
         <div class="swiper-slide">
             <form name="invertorInfoForm1" novalidate>
                 <div class="swiper-content noPadding">
-                      <p class="question">I am <select dropdown ng-model="modelVal.A1"><option selected value="op1">Resident Invidual</option><option value="op2">International</option></select></p>
-                      <p class="question">and my PAN card number is <span class="swiper-input"><input validate-pan ng-model="modelVal.A4" type="text" name="pan" required><b ng-show="$root.verify == true">KYC VERIFIED</b><b ng-show="$root.verify == false">KYC NOT VERIFIED</b></span></p>
+                      <p class="question">I am <select dropdown ng-model="modelVal.taxStatus"><option selected value="op1">Resident Invidual</option><option value="op2">International</option></select></p>
+                      <p class="question">and my PAN card number is <span class="swiper-input"><input validate-pan ng-model="modelVal.panNumber" type="text" name="pan" required><b ng-show="$root.verify == true">KYC VERIFIED</b><b ng-show="$root.verify == false">KYC NOT VERIFIED</b></span></p>
                       <span class="error-text" ng-show="invertorInfoForm1.pan.$error.invalidPan">Please enter valid PAN number</span>
-                      <p class="question">My name is <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
-                      <p class="question">and my father's name is <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span>
-                      <p class="question">I was born on <span class="swiper-input"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" data-datepicker="{theme: 'flat',dateformat: 'DD/MM/YYYY'}" data-ng-model="value1"></span></p>
+                      <p class="question">My name is <span class="swiper-input"><input ng-model="modelVal.applicantName" type="text" name="year" required></span></p>
+                      <p class="question">and my father's name is <span class="swiper-input"><input ng-model="modelVal.fatherName" type="text" name="year" required></span>
+                      <p class="question">I was born on <span class="swiper-input"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" data-datepicker="{theme: 'flat',dateformat: 'DD/MM/YYYY'}" data-ng-model="modelVal.dob"></span></p>
                 </div>
             </form>
         </div>
         <div class="swiper-slide">
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content noPadding">
-                     <p class="question">I was born in the city of <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
-                     <p class="question">In the country: <select ng-if="countryList" dropdown scroll-height="250" ng-model="modelVal.A7"><option ng-selected="$index == 0" ng-repeat="country in countryList" value="{{country.value}}">{{country.value}}</option></select></p>
-                      <p class="question">I worked as a <select dropdown ng-model="modelVal.A1"><option selected value="op1">Consultant</option><option value="op2">International</option></select></p>
+                     <p class="question">I was born in the city of <span class="swiper-input"><input ng-model="modelVal.placeOfBirth" type="text" name="year" required></span></p>
+                     <p class="question">In the country: <select ng-if="countryList" dropdown scroll-height="250" ng-model="modelVal.countryOfBirth"><option ng-selected="$index == 0" ng-repeat="country in countryList" value="{{country.value}}">{{country.value}}</option></select></p>
+                      <p class="question">I worked as a <select dropdown ng-model="modelVal.occupationType"><option selected value="op1">Consultant</option><option value="op2">International</option></select></p>
                       <p class="question">And I make <select dropdown ng-model="modelVal.A1" scroll-height="120"><option selected value="op1">&lt; 1 Lakhs</option><option value="op2">1-5 Lakhs</option><option value="op2">5-10 Lakhs</option><option value="op2">10-25 Lakhs</option><option value="op2">25-100 Lakhs</option><option value="op2">&gt; 100 Lakhs</option></select>per year</p>
                 </div>
             </form>
