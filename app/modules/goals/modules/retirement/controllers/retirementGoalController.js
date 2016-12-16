@@ -11,7 +11,11 @@
 			$scope.retirement = {};
 			$scope.modelVal = retirementGoalsService.getSavedValues();
 			$rootScope.setFundData = {};
+            var category = ['2016', '2017', '2018', '2019', '2020','2021', '2022'];
+            var series = [{data:[{y:0.7,invested:'14lakh',projected:'50lakh'},{y:4,invested:'14lakh',projected:'50lakh'},{y:0.2,invested:'14lakh',projected:'50lakh'},{y:0.5,invested:'14lakh',projected:'50lakh'},{y:0.7,invested:'14lakh',projected:'50lakh'},{y:4,invested:'14lakh',projected:'50lakh'},{y:0.2,invested:'14lakh',projected:'50lakh'}]},{data:[{y:0.2,invested:'14lakh',projected:'50lakh'},{y:0.5,invested:'14lakh',projected:'50lakh'},{y:1,invested:'14lakh',projected:'50lakh'},{y:2,invested:'14lakh',projected:'50lakh'},{y:0.7,invested:'14lakh',projected:'50lakh'},{y:4,invested:'14lakh',projected:'50lakh'},{y:0.2,invested:'14lakh',projected:'50lakh'}],dashStyle:'ShortDash'}];
+            var title = '54.4 lakh';
 
+			
 			$scope.loadDefaultValues = function() {
 				if($rootScope.userFlags['user_answers']['retirement']['goal_plan_type'] == 'op2')
                 {
@@ -27,7 +31,15 @@
 			if($location.$$path == '/retirementGoalsStarted'){
 				$scope.loadDefaultValues();
 			}
-			
+
+			$scope.getGraphObject = function() {
+				if (!$scope.graphObject) {
+					$scope.graphObject = goalsService.initGoalGraphDetails();
+				}
+				return $scope.graphObject;
+			}
+            $scope.graphObject = $scope.getGraphObject();
+
 			$scope.reloadRoute = function(param) {
 				$rootScope.selectedCriteria = param;
 				if(!$rootScope.$$phase) $rootScope.$apply();
@@ -111,6 +123,7 @@
 					var equityAmount = (assetAllocationObj.equity/100) * sipAmount;
 					$scope.modelVal.debtAmount = debtAmount;
 					$scope.modelVal.equityAmount = equityAmount;
+					$scope.getGoalGraphDetails();
 			}
 			
 			$scope.calculateEstimates = function(currentAge, retirementAge, monthlyIncome, amountSaved) {
@@ -126,7 +139,6 @@
 																'sip' : computedSIPData.computedSIP,
 																'assetAllocation' : computedSIPData.assetAllocation};
 						}
-						$scope.setModelVal(computedSIPData.assetAllocation, computedSIPData.computedSIP);
 						$scope.retirement['goalEstimates'] = goalEstimates;
 						if (!$scope.activeTab) {
 							$scope.modelVal.estimate_selection_type = 'op2';
@@ -143,11 +155,16 @@
 				$scope.retirement['corpus'] = $scope.retirement.goalEstimates[selectionType].corpus;
 				$scope.retirement['perMonth'] = $scope.retirement.goalEstimates[selectionType].sip;
 				$scope.retirement['assetAllocation'] = $scope.retirement.goalEstimates[selectionType].assetAllocation;
+				
+				$scope.setModelVal($scope.retirement['assetAllocation'], $scope.retirement['perMonth']);
+
 			}
 
-			$scope.graphObject = goalsService.getGoalGraphDetails();
+			$scope.getGoalGraphDetails = function() {
+				goalsService.getGoalGraphDetails($scope.graphObject, $scope.modelVal.assetAllocation, $scope.modelVal.A5, 0, $scope.retirement['tenure']);
 
-			console.log('$scope.graphObject',$scope.graphObject);
+				console.log('$scope.graphObject',$scope.graphObject);
+			}
 
 			$scope.callModel = function(debtValue, equityValue, amount){
 				$scope.amount = amount;
