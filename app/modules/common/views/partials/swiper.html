@@ -2021,6 +2021,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                                 <div class="row">
                                     <fin-calendar-form year="true" year-max="50" ng-model="modelVal.A2" format-symbol="none" type="#fde8de" font-color="#f26529" min="0" max="100"></fin-calendar-form>
+                                
                                 </div>
                             </div>
                         </div>
@@ -2139,7 +2140,7 @@
                 <div class="fin-btn-group addMargin">
                     <button click-redirect="/othersStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
                     <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
-                    <button ng-click="fundSelectionEvents(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    <button ng-click="fundSelectionEvents(modelVal, date)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
                 </div>
             </div>
         </div>

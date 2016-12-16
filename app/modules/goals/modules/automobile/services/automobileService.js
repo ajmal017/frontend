@@ -16,6 +16,18 @@
         	}
 
 	        function getSavedValues(){
+	        	var automobileAnswers = {};
+                automobileAnswers = $rootScope.userFlags['user_answers']['automobile'];
+                console.log('automobileAnswers',automobileAnswers);
+
+                var d = new Date();
+                modelObject.A1 = automobileAnswers['goal_name'];
+                modelObject.A3 = automobileAnswers['corpus'];
+               
+                modelObject.A5 = automobileAnswers['current_price'];
+                modelObject.A6 = automobileAnswers['prop_of_purchase_cost']
+                modelObject.A7 = automobileAnswers['amount_saved'];
+                modelObject.A2 = parseInt(d.getFullYear() + automobileAnswers['term']);
 	        	return modelObject;
 	        }
 

@@ -109,13 +109,19 @@
 					if (!ngModel) return; 
 					ngModel.$render = function(){						
 						if($scope.year == 'true'){
-							var currentDate = new Date();
-							var currentYear = currentDate.getFullYear();
-							$scope.max = currentYear + parseInt($scope.yearMax);
-							$scope.min = currentYear + 1;
-							model = $scope.min;
-							$scope.model = $scope.min;
-							ngModel.$setViewValue($scope.model);
+							if(ngModel.$viewValue == '' || ngModel.$viewValue == undefined){
+								var currentDate = new Date();
+								var currentYear = currentDate.getFullYear();
+								$scope.max = currentYear + parseInt($scope.yearMax);
+								$scope.min = currentYear + 1;
+								model = $scope.min;
+								$scope.model = $scope.min;
+								ngModel.$setViewValue($scope.model);
+							} else {
+								$scope.model = ngModel.$viewValue;
+								model = ngModel.$viewValue;
+								ngModel.$setViewValue($scope.model);
+							}
 						}else{
 							$scope.model = ngModel.$viewValue || 0;
 							model = ngModel.$viewValue || 0;

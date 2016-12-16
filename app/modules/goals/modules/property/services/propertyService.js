@@ -16,6 +16,18 @@
         	}
 
 	        function getSavedValues(){
+	        	var propertyAnswers = {};
+                propertyAnswers = $rootScope.userFlags['user_answers']['property'];
+                console.log('propertyAnswers',propertyAnswers);
+
+                var d = new Date();
+                modelObject.A1 = propertyAnswers['goal_name'];
+                modelObject.A3 = propertyAnswers['corpus'];
+               
+                modelObject.A5 = propertyAnswers['current_price'];
+                modelObject.A6 = propertyAnswers['prop_of_purchase_cost']
+                modelObject.A7 = propertyAnswers['amount_saved'];
+                modelObject.A2 = parseInt(d.getFullYear() + propertyAnswers['term']);
 	        	return modelObject;
 	        }
 

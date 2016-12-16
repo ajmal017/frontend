@@ -15,7 +15,17 @@
         	}
 
 	        function getSavedValues(){
-	        	return modelObject;
+	        	var educationAnswers = {};
+                educationAnswers = $rootScope.userFlags['user_answers']['education'];
+                console.log('educationAnswers',educationAnswers);
+                var d = new Date();
+                modelObject.A1 = educationAnswers['goal_name'];
+                modelObject.A3 = educationAnswers['corpus'];
+                modelObject.A5 = educationAnswers['location'];
+                modelObject.A6 = educationAnswers['field']
+                modelObject.A7 = educationAnswers['amount_saved'];
+                modelObject.A2 = parseInt(d.getFullYear() + educationAnswers['term']);
+                return modelObject;
 	        }
 
 	        function setSavedValues(){               

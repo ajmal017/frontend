@@ -52,6 +52,21 @@
 				var self = this;
 				educationService.getCorpusEstimates($scope.education['tenure'], $scope.modelVal.A5, $scope.modelVal.A6, $scope.modelVal.A7).
 				then(self.handleGoalEstimatesResponse);			}
+
+			$scope.loadDefaultValues = function() {
+				if($rootScope.userFlags['user_answers']['education']['goal_plan_type'] == 'op2')
+                {
+                    $rootScope.selectedCriteria = 'op2';
+                }
+				if($rootScope.userFlags['user_answers']['education']['goal_plan_type'] == 'op1')
+                { 
+                    $rootScope.selectedCriteria = 'op1';
+                } 
+			}
+
+			if($location.$$path == '/educationStarted'){
+				$scope.loadDefaultValues();
+			}
 			
 			this.scope.fundSelectionEducation = function(modelVal) {
 				var self = this;

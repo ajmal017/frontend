@@ -55,6 +55,21 @@
 				.then(self.handleGoalEstimatesResponse);
 			}
 			
+			$scope.loadDefaultValues = function() {
+				if($rootScope.userFlags['user_answers']['automobile']['goal_plan_type'] == 'op2')
+                {
+                    $rootScope.selectedCriteria = 'op2';
+                }
+				if($rootScope.userFlags['user_answers']['automobile']['goal_plan_type'] == 'op1')
+                { 
+                    $rootScope.selectedCriteria = 'op1';
+                } 
+			}
+
+			if($location.$$path == '/automobileStarted'){
+				$scope.loadDefaultValues();
+			}
+
 			this.scope.fundSelectionAutomobile = function(modelVal) {
 				var self = this;
 				console.log("In fund selection", modelVal);
@@ -78,7 +93,7 @@
 				}
 
 				if($rootScope.selectedCriteria == 'op2') {
-					fundSelectionObj.corpus = modelVal.A3;
+					// fundSelectionObj.corpus = modelVal.A3;
 					fundSelectionObj.term = modelVal.A2 - d.getFullYear();
 					fundSelectionObj.sip = modelVal.A4;
 					fundSelectionObj.lumpsum = 0;

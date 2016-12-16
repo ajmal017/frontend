@@ -16,6 +16,19 @@
         	}
 
 	        function getSavedValues(){
+	        	var weddingAnswers = {};
+                weddingAnswers = $rootScope.userFlags['user_answers']['wedding'];
+                console.log('weddingAnswers',weddingAnswers);
+
+                // var d = new Date();
+                modelObject.A1 = weddingAnswers['goal_name'];
+                modelObject.A3 = weddingAnswers['corpus'];
+               
+                modelObject.A5 = weddingAnswers['expected_people'];
+                modelObject.A6 = weddingAnswers['location']
+                modelObject.A7 = weddingAnswers['sharing_percentage'];
+                modelObject.A8 = weddingAnswers['amount_saved'];
+                // modelObject.A2 = parseInt(d.getFullYear() + automobileAnswers['term']);
 	        	return modelObject;
 	        }
 

@@ -53,6 +53,21 @@
 				weddingService.getCorpusEstimates($scope.wedding['tenure'], $scope.modelVal.A5, $scope.modelVal.A6, $scope.modelVal.A7, $scope.modelVal.A8)
 				.then(self.handleGoalEstimatesResponse);
 			}
+
+			$scope.loadDefaultValues = function() {
+				if($rootScope.userFlags['user_answers']['wedding']['goal_plan_type'] == 'op2')
+                {
+                    $rootScope.selectedCriteria = 'op2';
+                }
+				if($rootScope.userFlags['user_answers']['wedding']['goal_plan_type'] == 'op1')
+                { 
+                    $rootScope.selectedCriteria = 'op1';
+                } 
+			}
+
+			if($location.$$path == '/weddingStarted'){
+				$scope.loadDefaultValues();
+			}
 			
 			this.scope.fundSelectionWedding = function(modelVal) {
 				var self = this;

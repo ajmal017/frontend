@@ -16,7 +16,17 @@
         	}
 
 	        function getSavedValues(){
-	        	return modelObject;
+                var eventsAnswers = {};
+                var d = new Date();
+                
+                eventsAnswers = $rootScope.userFlags['user_answers']['event'];
+                console.log('eventsAnswers',eventsAnswers);
+                modelObject.A1 = eventsAnswers['goal_name'];
+
+                modelObject.A3 = eventsAnswers['corpus'];
+                modelObject.A2 = parseInt(d.getFullYear() + eventsAnswers['term']);
+                
+                return modelObject;
 	        }
 
 	        function setSavedValues(){               

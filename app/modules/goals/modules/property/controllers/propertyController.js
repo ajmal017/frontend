@@ -54,6 +54,21 @@
 				.then(self.handleGoalEstimatesResponse);
 			}
 
+			$scope.loadDefaultValues = function() {
+				if($rootScope.userFlags['user_answers']['property']['goal_plan_type'] == 'op2')
+                {
+                    $rootScope.selectedCriteria = 'op2';
+                }
+				if($rootScope.userFlags['user_answers']['property']['goal_plan_type'] == 'op1')
+                { 
+                    $rootScope.selectedCriteria = 'op1';
+                } 
+			}
+
+			if($location.$$path == '/propertyStarted'){
+				$scope.loadDefaultValues();
+			}
+
 			this.scope.fundSelectionProperty = function(modelVal) {
 				var self = this;
 				console.log("In fund selection", modelVal);

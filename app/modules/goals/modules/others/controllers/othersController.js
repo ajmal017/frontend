@@ -15,7 +15,6 @@
 			this.goalModelObject = this.scope.others;
 			
 			this.scope.modelVal = othersService.getSavedValues();
-			
 			this.rootScope = $rootScope;
 			this.route = $route;
 			this.location = $location,
@@ -50,7 +49,7 @@
 			this.scope.calculateEstimates = function() {
 			}
 
-			this.scope.fundSelectionEvents = function(modelVal) {
+			this.scope.fundSelectionEvents = function(modelVal, date) {
 				var self = this;
 				console.log("In fund selection", modelVal);
 
@@ -58,7 +57,7 @@
 				var fundSelectionObj = {};
 				
 				fundSelectionObj.corpus = modelVal.A3;
-				fundSelectionObj.term = modelVal.A2 - d.getFullYear();
+				fundSelectionObj.term = date - d.getFullYear();
 				fundSelectionObj.sip = modelVal.A4;
 				fundSelectionObj.lumpsum = 0;
 				fundSelectionObj.allocation = {
