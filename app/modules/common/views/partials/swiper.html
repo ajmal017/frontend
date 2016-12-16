@@ -532,21 +532,24 @@
                             <div class="col-xs-12 result-header"><p><span class="pigy-icon"><img src="assets/images/pigyicon.png"></span>Equity/Debt Mix</p></div>
                             <div class="meter-widget-cover">
                                 <div class="col-xs-12 meter-header">
-                                    <button class="edit" ng-click="callModel()"></button>
+                                    <button ng-if="$root.selectedCriteria == 'op1'" class="edit" ng-click="callModel(modelVal.assetAllocation.debt, modelVal.assetAllocation.equity, modelVal.A2)"></button>
+                                    <button ng-if="$root.selectedCriteria == 'op2'" class="edit" ng-click="callModel(modelVal.assetAllocation.debt, modelVal.assetAllocation.equity, modelVal.A4)"></button>
                                     <div class="row">
                                         <div class="col-xs-6 text-right">
                                             <h2 class="debt">Debt</h2>
-                                            <p class="debt">0%</p>
-                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                            <p class="debt">{{modelVal.assetAllocation.debt}}%</p>
+                                            <h4><span class="currency">&#8377</span>{{modelVal.debtAmount}}</h4>
+                                            <h4 ng-show = "modelVal.debtAmountLumpsum"><span class="currency">&#8377</span>{{modelVal.debtAmountLumpsum}}</h4>
                                         </div>
                                         <div class="col-xs-6 text-left">
                                             <h2 class="equity">Equity</h2>
-                                            <p class="equity">100%</p>
-                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                            <p class="equity">{{modelVal.assetAllocation.equity}}%</p>
+                                            <h4><span class="currency">&#8377</span>{{modelVal.equityAmount}}</h4>
+                                            <h4 ng-show = "modelVal.equityAmountLumpsum"><span class="currency">&#8377</span>{{modelVal.equityAmountLumpsum}}</h4>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
+                                <div class="guage clearfix" one-time-equity="{{modelVal.assetAllocation.equityInitial}}" calculate-guage="{{modelVal.assetAllocation.equity}}">
                                     <h4 class="text">Recommended</h4>
                                     <div class="orbit">
                                         <div class="indicator"></div>
@@ -585,8 +588,9 @@
                                         </div>
                                     </div>
                                     <div class="guageCalculator">
-                                        <img src="assets/images/guageCalculator.png">
+                                        <risk-image></risk-image>
                                     </div>  
+                                    <risk-type></risk-type>
                                     <p class="bottom-text">As per your risk profile</p>
                                 </div>
                             </div>
@@ -617,8 +621,8 @@
                 </div>
                 <div class="fin-btn-group addMargin">
                     <button click-redirect="/quickInvestStart" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <button click-redirect="/planInvest" class="fin-app-btn fin-blue">CONTINUE PLANING</button>
-                    <button click-redirect="/dashboard" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    <!-- <button click-redirect="/planInvest" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                    <button ng-click="fundSelectionQuickInvest(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
                 </div>
             </div>
         </div>
