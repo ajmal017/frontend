@@ -2,7 +2,11 @@
 	'use strict';
 	angular
 		.module('finApp.goals',[])
-		.config(config);
+		.config(config)
+		.constant('goalConfig',{
+			'QUICKINVEST_LUMPSUM_TERM' : 10,
+			'TAX_TERM' : 3
+		});
 
 		config.$inject = ['$routeProvider','$httpProvider'];
 		

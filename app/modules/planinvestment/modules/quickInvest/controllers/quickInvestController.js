@@ -5,9 +5,9 @@
 		.controller('quickInvestController',quickInvestController);
 
 		quickInvestController.$inject = ['$scope','$rootScope','$route','$location', '$timeout', 'quickInvestService',
-			                              'goalsService', 'assetAllocationService', 'goalFormulaeService', 'appConfig', 'riskProfileService'];
+			                              'goalsService', 'assetAllocationService', 'goalFormulaeService', 'appConfig', 'riskProfileService', 'goalConfig'];
 		function quickInvestController($scope,$rootScope,$route,$location,$timeout,quickInvestService,
-				goalsService, assetAllocationService, goalFormulaeService, appConfig, riskProfileService) {
+				goalsService, assetAllocationService, goalFormulaeService, appConfig, riskProfileService, goalConfig) {
 			
 			this.scope = $scope;
 
@@ -36,11 +36,28 @@
 			this.scope.estimateSelectionChanged = angular.bind( this, this.estimateSelectionChanged);
 			this.scope.handleGoalEstimatesResponse = angular.bind( this, this.handleGoalEstimatesResponse);
 			
+			this.scope.getGraphObject = angular.bind(this, this.getGraphObject ); 
+            this.scope.graphObject = this.scope.getGraphObject();
+
 			this.rootScope.showPortfolioFactoring = true;
 
 			this.scope.calculateEstimates = function() {
 			}
 			
+			var self = this;
+			
+			this.getGoalGraphDetails = function() {
+				var tenure = goalConfig.QUICKINVEST_LUMPSUM_TERM;
+				if ($rootScope.selectedCriteria == 'op1') {
+					tenure = $scope.quickinvest['tenure'];
+				}
+				this.goalsService.getGoalGraphDetails(this.scope.graphObject, $scope.quickinvest['assetAllocation'], this.scope.modelVal.A2 || 0, this.scope.modelVal.A4 || 0, tenure);
+
+				console.log('$scope.graphObject',this.scope.graphObject);
+			}
+
+			this.scope.getGoalGraphDetails = angular.bind(this, this.getGoalGraphDetails ); 
+
 			this.scope.getAssetAllocationCategory = function() {
 				var tenure = $scope.modelVal.A3;
 			
@@ -58,6 +75,7 @@
 						var assetAllocationData = assetAllocationService.computeAssetAllocation($scope.quickinvest['assetAllocationCategory'], $scope.modelVal.A2, $scope.modelVal.A4 || 0);
 
 						$scope.quickinvest['assetAllocation'] = assetAllocationData.assetAllocation;
+						self.getGoalGraphDetails();
 						
 						$scope.$broadcast('assetAllocationCategoryChanged');
 					});
@@ -68,11 +86,11 @@
 
 					var assetAllocationData = assetAllocationService.computeAssetAllocation($scope.quickinvest['assetAllocationCategory'], $scope.modelVal.A2 || 0, $scope.modelVal.A4 || 0);
 					$scope.quickinvest['assetAllocation'] = assetAllocationData.assetAllocation;
+					self.getGoalGraphDetails();
 				}
-
 			}
-			$scope.graphObject = goalsService.getGoalGraphDetails();
 
+			
 		}
 		                               
 		quickInvestController.prototype = finApp.goalControllerPrototype;
