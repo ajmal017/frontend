@@ -606,6 +606,9 @@
 			        },
 			        yAxis: [{
 			        		opposite:true,
+							title:{
+								text : ''
+							},
 			            labels: {
 			                enabled: true,
 			                formatter: function () {
