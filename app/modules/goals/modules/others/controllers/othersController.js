@@ -72,10 +72,10 @@
 				console.log('fundSelectionObj',fundSelectionObj);
 
 				busyIndicator.show();
-				goalsService.addParticularGoal(fundSelectionObj, 'events').then(function(data){
+				goalsService.addParticularGoal(fundSelectionObj, 'event').then(function(data){
 					if('success' in data) {
 						console.log('Goal added successfully');
-						self.getFundData('events');
+						self.getFundData('event', busyIndicator);
 						busyIndicator.hide();
 					}
 					else {

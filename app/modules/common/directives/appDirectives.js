@@ -27,7 +27,8 @@
 		.directive('uploadFile',uploadFile)
 		.directive('getFileUploaded',getFileUploaded)
 		.directive('captureVideo',captureVideo)
-		.directive('riskImage',riskImage);
+		.directive('riskImage',riskImage)
+		.directive('riskType',riskType);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -1030,38 +1031,71 @@
 	        }
 
 	        function link(scope, elem, attr, ctrl){
-	        	alert("hi");
-	        	var div = $('<div/>', {
-				    class: 'bubble'
-				});
-	            div.appendTo($('.guageCalculator'));
+	        	var $this = elem;
 	            var risk = $rootScope.userRiskFactor;
 	            var riskImage = '';
-
+	            
 	            if(risk > 0 && risk < 4) {
 	            	riskImage = '<img src= "assets/images/categoryImage1.png" class="img img-responsive" />';
+	            	riskType = '<span class="text-center">Low Risk</span>';
 	            } else if(risk >= 4.1 && risk <= 6.0) {
 	            	riskImage = '<img src= "assets/images/categoryImage3.png" class="img img-responsive" />';
+	            	riskType = '<span class="text-center">Below Average Risk</span>';      	
 	            } else if(risk >= 6.1 && risk <= 7.5) {
 	            	riskImage = '<img src= "assets/images/assesmentCar.png" class="img img-responsive" />';
+	            	riskType = '<span class="text-center">Average Risk</span>';      	
+	            	
 	            } else if(risk >= 7.6 && risk <= 9.0) {
 	            	riskImage = '<img src= "assets/images/categoryImage2.png" class="img img-responsive" />';
+	            	riskType = '<span class="text-center">Above Average Risk</span>';      	
+	            	
 	            } else if(risk >= 9.1 && risk <= 10.0) {
 	            	riskImage = '<img src= "assets/images/categoryImage4.png" class="img img-responsive" />';
+	            	riskType = '<span class="text-center">High Risk</span>';
 	            }
 
-	            riskImage.appendTo(div);
-	         //    for(var i=0;i<scope.length;i++){
-	         //    	var divDotCover = $('<div/>',{
-	         //    		class : (i == scope.length - 1)?'dot-cover showPseudo':'dot-cover',
-	         //    		'data-content' : (i == scope.length - 1)?scope.goal:''
-	         //    	});
-	         //    	var divDot = $('<div/>',{
-	         //    		class : 'dot active ani'			            		
-	         //    	});
-	         //    	divDot.appendTo(divDotCover)
-	         //    	divDotCover.appendTo(div);
-	        	// }
+	            $this.wrap(riskImage);
+	            
+	            
+    		}
+    	}
+
+        riskType.$inject=['$rootScope'];
+		function riskType($rootScope){
+			console.log('risky');
+    		return {
+	            restrict: 'EA',
+	            link: link,
+	            
+	        }
+
+	        function link(scope, elem, attr, ctrl){
+	        	var $this = elem;
+	            var risk = $rootScope.userRiskFactor;
+	           
+	            var riskType = '';
+	            if(risk > 0 && risk < 4) {
+	            	
+	            	riskType = '<p class="text-center">Low Risk</p>';
+	            } else if(risk >= 4.1 && risk <= 6.0) {
+	            	
+	            	riskType = '<p class="text-center">Below Average Risk</p>';      	
+	            } else if(risk >= 6.1 && risk <= 7.5) {
+	            	
+	            	riskType = '<p class="text-center">Average Risk</p>';      	
+	            	
+	            } else if(risk >= 7.6 && risk <= 9.0) {
+	            	
+	            	riskType = '<p class="text-center">Above Average Risk</p>';      	
+	            	
+	            } else if(risk >= 9.1 && risk <= 10.0) {
+	            	
+	            	riskType = '<p class="text-center">High Risk</p>';
+	            }
+
+	            $this.wrap(riskType);
+	            
+	            
     		}
     	}
 })();
