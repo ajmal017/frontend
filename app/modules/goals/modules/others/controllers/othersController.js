@@ -43,6 +43,10 @@
 			this.scope.saveEquityDebtMix = angular.bind(this, this.saveEquityDebtMix );
 			this.scope.getFundData = angular.bind(this, this.getFundData );
 
+			this.scope.getGoalGraphDetails = angular.bind(this, this.getGoalGraphDetails ); 
+			this.scope.getGraphObject = angular.bind(this, this.getGraphObject ); 
+            this.scope.graphObject = this.scope.getGraphObject();
+
 			this.scope.calculateEstimates = function() {
 			}
 
@@ -79,7 +83,6 @@
 					}
 				});
 			}
-			$scope.graphObject = goalsService.getGoalGraphDetails();
 
 		}
 		                               
