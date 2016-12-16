@@ -100,7 +100,7 @@
 				goalsService.addParticularGoal(fundSelectionObj, 'property').then(function(data){
 					if('success' in data) {
 						console.log('Goal added successfully');
-						self.getFundData('property');
+						self.getFundData('property', busyIndicator);
 						busyIndicator.hide();
 					}
 					else {

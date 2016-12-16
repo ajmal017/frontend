@@ -22,7 +22,7 @@
 				var goalRedirect = '';
 				if(currentGoal == 'retirement'){
 					goalRedirect = currentGoal + 'GoalsStarted';
-				} else if(currentGoal == 'events'){
+				} else if(currentGoal == 'event'){
 					goalRedirect = 'othersStarted';
 				}
 				else {

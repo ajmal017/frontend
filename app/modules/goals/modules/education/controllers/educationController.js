@@ -99,7 +99,7 @@
 				goalsService.addParticularGoal(fundSelectionObj, 'education').then(function(data){
 					if('success' in data) {
 						console.log('Goal added successfully');
-						self.getFundData('education');
+						self.getFundData('education', busyIndicator);
 						busyIndicator.hide();
 					}
 					else {

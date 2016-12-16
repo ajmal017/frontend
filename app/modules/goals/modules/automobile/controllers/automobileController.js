@@ -101,7 +101,7 @@
 				goalsService.addParticularGoal(fundSelectionObj, 'automobile').then(function(data){
 					if('success' in data) {
 						console.log('Goal added successfully');
-						self.getFundData('automobile');
+						self.getFundData('automobile', busyIndicator);
 						busyIndicator.hide();
 					}
 					else {
