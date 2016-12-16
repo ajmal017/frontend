@@ -64,7 +64,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
         		var risk_score = 7.0,
         			riskProfile;
         		if ($rootScope.userFlags && $rootScope.userFlags['user_answers']['risk_score']) {
-        			risk_score = $rootScope.userFlags['risk_score'];
+        			risk_score = $rootScope.userFlags['user_answers']['risk_score'];
         		}
 
         		if (risk_score <= 4) {
