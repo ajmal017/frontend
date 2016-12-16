@@ -70,7 +70,11 @@
 				'COMFORTABLE': 'comfortable',
 				'LUXURY' : 'luxury'
 			},
-			'currentGoals' : ['retirement','education','property','automobile','vacation','wedding','event']
+			'currentGoals' : ['retirement','education','property','automobile','vacation','wedding','event'],
+			'QUICKINVEST_LUMPSUM_TERM' : 10,
+			'TAX_TERM' : 3,
+			'TAX_DEFAULT_ALLOCATION' : {'equity' : 0, 'debt' : 0, 'elss' : 100, 'liquid' : 0}
+
 			
 		});
 })();

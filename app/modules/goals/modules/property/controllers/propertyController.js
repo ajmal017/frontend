@@ -18,8 +18,8 @@
 			
 			this.rootScope = $rootScope;
 			this.route = $route;
-			this.location = $location,
-			this.timeout = $timeout,
+			this.location = $location;
+			this.timeout = $timeout;
 			
 			this.goalsService = goalsService;
 			this.assetAllocationService = assetAllocationService;

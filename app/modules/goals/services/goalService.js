@@ -42,23 +42,29 @@
                 category.length = 0;
                 category.push(String(currentYear));
 
-                seriesProjected.data.length = 0;
-                seriesInvested.data.length = 0;
-            	seriesProjected.data.push({y:0, invested:'0',projected:'0'});
-            	seriesInvested.data.push({y:0, invested:'0',projected:'0'});
-
                 tenure = parseInt(tenure);
                 sipAmount = parseInt(sipAmount); 
                 lumpsumAmount = parseInt(lumpsumAmount);
+
+                seriesProjected.data.length = 0;
+                seriesInvested.data.length = 0;
+
+                expectedCorpus = investedValue = lumpsumAmount + sipAmount;
+        		var investedValueStr = $filter('amountSeffix')(investedValue);
+        		var expectedCorpusStr = $filter('amountSeffix')(expectedCorpus);
+                seriesProjected.data.push({y:expectedCorpus, invested:investedValueStr,projected:expectedCorpusStr});
+            	seriesInvested.data.push({y:investedValue, invested:investedValueStr,projected:expectedCorpusStr});
+
                 
                 for (var i=1; i<=tenure; i++) {
                 	var year = currentYear + i,
                 		investedValue = lumpsumAmount + 12*i*sipAmount;
                 		
                 	var corpusResult = goalFormulaeService.computeCorpusForSIP({'sip': sipAmount, 'lumpsum' : lumpsumAmount, 'tenure': i}, null, assetAllocation),
-                		expectedCorpus = corpusResult.computedCorpus,
-                		investedValueStr = $filter('amountSeffix')(investedValue),
-                		expectedCorpusStr = $filter('amountSeffix')(expectedCorpus);
+                		expectedCorpus = corpusResult.computedCorpus;
+                	
+            		investedValueStr = $filter('amountSeffix')(investedValue),
+            		expectedCorpusStr = $filter('amountSeffix')(expectedCorpus);
                 	
                 	category.push(String(year));
                 	seriesProjected.data.push({y:expectedCorpus, invested:investedValueStr,projected:expectedCorpusStr});
@@ -175,6 +181,8 @@
 			        	}
 		        	}
 	        	}
+	        	assetAllocation.elss = 0;
+	        	assetAllocation.liquid = 0;
 	        	return {"assetAllocation" : assetAllocation, "tableIndex" : tableIndex, "minSIP" : minSIP, "minLumpsum" : minLumpsum};
 	        }
 	        
@@ -186,11 +194,11 @@
 
 	        	if (typeof(assetAllocationCategory) !== "undefined" && assetAllocationCategory && assetAllocationTables.length > 0 ) { 
 	        		if (assetAllocationCategory === appConfig.assetAllocationCategory.OnlyDebt) {
-	        			assetAllocation = {"debt": 100, "equity" : 0};
+	        			assetAllocation = {"debt": 100, "equity" : 0, "elss" : 0, "liquid" : 0};
 	        			possibleAssetAllocations.push({"assetAllocation" : assetAllocation, "tableIndex" : -1, "minSIP" : minSIP, "minLumpsum" : minLumpsum});
 	        		}
 	        		else if (assetAllocationCategory === appConfig.assetAllocationCategory.OnlyEquity) {
-		        		assetAllocation = {"debt": 0, "equity" : 100};
+		        		assetAllocation = {"debt": 0, "equity" : 100, "elss" : 0, "liquid" : 0};
 		        		possibleAssetAllocations.push({"assetAllocation" : assetAllocation, "tableIndex" : -1, "minSIP" : minSIP, "minLumpsum" : minLumpsum});
 		        	}
 		        	else {
@@ -203,6 +211,9 @@
 					        	}
 
 					        	assetAllocation = assetAllocationTables[i]['table'][assetAllocationCategory];
+					        	assetAllocation.elss = 0;
+					        	assetAllocation.liquid = 0;
+
 			        			possibleAssetAllocations.push({"assetAllocation" : assetAllocation, "tableIndex" : i, "minSIP" : minSIP, "minLumpsum" : minLumpsum});
 			        		}
 			        	}

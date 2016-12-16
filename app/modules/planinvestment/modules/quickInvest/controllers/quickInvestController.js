@@ -5,9 +5,9 @@
 		.controller('quickInvestController',quickInvestController);
 
 		quickInvestController.$inject = ['$scope','$rootScope','$route','$location', '$timeout', 'quickInvestService',
-			                              'goalsService', 'assetAllocationService', 'goalFormulaeService', 'appConfig', 'riskProfileService', 'goalConfig'];
+			                              'goalsService', 'assetAllocationService', 'goalFormulaeService', 'appConfig', 'riskProfileService'];
 		function quickInvestController($scope,$rootScope,$route,$location,$timeout,quickInvestService,
-				goalsService, assetAllocationService, goalFormulaeService, appConfig, riskProfileService, goalConfig) {
+				goalsService, assetAllocationService, goalFormulaeService, appConfig, riskProfileService) {
 			
 			this.scope = $scope;
 
@@ -18,8 +18,8 @@
 			
 			this.rootScope = $rootScope;
 			this.route = $route;
-			this.location = $location,
-			this.timeout = $timeout,
+			this.location = $location;
+			this.timeout = $timeout;
 			
 			this.goalsService = goalsService;
 			this.assetAllocationService = assetAllocationService;
@@ -47,7 +47,7 @@
 			var self = this;
 			
 			this.getGoalGraphDetails = function() {
-				var tenure = goalConfig.QUICKINVEST_LUMPSUM_TERM;
+				var tenure = appConfig.QUICKINVEST_LUMPSUM_TERM;
 				if ($rootScope.selectedCriteria == 'op1') {
 					tenure = $scope.quickinvest['tenure'];
 				}

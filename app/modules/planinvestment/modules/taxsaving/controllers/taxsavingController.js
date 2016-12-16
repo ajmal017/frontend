@@ -18,8 +18,8 @@
 			
 			this.rootScope = $rootScope;
 			this.route = $route;
-			this.location = $location,
-			this.timeout = $timeout,
+			this.location = $location;
+			this.timeout = $timeout;
 			
 			this.goalsService = goalsService;
 			this.assetAllocationService = assetAllocationService;
@@ -38,14 +38,27 @@
 			
 			this.rootScope.showPortfolioFactoring = true;
 
+			this.scope.taxsaving['assetAllocation'] = appConfig.TAX_DEFAULT_ALLOCATION;
+			this.scope.getGraphObject = angular.bind(this, this.getGraphObject ); 
+            this.scope.graphObject = this.scope.getGraphObject();
+
+			var self = this;
+			
+			this.getGoalGraphDetails = function() {
+				var tenure = appConfig.TAX_TERM;
+				//Use Equity percentage when calculating corpus for tax.
+				this.goalsService.getGoalGraphDetails(this.scope.graphObject, {'equity' :100, 'debt' : 0}, 0, this.scope.modelVal.A2 || 0, tenure);
+
+				console.log('$scope.graphObject',this.scope.graphObject);
+			}
+
+			this.scope.getGoalGraphDetails = angular.bind(this, this.getGoalGraphDetails ); 
+
 			this.scope.initOptions = function() {
 				this.rootScope.selectedCriteria = 'op1';
 			}
 			
 			this.scope.calculateEstimates = function() {
-				var self = this;
-				taxsavingService.getCorpusEstimates($scope.taxsaving['tenure'], $scope.modelVal.A5, $scope.modelVal.A6, $scope.modelVal.A7)
-				.then(self.handleGoalEstimatesResponse);
 			}
 			
 			this.scope.computeFutureEligibility = function() {
@@ -67,9 +80,9 @@
 				var taxBenefit = Math.round(eligibility * 30.9/100);
 				
 				$scope.taxsaving['taxBenefit'] = taxBenefit;
+				
+				self.getGoalGraphDetails();
 			}
-
-			$scope.graphObject = goalsService.getGoalGraphDetails();
 
 		}
 		                               
