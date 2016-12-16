@@ -5,26 +5,71 @@
         .factory('goalsService', goalsService)
         .factory('assetAllocationService', assetAllocationService);
 
-        goalsService.$inject = ['$resource','$rootScope','appConfig','$q'];
-        function goalsService($resource,$rootScope,appConfig,$q){
+        goalsService.$inject = ['$resource','$rootScope','appConfig','$q', '$filter', 'goalFormulaeService'];
+        function goalsService($resource,$rootScope,appConfig,$q, $filter, goalFormulaeService){
         	
             return{
         		getGoalGraphDetails : getGoalGraphDetails,
-        		getFundSelection : getFundSelection,
-        		addParticularGoal : addParticularGoal
+        		addParticularGoal : addParticularGoal,
+        		initGoalGraphDetails : initGoalGraphDetails,
+        		getFundSelection : getFundSelection
+
         	}
 
-	        function getGoalGraphDetails(){ 
-                var catergory = ['2016', '2017', '2018', '2019', '2020','2021', '2022'];
-                var series = [{data:[{y:0.7,invested:'14lakh',projected:'50lakh'},{y:4,invested:'14lakh',projected:'50lakh'},{y:0.2,invested:'14lakh',projected:'50lakh'},{y:0.5,invested:'14lakh',projected:'50lakh'},{y:0.7,invested:'14lakh',projected:'50lakh'},{y:4,invested:'14lakh',projected:'50lakh'},{y:0.2,invested:'14lakh',projected:'50lakh'}]},{data:[{y:0.2,invested:'14lakh',projected:'50lakh'},{y:0.5,invested:'14lakh',projected:'50lakh'},{y:1,invested:'14lakh',projected:'50lakh'},{y:2,invested:'14lakh',projected:'50lakh'},{y:0.7,invested:'14lakh',projected:'50lakh'},{y:4,invested:'14lakh',projected:'50lakh'},{y:0.2,invested:'14lakh',projected:'50lakh'}],dashStyle:'ShortDash'}];
-                var title = '54.4 lakh';
-                var interval = parseInt((catergory.length)/8);
+	        function initGoalGraphDetails(){
+                var category = [];
+                var series = [{data:[]},{data:[],dashStyle:'ShortDash'}];
+                var interval = 1;
+                
                 return {
-                    catergory : catergory,
-                    series : series,
-                    title : title,
-                    interval : interval
-                }            
+                	category : category,
+                	series : series,
+                	interval : interval
+                }
+	        	
+	        }
+
+	        function getGoalGraphDetails(graphObject, assetAllocation, sipAmount, lumpsumAmount, tenure){ 
+				var currentYear = new Date(),
+					currentMonth = $filter('date')(currentYear, 'MMMM'),
+					currentYear = currentYear.getFullYear();
+
+//                var category = ['2016', '2017', '2018', '2019', '2020','2021', '2022'];
+//                var series = [{data:[{y:0.7,invested:'14lakh',projected:'50lakh'},{y:4,invested:'14lakh',projected:'50lakh'},{y:0.2,invested:'14lakh',projected:'50lakh'},{y:0.5,invested:'14lakh',projected:'50lakh'},{y:0.7,invested:'14lakh',projected:'50lakh'},{y:4,invested:'14lakh',projected:'50lakh'},{y:0.2,invested:'14lakh',projected:'50lakh'}]},{data:[{y:0.2,invested:'14lakh',projected:'50lakh'},{y:0.5,invested:'14lakh',projected:'50lakh'},{y:1,invested:'14lakh',projected:'50lakh'},{y:2,invested:'14lakh',projected:'50lakh'},{y:0.7,invested:'14lakh',projected:'50lakh'},{y:4,invested:'14lakh',projected:'50lakh'},{y:0.2,invested:'14lakh',projected:'50lakh'}],dashStyle:'ShortDash'}];
+//                var title = '54.4 lakh';
+                
+				var category = graphObject.category,
+					seriesProjected = graphObject.series[0],
+					seriesInvested = graphObject.series[1];
+				
+                var investedValue = 0, expectedCorpus = 0;
+                category.length = 0;
+                category.push(String(currentYear));
+
+                seriesProjected.data.length = 0;
+                seriesInvested.data.length = 0;
+                
+                for (var i=1; i<=tenure; i++) {
+                	var year = currentYear + i,
+                		investedValue = lumpsumAmount + 12*i*sipAmount;
+                		
+                	var corpusResult = goalFormulaeService.computeCorpusForSIP({'sip': sipAmount, 'lumpsum' : lumpsumAmount, 'tenure': i}, null, assetAllocation),
+                		expectedCorpus = corpusResult.computedCorpus,
+                		investedValueStr = $filter('amountSeffix')(investedValue),
+                		expectedCorpusStr = $filter('amountSeffix')(expectedCorpus);
+                	
+                	category.push(String(year));
+                	seriesProjected.data.push({y:expectedCorpus, invested:investedValueStr,projected:expectedCorpusStr});
+                	seriesInvested.data.push({y:investedValue, invested:investedValueStr,projected:expectedCorpusStr});
+                }
+                var interval = parseInt((category.length)/8),
+                	toDateStr = currentMonth + ' ' + String(currentYear + tenure);
+
+                graphObject.interval = interval;
+                graphObject.toDate = toDateStr;
+                graphObject.totalInvestment = investedValue;
+                graphObject.totalProjectedCorpus = expectedCorpus;
+                
 	        }
 
 	        function getFundSelection(goalType) {

@@ -122,10 +122,11 @@
 	        }
 	        
 	        //This is used when user changes SIP value
-	        function computeCorpusForSIP(goalData, assetAllocationCategory) {
+	        function computeCorpusForSIP(goalData, assetAllocationCategory, assetAllocation) {
 	        	//FV = A x (1+R) x (((1+R) ^ n) – 1)/R
-	        	if (typeof(goalData) === "undefined" || typeof(assetAllocationCategory) === "undefined" ||
-	        			!goalData || !assetAllocationCategory) {
+	        	if (typeof(goalData) === "undefined" || !goalData ||
+	        			(typeof(assetAllocationCategory) === "undefined" && typeof(assetAllocation) === "undefined") ||
+	        			 (!assetAllocationCategory && !assetAllocation)) {
 	        		return 0;
 	        	}
 
@@ -133,9 +134,10 @@
 	        	    sip = goalData.sip || 0,
 	        	    lumpsum = goalData.lumpsum || 0;
 
-	        	var assetAllocationData = assetAllocationService.computeAssetAllocation(assetAllocationCategory, sip, lumpsum),
+	        	if (typeof(assetAllocation) === "undefined" || !assetAllocation) {
+	        		var assetAllocationData = assetAllocationService.computeAssetAllocation(assetAllocationCategory, sip, lumpsum);
 	        		assetAllocation = assetAllocationData.assetAllocation;
-	        	
+	        	}
 	        	
 	        	var equityPercentage = parseFloat(assetAllocation.equity),
 	        		debtPercentage = parseFloat(assetAllocation.debt);

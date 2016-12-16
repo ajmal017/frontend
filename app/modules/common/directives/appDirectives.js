@@ -563,16 +563,14 @@
             };
     	}
 
-    	function goalChart(){
+    	goalChart.$inject = ['$filter'];
+    	function goalChart($filter){
     		var chart = null;
     		return {
                 restrict: 'E',
                 template: '<div></div>',
                 scope: {
-                	title:'=',
-                    series : '=',
-                    categories : '=',
-                    interval:'='
+                	chartoptions:'='
                 },
                 link: function (scope, element) {  
                 	chart = Highcharts.chart(element[0], {
@@ -598,20 +596,21 @@
 			            text: ''
 			        },
 			        xAxis: {
-			        		categories: scope.categories,
+			        		categories: scope.chartoptions.category,
 			            labels: {
 			                align: 'left'
 			            },
 			            tickLength: 0,
-			            tickInterval:scope.interval
+			            tickInterval:scope.chartoptions.interval
 			        },
 			        yAxis: [{
 			        		opposite:true,
-			            title: {
-			                text: scope.title
-			            },
 			            labels: {
-			                enabled: false
+			                enabled: true,
+			                formatter: function () {
+			                	var value = $filter('amountSeffix')(this.value);
+			                	return value;
+			                }
 			            },
 			            gridLineWidth: 1,
 			            gridLineDashStyle: 'dash',
@@ -671,7 +670,7 @@
 			              }
 			            }
 			        },
-			        series: scope.series
+			        series: scope.chartoptions.series
 			    	});
 					$(window).on('resize',function(){
                     	var outerWidth = parseInt($(element).parent().outerWidth());
@@ -683,6 +682,37 @@
                 			},100);
                 		},0);
 	            	});
+					var chartoptions = scope.chartoptions || {};
+					scope.$watch('chartoptions.title', function(newTitle, oldTitle) {
+						if (newTitle) {
+						chart.yAxis[0].setTitle({'text':newTitle}, true);
+						chart.redraw();
+            			setTimeout(function(){
+    						chart.yAxis[0].setTitle({'text':newTitle}, true);
+            				chart.redraw();
+            			},100);
+
+						}
+					}, true);
+					
+					scope.$watch('chartoptions.series', function(newSeries, oldSeries) {
+						if (newSeries && newSeries.length == chart.series.length) {
+							for (var i=0; i<chart.series.length; i++) {
+								chart.series[i].setData(newSeries[i].data);
+							}
+							chart.redraw();
+						}
+					}, true);
+
+					scope.$watch('chartoptions.category', function(newCategory, oldCategory) {
+							chart.xAxis[0].setCategories(newCategory);
+							chart.redraw();
+					}, true);
+					scope.$watch('chartoptions.interval', function(newInterval, oldInterval) {
+						chart.xAxis[0].update({tickInterval:newInterval});
+						chart.redraw();
+				}, true);
+
                 }
             };
     	}

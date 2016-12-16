@@ -868,19 +868,19 @@
                                     <div class="row">
                                         <div class="col-xs-6">
                                             <div class="row">
-                                                <h4>Investment till October 2030</h4>
-                                                <p><span class="highlight">20.4 lakh</span></p>
+                                                <h4>Investment till <span class="content" ng-bind="graphObject.toDate"></span></h4>
+                                                <p><span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="graphObject.totalInvestment | amountSeffix"></span></span></p>
                                             </div>
                                         </div>
                                         <div class="col-xs-6">
                                             <div class="row">
-                                                <h4>Investment till October 2030</h4>
-                                                <p><span class="highlight">1.80 crore</span></p>
+                                                <h4>Projected in <span class="content" ng-bind="graphObject.toDate"></span></h4>
+                                                <p><span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="graphObject.totalProjectedCorpus | amountSeffix"></span></span></p>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <goal-chart title="graphObject.title" series="graphObject.series" categories="graphObject.catergory" interval="graphObject.interval"></goal-chart>
+                                <goal-chart chartoptions="graphObject" ></goal-chart>
                             </div>
                         </div>
                     </div>
@@ -903,8 +903,8 @@
         <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="sendValues(modelVal);(step = step + 1);calculateYear(modelVal.A2,modelVal.A3);getAssetAllocationCategory();" ng-disabled="(modelVal.A2 == 0)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-click="sendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A4);" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)">CONTINUE</button>
         <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="sendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)">CONTINUE</button>
-        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op2')" ng-click="sendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A3, modelVal.A6, modelVal.A8)" class="fin-app-btn fin-orange content-next" ng-disabled="((modelVal.A6 == 0)||(modelVal.A6 == undefined))||((modelVal.A8 == 0)||(modelVal.A8 == undefined))">CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op2')" ng-click="sendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op2')" ng-click="sendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A3, modelVal.A6, modelVal.A8)" class="fin-app-btn fin-orange content-next" ng-disabled="((modelVal.A6 == 0)||(modelVal.A6 == undefined))||((modelVal.A8 == undefined))">CONTINUE</button>
+        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op2')" ng-click="sendValues(modelVal);(step = step + 1);getGoalGraphDetails()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>
 <div ng-if="swiperName == 'education'" class="fadeIn swiper-container customSwiper education type2Sliders" ng-init="step = 1">
