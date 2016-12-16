@@ -26,7 +26,8 @@
 		.directive('goalLoading',goalLoading)
 		.directive('uploadFile',uploadFile)
 		.directive('getFileUploaded',getFileUploaded)
-		.directive('captureVideo',captureVideo);
+		.directive('captureVideo',captureVideo)
+		.directive('riskImage',riskImage);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -988,4 +989,33 @@
               }
             };
         }
+
+        riskImage.$inject=['$rootScope'];
+		function riskImage($rootScope){
+			console.log('risky');
+    		return {
+	            restrict: 'EA',
+	            link: link,
+	            
+	        }
+
+	        function link(scope, elem, attr, ctrl){
+	        	alert("hi");
+	        	var div = $('<div/>', {
+				    class: 'bubble'
+				});
+	            div.appendTo($('.guageCalculator'));
+	         //    for(var i=0;i<scope.length;i++){
+	         //    	var divDotCover = $('<div/>',{
+	         //    		class : (i == scope.length - 1)?'dot-cover showPseudo':'dot-cover',
+	         //    		'data-content' : (i == scope.length - 1)?scope.goal:''
+	         //    	});
+	         //    	var divDot = $('<div/>',{
+	         //    		class : 'dot active ani'			            		
+	         //    	});
+	         //    	divDot.appendTo(divDotCover)
+	         //    	divDotCover.appendTo(div);
+	        	// }
+    		}
+    	}
 })();

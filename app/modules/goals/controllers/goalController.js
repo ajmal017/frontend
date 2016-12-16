@@ -9,6 +9,7 @@
 			$scope.callCompleteness = function() {
 				userDetailsService().then(function(userData){
 					sessionStorage.setItem('userFlags', JSON.stringify(userData.success));
+					$rootScope.userRiskFactor = userData.success.user_answers.risk_score;
 					$rootScope.userFlags = JSON.parse(sessionStorage.getItem('userFlags'))||{};
 					console.log('$rootScope.userFlags',$rootScope.userFlags);
 				});
@@ -21,6 +22,8 @@
 				var goalRedirect = '';
 				if(currentGoal == 'retirement'){
 					goalRedirect = currentGoal + 'GoalsStarted';
+				} else if(currentGoal == 'events'){
+					goalRedirect = 'othersStarted';
 				}
 				else {
 					goalRedirect = currentGoal + 'Started';

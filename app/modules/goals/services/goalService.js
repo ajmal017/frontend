@@ -10,7 +10,8 @@
         	
             return{
         		getGoalGraphDetails : getGoalGraphDetails,
-        		getFundSelection : getFundSelection
+        		getFundSelection : getFundSelection,
+        		addParticularGoal : addParticularGoal
         	}
 
 	        function getGoalGraphDetails(){ 
@@ -46,6 +47,27 @@
 				}); 
 				return defer.promise;
 	        }
+
+            function addParticularGoal(dataObj,goalType){
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    appConfig.API_BASE_URL+'/core/' + goalType + '/new/response/add/', 
+                    {}, {
+                        Check: {
+                            method:'POST',
+                        }
+                    });
+                getAPI.Check(dataObj,function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
+            }
         }
         assetAllocationService.$inject = ['$resource','$q', 'appConfig', '$rootScope'];
         function assetAllocationService($resource, $q, appConfig, $rootScope){

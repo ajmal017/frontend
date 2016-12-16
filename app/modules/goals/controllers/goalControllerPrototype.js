@@ -18,6 +18,8 @@ var finApp = finApp || {};
 			},
 			
 			appendValues : function(value){
+				value.goal_plan_type = this.rootScope.selectedCriteria;
+				console.log('value',value);
 				this.goalTypeService.setSavedValues(value);
 			},
 			
@@ -61,6 +63,7 @@ var finApp = finApp || {};
 					self.goalModelObject['assetAllocation'] = computedSIPData.assetAllocation;
 					self.scope.modelVal.A4 = self.scope.modelVal.A4 || self.goalModelObject['perMonth']; 
 					self.goalModelObject['corpus'] = corpus;
+					self.setModelVal(computedSIPData.assetAllocation, computedSIPData.computedSIP);
 				};
 				
 				if (!this.goalModelObject['assetAllocationCategory']) {
@@ -79,6 +82,7 @@ var finApp = finApp || {};
 					self.goalModelObject['corpus'] = computedSIPData.computedCorpus;
 					self.goalModelObject['assetAllocation'] = computedSIPData.assetAllocation;
 					console.log("calculateCorpus: " + JSON.stringify(computedSIPData.assetAllocation) + " corpus: " + computedSIPData.computedCorpus);
+					self.setModelVal(computedSIPData.assetAllocation, sipAmount);
 				};
 				
 				if (this.scope.modelVal.A4 == this.goalModelObject.perMonth)
@@ -105,10 +109,10 @@ var finApp = finApp || {};
 															'sip' : computedSIPData.computedSIP,
 															'assetAllocation' : computedSIPData.assetAllocation};
 					}
-					
+					self.setModelVal(computedSIPData.assetAllocation, computedSIPData.computedSIP);
 					self.goalModelObject['goalEstimates'] = goalEstimates;
-					if (!self.scope.activeTab) {
-						self.scope.activeTab = "COMFORT";
+					if (!self.scope.modelVal.estimate_selection_type) {
+						self.scope.modelVal.estimate_selection_type = 'op2';
 						self.scope.estimateSelectionChanged(self.appConfig.estimateType.COMFORTABLE);
 					}
 				}
@@ -121,6 +125,69 @@ var finApp = finApp || {};
 				this.goalModelObject['corpus'] = this.goalModelObject.goalEstimates[selectionType].corpus;
 				this.goalModelObject['perMonth'] = this.goalModelObject.goalEstimates[selectionType].sip;
 				this.goalModelObject['assetAllocation'] = this.goalModelObject.goalEstimates[selectionType].assetAllocation;
+				
+			},
+
+			callModel : function(debtValue, equityValue, amount) {
+				console.log('debtValue',debtValue,'equityValue',equityValue,'amount',amount);
+				this.scope.amount = amount;
+
+				this.scope.equity = debtValue;
+				this.scope.equity2 = equityValue;
+				
+				var debtAmount = (this.scope.equity/100) * amount;
+				var equityAmount = (this.scope.equity2/100) * amount;
+				this.scope.debtAmountModal = debtAmount;
+				this.scope.equityAmountModal = equityAmount;
+				jQuery('#equiDeptModal').modal('show');
+			},
+
+			setModelVal : function(assetAllocationObj, sipAmount) {
+				this.scope.modelVal.assetAllocation = assetAllocationObj;
+				this.scope.modelVal.assetAllocation.equityInitial = assetAllocationObj.equity;
+				var debtAmount = (assetAllocationObj.debt/100) * sipAmount;
+				var equityAmount = (assetAllocationObj.equity/100) * sipAmount;
+				this.scope.modelVal.debtAmount = debtAmount;
+				this.scope.modelVal.equityAmount = equityAmount;
+			},
+
+			changeDebtModal : function() {
+				
+				this.scope.equity2 = 100 - this.scope.equity;
+				this.scope.debtAmountModal = (this.scope.equity/100) * this.scope.amount;
+				this.scope.equityAmountModal = (this.scope.equity2/100) * this.scope.amount
+
+			},
+
+			changeEquityModal : function() {
+				
+				this.scope.equity = 100 - this.scope.equity2;
+				this.scope.equityAmountModal = (this.scope.equity2/100) * this.scope.amount
+				this.scope.debtAmountModal = (this.scope.equity/100) * this.scope.amount;
+			},
+
+			saveEquityDebtMix : function() {
+				console.log('Saved mix');
+				this.scope.modelVal.assetAllocation.debt = this.scope.equity;
+				this.scope.modelVal.assetAllocation.equity = this.scope.equity2;
+				this.scope.modelVal.debtAmount = this.scope.debtAmountModal;
+				this.scope.modelVal.equityAmount = this.scope.equityAmountModal;
+				jQuery('#equiDeptModal').modal('hide');	
+			},
+
+			getFundData : function(goal, busyIndicator) {
+				var self = this;
+				var indicate = self.busyIndicator;
+				this.goalsService.getFundSelection(goal).then(function(data){
+					
+					if('success' in data){	
+						self.rootScope.setFundData = data.success;
+						busyIndicator.hide();
+						self.location.path('/recommendedSchemes');
+					} else {
+						console.log(data.Message);
+					}
+				});
 			}
 			
 	};

@@ -497,7 +497,7 @@
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
                       <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" required ng-model="modelVal.A1"/></span></p>
-                      <span class="placeholder">Use minimum 20 characters, alphabets and/or numbers</span>
+                      <span class="placeholder">Use maximum 20 characters, alphabets and/or numbers</span>
                 </div>
             </form>
         </div>
@@ -682,7 +682,7 @@
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
                       <p class="question">My goal name is <span class="swiper-input global-input"><input type="text"  required ng-model="modelVal.A1"></span></p>
-                      <span class="placeholder">Use minimum 20 characters, alphabets and/or numbers</span>
+                      <span class="placeholder">Use maximum 20 characters, alphabets and/or numbers</span>
                 </div>
             </form>
         </div>
@@ -744,7 +744,7 @@
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
                        <div class="col-xs-9 estimate">
                         <div class="row">
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='BUDGET'}" ng-click="activeTab = 'BUDGET';estimateSelectionChanged('budget')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/budget.png">
@@ -757,7 +757,7 @@
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='COMFORT'}" ng-click="activeTab = 'COMFORT';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -770,7 +770,7 @@
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='LUXURIOUS'}" ng-click="activeTab = 'LUXURIOUS';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/luxurious.png">
@@ -913,7 +913,7 @@
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
                       <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" required ng-model="modelVal.A1"></span></p>
-                      <span class="placeholder">Use minimum 20 characters, alphabets and/or numbers</span>
+                      <span class="placeholder">Use maximum 20 characters, alphabets and/or numbers</span>
                       <span class="placeholder">We recommend naming the goal after the person for whom the goal is being setup</span>
                 </div>
             </form>
@@ -966,7 +966,7 @@
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
                        <div class="col-xs-9 estimate">
                         <div class="row">
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='BUDGET'}" ng-click="activeTab = 'BUDGET';estimateSelectionChanged('budget')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/budget.png">
@@ -975,11 +975,11 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="education.goalEstimates.budget.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="education.goalEstimates.budget.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='BUDGET')" id="budget" name="estimateNow">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" id="budget" name="estimateNow" value="op1">
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='COMFORT'}" ng-click="activeTab = 'COMFORT';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -988,11 +988,11 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="education.goalEstimates.comfortable.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="education.goalEstimates.comfortable.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='COMFORT')" id="confort" name="estimateNow">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" id="confort" name="estimateNow" value="op2">
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='LUXURIOUS'}" ng-click="activeTab = 'LUXURIOUS';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/luxurious.png">
@@ -1001,7 +1001,7 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="education.goalEstimates.luxury.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="education.goalEstimates.luxury.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='LUXURIOUS')" id="luxurious" name="estimateNow">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" id="luxurious" name="estimateNow" value="op3">
                                 <label for="luxurious"><span></span></label>
                             </div>
                             </div>
@@ -1019,21 +1019,21 @@
                             <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></info-tip></span>Equity/Debt Mix</p></div>
                             <div class="meter-widget-cover">
                                 <div class="col-xs-12 meter-header">
-                                    <button class="edit" ng-click="callModel()"></button>
+                                    <button class="edit" ng-click="callModel(modelVal.assetAllocation.debt, modelVal.assetAllocation.equity, modelVal.A4)"></button>
                                     <div class="row">
                                         <div class="col-xs-6 text-right">
                                             <h2 class="debt">Debt</h2>
-                                            <p class="debt">0%</p>
-                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                            <p class="debt">{{modelVal.assetAllocation.debt}}%</p>
+                                            <h4 ><span class="currency">&#8377</span>{{modelVal.debtAmount}}</h4>
                                         </div>
                                         <div class="col-xs-6 text-left">
                                             <h2 class="equity">Equity</h2>
-                                            <p class="equity">100%</p>
-                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                            <p class="equity">{{modelVal.assetAllocation.equity}}%</p>
+                                            <h4><span class="currency">&#8377</span>{{modelVal.equityAmount}}</h4>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
+                                <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.equityInitial}} calculate-guage={{modelVal.assetAllocation.equity}}>
                                     <h4 class="text">Recommended</h4>
                                     <div class="orbit">
                                         <div class="indicator"></div>
@@ -1072,7 +1072,8 @@
                                         </div>
                                     </div>
                                     <div class="guageCalculator">
-                                        <img src="assets/images/guageCalculator.png">
+                                        <risk-mage></risk-mage>
+                                        <!-- <img src="assets/images/guageCalculator.png"> -->
                                     </div>  
                                     <p class="bottom-text">As per your risk profile</p>
                                 </div>
@@ -1081,72 +1082,31 @@
                         <div class="gauge-result">
                             <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></info-tip></span>Projected Investment Growth</p></div>
                             <div class="meter-widget-cover">
-                                <div class="col-xs-12 meter-header">
-                                    <button class="edit" ng-click="callModel()"></button>
+                                <div class="col-xs-12 graph-header">
                                     <div class="row">
-                                        <div class="col-xs-6 text-right">
-                                            <h2 class="debt">Debt</h2>
-                                            <p class="debt">0%</p>
-                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                        <div class="col-xs-6">
+                                            <div class="row">
+                                                <h4>Investment till October 2030</h4>
+                                                <p><span class="highlight">20.4 lakh</span></p>
+                                            </div>
                                         </div>
-                                        <div class="col-xs-6 text-left">
-                                            <h2 class="equity">Equity</h2>
-                                            <p class="equity">100%</p>
-                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                        <div class="col-xs-6">
+                                            <div class="row">
+                                                <h4>Investment till October 2030</h4>
+                                                <p><span class="highlight">1.80 crore</span></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
-                                    <h4 class="text">Recommended</h4>
-                                    <div class="orbit">
-                                        <div class="indicator"></div>
-                                    </div>  
-                                    <div class="guage-image">
-                                        <img src="assets/images/guage.png">
-                                        <div class="meater-cover"></div>
-                                        <div class="pointer">
-                                            <img src="assets/images/pointer.png">
-                                        </div>
-                                    </div>
-                                    <div class="box-indicator col-xs-12">
-                                        <div class="row">
-                                            <div class="col-xs-4 text-left">
-                                                <div class="row">
-                                                    <div class="checkbox-cover">
-                                                        <input type="radio" name="type">
-                                                        <label><span></span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <div class="checkbox-cover">
-                                                    <input ng-checked="true" type="radio" name="type">
-                                                    <label><span></span></label>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 text-right">
-                                                <div class="row">
-                                                    <div class="checkbox-cover">
-                                                        <input type="radio" name="type">
-                                                        <label><span></span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="guageCalculator">
-                                        <img src="assets/images/guageCalculator.png">
-                                    </div>  
-                                    <p class="bottom-text">As per your risk profile</p>
-                                </div>
+                                <goal-chart title="graphObject.title" series="graphObject.series" categories="graphObject.catergory" interval="graphObject.interval"></goal-chart>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="fin-btn-group addMargin">
                     <button click-redirect="/educationStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button>
-                    <button click-redirect="/dashboard" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                    <button ng-click="fundSelectionEducation(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
                 </div>
             </div>
         </div>
@@ -1172,7 +1132,7 @@
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
                       <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" required ng-model="modelVal.A1"></span></p>
-                      <span class="placeholder">Use minimum 20 characters,alphabets and/or numbers</span>
+                      <span class="placeholder">Use maximum 20 characters,alphabets and/or numbers</span>
                       <span class="placeholder">We recommended naming the goal after the location where you want to buy the property</span>
                 </div>
             </form>
@@ -1264,7 +1224,7 @@
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
                        <div class="col-xs-9 estimate">
                         <div class="row">
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='BUDGET'}" ng-click="activeTab = 'BUDGET';estimateSelectionChanged('budget')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/budget.png">
@@ -1273,11 +1233,11 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="property.goalEstimates.budget.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="property.goalEstimates.budget.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='BUDGET')" id="budget" name="estimateNow">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" value="op1" id="budget" name="estimateNow">
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='COMFORT'}" ng-click="activeTab = 'COMFORT';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -1286,11 +1246,11 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="property.goalEstimates.comfortable.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="property.goalEstimates.comfortable.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='COMFORT')" id="confort" name="estimateNow">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" value="op2" id="confort" name="estimateNow">
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='LUXURIOUS'}" ng-click="activeTab = 'LUXURIOUS';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/luxurious.png">
@@ -1299,7 +1259,7 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="property.goalEstimates.luxury.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="property.goalEstimates.luxury.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='LUXURIOUS')" id="luxurious" name="estimateNow">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" value="op3" id="luxurious" name="estimateNow">
                                 <label for="luxurious"><span></span></label>
                             </div>
                             </div>
@@ -1317,21 +1277,21 @@
                             <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></info-tip></span>Equity/Debt Mix</p></div>
                             <div class="meter-widget-cover">
                                 <div class="col-xs-12 meter-header">
-                                    <button class="edit" ng-click="callModel()"></button>
+                                    <button class="edit" ng-click="callModel(modelVal.assetAllocation.debt, modelVal.assetAllocation.equity, modelVal.A5)"></button>
                                     <div class="row">
                                         <div class="col-xs-6 text-right">
                                             <h2 class="debt">Debt</h2>
-                                            <p class="debt">0%</p>
-                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                            <p class="debt">{{modelVal.assetAllocation.debt}}%</p>
+                                            <h4 ><span class="currency">&#8377</span>{{modelVal.debtAmount}}</h4>
                                         </div>
                                         <div class="col-xs-6 text-left">
                                             <h2 class="equity">Equity</h2>
-                                            <p class="equity">100%</p>
-                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                            <p class="equity">{{modelVal.assetAllocation.equity}}%</p>
+                                            <h4><span class="currency">&#8377</span>{{modelVal.equityAmount}}</h4>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
+                                <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.equityInitial}} calculate-guage={{modelVal.assetAllocation.equity}}>
                                     <h4 class="text">Recommended</h4>
                                     <div class="orbit">
                                         <div class="indicator"></div>
@@ -1379,72 +1339,31 @@
                         <div class="gauge-result">
                             <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></info-tip></span>Projected Investment Growth</p></div>
                             <div class="meter-widget-cover">
-                                <div class="col-xs-12 meter-header">
-                                    <button class="edit" ng-click="callModel()"></button>
+                                <div class="col-xs-12 graph-header">
                                     <div class="row">
-                                        <div class="col-xs-6 text-right">
-                                            <h2 class="debt">Debt</h2>
-                                            <p class="debt">0%</p>
-                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                        <div class="col-xs-6">
+                                            <div class="row">
+                                                <h4>Investment till October 2030</h4>
+                                                <p><span class="highlight">20.4 lakh</span></p>
+                                            </div>
                                         </div>
-                                        <div class="col-xs-6 text-left">
-                                            <h2 class="equity">Equity</h2>
-                                            <p class="equity">100%</p>
-                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                        <div class="col-xs-6">
+                                            <div class="row">
+                                                <h4>Investment till October 2030</h4>
+                                                <p><span class="highlight">1.80 crore</span></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
-                                    <h4 class="text">Recommended</h4>
-                                    <div class="orbit">
-                                        <div class="indicator"></div>
-                                    </div>  
-                                    <div class="guage-image">
-                                        <img src="assets/images/guage.png">
-                                        <div class="meater-cover"></div>
-                                        <div class="pointer">
-                                            <img src="assets/images/pointer.png">
-                                        </div>
-                                    </div>
-                                    <div class="box-indicator col-xs-12">
-                                        <div class="row">
-                                            <div class="col-xs-4 text-left">
-                                                <div class="row">
-                                                    <div class="checkbox-cover">
-                                                        <input type="radio" name="type">
-                                                        <label><span></span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <div class="checkbox-cover">
-                                                    <input ng-checked="true" type="radio" name="type">
-                                                    <label><span></span></label>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 text-right">
-                                                <div class="row">
-                                                    <div class="checkbox-cover">
-                                                        <input type="radio" name="type">
-                                                        <label><span></span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="guageCalculator">
-                                        <img src="assets/images/guageCalculator.png">
-                                    </div>  
-                                    <p class="bottom-text">As per your risk profile</p>
-                                </div>
+                                <goal-chart title="graphObject.title" series="graphObject.series" categories="graphObject.catergory" interval="graphObject.interval"></goal-chart>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="fin-btn-group addMargin">
                     <button click-redirect="/propertyStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button>
-                    <button click-redirect="/dashboard" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                    <button ng-click="fundSelectionProperty(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
                 </div>
             </div>
         </div>
@@ -1470,7 +1389,7 @@
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
                       <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" required ng-model="modelVal.A1"></span></p>
-                      <span class="placeholder">Use minimum 20 characters,alphabets and/or numbers</span>
+                      <span class="placeholder">Use maximum 20 characters,alphabets and/or numbers</span>
                       <span class="placeholder">We recommended naming the goal after the vehicle you want to buy</span>
                 </div>
             </form>
@@ -1523,7 +1442,7 @@
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
                        <div class="col-xs-9 estimate">
                         <div class="row">
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='BUDGET'}" ng-click="activeTab = 'BUDGET';estimateSelectionChanged('budget')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/budget.png">
@@ -1532,11 +1451,11 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="automobile.goalEstimates.budget.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="automobile.goalEstimates.budget.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='BUDGET')" id="budget" name="estimateNow">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" value="op1" id="budget" name="estimateNow">
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='COMFORT'}" ng-click="activeTab = 'COMFORT';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -1545,11 +1464,11 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="automobile.goalEstimates.comfortable.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="automobile.goalEstimates.comfortable.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='COMFORT')" id="confort" name="estimateNow">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" value="op2" id="confort" name="estimateNow">
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='LUXURIOUS'}" ng-click="activeTab = 'LUXURIOUS';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/luxurious.png">
@@ -1558,7 +1477,7 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="automobile.goalEstimates.luxury.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="automobile.goalEstimates.luxury.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='LUXURIOUS')" id="luxurious" name="estimateNow">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" value="op3" id="luxurious" name="estimateNow">
                                 <label for="luxurious"><span></span></label>
                             </div>
                             </div>
@@ -1576,21 +1495,21 @@
                             <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></span>Equity/Debt Mix</p></div>
                             <div class="meter-widget-cover">
                                 <div class="col-xs-12 meter-header">
-                                    <button class="edit" ng-click="callModel()"></button>
+                                    <button class="edit" ng-click="callModel(modelVal.assetAllocation.debt, modelVal.assetAllocation.equity, modelVal.A4)"></button>
                                     <div class="row">
                                         <div class="col-xs-6 text-right">
                                             <h2 class="debt">Debt</h2>
-                                            <p class="debt">0%</p>
-                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                            <p class="debt">{{modelVal.assetAllocation.debt}}%</p>
+                                            <h4 ><span class="currency">&#8377</span>{{modelVal.debtAmount}}</h4>
                                         </div>
                                         <div class="col-xs-6 text-left">
                                             <h2 class="equity">Equity</h2>
-                                            <p class="equity">100%</p>
-                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                            <p class="equity">{{modelVal.assetAllocation.equity}}%</p>
+                                            <h4><span class="currency">&#8377</span>{{modelVal.equityAmount}}</h4>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
+                                <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.equityInitial}} calculate-guage={{modelVal.assetAllocation.equity}}>
                                     <h4 class="text">Recommended</h4>
                                     <div class="orbit">
                                         <div class="indicator"></div>
@@ -1636,74 +1555,34 @@
                             </div>
                         </div>
                         <div class="gauge-result">
-                            <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></span>Projected Investment Growth</p></div>
+                            <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></info-tip></span>Projected Investment Growth</p></div>
                             <div class="meter-widget-cover">
-                                <div class="col-xs-12 meter-header">
-                                    <button class="edit" ng-click="callModel()"></button>
+                                <div class="col-xs-12 graph-header">
                                     <div class="row">
-                                        <div class="col-xs-6 text-right">
-                                            <h2 class="debt">Debt</h2>
-                                            <p class="debt">0%</p>
-                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                        <div class="col-xs-6">
+                                            <div class="row">
+                                                <h4>Investment till October 2030</h4>
+                                                <p><span class="highlight">20.4 lakh</span></p>
+                                            </div>
                                         </div>
-                                        <div class="col-xs-6 text-left">
-                                            <h2 class="equity">Equity</h2>
-                                            <p class="equity">100%</p>
-                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                        <div class="col-xs-6">
+                                            <div class="row">
+                                                <h4>Investment till October 2030</h4>
+                                                <p><span class="highlight">1.80 crore</span></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
-                                    <h4 class="text">Recommended</h4>
-                                    <div class="orbit">
-                                        <div class="indicator"></div>
-                                    </div>  
-                                    <div class="guage-image">
-                                        <img src="assets/images/guage.png">
-                                        <div class="meater-cover"></div>
-                                        <div class="pointer">
-                                            <img src="assets/images/pointer.png">
-                                        </div>
-                                    </div>
-                                    <div class="box-indicator col-xs-12">
-                                        <div class="row">
-                                            <div class="col-xs-4 text-left">
-                                                <div class="row">
-                                                    <div class="checkbox-cover">
-                                                        <input type="radio" name="type">
-                                                        <label><span></span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <div class="checkbox-cover">
-                                                    <input ng-checked="true" type="radio" name="type">
-                                                    <label><span></span></label>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 text-right">
-                                                <div class="row">
-                                                    <div class="checkbox-cover">
-                                                        <input type="radio" name="type">
-                                                        <label><span></span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="guageCalculator">
-                                        <img src="assets/images/guageCalculator.png">
-                                    </div>  
-                                    <p class="bottom-text">As per your risk profile</p>
-                                </div>
+                                <goal-chart title="graphObject.title" series="graphObject.series" categories="graphObject.catergory" interval="graphObject.interval"></goal-chart>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="fin-btn-group addMargin">
                     <button click-redirect="/automobileStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button>
-                    <button ng-click="portfolioFactoring()" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                    <!-- <button ng-click="portfolioFactoring()" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button> -->
+                    <button ng-click="fundSelectionAutomobile(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
                 </div>
             </div>
         </div>
@@ -1728,15 +1607,15 @@
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
                       <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" required ng-model="modelVal.A1"></span></p>
-                      <span class="placeholder">Use minimum 20 characters,alphabets and/or numbers</span>
-                      <span class="placeholder">We recommended naming the goal after the vehicle you want to buy</span>
+                      <span class="placeholder">Use maximum 20 characters,alphabets and/or numbers</span>
+                      <span class="placeholder">We recommended naming the goal after the location you are planning your vacation at.</span>
                 </div>
             </form>
         </div>
         <div class="swiper-slide">
             <form name="quickInvestForm2" novalidate>
                 <div class="swiper-content">
-                    <h1 class="topHeader">I want to purchase the vehicle in</h1>
+                    <h1 class="topHeader">I wish to plan for this vacation in</h1>
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 calender-outer-cover">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -1769,8 +1648,8 @@
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
                   <info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="48px" class-name="marginNegative60"></info-tip>
-                  <p class="question multiple"><span class="content">Number of people going on this vacation (ages 2+ years) is</span> <span class="swiper-input age"><input ng-model="modelVal.A5" type="text" name="year" required></span></p>
-                  <p class="question multiple"><span class="content">Number of days of vacation is </span> <span class="swiper-input age"><input ng-model="modelVal.A6" type="text" name="year" required></span></p>
+                  <p class="question multiple"><span class="content">Number of people going on this vacation (ages 2+ years) is</span> <span class="swiper-input age"><input ng-model="modelVal.A5" type="text" name="year" ng-init="modelVal.A5 = 2" required></span></p>
+                  <p class="question multiple"><span class="content">Number of days of vacation is </span> <span class="swiper-input age"><input ng-model="modelVal.A6" type="text" name="year" ng-init="modelVal.A6 = 6" required></span></p>
                   <p class="question multiple"><span class="content">This vacation will be <select dropdown ng-model="modelVal.A7"><option selected value="op1">Domestic</option><option value="op2">International</option></select></span></p>
                   <p class="question multiple"><span class="content">For this goal, so far I already saved</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A8" ng-keyup="showMessage2 = true" type="text" ame="year" required></span></p>
                 </div>
@@ -1782,7 +1661,7 @@
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
                        <div class="col-xs-9 estimate">
                         <div class="row">
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='BUDGET'}" ng-click="activeTab = 'BUDGET';estimateSelectionChanged('budget')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/budget.png">
@@ -1791,11 +1670,11 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="vacation.goalEstimates.budget.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="vacation.goalEstimates.budget.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='BUDGET')" id="budget" name="estimateNow">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" value="op1" id="budget" name="estimateNow">
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='COMFORT'}" ng-click="activeTab = 'COMFORT';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -1804,11 +1683,11 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="vacation.goalEstimates.comfortable.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="vacation.goalEstimates.comfortable.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='COMFORT')" id="confort" name="estimateNow">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" value="op2" id="confort" name="estimateNow">
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='LUXURIOUS'}" ng-click="activeTab = 'LUXURIOUS';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/luxurious.png">
@@ -1817,7 +1696,7 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="vacation.goalEstimates.luxury.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="vacation.goalEstimates.luxury.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='LUXURIOUS')" id="luxurious" name="estimateNow">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" value="op3" id="luxurious" name="estimateNow">
                                 <label for="luxurious"><span></span></label>
                             </div>
                             </div>
@@ -1835,21 +1714,21 @@
                             <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></span>Equity/Debt Mix</p></div>
                             <div class="meter-widget-cover">
                                 <div class="col-xs-12 meter-header">
-                                    <button class="edit" ng-click="callModel()"></button>
+                                    <button class="edit" ng-click="callModel(modelVal.assetAllocation.debt, modelVal.assetAllocation.equity, modelVal.A4)"></button>
                                     <div class="row">
                                         <div class="col-xs-6 text-right">
                                             <h2 class="debt">Debt</h2>
-                                            <p class="debt">0%</p>
-                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                            <p class="debt">{{modelVal.assetAllocation.debt}}%</p>
+                                            <h4 ><span class="currency">&#8377</span>{{modelVal.debtAmount}}</h4>
                                         </div>
                                         <div class="col-xs-6 text-left">
                                             <h2 class="equity">Equity</h2>
-                                            <p class="equity">100%</p>
-                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                            <p class="equity">{{modelVal.assetAllocation.equity}}%</p>
+                                            <h4><span class="currency">&#8377</span>{{modelVal.equityAmount}}</h4>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
+                                <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.equityInitial}} calculate-guage={{modelVal.assetAllocation.equity}}>
                                     <h4 class="text">Recommended</h4>
                                     <div class="orbit">
                                         <div class="indicator"></div>
@@ -1895,74 +1774,33 @@
                             </div>
                         </div>
                         <div class="gauge-result">
-                            <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></span>Projected Investment Growth</p></div>
+                            <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></info-tip></span>Projected Investment Growth</p></div>
                             <div class="meter-widget-cover">
-                                <div class="col-xs-12 meter-header">
-                                    <button class="edit" ng-click="callModel()"></button>
+                                <div class="col-xs-12 graph-header">
                                     <div class="row">
-                                        <div class="col-xs-6 text-right">
-                                            <h2 class="debt">Debt</h2>
-                                            <p class="debt">0%</p>
-                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                        <div class="col-xs-6">
+                                            <div class="row">
+                                                <h4>Investment till October 2030</h4>
+                                                <p><span class="highlight">20.4 lakh</span></p>
+                                            </div>
                                         </div>
-                                        <div class="col-xs-6 text-left">
-                                            <h2 class="equity">Equity</h2>
-                                            <p class="equity">100%</p>
-                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                        <div class="col-xs-6">
+                                            <div class="row">
+                                                <h4>Investment till October 2030</h4>
+                                                <p><span class="highlight">1.80 crore</span></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
-                                    <h4 class="text">Recommended</h4>
-                                    <div class="orbit">
-                                        <div class="indicator"></div>
-                                    </div>  
-                                    <div class="guage-image">
-                                        <img src="assets/images/guage.png">
-                                        <div class="meater-cover"></div>
-                                        <div class="pointer">
-                                            <img src="assets/images/pointer.png">
-                                        </div>
-                                    </div>
-                                    <div class="box-indicator col-xs-12">
-                                        <div class="row">
-                                            <div class="col-xs-4 text-left">
-                                                <div class="row">
-                                                    <div class="checkbox-cover">
-                                                        <input type="radio" name="type">
-                                                        <label><span></span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <div class="checkbox-cover">
-                                                    <input ng-checked="true" type="radio" name="type">
-                                                    <label><span></span></label>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 text-right">
-                                                <div class="row">
-                                                    <div class="checkbox-cover">
-                                                        <input type="radio" name="type">
-                                                        <label><span></span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="guageCalculator">
-                                        <img src="assets/images/guageCalculator.png">
-                                    </div>  
-                                    <p class="bottom-text">As per your risk profile</p>
-                                </div>
+                                <goal-chart title="graphObject.title" series="graphObject.series" categories="graphObject.catergory" interval="graphObject.interval"></goal-chart>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="fin-btn-group addMargin">
                     <button click-redirect="/vacationStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button>
-                    <button click-redirect="/dashboard" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                    <button ng-click="fundSelectionVacation(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
                 </div>
             </div>
         </div>
@@ -1987,7 +1825,7 @@
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
                       <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" required ng-model="modelVal.A1"></span></p>
-                      <span class="placeholder">Use minimum 20 characters,alphabets and/or numbers</span>
+                      <span class="placeholder">Use maximum 20 characters,alphabets and/or numbers</span>
                       <span class="placeholder">We recommended naming the goal after the person whose wedding is being planned</span>
                 </div>
             </form>
@@ -2041,7 +1879,7 @@
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
                        <div class="col-xs-9 estimate">
                         <div class="row">
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='BUDGET'}" ng-click="activeTab = 'BUDGET';estimateSelectionChanged('budget')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/budget.png">
@@ -2050,11 +1888,11 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="wedding.goalEstimates.budget.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="wedding.goalEstimates.budget.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='BUDGET')" id="budget" name="estimateNow">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" value="op1" id="budget" name="estimateNow">
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='COMFORT'}" ng-click="activeTab = 'COMFORT';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -2063,11 +1901,11 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="wedding.goalEstimates.comfortable.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="wedding.goalEstimates.comfortable.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='COMFORT')" id="confort" name="estimateNow">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" value="op2" id="confort" name="estimateNow">
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : activeTab =='LUXURIOUS'}" ng-click="activeTab = 'LUXURIOUS';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/luxurious.png">
@@ -2076,7 +1914,7 @@
                             <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="wedding.goalEstimates.luxury.sip"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="wedding.goalEstimates.luxury.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
-                                <input type="radio" ng-checked="(activeTab =='LUXURIOUS')" id="luxurious" name="estimateNow">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" value="op3" id="luxurious" name="estimateNow">
                                 <label for="luxurious"><span></span></label>
                             </div>
                             </div>
@@ -2094,21 +1932,21 @@
                             <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></span>Equity/Debt Mix</p></div>
                             <div class="meter-widget-cover">
                                 <div class="col-xs-12 meter-header">
-                                    <button class="edit" ng-click="callModel()"></button>
+                                    <button class="edit" ng-click="callModel(modelVal.assetAllocation.debt, modelVal.assetAllocation.equity, modelVal.A4)"></button>
                                     <div class="row">
                                         <div class="col-xs-6 text-right">
                                             <h2 class="debt">Debt</h2>
-                                            <p class="debt">0%</p>
-                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                            <p class="debt">{{modelVal.assetAllocation.debt}}%</p>
+                                            <h4 ><span class="currency">&#8377</span>{{modelVal.debtAmount}}</h4>
                                         </div>
                                         <div class="col-xs-6 text-left">
                                             <h2 class="equity">Equity</h2>
-                                            <p class="equity">100%</p>
-                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                            <p class="equity">{{modelVal.assetAllocation.equity}}%</p>
+                                            <h4><span class="currency">&#8377</span>{{modelVal.equityAmount}}</h4>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
+                                <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.equityInitial}} calculate-guage={{modelVal.assetAllocation.equity}}>
                                     <h4 class="text">Recommended</h4>
                                     <div class="orbit">
                                         <div class="indicator"></div>
@@ -2154,74 +1992,34 @@
                             </div>
                         </div>
                         <div class="gauge-result">
-                            <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></span>Projected Investment Growth</p></div>
+                            <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></info-tip></span>Projected Investment Growth</p></div>
                             <div class="meter-widget-cover">
-                                <div class="col-xs-12 meter-header">
-                                    <button class="edit" ng-click="callModel()"></button>
+                                <div class="col-xs-12 graph-header">
                                     <div class="row">
-                                        <div class="col-xs-6 text-right">
-                                            <h2 class="debt">Debt</h2>
-                                            <p class="debt">0%</p>
-                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                        <div class="col-xs-6">
+                                            <div class="row">
+                                                <h4>Investment till October 2030</h4>
+                                                <p><span class="highlight">20.4 lakh</span></p>
+                                            </div>
                                         </div>
-                                        <div class="col-xs-6 text-left">
-                                            <h2 class="equity">Equity</h2>
-                                            <p class="equity">100%</p>
-                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                        <div class="col-xs-6">
+                                            <div class="row">
+                                                <h4>Investment till October 2030</h4>
+                                                <p><span class="highlight">1.80 crore</span></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
-                                    <h4 class="text">Recommended</h4>
-                                    <div class="orbit">
-                                        <div class="indicator"></div>
-                                    </div>  
-                                    <div class="guage-image">
-                                        <img src="assets/images/guage.png">
-                                        <div class="meater-cover"></div>
-                                        <div class="pointer">
-                                            <img src="assets/images/pointer.png">
-                                        </div>
-                                    </div>
-                                    <div class="box-indicator col-xs-12">
-                                        <div class="row">
-                                            <div class="col-xs-4 text-left">
-                                                <div class="row">
-                                                    <div class="checkbox-cover">
-                                                        <input type="radio" name="type">
-                                                        <label><span></span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <div class="checkbox-cover">
-                                                    <input ng-checked="true" type="radio" name="type">
-                                                    <label><span></span></label>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 text-right">
-                                                <div class="row">
-                                                    <div class="checkbox-cover">
-                                                        <input type="radio" name="type">
-                                                        <label><span></span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="guageCalculator">
-                                        <img src="assets/images/guageCalculator.png">
-                                    </div>  
-                                    <p class="bottom-text">As per your risk profile</p>
-                                </div>
+                                <goal-chart title="graphObject.title" series="graphObject.series" categories="graphObject.catergory" interval="graphObject.interval"></goal-chart>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="fin-btn-group addMargin">
                     <button click-redirect="/weddingStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button>
-                    <button click-redirect="/dashboard" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                    <!-- <button click-redirect="/dashboard" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button> -->
+                    <button ng-click="fundSelectionWedding(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
                 </div>
             </div>
         </div>
@@ -2246,7 +2044,7 @@
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
                       <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" required ng-model="modelVal.A1"></span></p>
-                      <span class="placeholder">Use minimum 20 characters,alphabets and/or numbers</span>
+                      <span class="placeholder">Use maximum 20 characters,alphabets and/or numbers</span>
                       <span class="placeholder">We recommended naming this goal after your investment objective with this goal</span>
                 </div>
             </form>
@@ -2291,21 +2089,21 @@
                             <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></span>Equity/Debt Mix</p></div>
                             <div class="meter-widget-cover">
                                 <div class="col-xs-12 meter-header">
-                                    <button class="edit" ng-click="callModel()"></button>
+                                    <button class="edit" ng-click="callModel(modelVal.assetAllocation.debt, modelVal.assetAllocation.equity, modelVal.A4)"></button>
                                     <div class="row">
                                         <div class="col-xs-6 text-right">
                                             <h2 class="debt">Debt</h2>
-                                            <p class="debt">0%</p>
-                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                            <p class="debt">{{modelVal.assetAllocation.debt}}%</p>
+                                            <h4 ><span class="currency">&#8377</span>{{modelVal.debtAmount}}</h4>
                                         </div>
                                         <div class="col-xs-6 text-left">
                                             <h2 class="equity">Equity</h2>
-                                            <p class="equity">100%</p>
-                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                            <p class="equity">{{modelVal.assetAllocation.equity}}%</p>
+                                            <h4><span class="currency">&#8377</span>{{modelVal.equityAmount}}</h4>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
+                                <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.equityInitial}} calculate-guage={{modelVal.assetAllocation.equity}}>
                                     <h4 class="text">Recommended</h4>
                                     <div class="orbit">
                                         <div class="indicator"></div>
@@ -2351,74 +2149,33 @@
                             </div>
                         </div>
                         <div class="gauge-result">
-                            <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></span>Projected Investment Growth</p></div>
+                            <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></info-tip></span>Projected Investment Growth</p></div>
                             <div class="meter-widget-cover">
-                                <div class="col-xs-12 meter-header">
-                                    <button class="edit" ng-click="callModel()"></button>
+                                <div class="col-xs-12 graph-header">
                                     <div class="row">
-                                        <div class="col-xs-6 text-right">
-                                            <h2 class="debt">Debt</h2>
-                                            <p class="debt">0%</p>
-                                            <h4 ><span class="currency">&#8377</span>0</h4>
+                                        <div class="col-xs-6">
+                                            <div class="row">
+                                                <h4>Investment till October 2030</h4>
+                                                <p><span class="highlight">20.4 lakh</span></p>
+                                            </div>
                                         </div>
-                                        <div class="col-xs-6 text-left">
-                                            <h2 class="equity">Equity</h2>
-                                            <p class="equity">100%</p>
-                                            <h4><span class="currency">&#8377</span>5000</h4>
+                                        <div class="col-xs-6">
+                                            <div class="row">
+                                                <h4>Investment till October 2030</h4>
+                                                <p><span class="highlight">1.80 crore</span></p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="20" calculate-guage="80">
-                                    <h4 class="text">Recommended</h4>
-                                    <div class="orbit">
-                                        <div class="indicator"></div>
-                                    </div>  
-                                    <div class="guage-image">
-                                        <img src="assets/images/guage.png">
-                                        <div class="meater-cover"></div>
-                                        <div class="pointer">
-                                            <img src="assets/images/pointer.png">
-                                        </div>
-                                    </div>
-                                    <div class="box-indicator col-xs-12">
-                                        <div class="row">
-                                            <div class="col-xs-4 text-left">
-                                                <div class="row">
-                                                    <div class="checkbox-cover">
-                                                        <input type="radio" name="type">
-                                                        <label><span></span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 text-center">
-                                                <div class="checkbox-cover">
-                                                    <input ng-checked="true" type="radio" name="type">
-                                                    <label><span></span></label>
-                                                </div>
-                                            </div>
-                                            <div class="col-xs-4 text-right">
-                                                <div class="row">
-                                                    <div class="checkbox-cover">
-                                                        <input type="radio" name="type">
-                                                        <label><span></span></label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="guageCalculator">
-                                        <img src="assets/images/guageCalculator.png">
-                                    </div>  
-                                    <p class="bottom-text">As per your risk profile</p>
-                                </div>
+                                <goal-chart title="graphObject.title" series="graphObject.series" categories="graphObject.catergory" interval="graphObject.interval"></goal-chart>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="fin-btn-group addMargin">
                     <button click-redirect="/othersStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button>
-                    <button click-redirect="/dashboard" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                    <button ng-click="fundSelectionEvents(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
                 </div>
             </div>
         </div>
@@ -2441,7 +2198,7 @@
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
                       <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" required ng-model="modelVal.A1"></span></p>
-                      <span class="placeholder">Use minimum 20 characters,alphabets and/or numbers</span>
+                      <span class="placeholder">Use maximum 20 characters,alphabets and/or numbers</span>
                       <span class="placeholder">We recommended naming this goal after the year of tax planning</span>
                 </div>
             </form>

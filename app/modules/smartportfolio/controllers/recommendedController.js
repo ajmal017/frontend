@@ -106,15 +106,16 @@
 		    $scope.validateGoals = function(scheme) {
 		    
 		    	var currentScheme = $rootScope.currentSchemeType;
+		    	var goalType = $rootScope.currentGoal;
 		    	$scope.allFundIds[currentScheme] = [];
 		    	scheme.forEach(function(element){
 		    		$scope.allFundIds[currentScheme].push(element.id);
 		    	});
-		    	
-		    	recommendedService.validateCompareModifyScheme($scope.allFundIds).then(function(data){
+		    	busyIndicator.show();
+		    	recommendedService.validateCompareModifyScheme($scope.allFundIds, goalType).then(function(data){
 		    		if('success' in data){
 		    			if(data.success.valid == true){
-		    				$scope.saveCompareModifyScheme($scope.allFundIds);
+		    				$scope.saveCompareModifyScheme($scope.allFundIds, goalType);
 		    			}
 		    		}
 		    		else {
@@ -124,10 +125,11 @@
 		    	
 		    }
 
-		    $scope.saveCompareModifyScheme = function(allFundIds) {
+		    $scope.saveCompareModifyScheme = function(allFundIds, goalType) {
 		    	
-		    	recommendedService.saveCompareModifyScheme(allFundIds).then(function(data){
+		    	recommendedService.saveCompareModifyScheme(allFundIds, goalType).then(function(data){
 		    		if('success' in data){
+		    			busyIndicator.hide();
 		    			console.log('Success');
 		    			$location.path('/recommendedSchemes');
 		    		}

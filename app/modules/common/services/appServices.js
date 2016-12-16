@@ -203,7 +203,10 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 	                console.log("******************** BEGIN RESPONSE ***************************\r\n");
 	                console.log("Response[ERROR]: " + JSON.stringify(rejection) + "\r\n");
 	                console.log("******************** END RESPONSE *****************************\r\n");
-
+	                if(rejection.status == "401") {
+	                	alert("Kindly login to continue");
+	                	$location.path('/');
+	                }
 	                (URL in promise) ? $timeout.cancel(promise[URL]): "";
 	                (URL in promiseExit) ? $timeout.cancel(promiseExit[URL]): "";
 	            }

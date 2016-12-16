@@ -128,7 +128,7 @@
 						}
 						$scope.setModelVal(computedSIPData.assetAllocation, computedSIPData.computedSIP);
 						$scope.retirement['goalEstimates'] = goalEstimates;
-						if (!$scope.activeTab) {
+						if (!$scope.modelVal.estimate_selection_type) {
 							$scope.modelVal.estimate_selection_type = 'op2';
 							$scope.estimateSelectionChanged(appConfig.estimateType.COMFORTABLE);
 						}

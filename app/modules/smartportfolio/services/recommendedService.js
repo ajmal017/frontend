@@ -120,10 +120,10 @@
                 return defer.promise;
             }
 
-            function validateCompareModifyScheme(dataObj){
+            function validateCompareModifyScheme(dataObj, goalType){
                 var defer = $q.defer();
                 var getAPI = $resource( 
-                    appConfig.API_BASE_URL+'/core/funds/distribution/goal/retirement/validate/', 
+                    appConfig.API_BASE_URL+'/core/funds/distribution/goal/' + goalType + '/validate/', 
                     {}, {
                         Check: {
                             method:'POST',
@@ -141,10 +141,10 @@
                 return defer.promise;
             }
 
-            function saveCompareModifyScheme(dataObj){
+            function saveCompareModifyScheme(dataObj, goalType){
                 var defer = $q.defer();
                 var getAPI = $resource( 
-                    appConfig.API_BASE_URL+'/core/portfolio/goal/retirement/change/', 
+                    appConfig.API_BASE_URL+'/core/portfolio/goal/' + goalType + '/change/', 
                     {}, {
                         Check: {
                             method:'POST',
