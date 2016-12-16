@@ -44,6 +44,10 @@
 			this.scope.saveEquityDebtMix = angular.bind(this, this.saveEquityDebtMix );
 			this.scope.getFundData = angular.bind(this, this.getFundData );
 
+			this.scope.getGoalGraphDetails = angular.bind(this, this.getGoalGraphDetails ); 
+			this.scope.getGraphObject = angular.bind(this, this.getGraphObject ); 
+            this.scope.graphObject = this.scope.getGraphObject();
+
 			this.scope.calculateEstimates = function() {
 				var self = this;
 				vacationService.getCorpusEstimates($scope.vacation['tenure'], $scope.modelVal.A5, $scope.modelVal.A6, $scope.modelVal.A7, $scope.modelVal.A8)
@@ -106,8 +110,6 @@
 				});
 			}
 			
-			$scope.graphObject = goalsService.getGoalGraphDetails();
-
 		}
 		                               
 		vacationController.prototype = finApp.goalControllerPrototype;
