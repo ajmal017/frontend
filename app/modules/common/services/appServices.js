@@ -63,7 +63,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
         	return function(){
         		var risk_score = 7.0,
         			riskProfile;
-        		if ($rootScope.userFlags && $rootScope.userFlags['risk_score']) {
+        		if ($rootScope.userFlags && $rootScope.userFlags['user_answers']['risk_score']) {
         			risk_score = $rootScope.userFlags['risk_score'];
         		}
 
