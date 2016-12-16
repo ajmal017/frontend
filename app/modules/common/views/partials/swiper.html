@@ -1155,7 +1155,7 @@
                             </div>
                             <div class="col-xs-6">
                                 <div class="row">
-                                  <p><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A6" type="text" name="year" required></span></p>
+                                  <p><span class="swiper-input normal"><input format="number" ng-model="modelVal.A6" type="text" name="year" required><span class="percentage">%</span></span></p>
                                 </div>
                             </div>
                           </div>
@@ -1236,7 +1236,7 @@
                             <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></info-tip></span>Equity/Debt Mix</p></div>
                             <div class="meter-widget-cover">
                                 <div class="col-xs-12 meter-header">
-                                    <button class="edit" ng-click="callModel(modelVal.assetAllocation.debt, modelVal.assetAllocation.equity, modelVal.A5)"></button>
+                                    <button class="edit" ng-click="callModel(modelVal.assetAllocation.debt, modelVal.assetAllocation.equity, modelVal.A4)"></button>
                                     <div class="row">
                                         <div class="col-xs-6 text-right">
                                             <h2 class="debt">Debt</h2>
@@ -1391,7 +1391,7 @@
                 <div class="swiper-content">
                   <info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="48px" class-name="marginNegative60"></info-tip>
                   <p class="question multiple"><span class="content">The current 'on-road' cost of the car i wish to buy is</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A5" type="text" name="year" required></span></p>
-                  <p class="question multiple"><span class="content">The proportion of purchase cost that i want to fund is</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A6" type="text" name="year" required></span></p>
+                  <p class="question multiple"><span class="content">The proportion of purchase cost that i want to fund is</span> <span class="swiper-input normal"><input format="number" ng-model="modelVal.A6" type="text" name="year" required><span class="percentage">%</span></span></p>
                   <p class="question multiple"><span class="content">For this goal so far I have already saved</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A7" type="text" name="year" required></span></p>
                 </div>
             </form>
@@ -1830,7 +1830,7 @@
                   <info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="48px" class-name="marginNegative60"></info-tip>
                   <p class="question multiple"><span class="content">Number of people expected at wedding is</span> <span class="swiper-input"><input ng-model="modelVal.A5" type="text" name="year" required></span></p>
                   <p class="question multiple"><span class="content">This wedding will be organised <select dropdown ng-model="modelVal.A6"><option selected value="op1">Locally</option><option value="op2">Outstation</option></select></span></p>
-                  <p class="question multiple"><span class="content">I will share the following proportion of wedding expenses </span> <span class="swiper-input"><input ng-model="modelVal.A7" type="text" name="year" required></span></p>
+                  <p class="question multiple"><span class="content">I will share the following proportion of wedding expenses </span> <span class="swiper-input"><input ng-model="modelVal.A7" type="text" name="year" required><span class="percentage">%</span></span></p>
                   <p class="question multiple"><span class="content">For this goal, so far I already saved</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A8" ng-keyup="showMessage2 = true" type="text" ame="year" required></span></p>
                 </div>
             </form>
@@ -2528,10 +2528,10 @@
             <div class="col-xs-12 bottom-desc">
                 <p><span class="bottom-label">Amount in Debt:</span><span class="amount-cover less"><span class="currency">&#8377</span><span class="amount">{{debtAmountModal}}</span></span></p>
                 <p><span class="bottom-label">Amount in Equity:</span><span class="amount-cover"><span class="currency">&#8377</span><span ng-bind="equityValue|currency:''"></span><span class="amount">{{equityAmountModal}}</span></p>
-                <p class="note" ng-if="false">Note: Investment in Debt and Equity funds below minimum limit <span class="currency">&#8377</span><span class="amount"><span class="amount">1000</span></span></p>
-                <p class="note" ng-if="true">Note: Investment in Debt funds below minimum limit <span class="currency">&#8377</span><span class="amount">1000</span></p>
-                <p class="note" ng-if="false">Note: Investment in Equity funds below minimum limit <span class="currency">&#8377</span><span class="amount">1000</span></p>
-                <button class="fin-app-btn fin-orange" ng-disabled="(equityAmountModal < 1000 && debtAmountModal < 1000)" ng-click="saveEquityDebtMix(equity, equity2)">SAVE MIX</button>
+                <p class="note" ng-if="(equityAmountModal < 1000 && debtAmountModal < 1000)">Note: Investment in Debt and Equity funds below minimum limit <span class="currency">&#8377</span><span class="amount"><span class="amount">1000</span></span></p>
+                <p class="note" ng-if="(debtAmountModal < 1000)">Note: Investment in Debt funds below minimum limit <span class="currency">&#8377</span><span class="amount">1000</span></p>
+                <p class="note" ng-if="(equityAmountModal < 1000)">Note: Investment in Equity funds below minimum limit <span class="currency">&#8377</span><span class="amount">1000</span></p>
+                <button class="fin-app-btn fin-orange" ng-disabled="((equityAmountModal > 0 && equityAmountModal < 1000) || (debtAmountModal > 0 && debtAmountModal < 1000))" ng-click="saveEquityDebtMix(equity, equity2)">SAVE MIX</button>
             </div>
         </div>
     </div>

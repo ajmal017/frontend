@@ -156,16 +156,16 @@ var finApp = finApp || {};
 			changeDebtModal : function() {
 				
 				this.scope.equity2 = 100 - this.scope.equity;
-				this.scope.debtAmountModal = (this.scope.equity/100) * this.scope.amount;
-				this.scope.equityAmountModal = (this.scope.equity2/100) * this.scope.amount
+				this.scope.debtAmountModal = Math.round((this.scope.equity/100) * this.scope.amount);
+				this.scope.equityAmountModal = Math.round((this.scope.equity2/100) * this.scope.amount);
 
 			},
 
 			changeEquityModal : function() {
 				
 				this.scope.equity = 100 - this.scope.equity2;
-				this.scope.equityAmountModal = (this.scope.equity2/100) * this.scope.amount
-				this.scope.debtAmountModal = (this.scope.equity/100) * this.scope.amount;
+				this.scope.equityAmountModal = Math.round((this.scope.equity2/100) * this.scope.amount);
+				this.scope.debtAmountModal = Math.round((this.scope.equity/100) * this.scope.amount);
 			},
 
 			saveEquityDebtMix : function() {

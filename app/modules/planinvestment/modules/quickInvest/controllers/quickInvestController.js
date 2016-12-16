@@ -63,6 +63,21 @@
 
 			this.scope.getGoalGraphDetails = angular.bind(this, this.getGoalGraphDetails ); 
 
+			$scope.loadDefaultValues = function() {
+				if($rootScope.userFlags['user_answers']['invest']['lumpsum'])
+                {
+                    $rootScope.selectedCriteria = 'op2';
+                }
+				else
+                { 
+                    $rootScope.selectedCriteria = 'op1';
+                } 
+			}
+
+			if($location.$$path == '/quickInvestStart'){
+				$scope.loadDefaultValues();
+			}
+
 			// this.setModelValLumpsum = function(assetAllocationObj) {
 			// 	$scope.modelVal.assetAllocation.equityInitial = assetAllocationObj.assetAllocation.equity;
 			// 	var debtAmount = (assetAllocationObj.assetAllocation.debt/100) * assetAllocationObj.minSIP;

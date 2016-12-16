@@ -3030,6 +3030,11 @@ span.error-text {
   position: relative;
   left: 6px;
 }
+.swiper-container.customSwiper .swiper-content p .swiper-input span.percentage {
+  position: absolute;
+  bottom: 3px;
+  color: #247abc;
+}
 .swiper-container.customSwiper .swiper-content p .swiper-input.age {
   width: 4%!important;
   margin-left: 5px;
