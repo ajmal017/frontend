@@ -1035,6 +1035,22 @@
 				    class: 'bubble'
 				});
 	            div.appendTo($('.guageCalculator'));
+	            var risk = $rootScope.userRiskFactor;
+	            var riskImage = '';
+
+	            if(risk > 0 && risk < 4) {
+	            	riskImage = '<img src= "assets/images/categoryImage1.png" class="img img-responsive" />';
+	            } else if(risk >= 4.1 && risk <= 6.0) {
+	            	riskImage = '<img src= "assets/images/categoryImage3.png" class="img img-responsive" />';
+	            } else if(risk >= 6.1 && risk <= 7.5) {
+	            	riskImage = '<img src= "assets/images/assesmentCar.png" class="img img-responsive" />';
+	            } else if(risk >= 7.6 && risk <= 9.0) {
+	            	riskImage = '<img src= "assets/images/categoryImage2.png" class="img img-responsive" />';
+	            } else if(risk >= 9.1 && risk <= 10.0) {
+	            	riskImage = '<img src= "assets/images/categoryImage4.png" class="img img-responsive" />';
+	            }
+
+	            riskImage.appendTo(div);
 	         //    for(var i=0;i<scope.length;i++){
 	         //    	var divDotCover = $('<div/>',{
 	         //    		class : (i == scope.length - 1)?'dot-cover showPseudo':'dot-cover',
