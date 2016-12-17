@@ -11,14 +11,14 @@
 			.when('/propertyStarted', {
 				title : 'Define your Goal',
 				subHeader : 'GO BACK TO FINANCIAL GOALS',
-				redirectUrl : '/planInvest',
+				redirectUrl : '/goals',
 		        templateUrl: 'modules/goals/modules/property/views/propertyStarted.html',
 		        controller: 'propertyController'
 		    })
 		    .when('/property', {
 				title : 'Define your Goal',
 				subHeader : 'GO BACK TO FINANCIAL GOALS',
-				redirectUrl : '/planInvest',
+				redirectUrl : '/goals',
 		        templateUrl: 'modules/goals/modules/property/views/property.html',
 		        controller: 'propertyController'
 		    })

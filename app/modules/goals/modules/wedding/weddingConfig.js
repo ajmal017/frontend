@@ -11,14 +11,14 @@
 			.when('/weddingStarted', {
 				title : 'Define your Goal',
 				subHeader : 'GO BACK TO FINANCIAL GOALS',
-				redirectUrl : '/planInvest',
+				redirectUrl : '/goals',
 		        templateUrl: 'modules/goals/modules/wedding/views/weddingStarted.html',
 		        controller: 'weddingController'
 		    })
 		    .when('/wedding', {
 				title : 'Define your Goal',
 				subHeader : 'GO BACK TO FINANCIAL GOALS',
-				redirectUrl : '/planInvest',
+				redirectUrl : '/goals',
 		        templateUrl: 'modules/goals/modules/wedding/views/wedding.html',
 		        controller: 'weddingController'
 		    })

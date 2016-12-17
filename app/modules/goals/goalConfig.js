@@ -14,7 +14,7 @@
 		$routeProvider
 			.when('/goals', {
 				title : 'Goals',
-				subHeader : 'GO BACK TO FINANCIAL GOALS',
+				subHeader : 'GO BACK TO PlAN INVESTMENTS',
 				redirectUrl : '/planInvest',
 		        templateUrl: 'modules/goals/views/goal.html',
 		        controller: 'goalsController'
