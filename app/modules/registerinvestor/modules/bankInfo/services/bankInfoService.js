@@ -2,62 +2,58 @@
     'use strict';
     angular
         .module('finApp.registerInvestor')
-        .factory('investorInfoService', investorInfoService);
+        .factory('bankInfoService', bankInfoService);
 
-    investorInfoService.$inject = ['$rootScope','$resource','appConfig','$q'];
-        function investorInfoService($rootScope,$resource,appConfig,$q){
-        	var modelObject,
+    bankInfoService.$inject = ['$rootScope','$resource','appConfig','$q'];
+        function bankInfoService($rootScope,$resource,appConfig,$q){
+        	var modelObject = {},
         	
         		serializeModel = function() {
 	        		return {
-	        			'country_of_birth': modelObject.countryOfBirth, 
-	        			'political_exposure': modelObject.politicalExposure, 
-	        			'income': modelObject.income, 
-	        			'occupation_specific': modelObject.specificOccupation || '',
-	        			'applicant_name': modelObject.applicantName, 
-	        			'pan_number': modelObject.panNumber, 
-	        			'place_of_birth': modelObject.placeOfBirth, 
-	        			'father_name': modelObject.fatherName, 
-	        			'investor_status': modelObject.investorStatus, 
-	        			'occupation_type': modelObject.occupationType, 
-	        			'other_tax_payer': modelObject.otherTaxPayer,
-	        			'dob': modelObject.dob	
+	        			'account_number': modelObject.accountNumber, 
+	        			'account_holder_name': modelObject.accountHolderName, 
+	        			'account_type': modelObject.accountType, 
+	        			'sip_check': modelObject.sipCheck,
+	        			'ifsc_code': modelObject.ifscCode,
 	        		};
         		},
         		
         		deserializeModel = function(response) {
         			
         			modelObject = {
-        				countryOfBirth : response.country_of_birth,
-        				politicalExposure : response.political_exposure, 
-        				income : response.income, 
-	        			specificOccupation : response.occupation_specific,
-	        			applicantName : response.applicant_name, 
-	        			panNumber : response.pan_number, 
-	        			placeOfBirth : response.place_of_birth, 
-	        			fatherName : response.father_name, 
-	        			investorStatus : response.investor_status, 
-	        			occupationType : response.occupation_type, 
-	        			otherTaxPayer : response.other_tax_payer,
-	        			dob : response.dob,
-	        			imageUrl : response.pan_image_thumbnail,
-	        			kycStatus : $rootScope.userFlags['user_flags']['kra_verified']
+        				accountNumber : response.account_number, 
+	        			accountHolderName : response.account_holder_name, 
+	        			accountType : response.account_type, 
+	        			sipCheck : response.sip_check,
+	        			ifscCode : response.ifsc_code.ifsc_code,
+	        			bankName : response.ifsc_code.name,
+	        			bankBranch : response.ifsc_code.bank_branch,
+	        			bankAddress: response.ifsc_code.address,
+	        			bankCity : response.ifsc_code.city,
+	        			imageUrl : response.bank_cheque_image_thumbnail
 	        		};
         			
+        		},
+        		
+        		deserializeBankInfo = function(response) {
+        			modelObject.bankName = response.name,
+        			modelObject.bankBranch = response.bank_branch,
+        			modelObject.bankAddress = response.address,
+        			modelObject.bankCity = response.city
         		};
         	
         	
             return{
         		getSavedValues : getSavedValues,
                 setSavedValues : setSavedValues,
-                getKYCStatus : getKYCStatus,
+                lookupIFSCCode : lookupIFSCCode,
                 uploadFileToServer : uploadFileToServer 
         	}
             
             function getSavedValues() {
         		var defer = $q.defer();
 				var getAPI = $resource( 
-					appConfig.API_BASE_URL+'/user/investor/info/get/', 
+					appConfig.API_BASE_URL+'/user/investor/account/info/get/', 
 					{}, {
 						Check: {
 							method:'GET',
@@ -82,12 +78,12 @@
             	}
 
             	modelObject = modelVal;
-            	
+
             	var saveData = serializeModel();
             	
         		var defer = $q.defer();
 				var postAPI = $resource( 
-					appConfig.API_BASE_URL+'/user/investor/info/add/', 
+					appConfig.API_BASE_URL+'/user/investor/account/info/post/', 
 					{}, {
 						Check: {
 							method:'POST',
@@ -107,7 +103,7 @@
 
             function uploadFileToServer(file) {
             	var fd = new FormData();
-            		fd.append('pan_image', file);
+            		fd.append('bank_cheque_image', file);
         		var defer = $q.defer();
 				var postAPI = $resource( 
 					appConfig.API_BASE_URL+'/user/save/image/', 
@@ -131,20 +127,21 @@
 
             }
             
-            function getKYCStatus(panNumber) {
-            	var panData = {'pan_number':panNumber};
+            function lookupIFSCCode(ifscCode) {
+            	var ifscData = {'ifsc_code':ifscCode};
             	
         		var defer = $q.defer();
-				var postAPI = $resource( 
-					appConfig.API_BASE_URL+'/open/verifiable/kyc/', 
+				var getAPI = $resource( 
+					appConfig.API_BASE_URL+'/open/bank/info/get/', 
 					{}, {
 						Check: {
-							method:'POST',
+							method:'GET',
 						}
 					});
-				postAPI.Check(panData,function(data){
+				getAPI.Check(ifscData,function(data){
 					if(data.status_code == 200){
-						defer.resolve({'success':data.response});
+						deserializeBankInfo(data.response);
+						defer.resolve({'success':modelObject});
 					}else{
 						defer.resolve({'Message':data.response['message']});
 					}				

@@ -16,6 +16,7 @@
 		.directive('format',format)
 		.directive('calculateGuage',calculateGuage)
 		.directive('validatePan',validatePan)
+		.directive('validateIfsc',validateIfsc)
 		.directive('bubbleGen',bubbleGen)
 		.directive('hcChart',hcChart)
 		.directive('goalChart',goalChart)
@@ -432,6 +433,35 @@
 	                if (value == '') {
 	                	$rootScope.verify = undefined;
 	                    ctrl.$setValidity('invalidPan', true);
+	                }
+	                ctrl.$setViewValue(value);
+	                ctrl.$render();
+	                return value;
+	            });
+
+	        }
+    	}
+
+		validateIfsc.$inject=['$rootScope'];
+		function validateIfsc($rootScope){
+	        return {
+	            restrict: 'A',
+	            require: 'ngModel',
+	            link: link,
+	            scope:true
+	        }
+	        function link(scope, elem, attr, ctrl) {
+	            ctrl.$parsers.unshift(function(value) {
+
+	                value = value.toUpperCase();
+	                var regifsc = /^([A-Z a-z]){4}([0-9]){7}?$/;
+	                if (regifsc.test(value) == false) {
+	                    ctrl.$setValidity('invalidIFSC', false);
+	                } else {
+	                    ctrl.$setValidity('invalidIFSC', true);
+	                }
+	                if (value == '') {
+	                    ctrl.$setValidity('invalidIFSC', true);
 	                }
 	                ctrl.$setViewValue(value);
 	                ctrl.$render();

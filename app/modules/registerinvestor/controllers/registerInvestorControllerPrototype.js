@@ -5,19 +5,18 @@ var finApp = finApp || {};
 	finApp.registerInvestorControllerPrototype = {
 
 		    imageUpload : function(element){
-	            var file=element.files[0];
-	            var ext = file.name.substr(file.name.lastIndexOf('.')+1,file.name.length);
-	            var Mimetype = file.type.split('/')[1];
-	            var validExt = ['jpg','png','jpeg'];
+	            var file=element.files[0],
+	            	ext = file.name.substr(file.name.lastIndexOf('.')+1,file.name.length),
+	            	validExt = ['jpg','png','jpeg'],
+	            	self = this;
 	            this.scope.Signature = "";
 	            this.scope.checkImageFile(file, function(e) {
-	                if(validExt.indexOf($scope.Signature) != -1){
+	                if(validExt.indexOf(self.scope.Signature) != -1){
 	                    var reader = new FileReader();
 	                    reader.onload = function (evt) {
-	                    	this.scope.$apply(function($scope){
-	                    	this.scope.imageUrlOrBase64 = evt.target.result;
-	                    	this.scope.file = element.files[0];
-	                    	this.scope.uploadFileToServer();
+	                    	self.scope.$apply(function($scope){
+	                    	self.scope.modelVal.imageUrl = evt.target.result;
+	                    	self.scope.file = element.files[0];
 	                        });
 	                    };
 	                    reader.readAsDataURL(file);
@@ -26,7 +25,8 @@ var finApp = finApp || {};
 	        },
 	        
 	        checkImageFile : function(file, onLoadendCallback){
-	            var slice = file.slice(0,4);      
+	            var slice = file.slice(0,4),
+	            	self = this;      
 	            var reader = new FileReader();  
 	            reader.onloadend = onLoadendCallback;
 	            reader.readAsArrayBuffer(slice);  
@@ -34,10 +34,10 @@ var finApp = finApp || {};
 	                var view = new DataView(reader.result);      
 	                var signature = view.getUint32(0, false).toString(16);
 	                switch(signature) {                 
-	                    case "89504e47": $scope.Signature = "png"; break;
+	                    case "89504e47": self.scope.Signature = "png"; break;
 	                    case "ffd8ffe0":
 	                    case "ffd8ffe1":
-	                    case "ffd8ffe2": $scope.Signature = "jpeg"; break;
+	                    case "ffd8ffe2": self.scope.Signature = "jpeg"; break;
 	                };
 	            };
 	        },
@@ -60,12 +60,18 @@ var finApp = finApp || {};
 			},
 			
 			saveInfo : function() {
-				investorInfoService.setSavedValues();
+				this.service.setSavedValues(this.scope.modelVal);
 			},
 			
 			appendValue : function() {
 				
-			}
+			},
+			
+			reloadRoute : function(slideNumber) {
+				this.rootScope.slideTobeChanged = slideNumber;
+			    this.route.reload();
+			},
+
 
 
 
