@@ -20,7 +20,7 @@
                 weddingAnswers = $rootScope.userFlags['user_answers']['wedding'];
                 console.log('weddingAnswers',weddingAnswers);
 
-                // var d = new Date();
+                var d = new Date();
                 modelObject.A1 = weddingAnswers['goal_name'];
                 modelObject.A3 = weddingAnswers['corpus'];
                
@@ -28,7 +28,13 @@
                 modelObject.A6 = weddingAnswers['location']
                 modelObject.A7 = weddingAnswers['sharing_percentage'];
                 modelObject.A8 = weddingAnswers['amount_saved'];
-                // modelObject.A2 = parseInt(d.getFullYear() + automobileAnswers['term']);
+                if (weddingAnswers['term']) {
+                	modelObject.A2 = parseInt(d.getFullYear() + weddingAnswers['term']);
+                }
+                else {
+                	modelObject.A2 = undefined;
+                }
+                
 	        	return modelObject;
 	        }
 

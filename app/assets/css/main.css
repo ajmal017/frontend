@@ -4357,12 +4357,24 @@ section.quickInvest .started {
   margin-right: 0px;
 }
 .meter-widget-cover .guageCalculator {
-  width: 30%;
+  width: 40%;
   margin: 0 auto;
   margin-top: -8%;
+  background-color: #fff;
+  -webkit-border-radius: 10px;
+     -moz-border-radius: 10px;
+          border-radius: 10px;
 }
 .meter-widget-cover .guageCalculator img {
+  background-color: #f0f4f7;
   width: 100%;
+}
+.meter-widget-cover .guageCalculator p {
+  font-size: 15px !important;
+  margin-bottom: 9px !important;
+  margin-top: 5px;
+  padding-bottom: 10px;
+  color: #247abc !important;
 }
 .meter-widget-cover .bottom-text {
   font-family: 'Roboto-Bold';

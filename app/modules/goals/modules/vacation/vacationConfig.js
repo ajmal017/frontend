@@ -11,14 +11,14 @@
 			.when('/vacationStarted', {
 				title : 'Define your Goal',
 				subHeader : 'GO BACK TO FINANCIAL GOALS',
-				redirectUrl : '/planInvest',
+				redirectUrl : '/goals',
 		        templateUrl: 'modules/goals/modules/vacation/views/vacationStarted.html',
 		        controller: 'vacationController'
 		    })
 		    .when('/vacation', {
 				title : 'Define your Goal',
 				subHeader : 'GO BACK TO FINANCIAL GOALS',
-				redirectUrl : '/planInvest',
+				redirectUrl : '/goals',
 		        templateUrl: 'modules/goals/modules/vacation/views/vacation.html',
 		        controller: 'vacationController'
 		    })

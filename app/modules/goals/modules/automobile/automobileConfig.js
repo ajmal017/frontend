@@ -11,14 +11,14 @@
 			.when('/automobileStarted', {
 				title : 'Define your Goal',
 				subHeader : 'GO BACK TO FINANCIAL GOALS',
-				redirectUrl : '/planInvest',
+				redirectUrl : '/goals',
 		        templateUrl: 'modules/goals/modules/automobile/views/automobileStarted.html',
 		        controller: 'automobileController'
 		    })
 		    .when('/automobile', {
 				title : 'Define your Goal',
 				subHeader : 'GO BACK TO FINANCIAL GOALS',
-				redirectUrl : '/planInvest',
+				redirectUrl : '/goals',
 		        templateUrl: 'modules/goals/modules/automobile/views/automobile.html',
 		    })
 		}

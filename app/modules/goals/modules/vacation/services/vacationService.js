@@ -20,7 +20,7 @@
                 vacationAnswers = $rootScope.userFlags['user_answers']['vacation'];
                 console.log('vacationAnswers',vacationAnswers);
 
-                // var d = new Date();
+                var d = new Date();
                 modelObject.A1 = vacationAnswers['goal_name'];
                 modelObject.A3 = vacationAnswers['corpus'];
                
@@ -28,7 +28,12 @@
                 modelObject.A6 = vacationAnswers['number_of_days']
                 modelObject.A7 = vacationAnswers['location'];
                 modelObject.A8 = vacationAnswers['amount_saved'];
-                // modelObject.A2 = parseInt(d.getFullYear() + automobileAnswers['term']);
+                if (vacationAnswers['term']) {
+                	modelObject.A2 = parseInt(d.getFullYear() + vacationAnswers['term']);
+                }
+                else {
+                	modelObject.A2 = undefined;
+                }
 	        	return modelObject;
 	        }
 

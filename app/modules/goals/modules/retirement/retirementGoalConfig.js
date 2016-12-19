@@ -11,14 +11,14 @@
 			.when('/retirementGoalsStarted', {
 				title : 'Define your Goal',
 				subHeader : 'GO BACK TO FINANCIAL GOALS',
-				redirectUrl : '/planInvest',
+				redirectUrl : '/goals',
 		        templateUrl: 'modules/goals/modules/retirement/views/retirementStarted.html',
 		        controller: 'retirementGoalsController'
 		    })
 		    .when('/retirement', {
 				title : 'Define your Goal',
 				subHeader : 'GO BACK TO FINANCIAL GOALS',
-				redirectUrl : '/planInvest',
+				redirectUrl : '/goals',
 		        templateUrl: 'modules/goals/modules/retirement/views/retirement.html',
 		    })
 		}
