@@ -913,8 +913,8 @@
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
                     <info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="48px" class-name="marginNegative60"></info-tip>
-                      <p class="question multiple"><span class="content">I wish to provide for education <select dropdown ng-model="modelVal.A5"><option selected value="op1">In India</option><option value="op2">Abroad</option></select></span></p>
-                      <p class="question multiple"><span class="content">In the field of <select dropdown ng-model="modelVal.A6"><option selected value="op1">4-yr Engineering Grad</option><option value="op2">2-yr Engineering Masters</option><option value="op3">4-yr Medicine</option><option value="op4">2-yr MBA</option><option value="op5">1-yr MBA</option><option value="op6">Commerce Grad</option><option value="op7">Arts Grad</option><option value="op8">Other 2-years Course</option><option value="op9">Other 4-years Course</option></select></span></p>
+                      <p class="question multiple"><span class="content">I wish to provide for education <select dropdown ng-model="modelVal.A5"><option value=""></option><option ng-selected="modelVal.A5 == 'op1' || modelVal.A5 == 'undefined' || modelVal.A5 == ''" value="op1">In India</option><option ng-selected="modelVal.A5 == 'op2'" value="op2">Abroad</option></select></span></p>
+                      <p class="question multiple"><span class="content">In the field of <select dropdown ng-model="modelVal.A6"><option value=""></option><option ng-selected="modelVal.A6 == 'op1' || modelVal.A6 == 'undefined' || modelVal.A6 == ''" value="op1">4-yr Engineering Grad</option><option ng-selected="modelVal.A6 == 'op2'" value="op2">2-yr Engineering Masters</option><option ng-selected="modelVal.A6 == 'op3'" value="op3">4-yr Medicine</option><option ng-selected="modelVal.A6 == 'op4'" value="op4">2-yr MBA</option><option ng-selected="modelVal.A6 == 'op5'" value="op5">1-yr MBA</option><option ng-selected="modelVal.A6 == 'op6'" value="op6">Commerce Grad</option><option ng-selected="modelVal.A6 == 'op7'" value="op7">Arts Grad</option><option ng-selected="modelVal.A6 == 'op8'" value="op8">Other 2-years Course</option><option value="op9" ng-selected="modelVal.A6 == 'op9'">Other 4-years Course</option></select></span></p>
                       <p class="question multiple"><span class="content">For this goal, so far I have already saved </span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A7" type="text" name="year" required></span></p>
                 </div>
             </form>
@@ -1611,7 +1611,7 @@
                   <info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="48px" class-name="marginNegative60"></info-tip>
                   <p class="question multiple"><span class="content">Number of people going on this vacation (ages 2+ years) is</span> <span class="swiper-input age"><input ng-model="modelVal.A5" type="text" name="year" ng-init="modelVal.A5 = 2" required></span></p>
                   <p class="question multiple"><span class="content">Number of days of vacation is </span> <span class="swiper-input age"><input ng-model="modelVal.A6" type="text" name="year" ng-init="modelVal.A6 = 6" required></span></p>
-                  <p class="question multiple"><span class="content">This vacation will be <select dropdown ng-model="modelVal.A7"><option selected value="op1">Domestic</option><option value="op2">International</option></select></span></p>
+                  <p class="question multiple"><span class="content">This vacation will be <select dropdown ng-model="modelVal.A7"><option value=""></option><option ng-selected="modelVal.A7 == 'op1' || modelVal.A7 == '' || modelVal.A7 == 'undefined'" value="op1">Domestic</option><option value="op2">International</option></select></span></p>
                   <p class="question multiple"><span class="content">For this goal, so far I already saved</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A8" ng-keyup="showMessage2 = true" type="text" ame="year" required></span></p>
                 </div>
             </form>
@@ -1829,7 +1829,7 @@
                 <div class="swiper-content">
                   <info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="48px" class-name="marginNegative60"></info-tip>
                   <p class="question multiple"><span class="content">Number of people expected at wedding is</span> <span class="swiper-input"><input ng-model="modelVal.A5" type="text" name="year" required></span></p>
-                  <p class="question multiple"><span class="content">This wedding will be organised <select dropdown ng-model="modelVal.A6"><option selected value="op1">Locally</option><option value="op2">Outstation</option></select></span></p>
+                  <p class="question multiple"><span class="content">This wedding will be organised <select dropdown ng-model="modelVal.A6"><option ng-selected="modelVal.A6 == 'op1' || modelVal.A6 == ''" value="op1">Locally</option><option ng-selected="modelVal.A6 == 'op2'" value="op2">Outstation</option></select></span></p>
                   <p class="question multiple"><span class="content">I will share the following proportion of wedding expenses </span> <span class="swiper-input"><input ng-model="modelVal.A7" type="text" name="year" required><span class="percentage">%</span></span></p>
                   <p class="question multiple"><span class="content">For this goal, so far I already saved</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A8" ng-keyup="showMessage2 = true" type="text" ame="year" required></span></p>
                 </div>
@@ -2231,8 +2231,8 @@
                 </div>
                 <div class="fin-btn-group addMargin">
                     <button click-redirect="/taxsavingStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button>
-                    <button click-redirect="/dashboard" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                    <button ng-click="fundSelectionSaveTax(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
                 </div>
             </div>
         </div>

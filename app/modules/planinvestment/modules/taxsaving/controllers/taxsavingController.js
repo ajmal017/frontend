@@ -5,9 +5,9 @@
 		.controller('taxsavingController',taxsavingController);
 
 		taxsavingController.$inject = ['$scope','$rootScope','$route','$location', '$timeout', 'taxsavingService',
-		                              'goalsService', 'assetAllocationService', 'goalFormulaeService', 'appConfig'];
+		                              'goalsService', 'assetAllocationService', 'goalFormulaeService', 'appConfig', 'busyIndicator'];
 		function taxsavingController($scope,$rootScope,$route,$location,$timeout,taxsavingService,
-				goalsService, assetAllocationService, goalFormulaeService, appConfig) {
+				goalsService, assetAllocationService, goalFormulaeService, appConfig, busyIndicator) {
 			
 			this.scope = $scope;
 
@@ -15,7 +15,7 @@
 			this.goalModelObject = this.scope.taxsaving;
 			
 			this.scope.modelVal = taxsavingService.getSavedValues();
-			
+		
 			this.rootScope = $rootScope;
 			this.route = $route;
 			this.location = $location;
@@ -41,6 +41,7 @@
 			this.scope.taxsaving['assetAllocation'] = appConfig.TAX_DEFAULT_ALLOCATION;
 			this.scope.getGraphObject = angular.bind(this, this.getGraphObject ); 
             this.scope.graphObject = this.scope.getGraphObject();
+            this.scope.getFundData = angular.bind(this, this.getFundData );
 
 			var self = this;
 			
@@ -83,6 +84,37 @@
 				
 				self.getGoalGraphDetails();
 			}
+
+			if(this.rootScope.selectedCriteria == 'op2') {
+				$scope.computeFutureEligibility();
+			}
+
+			this.scope.fundSelectionSaveTax = function(modelVal) {
+				console.log('modelVal', modelVal);
+				var fundSelectionObj = {};
+
+				fundSelectionObj.estimate_needed = modelVal.A3?'op2':'op1';
+				fundSelectionObj.pff = modelVal.A3 || 0
+				fundSelectionObj.insurance = modelVal.A4 || 0
+				fundSelectionObj.loan = modelVal.A5 || 0
+				fundSelectionObj.elss = modelVal.A6 || 0
+				fundSelectionObj.amount_allowed = '150000';
+				fundSelectionObj.amount_invested = modelVal.A2;
+
+				console.log('fundSelectionObj', fundSelectionObj);
+				busyIndicator.show();
+				goalsService.addParticularGoal(fundSelectionObj, 'tax').then(function(data){
+					if('success' in data) {
+						console.log('Goal added successfully');
+						self.getFundData('tax', busyIndicator);
+						
+					}
+					else {
+						console.log('Error in service');
+					}
+				});
+			}
+
 
 		}
 		                               

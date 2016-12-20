@@ -93,7 +93,7 @@
 				}
 
 				if($rootScope.selectedCriteria == 'op2') {
-					// fundSelectionObj.corpus = modelVal.A3;
+					fundSelectionObj.corpus = modelVal.A3;
 					fundSelectionObj.term = modelVal.A2 - d.getFullYear();
 					fundSelectionObj.sip = modelVal.A4;
 					fundSelectionObj.lumpsum = 0;
@@ -117,7 +117,7 @@
 					if('success' in data) {
 						console.log('Goal added successfully');
 						self.getFundData('automobile', busyIndicator);
-						busyIndicator.hide();
+						
 					}
 					else {
 						console.log('Error in service');

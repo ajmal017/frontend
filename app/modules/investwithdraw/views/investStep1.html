@@ -3,10 +3,10 @@
 		<div class="row">
 			<div class="col-xs-4 pie-cover">
 				<p><span class="placeholder pie-header">Your asset allocation for the year</span></p>
-				<invest-pie-chart items="resultPercentage" title="pieTitle"></invest-pie-chart>
+				<invest-pie-chart items="$root.resultPercentage" title="$root.pieTitle"></invest-pie-chart>
 				<div class="pie-chart-legend">
 					<div class="label-cover">
-						<p ng-repeat="legend in legends"><span class="content" ng-bind="legend.name"></span><span class="legend-cover">
+						<p ng-repeat="legend in $root.legends"><span class="content" ng-bind="legend.name"></span><span class="legend-cover">
 							<span class="legend-main" ng-style="{'background-color':legend.color,'width':legend.value+'%'}">
 								<span class="right"></span>
 								<span class="left" ng-style="{'border-left':legend.borderColor}"></span>
@@ -41,71 +41,21 @@
 					</div>
 					<div class="seperate-cover" custom-scroll-bar>
 						<div class="tbody">
-							<div class="tr">
+							<div class="tr" ng-repeat="schemes in $root.recommended_schemes">
 								<div class="td">
-									<p>PRO1</p>
+									<p>{{schemes.goal_summary.goal}}</p>
 								</div>
 								<div class="td">
-									<p>Rs.<span>1,00,03,138</span></p>
+									<p>Rs.<span>{{schemes.goal_summary.corpus}}</span></p>
 								</div>
 								<div class="td">
-									<p>7</p>
+									<p>{{schemes.goal_summary.term}}</p>
 								</div>
 								<div class="td">
-									<p>Rs.<span>83,200</span></p>
+									<p>Rs.<span>{{schemes.goal_summary.sip}}</span></p>
 								</div>
 								<div class="td">
-								</div>
-							</div>
-							<div class="tr">
-								<div class="td">
-									<p>INV1*</p>
-								</div>
-								<div class="td">
-									<p>Rs.<span>9,08,810</span></p>
-								</div>
-								<div class="td">
-									<p>5*</p>
-								</div>
-								<div class="td">
-									<p>Rs.<span>10,000</span></p>
-								</div>
-								<div class="td">
-									<p>Rs.<span>94,000</span></p>
-								</div>
-							</div>
-							<div class="tr">
-								<div class="td">
-									<p>INV1*</p>
-								</div>
-								<div class="td">
-									<p>Rs.<span>9,08,810</span></p>
-								</div>
-								<div class="td">
-									<p>5*</p>
-								</div>
-								<div class="td">
-									<p>Rs.<span>10,000</span></p>
-								</div>
-								<div class="td">
-									<p>Rs.<span>94,000</span></p>
-								</div>
-							</div>
-							<div class="tr">
-								<div class="td">
-									<p>INV1*</p>
-								</div>
-								<div class="td">
-									<p>Rs.<span>9,08,810</span></p>
-								</div>
-								<div class="td">
-									<p>5*</p>
-								</div>
-								<div class="td">
-									<p>Rs.<span>10,000</span></p>
-								</div>
-								<div class="td">
-									<p>Rs.<span>94,000</span></p>
+									<p>{{schemes.goal_summary.sip}}</p>
 								</div>
 							</div>
 						</div>
@@ -115,10 +65,10 @@
 							<p>Total</p>
 						</div>
 						<div class="sipTotal">
-							<p>Rs.<span>93,200</span></p>
+							<p>Rs.<span>{{sipTotal}}</span></p>
 						</div>
 						<div class="lumpSumTotal">
-							<p>Rs.<span>94,000</span></p>
+							<p>Rs.<span>{{lumpSumTotal}}</span></p>
 						</div>
 					</div>
 				</div>

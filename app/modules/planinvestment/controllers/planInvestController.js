@@ -11,8 +11,10 @@
 				var goalRedirect = '';
 				if(currentGoal == 'invest') {
 					goalRedirect = 'quickInvestStart';
+				} else if(currentGoal == 'tax') {
+					goalRedirect = 'taxsavingStarted';
 				}
-				
+ 				
 				$location.path('/'+goalRedirect);
 			}
 
@@ -29,10 +31,12 @@
 				});
 			}
 
+			$scope.callCompleteness();
+
 			$scope.goalAnswered = function() {
 				var user_flags = $rootScope.userFlags.user_flags;
 				$rootScope.goalAnswered = {};
-				appConfig.currentGoals.forEach(function(data) {
+				appConfig.otherGoals.forEach(function(data) {
 					console.log('user flags',user_flags[data]);
 					$rootScope.goalAnswered[data] = user_flags[data];
 				});
@@ -41,6 +45,12 @@
 
 			$scope.goalAnswered();
 
-			$scope.callCompleteness();
+			$scope.financialGoalAnswered = function() {
+				var user_flags = $rootScope.userFlags.user_flags;
+				$scope.finGoalAnswered = '';
+				appConfig.financialGoals.forEach(function(data) {
+					
+				});
+			}
 		}
 })();

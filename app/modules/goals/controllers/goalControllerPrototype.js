@@ -184,8 +184,9 @@ var finApp = finApp || {};
 					
 					if('success' in data){	
 						self.rootScope.setFundData = data.success;
-						busyIndicator.hide();
+						
 						self.location.path('/recommendedSchemes');
+						busyIndicator.hide();
 					} else {
 						console.log(data.Message);
 					}

@@ -167,4 +167,27 @@
     <script type="text/javascript" src="modules/trackperformance/controllers/trackPerformanceController.js"></script>
     <!--Smart portfolio Module End-->
   </body>
+  <div class="modal fade" id="sessionLogoutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="fadeIn modal-wrapper">
+        <button data-dismiss="modal" class="modal-close"></button>
+        <header class="login-header col-xs-12">
+            <div class="row">
+                <div class="cloud1"><img src="assets/images/login_cloud1.png"></div>
+                <div class="header-intro col-xs-12">
+                    <div class="row">
+                        <p class="pull-left">Session expired! Kindly login to continue.</p>
+                        <div class="plane pull-right"><img src="assets/images/loginPlane.png"></div>
+                    </div>
+                </div>
+                <div class="cloud2"><img src="assets/images/login_cloud2.png"></div>
+            </div>
+        </header>
+          
+           <button class="fin-app-btn fin-orange" ng-click="redirectLogin()">Continue to login</button>
+        </div>
+    </div>
+  </div>
+</div>
 </html>

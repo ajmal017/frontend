@@ -117,7 +117,7 @@
 					if('success' in data) {
 						console.log('Goal added successfully');
 						self.getFundData('vacation', busyIndicator);
-						busyIndicator.hide();
+						
 					}
 					else {
 						console.log('Error in service');

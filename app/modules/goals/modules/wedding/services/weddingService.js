@@ -25,7 +25,7 @@
                 modelObject.A3 = weddingAnswers['corpus'];
                
                 modelObject.A5 = weddingAnswers['expected_people'];
-                modelObject.A6 = weddingAnswers['location']
+                modelObject.A6 = weddingAnswers['location'] || '';
                 modelObject.A7 = weddingAnswers['sharing_percentage'];
                 modelObject.A8 = weddingAnswers['amount_saved'];
                 if (weddingAnswers['term']) {
