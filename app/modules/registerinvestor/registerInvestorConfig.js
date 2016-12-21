@@ -41,11 +41,23 @@
 				redirectUrl : '/dashboard',
 		        templateUrl: 'modules/registerinvestor/views/bankInfo.html',
 		    })
+		    .when('/contactInfo', {
+		    	title : 'Investor Registration',
+		    	subHeader : 'GO BACK TO DASHBOARD',
+				redirectUrl : '/dashboard',
+		        templateUrl: 'modules/registerinvestor/views/contactInfo.html',
+		    })
 		    .when('/nomineeInfo', {
 		    	title : 'Investor Registration',
 		    	subHeader : 'GO BACK TO DASHBOARD',
 				redirectUrl : '/dashboard',
 		        templateUrl: 'modules/registerinvestor/views/nomineeInfo.html',
+		    })
+		    .when('/identityInfo', {
+		    	title : 'Investor Registration',
+		    	subHeader : 'GO BACK TO DASHBOARD',
+				redirectUrl : '/dashboard',
+		        templateUrl: 'modules/registerinvestor/views/identityInfo.html',
 		    })
 		    .when('/registerInvestorConfirm', {
 		    	title : 'Investor Registration',
