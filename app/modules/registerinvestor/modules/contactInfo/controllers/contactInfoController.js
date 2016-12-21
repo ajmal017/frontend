@@ -53,6 +53,7 @@
 	        	Ration_Card = 7;
 			
 			this.scope.needBackImage = function(addressProofType) {
+				console.log('step is: ' + this.step + ' selected: ' + $rootScope.selectedCriteria);
 				if (addressProofType == Bank_Statement || addressProofType == Utility_Bill || 
 						addressProofType == Ration_Card) {
 					return false;

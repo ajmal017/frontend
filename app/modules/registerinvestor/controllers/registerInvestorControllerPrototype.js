@@ -58,6 +58,9 @@ var finApp = finApp || {};
 	        
 			initialize : function(){
 				var self = this;
+				if (!this.rootScope.selectedCriteria) {
+					this.rootScope.selectedCriteria = 'op1';
+				}
 				this.service.getSavedValues().then(function(data){
 					if('success' in data){
 						self.scope.modelVal = data['success'];
