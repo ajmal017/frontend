@@ -36,7 +36,10 @@
         	}
         	
         	function getKYCStatus() {
-        		return $rootScope.userFlags['user_flags']['kra_verified'];
+        		if ($rootScope.userFlags && $rootScope.userFlags['user_flags'])
+        			return $rootScope.userFlags['user_flags']['kra_verified'];
+        		
+        		return false;
         	}
         }        
 })();

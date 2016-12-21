@@ -42,18 +42,17 @@
 
 			this.scope.lookupPincode = angular.bind( this, this.lookupPincode );
 			
-			this.getKYCStatus = function() {
+			this.scope.getKYCStatus  = function(step) {
 				return registerInvestorService.getKYCStatus();
-			}
+			};
 
-			this.scope.getKYCStatus = angular.bind( this, this.getKYCStatus );
+			//this.scope.getKYCStatus = angular.bind( this, this.getKYCStatus );
 			
 			var Bank_Statement = 5,
 	        	Utility_Bill = 6,
 	        	Ration_Card = 7;
 			
 			this.scope.needBackImage = function(addressProofType) {
-				console.log('step is: ' + this.step + ' selected: ' + $rootScope.selectedCriteria);
 				if (addressProofType == Bank_Statement || addressProofType == Utility_Bill || 
 						addressProofType == Ration_Card) {
 					return false;

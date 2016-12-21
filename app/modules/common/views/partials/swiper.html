@@ -2393,7 +2393,7 @@
     <span ng-if="(step == 2)" class="placeholder imagePlaceholder">Note: Above image will be used to register your investment account.</span>
 </div>
 
-<div ng-if="swiperName == 'contactInfo'" class="fadeIn swiper-container customSwiper contactInfo type2Sliders" ng-init="(typeof(step)==='undefined'||!step) && (step = 1)">
+<div ng-if="swiperName == 'contactInfo'" class="fadeIn swiper-container customSwiper contactInfo type2Sliders" ng-init="step = 1">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <form name="quickInvestForm3" novalidate>
@@ -2497,18 +2497,18 @@
     </div>    
     <div class="fin-btn-group gotoPages">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1)" click-redirect="/registerInvestorInfo" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1);getKYCStatus()?0:reloadRoute('op2',1)" ng-disabled="(!modelVal.communicationAddress.pincode)||(!modelVal.communicationAddress.addressLine1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2) && ($root.selectedCriteria=='op2'||$root.selectedCriteria=='op3')" ng-click="(step=step+1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 2) && ($root.selectedCriteria=='op2'||$root.selectedCriteria=='op3')" ng-click="appendValues(modelVal);saveCommunicationAddressImage();(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="((step == 3) && ($root.selectedCriteria=='op2'||$root.selectedCriteria=='op3'))||((step == 2) && ($root.selectedCriteria=='op1'))" click-redirect="/registerInvestorInfo" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="((step == 3) && ($root.selectedCriteria=='op2'||$root.selectedCriteria=='op3'))||((step == 2) && ($root.selectedCriteria=='op1'))" ng-click="appendValues(modelVal);getKYCStatus()||modelVal.addressAreEqual?(step = step + 1):reloadRoute('op3',3)" ng-disabled="(!modelVal.addressAreEqual && (!modelVal.communicationAddress.pincode)||(modelVal.communicationAddress.addressLine1))" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4 && $root.selectedCriteria=='op3')" ng-click="(step=step+1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 4 && $root.selectedCriteria=='op3')" ng-click="appendValues(modelVal);savePermanentAddressImage();(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="((step == 5) && $root.selectedCriteria=='op3')||((step == 4) && $root.selectedCriteria=='op2')||((step == 3) && $root.selectedCriteria=='op1')" click-redirect="/registerInvestorInfo" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="((step == 5) && $root.selectedCriteria=='op3')||((step == 4) && $root.selectedCriteria=='op2')||((step == 3) && $root.selectedCriteria=='op1')" ng-click="appendValues(modelVal);saveInfo()" click-redirect="/registerInvestorInfo" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 1 && $root.selectedCriteria=='op1')" click-redirect="/registerInvestorInfo" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="(step == 1 && $root.selectedCriteria=='op1')" ng-click="appendValues(modelVal);(step=step+1);getKYCStatus()?0:reloadRoute('op2',1)" ng-disabled="(!modelVal.communicationAddress.pincode)||(!modelVal.communicationAddress.addressLine1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 1) && ($root.selectedCriteria=='op2'||$root.selectedCriteria=='op3')" ng-click="(step=step+1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="(step == 1) && ($root.selectedCriteria=='op2'||$root.selectedCriteria=='op3')" ng-click="appendValues(modelVal);saveCommunicationAddressImage();(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="((step == 2) && ($root.selectedCriteria=='op2'))||((step == 2) && ($root.selectedCriteria=='op1'))" click-redirect="/registerInvestorInfo" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="((step == 2) && ($root.selectedCriteria=='op2'))||((step == 2) && ($root.selectedCriteria=='op1'))" ng-click="appendValues(modelVal);(getKYCStatus()||modelVal.addressAreEqual)?(step = step + 1):reloadRoute('op3',3)" ng-disabled="(!modelVal.addressAreEqual && (!modelVal.communicationAddress.pincode)||(!modelVal.communicationAddress.addressLine1))" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 1 && $root.selectedCriteria=='op3')" ng-click="(step=step+2)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="(step == 1 && $root.selectedCriteria=='op3')" ng-click="appendValues(modelVal);savePermanentAddressImage();(step = step + 2)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="((step == 3) && $root.selectedCriteria=='op3')||((step == 3) && $root.selectedCriteria=='op2')||((step == 3) && $root.selectedCriteria=='op1')" click-redirect="/registerInvestorInfo" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="((step == 3) && $root.selectedCriteria=='op3')||((step == 3) && $root.selectedCriteria=='op2')||((step == 3) && $root.selectedCriteria=='op1')" ng-click="appendValues(modelVal);saveInfo()" ng-disabled="(!modelVal.phoneNumber||!modelVal.email)" click-redirect="/registerInvestorInfo" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
-    <span ng-if="(step == 2)||(step == 4 && $root.selectedCriteria=='op3')" class="placeholder imagePlaceholder">Note: Above image will be used to register your investment account.</span>
+    <span ng-if="(step == 1 && $root.selectedCriteria=='op2')||(step == 1 && $root.selectedCriteria=='op3')" class="placeholder imagePlaceholder">Note: Above image will be used to register your investment account.</span>
 </div>
 <div ng-if="swiperName == 'nomineeInfo'" class="fadeIn swiper-container customSwiper nomineeInfo type2Sliders" ng-init="step = 1">
     <div class="swiper-wrapper">

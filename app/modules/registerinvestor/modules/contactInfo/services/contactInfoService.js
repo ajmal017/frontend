@@ -28,11 +28,11 @@
 	    					angular.extend(returnObject, {
 	    						'permanent_address_proof_type' : modelObject.permanentAddressProofType,
 	    						'permanent_address' : {
-	        						'pincode' : permanentAddress.communicationAddress.pincode,
-	        						'city' : permanentAddress.communicationAddress.city,
-	        						'state' : permanentAddress.communicationAddress.state,
-	        						'address_line_1' : permanentAddress.communicationAddress.addressLine1,
-	        						'address_line_2' : permanentAddress.communicationAddress.addressLine2
+	        						'pincode' : modelObject.permanentAddress.pincode,
+	        						'city' : modelObject.permanentAddress.city,
+	        						'state' : modelObject.permanentAddress.state,
+	        						'address_line_1' : modelObject.permanentAddress.addressLine1,
+	        						'address_line_2' : modelObject.permanentAddress.addressLine2
 	    						}
 	    					});
 	        				
