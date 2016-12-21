@@ -6110,6 +6110,12 @@ section.compareSchemes .sensex-status {
   font-size: 1.125em;
   padding-left: 22px;
 }
+.chart-cover .schemePortfolioTop ul li {
+  list-style: none;
+}
+.chart-cover .schemePortfolioBottom ul li {
+  list-style: none;
+}
 section.investStep1 {
   padding-left: 6%;
   padding-right: 6%;
@@ -6652,6 +6658,15 @@ section.trackPerformance .chart-cover.transaction-cover .schemes-inner h2 {
   font-size: 1.125em;
   margin-top: 0;
   margin-bottom: 0px;
+}
+section.trackPerformance .chart-cover.transaction-cover .schemes-inner .transactionEach {
+  background-color: #e6eef4;
+  margin: 16px 0px;
+  padding-top: 16px;
+  padding-left: 32px;
+  -webkit-border-radius: 19px;
+     -moz-border-radius: 19px;
+          border-radius: 19px;
 }
 section.trackPerformance .chart-main-tabs li {
   margin-left: 0px;

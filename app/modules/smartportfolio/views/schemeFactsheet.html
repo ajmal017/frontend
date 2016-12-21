@@ -3,38 +3,43 @@
 		<div class="form-group">
 			<div class="row">
 				<div class="col-xs-4">
-					<img class="img img-responsive" src="assets/images/schemeLogo.png">
+					<img class="img img-responsive" ng-src="{{$root.factsheetData.scheme_details.image_url}}" lazy-img="{{$root.factsheetData.scheme_details.image_url}}">
 					<p>
-						<img class="schemeRating" src="assets/images/schemeRating.png" ng-repeat="i in [1,2,3,4,5]" />
+						<img class="schemeRating" src="assets/images/schemeRating.png" ng-repeat="i in getNumber($root.factsheetData.scheme_details.star_rating) track by $index" />
 					</p>
 					<p>By Morningstar</p>
 				</div>
 				<div class="col-xs-8">
-					<h4>Birla Sun Life Treasury Optimizer Plan - Growth - Regular Plan</h4>
+					<h4>{{$root.factsheetData.scheme_details.legal_name}}</h4>
+					<p>{{$root.factsheetData.scheme_details.description}}</p>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="row">
 				<div class="col-xs-6">
-					<p class="text-center">Moderate</p>
-					<p><img class="img img-responsive" src="assets/images/schemeMeter.png" /></p>
-					<p>Investors understand that their principal will be at moderate risk</p>
+					<p class="text-center">{{$root.factsheetData.scheme_details.risk}}</p>
+					<p><img class="img img-responsive" src="assets/images/moderate.png" ng-if="$root.factsheetData.scheme_details.risk == 'Moderate Risk'"/></p>
+					<p><img class="img img-responsive" src="assets/images/moderatelyHigh.png" ng-if="$root.factsheetData.scheme_details.risk == 'Moderate High Risk'"/></p>
+					<p><img class="img img-responsive" src="assets/images/moderatelyLow.png" ng-if="$root.factsheetData.scheme_details.risk == 'Moderate Low Risk'"/></p>
+					<p><img class="img img-responsive" src="assets/images/low.png" ng-if="$root.factsheetData.scheme_details.risk == 'Low Risk'"/></p>
+					<p><img class="img img-responsive" src="assets/images/high.png" ng-if="$root.factsheetData.scheme_details.risk == 'High Risk'"/></p>
+					<p>Investors understand that their principal will be at {{$root.factsheetData.scheme_details.risk}}</p>
 				</div>
 				<div class="col-xs-5 pull-right">
-					<p class="text-right"><span class="sensex-status fg-red">203.5945</span></p>
+					<p class="text-right"><span class="sensex-status fg-red">{{$root.factsheetData.scheme_details.day_end_nav}}</span></p>
 
-					<p class="fg-red text-right"><span class="sensex-down"></span>-0.05(-0.03%)</p>
-					<p class="text-right">NAV as of 11-10-2016</p>
-					<p class="text-right">AUM: 6893 Cr</p>
+					<p class="fg-red text-right"><span class="sensex-down"></span>{{$root.factsheetData.scheme_details.day_change_nav}}</p>
+					<p class="text-right">NAV as of {{$root.factsheetData.scheme_details.day_end_date}}</p>
+					<p class="text-right">AUM: {{$root.factsheetData.scheme_details.aum}}</p>
 				</div>
 			</div>
 		</div>
 		<div class="form-group">
 			<div class="col-xs-12 no-padding">
-				<p class="col-md-5 col-sm-5 col-xs-4 no-padding">11.92%</p>
-				<p class="col-md-5 col-sm-5 col-xs-4 no-padding">11.32%</p>
-				<p class="col-md-2 col-sm-2 col-xs-4 no-padding text-center">10.66%</p>
+				<p class="col-md-5 col-sm-5 col-xs-4 no-padding">{{$root.factsheetData.scheme_details.return_one_year}}%</p>
+				<p class="col-md-5 col-sm-5 col-xs-4 no-padding">{{$root.factsheetData.scheme_details.return_three_year}}%</p>
+				<p class="col-md-2 col-sm-2 col-xs-4 no-padding text-center">{{$root.factsheetData.scheme_details.return_five_year}}%</p>
 			</div>
 			<div class="col-xs-12">
 				<img src="assets/images/schemeReturnsPercent.png" class="img img-responsive">
@@ -50,7 +55,9 @@
 	<div class="col-md-7 col-lg-7 col-sm-6 col-xs-12">
 		<ul class="chart-main-tabs" ng-init="setChartValue = 'HISTORIC'">
 			<li ng-click="setChartValue = 'HISTORIC'" ng-class="{'activeli':setChartValue == 'HISTORIC'}"><a href="javascript:void(0)" >Historic Performance</a></li>
-			<li ng-click="setChartValue = 'OTHERS'" ng-class="{'activeli':setChartValue == 'OTHERS'}"><a href="javascript:void(0)">Other Comparison</a></li>
+			<li ng-click="setChartValue = 'PORTFOLIO'" ng-class="{'activeli':setChartValue == 'PORTFOLIO'}"><a href="javascript:void(0)" >Portfolio</a></li>
+			<li ng-click="setChartValue = 'ANALYSIS'" ng-class="{'activeli':setChartValue == 'ANALYSIS'}"><a href="javascript:void(0)" >Our Analysis</a></li>
+			<li ng-click="setChartValue = 'OTHERS'" ng-class="{'activeli':setChartValue == 'OTHERS'}"><a href="javascript:void(0)">Other Key Information</a></li>
 		</ul>
 		<div class="chart-cover" ng-show="setChartValue == 'HISTORIC'" >
 			<ul class="chart-tabs" ng-init="setvalue='3years'">
@@ -63,46 +70,42 @@
 			<hc-chart ng-if="resultSet" items="resultSet"></hc-chart>
 			<p class="text-right"><span class="addOnlyBold">Rs 10,000</span> invested on {{resultSet[0]['data'][0]['date']}} would be <span class="content" ng-if="$root.nav">Rs.<span class="addOnlyBold">{{$root.nav.amount | currency:''}}</span> on {{$root.nav.date}}</span></p>
 		</div>	
-		<div class="schemes-cover chart-cover scheme-compare-other" ng-show="setChartValue == 'OTHERS'" >
-			<div class="schemes-inner col-xs-12">
-				<div class="col-xs-12">
-					
-					<h3 class="pull-left">SBI Bluechip Fund Regular Growth</h3>
-					<p class="pull-right">AUM Size
-					<span class="highlight nextline">9534 Cr</span>
-					</p>
-					<div class="list-details">
-						<div class="table schemeCompareTable">
-							<div class="thead">
-								<div class="tr">
-									<div class="th">
-										<p>1 Year Return</p>
-									</div>
-									<div class="th">
-										<p>3 Year Return</p>
-									</div>
-									<div class="th">
-										<p>5 Year Return</p>
-									</div>
-								</div>
-							</div>
-							<div class="tbody">
-								<div class="tr">
-									<div class="td">
-										<p>14.30%</p>
-									</div>
-									<div class="td">
-										<p>14.30%</p>
-									</div>
-									<div class="td">
-										<p>14.30%</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+		<div class="chart-cover" ng-show="setChartValue == 'OTHERS'" >
+			<div class="form-group col-xs-12 schemePortfolioTop text-center">
+				<ul ng-repeat="eachItem in $root.factsheetData.key_performance">
+						<li>
+							<span class="col-md-6">{{eachItem.key}}</span>
+							<span class="col-md-6">{{eachItem.value}}</span> 
+						</li>	
+				</ul>
 			</div>
+			<div class="col-xs-12">
+				<p>{{$root.factsheetData.investment_strategy}}</p>
+			</div>
+
 		</div>	
+		<div class="chart-cover" ng-show="setChartValue == 'PORTFOLIO'" >
+			<div class="form-group schemePortfolioTop col-xs-12 text-center">
+				<ul>
+					<li ng-repeat="items in $root.factsheetData.portfolio.top">
+						<span class="col-md-6">{{items.key}}</span>
+						<span class="col-md-6">{{items.value}}</span>
+					</li>
+				</ul>
+			</div>
+			
+			<div class="form-group schemePortfolioBottom col-xs-12 text-center" ng-repeat="bottomItems in $root.factsheetData.portfolio.bottom">
+				<h4>{{bottomItems.key}}</h4>
+					<ul ng-repeat="eachItem in bottomItems.value">
+						<li>
+							<span class="col-md-6">{{eachItem.Name}}</span>
+							<span class="col-md-6">{{eachItem.Weighting}}</span> 
+						</li>	
+					</ul>
+			</div>	
+		</div>
+		<div class="chart-cover" ng-show="setChartValue == 'ANALYSIS'" >
+			<p>{{$root.factsheetData.analysis}}</p>
+		</div>
 	</div>
 </section>

@@ -7,42 +7,42 @@
 		    </div> 
 		    <bubble-gen length="6" goal="'Retirement'"></bubble-gen>
 	    </div>
-	    <div class="pull-right indicator-cover education" ng-if="false">
+	    <div class="pull-right indicator-cover education" ng-if="$root.currentGoal == 'education'">
 			<div class="typeSwiper">
 		        <div class="image-backdrop"><img src="assets/images/education.png"></div>
 		        <p>Education</p>
 		    </div> 
 		    <bubble-gen length="6" goal="'Education'"></bubble-gen>
 	    </div>
-	    <div class="pull-right indicator-cover property" ng-if="false">
+	    <div class="pull-right indicator-cover property" ng-if="$root.currentGoal == 'property'">
 			<div class="typeSwiper">
 		        <div class="image-backdrop"><img src="assets/images/property.png"></div>
 		        <p>Property</p>
 		    </div> 
 		    <bubble-gen length="6" goal="'Property'"></bubble-gen>
 	    </div>
-	    <div class="pull-right indicator-cover automobile" ng-if="false">
+	    <div class="pull-right indicator-cover automobile" ng-if="$root.currentGoal == 'automobile'">
 			<div class="typeSwiper">
 		        <div class="image-backdrop"><img src="assets/images/automobile.png"></div>
 		        <p>Automobile</p>
 		    </div> 
 		    <bubble-gen length="6" goal="'Automobile'"></bubble-gen>
 	    </div>
-	    <div class="pull-right indicator-cover vacation" ng-if="false">
+	    <div class="pull-right indicator-cover vacation" ng-if="$root.currentGoal == 'vacation'">
 			<div class="typeSwiper">
 		        <div class="image-backdrop"><img src="assets/images/vacation.png"></div>
 		        <p>Vacation</p>
 		    </div> 
 		    <bubble-gen length="6" goal="'Vacation'"></bubble-gen>
 	    </div>
-	    <div class="pull-right indicator-cover wedding" ng-if="false">
+	    <div class="pull-right indicator-cover wedding" ng-if="$root.currentGoal == 'wedding'">
 			<div class="typeSwiper">
 		        <div class="image-backdrop"><img src="assets/images/wedding.png"></div>
 		        <p>Wedding</p>
 		    </div> 
 		    <bubble-gen length="6" goal="'Wedding'"></bubble-gen>
 	    </div>
-	    <div class="pull-right indicator-cover others" ng-if="false">
+	    <div class="pull-right indicator-cover others" ng-if="$root.currentGoal == 'event'">
 			<div class="typeSwiper">
 		        <div class="image-backdrop"><img src="assets/images/others.png"></div>
 		        <p>Others</p>
@@ -69,7 +69,7 @@
 			<div class="tbody">
 				<div class="tr" ng-repeat="eachScheme in eachSchemeType.data">
 					<div class="td">
-						<p class="schemes">{{eachScheme.fund_name}}</p>
+						<p class="schemes" ng-click="getFactsheet(eachScheme.id)">{{eachScheme.fund_name}}</p>
 					</div>
 					<div class="td">
 						<p>{{eachScheme.category_name}}</p>

@@ -29,7 +29,8 @@
 		.directive('getFileUploaded',getFileUploaded)
 		.directive('captureVideo',captureVideo)
 		.directive('riskImage',riskImage)
-		.directive('riskType',riskType);
+		.directive('riskType',riskType)
+		.directive('showFactsheet',showFactsheet);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -867,21 +868,30 @@
     				title : '=',
     				colors : '='
     			},
-    			link: function (scope, element){
-    				var itemLength = scope.items;
-					Highcharts.getOptions().colors = Highcharts.map(scope.colors, function (color) {
-				        return {
-				            radialGradient: {
-				                cx: 0.6,
-				                cy: 0.3,
-				                r: 0.7
-				            },
-				            stops: [
-				                [0, color],
-				                [1, Highcharts.Color(color).brighten(0.3).get('rgb')]
-				            ]
-				        };
-					});
+    			link: function (scope, element, attrs){
+
+
+    				scope.$watch('colors', function() {
+	    				
+						Highcharts.getOptions().colors = Highcharts.map(scope.colors, function (color) {
+					        return {
+					            radialGradient: {
+					                cx: 0.6,
+					                cy: 0.3,
+					                r: 0.7
+					            },
+					            stops: [
+					                [0, color],
+					                [1, Highcharts.Color(color).brighten(0.3).get('rgb')]
+					            ]
+					        };
+						});
+					}, true);
+
+    				scope.$watch('items', function() {
+    					var itemLength = scope.items;
+    					console.log('items',itemLength);
+    				
     				var chart = new Highcharts.Chart(element[0],{
 					    chart: {
 					        backgroundColor : null,
@@ -928,9 +938,10 @@
 					    series: [{
 					        type: 'pie',
 					        innerSize: '60%',
-					        data: scope.items
+					        data: itemLength
 					    }]
-					});       
+					});    
+					},true);   
     			}
     		}
     	}
@@ -1166,4 +1177,32 @@
 	            
     		}
     	}
+
+		showFactsheet.$inject = ['$location','$rootScope','recommendedService','busyIndicator'];
+	    function showFactsheet($location,$rootScope,recommendedService,busyIndicator) {
+	        var directive = {
+	            link: link,
+	            restrict: 'EA'
+	        };
+	        return directive;
+
+	        function link($scope, $element, $attrs) {
+	            $element.on('click', function() {
+	            	busyIndicator.show();
+	            	recommendedService.getFactsheetData($attrs.showFactsheet).then(function(data){
+	            		busyIndicator.hide();
+			    		if('success' in data){
+			    			$rootScope.factsheetData = data.success;
+			    			//$scope.$apply();
+			    			$location.path('/schemeFactsheet')
+			    		}	
+			    		else {
+
+			    		}
+			    	});
+	                
+	                
+	            });
+	        }
+	    }
 })();

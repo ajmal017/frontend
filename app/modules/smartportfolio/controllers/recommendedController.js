@@ -139,6 +139,25 @@
 		    	});
 		    }
 
+		    $scope.getFactsheet = function(schemeId) {
+		    	recommendedService.getFactsheetData(schemeId).then(function(data){
+		    		if('success' in data){
+		    			$rootScope.factsheetData = data.success;
+
+		    			$location.path('/schemeFactsheet')
+		    		}	
+		    		else {
+
+		    		}
+		    	});
+		    }
+
+		    $scope.getNumber = function(num){
+		    	var x=new Array(); 
+    			for(var i=0;i<num;i++)
+    				{ x.push(i+1); } 
+    			return x;
+		    }
 		    //Try to get this from service instead of rootscope variable
 		    $scope.recommendedSchemesObject = $rootScope.setFundData;
 		    if($scope.recommendedSchemesObject){

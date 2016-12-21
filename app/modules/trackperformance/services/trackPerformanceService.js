@@ -8,7 +8,12 @@
         function trackPerformanceService($resource,$rootScope,appConfig,$q){
         	
             return{
-        		getHexcolors : getHexcolors
+        		getHexcolors : getHexcolors,
+                getPortfolioDetails : getPortfolioDetails,
+                getDashboardDetails : getDashboardDetails,
+                getPortfolioTracker : getPortfolioTracker,
+                getLeaderBoard : getLeaderBoard,
+                getTransactionHistory : getTransactionHistory
         	}
 
 	        function getHexcolors(hex, lum){     
@@ -25,5 +30,110 @@
                 }
                 return rgb;          
 	        }
+
+            function getPortfolioDetails() {
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    appConfig.API_BASE_URL+'/core/portfolio/details/v2/', 
+                    {}, {
+                        Check: {
+                            method:'GET',
+                        }
+                    });
+                getAPI.Check({},function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
+            }
+
+            function getDashboardDetails() {
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    appConfig.API_BASE_URL+'/core/dashboard/v2/', 
+                    {}, {
+                        Check: {
+                            method:'GET',
+                        }
+                    });
+                getAPI.Check({},function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
+            }
+
+            function getPortfolioTracker() {
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    appConfig.API_BASE_URL+'/core/portfolio/tracker/', 
+                    {}, {
+                        Check: {
+                            method:'GET',
+                        }
+                    });
+                getAPI.Check({},function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
+            }
+
+            function getLeaderBoard() {
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    appConfig.API_BASE_URL+'/core/leader/board/', 
+                    {}, {
+                        Check: {
+                            method:'GET',
+                        }
+                    });
+                getAPI.Check({},function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
+            }
+
+            function getTransactionHistory() {
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    appConfig.API_BASE_URL+'/core/transaction/history/', 
+                    {}, {
+                        Check: {
+                            method:'GET',
+                        }
+                    });
+                getAPI.Check({},function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
+            }
         }     
 })();
