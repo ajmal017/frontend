@@ -471,6 +471,35 @@
 	        }
     	}
 
+		validatePincode.$inject=['$rootScope'];
+		function validatePincode($rootScope){
+	        return {
+	            restrict: 'A',
+	            require: 'ngModel',
+	            link: link,
+	            scope:true
+	        }
+	        function link(scope, elem, attr, ctrl) {
+	            ctrl.$parsers.unshift(function(value) {
+
+	                value = value.toUpperCase();
+	                var regifsc = /^([0-9]){6}?$/;
+	                if (regifsc.test(value) == false) {
+	                    ctrl.$setValidity('invalidPincode', false);
+	                } else {
+	                    ctrl.$setValidity('invalidPincode', true);
+	                }
+	                if (value == '') {
+	                    ctrl.$setValidity('invalidPincode', true);
+	                }
+	                ctrl.$setViewValue(value);
+	                ctrl.$render();
+	                return value;
+	            });
+
+	        }
+    	}
+
     	function bubbleGen(){
     		return {
 	            restrict: 'E',

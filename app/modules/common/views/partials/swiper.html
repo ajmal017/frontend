@@ -2299,7 +2299,7 @@
         <button ng-show="(step == 2)" ng-click="(step=step + 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 2)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 3)" click-redirect="/registerInvestorInfo" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 3)" ng-click="appendValues(modelVal);uploadFileToServer();(step = step + 1)" click-redirect="/registerInvestorInfo" ng-disabled="(modelVal.imageUrl==undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 3)" ng-click="appendValues(modelVal);uploadFileToServer();(step = step + 1)" click-redirect="/registerInvestorInfo" ng-disabled="(!file)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>sdsd{{step}}
     <span ng-if="(step == 3)" class="placeholder imagePlaceholder">Note: Above image will be used to register your investment account.</span>
 </div>
@@ -2347,49 +2347,146 @@
         <button ng-show="(step == 1)" ng-click="(step=step + 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 1)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" ng-disabled="(!modelVal.accountHolderName)||(!modelVal.ifscCode)||(!modelVal.accountNumber)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2)" click-redirect="/registerInvestorInfo" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);uploadFileToServer();(step = step + 1)" click-redirect="/registerInvestorInfo" ng-disabled="(modelVal.imageUrl==undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);uploadFileToServer();(step = step + 1)" click-redirect="/registerInvestorInfo" ng-disabled="(!file)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
     <span ng-if="(step == 2)" class="placeholder imagePlaceholder">Note: Above image will be used to register your investment account.</span>
 </div>
-<div ng-if="swiperName == 'contactInfo'" class="fadeIn swiper-container customSwiper contactInfo type2Sliders" ng-init="step = 1">
+<div ng-if="swiperName == 'identityInfo'" class="fadeIn swiper-container customSwiper identityInfo type2Sliders" ng-init="step = 1">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
-            <form name="quickInvestForm3" novalidate>
+            <form name="invertorInfoForm1" novalidate>
                 <div class="swiper-content noPadding">
-                      <p class="question">I am providing my <select dropdown ng-model="modelVal.A1"><option selected value="op1">Residential</option><option value="op2">International</option></select> address</p>
-                      <p class="question">My PIN code is <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
-                      <p class="question">and my address is <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
-                      <p class="question">it is located in the city of <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
-                      <p class="question">it is located in the city of <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
-                      <p class="question">in the state of <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
-                      <p class="question">in the country <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
+                      <p class="question">I am a<select dropdown ng-model="modelVal.gender"><option selected value="M">Male</option><option value="F">Female</option></select></p>
+                      <p class="question">and I am<select dropdown ng-model="modelVal.maritalStatus"><option selected value="1">Single</option><option value="2">Married</option></select></p>
+                      <p class="question">And I am of<select dropdown ng-model="modelVal.nationality"><option selected value="INDIA">INDIAN</option></select>nationality</p>
                 </div>
             </form>
         </div>
         <div class="swiper-slide">
-            <form name="quickInvestForm3" novalidate>
-                <div class="swiper-content noPadding hasCheckbox">
-                    <p class="question">My mobile number is <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
-                    <p class="question">and my email address is <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
-                    <div class="checkbox-cover">
-                        <input type="checkbox" required id="option1Type1" name="option1" ng-model="modelVal.A8" value="op1"><label for="option1Type1"><span></span>My permanent address is same as the address given before.</label>
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="swiper-slide">
-            <form name="quickInvestForm3" novalidate>
+            <form name="retirementForm1" novalidate>
                 <div class="swiper-content noPadding swiperReduceBottomPadding">
                     <input id='upload' accept=".jpg, .png, .jpeg" style="display:none" autoplay onchange="angular.element(this).scope().imageUpload(this)" type='file'/>
                     <div class="upload-image-cover" upload-file="upload">
                         <div class="image-div">
                             <img src="assets/images/uploadPic.png">
                         </div>
-                        <div ng-if="imageUrlOrBase64" class="imageThumbnail">
-                            <img width="100%" ng-src="{{imageUrlOrBase64}}">
+                        <div ng-if="modelVal.imageUrl" class="imageThumbnail">
+                            <img width="100%" ng-src="{{modelVal.imageUrl}}">
                         </div>
-                        <p class="text-center">Upload Pan</p>
+                        <p class="text-center">Upload Photo</p>
                     </div> 
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="typeSwiper">
+        <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
+        <p>Identity Info</p>
+    </div>    
+    <div class="fin-btn-group gotoPages">
+        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step == 1)" ng-click="(step=step + 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="(step == 1)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2)" click-redirect="/registerInvestorInfo" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);uploadFileToServer();(step = step + 1)" click-redirect="/registerInvestorInfo" ng-disabled="(!file)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
+    <span ng-if="(step == 2)" class="placeholder imagePlaceholder">Note: Above image will be used to register your investment account.</span>
+</div>
+
+<div ng-if="swiperName == 'contactInfo'" class="fadeIn swiper-container customSwiper contactInfo type2Sliders" ng-init="step = 1">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <form name="quickInvestForm3" novalidate>
+                <div class="swiper-content noPadding">
+					  <span class="error-text">Communication Address</span>
+					  <p class="question">I am providing my<select dropdown ng-model="modelVal.communicationAddressType"><option selected value="1">Residential</option><option value="2">Business</option><option value="3">Residential or Business</option><option value="4">Registered Office</option></select>address</p>
+                      <p class="question">My PIN code is <span class="swiper-input"><input ng-model="modelVal.communicationAddress.pincode" type="text" name="pincode" ng-change="quickInvestForm3.pincode.$error.invalidPincode?0:lookupPincode(modelVal.communicationAddress)" required></span></p>
+                      <p class="question">and my address is<span class="swiper-input"><input ng-model="modelVal.communicationAddress.addressLine1" type="text" name="year" required></span></p>
+                      <p class="question"><span class="swiper-input"><input ng-model="modelVal.communicationAddress.addressLine2" type="text" name="year" required></span></p>
+                      <span class="placeholder nextline">It is located in the city of <span ng-bind="modelVal.communicationAddress.city"></span></span>
+                      <span class="placeholder nextline">in the state of <span ng-bind="modelVal.communicationAddress.state"></span></span>
+                      <span class="placeholder nextline">in the country <span>INDIA</span></p>
+					  <span class="error-text" ng-show="!getKYCStatus()">You will be required to upload proof for the above address</span>
+                </div>
+            </form>
+        </div>
+        <div class="swiper-slide"  ng-if="$root.selectedCriteria == 'op2' || $root.selectedCriteria == 'op3'">
+            <form name="quickInvestForm3" novalidate>
+                <div class="swiper-content noPadding swiperReduceBottomPadding">
+					<p class="question">My address proof is my<select dropdown ng-model="modelVal.addressProofType"><option selected value="1">Passport</option><option value="2">Driving License</option><option value="3">Voter ID Card</option><option value="4">Aadhaar Card</option><option value="5">Bank Statement</option><option value="6">Utility Bill (from last 3 months)</option><option value="7">Ration Card</option><option value="8">Regd Lease / Sale Agreement</option></select></p>                    
+					<input id='upload' accept=".jpg, .png, .jpeg" style="display:none" autoplay onchange="angular.element(this).scope().imageUpload(this, 'frontImageUrl')" type='file'/>
+                    <div class="upload-image-cover" upload-file="upload">
+                        <div class="image-div">
+                            <img src="assets/images/uploadPic.png">
+                        </div>
+                        <div ng-if="modelVal.frontImageUrl" class="imageThumbnail">
+                            <img width="100%" ng-src="{{modelVal.frontImageUrl}}">
+                        </div>
+                        <p class="text-center">Upload Front</p>
+                    </div> 
+					<input id='uploadBack' ng-show="needBackImage(modelVal.addressProofType)" accept=".jpg, .png, .jpeg" style="display:none" autoplay onchange="angular.element(this).scope().imageUpload(this, 'backImageUrl')" type='file'/>                    
+					<div class="upload-image-cover" ng-show="needBackImage(modelVal.addressProofType)" upload-file="uploadBack">
+                        <div class="image-div">
+                            <img src="assets/images/uploadPic.png">
+                        </div>
+                        <div ng-if="modelVal.backImageUrl" class="imageThumbnail">
+                            <img width="100%" ng-src="{{modelVal.backImageUrl}}">
+                        </div>
+                        <p class="text-center">Upload Back</p>
+                    </div> 
+                </div>
+            </form>
+        </div>
+        <div class="swiper-slide">
+            <form name="quickInvestForm3" novalidate>
+                <div class="swiper-content noPadding hasCheckbox">
+                    <div class="checkbox-cover">
+                        <input type="checkbox" required id="option1Type2" name="option2" ng-model="modelVal.addressAreEqual" value="true"><label for="option1Type2"><span></span>My permanent address is same as the address given before.</label>
+                    </div>
+                    <div ng-show="!modelVal.addressAreEqual">
+                      <p class="question">My PIN code is <span class="swiper-input"><input ng-model="modelVal.permanentAddress.pincode" type="text" name="permPincode" ng-change="quickInvestForm3.permPincode.$error.invalidPincode?0:lookupPincode(modelVal.permanentAddress)" required></span></p>
+                      <p class="question">and my address is <span class="swiper-input"><input ng-model="modelVal.permanentAddress.addressLine1" type="text" name="year" required></span></p>
+                      <p class="question"><span class="swiper-input"><input ng-model="modelVal.permanentAddress.addressLine2" type="text" name="year" required></span></p>
+                      <p class="question">It is located in the city of <span ng-bind="modelVal.permanentAddress.city"></span></p>
+                      <p class="question">in the state of <span ng-bind="modelVal.permanentAddress.state"></span></p>
+                      <p class="question">in the country <span>INDIA</span></p>
+					  <span class="error-text" ng-show="!getKYCStatus()">You will be required to upload proof for the above address</span>
+					</div>
+                </div>
+            </form>
+        </div>
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op3'">
+            <form name="quickInvestForm3" novalidate>
+                <div class="swiper-content noPadding swiperReduceBottomPadding">
+					<p class="question">My permanent address proof is my<select dropdown ng-model="modelVal.permanentAddressProofType"><option selected value="1">Passport</option><option value="2">Driving License</option><option value="3">Voter ID Card</option><option value="4">Aadhaar Card</option><option value="5">Bank Statement</option><option value="6">Utility Bill (from last 3 months)</option><option value="7">Ration Card</option><option value="8">Regd Lease / Sale Agreement</option></select> address</p>                    
+					<input id='upload' accept=".jpg, .png, .jpeg" style="display:none" autoplay onchange="angular.element(this).scope().imageUpload(this, 'permanentFrontImageUrl')" type='file'/>
+                    <div class="upload-image-cover" upload-file="upload">
+                        <div class="image-div">
+                            <img src="assets/images/uploadPic.png">
+                        </div>
+                        <div ng-if="modelVal.permanentFrontImageUrl" class="imageThumbnail">
+                            <img width="100%" ng-src="{{modelVal.permanentFrontImageUrl}}">
+                        </div>
+                        <p class="text-center">Upload Front</p>
+                    </div> 
+					<input id='uploadBack' ng-show="needBackImage(modelVal.permanentAddressProofType)" accept=".jpg, .png, .jpeg" style="display:none" autoplay onchange="angular.element(this).scope().imageUpload(this, 'permanentBackImageUrl')" type='file'/>                    
+					<div class="upload-image-cover" ng-show="needBackImage(modelVal.permanentAddressProofType)" upload-file="uploadBack">
+                        <div class="image-div">
+                            <img src="assets/images/uploadPic.png">
+                        </div>
+                        <div ng-if="modelVal.permanentBackImageUrl" class="imageThumbnail">
+                            <img width="100%" ng-src="{{modelVal.permanentBackImageUrl}}">
+                        </div>
+                        <p class="text-center">Upload Back</p>
+                    </div> 
+                </div>
+            </form>
+        </div>
+        <div class="swiper-slide">
+            <form name="quickInvestForm3" novalidate>
+                <div class="swiper-content noPadding hasCheckbox">
+                    <p class="question">My mobile number is <span class="swiper-input"><input ng-model="modelVal.phoneNumber" type="text" name="year" required></span></p>
+                    <p class="question">and my email address is <span class="swiper-input"><input ng-model="modelVal.email" type="text" name="year" required></span></p>
                 </div>
             </form>
         </div>
@@ -2400,49 +2497,49 @@
     </div>    
     <div class="fin-btn-group gotoPages">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 1)" click-redirect="/registerInvestorInfo" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="(step == 1)" ng-click="appendValues(modelVal);getKYCStatus()?(step = step + 1):reloadRoute('op2',1)" ng-disabled="(!modelVal.communicationAddress.pincode)||(!modelVal.communicationAddress.addressLine1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2) && ($root.selectedCriteria=='op2'||$root.selectedCriteria=='op3')" ng-click="(step=step+1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="(step == 2) && ($root.selectedCriteria=='op2'||$root.selectedCriteria=='op3')" ng-click="appendValues(modelVal);saveCommunicationAddressImage();(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="((step == 3) && ($root.selectedCriteria=='op2'||$root.selectedCriteria=='op3'))||((step == 2) && ($root.selectedCriteria=='op1'))" click-redirect="/registerInvestorInfo" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="((step == 3) && ($root.selectedCriteria=='op2'||$root.selectedCriteria=='op3'))||((step == 2) && ($root.selectedCriteria=='op1'))" ng-click="appendValues(modelVal);getKYCStatus()||modelVal.addressAreEqual?(step = step + 1):reloadRoute('op3',3)" ng-disabled="(!modelVal.addressAreEqual && (!modelVal.communicationAddress.pincode)||(modelVal.communicationAddress.addressLine1))" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 4 && $root.selectedCriteria=='op3')" ng-click="(step=step+1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="(step == 4 && $root.selectedCriteria=='op3')" ng-click="appendValues(modelVal);savePermanentAddressImage();(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="((step == 5) && $root.selectedCriteria=='op3')||((step == 4) && $root.selectedCriteria=='op2')||((step == 3) && $root.selectedCriteria=='op1')" click-redirect="/registerInvestorInfo" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="((step == 5) && $root.selectedCriteria=='op3')||((step == 4) && $root.selectedCriteria=='op2')||((step == 3) && $root.selectedCriteria=='op1')" ng-click="appendValues(modelVal);saveInfo()" click-redirect="/registerInvestorInfo" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
-    <span ng-if="(step == 2)" class="placeholder imagePlaceholder">Note: Above image will be used to register your investment account.</span>
+    <span ng-if="(step == 2)||(step == 4 && $root.selectedCriteria=='op3')" class="placeholder imagePlaceholder">Note: Above image will be used to register your investment account.</span>
 </div>
-
 <div ng-if="swiperName == 'nomineeInfo'" class="fadeIn swiper-container customSwiper nomineeInfo type2Sliders" ng-init="step = 1">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <form name="invertorInfoForm1" novalidate>
-                <div class="swiper-content hasCheckbox">
+                <div class="swiper-content">
                       <span class="placeholder nextline">We recommend that you specify a nominee for your investments.</span>
                       <div class="checkbox-cover">
-                        <input type="checkbox" required id="option1Type1" name="option1" ng-model="modelVal.A8" value="op1"><label for="option1Type1"><span></span>I do not want to specify a nominee at this time</label>
+                        <input type="checkbox" required id="option1Type1" name="option1" ng-model="modelVal.nomineeAbsent" value="true"><label for="option1Type1"><span></span>I do not want to specify a nominee at this time</label>
                       </div>
-                </div>
-            </form>
-        </div>
-        <div class="swiper-slide">
-            <form name="retirementForm1" novalidate>
-                <div class="swiper-content hasCheckbox">
-                    <p class="question">My nominee name is <span class="swiper-input"><input ng-model="modelVal.A4" type="text" name="year" required></span></p>
-                    <p class="question">and my relationship with them is <select dropdown ng-model="modelVal.A1"><option selected value="op1">Spouse</option><option value="op2">International</option></select></p>
-                    <p class="question">I they were born on <span class="swiper-input"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" data-datepicker="{theme: 'flat',dateformat: 'DD/MM/YYYY'}" data-ng-model="value1"></span></p>
-                    <div class="checkbox-cover">
-                        <input type="checkbox" required id="option1Type1" name="option1" ng-model="modelVal.A8" value="op1"><label for="option1Type1"><span></span>Their address is same as mine.</label>
-                    </div>
+                      <div ng-show="!modelVal.nomineeAbsent">
+                      <p class="question">My nominee name is <span class="swiper-input"><input ng-model="modelVal.nomineeName" type="text" name="year" required></span></p>
+                      <p class="question">and my relationship with them is <select dropdown ng-model="modelVal.relationshipWithInvestor"><option selected value="1">Spouse</option><option value="2">Parent</option><option value="3">Offspring</option><option value="4">Sibling</option><option value="5">Other</option></select></p>
+                      <p class="question">and they were born on <span class="swiper-input"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" data-datepicker="{theme: 'flat',dateformat: 'YYYY-MM-DD'}" data-ng-model="modelVal.nomineeDob"></span></p>
+                      <div class="checkbox-cover">
+                        <input type="checkbox" required id="option1Type2" name="option2" ng-model="modelVal.addressAreEqual" value="true"><label for="option1Type2"><span></span>Their address is same as mine.</label>
+                      </div>
+                      <p class="question" ng-show="showGuardian()">My nominee's guardian is <span class="swiper-input"><input ng-model="modelVal.guardianName" type="text" name="year" required></span></p>
+                      </div>
                 </div>
             </form>
         </div>
     </div>
     <div class="typeSwiper">
         <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
-        <p>Bank Info</p>
+        <p>Nominee Info</p>
     </div>    
     <div class="fin-btn-group gotoPages">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 1)" click-redirect="/registerInvestorInfo" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="(step == 1)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" click-redirect="/registerInvestorInfo" ng-disabled="(!modelVal.nomineeAbsent)&&(!modelVal.nomineeName||!modelVal.nomineeDob||(showGuardian()&&!modelVal.guardianName))" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>
 <div ng-if="swiperName == 'earnInterest'" class="fadeIn swiper-container customSwiper earnInterest type2Sliders" ng-init="step = 1">

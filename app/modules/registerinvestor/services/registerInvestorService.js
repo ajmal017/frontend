@@ -7,10 +7,36 @@
         registerInvestorService.$inject = ['$rootScope','$resource','appConfig','$q'];
         function registerInvestorService($rootScope,$resource,appConfig,$q){
         	return{
-        		getDetails : getDetails
+        		lookupPincode : lookupPincode,
+        		getKYCStatus : getKYCStatus
         	}
-        	function getDetails(){
-        		
+        	
+        	function lookupPincode(pincode) {
+            	var pincodeData = {'pincode':pincode};
+            	
+        		var defer = $q.defer();
+				var getAPI = $resource( 
+					appConfig.API_BASE_URL+'/user/pincode/autocomplete/', 
+					{}, {
+						Check: {
+							method:'GET',
+						}
+					});
+				getAPI.Check(pincodeData,function(data){
+					if(data.status_code == 200){
+						defer.resolve({'success':data.response});
+					}else{
+						defer.resolve({'Message':data.response['message']});
+					}				
+				}, function(err){
+					defer.reject(err);
+				}); 
+				return defer.promise;
+
+        	}
+        	
+        	function getKYCStatus() {
+        		return $rootScope.userFlags['user_flags']['kra_verified'];
         	}
         }        
 })();

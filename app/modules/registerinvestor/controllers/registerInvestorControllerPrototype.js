@@ -4,19 +4,22 @@ var finApp = finApp || {};
 
 	finApp.registerInvestorControllerPrototype = {
 
-		    imageUpload : function(element){
+		    imageUpload : function(element, name){
 	            var file=element.files[0],
 	            	ext = file.name.substr(file.name.lastIndexOf('.')+1,file.name.length),
 	            	validExt = ['jpg','png','jpeg'],
 	            	self = this;
 	            this.scope.Signature = "";
+	            if (typeof(name) === "undefined") {
+	            	name = 'imageUrl';
+	            }
 	            this.scope.checkImageFile(file, function(e) {
 	                if(validExt.indexOf(self.scope.Signature) != -1){
 	                    var reader = new FileReader();
 	                    reader.onload = function (evt) {
 	                    	self.scope.$apply(function($scope){
-	                    	self.scope.modelVal.imageUrl = evt.target.result;
-	                    	self.scope.file = element.files[0];
+	                    	self.scope.modelVal[name] = evt.target.result;
+	                    	self.scope[name] = element.files[0];
 	                        });
 	                    };
 	                    reader.readAsDataURL(file);
@@ -42,8 +45,11 @@ var finApp = finApp || {};
 	            };
 	        },
 	        
-	        uploadFileToServer : function(){
-	        	this.service.uploadFileToServer(this.scope.file);
+	        uploadFileToServer : function(name){
+	            if (typeof(name) === "undefined") {
+	            	name = 'imageUrl';
+	            }
+	        	this.service.uploadFileToServer(this.scope[name]);
 	        },
 	        
 	        showVideoPopup : function(){
@@ -67,13 +73,14 @@ var finApp = finApp || {};
 				
 			},
 			
-			reloadRoute : function(slideNumber) {
+			reloadRoute : function(param, slideNumber) {
+				this.rootScope.selectedCriteria = param;
+				if(!this.rootScope.$$phase) this.rootScope.$apply();
+				if (typeof(slideNumber) === "undefined")
+					slideNumber = 2;
+				
 				this.rootScope.slideTobeChanged = slideNumber;
 			    this.route.reload();
 			},
-
-
-
-
 	};
 })();
