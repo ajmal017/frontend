@@ -3,14 +3,15 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="row">
-					<div class="table-outer-cover withdraw">
+					<div class="table-outer-cover withdraw" ng-repeat="recommendedSchemes in $root.redeemData">
 						<div class="seperate-cover" custom-scroll-bar>
-							<div class="table-seperate">
-								<h4>My Retirement Plan</h4>
+							<h4>{{recommendedSchemes.goal_name}}</h4>
+							<div class="table-seperate" ng-repeat="eachRecommend in recommendedSchemes.funds" ng-if="eachRecommend.value[0].fund_id">
+								
 								<div class="thead">
 									<div class="tr">
 										<div class="th">
-											<p>Equity Schemes</p>
+											<p>{{eachRecommend.key}} Schemes</p>
 										</div>
 										<div class="th">
 											<p>Sub Type</p>
@@ -27,149 +28,28 @@
 									</div>
 								</div>
 								<div class="tbody">
-									<div class="tr">
+									<div class="tr" ng-repeat="schemes in eachRecommend.value">
 										<div class="td">
-											<p class="schemes">Kotal select Focus Growth</p>
+											<p class="schemes">{{schemes.name}}</p>
 										</div>
 										<div class="td">
-											<p>Large Cap</p>
+											<p>{{schemes.fund_category}}</p>
 										</div>
 										<div class="td">
-											<p><span class="currency">&#8377;</span><span class="amount">83,200</span></p>
+											<p><span class="currency">&#8377;</span><span class="amount">{{schemes.return_value}}</span></p>
 										</div>
 										<div class="td">
 											<p>
 												<div class="checkbox-cover text-center">
-													<input type="checkbox" id="one" name="type">
-													<label for="one"><span></span></label>
+													<input type="checkbox" id="{{recommendedSchemes.goal_name}}{{eachRecommend.key}}{{schemes.fund_id}}" name="type" value="{{schemes.fund_id}}" ng-model="withdraw.all_units[recommendedSchemes.goal_id][schemes.fund_id]">
+													<label for="{{recommendedSchemes.goal_name}}{{eachRecommend.key}}{{schemes.fund_id}}"><span></span></label>
 												</div>
 											</p>
 										</div>
 										<div class="td">
 											<div class="input-cover">
 												<span class="currency">&#8377;</span>
-												<input format="number" ng-model="amount" type="text" name="">
-											</div>
-										</div>
-									</div>
-									<div class="tr">
-										<div class="td">
-											<p class="schemes">Kotal select Focus Growth</p>
-										</div>
-										<div class="td">
-											<p>Large Cap</p>
-										</div>
-										<div class="td">
-											<p><span class="currency">&#8377;</span><span class="amount">83,200</span></p>
-										</div>
-										<div class="td">
-											<p>
-												<div class="checkbox-cover text-center">
-													<input type="checkbox" id="one" name="type">
-													<label for="one"><span></span></label>
-												</div>
-											</p>
-										</div>
-										<div class="td">
-											<div class="input-cover">
-												<span class="currency">&#8377;</span>
-												<input format="number" ng-model="amount" type="text" name="">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="table-seperate">
-								<div class="thead">
-									<div class="tr">
-										<div class="th">
-											<p>Debt Schemes</p>
-										</div>
-										<div class="th">
-											<p>Sub Type</p>
-										</div>
-										<div class="th">
-											<p>Current Value</p>
-										</div>
-										<div class="th">
-											<p class="text-center">Select All Units</p>
-										</div>
-										<div class="th">
-											<p>Redemption Amount</p>
-										</div>
-									</div>
-								</div>
-								<div class="tbody">
-									<div class="tr">
-										<div class="td">
-											<p class="schemes">Kotal select Focus Growth</p>
-										</div>
-										<div class="td">
-											<p>Large Cap</p>
-										</div>
-										<div class="td">
-											<p><span class="currency">&#8377;</span><span class="amount">83,200</span></p>
-										</div>
-										<div class="td">
-											<p>
-												<div class="checkbox-cover text-center">
-													<input type="checkbox" id="one" name="type">
-													<label for="one"><span></span></label>
-												</div>
-											</p>
-										</div>
-										<div class="td">
-											<div class="input-cover">
-												<span class="currency">&#8377;</span>
-												<input format="number" ng-model="amount" type="text" name="">
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="table-seperate">
-								<div class="thead">
-									<div class="tr">
-										<div class="th">
-											<p>Debt Schemes</p>
-										</div>
-										<div class="th">
-											<p>Sub Type</p>
-										</div>
-										<div class="th">
-											<p>Current Value</p>
-										</div>
-										<div class="th">
-											<p class="text-center">Select All Units</p>
-										</div>
-										<div class="th">
-											<p>Redemption Amount</p>
-										</div>
-									</div>
-								</div>
-								<div class="tbody">
-									<div class="tr">
-										<div class="td">
-											<p class="schemes">Kotal select Focus Growth</p>
-										</div>
-										<div class="td">
-											<p>Large Cap</p>
-										</div>
-										<div class="td">
-											<p><span class="currency">&#8377;</span><span class="amount">83,200</span></p>
-										</div>
-										<div class="td">
-											<p>
-												<div class="checkbox-cover text-center">
-													<input type="checkbox" id="one" name="type">
-													<label for="one"><span></span></label>
-												</div>
-											</p>
-										</div>
-										<div class="td">
-											<div class="input-cover">
-												<span class="currency">&#8377;</span>
-												<input format="number" ng-model="amount" type="text" name="">
+												<input format="number" ng-model="withdraw.amount[recommendedSchemes.goal_id][schemes.fund_id]" type="text" name="">
 											</div>
 										</div>
 									</div>
@@ -184,7 +64,7 @@
 								<p><span class="currency">&#8377;</span><span>93,200</span></p>
 							</div>
 							<div class="lumpSumTotal">
-								<p><span class="currency">&#8377;</span><span>94,000</span></p>
+								<p><span class="currency">&#8377;</span><span>{{getTotal()}}</span></p>
 							</div>
 						</div>
 					</div>
@@ -196,13 +76,15 @@
 </section>
 <div class="termsConditions">
 	<div class="checkbox-cover">
-        <input type="checkbox" id="terms" name="type">
+        <input type="checkbox" id="terms" name="type" ng-model="termsChecked">
         <label for="terms"><span></span>I agree to the above withdrawal</label>
     </div>
 </div>
 <div class="fin-btn-group addMargin investStep1">
     <button click-redirect="/educationStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>CONTINUE PLANING</button>
-    <button data-toggle="modal" data-target="#withdrawModal" class="fin-app-btn fin-orange">WITHDRAW NOW</button>
+    <!-- <button data-toggle="modal" data-target="#withdrawModal" class="fin-app-btn fin-orange">WITHDRAW NOW</button> -->
+    <button ng-click="proceedWithdraw(withdraw)" class="fin-app-btn fin-orange" ng-disabled="!termsChecked">WITHDRAW NOW</button>
+
 </div>
 <div class="modal fade fade-scale" id="withdrawModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">

@@ -26,7 +26,7 @@
                
                 modelObject.A5 = vacationAnswers['number_of_members'];
                 modelObject.A6 = vacationAnswers['number_of_days']
-                modelObject.A7 = vacationAnswers['location'];
+                modelObject.A7 = vacationAnswers['location'] || '';
                 modelObject.A8 = vacationAnswers['amount_saved'];
                 if (vacationAnswers['term']) {
                 	modelObject.A2 = parseInt(d.getFullYear() + vacationAnswers['term']);
