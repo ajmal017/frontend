@@ -12,12 +12,12 @@
 								</div>
 								<div class="money-value">
 									<h4>Current Value</h4>
-									<p><span class="currency">&#8377;</span><span class="amount">1,87,2000</span></p>
+									<p><span class="currency">&#8377;</span><span class="amount">{{portfolioStatus.current_value.value}}</span></p>
 								</div>
 								<div class="money-value">
 									<h4>Current Gain/Loss</h4>
 									<p class="gain types">
-									<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
+									<span class="currency">&#8377;</span><span class="percentage">{{portfolioStatus.current_return}}</span></p>
 									<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
 								</div>
 							</div>
@@ -26,15 +26,16 @@
 									<img src="assets/images/investedValue.png">
 								</div>
 								<div class="money-value">
-									<h4>Inveted Value</h4>
-									<p><span class="currency">&#8377;</span><span class="amount">1,87,2000</span></p>
+									<h4>Invested Value</h4>
+									<p><span class="currency">&#8377;</span><span class="amount">{{portfolioStatus.invested}}</span></p>
 								</div>
 								<div class="money-value">
 									<h4>Annualized Returns(%)</h4>
-									<p class="gain types">
-									<span class="percentage">10.30%</span></p>
-									<p ng-if="false" class="loss types">( 
-									<span class="percentage">10.30%</span> )</p>
+									<p class="gain types" ng-if="portfolioStatus.current_value.is_gain == true">
+									<span class="percentage">{{portfolioStatus.current_value.gain_per}}%</span>
+									</p>
+									<p ng-if="portfolioStatus.current_value.is_gain == false" class="loss types">
+									<span class="percentage">{{portfolioStatus.current_value.gain_per}}%</span></p>
 								</div>
 							</div>
 						</div>
@@ -60,69 +61,25 @@
 							</div>
 						</div>
 						<div class="tbody">
-							<div class="tr">
+							<div class="tr" ng-repeat="data in yestChanges">
 								<div class="td">
-									<p>Your Portfolio</p>
+									<p>{{data.name}}</p>
 								</div>
 								<div class="td">
-									<p><span class="currency">&#8377;</span><span class="amount">10,03,138</span></p>
+									<p><span class="currency">&#8377;</span><span class="amount">{{data.current_value}}</span></p>
 								</div>
 								<div class="td">
 									<div class="money-value">
-										<p class="gain types">
-										<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
-										<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
+										<p class="gain types" ng-if="data.is_gain">
+										<span class="currency">&#8377;</span><span class="percentage">{{data.gain}}</span></p>
+										<p ng-if="!data.is_gain" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">{{data.gain}}</span> )</p>
 									</div>
 								</div>
 								<div class="td">
 									<div class="money-value">
-										<p class="gain types">
-										<span class="percentage">10%</span></p>
-										<p ng-if="false" class="loss types">( <span class="percentage">10%</span> )</p>
-									</div>
-								</div>
-							</div>
-							<div class="tr">
-								<div class="td">
-									<p>BSE Sensex</p>
-								</div>
-								<div class="td">
-									<p>27,519</p>
-								</div>
-								<div class="td">
-									<div class="money-value">
-										<p class="gain types">
-										<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
-										<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
-									</div>
-								</div>
-								<div class="td">
-									<div class="money-value">
-										<p class="gain types">
-										<span class="percentage">10%</span></p>
-										<p ng-if="false" class="loss types">( <span class="percentage">10%</span> )</p>
-									</div>
-								</div>
-							</div>
-							<div class="tr">
-								<div class="td">
-									<p>NSE CNX Nifty</p>
-								</div>
-								<div class="td">
-									<p>8,542.2</p>
-								</div>
-								<div class="td">
-									<div class="money-value">
-										<p class="gain types">
-										<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
-										<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
-									</div>
-								</div>
-								<div class="td">
-									<div class="money-value">
-										<p class="gain types">
-										<span class="percentage">10%</span></p>
-										<p ng-if="false" class="loss types">( <span class="percentage">10%</span> )</p>
+										<p class="gain types" ng-if="data.is_gain">
+										<span class="percentage">{{data.gain_per}}</span></p>
+										<p ng-if="!data.is_gain" class="loss types">( <span class="percentage">{{data.gain_per}}</span> )</p>
 									</div>
 								</div>
 							</div>
@@ -158,10 +115,10 @@
 						</div>
 						</div>
 						<div class="panel-group customPanel" id="accordion" role="tablist" aria-multiselectable="true">
-						  <div class="panel panel-default">
+						  <div class="panel panel-default" ng-repeat="scheme in allSchemes">
 						    <div class="panel-heading" role="tab" id="headingOne">
 						    	<div class="panel-title">
-						    		<p>Equity Schemes <span class="pull-right"><a role="button" data-toggle="collapse" data-parent="#accordion" href="javascript:void(0)" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						    		<p>{{scheme.name}} Schemes <span class="pull-right"><a role="button" data-toggle="collapse" data-parent="#accordion" href="javascript:void(0)" data-target="#collapseOne_{{scheme.name}}" aria-expanded="true" aria-controls="collapseOne_{{scheme.name}}">
 						          EXPAND
 						        </a></span></p>
 						    	</div>
@@ -180,9 +137,9 @@
 												</div>
 												<div class="th">
 													<div class="money-value">
-														<p class="gain types">
-														<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
-														<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
+														<p class="gain types" ng-if="scheme.is_gain">
+														<span class="currency">&#8377;</span><span class="percentage">{{scheme.gain}}</span></p>
+														<p ng-if="!scheme.is_gain" class="loss types"><span class="currency">&#8377;</span><span class="percentage">( {{scheme.gain}} )</span></p>
 													</div>
 												</div>
 											</div>
@@ -190,23 +147,24 @@
 										<div class="tbody">
 											<div class="tr">
 												<div class="td">
-													<p>25%</p>
+													<p>{{scheme.holding_per}}%</p>
 												</div>
 												<div class="td">
-													<p><span class="currency">&#8377;</span><span class="amount">10,03,138</span></p>
+													<p><span class="currency">&#8377;</span><span class="amount">{{scheme.invested}}</span></p>
 												</div>
 												<div class="td">
-													<div class="money-value">
+													<!-- <div class="money-value">
 														<p class="gain types">
 														<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
 														<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
-													</div>
+													</div> -->
+													<p><span class="currency">&#8377;</span><span class="amount">{{scheme.current_value}}</span></p>
 												</div>
 												<div class="td">
 													<div class="money-value">
-														<p class="gain types">
-														<span class="percentage">10%</span></p>
-														<p ng-if="false" class="loss types">( <span class="percentage">10%</span> )</p>
+														<p class="gain types" ng-if="scheme.is_gain">
+														<span class="percentage">{{scheme.gain_per}}%</span></p>
+														<p ng-if="!scheme.is_gain" class="loss types"><span class="percentage">( {{scheme.gain_per}} )%</span></p>
 													</div>
 												</div>
 											</div>
@@ -214,215 +172,33 @@
 									</div>
 						    	</div>
 						    </div>
-						    <div id="collapseOne" accordian class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-						      <div class="panel-body">
+						    <div id="collapseOne_{{scheme.name}}" accordian class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+						      <div class="panel-body" ng-repeat="fund in scheme.funds">
 						        <div class="table-outer-cover panel-table">
-										<p class="schemes">DSP Black Rock Micro Cap Fund<span class="money-value">
+										<p class="schemes">{{fund.fund_name}}<span class="money-value">
 											<span class="gain types">
-											<span class="currency">&#8377;</span><span class="percentage">10,200</span></span>
+											<span class="currency">&#8377;</span><span class="percentage">{{fund.gain}}</span></span>
 										</span></p>
 										<div class="tbody">
 											<div class="tr">
 												<div class="td">
-													<p><span class="pie-circle" ng-style="{'background-color':'#047ac1'}"></span><span class="content">25%</span></p>
+													<p><span class="pie-circle" ng-style="{'background-color':'#047ac1'}"></span><span class="content">{{fund.fund_percentage}}%</span></p>
 												</div>
 												<div class="td">
-													<p><span class="currency">&#8377;</span><span class="amount">10,03,138</span></p>
+													<p><span class="currency">&#8377;</span><span class="amount">{{fund.invested_value}}</span></p>
 												</div>
 												<div class="td">
 													<div class="money-value">
-														<p class="gain types">
-														<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
-														<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
+														<p>
+														<span class="currency">&#8377;</span><span class="amount">{{fund.current_value}}</span></p>
+														
 													</div>
 												</div>
 												<div class="td">
 													<div class="money-value">
-														<p class="gain types">
-														<span class="percentage">10%</span></p>
-														<p ng-if="false" class="loss types">( <span class="percentage">10%</span> )</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-						      </div>
-						    </div>
-						  </div>
-						  <div class="panel panel-default">
-						    <div class="panel-heading" role="tab" id="headingOne">
-						    	<div class="panel-title">
-						    		<p>Equity Schemes <span class="pull-right"><a role="button" data-toggle="collapse" data-parent="#accordion" href="javascript:void(0)" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-						          EXPAND
-						        </a></span></p>
-						    	</div>
-						    	<div class="panel-description">
-						    		<div class="table-outer-cover panel-table">
-										<div class="thead">
-											<div class="tr">
-												<div class="th">
-													<p>% Holding</p>
-												</div>
-												<div class="th">
-													<p>Invested Value</p>
-												</div>
-												<div class="th">
-													<p>Current Value</p>
-												</div>
-												<div class="th">
-													<div class="money-value">
-														<p class="gain types">
-														<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
-														<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="tbody">
-											<div class="tr">
-												<div class="td">
-													<p>25%</p>
-												</div>
-												<div class="td">
-													<p><span class="currency">&#8377;</span><span class="amount">10,03,138</span></p>
-												</div>
-												<div class="td">
-													<div class="money-value">
-														<p class="gain types">
-														<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
-														<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
-													</div>
-												</div>
-												<div class="td">
-													<div class="money-value">
-														<p class="gain types">
-														<span class="percentage">10%</span></p>
-														<p ng-if="false" class="loss types">( <span class="percentage">10%</span> )</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-						    	</div>
-						    </div>
-						    <div id="collapseTwo" accordian class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-						      <div class="panel-body">
-						        <div class="table-outer-cover panel-table">
-										<p class="schemes">DSP Black Rock Micro Cap Fund<span class="money-value">
-											<span class="gain types">
-											<span class="currency">&#8377;</span><span class="percentage">10,200</span></span>
-										</span></p>
-										<div class="tbody">
-											<div class="tr">
-												<div class="td">
-													<p><span class="pie-circle" ng-style="{'background-color':'#047ac1'}"></span><span class="content">25%</span></p>
-												</div>
-												<div class="td">
-													<p><span class="currency">&#8377;</span><span class="amount">10,03,138</span></p>
-												</div>
-												<div class="td">
-													<div class="money-value">
-														<p class="gain types">
-														<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
-														<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
-													</div>
-												</div>
-												<div class="td">
-													<div class="money-value">
-														<p class="gain types">
-														<span class="percentage">10%</span></p>
-														<p ng-if="false" class="loss types">( <span class="percentage">10%</span> )</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-						      </div>
-						    </div>
-						  </div>
-						  <div class="panel panel-default">
-						    <div class="panel-heading" role="tab" id="headingOne">
-						    	<div class="panel-title">
-						    		<p>Equity Schemes <span class="pull-right"><a role="button" data-toggle="collapse" data-parent="#accordion" href="javascript:void(0)" data-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-						          EXPAND
-						        </a></span></p>
-						    	</div>
-						    	<div class="panel-description">
-						    		<div class="table-outer-cover panel-table">
-										<div class="thead">
-											<div class="tr">
-												<div class="th">
-													<p>% Holding</p>
-												</div>
-												<div class="th">
-													<p>Invested Value</p>
-												</div>
-												<div class="th">
-													<p>Current Value</p>
-												</div>
-												<div class="th">
-													<div class="money-value">
-														<p class="gain types">
-														<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
-														<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
-													</div>
-												</div>
-											</div>
-										</div>
-										<div class="tbody">
-											<div class="tr">
-												<div class="td">
-													<p>25%</p>
-												</div>
-												<div class="td">
-													<p><span class="currency">&#8377;</span><span class="amount">10,03,138</span></p>
-												</div>
-												<div class="td">
-													<div class="money-value">
-														<p class="gain types">
-														<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
-														<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
-													</div>
-												</div>
-												<div class="td">
-													<div class="money-value">
-														<p class="gain types">
-														<span class="percentage">10%</span></p>
-														<p ng-if="false" class="loss types">( <span class="percentage">10%</span> )</p>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-						    	</div>
-						    </div>
-						    <div id="collapseThree" accordian class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-						      <div class="panel-body">
-						        <div class="table-outer-cover panel-table">
-										<p class="schemes">DSP Black Rock Micro Cap Fund<span class="money-value">
-											<span class="gain types">
-											<span class="currency">&#8377;</span><span class="percentage">10,200</span></span>
-										</span></p>
-										<div class="tbody">
-											<div class="tr">
-												<div class="td">
-													<p><span class="pie-circle" ng-style="{'background-color':'#047ac1'}"></span><span class="content">25%</span></p>
-												</div>
-												<div class="td">
-													<p><span class="currency">&#8377;</span><span class="amount">10,03,138</span></p>
-												</div>
-												<div class="td">
-													<div class="money-value">
-														<p class="gain types">
-														<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
-														<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
-													</div>
-												</div>
-												<div class="td">
-													<div class="money-value">
-														<p class="gain types">
-														<span class="percentage">10%</span></p>
-														<p ng-if="false" class="loss types">( <span class="percentage">10%</span> )</p>
+														<p class="gain types" ng-if="fund.is_gain">
+														<span class="percentage">{{fund.return_percentage}}%</span></p>
+														<p ng-if="!fund.is_gain" class="loss types"><span class="percentage">({{fund.return_percentage}}%)</span></p>
 													</div>
 												</div>
 											</div>
@@ -436,7 +212,7 @@
 				</div>	
 				<div class="chart-cover finance-cover" ng-show="setChartValue == 'FINANCE'" custom-scroll-bar>
 					<div class="col-xs-12">
-						<div class="seperater">
+						<div class="seperater" ng-repeat="finGoals in financial_goal_status">
 						<div class="row">
 							<div class="col-xs-2">
 								<div class="image-div">
@@ -444,63 +220,17 @@
 								</div>
 							</div>
 							<div class="col-xs-6">
-								<p class="finance-desc" ng-click="showFinancialGoalModal()"><span class="content">Tax Saving Plan</span><span class="nextline placeholder addOnlyBold">ON TRACK</span></p>
+								<p class="finance-desc" ng-click="showFinancialGoalModal(finGoals)"><span class="content">{{finGoals.name}}</span><span class="nextline placeholder addOnlyBold">ON TRACK</span></p>
 							</div>
 							<div class="col-xs-4">
-								<p class="target-amount"><span class="content highlight"><span class="currency">&#8377;</span><span class="content">{{1690000 | amountSeffix}}</span></span><span class="nextline placeholder">08/11/2016</span></p>
+								<p class="target-amount"><span class="content highlight"><span class="currency">&#8377;</span><span class="content">{{finGoals.goal}}</span></span><span class="nextline placeholder">{{finGoals.dateFormatted | date:'dd/MM/yyyy'}}</span></p>
 							</div>
 						  </div>
 						  <div class="col-xs-12">
 								<div class="progress">
-								    <div class="progress-bar" role="progressbar" ng-style="{'width':'71.2%'}">
-								    <span class="progress-price"><span class="currency">&#8377;</span><span class="amount">{{1200000 | amountSeffix}}</span></span>
-								    <span class="progress-percentage placeholder">71.2%</span>
-								    </div>
-								</div>
-							</div>
-						 </div>
-						 <div class="seperater">
-						<div class="row">
-							<div class="col-xs-2">
-								<div class="image-div">
-									<img src="assets/images/saveTax.png">
-								</div>
-							</div>
-							<div class="col-xs-6">
-								<p class="finance-desc"><span class="content">Tax Saving Plan</span><span class="nextline placeholder addOnlyBold">ON TRACK</span></p>
-							</div>
-							<div class="col-xs-4">
-								<p class="target-amount"><span class="content highlight"><span class="currency">&#8377;</span><span class="content">{{1690000 | amountSeffix}}</span></span><span class="nextline placeholder">08/11/2016</span></p>
-							</div>
-						  </div>
-						  <div class="col-xs-12">
-								<div class="progress">
-								    <div class="progress-bar" role="progressbar" ng-style="{'width':'71.2%'}">
-								    <span class="progress-price"><span class="currency">&#8377;</span><span class="amount">{{1200000 | amountSeffix}}</span></span>
-								    <span class="progress-percentage placeholder">71.2%</span>
-								    </div>
-								</div>
-							</div>
-						 </div>
-						 <div class="seperater">
-						<div class="row">
-							<div class="col-xs-2">
-								<div class="image-div">
-									<img src="assets/images/saveTax.png">
-								</div>
-							</div>
-							<div class="col-xs-6">
-								<p class="finance-desc"><span class="content">Tax Saving Plan</span><span class="nextline placeholder addOnlyBold">ON TRACK</span></p>
-							</div>
-							<div class="col-xs-4">
-								<p class="target-amount"><span class="content highlight"><span class="currency">&#8377;</span><span class="content">{{1690000 | amountSeffix}}</span></span><span class="nextline placeholder">08/11/2016</span></p>
-							</div>
-						  </div>
-						  <div class="col-xs-12">
-								<div class="progress">
-								    <div class="progress-bar" role="progressbar" ng-style="{'width':'71.2%'}">
-								    <span class="progress-price"><span class="currency">&#8377;</span><span class="amount">{{1200000 | amountSeffix}}</span></span>
-								    <span class="progress-percentage placeholder">71.2%</span>
+								    <div class="progress-bar" role="progressbar" ng-style="{'width':'{{finGoals.progress}}%'}">
+								    <span class="progress-price"><span class="currency">&#8377;</span><span class="amount">{{finGoals.invested_value}}</span></span>
+								    <span class="progress-percentage placeholder">{{finGoals.progress}}%</span>
 								    </div>
 								</div>
 							</div>
@@ -509,35 +239,46 @@
 				</div>	
 				<div class="chart-cover transaction-cover" ng-show="setChartValue == 'TRANSACTION'" custom-scroll-bar>
 					<div class="schemes-inner col-xs-12">
-						<div class="col-xs-12">
-							
-							<h2 class="pull-left">SBI Bluechip Fund Regular Growth</h3>
-							<p class="target-amount"><span class="content highlight"><span class="currency">&#8377;</span><span class="content ng-binding">16.90 L</span></span></p>
+						<div class="col-xs-12 transactionEach" ng-repeat="transactions in transactionHistory">			
+							<p ><h2 show-factsheet="{{transactions.fund_id}}" class="pull-left col-xs-9 no-padding">{{transactions.fund_name}}</h2></p>
+							<p class="target-amount col-xs-3 no-padding no-margin"><span class="content highlight"><span class="currency">&#8377;</span><span class="content ng-binding">16.90 L</span></span></p>
 							<div class="list-details">
-								<div class="table schemeCompareTable">
+								<div class="table">
 									<div class="thead">
 										<div class="tr">
-											<div class="th">
-												<p>1 Year Return</p>
+											<div class="th col-xs-3 no-padding">
+												<p>Request Date</p>
 											</div>
-											<div class="th">
-												<p>3 Year Return</p>
+											<div class="th col-xs-2 no-padding">
+												<p>NAV Date</p>
 											</div>
-											<div class="th">
-												<p>5 Year Return</p>
+											<div class="th col-xs-2 no-padding">
+												<p>NAV</p>
+											</div>
+											<div class="th col-xs-2 no-padding">
+												<p>Units</p>
+											</div>
+											<div class="th col-xs-3 no-padding">
+												<p>Folio No</p>
 											</div>
 										</div>
 									</div>
 									<div class="tbody">
 										<div class="tr">
-											<div class="td">
-												<p>14.30%</p>
+											<div class="td col-xs-3 no-padding">
+												<p>{{transactions.transaction_date | date:'dd-MM-yyyy'}}</p>
 											</div>
-											<div class="td">
-												<p>14.30%</p>
+											<div class="td col-xs-2 no-padding">
+												<p>{{transactions.allotment_date}}</p>
 											</div>
-											<div class="td">
-												<p>14.30%</p>
+											<div class="td col-xs-2 no-padding">
+												<p>{{transactions.nav}}</p>
+											</div>
+											<div class="td col-xs-2 no-padding">
+												<p>{{transactions.unit_alloted}}</p>
+											</div>
+											<div class="td col-xs-3 no-padding">
+												<p>{{transactions.folio_number}}</p>
 											</div>
 										</div>
 									</div>
@@ -566,20 +307,20 @@
 				<div class="col-xs-10">
 					<div class="row">
 						<div class="col-xs-9 no-padding">
-							<p class="finance-desc"><span class="content">Tax Saving Plan</span><span class="nextline placeholder addOnlyBold">ON TRACK</span></p>
+							<p class="finance-desc"><span class="content">{{finGoalsModal.name}}</span><span class="nextline placeholder addOnlyBold">ON TRACK</span></p>
 						</div>
 						<div class="col-xs-3 no-padding">
-							<p class="no-margin"><span class="placeholder">Expected corpus in 2021</span></p>
-							<p class="target-amount"><span class="content highlight"><span class="currency">&#8377</span><span class="content ng-binding">16.90 L</span></span></p>
+							<p class="no-margin"><span class="placeholder">Expected corpus in {{finGoalsModal.dateFormatted | date:'yyyy'}}</span></p>
+							<p class="target-amount"><span class="content highlight"><span class="currency">&#8377</span><span class="content ng-binding">{{finGoalsModal.goal}}</span></span></p>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="no-padding col-xs-12">
 							<div class="progress">
-							    <div class="progress-bar" role="progressbar" ng-style="{'width':'71.2%'}" style="width: 71.2%;">
-							    <span class="progress-price"><span class="currency">&#8377</span><span class="amount ng-binding">12.00 L</span></span>
-							    <span class="progress-percentage placeholder">71.2%</span>
+							    <div class="progress-bar" role="progressbar" ng-style="{'width':'{{finGoalsModal.progress}}%'}">
+							    <span class="progress-price"><span class="currency">&#8377</span><span class="amount ng-binding">{{finGoalsModal.invested_value}}</span></span>
+							    <span class="progress-percentage placeholder">{{finGoalsModal.progress}}%</span>
 							    </div>
 							</div>
 						</div>
@@ -605,17 +346,17 @@
 							<div class="tbody">
 								<div class="tr">
 									<div class="col-xs-3">
-										<p><span class="currency">&#8377;</span>1000000</p>
+										<p><span class="currency">&#8377;</span>{{finGoalsModal.goal_answers.lumpsum}}</p>
 									</div>
 									<div class="col-xs-3">
-										<p><span class="currency">&#8377;</span>10000</p>
+										<p><span class="currency">&#8377;</span>{{finGoalsModal.goal_answers.sip}}</p>
 									</div>
 									<div class="col-xs-2">
-										<p>5 years</p>
+										<p>{{finGoalsModal.goal_answers.term}} years</p>
 									</div>
 									<div class="col-xs-4">
-										<span class="debt_percent">Debt 20%</span>
-										<span class="equity_percent">Equity 80%</span>
+										<span class="debt_percent">Debt {{finGoalsModal.goal_answers.allocation.debt}}%</span>
+										<span class="equity_percent">Equity {{finGoalsModal.goal_answers.allocation.equity}}%</span>
 									</div>
 								</div>
 							</div>
@@ -625,10 +366,10 @@
 			</div>
 			<div class="col-xs-12 taxPlanSchemeListTable" custom-scroll-bar>
 			<div class="panel-group customPanel" id="accordionModal" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default">
+  <div class="panel panel-default" ng-repeat="scheme in finGoalsModal.schemes" >
     <div class="panel-heading" role="tab">
     	<div class="panel-title">
-    		<p>Equity Schemes <span class="pull-right"><a role="button" data-toggle="collapse" data-parent="#accordionModal" href="javascript:void(0)" data-target="#collapseOneModal" aria-expanded="true" aria-controls="collapseOne">
+    		<p>{{scheme.name}} Schemes <span class="pull-right"><a role="button" data-toggle="collapse" data-parent="#accordionModal" href="javascript:void(0)" data-target="#collapseOneModal_{{scheme.name}}" aria-expanded="true" aria-controls="collapseOne">
           EXPAND
         </a></span></p>
     	</div>
@@ -647,9 +388,9 @@
 						</div>
 						<div class="th">
 							<div class="money-value">
-								<p class="gain types">
-								<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
-								<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
+								<p class="gain types" ng-if="scheme.is_gain">
+								<span class="currency">&#8377;</span><span class="percentage">{{scheme.gain}}</span></p>
+								<p ng-if="!scheme.is_gain" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">{{scheme.gain}}</span> )</p>
 							</div>
 						</div>
 					</div>
@@ -657,23 +398,23 @@
 				<div class="tbody">
 					<div class="tr">
 						<div class="td">
-							<p>25%</p>
+							<p>{{scheme.holding_per}}%</p>
 						</div>
 						<div class="td">
-							<p><span class="currency">&#8377;</span><span class="amount">10,03,138</span></p>
+							<p><span class="currency">&#8377;</span><span class="amount">{{scheme.invested}}</span></p>
 						</div>
 						<div class="td">
 							<div class="money-value">
-								<p class="gain types">
-								<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
-								<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
+								<p>
+								<span class="currency">&#8377;</span><span class="amount">{{scheme.current_value}}</span></p>
+								
 							</div>
 						</div>
 						<div class="td">
 							<div class="money-value">
-								<p class="gain types">
-								<span class="percentage">10%</span></p>
-								<p ng-if="false" class="loss types">( <span class="percentage">10%</span> )</p>
+								<p class="gain types" ng-if="scheme.is_gain">
+								<span class="percentage">{{scheme.gain_per}}%</span></p>
+								<p ng-if="!scheme.is_gain" class="loss types"><span class="percentage">({{scheme.gain_per}}%)</span></p>
 							</div>
 						</div>
 					</div>
@@ -681,33 +422,31 @@
 			</div>
     	</div>
     </div>
-    <div id="collapseOneModal" accordian class="panel-collapse collapse" role="tabpanel">
-      <div class="panel-body">
+    <div id="collapseOneModal_{{scheme.name}}" accordian class="panel-collapse collapse" role="tabpanel">
+      <div class="panel-body" ng-repeat="fund in scheme.funds">
         <div class="table-outer-cover panel-table">
-				<p class="schemes">DSP Black Rock Micro Cap Fund<span class="money-value">
+				<p class="schemes">{{fund.fund_name}}<span class="money-value">
 					<span class="gain types">
-					<span class="currency">&#8377;</span><span class="percentage">10,200</span></span>
+					<span class="currency">&#8377;</span><span class="percentage">{{fund.gain}}</span></span>
 				</span></p>
 				<div class="tbody">
 					<div class="tr">
 						<div class="td">
-							<p><span class="pie-circle" ng-style="{'background-color':'#047ac1'}"></span><span class="content">25%</span></p>
+							<p><span class="pie-circle" ng-style="{'background-color':'#047ac1'}"></span><span class="content">{{fund.fund_percentage}}%</span></p>
 						</div>
 						<div class="td">
-							<p><span class="currency">&#8377;</span><span class="amount">10,03,138</span></p>
+							<p><span class="currency">&#8377;</span><span class="amount">{{fund.invested_value}}</span></p>
 						</div>
 						<div class="td">
 							<div class="money-value">
-								<p class="gain types">
-								<span class="currency">&#8377;</span><span class="percentage">10,200</span></p>
-								<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
+								<p><span class="currency">&#8377;</span><span class="amount">{{fund.current_value}}</span></p>
 							</div>
 						</div>
 						<div class="td">
 							<div class="money-value">
-								<p class="gain types">
-								<span class="percentage">10%</span></p>
-								<p ng-if="false" class="loss types">( <span class="percentage">10%</span> )</p>
+								<p class="gain types" ng-if="fund.is_gain">
+								<span class="percentage">{{fund.return_percentage}}%</span></p>
+								<p  ng-if="!fund.is_gain" class="loss types">( <span class="percentage">{{fund.return_percentage}}%</span> )</p>
 							</div>
 						</div>
 					</div>

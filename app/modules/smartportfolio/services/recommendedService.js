@@ -12,7 +12,8 @@
                 resetCompareScheme : resetCompareScheme,
                 getFundsForGoal : getFundsForGoal,
                 saveCompareModifyScheme : saveCompareModifyScheme,
-                validateCompareModifyScheme : validateCompareModifyScheme
+                validateCompareModifyScheme : validateCompareModifyScheme,
+                getFactsheetData : getFactsheetData
         	}
 
 	        function getGraphResultSet(response,year){
@@ -151,6 +152,27 @@
                         }
                     });
                 getAPI.Check(dataObj,function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
+            }
+
+            function getFactsheetData(schemeId){
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    appConfig.API_BASE_URL+'/core/' + schemeId + '/schema/fact-sheet/', 
+                    {}, {
+                        Check: {
+                            method:'GET',
+                        }
+                    });
+                getAPI.Check({},function(data){
                     if(data.status_code == 200){
                         defer.resolve({'success':data.response});
                     }else{
