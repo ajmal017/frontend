@@ -9,8 +9,7 @@
         	var modelObject = {},
         	
         		serializeModel = function() {
-	        		return {
-	        			'nominee_address': modelObject.nomineeAddress, 
+	        		var returnObject = {
 	        			'nominee_name': modelObject.nomineeName, 
 	        			'nominee_dob': modelObject.nomineeDob, 
 	        			'guardian_name': modelObject.guardianName,
@@ -18,12 +17,32 @@
 	        			'nominee_absent': modelObject.nomineeAbsent,
 	        			'address_are_equal': modelObject.addressAreEqual,
 	        		};
+	        		
+        			if (!modelObject.addressAreEqual && modelObject.nomineeAddress) {
+    					angular.extend(returnObject, {
+    						'nominee_address' : {
+        						'pincode' : modelObject.nomineeAddress.pincode,
+        						'city' : modelObject.nomineeAddress.city,
+        						'state' : modelObject.nomineeAddress.state,
+        						'address_line_1' : modelObject.nomineeAddress.addressLine1,
+        						'address_line_2' : modelObject.nomineeAddress.addressLine2
+    						}
+    					});
+        			}
+        			
+        			return returnObject;
         		},
         		
         		deserializeModel = function(response) {
-        			
+        			response.nominee_address = response.nominee_address || {};
         			modelObject = {
-        				nomineeName : response.nominee_address, 
+        					nomineeAddress : {
+        						pincode : response.nominee_address.pincode,
+        						city : response.nominee_address.city,
+        						state : response.nominee_address.state,
+        						addressLine1 : response.nominee_address.address_line_1,
+        						addressLine2 : response.nominee_address.address_line_2
+        					},
         				nomineeName : response.nominee_name, 
 	        			nomineeDob : response.nominee_dob, 
 	        			guardianName : response.guardian_name,
@@ -42,24 +61,35 @@
         	}
             
             function getSavedValues() {
+            	if ($rootScope.initialize) {
+            		$rootScope.initialize = false;
+            		modelObject = undefined;
+            	}
+            		
         		var defer = $q.defer();
-				var getAPI = $resource( 
-					appConfig.API_BASE_URL+'/user/nominee/info/get/', 
-					{}, {
-						Check: {
-							method:'GET',
-						}
-					});
-				getAPI.Check({},function(data){
-					if(data.status_code == 200){
-						deserializeModel(data.response);
-						defer.resolve({'success':modelObject});
-					}else{
-						defer.resolve({'Message':data.response['message']});
-					}				
-				}, function(err){
-					defer.reject(err);
-				}); 
+            	if (!modelObject) {
+
+					var getAPI = $resource( 
+						appConfig.API_BASE_URL+'/user/nominee/info/get/', 
+						{}, {
+							Check: {
+								method:'GET',
+							}
+						});
+					getAPI.Check({},function(data){
+						if(data.status_code == 200){
+							deserializeModel(data.response);
+							defer.resolve({'success':modelObject});
+						}else{
+							defer.resolve({'Message':data.response['message']});
+						}				
+					}, function(err){
+						defer.reject(err);
+					}); 
+            	}
+            	else {
+            		defer.resolve({'success':modelObject});
+            	}
 				return defer.promise;
             }
 

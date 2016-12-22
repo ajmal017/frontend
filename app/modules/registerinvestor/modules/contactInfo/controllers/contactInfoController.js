@@ -46,6 +46,117 @@
 				return registerInvestorService.getKYCStatus();
 			};
 
+			this.redirectToMainPage = function() {
+                $location.path('/registerInvestorInfo');
+			}
+			
+			this.scope.redirectToMainPage = angular.bind( this, this.redirectToMainPage );
+
+			this.scope.onContinue  = function() {
+				var step = $scope.getStep();
+				if (step == 1) {
+					$scope.appendValues($scope.modelVal);
+					$scope.step=step+1;
+					this.getKYCStatus()?0:$scope.reloadRoute('op2',1);
+				}
+				else if(step == 2) {
+					$scope.appendValues($scope.modelVal);
+					$scope.step=step+1;
+					if ($rootScope.selectedCriteria == 'op1') {
+						if (!this.getKYCStatus() && !$scope.modelVal.addressAreEqual) {
+							$scope.reloadRoute('op3',3);							
+						}						
+					}
+					else {
+						this.saveCommunicationAddressImage();						
+					}
+				}
+				else if(step == 3) {
+					$scope.appendValues($scope.modelVal);
+					$scope.step=step+1;
+					if ($rootScope.selectedCriteria == 'op1') {
+						this.saveInfo();
+						this.redirectToMainPage();
+					}
+					else {
+						if (!this.getKYCStatus() && !$scope.modelVal.addressAreEqual) {
+							$scope.reloadRoute('op3',3);			
+						}
+						else if ($rootScope.selectedCriteria == 'op3') {
+							$scope.reloadRoute('op2',3);
+						}
+					}
+				}
+				else if(step == 4) {
+					$scope.appendValues($scope.modelVal);
+					$scope.step=step+1;
+					if ($rootScope.selectedCriteria == 'op2') {
+						this.saveInfo();
+						this.redirectToMainPage();
+					}
+					else {
+						this.savePermanentAddressImage();
+					}
+				}
+				else if(step == 5) {
+					$scope.appendValues($scope.modelVal);
+					this.saveInfo();
+					this.redirectToMainPage();
+				}				
+			};
+
+			this.scope.onDisabled  = function() {
+				var step = $scope.getStep(),
+					disabled = false;
+				if (step == 1) {
+					if (!this.modelVal.communicationAddress.pincode||!this.modelVal.communicationAddress.addressLine1) {
+						disabled = true;
+					}
+				}
+				else if(step == 2) {
+					if ($rootScope.selectedCriteria == 'op1') {
+						if (!this.modelVal.addressAreEqual && (!this.modelVal.communicationAddress.pincode||!this.modelVal.communicationAddress.addressLine1)) {
+							disabled = true;
+						}
+					}
+					else {
+						if (!this.modelVal.frontImageUrl || (this.needBackImage(this.modelVal.addressProofType) && !this.modelVal.backImageUrl)) {
+							disabled = true;
+						}
+					}
+				}
+				else if(step == 3) {
+					if ($rootScope.selectedCriteria == 'op1') {
+						if (!this.modelVal.phoneNumber||!this.modelVal.email) {
+							disabled = true;
+						}					
+					}
+					else {
+						if (!this.modelVal.addressAreEqual && (!this.modelVal.communicationAddress.pincode||!this.modelVal.communicationAddress.addressLine1)) {
+							disabled = true;
+						}
+					}
+				}
+				else if(step == 4) {
+					if ($rootScope.selectedCriteria == 'op2') {
+						if (!this.modelVal.phoneNumber||!this.modelVal.email) {
+							disabled = true;
+						}					
+					}
+					else {
+						if (!this.modelVal.permanentFrontImageUrl || (this.needBackImage(this.modelVal.permanentAddressProofType) && !this.modelVal.permanentBackImageUrl)) {
+							disabled = true;
+						}
+					}
+				}
+				else if(step == 5) {
+					if (!this.modelVal.phoneNumber||!this.modelVal.email) {
+						disabled = true;
+					}					
+				}				
+
+				return disabled;
+			}
 			//this.scope.getKYCStatus = angular.bind( this, this.getKYCStatus );
 			
 			var Bank_Statement = 5,
@@ -61,18 +172,22 @@
 			};
 
 			this.saveCommunicationAddressImage = function() {
-				this.uploadFileToServer('frontImageUrl');
+				if (this.scope['frontImageUrl']) {
+					this.service.uploadFileToServer('address_proof_type', this.scope.modelVal.addressProofType, 'front_image', this.scope['frontImageUrl']);
+				}
 				if (this.scope['backImageUrl']) {
-					this.uploadFileToServer('backImageUrl');
+					this.service.uploadFileToServer('address_proof_type', this.scope.modelVal.addressProofType, 'back_image', this.scope['backImageUrl']);
 				}
 			};
 
 			this.scope.saveCommunicationAddressImage = angular.bind( this, this.saveCommunicationAddressImage );
 
 			this.savePermanentAddressImage = function() {
-				this.uploadFileToServer('permanentFrontImageUrl');
+				if (this.scope['permanentFrontImageUrl']) {
+					this.service.uploadFileToServer('permanent_address_proof_type', this.scope.modelVal.permanentAddressProofType, 'permanent_front_image', this.scope['permanentFrontImageUrl']);
+				}
 				if (this.scope['permanentBackImageUrl']) {
-					this.uploadFileToServer('permanentBackImageUrl');
+					this.service.uploadFileToServer('permanent_address_proof_type', this.scope.modelVal.permanentAddressProofType, 'permanent_back_image', this.scope['permanentBackImageUrl']);
 				}
 			}
 			this.scope.savePermanentAddressImage = angular.bind( this, this.savePermanentAddressImage);

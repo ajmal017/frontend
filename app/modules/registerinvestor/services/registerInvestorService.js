@@ -15,14 +15,14 @@
             	var pincodeData = {'pincode':pincode};
             	
         		var defer = $q.defer();
-				var getAPI = $resource( 
+				var postAPI = $resource( 
 					appConfig.API_BASE_URL+'/user/pincode/autocomplete/', 
 					{}, {
 						Check: {
-							method:'GET',
+							method:'POST',
 						}
 					});
-				getAPI.Check(pincodeData,function(data){
+				postAPI.Check(pincodeData,function(data){
 					if(data.status_code == 200){
 						defer.resolve({'success':data.response});
 					}else{

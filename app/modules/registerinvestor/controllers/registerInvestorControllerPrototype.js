@@ -59,7 +59,7 @@ var finApp = finApp || {};
 			initialize : function(){
 				var self = this;
 				if (!this.rootScope.selectedCriteria) {
-					this.rootScope.selectedCriteria = 'op1';
+					//this.rootScope.selectedCriteria = 'op1';
 				}
 				this.service.getSavedValues().then(function(data){
 					if('success' in data){
@@ -77,7 +77,6 @@ var finApp = finApp || {};
 			},
 			
 			reloadRoute : function(param, slideNumber) {
-			    console.log("before reload: " + this.scope.step);
 				this.rootScope.selectedCriteria = param;
 				if(!this.rootScope.$$phase) this.rootScope.$apply();
 				if (typeof(slideNumber) === "undefined")
@@ -85,7 +84,6 @@ var finApp = finApp || {};
 				
 				this.rootScope.slideTobeChanged = slideNumber;
 			    this.route.reload();
-			    console.log("in reload: " + this.scope.step);
 			},
 	};
 })();

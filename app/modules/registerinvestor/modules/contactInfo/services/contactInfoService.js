@@ -17,7 +17,7 @@
         						'address_line_1' : modelObject.communicationAddress.addressLine1,
         						'address_line_2' : modelObject.communicationAddress.addressLine2
         					},
-        					'address_are_equal' : modelObject.addressAreEqual,
+        					'address_are_equal' : modelObject.addressAreEqual?true:false,
         					'address_proof_type' : modelObject.addressProofType,
         					'communication_address_type' : modelObject.communicationAddressType,
         					'email' : modelObject.email,
@@ -68,7 +68,7 @@
         					frontImageUrl : response.front_image_thumbnail,
         					backImageUrl : response.back_image_thumbnail,
         					permanentFrontImageUrl : response.permanent_front_image_thumbnail,
-        					permanentBackImageUrl : response.permanant_back_image_thumbnail,
+        					permanentBackImageUrl : response.permanent_back_image_thumbnail,
         					
         			};
         			
@@ -82,24 +82,34 @@
         	}
             
             function getSavedValues() {
+            	if ($rootScope.initialize) {
+            		$rootScope.initialize = false;
+            		modelObject = undefined;
+            	}
+            		
         		var defer = $q.defer();
-				var getAPI = $resource( 
-					appConfig.API_BASE_URL+'/user/contact/info/get/', 
-					{}, {
-						Check: {
-							method:'GET',
-						}
+            	if (!modelObject) {
+					var getAPI = $resource( 
+						appConfig.API_BASE_URL+'/user/contact/info/get/', 
+						{}, {
+							Check: {
+								method:'GET',
+							}
+						});
+					getAPI.Check({},function(data){
+						if(data.status_code == 200){
+							deserializeModel(data.response);
+							defer.resolve({'success':modelObject});
+						}else{
+							defer.resolve({'Message':data.response['message']});
+						}				
+					}, function(err){
+						defer.reject(err);
 					});
-				getAPI.Check({},function(data){
-					if(data.status_code == 200){
-						deserializeModel(data.response);
-						defer.resolve({'success':modelObject});
-					}else{
-						defer.resolve({'Message':data.response['message']});
-					}				
-				}, function(err){
-					defer.reject(err);
-				}); 
+            	}
+            	else {
+            		defer.resolve({'success':modelObject});
+            	}
 				return defer.promise;
             }
 
@@ -132,9 +142,11 @@
 				return defer.promise;
             }
 
-            function uploadFileToServer(fileType, file) {
+            function uploadFileToServer(addressProofTypeKey, addressProofType, fileType, file) {
             	var fd = new FormData();
-            		fd.append(fileType, file);
+            	fd.append(addressProofTypeKey, addressProofType);
+            	fd.append(fileType, file);
+            	
         		var defer = $q.defer();
 				var postAPI = $resource( 
 					appConfig.API_BASE_URL+'/user/save/image/', 
