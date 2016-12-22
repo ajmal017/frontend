@@ -11,6 +11,7 @@
 			}
 			$scope.done = function (){
 				var signature = $scope.accept();
+				$('#signitureModal').modal('hide');
 			}
 		}
 })();
