@@ -11,13 +11,106 @@
         		getKYCStatus : getKYCStatus,
         		getRegistrationStatus : getRegistrationStatus,
         		saveSignature : saveSignature,
+        		saveVideoFile : saveVideoFile,
         		saveDeclaration : saveDeclaration 
         	}
 
-        	function saveSignature() {
+        	function saveSignature(signatureDataUri) {
+            	var requestData = {'signature_data': signatureDataUri};
+
+        		var defer = $q.defer();
+				var postAPI = $resource( 
+					appConfig.API_BASE_URL+'/user/save/image/', 
+					{}, {
+						Check: {
+							method:'POST',
+						}
+					});
+					postAPI.Check(requestData,function(data){
+					if(data.status_code == 200){
+						defer.resolve({'success':data.response});
+					}else{
+						defer.resolve({'Message':data.response['message']});
+					}				
+				}, function(err){
+					defer.reject(err);
+				}); 
+				return defer.promise;
         	}
 
-        	function saveDeclaration() {
+        	function saveSignatureFile(signatureFile) {
+            	var fd = new FormData();
+        		fd.append('signature', signatureFile);
+	    		var defer = $q.defer();
+				var postAPI = $resource( 
+					appConfig.API_BASE_URL+'/user/save/image/', 
+					{}, {
+						Check: {
+							method:'POST',
+							headers:{'Content-type':undefined},
+							transformRequest: angular.identity
+						}
+					});
+				postAPI.Check(fd,function(data){
+					if(data.status_code == 200){
+						defer.resolve({'success':data.response});
+					}else{
+						defer.resolve({'Message':data.response['message']});
+					}				
+				}, function(err){
+					defer.reject(err);
+				}); 
+				return defer.promise;
+        	}
+
+        	function saveVideoFile(videoFile, videoThumbnailFile) {
+            	var fd = new FormData();
+        		fd.append('user_video', videoFile);
+        		fd.append('user_video_thumbnail_data', videoThumbnailFile);
+        		
+	    		var defer = $q.defer();
+				var postAPI = $resource( 
+					appConfig.API_BASE_URL+'/user/video/upload/', 
+					{}, {
+						Check: {
+							method:'POST',
+							headers:{'Content-type':undefined},
+							transformRequest: angular.identity
+						}
+					});
+				postAPI.Check(fd,function(data){
+					if(data.status_code == 200){
+						defer.resolve({'success':data.response});
+					}else{
+						defer.resolve({'Message':data.response['message']});
+					}				
+				}, function(err){
+					defer.reject(err);
+				}); 
+				return defer.promise;
+        	}
+
+        	function saveDeclaration(modelObject) {
+        		var saveData = {'is_declaration' : modelObject.isDeclaration, 'is_terms' : modelObject.isTerms};
+        		
+        		var defer = $q.defer();
+				var postAPI = $resource( 
+					appConfig.API_BASE_URL+'/user/is_complete/update/', 
+					{}, {
+						Check: {
+							method:'POST',
+						}
+					});
+				postAPI.Check(saveData,function(data){
+					if(data.status_code == 200){
+						defer.resolve({'success':data.response});
+					}else{
+						defer.resolve({'Message':data.response['message']});
+					}				
+				}, function(err){
+					defer.reject(err);
+				}); 
+				return defer.promise;
         	}
 
         	function lookupPincode(pincode) {

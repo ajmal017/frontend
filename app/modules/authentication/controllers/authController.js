@@ -12,11 +12,6 @@
 						authService.submitSuccess(data).then(function(data){
 							userDetailsService().then(function(userData){
 								$rootScope.$broadcast('refreshCredentials',userData['success']);
-								if(userData.success.user_answers.risk_score) {
-									$rootScope.userRiskFactor = userData.success.user_answers.risk_score;
-								} else {
-									$rootScope.userRiskFactor = '7.0';
-								}
 								$location.path('/dashboard');
 							});
 						});		
