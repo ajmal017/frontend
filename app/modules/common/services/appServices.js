@@ -218,6 +218,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 	                console.log("Response[ERROR]: " + JSON.stringify(rejection) + "\r\n");
 	                console.log("******************** END RESPONSE *****************************\r\n");
 	                if(rejection.status == "401") {
+	                	sessionStorage.removeItem('userDetails');
 	                	
 	                	$("#sessionLogoutModal").modal('show');
 	                	

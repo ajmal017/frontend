@@ -57,7 +57,7 @@
 				var fundSelectionObj = {};
 				
 				fundSelectionObj.corpus = modelVal.A3;
-				fundSelectionObj.term = date - d.getFullYear();
+				fundSelectionObj.term = modelVal.A2 - d.getFullYear();
 				fundSelectionObj.sip = modelVal.A4;
 				fundSelectionObj.lumpsum = 0;
 				fundSelectionObj.allocation = {

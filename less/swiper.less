@@ -98,6 +98,7 @@
       &.automobile,
       &.vacation,
       &.wedding,
+      &.jewellery,
       &.others,
       &.taxsaving,
       &.investorInfo,
@@ -574,13 +575,14 @@
 .swiper-slide{
   overflow:hidden;
   transition:opacity 0.2s ease;
+  visibility: hidden;
 }
 .swiper-slide-prev,
 .swiper-slide-next{
-  opacity:0;
+  visibility: hidden;
 }
 .swiper-slide-active{
-  opacity:1!important; 
+  visibility: visible; 
 }
 .swiper-guage{
   width:100%; 
