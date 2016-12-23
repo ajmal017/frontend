@@ -3,12 +3,12 @@
         <div class="swiper-slide">
             <form name="riskAssesment1Form1" novalidate ng-init="step = 1">
             <div class="swiper-content content-1" ng-init="disabled = 'locked'">
-                <p>I am a <span class="swiper-input age"><input only-number type="text" name="year" required ng-model="modelVal.A1"></span> years old<select dropdown dropdown-disable="disabled" ng-model="modelVal.A7"><option value="op1">Male</option><option value="op2">Female</option></select> and I am <select dropdown ng-model="modelVal.A17"><option selected value="op1">Single</option><option value="op2">Married</option></select></p>
-                <p>with <select dropdown ng-model="modelVal.A15"><option selected value="op1">No</option><option value="op2">1</option>
-                <option value="op3">2</option><option value="op4">2+</option></select>kids,<select dropdown ng-model="modelVal.A16"><option selected value="op1">No</option><option value="op2">1</option>
-                <option value="op3">2</option></select>dependent parents</p>
-                <p>and my primary income source is<select dropdown ng-model="modelVal.A18"><option selected value="op1">Salary</option><option value="op2">Business</option>
-                <option value="op3">Homemaker</option><option value="op3">Retired</option><option value="op4">Other</option></select></p>
+                <p>I am a <span class="swiper-input age"><input only-number type="text" name="year" required ng-model="modelVal.A1"></span> years old<select dropdown ng-model="modelVal.A7"><option ng-selected="modelVal.A7=='op1' || modelVal.A7 == undefined" value="op1">Male</option><option ng-selected="modelVal.A7=='op2'"value="op2">Female</option></select> and I am <select dropdown ng-model="modelVal.A17"><option ng-selected="modelVal.A17=='op1' || model.A17==undefined" value="op1">Single</option><option ng-selected="modelVal.A17=='op2'"value="op2">Married</option></select></p>
+                <p>with <select dropdown ng-model="modelVal.A15"><option ng-selected="modelVal.A15=='op1' || modelVal.A15 == undefined" value="op1">No</option><option ng-selected="modelVal.A15=='op2'" value="op2">1</option>
+                <option ng-selected="modelVal.A15=='op3'" value="op3">2</option><option ng-selected="modelVal.A15=='op4'" value="op4">2+</option></select>kids,<select dropdown ng-model="modelVal.A16"><option ng-selected="modelVal.A16=='op1' || modelVal.A16==undefined" value="op1">No</option><option ng-selected="modelVal.A16=='op2'" value="op2">1</option>
+                <option ng-selected="modelVal.A16=='op3'" value="op3">2</option></select>dependent parents</p>
+                <p>and my primary income source is<select dropdown ng-model="modelVal.A18"><option ng-selected="modelVal.A18=='op1' || modelVal.A18==undefined" value="op1">Salary</option><option ng-selected="modelVal.A18=='op2'" value="op2">Business</option>
+                <option ng-selected="modelVal.A18=='op3'" value="op3">Homemaker</option><option ng-selected="modelVal.A18=='op3'" value="op3">Retired</option><option ng-selected="modelVal.A18=='op4'" value="op4">Other</option></select></p>
             </div>
             </form>
         </div>
@@ -913,8 +913,8 @@
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
                     <info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="48px" class-name="marginNegative60"></info-tip>
-                      <p class="question multiple"><span class="content">I wish to provide for education <select dropdown ng-model="modelVal.A5"><option value=""></option><option ng-selected="modelVal.A5 == 'op1' || modelVal.A5 == 'undefined' || modelVal.A5 == ''" value="op1">In India</option><option ng-selected="modelVal.A5 == 'op2'" value="op2">Abroad</option></select></span></p>
-                      <p class="question multiple"><span class="content">In the field of <select dropdown ng-model="modelVal.A6"><option value=""></option><option ng-selected="modelVal.A6 == 'op1' || modelVal.A6 == 'undefined' || modelVal.A6 == ''" value="op1">4-yr Engineering Grad</option><option ng-selected="modelVal.A6 == 'op2'" value="op2">2-yr Engineering Masters</option><option ng-selected="modelVal.A6 == 'op3'" value="op3">4-yr Medicine</option><option ng-selected="modelVal.A6 == 'op4'" value="op4">2-yr MBA</option><option ng-selected="modelVal.A6 == 'op5'" value="op5">1-yr MBA</option><option ng-selected="modelVal.A6 == 'op6'" value="op6">Commerce Grad</option><option ng-selected="modelVal.A6 == 'op7'" value="op7">Arts Grad</option><option ng-selected="modelVal.A6 == 'op8'" value="op8">Other 2-years Course</option><option value="op9" ng-selected="modelVal.A6 == 'op9'">Other 4-years Course</option></select></span></p>
+                      <p class="question multiple"><span class="content">I wish to provide for education <select dropdown ng-model="modelVal.A5"><option ng-selected="modelVal.A5 == 'op1' || modelVal.A5 == 'undefined' || modelVal.A5 == ''" value="op1">In India</option><option ng-selected="modelVal.A5 == 'op2'" value="op2">Abroad</option></select></span></p>
+                      <p class="question multiple"><span class="content">In the field of <select dropdown ng-model="modelVal.A6"><option ng-selected="modelVal.A6 == 'op1' || modelVal.A6 == 'undefined' || modelVal.A6 == ''" value="op1">4-yr Engineering Grad</option><option ng-selected="modelVal.A6 == 'op2'" value="op2">2-yr Engineering Masters</option><option ng-selected="modelVal.A6 == 'op3'" value="op3">4-yr Medicine</option><option ng-selected="modelVal.A6 == 'op4'" value="op4">2-yr MBA</option><option ng-selected="modelVal.A6 == 'op5'" value="op5">1-yr MBA</option><option ng-selected="modelVal.A6 == 'op6'" value="op6">Commerce Grad</option><option ng-selected="modelVal.A6 == 'op7'" value="op7">Arts Grad</option><option ng-selected="modelVal.A6 == 'op8'" value="op8">Other 2-years Course</option><option value="op9" ng-selected="modelVal.A6 == 'op9'">Other 4-years Course</option></select></span></p>
                       <p class="question multiple"><span class="content">For this goal, so far I have already saved </span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A7" type="text" name="year" required></span></p>
                 </div>
             </form>
@@ -1075,13 +1075,13 @@
         <p>Education</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
-        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)" >CONTINUE</button>
-        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A6, modelVal.A7)" ng-disabled="(modelVal.A7 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step = getStep()) && (step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)" >CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A6, modelVal.A7)" ng-disabled="(modelVal.A7 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
     
 </div>
@@ -1333,13 +1333,13 @@
         <p>Property</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)">CONTINUE</button>
-        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A6, modelVal.A7)" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A6 == 0)||(modelVal.A6 == undefined)||(modelVal.A7 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step = getStep()) && (step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A6, modelVal.A7)" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A6 == 0)||(modelVal.A6 == undefined)||(modelVal.A7 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         
     </div>
 </div>
@@ -1553,13 +1553,13 @@
         <p>Automobile</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
-        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)"  >CONTINUE</button>
-        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A6, modelVal.A7)" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A6 == 0)||(modelVal.A6 == undefined)||(modelVal.A7 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
+        <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step = getStep()) && (step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)"  >CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A6, modelVal.A7)" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A6 == 0)||(modelVal.A6 == undefined)||(modelVal.A7 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
     </div>
 </div>
 <div ng-if="swiperName == 'vacation'" class="fadeIn swiper-container customSwiper vacation type2Sliders" ng-init="step = 1">
@@ -1611,7 +1611,7 @@
                   <info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="48px" class-name="marginNegative60"></info-tip>
                   <p class="question multiple"><span class="content">Number of people going on this vacation (ages 2+ years) is</span> <span class="swiper-input age"><input ng-model="modelVal.A5" type="text" name="year" ng-init="modelVal.A5 = 2" required></span></p>
                   <p class="question multiple"><span class="content">Number of days of vacation is </span> <span class="swiper-input age"><input ng-model="modelVal.A6" type="text" name="year" ng-init="modelVal.A6 = 6" required></span></p>
-                  <p class="question multiple"><span class="content">This vacation will be <select dropdown ng-model="modelVal.A7"><option value=""></option><option ng-selected="modelVal.A7 == 'op1' || modelVal.A7 == '' || modelVal.A7 == 'undefined'" value="op1">Domestic</option><option value="op2">International</option></select></span></p>
+                  <p class="question multiple"><span class="content">This vacation will be <select dropdown ng-model="modelVal.A7"><option ng-selected="modelVal.A7 == 'op1' || modelVal.A7 == '' || modelVal.A7 == 'undefined'" value="op1">Domestic</option><option value="op2">International</option></select></span></p>
                   <p class="question multiple"><span class="content">For this goal, so far I already saved</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A8" ng-keyup="showMessage2 = true" type="text" ame="year" required></span></p>
                 </div>
             </form>
@@ -1772,13 +1772,13 @@
         <p>Vacation</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
-        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)" >CONTINUE</button>
-        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates()" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A6 == 0)||(modelVal.A6 == undefined)||(modelVal.A8 == undefined)" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step = getStep()) && (step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)" >CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates()" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A6 == 0)||(modelVal.A6 == undefined)||(modelVal.A8 == undefined)" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>
 <div ng-if="swiperName == 'wedding'" class="fadeIn swiper-container customSwiper wedding type2Sliders" ng-init="step = 1">
@@ -1992,13 +1992,13 @@
         <p>Wedding</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
-        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)" >CONTINUE</button>
-        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A6, modelVal.A7)" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A7 == 0)||(modelVal.A7 == undefined)||(modelVal.A8 == undefined)" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step = getStep()) && (step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)" >CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A6, modelVal.A7)" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A7 == 0)||(modelVal.A7 == undefined)||(modelVal.A8 == undefined)" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>
 <div ng-if="swiperName == 'others'" class="fadeIn swiper-container customSwiper others type2Sliders" ng-init="step = 1">
@@ -2366,13 +2366,13 @@
         <p>Jewellery</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
-        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)" >CONTINUE</button>
-        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A7)" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A7 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step = getStep()) && (step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)" >CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A7)" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A7 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>
 <div ng-if="swiperName == 'taxsaving'" class="fadeIn swiper-container customSwiper taxsaving type2Sliders" ng-init="step = 1">
@@ -2476,7 +2476,7 @@
                       <span class="error-text" ng-show="invertorInfoForm1.pan.$error.invalidPan">Please enter valid PAN number</span>
                       <p class="question">My name is <span class="swiper-input"><input ng-model="modelVal.applicantName" type="text" name="year" required></span></p>
                       <p class="question">and my father's name is <span class="swiper-input"><input ng-model="modelVal.fatherName" type="text" name="year" required></span>
-                      <p class="question">I was born on <span class="swiper-input"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" data-datepicker="{theme: 'basic',dateformat: 'YYYY-MM-DD',readonly:false,changeYear: true}" ng-model="modelVal.dob"></span></p>
+                      <p class="question">I was born on <span class="swiper-input"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" data-datepicker="{theme: 'flat',dateformat: 'YYYY-MM-DD'}" data-ng-model="modelVal.dob" ng-init="modelVal.dob = '1991-01-01'"></span></p>
                 </div>
             </form>
         </div>

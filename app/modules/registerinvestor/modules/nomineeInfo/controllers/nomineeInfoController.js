@@ -44,7 +44,7 @@
 			this.scope.lookupPincode = angular.bind( this, this.lookupPincode );
 
 			this.redirectToMainPage = function() {
-                $location.path($root.redirectUrlContext);
+                $location.path($rootScope.redirectUrlContext);
 			}
 			
 			this.scope.redirectToMainPage = angular.bind( this, this.redirectToMainPage );

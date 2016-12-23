@@ -50,6 +50,9 @@
 
 			this.scope.calculateEstimates = function() {
 				var self = this;
+				if (!$scope.vacation['tenure']) {
+					self.getAssetAllocationCategory();
+				}
 				vacationService.getCorpusEstimates($scope.vacation['tenure'], $scope.modelVal.A5, $scope.modelVal.A6, $scope.modelVal.A7, $scope.modelVal.A8)
 				.then(self.handleGoalEstimatesResponse);
 			}

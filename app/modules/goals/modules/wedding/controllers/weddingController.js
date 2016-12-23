@@ -50,6 +50,9 @@
 
 			this.scope.calculateEstimates = function() {
 				var self = this;
+				if (!$scope.wedding['tenure']) {
+					self.getAssetAllocationCategory();
+				}
 				weddingService.getCorpusEstimates($scope.wedding['tenure'], $scope.modelVal.A5, $scope.modelVal.A6, $scope.modelVal.A7, $scope.modelVal.A8)
 				.then(self.handleGoalEstimatesResponse);
 			}

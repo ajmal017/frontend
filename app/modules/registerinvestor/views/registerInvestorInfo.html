@@ -71,7 +71,7 @@
                 <div class="fin-btn-cover started">
                     <div class="fin-btn-group">
                         <button ng-click="back()" class="fin-link-btn"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-                        <button ng-disabled="registrationStatus.incomplete" class="fin-app-btn fin-orange" click-redirect="/registerInvestorConfirm">CONTINUE</button>
+                        <button ng-disabled="(registrationStatus.incomplete==true)" class="fin-app-btn fin-orange" click-redirect="/registerInvestorConfirm">CONTINUE</button>
                     </div>
                 </div>
             </div>

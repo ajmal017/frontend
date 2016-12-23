@@ -41,7 +41,7 @@
 						Check: {
 							method:'POST',
 							headers: { 
-								'Authorization': tokens['token_type']+' '+tokens['access_token']
+								'Authorization': 'Bearer '+tokens['access_token']
 							}
 						}
 					});

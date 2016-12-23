@@ -14,7 +14,9 @@
 					$scope.registrationStatus.nomineeInfo) {
 					$scope.registrationStatus.incomplete = true;
 				}
-				$scope.registrationStatus.incomplete = false;
+				else {
+					$scope.registrationStatus.incomplete = false;
+				}
 			}
 
 			$scope.callVideoGet = function() {
@@ -46,7 +48,7 @@
 								contactInfo : statusObject.is_contact_info,
 								nomineeInfo : statusObject.is_nominee_info,
 						};
-						$scope.updateRegistrationStatus()
+						$scope.updateRegistrationStatus();
 					}
 				});
 				
