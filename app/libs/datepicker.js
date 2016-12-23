@@ -278,10 +278,10 @@ if (typeof angular != 'undefined') {
                     element.val(ngModel.$viewValue).trigger('change');
                 };
 
-                scope.$watch(attrs['ngModel'], function (v) {
-                    console.log('changed', v);
-                  // element.val(ngModel.$viewValue).trigger('change');
-                });
+                // scope.$watch(attrs['ngModel'], function (v) {
+                //     console.log('changed', v);
+                //   // element.val(ngModel.$viewValue).trigger('change');
+                // });
                 // element.bind('keydown', function(event) {
                 //     console.log('$viewValue',ngModel.$viewValue);
                 //     ngModel.$render();

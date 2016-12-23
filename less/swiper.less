@@ -168,7 +168,7 @@
           width:85px;
         }
       }
-      &.investorInfo,&.bankInfo,&.nomineeInfo{
+      &.investorInfo,&.bankInfo,&.nomineeInfo,&.contactInfo,&.identityInfo{
         .fin-btn-group{
           width:46%!important;
           .fin-app-btn{
@@ -298,16 +298,31 @@
         }
         &.hasCheckbox{
           .checkbox-cover{
-              padding-top:4%;
-              padding-bottom:6%;
+              padding-top:7%;
+              padding-bottom:3%;
               label{
                 .GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@blackapprox,normal);
                 .PIXEL2EM(24);
               }              
           }
         }  
+        .contactInfoUpload{
+          min-height:300px;
+        }
         .upload-image-cover{
-          width:66%;
+          min-width: 230px;
+          min-height: 256px;
+          margin-right: 13%;
+          float: left;
+          margin-top: 3%;
+          -webkit-border-radius: 25px;
+          -moz-border-radius: 25px;
+          
+          background-image: -moz-linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
+          background-image: -webkit-linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
+          -webkit-box-shadow: 1px 5.33px 11px -4px #247abc;
+          -moz-box-shadow: 1px 5.33px 11px -4px #247abc;
+          box-shadow: 1px 5.33px 11px -4px #247abc;
           .image-div{
             img{
               width:100%;
@@ -317,6 +332,8 @@
             margin-top: 10px;
             .GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@black,normal);
                 .PIXEL2EM(26);
+                    
+                    width: 230px;
           }
         }      
         &.retirement-content{

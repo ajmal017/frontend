@@ -5,7 +5,7 @@
     </div>
     <div class="list-cover">
       <ul id="accordion1" ng-if="!loggedIn">
-        <li class="panel active"><a href="javascript:void(0)">Home</a></li>
+        <li class="panel"><a href="javascript:void(0)">Home</a></li>
         <li class="panel"><a href="javascript:void(0)">About Us</a></li>
         <li class="panel"><a href="javascript:void(0)">How It Works</a></li>
         <li class="panel"><a href="javascript:void(0)">Why Finaskus?</a></li>
@@ -15,21 +15,21 @@
         <a href="javascript:void(0)" click-redirect="/gettingStarted" class="fin-btn fin-start">GET STARTED NOW</a>
       </ul>
       <ul id="accordion1" ng-if="loggedIn">
-        <li class="panel active"><a href="javascript:void(0)">Dashboard</a></li>
-        <li class="panel"><a href="javascript:void(0)">Risk Assessment</a></li>
+        <li class="panel"><a href="javascript:void(0)" click-redirect="/dashboard">Dashboard</a></li>
+        <li class="panel"><a href="javascript:void(0)" click-redirect="/riskAssesment">Risk Assessment</a></li>
         <li class="panel"><a href="javascript:void(0)" data-target="#secoundLink" data-toggle="collapse" data-parent="#accordion1">Build Financial Goals</a>
             <ul id="secoundLink" class="collapse secondLevel">
-              <li><a href="javascript:void(0)">Retirement</a></li>
-              <li><a href="javascript:void(0)">Education</a></li>
-              <li><a href="javascript:void(0)">Tax Saving</a></li>
-              <li><a href="javascript:void(0)">Property</a></li>
-              <li><a href="javascript:void(0)">Wedding</a></li>
-              <li><a href="javascript:void(0)">Automobile</a></li>
-              <li><a href="javascript:void(0)">Other</a></li>
+              <li><a href="javascript:void(0)" click-redirect="/retirementGoalsStarted">Retirement</a></li>
+              <li><a href="javascript:void(0)" click-redirect="/educationStarted">Education</a></li>
+              <li><a href="javascript:void(0)" click-redirect="/taxsavingStarted">Tax Saving</a></li>
+              <li><a href="javascript:void(0)" click-redirect="/propertyStarted">Property</a></li>
+              <li><a href="javascript:void(0)" click-redirect="/weddingStarted">Wedding</a></li>
+              <li><a href="javascript:void(0)" click-redirect="/automobileStarted">Automobile</a></li>
+              <li><a href="javascript:void(0)" click-redirect="/othersStarted">Other</a></li>
             </ul>
         </li>
-        <li class="panel"><a href="javascript:void(0)">Build Smart Portfolio</a></li>        
-        <li class="panel"><a href="javascript:void(0)">Track Performance</a></li>
+        <li class="panel"><a href="javascript:void(0)" click-redirect="/investWithdrawStart">Invest/Withdraw</a></li>        
+        <li class="panel"><a href="javascript:void(0)" click-redirect="/trackPerformanceStart">Track Performance</a></li>
         <li class="panel"><a href="javascript:void(0)" click-redirect="/registerInvestorStart">Investor Registration</a></li>
         <li class="panel"><a href="javascript:void(0)">Help?</a></li>
       </ul>

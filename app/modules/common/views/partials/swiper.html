@@ -2495,7 +2495,7 @@
                 <div class="swiper-content noPadding swiperReduceBottomPadding">
                     <input id='upload' accept=".jpg, .png, .jpeg" style="display:none" autoplay onchange="angular.element(this).scope().imageUpload(this)" type='file'/>
                     <div class="upload-image-cover" upload-file="upload">
-                        <div class="image-div">
+                        <div class="image-div" ng-if="!modelVal.imageUrl">
                             <img src="assets/images/uploadPic.png">
                         </div>
                         <div ng-if="modelVal.imageUrl" class="imageThumbnail">
@@ -2545,7 +2545,7 @@
                 <div class="swiper-content noPadding swiperReduceBottomPadding">
                     <input id='upload' accept=".jpg, .png, .jpeg" style="display:none" autoplay onchange="angular.element(this).scope().imageUpload(this)" type='file'/>
                     <div class="upload-image-cover" upload-file="upload">
-                        <div class="image-div">
+                        <div class="image-div" ng-if="!modelVal.imageUrl">
                             <img src="assets/images/uploadPic.png">
                         </div>
                         <div ng-if="modelVal.imageUrl" class="imageThumbnail">
@@ -2575,9 +2575,9 @@
         <div class="swiper-slide">
             <form name="invertorInfoForm1" novalidate>
                 <div class="swiper-content noPadding">
-                      <p class="question">I am a<select dropdown ng-model="modelVal.gender"><option ng-selected="(modelVal.gender=='M')||(!modelVal.gender)"  value="M">Male</option><option value="F">Female</option></select></p>
-                      <p class="question">and I am<select dropdown ng-model="modelVal.maritalStatus"><option ng-selected="(modelVal.maritalStatus=='1'||!modelVal.maritalStatus)" value="1">Single</option><option ng-selected="(modelVal.maritalStatus=='2')" value="2">Married</option></select></p>
-                      <p class="question">And I am of<select dropdown ng-model="modelVal.nationality"><option selected value="INDIA">INDIAN</option></select>nationality</p>
+                      <p class="question col-xs-12">I am a<select dropdown ng-model="modelVal.gender"><option ng-selected="(modelVal.gender=='M')||(!modelVal.gender)"  value="M">Male</option><option value="F">Female</option></select></p>
+                      <p class="question col-xs-12">and I am<select dropdown ng-model="modelVal.maritalStatus"><option ng-selected="(modelVal.maritalStatus=='1'||!modelVal.maritalStatus)" value="1">Single</option><option ng-selected="(modelVal.maritalStatus=='2')" value="2">Married</option></select></p>
+                      <p class="question col-xs-12">And I am of<select dropdown ng-model="modelVal.nationality"><option selected value="INDIA">INDIAN</option></select>nationality</p>
                 </div>
             </form>
         </div>
@@ -2586,7 +2586,7 @@
                 <div class="swiper-content noPadding swiperReduceBottomPadding">
                     <input id='upload' accept=".jpg, .png, .jpeg" style="display:none" autoplay onchange="angular.element(this).scope().imageUpload(this)" type='file'/>
                     <div class="upload-image-cover" upload-file="upload">
-                        <div class="image-div">
+                        <div class="image-div" ng-if="!modelVal.imageUrl">
                             <img src="assets/images/uploadPic.png">
                         </div>
                         <div ng-if="modelVal.imageUrl" class="imageThumbnail">
@@ -2617,25 +2617,28 @@
         <div class="swiper-slide">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-					  <span class="error-text">Communication Address</span>
-					  <p class="question">I am providing my<select dropdown ng-model="modelVal.communicationAddressType"><option ng-selected="(modelVal.communicationAddressType==1)||(!modelVal.communicationAddressType)" value="1">Residential</option><option ng-selected="(modelVal.communicationAddressType==2)" value="2">Business</option><option ng-selected="(modelVal.communicationAddressType==3)" value="3">Residential or Business</option><option ng-selected="(modelVal.communicationAddressType==4)" value="4">Registered Office</option></select>address</p>
-                      <p class="question">My PIN code is <span class="swiper-input"><input ng-model="modelVal.communicationAddress.pincode" type="text" name="pincode" validate-pincode ng-change="quickInvestForm3.pincode.$error.invalidPincode?0:lookupPincode(modelVal.communicationAddress)" required></span></p>
-                      <p class="question">and my address is<span class="swiper-input"><input ng-model="modelVal.communicationAddress.addressLine1" type="text" name="year" required></span></p>
-                      <p class="question"><span class="swiper-input"><input ng-model="modelVal.communicationAddress.addressLine2" type="text" name="year" required></span></p>
+					  <span class="error-text col-xs-12">Communication Address</span>
+					  <p class="question col-xs-12">I am providing my<select dropdown ng-model="modelVal.communicationAddressType"><option ng-selected="(modelVal.communicationAddressType==1)||(!modelVal.communicationAddressType)" value="1">Residential</option><option ng-selected="(modelVal.communicationAddressType==2)" value="2">Business</option><option ng-selected="(modelVal.communicationAddressType==3)" value="3">Residential or Business</option><option ng-selected="(modelVal.communicationAddressType==4)" value="4">Registered Office</option></select>address</p>
+                      <p class="question col-xs-12">My PIN code is <span class="swiper-input"><input ng-model="modelVal.communicationAddress.pincode" type="text" name="pincode" validate-pincode ng-change="quickInvestForm3.pincode.$error.invalidPincode?0:lookupPincode(modelVal.communicationAddress)" required></span></p>
+                      <p class="question col-xs-12">and my address is<span class="swiper-input"><input ng-model="modelVal.communicationAddress.addressLine1" type="text" name="year" required></span></p>
+                      <p class="question col-xs-12"><span class="swiper-input"><input ng-model="modelVal.communicationAddress.addressLine2" type="text" name="year" required></span></p>
+                      <p class="col-xs-12">
                       <span class="placeholder nextline">It is located in the city of <span ng-bind="modelVal.communicationAddress.city"></span></span>
                       <span class="placeholder nextline">in the state of <span ng-bind="modelVal.communicationAddress.state"></span></span>
                       <span class="placeholder nextline">in the country <span>INDIA</span></p>
-					  <span class="error-text" ng-show="!getKYCStatus()">You will be required to upload proof for the above address</span>
+					  <span class="error-text col-xs-12" ng-show="!getKYCStatus()">You will be required to upload proof for the above address</span>
+                      </p>
                 </div>
             </form>
         </div>
         <div class="swiper-slide" ng-if="$root.selectedCriteria =='op2'||$root.selectedCriteria=='op3'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content noPadding">
-					<p class="question">My address proof is my<select dropdown ng-model="modelVal.addressProofType"><option ng-selected="(modelVal.addressProofType==1)||(!modelVal.addressProofType)" value="1">Passport</option><option ng-selected="(modelVal.addressProofType==2)" value="2">Driving License</option><option ng-selected="(modelVal.addressProofType==3)" value="3">Voter ID Card</option><option ng-selected="(modelVal.addressProofType==4)" value="4">Aadhaar Card</option><option ng-selected="(modelVal.addressProofType==5)" value="5">Bank Statement</option><option ng-selected="(modelVal.addressProofType==6)" value="6">Utility Bill (from last 3 months)</option><option ng-selected="(modelVal.addressProofType==7)" value="7">Ration Card</option><option ng-selected="(modelVal.addressProofType==8)" value="8">Regd Lease / Sale Agreement</option></select></p>
+					<p class="question col-xs-12">My address proof is my<select dropdown ng-model="modelVal.addressProofType"><option ng-selected="(modelVal.addressProofType==1)||(!modelVal.addressProofType)" value="1">Passport</option><option ng-selected="(modelVal.addressProofType==2)" value="2">Driving License</option><option ng-selected="(modelVal.addressProofType==3)" value="3">Voter ID Card</option><option ng-selected="(modelVal.addressProofType==4)" value="4">Aadhaar Card</option><option ng-selected="(modelVal.addressProofType==5)" value="5">Bank Statement</option><option ng-selected="(modelVal.addressProofType==6)" value="6">Utility Bill (from last 3 months)</option><option ng-selected="(modelVal.addressProofType==7)" value="7">Ration Card</option><option ng-selected="(modelVal.addressProofType==8)" value="8">Regd Lease / Sale Agreement</option></select></p>
 					<input id='upload' accept=".jpg, .png, .jpeg" style="display:none" autoplay onchange="angular.element(this).scope().imageUpload(this, 'frontImageUrl')" type='file'/>
+                    <div class="col-xs-12">
                     <div class="upload-image-cover" upload-file="upload">
-                        <div class="image-div">
+                        <div class="image-div" ng-if="!modelVal['frontImageUrl']">
                             <img src="assets/images/uploadPic.png">
                         </div>
                         <div ng-if="modelVal['frontImageUrl']" class="imageThumbnail">
@@ -2645,7 +2648,7 @@
                     </div> 
 					<input id='uploadBack' ng-show="needBackImage(modelVal.addressProofType)" accept=".jpg, .png, .jpeg" style="display:none" autoplay onchange="angular.element(this).scope().imageUpload(this, 'backImageUrl')" type='file'/>                    
 					<div class="upload-image-cover" ng-show="needBackImage(modelVal.addressProofType)" upload-file="uploadBack">
-                        <div class="image-div">
+                        <div class="image-div" ng-if="!modelVal.backImageUrl">
                             <img src="assets/images/uploadPic.png">
                         </div>
                         <div ng-if="modelVal.backImageUrl" class="imageThumbnail">
@@ -2653,6 +2656,7 @@
                         </div>
                         <p class="text-center">Upload Back</p>
                     </div> 
+                    </div>
                 </div>
             </form>
         </div>
@@ -2663,24 +2667,25 @@
                         <input type="checkbox" required id="option1Type2" name="option2" ng-model="modelVal.addressAreEqual" value="true"><label for="option1Type2"><span></span>My permanent address is same as the address given before.</label>
                     </div>
                     <div ng-show="!modelVal.addressAreEqual">
-                      <p class="question">My PIN code is <span class="swiper-input"><input ng-model="modelVal.permanentAddress.pincode" validate-pincode type="text" name="permPincode" ng-change="quickInvestForm3.permPincode.$error.invalidPincode?0:lookupPincode(modelVal.permanentAddress)" required></span></p>
-                      <p class="question">and my address is <span class="swiper-input"><input ng-model="modelVal.permanentAddress.addressLine1" type="text" name="year" required></span></p>
-                      <p class="question"><span class="swiper-input"><input ng-model="modelVal.permanentAddress.addressLine2" type="text" name="year" required></span></p>
-                      <p class="question">It is located in the city of <span ng-bind="modelVal.permanentAddress.city"></span></p>
-                      <p class="question">in the state of <span ng-bind="modelVal.permanentAddress.state"></span></p>
-                      <p class="question">in the country <span>INDIA</span></p>
-					  <span class="error-text" ng-show="!getKYCStatus()">You will be required to upload proof for the above address</span>
+                      <p class="question col-xs-12">My PIN code is <span class="swiper-input"><input ng-model="modelVal.permanentAddress.pincode" validate-pincode type="text" name="permPincode" ng-change="quickInvestForm3.permPincode.$error.invalidPincode?0:lookupPincode(modelVal.permanentAddress)" required></span></p>
+                      <p class="question col-xs-12">and my address is <span class="swiper-input"><input ng-model="modelVal.permanentAddress.addressLine1" type="text" name="year" required></span></p>
+                      <p class="question col-xs-12"><span class="swiper-input"><input ng-model="modelVal.permanentAddress.addressLine2" type="text" name="year" required></span></p>
+                      <p class="question col-xs-12">It is located in the city of <span ng-bind="modelVal.permanentAddress.city"></span></p>
+                      <p class="question col-xs-12">in the state of <span ng-bind="modelVal.permanentAddress.state"></span></p>
+                      <p class="question col-xs-12">in the country <span>INDIA</span></p>
+					  <span class="error-text col-xs-12" ng-show="!getKYCStatus()">You will be required to upload proof for the above address</span>
 					</div>
                 </div>
             </form>
         </div>
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op3'">
             <form name="quickInvestForm3" novalidate>
-                <div class="swiper-content noPadding swiperReduceBottomPadding">
-					<p class="question">My permanent address proof is my<select dropdown ng-model="modelVal.permanentAddressProofType"><option selected value="1">Passport</option><option value="2">Driving License</option><option value="3">Voter ID Card</option><option value="4">Aadhaar Card</option><option value="5">Bank Statement</option><option value="6">Utility Bill (from last 3 months)</option><option value="7">Ration Card</option><option value="8">Regd Lease / Sale Agreement</option></select> address</p>                    
+                <div class="swiper-content noPadding">
+					<p class="question col-xs-12">My permanent address proof is my<select dropdown ng-model="modelVal.permanentAddressProofType"><option selected value="1">Passport</option><option value="2">Driving License</option><option value="3">Voter ID Card</option><option value="4">Aadhaar Card</option><option value="5">Bank Statement</option><option value="6">Utility Bill (from last 3 months)</option><option value="7">Ration Card</option><option value="8">Regd Lease / Sale Agreement</option></select> address</p>        
+                    <div class="col-xs-12 contactInfoUpload">            
 					<input id='uploadPermanent' accept=".jpg, .png, .jpeg" style="display:none" autoplay onchange="angular.element(this).scope().imageUpload(this, 'permanentFrontImageUrl')" type='file'/>
                     <div class="upload-image-cover" upload-file="uploadPermanent">
-                        <div class="image-div">
+                        <div class="image-div" ng-if="!modelVal['permanentFrontImageUrl']">
                             <img src="assets/images/uploadPic.png">
                         </div>
                         <div ng-if="modelVal['permanentFrontImageUrl']" class="imageThumbnail">
@@ -2690,7 +2695,7 @@
                     </div> 
 					<input id='uploadPermanentBack' ng-show="needBackImage(modelVal.permanentAddressProofType)" accept=".jpg, .png, .jpeg" style="display:none" autoplay onchange="angular.element(this).scope().imageUpload(this, 'permanentBackImageUrl')" type='file'/>                    
 					<div class="upload-image-cover" ng-show="needBackImage(modelVal.permanentAddressProofType)" upload-file="uploadPermanentBack">
-                        <div class="image-div">
+                        <div class="image-div" ng-if="!modelVal['permanentBackImageUrl']">
                             <img src="assets/images/uploadPic.png">
                         </div>
                         <div ng-if="modelVal['permanentBackImageUrl']" class="imageThumbnail">
@@ -2698,14 +2703,15 @@
                         </div>
                         <p class="text-center">Upload Back</p>
                     </div> 
+                    </div>
                 </div>
             </form>
         </div>
         <div class="swiper-slide">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content noPadding hasCheckbox">
-                    <p class="question">My mobile number is <span class="swiper-input"><input ng-model="modelVal.phoneNumber" type="text" name="year" required></span></p>
-                    <p class="question">and my email address is <span class="swiper-input"><input ng-model="modelVal.email" type="text" name="year" required></span></p>
+                    <p class="question col-xs-12">My mobile number is <span class="swiper-input"><input ng-model="modelVal.phoneNumber" type="text" name="year" required></span></p>
+                    <p class="question col-xs-12">and my email address is <span class="swiper-input"><input ng-model="modelVal.email" type="text" name="year" required></span></p>
                 </div>
             </form>
         </div>
@@ -2730,7 +2736,7 @@
                       <div class="checkbox-cover">
                         <input type="checkbox" required id="option1Type1" name="option1" ng-model="modelVal.nomineeAbsent" value="true"><label for="option1Type1"><span></span>I do not want to specify a nominee at this time</label>
                       </div>
-                      <div ng-show="!modelVal.nomineeAbsent">
+                      <div ng-show="!modelVal.nomineeAbsent" class="col-xs-12">
                       <p class="question">My nominee name is <span class="swiper-input"><input ng-model="modelVal.nomineeName" type="text" name="year" required></span></p>
                       <p class="question">and my relationship with them is <select dropdown ng-model="modelVal.relationshipWithInvestor"><option ng-selected="(modelVal.relationshipWithInvestor==1)||(!modelVal.relationshipWithInvestor)" value="1">Spouse</option><option ng-selected="(modelVal.relationshipWithInvestor==2)" value="2">Parent</option><option ng-selected="(modelVal.relationshipWithInvestor==3)" value="3">Offspring</option><option ng-selected="(modelVal.relationshipWithInvestor==4)" value="4">Sibling</option><option ng-selected="(modelVal.relationshipWithInvestor==5)" value="5">Other</option></select></p>
                       <p class="question">and they were born on <span class="swiper-input"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" data-datepicker="{theme: 'flat',dateformat: 'YYYY-MM-DD'}" data-ng-model="modelVal.nomineeDob" ng-init="modelVal.nomineeDob = '1991-01-01'"></span></p>

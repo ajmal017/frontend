@@ -541,6 +541,9 @@ aside.drawer .list-cover ul li a {
 aside.drawer .list-cover ul li a:hover {
   opacity: 0.4;
 }
+aside.drawer .list-cover ul li a:active {
+  opacity: 0.4;
+}
 aside.drawer .list-cover ul li.active a {
   opacity: 0.4;
 }
@@ -1274,10 +1277,13 @@ span + input {
   font-size: 1.25em !important;
 }
 .imageThumbnail {
-  position: absolute;
-  top: 9%;
-  left: 22%;
-  width: 100px;
+  width: 183px;
+  cursor: pointer;
+  -webkit-border-radius: 25px;
+  margin: 0 auto;
+  -moz-border-radius: 25px;
+  background-image: -moz-linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
+  -moz-box-shadow: 1px 5.33px 11px -4px #247abc;
 }
 span.highlight {
   color: #f26529;
@@ -2995,28 +3001,38 @@ span.error-text {
 }
 .swiper-container.customSwiper.investorInfo .fin-btn-group,
 .swiper-container.customSwiper.bankInfo .fin-btn-group,
-.swiper-container.customSwiper.nomineeInfo .fin-btn-group {
+.swiper-container.customSwiper.nomineeInfo .fin-btn-group,
+.swiper-container.customSwiper.contactInfo .fin-btn-group,
+.swiper-container.customSwiper.identityInfo .fin-btn-group {
   width: 46%!important;
 }
 .swiper-container.customSwiper.investorInfo .fin-btn-group .fin-app-btn,
 .swiper-container.customSwiper.bankInfo .fin-btn-group .fin-app-btn,
-.swiper-container.customSwiper.nomineeInfo .fin-btn-group .fin-app-btn {
+.swiper-container.customSwiper.nomineeInfo .fin-btn-group .fin-app-btn,
+.swiper-container.customSwiper.contactInfo .fin-btn-group .fin-app-btn,
+.swiper-container.customSwiper.identityInfo .fin-btn-group .fin-app-btn {
   padding: 3%;
 }
 .swiper-container.customSwiper.investorInfo .fin-btn-group .fin-orange,
 .swiper-container.customSwiper.bankInfo .fin-btn-group .fin-orange,
-.swiper-container.customSwiper.nomineeInfo .fin-btn-group .fin-orange {
+.swiper-container.customSwiper.nomineeInfo .fin-btn-group .fin-orange,
+.swiper-container.customSwiper.contactInfo .fin-btn-group .fin-orange,
+.swiper-container.customSwiper.identityInfo .fin-btn-group .fin-orange {
   width: 34%;
 }
 .swiper-container.customSwiper.investorInfo .fin-btn-group .fin-skip-btn,
 .swiper-container.customSwiper.bankInfo .fin-btn-group .fin-skip-btn,
-.swiper-container.customSwiper.nomineeInfo .fin-btn-group .fin-skip-btn {
+.swiper-container.customSwiper.nomineeInfo .fin-btn-group .fin-skip-btn,
+.swiper-container.customSwiper.contactInfo .fin-btn-group .fin-skip-btn,
+.swiper-container.customSwiper.identityInfo .fin-btn-group .fin-skip-btn {
   width: 28%;
   margin-right: 4%;
 }
 .swiper-container.customSwiper.investorInfo span.imagePlaceholder,
 .swiper-container.customSwiper.bankInfo span.imagePlaceholder,
-.swiper-container.customSwiper.nomineeInfo span.imagePlaceholder {
+.swiper-container.customSwiper.nomineeInfo span.imagePlaceholder,
+.swiper-container.customSwiper.contactInfo span.imagePlaceholder,
+.swiper-container.customSwiper.identityInfo span.imagePlaceholder {
   position: absolute;
   bottom: -3%;
   left: 0;
@@ -3138,8 +3154,8 @@ span.error-text {
   line-height: 30px;
 }
 .swiper-container.customSwiper .swiper-content.hasCheckbox .checkbox-cover {
-  padding-top: 4%;
-  padding-bottom: 6%;
+  padding-top: 7%;
+  padding-bottom: 3%;
 }
 .swiper-container.customSwiper .swiper-content.hasCheckbox .checkbox-cover label {
   font-family: 'PlayfairDisplay-Regular';
@@ -3147,8 +3163,22 @@ span.error-text {
   font-weight: normal;
   font-size: 1.5em;
 }
+.swiper-container.customSwiper .swiper-content .contactInfoUpload {
+  min-height: 300px;
+}
 .swiper-container.customSwiper .swiper-content .upload-image-cover {
-  width: 66%;
+  min-width: 230px;
+  min-height: 256px;
+  margin-right: 13%;
+  float: left;
+  margin-top: 3%;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  background-image: -moz-linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
+  background-image: -webkit-linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
+  -webkit-box-shadow: 1px 5.33px 11px -4px #247abc;
+  -moz-box-shadow: 1px 5.33px 11px -4px #247abc;
+  box-shadow: 1px 5.33px 11px -4px #247abc;
 }
 .swiper-container.customSwiper .swiper-content .upload-image-cover .image-div img {
   width: 100%;
@@ -3159,6 +3189,7 @@ span.error-text {
   color: #000;
   font-weight: normal;
   font-size: 1.625em;
+  width: 230px;
 }
 .swiper-container.customSwiper .swiper-content.retirement-content span.swiper-input {
   width: 67%!important;

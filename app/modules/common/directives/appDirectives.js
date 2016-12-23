@@ -76,6 +76,7 @@
 					$('.close-value').on('click',function(){
 				         $rootScope.drawerAnimate();
 				    });
+				    console.log('$rootScope.title',$rootScope.title);
 				}
 			};
 		}
