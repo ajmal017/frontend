@@ -14,17 +14,17 @@
 				$('.seperate-cover').mCustomScrollbar();
 			},10);
 			// $('.scheme-compare-other').mCustomScrollbar();
-			$http.get('modules/common/config/test.json').success(function(response) {
-				$scope.response = response;
-				var defaultYear = 'three_year';
-		        $scope.populateGraph(defaultYear);
-		    });
-		    $scope.populateGraph = function(year){
-		    	recommendedService.getGraphResultSet($scope.response,year).then(function(data){
-		    		$scope.resultSet = data;
-		    		if(!$scope.$$phase) $scope.$apply();
-		    	})
-		    }
+			// $http.get('modules/common/config/test.json').success(function(response) {
+			// 	$scope.response = response;
+			// 	var defaultYear = 'three_year';
+		 //        $scope.populateGraph(defaultYear);
+		 //    });
+		 //    $scope.populateGraph = function(year){
+		 //    	recommendedService.getGraphResultSet($scope.response,year).then(function(data){
+		 //    		$scope.resultSet = data;
+		 //    		if(!$scope.$$phase) $scope.$apply();
+		 //    	})
+		 //    }
 
 		    $scope.compareAndModify = function(currentSchemeType) {
 		    	$rootScope.currentSchemeType = currentSchemeType;
@@ -158,6 +158,28 @@
     				{ x.push(i+1); } 
     			return x;
 		    }
+
+			$scope.populateGraph = function(trackerDetails, defaultYear){
+		    	recommendedService.getGraphData(trackerDetails).then(function(data) {
+					$scope.response = data;
+					// if(!$scope.setvalue){
+					// 	var defaultYear = 'three_year';
+					// }else {
+					// 	var defaultYear = $scope.setvalue;
+					// }
+					// 	var defaultYear = 'three_year';
+
+			    	recommendedService.getGraphResultSet($scope.response,defaultYear).then(function(data){
+			    		$scope.resultSet = data;
+			    		console.log('$scope.resultSet',$scope.resultSet,'defaultYear',defaultYear);
+			    		if(!$scope.$$phase) $scope.$apply();
+		    		});
+		    	});
+		    	
+		    }
+
+		    // $scope.populateGraph($rootScope.histPerformanceData, $scope.setvalue);
+
 		    //Try to get this from service instead of rootscope variable
 		    $scope.recommendedSchemesObject = $rootScope.setFundData;
 		    if($scope.recommendedSchemesObject){

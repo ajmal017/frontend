@@ -60,12 +60,17 @@
 			<li ng-click="setChartValue = 'OTHERS'" ng-class="{'activeli':setChartValue == 'OTHERS'}"><a href="javascript:void(0)">Other Key Information</a></li>
 		</ul>
 		<div class="chart-cover" ng-show="setChartValue == 'HISTORIC'" >
-			<ul class="chart-tabs" ng-init="setvalue='3years'">
-				<li ng-click="setvalue = '1month';"><a href="javascript:void(0)" ng-class="{'active':setvalue =='1month'}">1 month</a></li>
-				<li ng-click="setvalue = '3month'" ng-class="{'active':setvalue =='3month'}"><a href="javascript:void(0)">3 month</a></li>
-				<li ng-click="setvalue = '1year';populateGraph('one_year')" ng-class="{'active':setvalue =='1year'}"><a href="javascript:void(0)">1 year</a></li>
-				<li ng-click="setvalue = '3years';populateGraph('three_year')" ng-class="{'active':setvalue =='3years'}"><a href="javascript:void(0)">3 years</a></li>
-				<li ng-click="setvalue = '5years'" ng-class="{'active':setvalue =='5years'}"><a href="javascript:void(0)">5 years</a></li>
+			<ul class="chart-tabs" ng-init="setvalue='three_year';populateGraph($root.histPerformanceData, setvalue)">
+
+				<li ng-click="setvalue = 'one_month';populateGraph($root.histPerformanceData, setvalue)" ng-class="{'active':setvalue =='one_month'}"><a href="javascript:void(0)">1 month</a></li>
+
+				<li ng-click="setvalue = 'three_month';populateGraph($root.histPerformanceData, setvalue)" ng-class="{'active':setvalue =='three_month'}"><a href="javascript:void(0)">3 month</a></li>
+
+				<li ng-click="setvalue = 'one_year';populateGraph($root.histPerformanceData, setvalue)" ng-class="{'active':setvalue =='one_year'}"><a href="javascript:void(0)">1 year</a></li>
+
+				<li ng-click="setvalue = 'three_year';populateGraph($root.histPerformanceData, setvalue)" ng-class="{'active':setvalue =='three_year'}"><a href="javascript:void(0)">3 years</a></li>
+
+				<li ng-click="setvalue = 'five_year';populateGraph($root.histPerformanceData, setvalue)" ng-class="{'active':setvalue =='five_year'}"><a href="javascript:void(0)">5 years</a></li>
 			</ul>
 			<hc-chart ng-if="resultSet" items="resultSet"></hc-chart>
 			<p class="text-right"><span class="addOnlyBold">Rs 10,000</span> invested on {{resultSet[0]['data'][0]['date']}} would be <span class="content" ng-if="$root.nav">Rs.<span class="addOnlyBold">{{$root.nav.amount | currency:''}}</span> on {{$root.nav.date}}</span></p>

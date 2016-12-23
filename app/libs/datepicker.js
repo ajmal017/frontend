@@ -7,11 +7,11 @@ function Datepicker(element, options) {
     var self = this,
         $element = $(element),
         defaults = {
-            initial_value: null,
+            initial_value: new Date(),
             dateformat: 'DD.MM.YYYY',
             placeholder: $element.attr('placeholder') || '',
             theme: 'basic',
-            readonly: true,
+            readonly: false,
             vertical_offset: 3,
             is_invalid_date: null
         };
@@ -36,7 +36,7 @@ Datepicker.prototype.init = function() {
     .on('_render.datepicker', function() {
         self.$picker
         .trigger('_reposition')
-        .html("<div class='header'><div class='prev'><img src='assets/images/datepicker-prev.png'></div><div class='next'><img src='assets/images/datepicker-next.png'></div><span class='month'>" + self.displayed.format('MMMM YYYY').toUpperCase() + "</span></div><div class='calendar'>" + self.month_table(self.displayed, self.value) + '</div>');
+        .html("<div class='header'><div class='prevYear'><img src='assets/images/datepicker-prev.png'><img src='assets/images/datepicker-prev.png'></div><div class='prev'><img src='assets/images/datepicker-prev.png'></div><div class='next'><img src='assets/images/datepicker-next.png'></div><div class='nextYear'><img src='assets/images/datepicker-next.png'><img src='assets/images/datepicker-next.png'></div><span class='month'>" + self.displayed.format('MMMM YYYY').toUpperCase() + "</span></div><div class='calendar'>" + self.month_table(self.displayed, self.value) + '</div>');
     })
     .on('_reposition.datepicker', function() {
         var pos = self.$input.offset();
@@ -54,8 +54,16 @@ Datepicker.prototype.init = function() {
         self.displayed.subtract(1, 'month');
         self.$picker.trigger('_render');
     })
+    .on('click.datepicker', '.prevYear', function() {
+        self.displayed.subtract(12, 'month');
+        self.$picker.trigger('_render');
+    })
     .on('click.datepicker', '.next', function() {
         self.displayed.add(1, 'month');
+        self.$picker.trigger('_render');
+    })
+    .on('click.datepicker', '.nextYear', function() {
+        self.displayed.add(12, 'month');
         self.$picker.trigger('_render');
     })
     .on('click.datepicker', '.day:not(.invalid)', function(e) {
@@ -78,8 +86,8 @@ Datepicker.prototype.init = function() {
         self.set_value(self.parse_value(this));
     })
     .on('click.datepicker focus.datepicker', function(e) {
-        if (e.type == 'click' && self.$picker.is(':visible') && (new Date() - lastopened > 500)) {
-            self.$element.trigger('hidedatepicker');
+        if (self.$picker.is(':visible') && (new Date() - lastopened > 500)) {
+            // self.$element.trigger('hidedatepicker');
         } else {
             $('.hasDatepicker').not(self.$element).trigger('hidedatepicker');
             self.$element.trigger('showdatepicker');
@@ -261,12 +269,24 @@ if (typeof angular != 'undefined') {
                     return;
                 }
 
+                
                 options.initial_value = scope.$eval(attrs.ngModel);
                 picker = new Datepicker(element, options);
 
                 ngModel.$render = function() {
+                    console.log('$viewValue',ngModel.$viewValue);
                     element.val(ngModel.$viewValue).trigger('change');
                 };
+
+                scope.$watch(attrs['ngModel'], function (v) {
+                    console.log('changed', v);
+                  // element.val(ngModel.$viewValue).trigger('change');
+                });
+                // element.bind('keydown', function(event) {
+                //     console.log('$viewValue',ngModel.$viewValue);
+                //     ngModel.$render();
+                // });
+                
             }
         }
     }]);

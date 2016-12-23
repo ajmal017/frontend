@@ -882,6 +882,11 @@ section.introduction.about-app a {
      -moz-box-shadow: 0px 5px 4px 0px #f26529;
           box-shadow: 0px 5px 4px 0px #f26529;
 }
+.fin-app-btn.fin-orange:focus {
+  -webkit-box-shadow: 0px 5px 4px 0px #f26529;
+     -moz-box-shadow: 0px 5px 4px 0px #f26529;
+          box-shadow: 0px 5px 4px 0px #f26529;
+}
 .fin-app-btn.fin-white {
   font-family: 'Roboto-Bold';
   color: #F26529;
@@ -2848,6 +2853,7 @@ span.error-text {
 .swiper-container.customSwiper.automobile .typeSwiper,
 .swiper-container.customSwiper.vacation .typeSwiper,
 .swiper-container.customSwiper.wedding .typeSwiper,
+.swiper-container.customSwiper.jewellery .typeSwiper,
 .swiper-container.customSwiper.others .typeSwiper,
 .swiper-container.customSwiper.taxsaving .typeSwiper,
 .swiper-container.customSwiper.investorInfo .typeSwiper,
@@ -2861,6 +2867,7 @@ span.error-text {
 .swiper-container.customSwiper.automobile .typeSwiper .image-backdrop img,
 .swiper-container.customSwiper.vacation .typeSwiper .image-backdrop img,
 .swiper-container.customSwiper.wedding .typeSwiper .image-backdrop img,
+.swiper-container.customSwiper.jewellery .typeSwiper .image-backdrop img,
 .swiper-container.customSwiper.others .typeSwiper .image-backdrop img,
 .swiper-container.customSwiper.taxsaving .typeSwiper .image-backdrop img,
 .swiper-container.customSwiper.investorInfo .typeSwiper .image-backdrop img,
@@ -2874,6 +2881,7 @@ span.error-text {
 .swiper-container.customSwiper.automobile .swiper-slide .question-cover,
 .swiper-container.customSwiper.vacation .swiper-slide .question-cover,
 .swiper-container.customSwiper.wedding .swiper-slide .question-cover,
+.swiper-container.customSwiper.jewellery .swiper-slide .question-cover,
 .swiper-container.customSwiper.others .swiper-slide .question-cover,
 .swiper-container.customSwiper.taxsaving .swiper-slide .question-cover,
 .swiper-container.customSwiper.investorInfo .swiper-slide .question-cover,
@@ -2887,6 +2895,7 @@ span.error-text {
 .swiper-container.customSwiper.automobile .swiper-slide .question,
 .swiper-container.customSwiper.vacation .swiper-slide .question,
 .swiper-container.customSwiper.wedding .swiper-slide .question,
+.swiper-container.customSwiper.jewellery .swiper-slide .question,
 .swiper-container.customSwiper.others .swiper-slide .question,
 .swiper-container.customSwiper.taxsaving .swiper-slide .question,
 .swiper-container.customSwiper.investorInfo .swiper-slide .question,
@@ -2902,6 +2911,7 @@ span.error-text {
 .swiper-container.customSwiper.automobile .swiper-slide .question .swiper-input input,
 .swiper-container.customSwiper.vacation .swiper-slide .question .swiper-input input,
 .swiper-container.customSwiper.wedding .swiper-slide .question .swiper-input input,
+.swiper-container.customSwiper.jewellery .swiper-slide .question .swiper-input input,
 .swiper-container.customSwiper.others .swiper-slide .question .swiper-input input,
 .swiper-container.customSwiper.taxsaving .swiper-slide .question .swiper-input input,
 .swiper-container.customSwiper.investorInfo .swiper-slide .question .swiper-input input,
@@ -2915,6 +2925,7 @@ span.error-text {
 .swiper-container.customSwiper.automobile .swiper-slide .question .swiper-input.addMarginLeft,
 .swiper-container.customSwiper.vacation .swiper-slide .question .swiper-input.addMarginLeft,
 .swiper-container.customSwiper.wedding .swiper-slide .question .swiper-input.addMarginLeft,
+.swiper-container.customSwiper.jewellery .swiper-slide .question .swiper-input.addMarginLeft,
 .swiper-container.customSwiper.others .swiper-slide .question .swiper-input.addMarginLeft,
 .swiper-container.customSwiper.taxsaving .swiper-slide .question .swiper-input.addMarginLeft,
 .swiper-container.customSwiper.investorInfo .swiper-slide .question .swiper-input.addMarginLeft,
@@ -2928,6 +2939,7 @@ span.error-text {
 .swiper-container.customSwiper.automobile .swiper-slide .question .global-input,
 .swiper-container.customSwiper.vacation .swiper-slide .question .global-input,
 .swiper-container.customSwiper.wedding .swiper-slide .question .global-input,
+.swiper-container.customSwiper.jewellery .swiper-slide .question .global-input,
 .swiper-container.customSwiper.others .swiper-slide .question .global-input,
 .swiper-container.customSwiper.taxsaving .swiper-slide .question .global-input,
 .swiper-container.customSwiper.investorInfo .swiper-slide .question .global-input,
@@ -2941,6 +2953,7 @@ span.error-text {
 .swiper-container.customSwiper.automobile .swiper-slide .question .global-input input,
 .swiper-container.customSwiper.vacation .swiper-slide .question .global-input input,
 .swiper-container.customSwiper.wedding .swiper-slide .question .global-input input,
+.swiper-container.customSwiper.jewellery .swiper-slide .question .global-input input,
 .swiper-container.customSwiper.others .swiper-slide .question .global-input input,
 .swiper-container.customSwiper.taxsaving .swiper-slide .question .global-input input,
 .swiper-container.customSwiper.investorInfo .swiper-slide .question .global-input input,
@@ -2954,6 +2967,7 @@ span.error-text {
 .swiper-container.customSwiper.automobile .swiper-slide .question .fin-btn-white,
 .swiper-container.customSwiper.vacation .swiper-slide .question .fin-btn-white,
 .swiper-container.customSwiper.wedding .swiper-slide .question .fin-btn-white,
+.swiper-container.customSwiper.jewellery .swiper-slide .question .fin-btn-white,
 .swiper-container.customSwiper.others .swiper-slide .question .fin-btn-white,
 .swiper-container.customSwiper.taxsaving .swiper-slide .question .fin-btn-white,
 .swiper-container.customSwiper.investorInfo .swiper-slide .question .fin-btn-white,
@@ -3401,13 +3415,14 @@ span.error-text {
   -o-transition: opacity 0.2s ease;
   -moz-transition: opacity 0.2s ease;
   transition: opacity 0.2s ease;
+  visibility: hidden;
 }
 .swiper-slide-prev,
 .swiper-slide-next {
-  opacity: 0;
+  visibility: hidden;
 }
 .swiper-slide-active {
-  opacity: 1!important;
+  visibility: visible;
 }
 .swiper-guage {
   width: 100%;
@@ -4559,11 +4574,25 @@ section.quickInvest .started {
 .picker .next img {
   width: 74%;
 }
+.picker .prevYear,
+.picker .nextYear {
+  position: absolute;
+}
+.picker .prevYear img,
+.picker .nextYear img {
+  width: 39%;
+}
 .picker .prev {
-  left: 18px!important;
+  left: 43px!important;
 }
 .picker .next {
-  right: 18px!important;
+  right: 43px!important;
+}
+.picker .nextYear {
+  right: 20px !important;
+}
+.picker .prevYear {
+  left: 18px !important;
 }
 .picker table th {
   text-align: center;

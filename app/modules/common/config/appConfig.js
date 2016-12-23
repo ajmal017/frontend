@@ -72,7 +72,7 @@
 			},
 
 			'otherGoals' : ['invest','tax'],
-			'financialGoals' : ['retirement','education','property','automobile','vacation','wedding','event'],
+			'financialGoals' : ['retirement','education','property','automobile','vacation','wedding','event','jewellery'],
 			'QUICKINVEST_LUMPSUM_TERM' : 10,
 			'TAX_TERM' : 3,
 			'TAX_DEFAULT_ALLOCATION' : {'equity' : 0, 'debt' : 0, 'elss' : 100, 'liquid' : 0}

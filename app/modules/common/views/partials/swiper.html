@@ -1077,9 +1077,9 @@
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
         <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)">CONTINUE</button>
+        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)" >CONTINUE</button>
         <button ng-show="(step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A6, modelVal.A7)" ng-disabled="(modelVal.A7 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
@@ -1555,11 +1555,11 @@
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
         <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)">CONTINUE</button>
+        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)"  >CONTINUE</button>
         <button ng-show="(step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A6, modelVal.A7)" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A6 == 0)||(modelVal.A6 == undefined)||(modelVal.A7 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
     </div>
 </div>
 <div ng-if="swiperName == 'vacation'" class="fadeIn swiper-container customSwiper vacation type2Sliders" ng-init="step = 1">
@@ -1774,10 +1774,10 @@
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
         <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)">CONTINUE</button>
-        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates()" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A6 == 0)||(modelVal.A6 == undefined)||(modelVal.A8 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)" >CONTINUE</button>
+        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates()" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A6 == 0)||(modelVal.A6 == undefined)||(modelVal.A8 == undefined)" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
         <button ng-show="(step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>
@@ -1994,10 +1994,10 @@
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
         <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)">CONTINUE</button>
-        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A6, modelVal.A7)" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A7 == 0)||(modelVal.A7 == undefined)||(modelVal.A8 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)" >CONTINUE</button>
+        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A6, modelVal.A7)" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A7 == 0)||(modelVal.A7 == undefined)||(modelVal.A8 == undefined)" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
         <button ng-show="(step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>
@@ -2156,6 +2156,225 @@
         <button ng-show="(step == 4)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)">CONTINUE</button>
     </div>
 </div>
+<div ng-if="swiperName == 'jewellery'" class="fadeIn swiper-container customSwiper jewellery
+ type2Sliders" ng-init="step = 1">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide">
+            <form name="retirementForm1" novalidate>
+                <div class="swiper-content content-1">
+                      <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" ng-init="modelVal.A1 = modelVal.A1 || 'My Jewellery'" required ng-model="modelVal.A1"></span></p>
+                      <span class="placeholder">Use maximum 20 characters,alphabets and/or numbers</span>
+                      <span class="placeholder">We recommended naming the goal after the jewellery you want to buy</span>
+                </div>
+            </form>
+        </div>
+        <div class="swiper-slide">
+            <form name="quickInvestForm2" novalidate>
+                <div class="swiper-content">
+                    <h1 class="topHeader">I want to purchase the jewellery in</h1>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 calender-outer-cover">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+                                <div class="row">
+                                    <fin-calendar-form year="true" year-max="50" ng-model="modelVal.A2" format-symbol="none" type="#fde8de" font-color="#f26529" min="0" max="100"></fin-calendar-form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
+            <form name="quickInvestForm3" novalidate>
+                <div class="swiper-content">
+                      <h1 class="topHeader">I would like to save following amount<span class="nextline">for my jewellery</span></h1>
+                      <p class="question width-auto"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2')">PLEASE HELP ME ESTIMATE</button></p>
+                </div>
+            </form>
+        </div>
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
+            <form name="quickInvestForm3" novalidate>
+                <div class="swiper-content retirement-content">
+                      <p class="question width-auto"><span class="content nextline">I am willing to set aside</span><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A4" ng-change="calculateCorpus(modelVal.A4)" type="text" ame="year" required></span> per month<span class="nextline">for the target amount<span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.corpus | amountSeffix"></span></span> by <span class="highlight"><span class="calculatedAge" ng-bind="modelVal.A2"></span></span></span></p>
+                      <p class="question" ng-show="modelVal.A4!=jewellery.perMonth">Recommended monthly investment amount <span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.perMonth | currency:''"></span></span></span> for target amount <span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="modelVal.A3 | amountSeffix"></span></span> by <span class="highlight" ng-bind="modelVal.A2"></span></p>
+                </div>
+            </form>
+        </div>
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
+            <form name="quickInvestForm3" novalidate>
+                <div class="swiper-content">
+                  <info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="48px" class-name="marginNegative60"></info-tip>
+                  <p class="question multiple"><span class="content">The current price of the jewellery I wish to buy is</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A5" type="text" name="year" required></span></p>
+                  <p class="question multiple"><span class="content">For this goal so far I have already saved</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A7" type="text" name="year" disable-tab required></span></p>
+                </div>
+            </form>
+        </div>
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
+            <form name="quickInvestForm3" novalidate>
+                <div class="swiper-content content-6 total-estimation">
+                      <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
+                       <div class="col-xs-9 estimate">
+                        <div class="row">
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
+                            <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
+                            <div class="image-div text-center">
+                                <img src="assets/images/budget.png">
+                            </div>
+                            <h3 class="text-center">Budget</h3>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.goalEstimates.budget.sip"></span></h4>
+                            <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.goalEstimates.budget.corpus | amountSeffix"></span></span></p>
+                            <div class="radio-cover">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" value="op1" id="budget" name="estimateNow">
+                                <label for="budget"><span></span></label>
+                            </div>
+                            </div>
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
+                            <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
+                            <div class="image-div text-center">
+                                <img src="assets/images/confortable.png">
+                            </div>
+                            <h3 class="text-center">Comfortable</h3>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.goalEstimates.comfortable.sip"></span></h4>
+                            <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.goalEstimates.comfortable.corpus | amountSeffix"></span></span></p>
+                            <div class="radio-cover">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" value="op2" id="confort" name="estimateNow">
+                                <label for="confort"><span></span></label>
+                            </div>
+                            </div>
+                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
+                            <div class="pigy"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="28px"></info-tip></div>
+                            <div class="image-div text-center">
+                                <img src="assets/images/luxurious.png">
+                            </div>
+                            <h3 class="text-center">Luxurious</h3>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.goalEstimates.luxury.sip"></span></h4>
+                            <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.goalEstimates.luxury.corpus | amountSeffix"></span></span></p>
+                            <div class="radio-cover">
+                                <input type="radio" ng-model="modelVal.estimate_selection_type" value="op3" id="luxurious" name="estimateNow">
+                                <label for="luxurious"><span></span></label>
+                            </div>
+                            </div>
+                        </div>
+                      </div>
+                      <p class="question addPadding-4Per full-width pull-left addOpacity7"><span class="content">Thanks for the guidance.<span class="nextline">I am willing to set aside <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A4" ng-change="calculateCorpus(modelVal.A4)" type="text" required></span> per month</span><span class="nextline">for target amount <span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.corpus | amountSeffix"></span></span> by <span class="highlight" ng-bind="modelVal.A2"></span></span></span></p>
+                </div>
+            </form>
+        </div>
+        <div class="swiper-slide">
+            <div class="swiper-content swiper-guage">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <div class="gauge-result">
+                            <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></span>Equity/Debt Mix</p></div>
+                            <div class="meter-widget-cover">
+                                <div class="col-xs-12 meter-header">
+                                    <button class="edit" ng-click="callModel(modelVal.assetAllocation.debt, modelVal.assetAllocation.equity, modelVal.A4)"></button>
+                                    <div class="row">
+                                        <div class="col-xs-6 text-right">
+                                            <h2 class="debt">Debt</h2>
+                                            <p class="debt">{{modelVal.assetAllocation.debt}}%</p>
+                                            <h4 ><span class="currency">&#8377</span>{{modelVal.debtAmount}}</h4>
+                                        </div>
+                                        <div class="col-xs-6 text-left">
+                                            <h2 class="equity">Equity</h2>
+                                            <p class="equity">{{modelVal.assetAllocation.equity}}%</p>
+                                            <h4><span class="currency">&#8377</span>{{modelVal.equityAmount}}</h4>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.equityInitial}} calculate-guage={{modelVal.assetAllocation.equity}}>
+                                    <h4 class="text">Recommended</h4>
+                                    <div class="orbit">
+                                        <div class="indicator"></div>
+                                    </div>  
+                                    <div class="guage-image">
+                                        <img src="assets/images/guage.png">
+                                        <div class="meater-cover"></div>
+                                        <div class="pointer">
+                                            <img src="assets/images/pointer.png">
+                                        </div>
+                                    </div>
+                                    <div class="box-indicator col-xs-12">
+                                        <div class="row">
+                                            <div class="col-xs-4 text-left">
+                                                <div class="row">
+                                                    <div class="checkbox-cover">
+                                                        <input type="radio" name="type">
+                                                        <label><span></span></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4 text-center">
+                                                <div class="checkbox-cover">
+                                                    <input ng-checked="true" type="radio" name="type">
+                                                    <label><span></span></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-4 text-right">
+                                                <div class="row">
+                                                    <div class="checkbox-cover">
+                                                        <input type="radio" name="type">
+                                                        <label><span></span></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="guageCalculator">
+                                        <risk-image></risk-image>
+                                        <risk-type></risk-type>
+                                    </div>  
+                                    <p class="bottom-text">As per your risk profile</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="gauge-result">
+                            <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></info-tip></span>Projected Investment Growth</p></div>
+                            <div class="meter-widget-cover">
+                                <div class="col-xs-12 graph-header">
+                                    <div class="row">
+                                        <div class="col-xs-6">
+                                            <div class="row">
+                                                <h4>Investment till <span class="content" ng-bind="graphObject.toDate"></span></h4>
+                                                <p><span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="graphObject.totalInvestment | amountSeffix"></span></span></p>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-6">
+                                            <div class="row">
+                                                <h4>Projected in <span class="content" ng-bind="graphObject.toDate"></span></h4>
+                                                <p><span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="graphObject.totalProjectedCorpus | amountSeffix"></span></span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <goal-chart chartoptions="graphObject" ></goal-chart>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="fin-btn-group addMargin">
+                    <button click-redirect="/jewelleryStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
+                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                    <!-- <button ng-click="portfolioFactoring()" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button> -->
+                    <button ng-click="fundSelectionJewellery(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="typeSwiper">
+        <div class="image-backdrop"><img src="assets/images/luxurious.png"></div>
+        <p>Jewellery</p>
+    </div>    
+    <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
+        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
+        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)" >CONTINUE</button>
+        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A7)" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A7 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
+</div>
 <div ng-if="swiperName == 'taxsaving'" class="fadeIn swiper-container customSwiper taxsaving type2Sliders" ng-init="step = 1">
     <div class="swiper-wrapper">
         <div class="swiper-slide">
@@ -2257,7 +2476,7 @@
                       <span class="error-text" ng-show="invertorInfoForm1.pan.$error.invalidPan">Please enter valid PAN number</span>
                       <p class="question">My name is <span class="swiper-input"><input ng-model="modelVal.applicantName" type="text" name="year" required></span></p>
                       <p class="question">and my father's name is <span class="swiper-input"><input ng-model="modelVal.fatherName" type="text" name="year" required></span>
-                      <p class="question">I was born on <span class="swiper-input"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" data-datepicker="{theme: 'flat',dateformat: 'YYYY-MM-DD'}" data-ng-model="modelVal.dob"></span></p>
+                      <p class="question">I was born on <span class="swiper-input"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" data-datepicker="{theme: 'basic',dateformat: 'YYYY-MM-DD',readonly:false,changeYear: true}" ng-model="modelVal.dob"></span></p>
                 </div>
             </form>
         </div>
@@ -2522,7 +2741,7 @@
                       <div ng-show="!modelVal.nomineeAbsent">
                       <p class="question">My nominee name is <span class="swiper-input"><input ng-model="modelVal.nomineeName" type="text" name="year" required></span></p>
                       <p class="question">and my relationship with them is <select dropdown ng-model="modelVal.relationshipWithInvestor"><option ng-selected="(modelVal.relationshipWithInvestor==1)||(!modelVal.relationshipWithInvestor)" value="1">Spouse</option><option ng-selected="(modelVal.relationshipWithInvestor==2)" value="2">Parent</option><option ng-selected="(modelVal.relationshipWithInvestor==3)" value="3">Offspring</option><option ng-selected="(modelVal.relationshipWithInvestor==4)" value="4">Sibling</option><option ng-selected="(modelVal.relationshipWithInvestor==5)" value="5">Other</option></select></p>
-                      <p class="question">and they were born on <span class="swiper-input"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" data-datepicker="{theme: 'flat',dateformat: 'YYYY-MM-DD'}" data-ng-model="modelVal.nomineeDob"></span></p>
+                      <p class="question">and they were born on <span class="swiper-input"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" data-datepicker="{theme: 'flat',dateformat: 'YYYY-MM-DD'}" contenteditable='true' data-ng-model="modelVal.nomineeDob"></span></p>
                       <div class="checkbox-cover">
                         <input type="checkbox" required id="option1Type2" name="option2" ng-model="modelVal.addressAreEqual" value="true"><label for="option1Type2"><span></span>Their address is same as mine.</label>
                       </div>

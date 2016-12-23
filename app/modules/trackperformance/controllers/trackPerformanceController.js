@@ -8,19 +8,8 @@
 		function trackPerformanceController($scope,$rootScope,$http,$location,$filter,trackPerformanceService,recommendedService, busyIndicator){
 				
 			$scope.allFunds = '';	
-
-			$http.get('modules/common/config/test.json').success(function(response) {
-				$scope.response = response;
-				var defaultYear = 'three_year';
-		        $scope.populateGraph(defaultYear);
-		    });
-		    $scope.populateGraph = function(year){
-		    	recommendedService.getGraphResultSet($scope.response,year).then(function(data){
-		    		$scope.resultSet = data;
-		    		console.log('$scope.resultSet',$scope.resultSet);
-		    		if(!$scope.$$phase) $scope.$apply();
-		    	})
-		    }
+			$scope.trackerDetails = '';
+			$scope.resultSet = '';
 
 		    $scope.showFinancialGoalModal = function (modelObj) {
 		    	$scope.finGoalsModal = modelObj;
@@ -45,7 +34,7 @@
 					busyIndicator.hide();
 					if('success' in data) {
 						$scope.allFunds = data.success.asset_class_overview;
-
+						$scope.dashboardDetails();
 					} else {
 
 					}
@@ -132,13 +121,28 @@
 				});
 			}
 
+			$scope.populateGraph = function(trackerDetails){
+		    	trackPerformanceService.getGraphData(trackerDetails).then(function(data) {
+					$scope.response = data;
+					var defaultYear = 'three_year';
+			    	trackPerformanceService.getGraphResultSet($scope.response,defaultYear).then(function(data){
+			    		$scope.resultSet = data;
+			    		console.log('$scope.resultSet',$scope.resultSet);
+			    		if(!$scope.$$phase) $scope.$apply();
+		    		});
+		    	});
+		    	
+
+		    }
+
 			$scope.portfolioTrackerDetails = function() {
 				busyIndicator.show();
 				trackPerformanceService.getPortfolioTracker().then(function(data){
 					busyIndicator.hide();
 
 					if('success' in data) {
-
+						$scope.trackerDetails = data.success;
+						$scope.populateGraph($scope.trackerDetails);
 					} else {
 						
 					}
@@ -160,10 +164,14 @@
 				});
 			}
 
+			
+
+		    
 			$scope.portfolioDetails();
-			$scope.dashboardDetails();
+			
 			$scope.portfolioTrackerDetails();
 			// $scope.leaderBoardDetails();
 			$scope.transactionHistoryDetails();
+			
 		}
 })();

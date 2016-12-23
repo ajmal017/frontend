@@ -148,6 +148,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 	    };
 
 	    $rootScope.redirectLogin = function(){
+	    	
 	    	$('#sessionLogoutModal').modal('hide');	
 	    	$location.path('/');
 	    }

@@ -13,7 +13,9 @@
                 getDashboardDetails : getDashboardDetails,
                 getPortfolioTracker : getPortfolioTracker,
                 getLeaderBoard : getLeaderBoard,
-                getTransactionHistory : getTransactionHistory
+                getTransactionHistory : getTransactionHistory,
+                getGraphData : getGraphData,
+                getGraphResultSet : getGraphResultSet
         	}
 
 	        function getHexcolors(hex, lum){     
@@ -134,6 +136,83 @@
                     defer.reject(err);
                 }); 
                 return defer.promise;
+            }
+
+            function getGraphResultSet(response,year){
+                var defer = $q.defer();
+
+                var fundObject = response[year]['fund'];
+                var dates = response[year]['dates'];
+                var colors = ['#f23434','#1081c4','#f2692f','#999999','#B3B3B3','#F2F2F2'];
+                var resultSet = [];
+                for(var i=0;i<fundObject.length;i++){
+                    var object = {};
+                    var data = [];
+                    var valueObject = fundObject[i]['value'];
+                    if(dates.length > valueObject.length){
+                        valueObject = fundObject[i]['value'];
+                        dates = response[year]['dates'].slice(0,valueObject.length)
+                        for(var j=0;j<valueObject.length;j++){
+                            data.push({
+                                'y' : valueObject[j],
+                                'date':dates[j]
+                            });
+                        }
+                    }else if(dates.length < valueObject.length){
+                        dates = response[year]['dates']
+                        valueObject = fundObject[i]['value'].slice(0,dates.length);
+                        for(var j=0;j<valueObject.length;j++){
+                            data.push({
+                                'y' : valueObject[j],
+                                'date':dates[j]
+                            });
+                        }
+                    }else if(dates.length == valueObject.length){
+                        dates = response[year]['dates']
+                        valueObject = fundObject[i]['value'];
+                        for(var j=0;j<valueObject.length;j++){
+                            data.push({
+                                'y' : valueObject[j],
+                                'date':dates[j]
+                            });
+                        }
+                    }
+                    object['color'] = colors.splice(0,1).toString();
+                    object['name'] = fundObject[i]['id'];
+                    object['data'] = data;
+                    object['marker'] = {symbol : 'square'};
+                    resultSet.push(object);
+                }
+                
+                defer.resolve(resultSet);                
+                return defer.promise;
+            }
+
+            function getGraphData(resultSet) {
+                var defer = $q.defer();
+                console.log('resultSet',resultSet);
+
+                var obj = {
+                    "three_year": {
+                        "fund": [{
+                                "id": "Current Amount",
+                                "value": resultSet.current_amount
+                                },
+                                {
+                                "id": "Invested Amount",
+                                "value": resultSet.invested_amount
+                                }
+                        ],
+                        
+                        "dates": resultSet.date,
+                        "category": []
+                    }
+                }
+
+
+                defer.resolve(obj);                
+                return defer.promise;
+                
             }
         }     
 })();

@@ -30,7 +30,8 @@
 		.directive('captureVideo',captureVideo)
 		.directive('riskImage',riskImage)
 		.directive('riskType',riskType)
-		.directive('showFactsheet',showFactsheet);
+		.directive('showFactsheet',showFactsheet)
+		.directive('disableTab',disableTab);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -598,8 +599,9 @@
 									hover: {
 										enabled: false
 									}
-								}
-							}
+								},
+								turboThreshold: 0,
+							},
 						},
 						series : scope.items
                     });
@@ -1193,16 +1195,40 @@
 	            		busyIndicator.hide();
 			    		if('success' in data){
 			    			$rootScope.factsheetData = data.success;
-			    			//$scope.$apply();
-			    			$location.path('/schemeFactsheet')
+					    	recommendedService.getHistoricPerformance($attrs.showFactsheet).then(function(dataPerformance){
+					    		if('success' in data){
+					    			$rootScope.histPerformanceData = dataPerformance.success;
+					    			$location.path('/schemeFactsheet');
+					    		}
+					    		else {
+
+					    		}
+					    	});
+	    			
 			    		}	
 			    		else {
 
 			    		}
 			    	});
+
+
 	                
 	                
 	            });
 	        }
 	    }
+
+	    disableTab.$inject = ['$rootScope'];
+		function disableTab($rootScope){
+			return{
+				restrict : 'EA',				
+				link: function($scope,$element,$attr){
+					 $element.bind('keydown keypress', function(event){
+					 	if(event.which === 9){
+					 		event.preventDefault();
+					 	}
+					 });
+				}
+			};			
+		}
 })();

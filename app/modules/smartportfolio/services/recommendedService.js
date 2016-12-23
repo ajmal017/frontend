@@ -13,7 +13,9 @@
                 getFundsForGoal : getFundsForGoal,
                 saveCompareModifyScheme : saveCompareModifyScheme,
                 validateCompareModifyScheme : validateCompareModifyScheme,
-                getFactsheetData : getFactsheetData
+                getFactsheetData : getFactsheetData,
+                getHistoricPerformance : getHistoricPerformance,
+                getGraphData : getGraphData
         	}
 
 	        function getGraphResultSet(response,year){
@@ -182,6 +184,70 @@
                     defer.reject(err);
                 }); 
                 return defer.promise;
+            }
+
+            function getHistoricPerformance(schemeId){
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    appConfig.API_BASE_URL+'/core/fund/historic/performance/', 
+                    {}, {
+                        Check: {
+                            method:'POST',
+                        }
+                    });
+                getAPI.Check({'fund_id':schemeId},function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
+            }
+
+            function getGraphData(resultSet) {
+                var defer = $q.defer();
+                console.log('resultSet',resultSet);
+
+                var obj = {
+                    "three_year": {
+                        "fund": resultSet.three_year.fund,
+                        "index": resultSet.three_year.index,
+                        "dates": resultSet.three_year.dates,
+                        "category": resultSet.three_year.category
+                    },
+                    "five_year": {
+                        "fund": resultSet.five_year.fund,
+                        "index": resultSet.five_year.index,
+                        "dates": resultSet.five_year.dates,
+                        "category": resultSet.five_year.category
+                    },
+                    "one_year": {
+                        "fund": resultSet.one_year.fund,
+                        "index": resultSet.one_year.index,
+                        "dates": resultSet.one_year.dates,
+                        "category": resultSet.one_year.category
+                    },
+                    "three_month": {
+                        "fund": resultSet.three_month.fund,
+                        "index": resultSet.three_month.index,
+                        "dates": resultSet.three_month.dates,
+                        "category": resultSet.three_month.category
+                    },
+                    "one_month": {
+                        "fund": resultSet.one_month.fund,
+                        "index": resultSet.one_month.index,
+                        "dates": resultSet.one_month.dates,
+                        "category": resultSet.one_month.category
+                    }
+                }
+
+
+                defer.resolve(obj);                
+                return defer.promise;
+                
             }
         }     
 })();
