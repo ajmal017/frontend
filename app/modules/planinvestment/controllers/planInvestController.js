@@ -20,14 +20,6 @@
 
 			$scope.callCompleteness = function() {
 				userDetailsService().then(function(userData){
-					sessionStorage.setItem('userFlags', JSON.stringify(userData.success));
-					$rootScope.userFlags = JSON.parse(sessionStorage.getItem('userFlags'))||{};
-					console.log('$rootScope.userFlags',$rootScope.userFlags);
-					if(userData.success.user_answers.risk_score) {
-						$rootScope.userRiskFactor = userData.success.user_answers.risk_score;
-					} else {
-						$rootScope.userRiskFactor = '7.0';
-					}
 				});
 			}
 

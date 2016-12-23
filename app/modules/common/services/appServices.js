@@ -13,6 +13,18 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
         .factory('fileUpload',fileUpload)
         .factory('finWebInterCepter',finWebInterCepter);
 
+    	var updateProfileCompleteness = function(userData, rootScope) {
+			sessionStorage.setItem('userFlags', JSON.stringify(userData));
+			rootScope.userFlags = JSON.parse(sessionStorage.getItem('userFlags'))||{};
+			console.log('$rootScope.userFlags',rootScope.userFlags);
+			if(userData.user_answers.risk_score) {
+				rootScope.userRiskFactor = userData.user_answers.risk_score;
+			} else {
+				rootScope.userRiskFactor = '7.0';
+			}
+    		
+    	};
+    	
         function checkPath() {
             return function(locationPath, pages) {
                 return ($.inArray("/" + locationPath.split("/")[1], pages) > -1);
@@ -34,8 +46,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 	            $('body').removeClass('disable-scroll');
 	        }
 	    }
-        userDetailsService.$inject = ['$resource','$q','appConfig'];
-        function userDetailsService($resource,$q,appConfig){
+        userDetailsService.$inject = ['$resource','$q','appConfig','$rootScope'];
+        function userDetailsService($resource,$q,appConfig,$rootScope){
         	return function(){
         		var defer = $q.defer();
 				var getAPI = $resource( 
@@ -47,6 +59,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 					});
 				getAPI.Check({},function(data){
 					if(data.status_code == 200){
+						updateProfileCompleteness(data.response, $rootScope);
+
 						defer.resolve({'success':data.response});
 					}else{
 						defer.resolve({'Message':data.response['message']});

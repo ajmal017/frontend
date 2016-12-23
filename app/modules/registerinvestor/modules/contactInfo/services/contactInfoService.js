@@ -21,7 +21,7 @@
         					'address_proof_type' : modelObject.addressProofType,
         					'communication_address_type' : modelObject.communicationAddressType,
         					'email' : modelObject.email,
-        					'phoneNumber' : modelObject.phoneNumber
+        					'phone_number' : modelObject.phoneNumber
         				};
         			
 	        			if (!modelObject.addressAreEqual && modelObject.permanentAddress) {
@@ -64,7 +64,7 @@
         					permanentAddressProofType : response.permanent_address_proof_type,
         					communicationAddressType : response.communication_address_type,
         					email : response.email,
-        					phoneNumber : response.phoneNumber,
+        					phoneNumber : response.phone_number,
         					frontImageUrl : response.front_image_thumbnail,
         					backImageUrl : response.back_image_thumbnail,
         					permanentFrontImageUrl : response.permanent_front_image_thumbnail,

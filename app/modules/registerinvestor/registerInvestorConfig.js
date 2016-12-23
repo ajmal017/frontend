@@ -77,6 +77,13 @@
 		    	subHeader : 'GO BACK TO DASHBOARD',
 				redirectUrl : '/dashboard',
 		        templateUrl: 'modules/registerinvestor/views/completeVideoSelfie.html',
+		        controller : 'registerSelfieController'
+		    })
+		    .when('/registrationCompleted', {
+		    	title : 'Investor Registration',
+		    	subHeader : 'GO BACK TO DASHBOARD',
+				redirectUrl : '/dashboard',
+		        templateUrl: 'modules/registerinvestor/views/registrationCompleted.html',
 		    })
 		}
 })();

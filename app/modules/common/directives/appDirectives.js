@@ -1021,7 +1021,8 @@
             };
         }
 
-        function getFileUploaded(){
+		getFileUploaded.$inject = ['$rootScope'];
+        function getFileUploaded($rootScope){
         	return {
               restrict: 'A',
 

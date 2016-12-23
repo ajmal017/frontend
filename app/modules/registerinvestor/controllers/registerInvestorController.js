@@ -4,8 +4,8 @@
 		.module('finApp.registerInvestor')
 		.controller('registerInvestorController',registerInvestorController);
 
-		registerInvestorController.$inject = ['$rootScope','$scope','$http','registerInvestorService'];
-		function registerInvestorController($rootScope,$scope,$http,registerInvestorService){
+		registerInvestorController.$inject = ['$rootScope','$scope','$http','registerInvestorService','userDetailsService'];
+		function registerInvestorController($rootScope,$scope,$http,registerInvestorService,userDetailsService){
 			$scope.registrationStatus = {};
 			
 			$scope.updateRegistrationStatus = function() {
@@ -15,6 +15,11 @@
 					$scope.registrationStatus.incomplete = true;
 				}
 				$scope.registrationStatus.incomplete = false;
+			}
+
+			$scope.callCompleteness = function() {
+				userDetailsService().then(function(userData){
+				});
 			}
 
 			$scope.initialize = function() {
@@ -33,6 +38,7 @@
 					}
 				});
 				
+				$scope.callCompleteness();
 			}
 
 			$scope.initialize();

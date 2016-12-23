@@ -52,10 +52,6 @@ var finApp = finApp || {};
 	        	this.service.uploadFileToServer(this.scope[name]);
 	        },
 	        
-	        showVideoPopup : function(){
-	        	$('#videoCapptureModal').modal('show');
-	        },
-	        
 			initialize : function(){
 				var self = this;
 				if (!this.rootScope.selectedCriteria) {
