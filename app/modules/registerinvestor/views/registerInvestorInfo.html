@@ -13,29 +13,31 @@
                             <div class="checklist">
                                 <div class="checkedList">
                                     <div class="image-div">
-                                        <img ng-if="true" src="assets/images/checkBlue.png">
+                                        <img ng-if="registrationStatus.investorInfo==2" src="assets/images/checkBlue.png">
                                     </div>
                                 </div>
-                                <p click-redirect="/investorInfo"><span class="content">Investor Info</span><span ng-if="true" class="nextline highlight placeholder  addOnlyBold">COMPLETED</span>
-                                <span ng-if="false" class="nextline not-verified placeholder addOnlyBold">COMPLETE NOW</span></p>
+                                <p click-redirect="/investorInfo"><span class="content">Investor Info</span><span ng-if="registrationStatus.investorInfo==2" class="nextline highlight placeholder  addOnlyBold">COMPLETED</span>
+                                <span ng-if="registrationStatus.investorInfo==0" class="nextline not-verified placeholder addOnlyBold">COMPLETE NOW</span></p>
                             </div>
                             <div class="checklist">
                                 <div class="checkedList">
                                     <div class="image-div">
-                                        <img ng-if="false" src="assets/images/checkBlue.png">
+                                        <img ng-if="registrationStatus.identityInfo==2" src="assets/images/checkBlue.png">
                                     </div>
                                 </div>
-                                <p class="not-verified" click-redirect="/identityInfo"><span class="content">Identity Info</span><span ng-if="false" class="nextline highlight placeholder addOnlyBold">COMPLETED</span>
-                                <span ng-if="true" class="nextline not-verified placeholder addOnlyBold">COMPLETE NOW</span></p>
+                                <p class="not-verified" click-redirect="/identityInfo"><span class="content">Identity Info</span><span ng-if="registrationStatus.identityInfo==2" class="nextline highlight placeholder addOnlyBold">COMPLETED</span>
+                                <span ng-if="registrationStatus.identityInfo==0" class="nextline not-verified placeholder addOnlyBold">COMPLETE NOW</span>
+                                <span ng-if="registrationStatus.identityInfo==1" class="nextline not-verified placeholder addOnlyBold">OPTIONAL</span></p>
                             </div>
                             <div class="checklist">
                                 <div class="checkedList">
                                     <div class="image-div">
-                                        <img ng-if="false" src="assets/images/checkBlue.png">
+                                        <img ng-if="registrationStatus.contactInfo==2" src="assets/images/checkBlue.png">
                                     </div>
                                 </div>
-                                <p class="not-verified" ng-click="$root.selectedCriteria='op1'" click-redirect="/contactInfo"><span class="content">Contact Info</span><span ng-if="false" class="nextline highlight placeholder addOnlyBold">COMPLETED</span>
-                                <span ng-if="true" class="nextline not-verified placeholder addOnlyBold">COMPLETE NOW</span></p>
+                                <p class="not-verified" ng-click="($root.selectedCriteria='op1');($root.initialize=true)" click-redirect="/contactInfo"><span class="content">Contact Info</span><span ng-if="registrationStatus.contactInfo==2" class="nextline highlight placeholder addOnlyBold">COMPLETED</span>
+                                <span ng-if="registrationStatus.contactInfo==0" class="nextline not-verified placeholder addOnlyBold">COMPLETE NOW</span>
+                                <span ng-if="registrationStatus.contactInfo==1" class="nextline not-verified placeholder addOnlyBold">OPTIONAL</span></p>
                             </div>
                         </div>
                     </div>
@@ -44,20 +46,20 @@
                             <div class="checklist">
                                 <div class="checkedList">
                                     <div class="image-div">
-                                        <img ng-if="false" src="assets/images/checkBlue.png">
+                                        <img ng-if="registrationStatus.bankInfo==2" src="assets/images/checkBlue.png">
                                     </div>
                                 </div>
-                                <p class="not-verified" click-redirect="/bankInfo"><span class="content">Bank Info</span><span ng-if="false" class="nextline highlight placeholder addOnlyBold">COMPLETED</span>
-                                <span ng-if="true" class="nextline not-verified placeholder addOnlyBold">COMPLETE NOW</span></p>
+                                <p class="not-verified" click-redirect="/bankInfo"><span class="content">Bank Info</span><span ng-if="registrationStatus.bankInfo==2" class="nextline highlight placeholder addOnlyBold">COMPLETED</span>
+                                <span ng-if="registrationStatus.bankInfo==0" class="nextline not-verified placeholder addOnlyBold">COMPLETE NOW</span></p>
                             </div>
                             <div class="checklist">
                                 <div class="checkedList">
                                     <div class="image-div">
-                                        <img ng-if="false" src="assets/images/checkBlue.png">
+                                        <img ng-if="registrationStatus.nomineeInfo==2" src="assets/images/checkBlue.png">
                                     </div>
                                 </div>
-                                <p class="not-verified" click-redirect="/nomineeInfo"><span class="content">Nominee Info</span><span ng-if="false" class="nextline highlight placeholder addOnlyBold">COMPLETED</span>
-                                <span ng-if="true" class="nextline not-verified placeholder addOnlyBold">COMPLETE NOW</span></p>
+                                <p class="not-verified" ng-click="($root.selectedCriteria='op1');($root.initialize=true)" click-redirect="/nomineeInfo"><span class="content">Nominee Info</span><span ng-if="registrationStatus.nomineeInfo==2" class="nextline highlight placeholder addOnlyBold">COMPLETED</span>
+                                <span ng-if="registrationStatus.nomineeInfo==0" class="nextline not-verified placeholder addOnlyBold">COMPLETE NOW</span></p>
                             </div>
                         </div>
                     </div>
@@ -69,7 +71,7 @@
                 <div class="fin-btn-cover started">
                     <div class="fin-btn-group">
                         <button ng-click="back()" class="fin-link-btn"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-                        <button ng-disabled="quickInvestForm1.$invalid" class="fin-app-btn fin-orange" click-redirect="/registerInvestorInfo">CONTINUE</button>
+                        <button ng-disabled="registrationStatus.incomplete" class="fin-app-btn fin-orange" click-redirect="/registerInvestorConfirm">CONTINUE</button>
                     </div>
                 </div>
             </div>

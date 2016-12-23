@@ -146,6 +146,15 @@
 					scope.calculate = function(type,value){
 					}
 
+                    scope.getStep = function(){
+                    	var step = 1;
+                    	if (swiper) {
+                    		step = swiper.activeIndex + 1;
+                    	}
+                    	
+                    	return step;
+                    }
+                    
                     scope.gotoFirst = function(param){
                     	scope.modelVal = {};
                     	scope.result = 0;

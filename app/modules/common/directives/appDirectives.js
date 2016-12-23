@@ -17,6 +17,7 @@
 		.directive('calculateGuage',calculateGuage)
 		.directive('validatePan',validatePan)
 		.directive('validateIfsc',validateIfsc)
+		.directive('validatePincode',validatePincode)
 		.directive('bubbleGen',bubbleGen)
 		.directive('hcChart',hcChart)
 		.directive('goalChart',goalChart)
@@ -43,8 +44,10 @@
 
 	        function link($scope, $element, $attrs) {
 	            $element.on('click', function() {
-	                $location.path($attrs.clickRedirect);
-	                $scope.$apply();
+	            	if ($attrs.clickRedirect) {
+		                $location.path($attrs.clickRedirect);
+		                $scope.$apply();
+	            	}
 	            });
 	        }
 	    }
