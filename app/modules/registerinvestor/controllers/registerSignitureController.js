@@ -25,10 +25,15 @@
 */
 			}
 			
-			this.redirectToMainPage = function() {
-                $location.path('/registerInvestorInfo');
-			}
 
+			$scope.getSignature = function() {
+				registerInvestorService.getSignature().then(function(data){
+					if('success' in data){
+						$scope.modelVal.signature = data['success'][signature];
+					}
+					 
+				});
+			}
 			
 			$scope.saveInfo = function() {
 				registerInvestorService.saveSignature($scope.modelVal.signature).then(function(data){

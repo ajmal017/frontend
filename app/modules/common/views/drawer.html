@@ -30,7 +30,9 @@
         </li>
         <li class="panel"><a href="javascript:void(0)" click-redirect="/investWithdrawStart">Invest/Withdraw</a></li>        
         <li class="panel"><a href="javascript:void(0)" click-redirect="/trackPerformanceStart">Track Performance</a></li>
-        <li class="panel"><a href="javascript:void(0)" click-redirect="/registerInvestorStart">Investor Registration</a></li>
+        <li class="panel"><a href="javascript:void(0)" ng-if="$root.userFlags['user_flags']['process_choice']===''" click-redirect="/registerInvestorStart">Investor Registration</a></li>
+        <li class="panel"><a href="javascript:void(0)" ng-if="!($root.userFlags['user_flags']['vault']) && $root.userFlags['user_flags']['process_choice']==0" click-redirect="/registerInvestorInfo">Investor Registration</a></li>
+        <li class="panel"><a href="javascript:void(0)" ng-if="($root.userFlags['user_flags']['vault'])" click-redirect="registerInvestorReview">Investor Registration</a></li>
         <li class="panel"><a href="javascript:void(0)">Help?</a></li>
       </ul>
       <p class="copywrite"><span>Finaskus</span><span>&copy;</span><span>2016</span></p>

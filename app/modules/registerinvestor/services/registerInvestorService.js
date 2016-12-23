@@ -12,7 +12,9 @@
         		getRegistrationStatus : getRegistrationStatus,
         		saveSignature : saveSignature,
         		saveVideoFile : saveVideoFile,
-        		saveDeclaration : saveDeclaration 
+        		getVideoFile : getVideoFile,
+        		saveDeclaration : saveDeclaration,
+        		saveProcessChoice : saveProcessChoice 
         	}
 
         	function saveSignature(signatureDataUri) {
@@ -136,7 +138,31 @@
 				return defer.promise;
 
         	}
-        	
+
+        	function saveProcessChoice() {
+            	var requestData = {'process_choice':'0'};
+            	
+        		var defer = $q.defer();
+				var postAPI = $resource( 
+					appConfig.API_BASE_URL+'/user/process/set/', 
+					{}, {
+						Check: {
+							method:'POST',
+						}
+					});
+				postAPI.Check(requestData,function(data){
+					if(data.status_code == 200){
+						defer.resolve({'success':data.response});
+					}else{
+						defer.resolve({'Message':data.response['message']});
+					}				
+				}, function(err){
+					defer.reject(err);
+				}); 
+				return defer.promise;
+
+        	}
+
         	function getKYCStatus() {
         		if ($rootScope.userFlags && $rootScope.userFlags['user_flags'])
         			return $rootScope.userFlags['user_flags']['kra_verified'];
@@ -166,5 +192,28 @@
 				return defer.promise;
 
         	}
-        }        
+
+        	function getVideoFile() {
+            	
+        		var defer = $q.defer();
+				var getAPI = $resource( 
+					appConfig.API_BASE_URL+'/user/video/get/', 
+					{}, {
+						Check: {
+							method:'GET',
+						}
+					});
+				getAPI.Check({},function(data){
+					if(data.status_code == 200){
+						defer.resolve({'success':data.response});
+					}else{
+						defer.resolve({'Message':data.response['message']});
+					}				
+				}, function(err){
+					defer.reject(err);
+				}); 
+				return defer.promise;
+
+        	}
+}        
 })();

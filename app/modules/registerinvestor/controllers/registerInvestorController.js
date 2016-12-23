@@ -17,8 +17,20 @@
 				$scope.registrationStatus.incomplete = false;
 			}
 
+			$scope.callVideoGet = function() {
+				registerInvestorService.getVideoFile().then(function(data){
+					if('success' in data){
+						var statusObject = data['success'];
+						$scope.hasVideo = statusObject.has_uploaded;
+					}
+				});
+				
+			}
 			$scope.callCompleteness = function() {
 				userDetailsService().then(function(userData){
+					$scope.emailVerified = $rootScope.userFlags['user_flags']['email_verified'];
+					$scope.phoneVerified = $rootScope.userFlags['user_flags']['phone_number_verified'];
+					$scope.kycStatus = registerInvestorService.getKYCStatus();
 				});
 			}
 
@@ -43,5 +55,10 @@
 
 			$scope.initialize();
 			
+			$scope.saveProcessChoice = function() {
+				registerInvestorService.saveProcessChoice().then(function(data){
+				});
+
+			}
 		}
 })();

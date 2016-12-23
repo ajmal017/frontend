@@ -47,7 +47,7 @@
 			};
 
 			this.redirectToMainPage = function() {
-                $location.path('/registerInvestorInfo');
+                $location.path($rootScope.redirectUrlContext);
 			}
 			
 			this.scope.redirectToMainPage = angular.bind( this, this.redirectToMainPage );

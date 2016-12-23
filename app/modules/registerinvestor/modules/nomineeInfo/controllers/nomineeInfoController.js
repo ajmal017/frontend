@@ -44,7 +44,7 @@
 			this.scope.lookupPincode = angular.bind( this, this.lookupPincode );
 
 			this.redirectToMainPage = function() {
-                $location.path('/registerInvestorInfo');
+                $location.path($root.redirectUrlContext);
 			}
 			
 			this.scope.redirectToMainPage = angular.bind( this, this.redirectToMainPage );

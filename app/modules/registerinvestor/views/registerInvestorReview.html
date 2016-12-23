@@ -9,16 +9,16 @@
         </div>	
         <div class="col-xs-4 no-padding reviewList">
 	        <div class="col-xs-6 no-padding">
-	        	<p>- Investor Info</p>
-	        	<p>- Identity Info</p>
-	        	<p>- Contact Info</p>
-	        	<p>- Bank Info</p>
+	        	<p ng-click="($root.redirectUrlContext='/registerInvestorReview')" click-redirect="/investorInfo"><span class="content">- Investor Info</span></p>
+	        	<p ng-click="($root.redirectUrlContext='/registerInvestorReview')" click-redirect="/identityInfo"><span class="content">- Identity Info</span></p>
+	        	<p class="highlight not-verified placeholder" ng-click="($root.selectedCriteria='op1');($root.initialize=true);($root.redirectUrlContext='/registerInvestorReview')" click-redirect="/contactInfo"><span class="content">- Contact Info</span></p>
+	        	<p ng-click="($root.redirectUrlContext='/registerInvestorReview')" click-redirect="/bankInfo"><span class="content">- Bank Info</span></p>
 
 	        </div>
 	        <div class="col-xs-6 no-padding reviewList">
-	        	<p>- Nominee Info</p>
-	        	<p>- Signature</p>
-	        	<p>- Video Selfie <span class="nextline highlight placeholder addOnlyBold" click-redirect="/completeVideoSelfie">COMPLETE NOW</span></p>
+	        	<p class="highlight not-verified placeholder" ng-click="($root.selectedCriteria='op1');($root.initialize=true);($root.redirectUrlContext='/registerInvestorReview')" click-redirect="/nomineeInfo"><span class="content">- Nominee Info</span></p>
+	        	<p><span class="content">- Signature</span></p>
+	        	<p ng-if="!kycStatus" ng-click="($root.redirectUrlContext='/registerInvestorReview')" click-redirect="/completeVideoSelfie">- Video Selfie <span ng-if="!hasVideo" class="nextline highlight placeholder addOnlyBold" click-redirect="/completeVideoSelfie">COMPLETE NOW</span></p>
 	        </div>
         </div>
         <div class="col-xs-12 no-padding">
@@ -29,7 +29,7 @@
 	    	<div class="row">
 	    		<div class="fin-btn-cover started">
                     <div class="fin-btn-group">
-                        <button ng-disabled="quickInvestForm1.$invalid" class="fin-app-btn fin-orange" click-redirect="/registerInvestorInfo">CONTINUE TO DASHBOARD</button>
+                        <button ng-disabled="quickInvestForm1.$invalid" class="fin-app-btn fin-orange" click-redirect="/dashboard">CONTINUE TO DASHBOARD</button>
                     </div>
                 </div>
 	    	</div>
