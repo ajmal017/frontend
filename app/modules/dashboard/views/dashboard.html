@@ -6,30 +6,32 @@
 						<div class="image-div">
 							<img src="assets/images/riskassessmentMain.png">
 						</div>
-					<div class="checkbox-cover">
+					<div class="checkbox-cover" ng-if="user_flags.risk_score">
 						<input type="radio" name>
 						<label><span></span></label>
 					</div>
 				</div>
 				<h2>Risk Assesment</h2>
-				<p class="text-center desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<!-- <p class="text-center desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
 				<h3 class="text-center">Your current risk score is</h3>
-				<p class="text-center score">5.7</p>
-				<h4 class="text-center">Below Average Risk taker</h4>
+				<p class="text-center score">{{risk_score}}</p>
+
+				<h4 class="text-center">{{riskType}} taker</h4>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 goals-outer-cover">
 				<div class="goals-cover" click-redirect="/planInvest">
 					<div class="image-div">
 						<img src="assets/images/dashboardImage2.png">
 					</div>
-					<div class="checkbox-cover">
+					<div class="checkbox-cover" ng-if="portfolio_flag">
 						<input type="radio" name>
 						<label><span></span></label>
 					</div>
 				</div>
 				<h2>Plan Investments</h2>
-				<p class="text-center desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-				<h3 class="text-center">Your current have</h3>
+				<!-- <p class="text-center desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
+				<h3 class="text-center" ng-if="!portfolio_flag">You currently have no planned</h3>
+				<h3 class="text-center" ng-if="portfolio_flag">You currently have planned</h3>
 				<p class="text-center score" ng-bind="dashCounts['investCount']"></p>
 				<h4 class="text-center">Annual investments in varied goals</h4>
 			</div>
@@ -38,33 +40,33 @@
 					<div class="image-div">
 						<img src="assets/images/dashboardImage3.png">
 					</div>
-					<div class="checkbox-cover">
+					<div class="checkbox-cover" ng-if="user_flags.invest_redeem">
 						<input type="radio" name>
 						<label><span></span></label>
 					</div>
 				</div>
 				<h2>Invest/Withdraw</h2>
-				<p class="text-center desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				<!-- <p class="text-center desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
 				<!-- <h3 class="text-center">Your current risk score is</h3> -->
 <!-- 				<p class="text-center score">5.7</p>
- -->			<h4 class="text-center">You havent started building<span class="nextline">your smart profile yet</span></h4>
+ -->			<h4 class="text-center" ng-if="portfolio_flag">You havent started building<span class="nextline">your smart profile yet</span></h4>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 goals-outer-cover">
 				<div class="goals-cover" click-redirect="/trackPerformanceStart">
 					<div class="image-div">
 						<img src="assets/images/dashboardImage4.png">
 					</div>
-					<div class="checkbox-cover">
+					<div class="checkbox-cover" ng-if="user_flags.is_real_seen">
 						<input type="radio" name>
 						<label><span></span></label>
 					</div>
 				</div>
 				<h2>Track Performance</h2>
-				<p class="text-center desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-				<h3 class="text-center">Your financial goals are</h3>
+				<!-- <p class="text-center desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p> -->
+				<!-- <h3 class="text-center">Your financial goals are</h3>
 				<p class="text-center score text-score" ng-if="dashCounts['trackPerform']">on track</p>
-				<p class="text-center score text-score" ng-if="!dashCounts['trackPerform']">off track</p>
-				<h4 class="text-center">You don't have a smart portfolio yet</h4>
+				<p class="text-center score text-score" ng-if="!dashCounts['trackPerform']">off track</p> -->
+				<h4 class="text-center" ng-if="portfolio_flag">You don't have a smart portfolio yet</h4>
 			</div>
 		</div>
 	</div>
