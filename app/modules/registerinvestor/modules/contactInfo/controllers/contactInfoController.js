@@ -4,13 +4,15 @@
 		.module('finApp.registerInvestor')
 		.controller('contactInfoController',contactInfoController);
 
-		contactInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','contactInfoService','registerInvestorService'];
-		function contactInfoController($rootScope,$scope,$route,$http,$location,contactInfoService, registerInvestorService){
+		contactInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','contactInfoService','registerInvestorService','busyIndicator'];
+		function contactInfoController($rootScope,$scope,$route,$http,$location,contactInfoService, registerInvestorService,busyIndicator){
 			this.scope = $scope;
 			this.scope.modelVal = {communicationAddress: {}, permanentAddress: {}};
 
 			this.rootScope = $rootScope;
 			this.route = $route;
+			this.location = $location;
+			this.busyIndicator = busyIndicator;
 			
 			this.service = contactInfoService;
 			

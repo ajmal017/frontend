@@ -34,6 +34,7 @@
 	        }
 
 	        function confirmOtp(params,tokens){
+	        	var requestData = {'sms_code' : parseInt(params.sms_code)};
 	        	var defer = $q.defer();
 				var postAPI = $resource( 
 					appConfig.API_BASE_URL+'/user/verify/phone/', 
@@ -41,11 +42,11 @@
 						Check: {
 							method:'POST',
 							headers: { 
-								'Authorization': 'Bearer '+tokens['access_token']
+								'Authorization': tokens['token_type']+' '+tokens['access_token']
 							}
 						}
 					});
-				postAPI.Check(params,function(data){
+				postAPI.Check(requestData,function(data){
 					if(data.status_code == 200){
 						defer.resolve({'success':data.response});
 					}else{

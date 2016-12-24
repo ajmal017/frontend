@@ -4,8 +4,8 @@
 		.module('finApp.registerInvestor')
 		.controller('registerInvestorController',registerInvestorController);
 
-		registerInvestorController.$inject = ['$rootScope','$scope','$http','registerInvestorService','userDetailsService'];
-		function registerInvestorController($rootScope,$scope,$http,registerInvestorService,userDetailsService){
+		registerInvestorController.$inject = ['$rootScope','$scope','$http','registerInvestorService','userDetailsService','busyIndicator'];
+		function registerInvestorController($rootScope,$scope,$http,registerInvestorService,userDetailsService,busyIndicator){
 			$scope.registrationStatus = {};
 			
 			$scope.updateRegistrationStatus = function() {
@@ -38,7 +38,9 @@
 
 			$scope.initialize = function() {
 				var self = this;
+				busyIndicator.show();
 				registerInvestorService.getRegistrationStatus().then(function(data){
+					busyIndicator.hide();
 					if('success' in data){
 						var statusObject = data['success'];
 						$scope.registrationStatus = {

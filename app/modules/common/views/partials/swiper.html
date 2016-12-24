@@ -2485,8 +2485,8 @@
                 <div class="swiper-content noPadding">
                      <p class="question">I was born in the city of <span class="swiper-input"><input ng-model="modelVal.placeOfBirth" type="text" name="year" required></span></p>
                      <p class="question">In the country: <select ng-if="countryList" dropdown scroll-height="250" ng-model="modelVal.countryOfBirth"><option ng-selected="$index == 0" ng-repeat="country in countryList" value="{{country.value}}">{{country.value}}</option></select></p>
-                      <p class="question">I worked as a <select dropdown ng-model="modelVal.occupationType"><option ng-selected="(modelVal.occupationType=='PRI'||!modelVal.occupationType)" value="PRI">Private Sector Service</option><option ng-selected="(modelVal.occupationType=='PRO')" value="PRO">Professional (Self-Employed)</option><option  ng-selected="(modelVal.occupationType=='BUS')" value="BUS">Business</option><option  ng-selected="(modelVal.occupationType=='HOU')" value="HOU">Housewife</option><option ng-selected="(modelVal.occupationType=='PUB')" value="PUB">Public Sector Service</option><option ng-selected="(modelVal.occupationType=='GOV')" value="GOV">Government Service</option><option ng-selected="(modelVal.occupationType=='FOR')" value="FOR">Forex Dealer</option><option ng-selected="(modelVal.occupationType=='AGR')" value="AGR">Agriculturist</option><option ng-selected="(modelVal.occupationType=='STU')" value="STU">Student</option><option ng-selected="(modelVal.occupationType=='OTH')" value="OTH">Other (please specify)</option></select></p>
-                      <p class="question">And I make <select dropdown ng-model="modelVal.income" scroll-height="120"><option ng-selected="(modelVal.income=='1')||(!modelVal.income)" selected value="1">&lt; 1 Lakhs</option><option ng-selected="(modelVal.income=='2')" value="2">1-5 Lakhs</option><option ng-selected="(modelVal.income=='3')" value="3">5-10 Lakhs</option><option ng-selected="(modelVal.income=='4')" value="4">10-25 Lakhs</option><option ng-selected="(modelVal.income=='5')" value="5">25-100 Lakhs</option><option ng-selected="(modelVal.income=='6')" value="6">&gt; 100 Lakhs</option></select>per year</p>
+                      <p class="question">I worked as a <select dropdown ng-model="modelVal.occupationType"><option ng-selected="(modelVal.occupationType=='PRI'||!modelVal.occupationType||modelVal.occupationType==undefined)" value="PRI">Private Sector Service</option><option ng-selected="(modelVal.occupationType=='PRO')" value="PRO">Professional (Self-Employed)</option><option  ng-selected="(modelVal.occupationType=='BUS')" value="BUS">Business</option><option  ng-selected="(modelVal.occupationType=='HOU')" value="HOU">Housewife</option><option ng-selected="(modelVal.occupationType=='PUB')" value="PUB">Public Sector Service</option><option ng-selected="(modelVal.occupationType=='GOV')" value="GOV">Government Service</option><option ng-selected="(modelVal.occupationType=='FOR')" value="FOR">Forex Dealer</option><option ng-selected="(modelVal.occupationType=='AGR')" value="AGR">Agriculturist</option><option ng-selected="(modelVal.occupationType=='STU')" value="STU">Student</option><option ng-selected="(modelVal.occupationType=='OTH')" value="OTH">Other (please specify)</option></select></p>
+                      <p class="question">And I make <select dropdown ng-model="modelVal.income" scroll-height="120"><option ng-selected="(modelVal.income=='1')||(!modelVal.income)||(modelVal.income==undefined)" selected value="1">&lt; 1 Lakhs</option><option ng-selected="(modelVal.income=='2')" value="2">1-5 Lakhs</option><option ng-selected="(modelVal.income=='3')" value="3">5-10 Lakhs</option><option ng-selected="(modelVal.income=='4')" value="4">10-25 Lakhs</option><option ng-selected="(modelVal.income=='5')" value="5">25-100 Lakhs</option><option ng-selected="(modelVal.income=='6')" value="6">&gt; 100 Lakhs</option></select>per year</p>
                 </div>
             </form>
         </div>
@@ -2516,9 +2516,9 @@
         <button ng-show="(step == 1)" ng-click="(step=step+1)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="(modelVal.investorStatus==undefined)||(modelVal.panNumber=='')||(modelVal.panNumber==undefined)||(modelVal.applicantName=='')||(modelVal.applicantName==undefined)||(modelVal.fatherName=='')||(modelVal.fatherName==undefined)||(modelVal.dob==undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2)" ng-click="(step=step + 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" ng-disabled="(!modelVal.placeOfBirth)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 3)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 3)" ng-click="appendValues(modelVal);uploadFileToServer();(step = step + 1)" click-redirect="{{$root.redirectUrlContext}}" ng-disabled="(!imageUrl)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 3)" ng-click="appendValues(modelVal);uploadFileToServer(null, true);(step = step + 1)" ng-disabled="(!imageUrl)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>sdsd{{step}}
     <span ng-if="(step == 3)" class="placeholder imagePlaceholder">Note: Above image will be used to register your investment account.</span>
 </div>
@@ -2566,7 +2566,7 @@
         <button ng-show="(step == 1)" ng-click="(step=step + 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 1)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" ng-disabled="(!modelVal.accountHolderName)||(!modelVal.ifscCode)||(!modelVal.accountNumber)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);uploadFileToServer();(step = step + 1)" click-redirect="{{$root.redirectUrlContext}}" ng-disabled="(!imageUrl)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);uploadFileToServer(null,true);(step = step + 1)" ng-disabled="(!imageUrl)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
     <span ng-if="(step == 2)" class="placeholder imagePlaceholder">Note: Above image will be used to register your investment account.</span>
 </div>
@@ -2575,8 +2575,8 @@
         <div class="swiper-slide">
             <form name="invertorInfoForm1" novalidate>
                 <div class="swiper-content noPadding">
-                      <p class="question col-xs-12">I am a<select dropdown ng-model="modelVal.gender"><option ng-selected="(modelVal.gender=='M')||(!modelVal.gender)"  value="M">Male</option><option value="F">Female</option></select></p>
-                      <p class="question col-xs-12">and I am<select dropdown ng-model="modelVal.maritalStatus"><option ng-selected="(modelVal.maritalStatus=='1'||!modelVal.maritalStatus)" value="1">Single</option><option ng-selected="(modelVal.maritalStatus=='2')" value="2">Married</option></select></p>
+                      <p class="question col-xs-12">I am a<select dropdown ng-model="modelVal.gender"><option ng-selected="(modelVal.gender=='M')||(!modelVal.gender)||(modelVal.gender==undefined)"  value="M">Male</option><option value="F">Female</option></select></p>
+                      <p class="question col-xs-12">and I am<select dropdown ng-model="modelVal.maritalStatus"><option ng-selected="(modelVal.maritalStatus=='1'||!modelVal.maritalStatus||modelVal.maritalStatus==undefined)" value="1">Single</option><option ng-selected="(modelVal.maritalStatus=='2')" value="2">Married</option></select></p>
                       <p class="question col-xs-12">And I am of<select dropdown ng-model="modelVal.nationality"><option selected value="INDIA">INDIAN</option></select>nationality</p>
                 </div>
             </form>
@@ -2607,7 +2607,7 @@
         <button ng-show="(step == 1)" ng-click="(step=step + 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 1)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);uploadFileToServer();(step = step + 1)" click-redirect="{{$root.redirectUrlContext}}" ng-disabled="(!imageUrl)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);uploadFileToServer(null, true);(step = step + 1)" ng-disabled="(!imageUrl)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
     <span ng-if="(step == 2)" class="placeholder imagePlaceholder">Note: Above image will be used to register your investment account.</span>
 </div>

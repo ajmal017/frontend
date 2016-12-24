@@ -26,7 +26,7 @@
 					if('success' in data){
 						$('#otpModal').modal('hide');
 						setTimeout(function(){
-							authService.submitSuccess($scope.succesData).then(function(data){
+							authService.submitSuccess({'success':$scope.succesData}).then(function(data){
 								userDetailsService().then(function(userData){
 									$rootScope.$broadcast('refreshCredentials',userData['success'])
 									$location.path('/dashboard');

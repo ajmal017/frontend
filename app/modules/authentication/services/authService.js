@@ -42,9 +42,12 @@
 							if('success' in data){
 								localStorage.removeItem('riskData');
 							}
+							defer.resolve({'success':'success'});
 						});
 					}
-				defer.resolve({'success':'success'});
+					else {
+						defer.resolve({'success':'success'});
+					}
 				return defer.promise;
 	        }
         }     

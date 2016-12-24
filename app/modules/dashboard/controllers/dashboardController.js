@@ -11,7 +11,14 @@
 			// })
 
 			var userFlags = JSON.parse(sessionStorage.getItem('userFlags'));
-			$scope.risk_score = userFlags.user_answers.risk_score;
+			if(userFlags.user_answers.risk_score) {
+				$rootScope.userRiskFactor = userFlags.user_answers.risk_score;
+			} else {
+				$rootScope.userRiskFactor = '7.0';
+			}
+
+			$scope.risk_score = $rootScope.userRiskFactor;
+			
 			if($scope.risk_score > 0 && $scope.risk_score < 4) {
 	            	
             	$scope.riskType = 'Low Risk';
@@ -33,7 +40,6 @@
 
             $scope.user_flags = userFlags.user_flags;
             $scope.portfolio_flag = userFlags.user_flags.portfolio;
-			$rootScope.userRiskFactor = userFlags.user_answers.risk_score;
 			console.log('risk_score',userFlags.user_answers.risk_score);
 
 		}

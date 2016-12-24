@@ -45,27 +45,49 @@ var finApp = finApp || {};
 	            };
 	        },
 	        
-	        uploadFileToServer : function(name){
-	            if (typeof(name) === "undefined") {
+	        uploadFileToServer : function(name, redirect){
+	            if (typeof(name) === "undefined" || !name) {
 	            	name = 'imageUrl';
 	            }
-	        	this.service.uploadFileToServer(this.scope[name]);
+	            if (typeof(redirect) === "undefined") {
+	            	redirect = false;
+	            }
+	            this.busyIndicator.show();
+	            var self = this;
+	        	this.service.uploadFileToServer(this.scope[name]).then(function(){
+	        		self.busyIndicator.hide();
+	        		if (redirect) {
+	        			self.location.path(self.rootScope.redirectUrlContext);
+	        		}
+	        	}, function() {
+	        		self.busyIndicator.hide();
+	        	});
 	        },
 	        
 			initialize : function(){
 				var self = this;
+				self.busyIndicator.show();
 				if (!this.rootScope.selectedCriteria) {
 					//this.rootScope.selectedCriteria = 'op1';
 				}
 				this.service.getSavedValues().then(function(data){
+					self.busyIndicator.hide();
 					if('success' in data){
 						self.scope.modelVal = data['success'];
 					}
+				}, function() {
+					self.busyIndicator.hide();
 				});
 			},
 			
 			saveInfo : function() {
-				this.service.setSavedValues(this.scope.modelVal);
+				var self = this;
+				self.busyIndicator.show();
+				this.service.setSavedValues(this.scope.modelVal).then(function(data){
+					self.busyIndicator.hide();
+				}, function() {
+					self.busyIndicator.hide();
+				});
 			},
 			
 			appendValue : function() {
