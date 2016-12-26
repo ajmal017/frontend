@@ -11,7 +11,7 @@
 			$scope.updateRegistrationStatus = function() {
 				if (!$scope.registrationStatus.investorInfo || !$scope.registrationStatus.bankInfo || 
 					!$scope.registrationStatus.identityInfo || !$scope.registrationStatus.contactInfo || 
-					$scope.registrationStatus.nomineeInfo) {
+					!$scope.registrationStatus.nomineeInfo) {
 					$scope.registrationStatus.incomplete = true;
 				}
 				else {
@@ -52,6 +52,8 @@
 						};
 						$scope.updateRegistrationStatus();
 					}
+				}, function() {
+					busyIndicator.hide();
 				});
 				
 				$scope.callCompleteness();

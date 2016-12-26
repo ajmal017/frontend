@@ -4,13 +4,15 @@
 		.module('finApp.registerInvestor')
 		.controller('nomineeInfoController',nomineeInfoController);
 
-		nomineeInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','nomineeInfoService','registerInvestorService','busyIndicator'];
-		function nomineeInfoController($rootScope,$scope,$route,$http,$location,nomineeInfoService, registerInvestorService,busyIndicator){
+		nomineeInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','$timeout', 'nomineeInfoService','registerInvestorService','busyIndicator'];
+		function nomineeInfoController($rootScope,$scope,$route,$http,$location,$timeout, nomineeInfoService, registerInvestorService,busyIndicator){
 			this.scope = $scope;
 			this.scope.modelVal = {};
 
 			this.rootScope = $rootScope;
 			this.route = $route;
+			this.location = $location;
+			this.timeout = $timeout;
 			this.busyIndicator = busyIndicator;
 			
 			this.service = nomineeInfoService;
@@ -52,8 +54,8 @@
 
 			this.processNomineeAbsent = function() {
 				if (this.scope.modelVal.nomineeAbsent) {
-					this.scope.saveInfo();
-					this.scope.redirectToMainPage();
+					this.scope.saveInfo(true);
+					//this.scope.redirectToMainPage();
 				}
 				else {
 					this.scope.reloadRoute('op2',1);

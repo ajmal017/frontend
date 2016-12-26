@@ -80,11 +80,19 @@ var finApp = finApp || {};
 				});
 			},
 			
-			saveInfo : function() {
+			saveInfo : function(redirect) {
 				var self = this;
+	            if (typeof(redirect) === "undefined") {
+	            	redirect = false;
+	            }
+
 				self.busyIndicator.show();
 				this.service.setSavedValues(this.scope.modelVal).then(function(data){
 					self.busyIndicator.hide();
+	        		if (redirect) {
+	        			self.location.path(self.rootScope.redirectUrlContext);
+	        		}
+
 				}, function() {
 					self.busyIndicator.hide();
 				});

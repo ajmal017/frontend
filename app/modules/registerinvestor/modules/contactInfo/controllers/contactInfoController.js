@@ -4,14 +4,15 @@
 		.module('finApp.registerInvestor')
 		.controller('contactInfoController',contactInfoController);
 
-		contactInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','contactInfoService','registerInvestorService','busyIndicator'];
-		function contactInfoController($rootScope,$scope,$route,$http,$location,contactInfoService, registerInvestorService,busyIndicator){
+		contactInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','$timeout', 'contactInfoService','registerInvestorService','busyIndicator'];
+		function contactInfoController($rootScope,$scope,$route,$http,$location,$timeout, contactInfoService, registerInvestorService,busyIndicator){
 			this.scope = $scope;
 			this.scope.modelVal = {communicationAddress: {}, permanentAddress: {}};
 
 			this.rootScope = $rootScope;
 			this.route = $route;
 			this.location = $location;
+			this.timeout = $timeout;
 			this.busyIndicator = busyIndicator;
 			
 			this.service = contactInfoService;
@@ -33,11 +34,15 @@
 			
 			this.lookupPincode = function(addressObject) {
 				var self = this;
+				self.busyIndicator.show();
 				registerInvestorService.lookupPincode(addressObject.pincode).then(function(data){
+					self.busyIndicator.hide();
 					if('success' in data){
 						addressObject.city = data['success']['city'];
 						addressObject.state = data['success']['state'];
 					}
+				}, function() {
+					self.busyIndicator.hide();
 				});
 
 			}
@@ -77,8 +82,8 @@
 					$scope.appendValues($scope.modelVal);
 					$scope.step=step+1;
 					if ($rootScope.selectedCriteria == 'op1') {
-						this.saveInfo();
-						this.redirectToMainPage();
+						this.saveInfo(true);
+						//this.redirectToMainPage();
 					}
 					else {
 						if (!this.getKYCStatus() && !$scope.modelVal.addressAreEqual) {
@@ -93,8 +98,8 @@
 					$scope.appendValues($scope.modelVal);
 					$scope.step=step+1;
 					if ($rootScope.selectedCriteria == 'op2') {
-						this.saveInfo();
-						this.redirectToMainPage();
+						this.saveInfo(true);
+						//this.redirectToMainPage();
 					}
 					else {
 						this.savePermanentAddressImage();
@@ -102,8 +107,8 @@
 				}
 				else if(step == 5) {
 					$scope.appendValues($scope.modelVal);
-					this.saveInfo();
-					this.redirectToMainPage();
+					this.saveInfo(true);
+					//this.redirectToMainPage();
 				}				
 			};
 

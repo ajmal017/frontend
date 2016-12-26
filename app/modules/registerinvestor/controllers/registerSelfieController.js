@@ -4,8 +4,8 @@
 		.module('finApp.registerInvestor')
 		.controller('registerSelfieController',registerSelfieController);
 
-		registerSelfieController.$inject = ['$rootScope','$scope','$http','$location','registerInvestorService'];
-		function registerSelfieController($rootScope,$scope,$http,$location,registerInvestorService){
+		registerSelfieController.$inject = ['$rootScope','$scope','$http','$location','busyIndicator','registerInvestorService'];
+		function registerSelfieController($rootScope,$scope,$http,$location,busyIndicator,registerInvestorService){
 			$scope.modelVal = {};
 			
 	        $scope.showVideoPopup = function(){
@@ -20,11 +20,13 @@
 
 			
 			$scope.saveInfo = function() {
+				busyIndicator.show();
 				registerInvestorService.saveVideoFile($rootScope.capturedFile.blob, $rootScope.capturedFile.thumbnail).then(function(data){
+					busyIndicator.hide();
 					if('success' in data){
 						
 					}
-				});
+				}, function() {busyIndicator.hide();});
 			}
 		}
 })();
