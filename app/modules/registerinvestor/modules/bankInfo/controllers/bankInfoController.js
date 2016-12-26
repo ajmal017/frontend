@@ -4,13 +4,16 @@
 		.module('finApp.registerInvestor')
 		.controller('bankInfoController',bankInfoController);
 
-		bankInfoController.$inject = ['$rootScope','$scope','$route','$http','bankInfoService'];
-		function bankInfoController($rootScope,$scope,$route,$http,bankInfoService){
+		bankInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','$timeout','bankInfoService','busyIndicator'];
+		function bankInfoController($rootScope,$scope,$route,$http,$location,$timeout, bankInfoService,busyIndicator){
 			this.scope = $scope;
 			this.scope.modelVal = {};
 
 			this.rootScope = $rootScope;
 			this.route = $route;
+			this.location = $location;
+			this.timeout = $timeout;
+			this.busyIndicator = busyIndicator;
 			
 			this.service = bankInfoService;
 			
@@ -32,11 +35,15 @@
 
 			this.lookupIFSCCode = function() {
 				var self = this;
+				self.busyIndicator.show();
 				this.service.lookupIFSCCode(this.scope.modelVal.ifscCode).then(function(data){
+					self.busyIndicator.hide();
 					if('success' in data){
 						angular.extend(self.scope.modelVal, data['success']);
 						//TODO prompt for supported banks
 					}
+				}, function() {
+					self.busyIndicator.hide();
 				});
 
 			};

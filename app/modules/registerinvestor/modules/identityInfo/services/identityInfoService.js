@@ -21,9 +21,9 @@
         		deserializeModel = function(response) {
         			
         			modelObject = {
-        				maritalStatus : response.marital_status, 
-        				gender : response.gender, 
-        				nationality : response.nationality,
+        				maritalStatus : response.marital_status || '1', 
+        				gender : response.gender || 'M', 
+        				nationality : response.nationality || 'INDIA',
         				imageUrl : response.identity_info_image_thumbnail
 	        		};
         			
@@ -32,8 +32,18 @@
             return{
         		getSavedValues : getSavedValues,
                 setSavedValues : setSavedValues,
-                uploadFileToServer : uploadFileToServer 
+                uploadFileToServer : uploadFileToServer,
+				initializeModel : initializeModel
+
         	}
+    		
+    		function initializeModel() {
+    			return {
+        				maritalStatus : '1', 
+        				gender : 'M', 
+        				nationality : 'INDIA'
+	        		};
+    		}
             
             function getSavedValues() {
         		var defer = $q.defer();

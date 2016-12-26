@@ -46,7 +46,7 @@
         				nomineeName : response.nominee_name, 
 	        			nomineeDob : response.nominee_dob, 
 	        			guardianName : response.guardian_name,
-	        			relationshipWithInvestor : response.relationship_with_investor,
+	        			relationshipWithInvestor : response.relationship_with_investor || 1,
 	        			nomineeAbsent : response.nominee_absent,
 	        			addressAreEqual : response.address_are_equal
 	        		};
@@ -81,6 +81,7 @@
 							deserializeModel(data.response);
 							defer.resolve({'success':modelObject});
 						}else{
+							deserializeModel({});
 							defer.resolve({'Message':data.response['message']});
 						}				
 					}, function(err){

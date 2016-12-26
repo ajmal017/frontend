@@ -15,8 +15,7 @@
 			'noTokenAPI':[
 				'/user/login/',
 	        	'/core/assess/new/response/',
-	        	'/user/register/',
-	        	'/user/verify/phone/'
+	        	'/user/register/'
 			],
 			'pagesWithAlreadySignMsg':[
 				'/gettingStarted',

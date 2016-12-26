@@ -71,6 +71,7 @@
 		    	subHeader : 'GO BACK TO DASHBOARD',
 				redirectUrl : '/dashboard',
 		        templateUrl: 'modules/registerinvestor/views/registerInvestorReview.html',
+		        controller : 'registerInvestorController'
 		    })
 		    .when('/completeVideoSelfie', {
 		    	title : 'Investor Registration',

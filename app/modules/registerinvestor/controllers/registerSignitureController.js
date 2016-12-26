@@ -4,8 +4,8 @@
 		.module('finApp.registerInvestor')
 		.controller('registerSignatureController',registerSignatureController);
 
-		registerSignatureController.$inject = ['$rootScope','$scope','$http','$location','registerInvestorService'];
-		function registerSignatureController($rootScope,$scope,$http,$location,registerInvestorService){
+		registerSignatureController.$inject = ['$rootScope','$scope','$http','$location','busyIndicator','registerInvestorService','userDetailsService'];
+		function registerSignatureController($rootScope,$scope,$http,$location,busyIndicator,registerInvestorService, userDetailsService){
 			$scope.modelVal = {};
 			$scope.showSigniture = function(){
 				$('#signitureModal').modal('show');
@@ -25,16 +25,25 @@
 */
 			}
 			
-			this.redirectToMainPage = function() {
-                $location.path('/registerInvestorInfo');
-			}
 
+			$scope.getSignature = function() {
+				registerInvestorService.getSignature().then(function(data){
+					if('success' in data){
+						$scope.modelVal.signature = data['success'][signature];
+					}
+					 
+				});
+			}
 			
 			$scope.saveInfo = function() {
+				busyIndicator.show();
 				registerInvestorService.saveSignature($scope.modelVal.signature).then(function(data){
 					if('success' in data){
 						registerInvestorService.saveDeclaration($scope.modelVal).then(function(data){
 							if('success' in data){
+								busyIndicator.hide();
+								userDetailsService();
+								
 								if (registerInvestorService.getKYCStatus()) {
 									$location.path('/registrationCompleted');
 								}
@@ -43,16 +52,20 @@
 								}
 							}
 							else {
+								busyIndicator.hide();
 								//TODO show popup 
 								console.log("Failed to Save!");
 							}
-						});
+						}, function() { busyIndicator.hide();});
 					}
 					else {
 						//TODO show popup 
+						busyIndicator.hide();
 						console.log("Failed to Save!");
 					}
 
+				}, function() {
+					busyIndicator.hide();
 				});
 				
 			}

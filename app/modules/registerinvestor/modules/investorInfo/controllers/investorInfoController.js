@@ -4,13 +4,16 @@
 		.module('finApp.registerInvestor')
 		.controller('investorInfoController',investorInfoController);
 
-		investorInfoController.$inject = ['$rootScope','$scope','$route','$http','investorInfoService'];
-		function investorInfoController($rootScope,$scope,$route,$http,investorInfoService){
+		investorInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','$timeout', 'investorInfoService','busyIndicator'];
+		function investorInfoController($rootScope,$scope,$route,$http,$location,$timeout, investorInfoService,busyIndicator){
 			this.scope = $scope;
-			this.scope.modelVal = {};
+			this.scope.modelVal = investorInfoService.initializeModel();
 
 			this.rootScope = $rootScope;
 			this.route = $route;
+			this.location = $location;
+			this.timeout = $timeout;
+			this.busyIndicator = busyIndicator;
 			
 			this.service = investorInfoService;
 			
@@ -35,13 +38,17 @@
 
 			this.checkKYCStatus = function() {
 				var self = this;
+				self.busyIndicator.show();
 				this.service.getKYCStatus(this.scope.modelVal.panNumber).then(function(data){
+					self.busyIndicator.hide();
 					if('success' in data){
 						self.scope.modelVal.kycStatus = data['success']['status'];
 						if (self.scope.modelVal.kycStatus) {
 							self.scope.modelVal.applicantName = data['success']['name'];
 						}
 					}
+				}, function() {
+					self.busyIndicator.hide();
 				});
 
 			};

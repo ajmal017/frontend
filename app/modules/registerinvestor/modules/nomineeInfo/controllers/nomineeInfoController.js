@@ -4,13 +4,16 @@
 		.module('finApp.registerInvestor')
 		.controller('nomineeInfoController',nomineeInfoController);
 
-		nomineeInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','nomineeInfoService','registerInvestorService'];
-		function nomineeInfoController($rootScope,$scope,$route,$http,$location,nomineeInfoService, registerInvestorService){
+		nomineeInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','$timeout', 'nomineeInfoService','registerInvestorService','busyIndicator'];
+		function nomineeInfoController($rootScope,$scope,$route,$http,$location,$timeout, nomineeInfoService, registerInvestorService,busyIndicator){
 			this.scope = $scope;
 			this.scope.modelVal = {};
 
 			this.rootScope = $rootScope;
 			this.route = $route;
+			this.location = $location;
+			this.timeout = $timeout;
+			this.busyIndicator = busyIndicator;
 			
 			this.service = nomineeInfoService;
 			
@@ -44,15 +47,15 @@
 			this.scope.lookupPincode = angular.bind( this, this.lookupPincode );
 
 			this.redirectToMainPage = function() {
-                $location.path('/registerInvestorInfo');
+                $location.path($rootScope.redirectUrlContext);
 			}
 			
 			this.scope.redirectToMainPage = angular.bind( this, this.redirectToMainPage );
 
 			this.processNomineeAbsent = function() {
 				if (this.scope.modelVal.nomineeAbsent) {
-					this.scope.saveInfo();
-					this.scope.redirectToMainPage();
+					this.scope.saveInfo(true);
+					//this.scope.redirectToMainPage();
 				}
 				else {
 					this.scope.reloadRoute('op2',1);

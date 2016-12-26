@@ -101,6 +101,7 @@
 							deserializeModel(data.response);
 							defer.resolve({'success':modelObject});
 						}else{
+							deserializeModel({});
 							defer.resolve({'Message':data.response['message']});
 						}				
 					}, function(err){

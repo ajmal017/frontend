@@ -28,16 +28,16 @@
         		deserializeModel = function(response) {
         			
         			modelObject = {
-        				countryOfBirth : response.country_of_birth,
+        				countryOfBirth : response.country_of_birth || 'India',
         				politicalExposure : response.political_exposure, 
-        				income : response.income, 
+        				income : response.income || '1', 
 	        			specificOccupation : response.occupation_specific,
 	        			applicantName : response.applicant_name, 
 	        			panNumber : response.pan_number, 
 	        			placeOfBirth : response.place_of_birth, 
 	        			fatherName : response.father_name, 
 	        			investorStatus : response.investor_status, 
-	        			occupationType : response.occupation_type, 
+	        			occupationType : response.occupation_type || 'PRI', 
 	        			otherTaxPayer : response.other_tax_payer,
 	        			dob : response.dob,
 	        			imageUrl : response.pan_image_thumbnail,
@@ -51,9 +51,17 @@
         		getSavedValues : getSavedValues,
                 setSavedValues : setSavedValues,
                 getKYCStatus : getKYCStatus,
-                uploadFileToServer : uploadFileToServer 
+                uploadFileToServer : uploadFileToServer,
+                initializeModel : initializeModel
         	}
             
+    		function initializeModel() {
+    			return {
+    				occupationType : '', 
+    				income : ''
+	        		};
+    		}
+
             function getSavedValues() {
         		var defer = $q.defer();
 				var getAPI = $resource( 

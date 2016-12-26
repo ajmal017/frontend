@@ -51,6 +51,9 @@
 
 			this.scope.calculateEstimates = function() {
 				var self = this;
+				if (!$scope.automobile['tenure']) {
+					self.getAssetAllocationCategory();
+				}
 				automobileService.getCorpusEstimates($scope.automobile['tenure'], $scope.modelVal.A5, $scope.modelVal.A6, $scope.modelVal.A7)
 				.then(self.handleGoalEstimatesResponse);
 			}

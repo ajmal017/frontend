@@ -200,9 +200,11 @@
 	    			disabled : '=dropdownDisable'
 	    		},	
 	    		link : function($scope,$element,$attr,ngModel){
+	    			console.log("in link: " + $element.id);
 	    			setTimeout(function(){
 	    				var $this = $element,
         			numberOfOptions = $this.children('option').length;
+		    			console.log("in link timeout: " + $element.id);
     				$this.addClass('s-hidden');
     				$this.wrap('<div class="select"></div>');
     				$this.after('<div class="styledSelect"></div>');
@@ -258,7 +260,22 @@
 				    
 				    if($attr['scrollHeight'] != undefined){
 				    	$this.parent().find('.options').mCustomScrollbar({setHeight:parseInt($attr['scrollHeight']),axis:"y"})
-				    }				    		    
+				    }
+				    
+	                ngModel.$render = function() {
+	                	if (!$this.children('option[selected]') || $this.children('option[selected]').val() !=  ngModel.$viewValue ) {
+						    for (var i = 0; i < numberOfOptions; i++) {
+						        if($this.children('option').eq(i).val() ==  ngModel.$viewValue){
+						        	console.log("Setting option == val: " + ngModel.$viewValue);
+						        	$this.children('option').eq(i).attr('ng-selected', true);
+							        $styledSelect.text($this.children('option').eq(i).text());
+
+						        }
+						    }
+	                		
+	                	}
+	                };
+
 				},0);	    			
 	    		}
 	    	}
@@ -489,8 +506,8 @@
 	            ctrl.$parsers.unshift(function(value) {
 
 	                value = value.toUpperCase();
-	                var regifsc = /^([0-9]){6}?$/;
-	                if (regifsc.test(value) == false) {
+	                var regPincode = /^([0-9]){6}?$/;
+	                if (regPincode.test(value) == false) {
 	                    ctrl.$setValidity('invalidPincode', false);
 	                } else {
 	                    ctrl.$setValidity('invalidPincode', true);

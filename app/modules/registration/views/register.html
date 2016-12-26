@@ -102,7 +102,7 @@
 		<div class="otp-form">
 			<form name="otpForm" novalidate>
 				<div class="form-group">
-					<input only-number type="text" name="email" ng-model="otp.sms_code" required>
+					<input only-number type="number" name="email" ng-model="otp.sms_code" required>
 					<label>OTP</label>
 					<button ng-click="resendOtp()" class="resendOtp pull-right"><span class="resend-icon"></span>RESEND OTP</button>
 				</div>
