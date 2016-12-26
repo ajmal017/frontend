@@ -3,43 +3,193 @@
         <div class="swiper-slide">
             <form name="riskAssesment1Form1" novalidate ng-init="step = 1">
             <div class="swiper-content content-1" ng-init="disabled = 'locked'">
-                <p>I am a <span class="swiper-input age"><input only-number type="text" name="year" required ng-model="modelVal.A1"></span> years old<select dropdown dropdown-disable="disabled" ng-model="modelVal.A7"><option value="op1">Male</option><option value="op2">Female</option></select> and I am <select dropdown ng-model="modelVal.A17"><option selected value="op1">Single</option><option value="op2">Married</option></select></p>
-                <p>with <select dropdown ng-model="modelVal.A15"><option selected value="op1">No</option><option value="op2">1</option>
-                <option value="op3">2</option><option value="op4">2+</option></select>kids,<select dropdown ng-model="modelVal.A16"><option selected value="op1">No</option><option value="op2">1</option>
-                <option value="op3">2</option></select>dependent parents</p>
-                <p>and my primary income source is<select dropdown ng-model="modelVal.A18"><option selected value="op1">Salary</option><option value="op2">Business</option>
-                <option value="op3">Homemaker</option><option value="op3">Retired</option><option value="op4">Other</option></select></p>
+
+                <div class="col-lg-12">
+                    <p class="pull-left col-lg-2 risk-questions">I am a <span class="swiper-input risk-age"><input only-number type="text" name="year" required ng-model="modelVal.A1"></span> year old</p><!-- <select dropdown dropdown-disable="disabled" ng-model="modelVal.A7"><option value="op1">Male</option><option value="op2">Female</option></select> -->
+                    <div class="selectRisk_cover col-lg-1 no-padding">
+                        <input type="radio" required id="male" name="gender" ng-model="modelVal.A7" value="op1">
+                        <label for ="male">
+                            <img src="assets/images/riskassessmentMale.png" class="img img-responsive">
+                            <p class="text-center risk-options">Male</p>
+                        </label>
+                    </div>
+
+                    <div class="selectRisk_cover col-lg-1 no-padding">
+                        <input type="radio" required id="female" name="gender" ng-model="modelVal.A7" value="op2">
+                        <label for ="female">
+                            <img src="assets/images/riskassessmentFemale.png" class="img img-responsive">
+                            <p class="text-center risk-options">Female</p>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-lg-12">
+                <p class="pull-left col-lg-2 risk-questions">and I am</p> 
+                <div class="selectRisk_cover col-lg-1 no-padding">
+                    <input type="radio" required id="single" name="marital" ng-model="modelVal.A17" value="op1">
+                    <label for ="single">
+                        <img src="assets/images/riskassessmentSingle.png" class="img img-responsive">
+                        <p class="text-center risk-options">Single</p>
+                    </label>
+                </div>
+
+                <div class="selectRisk_cover col-lg-1 no-padding">
+                    <input type="radio" required id="married" name="marital" ng-model="modelVal.A17" value="op2">
+                    <label for ="married">
+                        <img src="assets/images/riskassessmentMarried.png" class="img img-responsive">
+                        <p class="text-center risk-options">Married</p>
+                    </label>
+                </div>
+
+                 <!-- <select dropdown ng-model="modelVal.A17"><option selected value="op1">Single</option><option value="op2">Married</option></select></p> -->
+                </div> 
+
+                <div class="col-lg-12">
+                    <p class="col-lg-1">with</p> 
+
+                    <div class="selectRisk_cover col-lg-1">
+                        <input type="radio" required id="nokids" name="kidsNumber" ng-model="modelVal.A15" value="op1">
+                        <label for ="nokids">
+                            <div class="assessNumber">NO</div>
+                        </label>
+                    </div>
+                    <div class="selectRisk_cover col-lg-1">
+                        <input type="radio" required id="onekid" name="kidsNumber" ng-model="modelVal.A15" value="op2">
+                        <label for ="onekid">
+                            <div class="assessNumber">01</div>
+                        </label>
+                    </div>
+                    <div class="selectRisk_cover col-lg-1">
+                        <input type="radio" required id="twokids" name="kidsNumber" ng-model="modelVal.A15" value="op3">
+                        <label for ="twokids">
+                            <div class="assessNumber">02</div>
+                        </label>
+                    </div>
+                    <div class="selectRisk_cover col-lg-1">
+                        <input type="radio" required id="twokidsNumber" name="kidsNumber" ng-model="modelVal.A15" value="op4">
+                        <label for ="twokidsNumber">
+                            <div class="assessNumber">03+</div>
+                        </label>
+                    </div>
+                    <!-- <select dropdown ng-model="modelVal.A15"><option selected value="op1">No</option><option value="op2">1</option>
+                    <option value="op3">2</option><option value="op4">2+</option></select> -->
+                    <P>kid(s),</P>
+
+                </div>    
+
+                <div class="col-lg-12">
+                    <p class="col-lg-1">with</p> 
+
+                    <div class="selectRisk_cover col-lg-1">
+                        <input type="radio" required id="noparents" name="parentsNumber" ng-model="modelVal.A16" value="op1">
+                        <label for ="noparents">
+                            <div class="assessNumber">NO</div>
+                        </label>
+                    </div>
+                    <div class="selectRisk_cover col-lg-1">
+                        <input type="radio" required id="oneparent" name="parentsNumber" ng-model="modelVal.A16" value="op2">
+                        <label for ="oneparent">
+                            <div class="assessNumber">01</div>
+                        </label>
+                    </div>
+                    <div class="selectRisk_cover col-lg-1">
+                        <input type="radio" required id="twoparent" name="parentsNumber" ng-model="modelVal.A16" value="op3">
+                        <label for ="twoparent">
+                            <div class="assessNumber">02</div>
+                        </label>
+                    </div>
+                    <div class="selectRisk_cover col-lg-1">
+                        <input type="radio" required id="threeparent" name="parentsNumber" ng-model="modelVal.A16" value="op4">
+                        <label for ="threeparent">
+                            <div class="assessNumber">03+</div>
+                        </label>
+                    </div>
+                    <!-- <select dropdown ng-model="modelVal.A15"><option selected value="op1">No</option><option value="op2">1</option>
+                    <option value="op3">2</option><option value="op4">2+</option></select> -->
+                    <P>dependent adult(s),</P>
+
+                </div>    
+<!-- 
+                <select dropdown ng-model="modelVal.A16"><option selected value="op1">No</option><option value="op2">1</option>
+                <option value="op3">2</option></select>dependent parents</p -->
+
+                <div class="col-lg-12">
+                    <p class="pull-left col-lg-1 risk-questions">and</p><!-- <select dropdown dropdown-disable="disabled" ng-model="modelVal.A7"><option value="op1">Male</option><option value="op2">Female</option></select> -->
+                    <div class="selectRisk_cover col-lg-1 no-padding">
+                        <input type="radio" required id="salary" name="occupation" ng-model="modelVal.A18" value="op1">
+                        <label for ="salary">
+                            <img src="assets/images/salary.png" class="img-responsive img">
+                            <p class="text-center risk-options">Salary</p>
+                        </label>
+                    </div>
+
+                    <div class="selectRisk_cover col-lg-1 no-padding">
+                        <input type="radio" required id="business" name="occupation" ng-model="modelVal.A18" value="op2">
+                        <label for ="business">
+                            <img src="assets/images/business.png" class="img-responsive img">
+                            <p class="text-center risk-options">Business</p>
+                        </label>
+                    </div>
+
+                    <div class="selectRisk_cover col-lg-1 no-padding">
+                        <input type="radio" required id="home" name="occupation" ng-model="modelVal.A18" value="op3">
+                        <label for ="home">
+                            <img src="assets/images/home.png" class="img-responsive img">
+                            <p class="text-center risk-options">Home Maker</p>
+                        </label>
+                    </div>
+
+                    <div class="selectRisk_cover col-lg-1 no-padding">
+                        <input type="radio" required id="retired" name="occupation" ng-model="modelVal.A18" value="op4">
+                        <label for ="retired">
+                            <img src="assets/images/retired.png" class="img-responsive img">
+                            <p class="text-center risk-options">Retired</p>
+                        </label>
+                    </div>
+                    <p class="col-lg-3 risk-questions">is my primary income source</p>
+                </div>
+
+               <!--  <p>and my primary income source is<select dropdown ng-model="modelVal.A18"><option selected value="op1">Salary</option><option value="op2">Business</option>
+                <option value="op3">Homemaker</option><option value="op3">Retired</option><option value="op4">Other</option></select></p> -->
             </div>
             </form>
         </div>
         <div class="swiper-slide">
             <div class="swiper-content content-1">
-                <p>When it comes to investing, i<select dropdown ng-model="modelVal.A4"><option selected value="op1">Am a beginner</option><option value="op2">Understand somewhat</option><option value="op3">Understand well</option><option value="op4">Am an expert</option></select></p>
+                <h2>When it comes to investing, I</h2>
+                <div class="radio-cover">
+                    <input type="radio" required id="option0Type1" name="option1" ng-model="modelVal.A4" value="op1"><label for="option0Type1"><span></span>Am a beginner</label>
+
+                    <input type="radio" required id="option0Type2" name="option1" ng-model="modelVal.A4" value="op2"><label for="option0Type2"><span></span>Understand somewhat</label>
+
+                    <input type="radio" required id="option0Type3" name="option1" ng-model="modelVal.A4" value="op3"><label for="option0Type3"><span></span>Understand well</label>
+
+                    <input type="radio" required id="option0Type4" name="option1" ng-model="modelVal.A4" value="op4"><label for="option0Type4"><span></span>Am an expert</label>
+                </div>
+                <!-- <p>When it comes to investing, i<select dropdown ng-model="modelVal.A4"><option selected value="op1">Am a beginner</option><option value="op2">Understand somewhat</option><option value="op3">Understand well</option><option value="op4">Am an expert</option></select></p> -->
             </div>
         </div>
         <div class="swiper-slide">
-            <form name="riskAssesment1Form2" novalidate>
+            <form name="riskAssesment1Form2">
             <div class="swiper-content">
-                <h2>I currently own / have invested in the following</h2>
+                <h2>I have invested in the following in the past <span class="nextline">(select all that are relevant)</span>  </h2>
                 <div class="radio-cover">
-                    <input type="radio" required id="option1Type1" name="option1" ng-model="modelVal.A8" value="op1"><label for="option1Type1"><span></span>Fixed Deposits</label>
-                    <input type="radio" required id="option1Type2" name="opoption1Tion1" ng-model="modelVal.A8" value="op2"><label for="option1Type2"><span></span>Other Fixed Income Products (PPF etc)</label>
-                    <input type="radio" required id="option1Type3" name="option1" ng-model="modelVal.A8" value="op3"><label for="option1Type3"><span></span>Equity Mutual Funds</label>
-                    <input type="radio" required id="option1Type4" name="option1" ng-model="modelVal.A8" value="op4"><label for="option1Type4"><span></span>Direct Stocks Bluechip</label>
-                    <input type="radio" required id="option1Type5" name="option1" ng-model="modelVal.A8" value="op5"><label for="option1Type5"><span></span>Direct Stocks Mid / Small Caps</label>
+                    <div class="checkbox-cover" ng-repeat="investments in past_investments">
+                        <input type="checkbox" id="{{investments.value}}" name="selectedInvestments[]" value="{{investments.value}}" ng-model="investments.selected"><label for="{{investments.value}}"><span></span>{{investments.name}}</label>
+                    </div>     
                 </div>
             </div>
             </form>
         </div>
         <div class="swiper-slide">
-            <div class="swiper-content">
+            <div class="swiper-content col-xs-12">
                 <form name="riskAssesment1Form3" novalidate>
-                <h2>I am most likely to invest for a</h2>
+                <h2>My preference while investing would <span class="nextline">be to</span></h2>
                 <div class="radio-cover">
-                    <input type="radio" required id="option2Type1" name="option2" ng-model="modelVal.A9" value="op1"><label for="option2Type1"><span></span>Guaranteed return of 7% per annum</label>
-                    <input type="radio" required id="option2Type2" name="option2" ng-model="modelVal.A9" value="op2"><label for="option2Type2"><span></span>Likely return of 12% with a chance of 4% loss</label>
-                    <input type="radio" required id="option2Type3" name="option2" ng-model="modelVal.A9" value="op3"><label for="option2Type3"><span></span>Likely return of 20% with a chance of 10% loss</label>
-                    <input type="radio" required id="option2Type4" name="option2" ng-model="modelVal.A9" value="op4"><label for="option2Type4"><span></span>Likely return of 30% with a chance of 20% loss</label>
+                    <input type="radio" required id="option2Type1" name="option2" ng-model="modelVal.A9" value="op1"><label for="option2Type1"><span class="col-xs-2"></span>Take no risk, get fixed returns<div class = "nextline col-xs-10 no-padding">(Guaranteed return of 7% per annum)</div></label>
+                    <input type="radio" required id="option2Type2" name="option2" ng-model="modelVal.A9" value="op2"><label for="option2Type2"><span class="col-xs-2"></span>Take low risk, get steady returns<div class = "nextline col-xs-10 no-padding">(Likely return of 10% with a chance of 5% loss)</div></label>
+                    <input type="radio" required id="option2Type3" name="option2" ng-model="modelVal.A9" value="op3"><label for="option2Type3"><span class="col-xs-2"></span>Take moderate risk, get moderate returns<div class = "nextline col-xs-10 no-padding">(Likely return of 20% with a chance of 10% loss)</div></label>
+                    <input type="radio" required id="option2Type4" name="option2" ng-model="modelVal.A9" value="op4"><label for="option2Type4"><span class="col-xs-2"></span>Take calculated risks, maximize returns<div class = "nextline col-xs-10 no-padding">(Likely return of 30% with a chance of 20% loss)</div></label>
                 </div>
                 </form>
             </div>
@@ -47,7 +197,7 @@
         <div class="swiper-slide">
             <div class="swiper-content">
                 <form name="riskAssesment1Form4" novalidate>
-                <h2>If Rs 1 lakh investment goes down to Rs 80,000 in 2 months, I will</h2>
+                <h2>If <span class="currency">&#8377</span> 1 lakh investment goes down to <span class="currency">&#8377</span> 80,000 <span class="nextline"> in 2 months, I will</span></h2>
                 <div class="radio-cover">
                     <input type="radio" required id="option3Type1" name="option3" ng-model="modelVal.A19" value="op1"><label for="option3Type1"><span></span>Sell All your Mutual Fund Holdings</label>
                     <input type="radio" required id="option3Type2" name="option3" ng-model="modelVal.A19" value="op2"><label for="option3Type2"><span></span>Sell part of your Mutual fund Holdings</label>
@@ -235,7 +385,7 @@
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" ng-disabled="riskAssesment1Form1.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="step == 2" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="step == 3" ng-disabled="riskAssesment1Form2.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="step == 3" ng-disabled="disableAppend" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="step == 4" ng-disabled="riskAssesment1Form3.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="step == 5" ng-disabled="riskAssesment1Form4.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>

@@ -4,8 +4,8 @@
 		.module('finApp.goals')
 		.controller('goalsController',goalsController);
 
-		goalsController.$inject = ['$scope','$rootScope','$location','goalsService', 'appConfig', 'userDetailsService']
-		function goalsController($scope,$rootScope,$location,goalsService, appConfig, userDetailsService){
+		goalsController.$inject = ['$scope','$rootScope','$location','goalsService', 'appConfig', 'userDetailsService', 'busyIndicator', 'ngDialog']
+		function goalsController($scope,$rootScope,$location,goalsService, appConfig, userDetailsService, busyIndicator, ngDialog){
 			$scope.callCompleteness = function() {
 				userDetailsService().then(function(userData){
 				});
@@ -24,7 +24,7 @@
 				else {
 					goalRedirect = currentGoal + 'Started';
 				}
-				$location.path('/'+goalRedirect);
+				//$location.path('/'+goalRedirect);
 			}
 
 			$scope.goalAnswered = function() {
@@ -38,5 +38,35 @@
 			}
 
 			$scope.goalAnswered();
+
+			$scope.deleteGoal = function (currentGoal) {
+					$scope.modalErrorMessage = 'Are you sure you want to delete this goal?';
+					$scope.currentGoal = currentGoal;
+			        ngDialog.open({ 
+			        	template: '/modules/common/views/partials/confirmText.html', 
+			        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+			        	overlay: false,
+			        	showClose : false,
+
+			        	scope: $scope
+			        });
+			    };
+
+			$scope.confirmDeleteGoal = function(currentGoal){
+				ngDialog.closeAll();
+				busyIndicator.show();
+				
+				goalsService.deleteParticularGoal(currentGoal).then(function(data){
+					busyIndicator.hide();
+						if('success' in data){
+							console.log('Goal deleted successfully');
+							
+							$location.path('/goals');
+							
+						} else {
+
+						}
+				})
+			}
 		}
 })();
