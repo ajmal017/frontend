@@ -4,8 +4,8 @@
 		.module('finApp.dashboard')
 		.controller('dashboardController',dashboardController);
 
-		dashboardController.$inject = ['$scope','$rootScope','$location','dashboardService']
-		function dashboardController($scope,$rootScope,$location,dashboardService){
+		dashboardController.$inject = ['$scope','$rootScope','$location','dashboardService','ngDialog']
+		function dashboardController($scope,$rootScope,$location,dashboardService,ngDialog){
 			// dashboardService.getDashboardDetails($rootScope.userFlags,function(data){
 			// 	$scope.dashCounts = data;
 			// })
@@ -41,6 +41,21 @@
             $scope.user_flags = userFlags.user_flags;
             $scope.portfolio_flag = userFlags.user_flags.portfolio;
 			console.log('risk_score',userFlags.user_answers.risk_score);
+				$scope.showTrackPerformance = function() {
+					if($scope.user_flags.track == false){
+						$scope.errorPopupMessage = 'Track performance cannot be displayed';
+						$scope.ngDialog = ngDialog;
+						ngDialog.open({ 
+				        	template: '/modules/common/views/partials/error_popup.html', 
+				        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+				        	overlay: false,
+				        	showClose : false,
 
+				        	scope: $scope
+			        	});
+					} else {
+							$location.path('/trackPerformanceStart');
+					}
+				}
 		}
 })();

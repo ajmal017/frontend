@@ -13,6 +13,9 @@
 			setTimeout(function(){
 				$('.seperate-cover').mCustomScrollbar();
 			},10);
+
+			$rootScope.subHeader = 'GO BACK TO '+ $rootScope.currentGoal.toUpperCase() +' GOAL';
+			$rootScope.redirectURL = '/'+ $rootScope.currentGoal +'Started'
 			// $('.scheme-compare-other').mCustomScrollbar();
 			// $http.get('modules/common/config/test.json').success(function(response) {
 			// 	$scope.response = response;

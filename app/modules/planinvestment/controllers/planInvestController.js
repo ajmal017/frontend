@@ -39,10 +39,14 @@
 
 			$scope.financialGoalAnswered = function() {
 				var user_flags = $rootScope.userFlags.user_flags;
-				$scope.finGoalAnswered = '';
+				$rootScope.finGoalAnswered = '';
 				appConfig.financialGoals.forEach(function(data) {
-					
+					if(user_flags[data] == true){
+						$rootScope.finGoalAnswered = true;
+					}
 				});
 			}
+
+			$scope.financialGoalAnswered();
 		}
 })();

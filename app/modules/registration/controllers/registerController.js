@@ -12,6 +12,9 @@
 						$scope.succesData = data['success'];
 						$('#otpModal').modal('show');
 					}
+					else {
+						$scope.signupError = data.Message + ' ' + data.Error;
+					}
 				});
 			}
 			

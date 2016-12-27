@@ -39,7 +39,8 @@
         			modelObject.bankName = response.name,
         			modelObject.bankBranch = response.bank_branch,
         			modelObject.bankAddress = response.address,
-        			modelObject.bankCity = response.city
+        			modelObject.bankCity = response.city,
+        			modelObject.bank_supported = response.is_bank_supported
         		};
         	
         	

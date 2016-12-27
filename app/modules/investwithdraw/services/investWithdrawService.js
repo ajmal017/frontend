@@ -11,7 +11,8 @@
         		getPlanDetails : getPlanDetails,
                 getInvestDetails : getInvestDetails,
                 getWithdrawDetails : getWithdrawDetails,
-                postWithdrawDetails : postWithdrawDetails
+                postWithdrawDetails : postWithdrawDetails,
+                investCheckSum : investCheckSum
         	}
 
 	        function getPlanDetails(){               
@@ -69,6 +70,27 @@
                         }
                     });
                 getAPI.Check(resultObj,function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
+            }
+
+            function investCheckSum(sum) {
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    'http://54.169.104.90/v2.0/payment/get/checksum/?txn_amount='+sum, 
+                    {}, {
+                        Check: {
+                            method:'GET',
+                        }
+                    });
+                getAPI.Check({},function(data){
                     if(data.status_code == 200){
                         defer.resolve({'success':data.response});
                     }else{

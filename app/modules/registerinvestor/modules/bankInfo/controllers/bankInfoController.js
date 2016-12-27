@@ -4,8 +4,8 @@
 		.module('finApp.registerInvestor')
 		.controller('bankInfoController',bankInfoController);
 
-		bankInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','$timeout','bankInfoService','busyIndicator'];
-		function bankInfoController($rootScope,$scope,$route,$http,$location,$timeout, bankInfoService,busyIndicator){
+		bankInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','$timeout','bankInfoService','busyIndicator','ngDialog'];
+		function bankInfoController($rootScope,$scope,$route,$http,$location,$timeout, bankInfoService,busyIndicator,ngDialog){
 			this.scope = $scope;
 			this.scope.modelVal = {};
 
@@ -40,7 +40,18 @@
 					self.busyIndicator.hide();
 					if('success' in data){
 						angular.extend(self.scope.modelVal, data['success']);
-						//TODO prompt for supported banks
+						if(data.success.bank_supported == false) {
+							$scope.errorPopupMessage = 'Sorry. The bank is not supported';
+							$scope.ngDialog = ngDialog;
+							ngDialog.open({ 
+					        	template: '/modules/common/views/partials/error_popup.html', 
+					        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+					        	overlay: false,
+					        	showClose : false,
+
+					        	scope: $scope
+				        	});
+						}
 					}
 				}, function() {
 					self.busyIndicator.hide();

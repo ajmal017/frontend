@@ -32,7 +32,7 @@
 									<label>Password</label>
 									<span class="show-password"><img src="assets/images/showPassword.png" ng-click="((defaultType1 =='password')?defaultType1 ='text':defaultType1 = 'password')"></span>
 								        <span class="without-error" ng-class="{'error-text':registerForm.password.$error.oneNumber,'normal':reset}"><span ng-if="registerForm.password.$error.oneNumber" class="wrong"></span><span ng-if="!registerForm.password.$error.oneNumber" class="correct"></span>Please enter atleast one number</span>
-								        <span class="without-error" ng-class="{'error-text':registerForm.password.$error.oneUpper,'normal':reset}"><span ng-if="registerForm.password.$error.oneUpper" class="wrong"></span><span ng-if="!registerForm.password.$error.oneUpper" class="correct"></span>Please enter one upper case</span>
+								        <!-- <span class="without-error" ng-class="{'error-text':registerForm.password.$error.oneUpper,'normal':reset}"><span ng-if="registerForm.password.$error.oneUpper" class="wrong"></span><span ng-if="!registerForm.password.$error.oneUpper" class="correct"></span>Please enter one upper case</span> -->
 								        <span class="without-error" ng-class="{'error-text':registerForm.password.$error.oneSmall,'normal':reset}"><span ng-if="registerForm.password.$error.oneSmall" class="wrong"></span><span ng-if="!registerForm.password.$error.oneSmall" class="correct"></span>Please enter atleast one small case</span>
 								        <span class="without-error" ng-class="{'error-text':registerForm.password.$error.minlength,'normal':reset}"><span ng-if="registerForm.password.$error.minlength" class="wrong"></span><span ng-if="!registerForm.password.$error.minlength" class="correct"></span>Please enter minimum 8 character's</span>
 								</div>								
@@ -47,6 +47,7 @@
 								</div>
 							</div>
 						</div>
+						<span class="error-text">{{signupError}}</span>
 	      				<div class="register-btn-group">
 							<button class="fin-app-btn fin-orange" ng-click="userRegister(register)" ng-disabled="registerForm.$invalid">REGISTER NOW</button>
 							<span class="or">OR</span>

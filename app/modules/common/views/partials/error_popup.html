@@ -1,7 +1,18 @@
-<div class="row">
-  <div class="col-xs-12">
-    Errors
-  </div>
-  <div class="alert alert-danger col-xs-12 errorCouponMessage" ng-bind-html="formErrorMessage">
-  </div>
-</div>
+       <div class="error-popup-container">
+       		<div class="erorr-popup-wrapper">
+        <header class="login-header col-xs-12">
+            <div class="row">
+                <div class="cloud1"><img src="assets/images/login_cloud1.png"></div>
+                <div class="header-intro col-xs-12">
+                    <div class="row">
+                        <p class="pull-left" ng-bind-html="errorPopupMessage"></p>
+                        <div class="plane pull-right"><img src="assets/images/loginPlane.png"></div>
+                    </div>
+                </div>
+                <div class="cloud2"><img src="assets/images/login_cloud2.png"></div>
+            </div>
+        </header>
+          
+        <button class="fin-app-btn fin-orange" ng-click="ngDialog.close()" >Close</button>
+        </div>
+       </div>

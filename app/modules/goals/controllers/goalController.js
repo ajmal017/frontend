@@ -24,7 +24,7 @@
 				else {
 					goalRedirect = currentGoal + 'Started';
 				}
-				//$location.path('/'+goalRedirect);
+				$location.path('/'+goalRedirect);
 			}
 
 			$scope.goalAnswered = function() {

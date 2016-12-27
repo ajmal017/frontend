@@ -4329,11 +4329,62 @@ section.quickInvest .started {
   margin-left: 10px;
   margin-right: 20px;
 }
-.goal-ngdialog-overlay .modal-content {
-  float: none;
+.goal-ngdialog-overlay .ngdialog-content {
+  background: none !important;
 }
-.goal-ngdialog-overlay .modal-content .modal-wrapper .login-header .cloud2 {
+.goal-ngdialog-overlay .ngdialog-content .error-popup-container {
+  position: relative;
+  background-color: #fff;
+  -webkit-background-clip: padding-box;
+  -moz-background-clip: padding-box;
+    -o-background-clip: padding-box;
+       background-clip: padding-box;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+  outline: 0;
+}
+.goal-ngdialog-overlay .ngdialog-content .error-popup-container .erorr-popup-wrapper {
+  float: left;
+  width: 100%;
+  -webkit-border-radius: 25px;
+  -moz-border-radius: 25px;
+  border-radius: 25px;
+  background-image: -moz-linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
+  background-image: -webkit-linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
+  -webkit-box-shadow: 2.5px 4.33px 10px 0px #247abc;
+  -moz-box-shadow: 2.5px 4.33px 10px 0px #247abc;
+  box-shadow: 2.5px 4.33px 10px 0px #247abc;
+  padding: 16% 10% 8% 10%;
+}
+.goal-ngdialog-overlay .ngdialog-content .error-popup-container .erorr-popup-wrapper .login-header img {
+  width: 100%;
+}
+.goal-ngdialog-overlay .ngdialog-content .error-popup-container .erorr-popup-wrapper .login-header .cloud1 {
   top: 0px;
+  left: 3%;
+}
+.goal-ngdialog-overlay .ngdialog-content .error-popup-container .erorr-popup-wrapper .login-header .cloud2 {
+  bottom: -30%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.goal-ngdialog-overlay .ngdialog-content .error-popup-container .erorr-popup-wrapper .login-header .cloud2,
+.goal-ngdialog-overlay .ngdialog-content .error-popup-container .erorr-popup-wrapper .login-header .cloud1 {
+  position: absolute;
+  width: 20%;
+}
+.goal-ngdialog-overlay .ngdialog-content .error-popup-container .erorr-popup-wrapper .login-header .plane {
+  width: 38%;
+}
+.goal-ngdialog-overlay .ngdialog-content .error-popup-container .erorr-popup-wrapper .login-header p {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #101010;
+  font-weight: normal;
+  font-size: 1.5em;
+  margin-left: 10%;
+  margin-top: 9%;
 }
 .meter-widget-cover {
   width: 100%;

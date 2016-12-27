@@ -200,6 +200,7 @@
 	    			disabled : '=dropdownDisable'
 	    		},	
 	    		link : function($scope,$element,$attr,ngModel){
+	    			console.log('disabled',$scope.disabled);
 	    			console.log("in link: " + $element.id);
 	    			setTimeout(function(){
 	    				var $this = $element,
@@ -304,7 +305,7 @@
 				link: function(scope, element, attrs, ngModel) {
 					if(!ngModel) return;
 					ngModel.$setValidity('oneNumber',false);
-					ngModel.$setValidity('oneUpper',false);
+					// ngModel.$setValidity('oneUpper',false);
 					ngModel.$setValidity('oneSmall',false);
 					ngModel.$setValidity('minlength',false);
 					scope.reset = true;
@@ -313,8 +314,8 @@
 							scope.reset = false;
 							var atleastOneNumber = /^(?=.*\d)/.test(value);
 							ngModel.$setValidity('oneNumber',atleastOneNumber);
-							var atleastOneUpper = /^(?=.*[A-Z])/.test(value);
-							ngModel.$setValidity('oneUpper',atleastOneUpper);
+							// var atleastOneUpper = /^(?=.*[A-Z])/.test(value);
+							// ngModel.$setValidity('oneUpper',atleastOneUpper);
 							var atleastOneSmall = /^(?=.*[a-z])/.test(value);
 							ngModel.$setValidity('oneSmall',atleastOneSmall);
 							var minlength = /^[0-9a-zA-Z]{8,}/.test(value);
@@ -323,11 +324,11 @@
 						}else{
 							scope.reset = true;
 							ngModel.$setValidity('oneNumber',false);
-							ngModel.$setValidity('oneUpper',false);
+							// ngModel.$setValidity('oneUpper',false);
 							ngModel.$setValidity('oneSmall',false);
 							ngModel.$setValidity('minlength',false);
 						}					
-						console.log("Number--"+atleastOneNumber+"One Upper"+atleastOneUpper+"One Small"+atleastOneSmall+""+minlength);
+						// console.log("Number--"+atleastOneNumber+"One Upper"+atleastOneUpper+"One Small"+atleastOneSmall+""+minlength);
 					}
 					ngModel.$parsers.push(validate);
 					ngModel.$formatters.push(validate);

@@ -7,7 +7,8 @@
 		registerInvestorController.$inject = ['$rootScope','$scope','$http','registerInvestorService','userDetailsService','busyIndicator'];
 		function registerInvestorController($rootScope,$scope,$http,registerInvestorService,userDetailsService,busyIndicator){
 			$scope.registrationStatus = {};
-			
+			$rootScope.userFlags['user_flags']['vault_locked'] = true;
+			$scope.dropdownDisable = true;
 			$scope.updateRegistrationStatus = function() {
 				if (!$scope.registrationStatus.investorInfo || !$scope.registrationStatus.bankInfo || 
 					!$scope.registrationStatus.identityInfo || !$scope.registrationStatus.contactInfo || 

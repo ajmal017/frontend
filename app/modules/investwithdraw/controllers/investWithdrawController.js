@@ -4,13 +4,43 @@
 		.module('finApp.investWithdraw')
 		.controller('investWithdrawController',investWithdrawController);
 
-		investWithdrawController.$inject = ['$scope','$rootScope','$location','$filter','investWithdrawService','busyIndicator']
-		function investWithdrawController($scope,$rootScope,$location,$filter,investWithdrawService, busyIndicator){
+		investWithdrawController.$inject = ['$scope','$rootScope','$location','$filter','investWithdrawService','busyIndicator', 'ngDialog']
+		function investWithdrawController($scope,$rootScope,$location,$filter,investWithdrawService, busyIndicator, ngDialog){
 
 			$scope.withdraw = {};
 			$scope.goToInvest = function() {
 				$rootScope.legends = [];
+				var canInvest = true;
+				if($rootScope.userFlags['user_flags']['portfolio'] == false) {
+					canInvest = false;
+					$scope.errorPopupMessage = 'You have to add goals before you can invest.';
+					$scope.redirectPath = '/goals';	
 
+				} else if($rootScope.userFlags['user_flags']['kra_verified'] == false) {
+					canInvest = false;
+					$scope.errorPopupMessage = 'You are not KRA verified. Kindly contact finaskus team.';
+					$scope.redirectPath = '/contact';	
+				} else if($rootScope.userFlags['user_flags']['vault'] == false)
+					canInvest = false;
+					$scope.errorPopupMessage = 'You have to complete investor registration before you can invest';
+					$scope.redirectPath = '/registerInvestorStart';
+
+				if(canInvest == false){
+					$scope.ngDialog = ngDialog;
+					ngDialog.open({ 
+			        	template: '/modules/common/views/partials/error_popup.html', 
+			        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+			        	overlay: false,
+			        	showClose : false,
+
+			        	scope: $scope,
+			        	preCloseCallback:function(){
+			        		$location.path($scope.redirectPath);
+			        	}
+		        	});
+				}
+
+				if(canInvest == true) {	
 				investWithdrawService.getInvestDetails().then(function(data){
 					if('success' in data) {
 						$rootScope.sipTotal = 0;
@@ -47,25 +77,40 @@
 					}
 				});
 			}
+			}
 
 			$scope.goToWithdraw = function() {
 				$scope.noWithdraw = false;
-				busyIndicator.show();
-				investWithdrawService.getWithdrawDetails().then(function(data){
-					busyIndicator.hide();
-					if('success' in data) { 
-						if(!data.success.length)
-						{
-							$rootScope.noWithdraw = true;
+				if($rootScope.userFlags['user_flags']['show_redeem'] == false) {
+						$scope.errorPopupMessage = 'You cannot withdraw.';
+						$scope.ngDialog = ngDialog;
+						ngDialog.open({ 
+				        	template: '/modules/common/views/partials/error_popup.html', 
+				        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+				        	overlay: false,
+				        	showClose : false,
+
+				        	scope: $scope
+			        	});
+				} else {
+						busyIndicator.show();
+						investWithdrawService.getWithdrawDetails().then(function(data){
+							busyIndicator.hide();
+						if('success' in data) { 
+							if(!data.success.length)
+							{
+								$rootScope.noWithdraw = true;
+							}
+							console.log('redeem', data);
+							$rootScope.redeemData = data.success;
+							$location.path('/withdrawStart');
 						}
-						console.log('redeem', data);
-						$rootScope.redeemData = data.success;
-						$location.path('/withdrawStart');
-					}
-					else {
-						
-					}
+						else {
+							
+						}
 				});
+				}
+
 			}
 
 			$scope.proceedWithdraw = function(modelObj) {
@@ -138,6 +183,16 @@
 			// 	}
 			// 	]
 			// }
+			}
+
+			$scope.payInvest = function(totalSum){
+				investWithdrawService.investCheckSum(totalSum).then(function(data){
+					if('success' in data) {
+
+					} else {
+
+					}
+				});
 			}
 			
 		}

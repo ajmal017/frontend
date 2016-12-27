@@ -10,15 +10,15 @@
 		$routeProvider
 			.when('/recommendedSchemes', {
 				title : 'Recommended Schemes',
-				subHeader : 'GO BACK TO RETIREMENT GOAL',
-				redirectUrl : '/dashboard',
+				// subHeader : 'GO BACK TO '+ $rootScope.currentGoal +' GOAL',
+				// redirectUrl : '/dashboard',
 		        templateUrl: 'modules/smartportfolio/views/recommended.html',
 		        controller: 'recommendedController'
 		    })
 		    .when('/compareAndModify', {
 				title : 'Compare & Modify Schemes',
-				subHeader : 'GO BACK TO RETIREMENT GOAL',
-				redirectUrl : '/dashboard',
+				// subHeader : 'GO BACK TO '+ $rootScope.currentGoal +' GOAL',
+				// redirectUrl : '/dashboard',
 		        templateUrl: 'modules/smartportfolio/views/compare.html',
 		        controller: 'recommendedController'
 		    })
