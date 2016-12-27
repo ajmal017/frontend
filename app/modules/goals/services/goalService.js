@@ -12,8 +12,8 @@
         		getGoalGraphDetails : getGoalGraphDetails,
         		addParticularGoal : addParticularGoal,
         		initGoalGraphDetails : initGoalGraphDetails,
-        		getFundSelection : getFundSelection
-
+        		getFundSelection : getFundSelection,
+        		deleteParticularGoal : deleteParticularGoal
         	}
 
 	        function initGoalGraphDetails(){
@@ -29,6 +29,28 @@
 	        	
 	        }
 
+
+	        function deleteParticularGoal(goalType) {
+	        	var defer = $q.defer();
+				var getAPI = $resource( 
+					appConfig.API_BASE_URL+'/core/answer/delete/' + goalType + '/', 
+					{}, {
+						Check: {
+							method:'GET',
+						}
+					});
+				getAPI.Check({},function(data){
+					if(data.status_code == 200){
+						defer.resolve({'success':data.response});
+					}else{
+						defer.resolve({'Message':data.response['message']});
+					}				
+				}, function(err){
+					defer.reject(err);
+				}); 
+				return defer.promise;
+	        }
+	        
 	        function getGoalGraphDetails(graphObject, assetAllocation, sipAmount, lumpsumAmount, tenure){ 
 				var currentYear = new Date(),
 					currentMonth = $filter('date')(currentYear, 'MMMM'),
@@ -222,6 +244,7 @@
 		        return possibleAssetAllocations;
 	        	
 	        }
-        }     
+
+	}    
 
 })();

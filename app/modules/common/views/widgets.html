@@ -348,12 +348,12 @@
 	</div>
 </div>
 
-<select dropdown ng-model="selectedValue" ng-init="selectedValue = 'Male'">
-    <option value="Male">Married with kids</option>
-    <option value="aye">Aye</option>
-    <option value="eh">Eh</option>
-    <option value="ooh">Ooh</option>
-    <option value="whoop">Whoop</option>
+<select dropdown ng-model="selectedValue">
+    <option value="Male" ng-model="$root.marriedOption">Married with kids</option>
+    <option value="aye" ng-model="$root.marriedOption">Aye</option>
+    <option value="eh" ng-model="$root.marriedOption">Eh</option>
+    <option value="ooh" ng-model="$root.marriedOption">Ooh</option>
+    <option value="whoop" ng-model="$root.marriedOption">Whoop</option>
 </select>
 <div class="col-xs-4">
 	<div class="meter-widget-cover">

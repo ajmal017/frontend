@@ -9,6 +9,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		'ngResource',
 		'ngSanitize',
 		'ngScrollbars',
+		'ngDialog',
 		'datepicker',
 		'google-signin',
 		'signature',

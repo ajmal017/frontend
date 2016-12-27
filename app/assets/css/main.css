@@ -1108,6 +1108,69 @@ button[disabled]:hover {
      -moz-border-radius: 50%;
           border-radius: 50%;
 }
+.selectRisk_cover {
+  float: left;
+  margin-bottom: 2%;
+}
+.selectRisk_cover input[type="radio"],
+.selectRisk_cover input[type="checkbox"] {
+  display: none;
+}
+.selectRisk_cover input[type="radio"] + label,
+.selectRisk_cover input[type="checkbox"] + label {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #101010;
+  font-weight: normal;
+  font-size: 1.1875em;
+  float: left;
+  margin-bottom: 2%;
+  opacity: 0.5;
+}
+.selectRisk_cover input[type="radio"] + label .assessNumber,
+.selectRisk_cover input[type="checkbox"] + label .assessNumber {
+  cursor: pointer;
+  position: relative;
+  -webkit-border-radius: 25px;
+  width: 44px;
+  height: 44px;
+  text-align: center;
+  background-repeat: no-repeat;
+  -moz-border-radius: 25px;
+  -webkit-border-radius: 17px;
+          border-radius: 17px;
+  margin-bottom: 12%;
+  padding-top: 27%;
+  background-image: -moz-linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
+  background-image: -webkit-linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
+  -webkit-box-shadow: 1px 5.33px 11px -4px #247abc;
+  -moz-box-shadow: 1px 5.33px 11px -4px #247abc;
+  box-shadow: 1px 5.33px 11px -4px #247abc;
+  color: #f26529;
+}
+.selectRisk_cover input[type="radio"]:checked + label,
+.selectRisk_cover input[type="checkbox"]:checked + label {
+  opacity: 1;
+}
+.selectRisk_cover input[type="radio"]:checked + label span,
+.selectRisk_cover input[type="checkbox"]:checked + label span {
+  /*background-color:#1a78b9;*/
+  opacity: 1;
+  -webkit-background-size: 45% 36%;
+     -moz-background-size: 45% 36%;
+       -o-background-size: 45% 36%;
+          background-size: 45% 36%;
+}
+.selectRisk_cover input[type="checkbox"] + label span {
+  -webkit-border-radius: 8px;
+     -moz-border-radius: 8px;
+          border-radius: 8px;
+  margin-right: 12px;
+}
+.selectRisk_cover input[type="radio"] + label span {
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+}
 .fadeIn {
   -webkit-animation-name: fadeIn;
      -moz-animation-name: fadeIn;
@@ -3070,6 +3133,10 @@ span.error-text {
   margin-left: 5px;
   margin-right: 5px;
 }
+.swiper-container.customSwiper .swiper-content p .swiper-input.risk-age {
+  width: 15%;
+  left: 0;
+}
 .swiper-container.customSwiper .swiper-content p .swiper-input.year {
   width: 10%;
   margin-left: 5px;
@@ -3120,6 +3187,12 @@ span.error-text {
   position: absolute;
   top: 106%;
   right: 0;
+}
+.swiper-container.customSwiper .swiper-content p.risk-options {
+  color: #247abc;
+}
+.swiper-container.customSwiper .swiper-content p.risk-questions {
+  padding-top: 3%;
 }
 .swiper-container.customSwiper .swiper-content p.multiple {
   font-family: 'PlayfairDisplay-Regular' !important;
@@ -3784,6 +3857,40 @@ section.dashboard .goals-cover .checkbox-cover label span {
      -moz-box-shadow: 0px 1px 4px 0px #1a78b9;
           box-shadow: 0px 1px 4px 0px #1a78b9;
 }
+section.dashboard .goals-cover .checkbox-cover-delete {
+  width: 100%;
+  float: left;
+}
+section.dashboard .goals-cover .checkbox-cover-delete label {
+  opacity: 1;
+}
+section.dashboard .goals-cover .checkbox-cover-delete label span {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  right: 0;
+  margin: 0 auto;
+  top: -12px;
+  vertical-align: middle;
+  background-color: #fff;
+  opacity: 1;
+  background-position: center;
+  -webkit-background-size: 45% 36%;
+          background-size: 45% 36%;
+  -moz-background-size: 45% 36%;
+  -o-background-size: 45% 36%;
+  -webkit-background-size: 50% 52%;
+          background-size: 50% 52%;
+  z-index: 100;
+  background-repeat: no-repeat;
+  -webkit-box-shadow: 0px 1px 4px 0px #1a78b9;
+  -moz-box-shadow: 0px 1px 4px 0px #1a78b9;
+  box-shadow: 0px 1px 4px 0px #1a78b9;
+  background-image: url(../images/deletegoal.png);
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+}
 @media only screen and (max-width:768px) {
   section.dashboard .goals-cover {
     width: 100%;
@@ -4221,6 +4328,12 @@ section.quickInvest .started {
 #withdrawModal .modal-dialog .modal-wrapper .tfooter .fin-btn-group .fin-app-btn:first-child {
   margin-left: 10px;
   margin-right: 20px;
+}
+.goal-ngdialog-overlay .modal-content {
+  float: none;
+}
+.goal-ngdialog-overlay .modal-content .modal-wrapper .login-header .cloud2 {
+  top: 0px;
 }
 .meter-widget-cover {
   width: 100%;

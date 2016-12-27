@@ -864,6 +864,67 @@ button[disabled]{
 		}
 	}
 }
+.selectRisk_cover{
+	
+    float: left;
+    margin-bottom: 2%;
+	input[type="radio"],input[type="checkbox"] {
+	    display:none;
+	    + label{
+	    	.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@blackapprox,normal);
+          	.PIXEL2EM(19);
+          	
+          	float:left;
+          	margin-bottom:2%;
+          	opacity:0.5;
+	    	.assessNumber{
+		    	        cursor: pointer;
+						position: relative;
+		    -webkit-border-radius: 25px;
+		    width: 44px;
+		    height: 44px;
+		    text-align: center;
+		    background-repeat: no-repeat;
+		    -moz-border-radius: 25px;
+		    border-radius: 17px;
+		    margin-bottom: 12%;
+		    padding-top: 27%;
+		    background-image: -moz-linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
+		    background-image: -webkit-linear-gradient(90deg, #f5f5f5 0%, #ffffff 100%);
+		    -webkit-box-shadow: 1px 5.33px 11px -4px #247abc;
+		    -moz-box-shadow: 1px 5.33px 11px -4px #247abc;
+		    box-shadow: 1px 5.33px 11px -4px #247abc;
+		    color: #f26529;
+
+	    	}
+	    }
+	    &:checked{
+	    	+label{	
+	    		opacity:1;
+	    		span{
+	    			/*background-color:#1a78b9;*/
+				    opacity:1;
+				    background-size:45% 36%;
+	    		}
+	    	}
+	    }
+	}
+	input[type="checkbox"]{
+		+ label{
+			span{
+				border-radius:8px;
+				margin-right:12px;
+			}
+		}
+	}
+	input[type="radio"]{
+		+ label{
+			span{
+				border-radius:50%;
+			}
+		}
+	}
+}
 .fadeIn{
   animation-name: fadeIn;
   animation-duration: 1s;
