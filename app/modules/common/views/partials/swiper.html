@@ -2739,7 +2739,7 @@
                       <div ng-show="!modelVal.nomineeAbsent" class="col-xs-12">
                       <p class="question">My nominee name is <span class="swiper-input"><input ng-model="modelVal.nomineeName" type="text" name="year" required></span></p>
                       <p class="question">and my relationship with them is <select dropdown ng-model="modelVal.relationshipWithInvestor"><option ng-selected="(modelVal.relationshipWithInvestor==1)||(modelVal.relationshipWithInvestor == undefined)||modelVal.relationshipWithInvestor == ''" value="1">Spouse</option><option ng-selected="(modelVal.relationshipWithInvestor==2)" value="2">Parent</option><option ng-selected="(modelVal.relationshipWithInvestor==3)" value="3">Offspring</option><option ng-selected="(modelVal.relationshipWithInvestor==4)" value="4">Sibling</option><option ng-selected="(modelVal.relationshipWithInvestor==5)" value="5">Other</option></select></p>
-                      <p class="question">and they were born on <span class="swiper-input"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" data-datepicker="{theme: 'flat',dateformat: 'YYYY-MM-DD'}" data-ng-model="modelVal.nomineeDob" ng-init="modelVal.nomineeDob = '1991-01-01'"></span></p>
+                      <p class="question">and they were born on <span class="swiper-input"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" data-datepicker="{theme: 'flat',dateformat: 'YYYY-MM-DD'}" data-ng-model="modelVal.nomineeDob"></span></p>
                       <p class="question" ng-show="showGuardian()">My nominee's guardian is <span class="swiper-input"><input ng-model="modelVal.guardianName" type="text" name="year" required></span></p>
                       </div>
                 </div>
@@ -2836,8 +2836,7 @@
         <p>Registration Complete</p>
     </div>    
     <div class="fin-btn-group gotoPages">
-        <button class="fin-link-btn content-prev" ng-show="(step == 1)" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>DO IT LATER</button>
-        <button ng-show="(step == 1)" click-redirect="{{redirectUrl}}" class="fin-app-btn fin-orange content-next">CONTINUE TO DASHBOARD</button>
+        <button ng-show="(step == 1)" click-redirect="/dashboard" class="fin-app-btn fin-orange content-next">CONTINUE TO DASHBOARD</button>
     </div>
 </div>
 

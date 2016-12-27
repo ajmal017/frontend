@@ -44,7 +44,7 @@
         						addressLine2 : response.nominee_address.address_line_2
         					},
         				nomineeName : response.nominee_name, 
-	        			nomineeDob : response.nominee_dob, 
+	        			nomineeDob : response.nominee_dob || '1991-01-01', 
 	        			guardianName : response.guardian_name,
 	        			relationshipWithInvestor : response.relationship_with_investor || 1,
 	        			nomineeAbsent : response.nominee_absent,
@@ -82,7 +82,7 @@
 							defer.resolve({'success':modelObject});
 						}else{
 							deserializeModel({});
-							defer.resolve({'Message':data.response['message']});
+							defer.resolve({'success':modelObject});
 						}				
 					}, function(err){
 						defer.reject(err);
