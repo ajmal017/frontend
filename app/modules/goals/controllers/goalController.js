@@ -8,6 +8,7 @@
 		function goalsController($scope,$rootScope,$location,goalsService, appConfig, userDetailsService, busyIndicator, ngDialog){
 			$scope.callCompleteness = function() {
 				userDetailsService().then(function(userData){
+					$scope.goalAnswered(); 
 				});
 			}
 
@@ -37,7 +38,7 @@
 				console.log('goalAnswered',$rootScope.goalAnswered);
 			}
 
-			$scope.goalAnswered();
+			
 
 			$scope.deleteGoal = function (currentGoal) {
 					$scope.modalErrorMessage = 'Are you sure you want to delete this goal?';
@@ -60,8 +61,8 @@
 					busyIndicator.hide();
 						if('success' in data){
 							console.log('Goal deleted successfully');
+							$scope.callCompleteness();
 							
-							$location.path('/goals');
 							
 						} else {
 

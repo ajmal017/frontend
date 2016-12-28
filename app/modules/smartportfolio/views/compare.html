@@ -150,6 +150,7 @@
 				<div class="fin-btn-group">
 					<button class="pull-left fin-app-btn fin-skip-btn" click-redirect="/schemeCompare">COMPARE</button>
 					<button ng-click="getSchemeCount()" class="fin-link-btn pull-left"><span><img src="assets/images/restore.png"></span>RESTORE RECOMMENDATIONS</button>
+					<span class="alert alert-danger alert-dismissable col-xs-5 fadeOut text-center " ng-if="shoeSchemeNumberError">Maximum {{schemeListNumber}} {{$root.currentSchemeType}} scheme(s) allowed for your portfolio.</div>
 				</div>
 			</div>
 		</div>

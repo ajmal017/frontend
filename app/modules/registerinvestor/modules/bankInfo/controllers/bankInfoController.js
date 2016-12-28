@@ -40,8 +40,9 @@
 					self.busyIndicator.hide();
 					if('success' in data){
 						angular.extend(self.scope.modelVal, data['success']);
+						$rootScope.is_bank_supported = data.success.bank_supported;
 						if(data.success.bank_supported == false) {
-							$scope.errorPopupMessage = 'Sorry. The bank is not supported';
+							$scope.errorPopupMessage = 'Your bank is not supported by our payment gateway. \nYou can change your bank or you will guided to other payment options (Cheque payment).';
 							$scope.ngDialog = ngDialog;
 							ngDialog.open({ 
 					        	template: '/modules/common/views/partials/error_popup.html', 

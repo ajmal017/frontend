@@ -125,7 +125,12 @@
 								$scope.model = $scope.min;
 								ngModel.$setViewValue($scope.model);
 							} else {
+								var currentDate = new Date();
+								var currentYear = currentDate.getFullYear();
+								$scope.max = currentYear + parseInt($scope.yearMax);
+								$scope.min = currentYear + 1;
 								$scope.model = ngModel.$viewValue;
+
 								model = ngModel.$viewValue;
 								ngModel.$setViewValue($scope.model);
 							}
@@ -419,9 +424,22 @@
 						element.find('.orbit').css('transform','rotate('+arcPos+'deg)');
 						var textTop = element.find('.indicator').position().top;
 						var textLeft = element.find('.indicator').position().left;
+						var arcPosRecomm = -arcPos;
+						var topText = '';
+						var leftText = '';
+						if(arcPos > 0 && arcPos < 90)
+						{
+							topText = '-12px';
+							leftText = '-39px';
+						} else {
+							topText = '-47px';
+							leftText = '-68px';
+						}
+
 						element.find('h4').css({
-							'top' : textTop + 35,
-							'left': textLeft + 70
+							'top' : topText,
+							'left': leftText,
+							'transform': 'rotate('+arcPosRecomm+'deg)'
 						});
 					});
 					attrs.$observe('calculateGuage', function () {

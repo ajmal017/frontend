@@ -6,6 +6,9 @@
 
 		planInvestController.$inject = ['$scope','$rootScope','$location','planInvestService', 'userDetailsService', 'appConfig']
 		function planInvestController($scope,$rootScope,$location,planInvestService,userDetailsService, appConfig){
+			
+			$rootScope.is_bank_supported = $rootScope.userFlags.user_flags.is_bank_supported;
+
 			$scope.startGoalAdd = function(currentGoal) {
 				$rootScope.currentGoal = currentGoal;
 				var goalRedirect = '';

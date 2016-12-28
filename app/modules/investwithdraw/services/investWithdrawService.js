@@ -12,7 +12,8 @@
                 getInvestDetails : getInvestDetails,
                 getWithdrawDetails : getWithdrawDetails,
                 postWithdrawDetails : postWithdrawDetails,
-                investCheckSum : investCheckSum
+                investCheckSum : investCheckSum,
+                investBankUnsupported : investBankUnsupported
         	}
 
 	        function getPlanDetails(){               
@@ -84,7 +85,28 @@
             function investCheckSum(sum) {
                 var defer = $q.defer();
                 var getAPI = $resource( 
-                    'http://54.169.104.90/v2.0/payment/get/checksum/?txn_amount='+sum, 
+                    appConfig.API_BASE_URL+'/payment/get/checksum/?txn_amount='+sum, 
+                    {}, {
+                        Check: {
+                            method:'GET',
+                        }
+                    });
+                getAPI.Check({},function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
+            }
+
+            function investBankUnsupported(sum) {
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    appConfig.API_BASE_URL+'/payment/pay/?txn_amount='+sum, 
                     {}, {
                         Check: {
                             method:'GET',

@@ -4,13 +4,14 @@
 		.module('finApp.investWithdraw')
 		.controller('investWithdrawController',investWithdrawController);
 
-		investWithdrawController.$inject = ['$scope','$rootScope','$location','$filter','investWithdrawService','busyIndicator', 'ngDialog']
-		function investWithdrawController($scope,$rootScope,$location,$filter,investWithdrawService, busyIndicator, ngDialog){
+		investWithdrawController.$inject = ['$scope','$rootScope','$location','$filter','$http','investWithdrawService','busyIndicator', 'ngDialog', '$interpolate']
+		function investWithdrawController($scope,$rootScope,$location,$filter,$http,investWithdrawService, busyIndicator, ngDialog, $interpolate){
 
 			$scope.withdraw = {};
 			$scope.goToInvest = function() {
 				$rootScope.legends = [];
 				var canInvest = true;
+
 				if($rootScope.userFlags['user_flags']['portfolio'] == false) {
 					canInvest = false;
 					$scope.errorPopupMessage = 'You have to add goals before you can invest.';
@@ -18,12 +19,13 @@
 
 				} else if($rootScope.userFlags['user_flags']['kra_verified'] == false) {
 					canInvest = false;
-					$scope.errorPopupMessage = 'You are not KRA verified. Kindly contact finaskus team.';
-					$scope.redirectPath = '/contact';	
-				} else if($rootScope.userFlags['user_flags']['vault'] == false)
+					$scope.errorPopupMessage = 'You are not KRA verified. Kindly contact FinAskus team.';
+					$scope.redirectPath = '/dashboard';	
+				} else if($rootScope.userFlags['user_flags']['vault'] == false){
 					canInvest = false;
 					$scope.errorPopupMessage = 'You have to complete investor registration before you can invest';
 					$scope.redirectPath = '/registerInvestorStart';
+				} 
 
 				if(canInvest == false){
 					$scope.ngDialog = ngDialog;
@@ -186,13 +188,68 @@
 			}
 
 			$scope.payInvest = function(totalSum){
-				investWithdrawService.investCheckSum(totalSum).then(function(data){
-					if('success' in data) {
 
-					} else {
+				if($rootScope.is_bank_supported == false) {
+					
+					$scope.ngDialog = ngDialog;
+					$scope.errorPopupMessage = 'Thank you for your order request. Please confirm to receive payment instructions.'
+					$scope.confirmShow = true;
+					ngDialog.open({ 
+			        	template: '/modules/common/views/partials/error_popup.html', 
+			        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+			        	overlay: false,
+			        	showClose : false,
 
-					}
-				});
+			        	scope: $scope,
+			        	preCloseCallback:function(){
+			        		investWithdrawService.investBankUnsupported(totalSum).then(function(data){
+								if('success' in data) {
+									$scope.errorPopupMessage = 'Your bank is not supported by our payment gateway. You will soon receive an email with payment instructions using other options (Cheque payment).';
+									ngDialog.open({ 
+							        	template: '/modules/common/views/partials/error_popup.html', 
+							        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+							        	overlay: false,
+							        	showClose : false,
+
+							        	scope: $scope,
+							        	preCloseCallback:function(){
+							        		$location.path('/dashboard');
+
+							        	}
+						        	});
+								} else {
+
+								}
+							});
+			        	}
+		        	});
+			
+					
+				} else {
+					investWithdrawService.investCheckSum(totalSum).then(function(data){
+						if('success' in data) {
+							console.log('check sum', data.success);
+							$scope.redirectToPayment(data.success);
+
+						} else {
+
+						}
+					});
+				}
+
+				
+			}
+
+			$scope.redirectToPayment = function(data){
+				$scope.billdeskData = {
+					"X-Requested-With" : "",
+					"hidRequestId" : "PGIME1000",
+					"hidOperation" : "ME100",
+					"msg" : data
+				}
+				var form = $interpolate('<form action="https://www.billdesk.com/pgidsk/PGIMerchantRequestHandler/" method="POST"><div><input name="X-Requested-With" value="{{billdeskData.X-Requested-With}}" type="hidden"><input name="hidRequestId" value="{{billdeskData.hidRequestId}}" type="hidden"><input name="hidOperation" value="{{billdeskData.hidOperation}}" type="hidden"><input name="msg" value="{{billdeskData.msg}}" type="hidden"></div></form>')($scope)
+				 jQuery(form).appendTo('body').submit();
+				
 			}
 			
 		}

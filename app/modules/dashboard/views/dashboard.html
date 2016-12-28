@@ -51,8 +51,18 @@
 <!-- 				<p class="text-center score">5.7</p>
  -->			<h4 class="text-center" ng-if="portfolio_flag">You havent started building<span class="nextline">your smart profile yet</span></h4>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 goals-outer-cover">
-				<div class="goals-cover" ng-click="showTrackPerformance()">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 goals-outer-cover" >
+				<div class="goals-cover" ng-click="showTrackPerformance()" ng-if="!disabledTrackPerformance">
+					<div class="image-div">
+						<img src="assets/images/dashboardImage4.png">
+					</div>
+					<div class="checkbox-cover" ng-if="user_flags.is_real_seen">
+						<input type="radio" name>
+						<label><span></span></label>
+					</div>
+				</div>
+
+				<div class="goals-cover goals-cover-disabled" ng-if="disabledTrackPerformance">
 					<div class="image-div">
 						<img src="assets/images/dashboardImage4.png">
 					</div>

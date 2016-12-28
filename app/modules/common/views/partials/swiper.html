@@ -700,9 +700,10 @@
                                     </div>
                                 </div>
                                 <div class="guage clearfix" one-time-equity="{{modelVal.assetAllocation.equityInitial}}" calculate-guage="{{modelVal.assetAllocation.equity}}">
-                                    <h4 class="text">Recommended</h4>
+                                    
                                     <div class="orbit">
                                         <div class="indicator"></div>
+                                        <h4 class="text">Recommended</h4>
                                     </div>  
                                     <div class="guage-image">
                                         <img src="assets/images/guage.png">
@@ -737,7 +738,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="guageCalculator">
+                                    <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type>
                                     </div>  
@@ -925,9 +926,10 @@
                                     </div>
                                 </div>
                                 <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.equityInitial}} calculate-guage={{modelVal.assetAllocation.equity}}>
-                                    <h4 class="text">Recommended</h4>
+                                    
                                     <div class="orbit">
                                         <div class="indicator"></div>
+                                        <h4 class="text">Recommended</h4>
                                     </div>  
                                     <div class="guage-image">
                                         <img src="assets/images/guage.png">
@@ -962,7 +964,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="guageCalculator">
+                                    <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type>
                                     </div>  
@@ -1143,9 +1145,10 @@
                                     </div>
                                 </div>
                                 <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.equityInitial}} calculate-guage={{modelVal.assetAllocation.equity}}>
-                                    <h4 class="text">Recommended</h4>
+                                    
                                     <div class="orbit">
                                         <div class="indicator"></div>
+                                        <h4 class="text">Recommended</h4>
                                     </div>  
                                     <div class="guage-image">
                                         <img src="assets/images/guage.png">
@@ -1180,7 +1183,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="guageCalculator">
+                                    <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type>
                                     </div>  
@@ -1401,9 +1404,10 @@
                                     </div>
                                 </div>
                                 <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.equityInitial}} calculate-guage={{modelVal.assetAllocation.equity}}>
-                                    <h4 class="text">Recommended</h4>
+                                    
                                     <div class="orbit">
                                         <div class="indicator"></div>
+                                        <h4 class="text">Recommended</h4>
                                     </div>  
                                     <div class="guage-image">
                                         <img src="assets/images/guage.png">
@@ -1438,7 +1442,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                   <div class="guageCalculator">
+                                   <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type>
                                     </div>  
@@ -1512,7 +1516,7 @@
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                                 <div class="row">
-                                    <fin-calendar-form year="true" year-max="50" ng-model="modelVal.A2" format-symbol="none" type="#fde8de" font-color="#f26529" min="0" max="100"></fin-calendar-form>
+                                    <fin-calendar-form year="true" year-max="50" ng-model="modelVal.A2" format-symbol="none" type="#fde8de" font-color="#f26529" min="0" max="2050"></fin-calendar-form>
                                 </div>
                             </div>
                         </div>
@@ -1620,9 +1624,10 @@
                                     </div>
                                 </div>
                                 <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.equityInitial}} calculate-guage={{modelVal.assetAllocation.equity}}>
-                                    <h4 class="text">Recommended</h4>
+                                    
                                     <div class="orbit">
                                         <div class="indicator"></div>
+                                        <h4 class="text">Recommended</h4>
                                     </div>  
                                     <div class="guage-image">
                                         <img src="assets/images/guage.png">
@@ -1657,7 +1662,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="guageCalculator">
+                                    <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type>
                                     </div>  
@@ -1840,9 +1845,10 @@
                                     </div>
                                 </div>
                                 <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.equityInitial}} calculate-guage={{modelVal.assetAllocation.equity}}>
-                                    <h4 class="text">Recommended</h4>
+                                    
                                     <div class="orbit">
                                         <div class="indicator"></div>
+                                        <h4 class="text">Recommended</h4>
                                     </div>  
                                     <div class="guage-image">
                                         <img src="assets/images/guage.png">
@@ -1877,7 +1883,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="guageCalculator">
+                                    <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type>
                                     </div>  
@@ -2059,9 +2065,10 @@
                                     </div>
                                 </div>
                                 <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.equityInitial}} calculate-guage={{modelVal.assetAllocation.equity}}>
-                                    <h4 class="text">Recommended</h4>
+                                    
                                     <div class="orbit">
                                         <div class="indicator"></div>
+                                        <h4 class="text">Recommended</h4>
                                     </div>  
                                     <div class="guage-image">
                                         <img src="assets/images/guage.png">
@@ -2096,7 +2103,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="guageCalculator">
+                                    <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type>
                                     </div>  
@@ -2254,7 +2261,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="guageCalculator">
+                                    <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type> 
                                     </div> 
@@ -2470,7 +2477,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="guageCalculator">
+                                    <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type>
                                     </div>  
@@ -2970,11 +2977,32 @@
 
                     <p><span class="placeholder addPadding-4Per addPaddingLeft-20Per">Note: This amount will be invested in Equity Linked<span class="nextline">Savings Schemes (ELSS) of reputed asset</span><span class="nextline">management companies,to maximize your</span>tax savings.</span></p>
                 </div>
-                <div class="gauge-result">Graph</div>
+                <div class="gauge-result">
+                    <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="100%" class-name="guagePig"></info-tip></span>Projected Investment Growth</p></div>
+                    <div class="meter-widget-cover">
+                        <div class="col-xs-12 graph-header">
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="row">
+                                        <h4>Investment till <span class="content" ng-bind="graphObject.toDate"></span></h4>
+                                        <p><span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="graphObject.totalInvestment | amountSeffix"></span></span></p>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="row">
+                                        <h4>Projected in <span class="content" ng-bind="graphObject.toDate"></span></h4>
+                                        <p><span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="graphObject.totalProjectedCorpus | amountSeffix"></span></span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <goal-chart chartoptions="graphObject" ></goal-chart>
+                    </div>
+                </div>
                 <div class="fin-btn-group addMargin">
                     <button click-redirect="/quickInvestStart" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <button click-redirect="/goals" class="fin-app-btn fin-orange">CONTINUE PLANING</button>
-                    <button ng-click="portfolioFactoring()" class="fin-app-btn fin-blue">CONTINUE TO FUND SELECTION</button>
+                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-orange">CONTINUE PLANING</button> -->
+                    <button ng-click="fundSelectionEarnInterest(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
                 </div>
             </div>
         </div>

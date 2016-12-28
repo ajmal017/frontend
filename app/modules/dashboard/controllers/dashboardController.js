@@ -16,7 +16,7 @@
 			} else {
 				$rootScope.userRiskFactor = '7.0';
 			}
-
+			$rootScope.is_bank_supported = userFlags.user_flags.is_bank_supported;
 			$scope.risk_score = $rootScope.userRiskFactor;
 			
 			if($scope.risk_score > 0 && $scope.risk_score < 4) {
@@ -40,22 +40,35 @@
 
             $scope.user_flags = userFlags.user_flags;
             $scope.portfolio_flag = userFlags.user_flags.portfolio;
+
+            $scope.disabledTrackPerformance = false;
+            if(userFlags.user_flags.is_virtual == true){
+            	if(userFlags.user_flags.portfolio == true && userFlags.user_flags.rebuild_portfolio == false){
+            		$scope.disabledTrackPerformance = false;
+            	}
+            	else {
+            		$scope.disabledTrackPerformance = true;
+            	}
+            } else {
+            	$scope.disabledTrackPerformance = false;
+            }
+
 			console.log('risk_score',userFlags.user_answers.risk_score);
 				$scope.showTrackPerformance = function() {
-					if($scope.user_flags.track == false){
-						$scope.errorPopupMessage = 'Track performance cannot be displayed';
-						$scope.ngDialog = ngDialog;
-						ngDialog.open({ 
-				        	template: '/modules/common/views/partials/error_popup.html', 
-				        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
-				        	overlay: false,
-				        	showClose : false,
+					// if($scope.user_flags.track == false){
+					// 	$scope.errorPopupMessage = 'Track performance cannot be displayed';
+					// 	$scope.ngDialog = ngDialog;
+					// 	ngDialog.open({ 
+				 //        	template: '/modules/common/views/partials/error_popup.html', 
+				 //        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+				 //        	overlay: false,
+				 //        	showClose : false,
 
-				        	scope: $scope
-			        	});
-					} else {
+				 //        	scope: $scope
+			  //       	});
+					// } else {
 							$location.path('/trackPerformanceStart');
-					}
+					// }
 				}
 		}
 })();

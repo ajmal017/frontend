@@ -4,8 +4,8 @@
 		.module('finApp.smartPortFolio')
 		.controller('recommendedController',recommendedController);
 
-		recommendedController.$inject = ['$rootScope','$scope','$http','recommendedService', 'busyIndicator', '$location'];
-		function recommendedController($rootScope,$scope,$http,recommendedService, busyIndicator, $location){
+		recommendedController.$inject = ['$rootScope','$scope','$http','$timeout','recommendedService', 'busyIndicator', '$location', 'goalsService'];
+		function recommendedController($rootScope,$scope,$http,$timeout,recommendedService, busyIndicator, $location, goalsService){
 			
 			$scope.recommendedSchemesObject = {}; 
 			$scope.schemeList = {};
@@ -35,6 +35,7 @@
 		    }
 
 
+
 		    $scope.getSchemeCount = function() {
 		    	var goalType = $rootScope.currentGoal;
 		    	// var assetType = $scope.currentSchemeType;
@@ -44,6 +45,8 @@
 		    		if('success' in data){
 		    			busyIndicator.hide();
 		    			$scope.schemeList = data.success;
+		    			$scope.schemeListNumber = $scope.schemeList.scheme.length;
+
 		    		} else {
 
 		    		}
@@ -96,8 +99,16 @@
 
 		    $scope.addToRecommended = function(currentObj, index) {
 		    	
-		    	$scope.schemeList['scheme'].push(currentObj);
-		    	$scope.schemeList['other recommended'].splice(index,1);
+		    	if($scope.schemeList['scheme'].length >= $scope.schemeListNumber){
+		    		$scope.shoeSchemeNumberError = 1;
+		    		$timeout(function() {
+					    $scope.shoeSchemeNumberError = false;
+					}, 3000);
+		    	} else {
+		    		$scope.schemeList['scheme'].push(currentObj);
+		    		$scope.schemeList['other recommended'].splice(index,1);
+		    	}
+		    	
 		    }
 
 		    $scope.addToOthers = function(currentObj, index) {
@@ -114,27 +125,36 @@
 		    	scheme.forEach(function(element){
 		    		$scope.allFundIds[currentScheme].push(element.id);
 		    	});
-		    	busyIndicator.show();
-		    	recommendedService.validateCompareModifyScheme($scope.allFundIds, goalType).then(function(data){
-		    		if('success' in data){
-		    			if(data.success.valid == true){
-		    				$scope.saveCompareModifyScheme($scope.allFundIds, goalType);
-		    			}
-		    		}
-		    		else {
+		    	if($scope.allFundIds.length > 0 && $scope.allFundIds.length <= $scope.schemeListNumber){
+		    		busyIndicator.show();
+			    	recommendedService.validateCompareModifyScheme($scope.allFundIds, goalType).then(function(data){
+			    		if('success' in data){
+			    			if(data.success.valid == true){
+			    				$scope.saveCompareModifyScheme($scope.allFundIds, goalType);
+			    			}
+			    		}
+			    		else {
 
-		    		}
-		    	});
-		    	
+			    		}
+			    	});
+		    	} 
 		    }
 
 		    $scope.saveCompareModifyScheme = function(allFundIds, goalType) {
 		    	
 		    	recommendedService.saveCompareModifyScheme(allFundIds, goalType).then(function(data){
 		    		if('success' in data){
-		    			busyIndicator.hide();
-		    			console.log('Success');
-		    			$location.path('/recommendedSchemes');
+		    			goalsService.getFundSelection(goalType).then(function(data){
+					
+							if('success' in data){	
+								$rootScope.setFundData = data.success;
+								
+								$location.path('/recommendedSchemes');
+								busyIndicator.hide();
+							} else {
+								console.log(data.Message);
+							}
+						});
 		    		}
 		    		else{
 
@@ -188,6 +208,7 @@
 		    if($scope.recommendedSchemesObject){
 		    	$scope.recommendedSchemes = $scope.recommendedSchemesObject.goals_recommended_schemes[0].recommended_schemes;
 		    	$scope.goalSummary = $scope.recommendedSchemesObject.goals_recommended_schemes[0].goal_summary;
+		    	$scope.totalAnnualInvest = $scope.recommendedSchemesObject.goals_recommended_schemes[0].total_sum;
 		    	console.log('Recommended Schemes', $scope.recommendedSchemes);
 			}
 		}
