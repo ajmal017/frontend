@@ -4,8 +4,8 @@
 		.module('finApp.registerInvestor')
 		.controller('bankInfoController',bankInfoController);
 
-		bankInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','$timeout','bankInfoService','busyIndicator','ngDialog'];
-		function bankInfoController($rootScope,$scope,$route,$http,$location,$timeout, bankInfoService,busyIndicator,ngDialog){
+		bankInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','$timeout','registerInvestorService','bankInfoService','busyIndicator','ngDialog'];
+		function bankInfoController($rootScope,$scope,$route,$http,$location,$timeout, registerInvestorService, bankInfoService,busyIndicator,ngDialog){
 			this.scope = $scope;
 			this.scope.modelVal = {};
 
@@ -14,6 +14,7 @@
 			this.location = $location;
 			this.timeout = $timeout;
 			this.busyIndicator = busyIndicator;
+			this.registerInvestorService = registerInvestorService;
 			
 			this.service = bankInfoService;
 			
@@ -44,7 +45,7 @@
 							$scope.errorPopupMessage = 'Sorry. The bank is not supported';
 							$scope.ngDialog = ngDialog;
 							ngDialog.open({ 
-					        	template: '/modules/common/views/partials/error_popup.html', 
+					        	template: 'modules/common/views/partials/error_popup.html', 
 					        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
 					        	overlay: false,
 					        	showClose : false,

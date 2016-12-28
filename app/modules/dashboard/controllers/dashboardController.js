@@ -46,7 +46,7 @@
 						$scope.errorPopupMessage = 'Track performance cannot be displayed';
 						$scope.ngDialog = ngDialog;
 						ngDialog.open({ 
-				        	template: '/modules/common/views/partials/error_popup.html', 
+				        	template: 'modules/common/views/partials/error_popup.html', 
 				        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
 				        	overlay: false,
 				        	showClose : false,

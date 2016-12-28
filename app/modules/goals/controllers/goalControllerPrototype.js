@@ -85,8 +85,8 @@ var finApp = finApp || {};
 					self.setModelVal(computedSIPData.assetAllocation, sipAmount);
 				};
 				
-				if (this.scope.modelVal.A4 == this.goalModelObject.perMonth)
-					return;
+				//if (this.scope.modelVal.A4 == this.goalModelObject.perMonth)
+					//return;
 				
 				if (!this.goalModelObject['assetAllocationCategory']) {
 					this.scope.$on('assetAllocationCategoryChanged', calculateCorpus);
