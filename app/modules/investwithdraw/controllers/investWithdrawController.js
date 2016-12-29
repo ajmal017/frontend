@@ -30,7 +30,7 @@
 				if(canInvest == false){
 					$scope.ngDialog = ngDialog;
 					ngDialog.open({ 
-			        	template: '/modules/common/views/partials/error_popup.html', 
+			        	template: 'modules/common/views/partials/error_popup.html', 
 			        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
 			        	overlay: false,
 			        	showClose : false,
@@ -87,7 +87,7 @@
 						$scope.errorPopupMessage = 'You cannot withdraw.';
 						$scope.ngDialog = ngDialog;
 						ngDialog.open({ 
-				        	template: '/modules/common/views/partials/error_popup.html', 
+				        	template: 'modules/common/views/partials/error_popup.html', 
 				        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
 				        	overlay: false,
 				        	showClose : false,

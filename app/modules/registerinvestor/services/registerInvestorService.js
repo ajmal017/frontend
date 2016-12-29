@@ -14,7 +14,8 @@
         		saveVideoFile : saveVideoFile,
         		getVideoFile : getVideoFile,
         		saveDeclaration : saveDeclaration,
-        		saveProcessChoice : saveProcessChoice 
+        		saveProcessChoice : saveProcessChoice,
+        		isVaultLocked : isVaultLocked 
         	}
 
         	function saveSignature(signatureDataUri) {
@@ -215,5 +216,13 @@
 				return defer.promise;
 
         	}
+        	
+        	function isVaultLocked() {
+        		if ($rootScope.userFlags && $rootScope.userFlags['user_flags'])
+        			return $rootScope.userFlags['user_flags']['vault_locked'];
+        		
+        		return false;
+        	}
+
 }        
 })();

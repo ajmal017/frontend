@@ -46,22 +46,31 @@ var finApp = finApp || {};
 	        },
 	        
 	        uploadFileToServer : function(name, redirect){
+	            var self = this;
+
 	            if (typeof(name) === "undefined" || !name) {
 	            	name = 'imageUrl';
 	            }
 	            if (typeof(redirect) === "undefined") {
 	            	redirect = false;
 	            }
-	            this.busyIndicator.show();
-	            var self = this;
-	        	this.service.uploadFileToServer(this.scope[name]).then(function(){
-	        		self.busyIndicator.hide();
+
+	            if (this.registerInvestorService.isVaultLocked()) {
 	        		if (redirect) {
 	        			self.location.path(self.rootScope.redirectUrlContext);
 	        		}
-	        	}, function() {
-	        		self.busyIndicator.hide();
-	        	});
+	            }
+	            else {
+		            this.busyIndicator.show();
+		        	this.service.uploadFileToServer(this.scope[name]).then(function(){
+		        		self.busyIndicator.hide();
+		        		if (redirect) {
+		        			self.location.path(self.rootScope.redirectUrlContext);
+		        		}
+		        	}, function() {
+		        		self.busyIndicator.hide();
+		        	});
+	            }
 	        },
 	        
 			initialize : function(){
@@ -86,16 +95,23 @@ var finApp = finApp || {};
 	            	redirect = false;
 	            }
 
-				self.busyIndicator.show();
-				this.service.setSavedValues(this.scope.modelVal).then(function(data){
-					self.busyIndicator.hide();
+	            if (this.registerInvestorService.isVaultLocked()) {
 	        		if (redirect) {
 	        			self.location.path(self.rootScope.redirectUrlContext);
 	        		}
-
-				}, function() {
-					self.busyIndicator.hide();
-				});
+	            }
+	            else {
+					self.busyIndicator.show();
+					this.service.setSavedValues(this.scope.modelVal).then(function(data){
+						self.busyIndicator.hide();
+		        		if (redirect) {
+		        			self.location.path(self.rootScope.redirectUrlContext);
+		        		}
+	
+					}, function() {
+						self.busyIndicator.hide();
+					});
+	            }
 			},
 			
 			appendValue : function() {

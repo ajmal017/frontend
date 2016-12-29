@@ -4,8 +4,8 @@
 		.module('finApp.registerInvestor')
 		.controller('investorInfoController',investorInfoController);
 
-		investorInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','$timeout', 'investorInfoService','busyIndicator'];
-		function investorInfoController($rootScope,$scope,$route,$http,$location,$timeout, investorInfoService,busyIndicator){
+		investorInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','$timeout', 'registerInvestorService', 'investorInfoService','busyIndicator'];
+		function investorInfoController($rootScope,$scope,$route,$http,$location,$timeout, registerInvestorService, investorInfoService,busyIndicator){
 			this.scope = $scope;
 			this.scope.modelVal = investorInfoService.initializeModel();
 
@@ -14,6 +14,7 @@
 			this.location = $location;
 			this.timeout = $timeout;
 			this.busyIndicator = busyIndicator;
+			this.registerInvestorService = registerInvestorService;
 			
 			this.service = investorInfoService;
 			

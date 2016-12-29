@@ -63,7 +63,6 @@
 				 //        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
 				 //        	overlay: false,
 				 //        	showClose : false,
-
 				 //        	scope: $scope
 			  //       	});
 					// } else {
