@@ -16,6 +16,8 @@
 					goalRedirect = 'quickInvestStart';
 				} else if(currentGoal == 'tax') {
 					goalRedirect = 'taxsavingStarted';
+				} else if(currentGoal == 'liquid') {
+					goalRedirect = 'earnInterestStart';
 				}
  				
 				$location.path('/'+goalRedirect);

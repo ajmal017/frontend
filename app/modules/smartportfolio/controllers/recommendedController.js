@@ -125,7 +125,7 @@
 		    	scheme.forEach(function(element){
 		    		$scope.allFundIds[currentScheme].push(element.id);
 		    	});
-		    	if($scope.allFundIds.length > 0 && $scope.allFundIds.length <= $scope.schemeListNumber){
+		    	if($scope.allFundIds[currentScheme].length > 0 && $scope.allFundIds[currentScheme].length <= $scope.schemeListNumber){
 		    		busyIndicator.show();
 			    	recommendedService.validateCompareModifyScheme($scope.allFundIds, goalType).then(function(data){
 			    		if('success' in data){

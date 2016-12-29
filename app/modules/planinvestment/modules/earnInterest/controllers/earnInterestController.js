@@ -34,7 +34,7 @@
 			this.timeout = $timeout;
 			
 			this.goalsService = goalsService;
-			this.assetAllocationService = assetAllocationService;
+			
 			this.goalFormulaeService = goalFormulaeService;
 			this.appConfig = appConfig;
 			this.goalTypeService = earnInterestService;
@@ -61,11 +61,9 @@
 			var self = this;
 			
 			this.getGoalGraphDetails = function() {
-				var tenure = appConfig.QUICKINVEST_LUMPSUM_TERM;
-				if ($rootScope.selectedCriteria == 'op1') {
-					tenure = $scope.earninterest['tenure'];
-				}
-				this.goalsService.getGoalGraphDetails(this.scope.graphObject, $scope.earninterest['assetAllocation'], this.scope.modelVal.A2 || 0, this.scope.modelVal.A4 || 0, tenure);
+				var tenure = appConfig.LIQUID_LUMPSUM_TERM;
+
+				this.goalsService.getGoalGraphDetails(this.scope.graphObject, {'equity' :0, 'debt' : 100}, 0, this.scope.modelVal.A2 || 0, tenure);
 
 				console.log('$scope.graphObject',this.scope.graphObject);
 			}
@@ -105,29 +103,6 @@
 			this.scope.getAssetAllocationCategory = function() {
 				var tenure = $scope.modelVal.A3;
 			
-				if (tenure && $rootScope.selectedCriteria == 'op1') {
-					$scope.earninterest['tenure'] = tenure;
-
-					assetAllocationService.computeAssetAllocationCategory(tenure).then(function(data){
-						if('success' in data){
-							console.log("Success asset category: " + data.success['asset_allocation_category']);
-							$scope.earninterest['assetAllocationCategory'] = data.success['asset_allocation_category'];
-						}
-						else {
-							$scope.earninterest['assetAllocationCategory'] = "A"; //TODO define constants, default category
-						}
-						var assetAllocationData = assetAllocationService.computeAssetAllocation($scope.earninterest['assetAllocationCategory'], $scope.modelVal.A2, $scope.modelVal.A4 || 0);
-
-						$scope.earninterest['assetAllocation'] = assetAllocationData.assetAllocation;
-						$scope.modelVal['assetAllocation'] = assetAllocationData.assetAllocation;
-
-					    self.setModelVal(assetAllocationData.assetAllocation, $scope.modelVal.A2);
-						self.getGoalGraphDetails();
-						
-						$scope.$broadcast('assetAllocationCategoryChanged');
-					});
-				}
-				else {
 					var riskProfile = riskProfileService();
 					$scope.earninterest['assetAllocationCategory'] = appConfig.riskProfileToAssetAllocationCategory[riskProfile];
 
@@ -137,29 +112,21 @@
 					// self.setModelValLumpsum(assetAllocationData);
 				    self.setModelVal(assetAllocationData.assetAllocation, $scope.modelVal.A4);
 					self.getGoalGraphDetails();
-				}
+
 			}
 
 			this.scope.fundSelectionEarnInterest = function(modelVal) {
 				console.log('modelVal', modelVal);
 				var fundSelectionObj = {};
 
-				fundSelectionObj.term = 0;
-				fundSelectionObj.sip = 0;
-				fundSelectionObj.lumpsum = 0;
-				fundSelectionObj.allocation = {
-					"debt" : modelVal.assetAllocation.debt,
-					"equity" : modelVal.assetAllocation.equity,
-					"elss" : "0",
-					"liquid" : "0"
-				}
-
+				fundSelectionObj.goal_name = modelVal.A1;
+				fundSelectionObj.amount_invested = modelVal.A2;
 				console.log('fundSelectionObj', fundSelectionObj);
 				busyIndicator.show();
-				goalsService.addParticularGoal(fundSelectionObj, 'interest').then(function(data){
+				goalsService.addParticularGoal(fundSelectionObj, 'liquid').then(function(data){
 					if('success' in data) {
 						console.log('Goal added successfully');
-						self.getFundData('interest', busyIndicator);
+						self.getFundData('liquid', busyIndicator);
 						
 					}
 					else {
