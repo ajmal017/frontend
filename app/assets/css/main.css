@@ -6934,6 +6934,7 @@ section.trackPerformance .chart-cover.transaction-cover .schemes-inner h2 {
   font-size: 1.125em;
   margin-top: 0;
   margin-bottom: 0px;
+  cursor: pointer;
 }
 section.trackPerformance .chart-cover.transaction-cover .schemes-inner .transactionEach {
   background-color: #e6eef4;

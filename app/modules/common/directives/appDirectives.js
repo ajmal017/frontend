@@ -1233,10 +1233,11 @@
 	            $element.on('click', function() {
 	            	busyIndicator.show();
 	            	recommendedService.getFactsheetData($attrs.showFactsheet).then(function(data){
-	            		busyIndicator.hide();
+	            		
 			    		if('success' in data){
 			    			$rootScope.factsheetData = data.success;
 					    	recommendedService.getHistoricPerformance($attrs.showFactsheet).then(function(dataPerformance){
+					    		busyIndicator.hide();
 					    		if('success' in data){
 					    			$rootScope.histPerformanceData = dataPerformance.success;
 					    			$location.path('/schemeFactsheet');
@@ -1251,10 +1252,6 @@
 
 			    		}
 			    	});
-
-
-	                
-	                
 	            });
 	        }
 	    }

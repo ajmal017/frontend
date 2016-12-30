@@ -14,16 +14,19 @@
 				$('.seperate-cover').mCustomScrollbar();
 			},10);
 
-			$rootScope.subHeader = 'GO BACK TO '+ $rootScope.currentGoal.toUpperCase() +' GOAL';
-			if($rootScope.currentGoal == 'liquid'){
-				$rootScope.redirectURL = '/earnInterestStart';
-			} else if($rootScope.currentGoal == 'invest'){
-				$rootScope.redirectURL = '/quickInvestStart';
-			} else if($rootScope.currentGoal == 'tax'){
-				$rootScope.redirectURL = '/taxsavingStarted';
-			} else {
-				$rootScope.redirectURL = '/'+ $rootScope.currentGoal +'Started'
+			if($location.$$path == '/recommendedSchemes' || $location.$$path == '/compareAndModify'){
+				$rootScope.subHeader = 'GO BACK TO '+ $rootScope.currentGoal.toUpperCase() +' GOAL';
+				if($rootScope.currentGoal == 'liquid'){
+					$rootScope.redirectURL = '/earnInterestStart';
+				} else if($rootScope.currentGoal == 'invest'){
+					$rootScope.redirectURL = '/quickInvestStart';
+				} else if($rootScope.currentGoal == 'tax'){
+					$rootScope.redirectURL = '/taxsavingStarted';
+				} else {
+					$rootScope.redirectURL = '/'+ $rootScope.currentGoal +'Started'
+				}
 			}
+			
 
 			
 			// $('.scheme-compare-other').mCustomScrollbar();
