@@ -44,7 +44,7 @@
 					$scope.modalErrorMessage = 'Are you sure you want to delete this goal?';
 					$scope.currentGoal = currentGoal;
 			        ngDialog.open({ 
-			        	template: '/modules/common/views/partials/confirmText.html', 
+			        	template: 'modules/common/views/partials/confirmText.html', 
 			        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
 			        	overlay: false,
 			        	showClose : false,

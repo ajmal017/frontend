@@ -53,8 +53,11 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		$httpProvider.interceptors.push('finWebInterCepter');
 		$resourceProvider.defaults.stripTrailingSlashes = false;
 		GoogleSigninProvider.init({
-			client_id: '437470809059-abus39vv82rogh0i9nmvehq0bkiq65b0.apps.googleusercontent.com',
+			client_id: '408406696644-sesnpe3i5lftggivp41njj1hk6845o08.apps.googleusercontent.com',
+			scope: 'https://www.googleapis.com/auth/plus.login',
 		});
+		//GoogleSigninProvider.enableServerSide();
+
 		//FOR REMOVING HASH FOR PRODUCTION//
 		// $locationProvider.html5Mode({
 		//           enabled: true,

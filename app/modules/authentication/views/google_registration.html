@@ -1,0 +1,33 @@
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-wrapper">
+        
+      <button data-dismiss="modal" class="modal-close"></button>
+		<header class="login-header col-xs-12">
+			<div class="row">
+				<div class="cloud1"><img src="assets/images/login_cloud1.png"></div>
+				<div class="header-intro col-xs-12">
+					<div class="row">
+						<p class="pull-left">Complete FinAskus Registration!</p>
+						<div class="plane pull-right"><img src="assets/images/loginPlane.png"></div>
+					</div>
+				</div>
+				<div class="cloud2"><img src="assets/images/login_cloud2.png"></div>
+			</div>
+		</header>
+		<div class="mobile-form">
+			<form name="mobileForm" novalidate>
+				<div class="form-group">
+					<input ng-class="{'has-error':mobileForm.phone.$error.pattern}" type="text" ng-pattern="/^[0-9]+$/" name="phone" maxLength="10" ng-model="mobileNumber" required>
+					<label>Phone No.</label>
+					<span class="error-text" ng-show="mobileForm.phone.$error.pattern">Please enter valid number</span>
+				</div>
+				<div class="login-btn-group">
+					<button ng-disabled="mobileForm.$invalid" class="fin-app-btn fin-orange full-width" ng-click="registerPhone(mobileNumber)">COMPLETE REGISTRATION</button>
+				</div>
+				<div class="form-error" ng-if="errorPhone"><p ng-bind="errorPhone"></p></div>
+			</form>
+		</div>
+</div>
+</div>
+</div>
