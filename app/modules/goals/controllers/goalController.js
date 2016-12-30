@@ -45,7 +45,7 @@
 					$scope.currentGoal = currentGoal;
 					$scope.ngDialog = ngDialog;
 			        ngDialog.openConfirm({ 
-			        	template: '/modules/common/views/partials/confirmText.html', 
+			        	template: 'modules/common/views/partials/confirmText.html', 
 			        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
 			        	overlay: false,
 			        	showClose : false,
