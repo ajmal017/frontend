@@ -3970,6 +3970,40 @@ section.planinvest .invest-outer-cover .investCover .cloud2 {
   right: -20%;
   top: 5%;
 }
+section.planinvest .invest-outer-cover .investCover .checkbox-cover-delete {
+  width: 100%;
+  float: left;
+}
+section.planinvest .invest-outer-cover .investCover .checkbox-cover-delete label {
+  opacity: 1;
+}
+section.planinvest .invest-outer-cover .investCover .checkbox-cover-delete label span {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  right: 0;
+  margin: 0 auto;
+  top: -12px;
+  vertical-align: middle;
+  background-color: #fff;
+  opacity: 1;
+  background-position: center;
+  -webkit-background-size: 45% 36%;
+          background-size: 45% 36%;
+  -moz-background-size: 45% 36%;
+  -o-background-size: 45% 36%;
+  -webkit-background-size: 50% 52%;
+          background-size: 50% 52%;
+  z-index: 100;
+  background-repeat: no-repeat;
+  -webkit-box-shadow: 0px 1px 4px 0px #1a78b9;
+  -moz-box-shadow: 0px 1px 4px 0px #1a78b9;
+  box-shadow: 0px 1px 4px 0px #1a78b9;
+  background-image: url(../images/deletegoal.png);
+  -webkit-border-radius: 50%;
+     -moz-border-radius: 50%;
+          border-radius: 50%;
+}
 @media only screen and (min-width:1400px) {
   section.planinvest .invest-outer-cover .investCover {
     height: 350px;
@@ -5700,6 +5734,18 @@ section.registerInvestor .registerInvestorConfirm {
 .table-outer-cover.withdraw .tfooter .lumpSumTotal {
   width: 20%;
   float: left;
+}
+.table-outer-cover.table-full-width {
+  width: 100%;
+}
+.table-outer-cover.table-full-width h3 {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #000;
+  font-weight: normal;
+  font-size: 1.125em;
+  opacity: 0.5;
+  margin-top: 0px;
+  margin-bottom: 20px;
 }
 .table-seperate {
   width: 95%;

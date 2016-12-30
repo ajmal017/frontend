@@ -43,13 +43,18 @@
 			$scope.deleteGoal = function (currentGoal) {
 					$scope.modalErrorMessage = 'Are you sure you want to delete this goal?';
 					$scope.currentGoal = currentGoal;
-			        ngDialog.open({ 
+					$scope.ngDialog = ngDialog;
+			        ngDialog.openConfirm({ 
 			        	template: '/modules/common/views/partials/confirmText.html', 
 			        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
 			        	overlay: false,
 			        	showClose : false,
 
 			        	scope: $scope
+			        }).then(function(confirm){
+			        	$scope.confirmDeleteGoal(currentGoal);
+			        }, function(reject){
+
 			        });
 			    };
 

@@ -16,7 +16,7 @@
 							});
 						});		
 					}else{
-						$scope.errorMessage = data['Message'];
+						$scope.errorMessage = data['Message'] + " " + data['Error'];
 					}
 				});
 			}

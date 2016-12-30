@@ -24,7 +24,7 @@
 					if(data.status_code == 200){
 						defer.resolve({'success':data.response});
 					}else{
-						defer.resolve({'Message':data.response['message']});
+						defer.resolve({'Message':data.response['message'], 'Error':data.error });
 					}				
 				}, function(err){
 					defer.reject(err);

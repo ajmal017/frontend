@@ -36,5 +36,12 @@
 		        templateUrl: 'modules/investwithdraw/views/withdrawStart.html',
 		        controller: 'investWithdrawController'
 		    })
+		    .when('/investmentReturn', {
+				title : 'Investment Status',
+				subHeader : 'GO BACK TO DASHBOARD',
+				redirectUrl : '/dashboard',
+		        templateUrl: 'modules/investwithdraw/views/investmentReturn.html',
+		        controller: 'investWithdrawController'
+		    })
 		}
 })();

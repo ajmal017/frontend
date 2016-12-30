@@ -85,7 +85,7 @@
             function investCheckSum(sum) {
                 var defer = $q.defer();
                 var getAPI = $resource( 
-                    appConfig.API_BASE_URL+'/payment/get/checksum/?txn_amount='+sum, 
+                    appConfig.API_BASE_URL+'/payment/get/checksum/?txn_amount='+sum+'&web=true', 
                     {}, {
                         Check: {
                             method:'GET',

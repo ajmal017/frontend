@@ -654,7 +654,8 @@
         <div ng-if="$root.selectedCriteria == 'op1'" class="swiper-slide">
             <form name="quickInvestForm1" novalidate>
                 <div class="swiper-content content-1">
-                      <p class="question">I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ame="year" required ng-keyup="showMessage1 = true" ng-model="modelVal.A2"></span>per month</p>
+                      <p class="question">I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" name="investMon" required ng-keyup="showMessage1 = true" ng-model="modelVal.A2" max="199999"></span>per month</p>
+                      <span class="error-text" ng-show="modelVal.A2 > 199999">Entered amount cannot be more than 199999</span>
                       <span class="error-text" ng-show="showMessage1 && (modelVal.A2 < 1000 || modelVal.A2 == undefined)">Minimum amount must be greater than or equal to 1000</span>
                 </div>
             </form>
@@ -670,7 +671,9 @@
             <form name="quickInvestForm3" novalidate>
             <div class="swiper-content content-1">
                   <p class="question">I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-keyup="showMessage2 = true" type="text" ame="year" required ng-model="modelVal.A4"></span>right now</p>
-                  <span class="error-text" ng-show="showMessage2 && (modelVal.A4 < 5000 || modelVal.A4 == undefined)">Minimum amount must be greater than or equal to 5000</span>
+                  <span class="error-text" ng-show="showMessage2 && (modelVal.A4 < 5000 || modelVal.A4 == undefined && modelVal.A2 != '')">Minimum amount must be greater than or equal to 5000</span>
+                  <span class="error-text" ng-show="showMessage2 && (modelVal.A4 > 9999999 || modelVal.A4 == undefined && modelVal.A2 != '')">Maximum amount must be lesser than or equal to 9999999</span>
+
             </div>
             </form>
         </div>
@@ -785,9 +788,9 @@
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-disabled="quickInvestForm1.$invalid" ng-click="sendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1')" ng-disabled="modelVal.A1 < 1000 || modelVal.A1 == undefined" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-disabled="(modelVal.A2 == undefined)" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2 && $root.selectedCriteria == 'op2')" ng-disabled="modelVal.A4 < 5000 || modelVal.A4 == undefined" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1')" ng-disabled="modelVal.A2 < 1000 || modelVal.A2 == undefined || modelVal.A2 > 199999" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-disabled="modelVal.A2 == undefined" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2 && $root.selectedCriteria == 'op2')" ng-disabled="modelVal.A4 < 5000 || modelVal.A4 == undefined || modelVal.A4 > 9999999" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>
 <div ng-if="swiperName == 'retirement'" class="fadeIn swiper-container customSwiper retirement type2Sliders" ng-init="step = 1">
@@ -2224,9 +2227,9 @@
                                     </div>
                                 </div>
                                 <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.equityInitial}} calculate-guage={{modelVal.assetAllocation.equity}}>
-                                    <h4 class="text">Recommended</h4>
                                     <div class="orbit">
                                         <div class="indicator"></div>
+                                        <h4 class="text">Recommended</h4>
                                     </div>  
                                     <div class="guage-image">
                                         <img src="assets/images/guage.png">
@@ -2548,6 +2551,9 @@
                 <div class="swiper-content">
                       <h1 class="topHeader">You can invest upto Rs 1,50,000 to maximize your tax<span class="nextline">savings.</span><span class="nextline">I would like to invest</span></h1>
                       <p class="question width-67"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" name="year" required ng-model="modelVal.A2"></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2', 1)">PLEASE HELP ME ESTIMATE</button></p>
+                      <span class="error-text" ng-show="modelVal.A2 != 0 && modelVal.A2 > 9999999">Maximum amount must be lesser than 99,99,999</span>
+                      <span class="error-text" ng-show="modelVal.A2 != 0 && modelVal.A2 < 5000">Minimum amount must be greater than or equal to 5000</span>
+
                       <span class="placeholder addPadding-4Per">Note: This amount will be invested in Equity Linked Savings Schemes (ELSS) of reputed asset management companies, to maximize your tax savings.</span>
                 </div>
             </form>
@@ -2567,7 +2573,7 @@
                     4. Other tax saving / ELSS</span> <span class="swiper-input"><input ng-model="modelVal.A6" ng-change="computeFutureEligibility()" type="text" name="year" required></span></p>
                     <span class="placeholder addPadding-4Per">Further eligiblity</span>
                     <p class="question multiple"><span class="content">
-                    Thanks for the guidance.I would like to save<span class="nextline">the following amount per month <span class="currency swiper-input normal"><span class="currency">&#8377</span><input ng-model="modelVal.A2" ng-change="computeTaxBenefit()" format="number" type="text" name="year" required></span></span></span></p>
+                    Thanks for the guidance.I would like to save<span class="nextline">the following amount <span class="currency swiper-input normal"><span class="currency">&#8377</span><input ng-model="modelVal.A2" ng-change="computeTaxBenefit()" format="number" type="text" name="year" required></span></span></span></p>
                     <p><span class="placeholder addPadding-4Per addOnlyBold">Your potential tax benefit is <span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="taxsaving.taxBenefit | currency:''"></span></span></p>
                 </div>
             </form>
@@ -2619,7 +2625,7 @@
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);getGoalGraphDetails()" ng-disabled="(modelVal.A2 == 0)||(modelVal.A2 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);getGoalGraphDetails()" ng-disabled="(modelVal.A2 == 0)||(modelVal.A2 == undefined)||(modelVal.A2 < 5000)||(modelVal.A2 > 9999999)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getGoalGraphDetails()" ng-disabled="(modelVal.A2 == 0)||(modelVal.A2 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
 </div>
@@ -2972,8 +2978,9 @@
         <div class="swiper-slide">
             <form name="quickInvestForm1" novalidate>
                 <div class="swiper-content content-1">
-                  <p class="question">I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ame="year" required ng-init="modelVal.A2 = 0" ng-keyup="showMessage1 = true" ng-model="modelVal.A2" maxlength="8"></span></p>
-                  <span class="error-text" ng-show="showMessage1 && (modelVal.A2 < 1000)">Minimum amount must be greater than or equal to 1000</span>
+                  <p class="question">I would like to invest <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ame="year" required ng-init="modelVal.A2 || 0" ng-keyup="showMessage1 = true" ng-model="modelVal.A2" maxlength="8"></span></p>
+                  <span class="error-text" ng-show="showMessage1 && (modelVal.A2 < 5000 && modelVal.A2 != '')">Minimum amount must be greater than or equal to 5000</span>
+                  <span class="error-text" ng-show="showMessage2 && (modelVal.A4 > 9999999 || modelVal.A4 == undefined && modelVal.A2 != '')">Maximum amount must be lesser than or equal to 9999999</span>
                 </div>
             </form>
         </div>
@@ -3021,9 +3028,9 @@
         <p>Earn Higher Interest</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1)" ng-disabled="modelVal.A1 < 1000 || modelVal.A1 == undefined" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2)" ng-disabled="(modelVal.A2 == '')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button class="fin-link-btn content-prev" click-redirect="/earnInterestStart" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step == 1)" ng-disabled="modelVal.A1 == ''" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2)" ng-disabled="(modelVal.A2 == '' || modelVal.A2 < 5000 || modelVal.A2 > 9999999)" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         
     </div>
 </div>

@@ -10,7 +10,7 @@
 			$scope.allFunds = '';	
 			$scope.trackerDetails = '';
 			$scope.resultSet = '';
-
+			$scope.setChartValue = $rootScope.trackPerTab || 'SCHEME';
 		    $scope.showFinancialGoalModal = function (modelObj) {
 		    	$scope.finGoalsModal = modelObj;
 		    	$scope.finGoalsModal.schemes = $scope.allSchemes;
