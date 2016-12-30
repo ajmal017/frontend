@@ -70,7 +70,7 @@
 				'LUXURY' : 'luxury'
 			},
 
-			'otherGoals' : ['invest','tax'],
+			'otherGoals' : ['invest','tax','liquid'],
 			'financialGoals' : ['retirement','education','property','automobile','vacation','wedding','event','jewellery'],
 			'QUICKINVEST_LUMPSUM_TERM' : 10,
 			'TAX_TERM' : 3,

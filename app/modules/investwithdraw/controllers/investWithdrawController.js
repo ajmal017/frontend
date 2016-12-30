@@ -4,8 +4,8 @@
 		.module('finApp.investWithdraw')
 		.controller('investWithdrawController',investWithdrawController);
 
-		investWithdrawController.$inject = ['$scope','$rootScope','$location','$filter','$http','investWithdrawService','busyIndicator', 'ngDialog', '$interpolate']
-		function investWithdrawController($scope,$rootScope,$location,$filter,$http,investWithdrawService, busyIndicator, ngDialog, $interpolate){
+		investWithdrawController.$inject = ['$scope','$rootScope','$location','$filter','$http','investWithdrawService','busyIndicator', 'ngDialog', '$interpolate', '$routeParams']
+		function investWithdrawController($scope,$rootScope,$location,$filter,$http,investWithdrawService, busyIndicator, ngDialog, $interpolate, $routeParams){
 
 			$scope.withdraw = {};
 			$scope.goToInvest = function() {
@@ -193,7 +193,7 @@
 					
 					$scope.ngDialog = ngDialog;
 					$scope.errorPopupMessage = 'Thank you for your order request. Please confirm to receive payment instructions.'
-					$scope.confirmShow = true;
+					$scope.confirmShowButton = true;
 					ngDialog.open({ 
 			        	template: '/modules/common/views/partials/error_popup.html', 
 			        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
@@ -226,19 +226,39 @@
 			
 					
 				} else {
-					investWithdrawService.investCheckSum(totalSum).then(function(data){
-						if('success' in data) {
-							console.log('check sum', data.success);
-							$scope.redirectToPayment(data.success);
+					
+					$scope.modalErrorMessage = 'You will now be redirected through a secure Payment Gateway (BillDesk) to your bank account.\n\nYour payment will be credited to Indian Clearing Corporation Limited (a Bombay Stock Exchange subsidiary) for your purchase.'
+					
+					ngDialog.openConfirm({ 
+			        	template: '/modules/common/views/partials/confirmText.html', 
+			        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+			        	overlay: false,
+			        	showClose : false,
 
-						} else {
+			        	scope: $scope,
+			        	
+		        	}).then(function(confirm){
+		        		$scope.confirmPayment(totalSum);
+		        	}, function(reject){
 
-						}
-					});
+		        	});
 				}
-
-				
 			}
+
+			$scope.confirmPayment = function(totalSum) {
+				busyIndicator.show();
+				investWithdrawService.investCheckSum(totalSum).then(function(data){
+					busyIndicator.hide();
+					if('success' in data) {
+						console.log('check sum', data.success);
+						$scope.redirectToPayment(data.success);
+
+					} else {
+
+					}
+				});
+			}
+
 
 			$scope.redirectToPayment = function(data){
 				$scope.billdeskData = {
@@ -250,6 +270,18 @@
 				var form = $interpolate('<form action="https://www.billdesk.com/pgidsk/PGIMerchantRequestHandler/" method="POST"><div><input name="X-Requested-With" value="{{billdeskData.X-Requested-With}}" type="hidden"><input name="hidRequestId" value="{{billdeskData.hidRequestId}}" type="hidden"><input name="hidOperation" value="{{billdeskData.hidOperation}}" type="hidden"><input name="msg" value="{{billdeskData.msg}}" type="hidden"></div></form>')($scope)
 				 jQuery(form).appendTo('body').submit();
 				
+			}
+
+			$scope.getPaymentConfirmed = function() {
+				$scope.txn_amount = parseInt($routeParams.txn_amount);
+				$scope.message = $routeParams.message;
+				$scope.apiStatus = $routeParams.api_status;
+				$scope.auth_status = $routeParams.auth_status;
+				$scope.order_id = $routeParams.order_id;
+			}
+
+			if($location.$$path == '/investmentReturn') {
+				$scope.getPaymentConfirmed();
 			}
 			
 		}

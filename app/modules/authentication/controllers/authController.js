@@ -16,7 +16,7 @@
 						});
 					});		
 				}else{
-					$scope.errorMessage = data['Message'];
+					$scope.errorMessage = data['Message'] + " " + data['Error'];
 				}
 			}
 			
@@ -99,7 +99,6 @@
 			}
 			
 			$scope.googleSignIn = function(){
-//				GoogleSignin.signIn().then(function (user) {
 				GoogleSignin.signIn().then(function (user) {
 					var authResponse = user.getAuthResponse(),
 					profile = user.getBasicProfile();

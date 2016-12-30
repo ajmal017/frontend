@@ -15,7 +15,17 @@
 			},10);
 
 			$rootScope.subHeader = 'GO BACK TO '+ $rootScope.currentGoal.toUpperCase() +' GOAL';
-			$rootScope.redirectURL = '/'+ $rootScope.currentGoal +'Started'
+			if($rootScope.currentGoal == 'liquid'){
+				$rootScope.redirectURL = '/earnInterestStart';
+			} else if($rootScope.currentGoal == 'invest'){
+				$rootScope.redirectURL = '/quickInvestStart';
+			} else if($rootScope.currentGoal == 'tax'){
+				$rootScope.redirectURL = '/taxsavingStarted';
+			} else {
+				$rootScope.redirectURL = '/'+ $rootScope.currentGoal +'Started'
+			}
+
+			
 			// $('.scheme-compare-other').mCustomScrollbar();
 			// $http.get('modules/common/config/test.json').success(function(response) {
 			// 	$scope.response = response;
