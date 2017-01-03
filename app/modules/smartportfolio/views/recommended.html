@@ -69,7 +69,7 @@
 			<div class="tbody">
 				<div class="tr" ng-repeat="eachScheme in eachSchemeType.data">
 					<div class="td">
-						<p class="schemes" ng-click="getFactsheet(eachScheme.id)">{{eachScheme.fund_name}}</p>
+						<p class="schemes" show-factsheet="{{eachScheme.id}}">{{eachScheme.fund_name}}</p>
 					</div>
 					<div class="td">
 						<p>{{eachScheme.category_name}}</p>
