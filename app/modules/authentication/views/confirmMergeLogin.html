@@ -28,7 +28,8 @@
 				</div>
 			</div>
 			<div class="login-btn-group">
-				<button class="fin-app-btn fin-orange" ng-click="mergeAccounts(user)">LOGIN</button>
+				<button class="fin-app-btn fin-white pull-left" ng-click="cancelAccountMerge()">CANCEL MERGE</button>
+				<button class="fin-app-btn fin-orange pull-right" ng-click="mergeAccounts(user)">LOGIN</button>
 			</div>
 		</form>
 		<div ng-if="errorMessage" class="form-error"><p ng-bind="errorMessage"></p></div>

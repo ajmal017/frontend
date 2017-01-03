@@ -63,7 +63,7 @@
 				<div class="login-btn-group">
 					<button ng-disabled="otpForm.$invalid" class="fin-app-btn fin-orange full-width" ng-click="confirmOtp(otp)">COMPLETE REGISTRATION</button>
 				</div>
-				<p class="verify-email pull-left">Facing OTP issues?<span class="nextline redirect" ng-click="completeGoogleLogin()" click-redirect="/dashboard">Verify Later</span></p>
+				<p class="verify-email pull-left">Facing OTP issues?<span class="nextline redirect" ng-click="completeGoogleLogin()">Verify Later</span></p>
 				<div class="form-error" ng-if="errorOtp"><p ng-bind="errorOtp"></p></div>
 			</form>
 		</div>

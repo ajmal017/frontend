@@ -54,7 +54,6 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		$resourceProvider.defaults.stripTrailingSlashes = false;
 		GoogleSigninProvider.init({
 			client_id: '408406696644-sesnpe3i5lftggivp41njj1hk6845o08.apps.googleusercontent.com',
-			scope: 'https://www.googleapis.com/auth/plus.login',
 		});
 		//GoogleSigninProvider.enableServerSide();
 

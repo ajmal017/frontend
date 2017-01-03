@@ -10,7 +10,8 @@
         		verifyLogin : verifyLogin,
         		submitSuccess : submitSuccess,
         		googleLogin : googleLogin,
-        		googleRegister : googleRegister
+        		googleRegister : googleRegister,
+        		googleRegisterExistingUser : googleRegisterExistingUser
         	}
 
 	        function verifyLogin(params){
@@ -66,7 +67,7 @@
 					if(data.status_code == 200){
 						defer.resolve({'success':data.response});
 					}else{
-						defer.resolve({'Message':data.response['message']});
+						defer.resolve({'Message':data.response['message'], 'Error':data.error });
 					}				
 				}, function(err){
 					defer.reject(err);
@@ -75,19 +76,28 @@
 	        }
 
 	        function googleRegister(params){
+            	var fd = new FormData();
+        		fd.append('email', params.email);
+        		fd.append('phone_number', params.phone_number);
+        		fd.append('auth_code', params.auth_code);
+        		fd.append('is_web', params.is_web);
+        		fd.append('image', params.image);
+        		
 				var defer = $q.defer();
 				var postAPI = $resource( 
 					appConfig.API_BASE_URL+'/user/google/register/', 
 					{}, {
 						Check: {
 							method:'POST',
+							headers:{'Content-type':undefined},
+							transformRequest: angular.identity
 						}
 					});
-				postAPI.Check(params,function(data){
+				postAPI.Check(fd,function(data){
 					if(data.status_code == 200){
 						defer.resolve({'success':data.response});
 					}else{
-						defer.resolve({'Message':data.response['message']});
+						defer.resolve({'Message':data.response['message'], 'Error':data.error });
 					}				
 				}, function(err){
 					defer.reject(err);
@@ -96,19 +106,27 @@
 	        }
 
 	        function googleRegisterExistingUser(params){
+            	var fd = new FormData();
+        		fd.append('email', params.email);
+        		fd.append('password', params.password);
+        		fd.append('auth_code', params.auth_code);
+        		fd.append('is_web', params.is_web);
+
 				var defer = $q.defer();
 				var postAPI = $resource( 
 					appConfig.API_BASE_URL+'/user/google/register/first/', 
 					{}, {
 						Check: {
 							method:'POST',
+							headers:{'Content-type':undefined},
+							transformRequest: angular.identity
 						}
 					});
-				postAPI.Check(params,function(data){
+				postAPI.Check(fd,function(data){
 					if(data.status_code == 200){
 						defer.resolve({'success':data.response});
 					}else{
-						defer.resolve({'Message':data.response['message']});
+						defer.resolve({'Message':data.response['message'], 'Error':data.error });
 					}				
 				}, function(err){
 					defer.reject(err);
