@@ -49,8 +49,8 @@
 			}
 			$scope.calculateYear = function(from,to){
 				var currentYear = new Date();				
-				$scope.retirement['calculateYear'] = currentYear.getFullYear() + (to - from);
-				$scope.retirement['tenure'] = to - from;
+				$scope.retirement['calculateYear'] = currentYear.getFullYear() + ($scope.modelVal.A3 - $scope.modelVal.A2);
+				$scope.retirement['tenure'] = $scope.modelVal.A3 - $scope.modelVal.A2;
 			}
 			$scope.getAssetAllocationCategory = function(){
 				var currentYear = new Date(),
@@ -123,6 +123,10 @@
 			}
 			
 			$scope.calculateEstimates = function(currentAge, retirementAge, monthlyIncome, amountSaved) {
+				if (!$scope.retirement['tenure']) {
+					$scope.calculateYear();
+					$scope.getAssetAllocationCategory();
+				}
 				retirementGoalsService.getCorpusEstimates(currentAge, retirementAge, monthlyIncome, amountSaved).then(function(data){
 					if('success' in data){
 						console.log("Success goal_estimation: " + data.success['goal_estimation']);

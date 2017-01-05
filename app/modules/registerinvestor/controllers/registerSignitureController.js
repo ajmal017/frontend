@@ -34,7 +34,16 @@
 					 
 				});
 			}
-			
+
+			$scope.reviewInfo = function() {
+				if ($rootScope.userFlags['user_flags']['vault']) {
+					$location.path('/registerInvestorReview');
+				}
+				else {
+					$location.path('/registerInvestorInfo');
+				}
+			}
+
 			$scope.saveInfo = function() {
 				busyIndicator.show();
 				registerInvestorService.saveSignature($scope.modelVal.signature).then(function(data){

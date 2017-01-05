@@ -205,8 +205,6 @@
 	    			disabled : '=dropdownDisable'
 	    		},	
 	    		link : function($scope,$element,$attr,ngModel){
-	    			console.log('disabled',$scope.disabled);
-	    			console.log("in link: " + $element.id);
 	    			setTimeout(function(){
 	    				var $this = $element,
         			numberOfOptions = $this.children('option').length;
@@ -226,12 +224,22 @@
 				        }).appendTo($list);
 				        if($this.children('option').eq(i).val() ==  ngModel.$viewValue){
 				        	$this.children('option').eq(i).attr('selected', true);	
-				        }else if($scope.disabled != undefined){
-				        	$this.children('option').eq(1).attr('selected', true);
+					        $styledSelect.text($this.children('option[selected]').text());
+					        ngModel.$setViewValue($this.children('option[selected]').val());
 				        }
-				        $styledSelect.text($this.children('option[selected]').text());
-				        ngModel.$setViewValue($this.children('option[selected]').val());
 				    }
+				    var optSelected = $this.children('option[selected]');
+				    console.log("optSelected: " + optSelected);
+			        if (!$this.children('option[selected]') || $this.children('option[selected]').length == 0) {
+			        	$this.children('option').eq(1).attr('selected', true);
+			        	$styledSelect.text($this.children('option[selected]').text());
+				        ngModel.$setViewValue($this.children('option[selected]').val());
+			        }
+			        else if (ngModel.$viewValue == undefined || ngModel.$viewValue == null || ngModel.$viewValue =='') {
+			        	$styledSelect.text($this.children('option[selected]').text());
+				        ngModel.$setViewValue($this.children('option[selected]').val());
+			        } 
+				    
 				    var $listItems = $list.children('li');
 				    $listItems.eq(0).remove();			    
 				    $styledSelect.click(function (e) {
@@ -269,13 +277,12 @@
 				    }
 				    
 	                ngModel.$render = function() {
-	                	if (!$this.children('option[selected]') || $this.children('option[selected]').val() !=  ngModel.$viewValue ) {
+	                	if (!$this.children('option[selected]') || $this.children('option[selected]').length == 0 || $this.children('option[selected]').val() !=  ngModel.$viewValue ) {
 						    for (var i = 0; i < numberOfOptions; i++) {
 						        if($this.children('option').eq(i).val() ==  ngModel.$viewValue){
-						        	console.log("Setting option == val: " + ngModel.$viewValue);
-						        	$this.children('option').eq(i).attr('ng-selected', true);
+						        	$this.children('option').eq(i).attr('selected', true);
 							        $styledSelect.text($this.children('option').eq(i).text());
-
+							        break;
 						        }
 						    }
 	                		

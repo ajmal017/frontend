@@ -14,6 +14,7 @@
 			this.location = $location;
 			this.timeout = $timeout;
 			this.busyIndicator = busyIndicator;
+			this.registerInvestorService = registerInvestorService;
 			
 			this.service = nomineeInfoService;
 			
