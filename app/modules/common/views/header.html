@@ -9,7 +9,7 @@
             <li ng-if="(!getStarted && !menu) && !loggedIn"><a click-redirect="/gettingStarted" href="javascript:void(0)" class="fin-btn start-btn">GET STARTED</a></li>
             <li ng-if="(getStarted && !menu) && !loggedIn"><p>Already have an account?</p></li>
             <li ng-if="!menu && !loggedIn"><a href="javascript:void(0)" click-redirect="/" class="fin-link log-in">LOG IN</a></li>
-            <li ng-if="loggedIn" class="dropdown fin-dropdown"><a href="javascript:void(0)" class="fin-link log-in" data-toggle="dropdown"><span class="label">Logged in as </span><span class="name" ng-bind="userDetails.user['name']" ng-if="(userDetails.user['name'] !='')&&(userDetails.user['email'] =='')"></span>
+            <li ng-if="loggedIn" class="dropdown fin-dropdown"><a href="javascript:void(0)" class="fin-link log-in" data-toggle="dropdown"><span class="label">Logged in as </span><span class="name" ng-bind="userDetails.user['name']" ng-if="(userDetails.user['name'] !='')"></span>
             <span class="name" ng-bind="userDetails.user['email']" ng-if="(userDetails.user['email'] !='')&&(userDetails.user['name'] =='')"></span><span class="up"></span><span class="down"></span></a>
               <ul class="fin-dropdown-menu">
                 <li><a href="javascript:void(0)" click-redirect="/settings">Account Settings</a></li>

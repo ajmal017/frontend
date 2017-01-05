@@ -2,7 +2,6 @@
     <div class="modal-content">
         <div class="modal-wrapper">
         
-      <button data-dismiss="modal" class="modal-close"></button>
 		<header class="login-header col-xs-12">
 			<div class="row">
 				<div class="cloud1"><img src="assets/images/login_cloud1.png"></div>
@@ -15,7 +14,7 @@
 				<div class="cloud2"><img src="assets/images/login_cloud2.png"></div>
 			</div>
 		</header>
-		<div class="mobile-form">
+		<div class="otp-form">
 			<form name="mobileForm" novalidate>
 				<div class="form-group">
 					<input ng-class="{'has-error':mobileForm.phone.$error.pattern}" type="text" ng-pattern="/^[0-9]+$/" name="phone" maxLength="10" ng-model="mobileNumber" required>
@@ -23,7 +22,8 @@
 					<span class="error-text" ng-show="mobileForm.phone.$error.pattern">Please enter valid number</span>
 				</div>
 				<div class="login-btn-group">
-					<button ng-disabled="mobileForm.$invalid" class="fin-app-btn fin-orange full-width" ng-click="registerPhone(mobileNumber)">COMPLETE REGISTRATION</button>
+					<button class="fin-app-btn fin-white pull-left" ng-click="ngDialog.closeAll()">CANCEL</button>
+					<button ng-disabled="mobileForm.$invalid" class="fin-app-btn fin-orange pull-right" ng-click="registerPhone(mobileNumber)">COMPLETE REGISTRATION</button>
 				</div>
 				<div class="form-error" ng-if="errorPhone"><p ng-bind="errorPhone"></p></div>
 			</form>
