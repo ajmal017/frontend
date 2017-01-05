@@ -99,8 +99,8 @@
 			}
 		}
 		.text{
-			.GLOBAL_FONT_STYLE('Roboto-Bold',@black,normal);
-			.PIXEL2EM(16);
+			.GLOBAL_FONT_STYLE('Roboto-Regular',@black,normal);
+			font-size: 11px;
 			position: absolute;
 			z-index: 1000;
 			margin:0px;
@@ -176,6 +176,28 @@
     		padding-bottom:10px;
     		color: rgb( 36, 122, 188 ) !important;
 		}
+	}
+	.reset_allocation{
+	    position: absolute;
+	    top: 65%;
+	    right: 13%;
+	    width: 30px;
+	    background-image: url(../images/restore.png);
+	    height: 35px;
+	    background-repeat: no-repeat;
+	    background-position: center;
+	    background-color: transparent;
+	    border: none;
+	    outline: none;
+	    -webkit-border-radius: 50%;
+	    -moz-border-radius: 50%;
+	    border-radius: 50%;
+	    -webkit-background-size: 100% 100%;
+	    -moz-background-size: 100%;
+	    -o-background-size: 100%;
+	    background-size: 100%;
+	    cursor: pointer;
+	    z-index: 1;
 	}
 	.blur-guageCalculator{
 		opacity: 0.5;

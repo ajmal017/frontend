@@ -72,7 +72,7 @@
 						</div>
 					</div>
 					<div class="tbody">
-						<div class="tr" ng-repeat="recommendedScheme in schemeList.scheme">
+						<div class="tr" ng-repeat="recommendedScheme in schemeTop">
 							<div class="td">
 								<div class="delete-cover" ng-click="addToOthers(recommendedScheme, $index)">
 									<div class="image-div">
@@ -82,7 +82,7 @@
 							</div>
 							<div class="td">
 								<p><div class="checkbox-cover">
-									<input type="checkbox" id="{{recommendedScheme.id}}" name="type">
+									<input type="checkbox" id="{{recommendedScheme.id}}" value="{{recommendedScheme.id}}" ng-init="recommendedScheme.selected = 'false'" ng-model="recommendedScheme.selected" name="selectedSchemesTop[]">
 									<label for="{{recommendedScheme.id}}"><span></span></label>
 								</div></p>
 							</div>
@@ -119,7 +119,7 @@
 						</div>
 					</div>
 					<div class="tbody">
-						<div class="tr" ng-repeat="otherScheme in schemeList['other recommended']">
+						<div class="tr" ng-repeat="otherScheme in otherRecommendSchemes">
 							<div class="td">
 								<div class="add-cover" ng-click="addToRecommended(otherScheme, $index)">
 									<div class="image-div">
@@ -129,7 +129,7 @@
 							</div>
 							<div class="td">
 								<p><div class="checkbox-cover">
-									<input type="checkbox" id="{{otherScheme.id}}" name="type">
+									<input type="checkbox" id="{{otherScheme.id}}" value="{{otherScheme.id}}" ng-init="otherScheme.selected = 'false'" ng-model="otherScheme.selected" name="selectedSchemes[]">
 									<label for="{{otherScheme.id}}"><span></span></label>
 								</div></p>
 							</div>
@@ -148,7 +148,7 @@
 			</div>
 			<div class="tfooter">
 				<div class="fin-btn-group">
-					<button class="pull-left fin-app-btn fin-skip-btn" click-redirect="/schemeCompare">COMPARE</button>
+					<button class="pull-left fin-app-btn fin-skip-btn" ng-click="compareSchemes(selectedSchemes,selectedTop)">COMPARE</button>
 					<button ng-click="getSchemeCount()" class="fin-link-btn pull-left"><span><img src="assets/images/restore.png"></span>RESTORE RECOMMENDATIONS</button>
 					<span class="alert alert-danger alert-dismissable col-xs-5 fadeOut text-center " ng-if="shoeSchemeNumberError">Maximum {{schemeListNumber}} {{$root.currentSchemeType}} scheme(s) allowed for your portfolio.</div>
 				</div>

@@ -4,8 +4,8 @@
 		.module('finApp.smartPortFolio')
 		.controller('recommendedController',recommendedController);
 
-		recommendedController.$inject = ['$rootScope','$scope','$http','$timeout','recommendedService', 'busyIndicator', '$location', 'goalsService'];
-		function recommendedController($rootScope,$scope,$http,$timeout,recommendedService, busyIndicator, $location, goalsService){
+		recommendedController.$inject = ['$rootScope','$scope','$http','$timeout','recommendedService', 'busyIndicator', '$location', 'goalsService', 'investWithdrawService', '$filter'];
+		function recommendedController($rootScope,$scope,$http,$timeout,recommendedService, busyIndicator, $location, goalsService, investWithdrawService, $filter){
 			
 			$scope.recommendedSchemesObject = {}; 
 			$scope.schemeList = {};
@@ -93,6 +93,8 @@
 		    			console.log('Success data get all funds', data);
 		    			if(assetType in data.success) {
 		    				$scope.schemeList = data.success[assetType];
+		    				$scope.otherRecommendSchemes = $scope.schemeList['other recommended'];
+		    				$scope.schemeTop = $scope.schemeList['scheme'];
 		    				console.log('$scope.schemeList',$scope.schemeList);
 		    			}
 		    			
@@ -214,6 +216,138 @@
 		    	
 		    }
 
+		    $scope.selectedSchemes = function selectedSchemes() {
+		    	return filterFilter($scope.otherRecommendSchemes, { selected: true });
+		  	};
+
+		  	$scope.selectedTop = function selectedTop() {
+		    	return filterFilter($scope.schemeTop, { selected: true });
+		  	}
+		  	$scope.$watch('otherRecommendSchemes|filter:{selected:true}', function (nv) {
+			    $scope.selection = nv.map(function (data) {
+			      return data.id;
+			    });
+			    $scope.selectedSchemes = $scope.selection;
+			  console.log('schemes selected', $scope.selectedSchemes);
+			  if($scope.selection.length < 1){
+			  	$scope.disableAppend = true;
+			  } else {
+			  	$scope.disableAppend = false;
+			  }
+			}, true);
+
+		  	$scope.$watch('schemeTop|filter:{selected:true}', function (nv) {
+			    $scope.selection1 = nv.map(function (data) {
+			      return data.id;
+			    });
+			    $scope.selectedTop = $scope.selection1;
+			  console.log('schemes selected top', $scope.selectedTop);
+			  if($scope.selection.length < 1){
+			  	$scope.disableAppend = true;
+			  } else {
+			  	$scope.disableAppend = false;
+			  }
+			}, true);
+
+		  	$scope.compareSchemes = function(selectedSchemes, selectedTop) {
+		  		
+		  		var finalArray = selectedSchemes.concat(selectedTop);
+		  		console.log('finalArray',finalArray);
+		  		busyIndicator.show();
+		  		recommendedService.compareSchemes(finalArray).then(function(data){
+		  			if('success' in data){
+		  				$rootScope.schemeCompareAfter = data.success;
+		  				console.log('$rootScope.schemeCompareAfter',$rootScope.schemeCompareAfter);
+		  				$rootScope.ifEquitySchemes = $rootScope.schemeCompareAfter.equity_other_data.length > 0 ? true : false;
+		  				$rootScope.ifDebtSchemes = $rootScope.schemeCompareAfter.debt_other_data.length > 0 ? true : false;
+		  				recommendedService.compareSchemesGraph(finalArray).then(function(data){
+		  					if('success' in data){
+		  						busyIndicator.hide();
+		  						$rootScope.schemeCompareGraph = data.success;
+		  						$location.path('/schemeCompare');
+		  					} else {
+
+		  					}
+		  				});
+		  				
+		  			} else {
+
+		  			}
+		  		});
+		  	}
+
+			$scope.goToInvest = function() {
+				$rootScope.legends = [];
+				var canInvest = true;
+
+				if($rootScope.userFlags['user_flags']['portfolio'] == false) {
+					canInvest = false;
+					$scope.errorPopupMessage = 'You have to add goals before you can invest.';
+					$scope.redirectPath = '/goals';	
+
+				} else if($rootScope.userFlags['user_flags']['kra_verified'] == false) {
+					canInvest = false;
+					$scope.errorPopupMessage = 'You are not KRA verified. Kindly contact FinAskus team.';
+					$scope.redirectPath = '/dashboard';	
+				} else if($rootScope.userFlags['user_flags']['vault'] == false){
+					canInvest = false;
+					$scope.errorPopupMessage = 'You have to complete investor registration before you can invest';
+					$scope.redirectPath = '/registerInvestorStart';
+				} 
+
+				if(canInvest == false){
+					$scope.ngDialog = ngDialog;
+					ngDialog.open({ 
+			        	template: 'modules/common/views/partials/error_popup.html', 
+			        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+			        	overlay: false,
+			        	showClose : false,
+
+			        	scope: $scope,
+			        	preCloseCallback:function(){
+			        		$location.path($scope.redirectPath);
+			        	}
+		        	});
+				}
+
+				if(canInvest == true) {	
+				investWithdrawService.getInvestDetails().then(function(data){
+					if('success' in data) {
+						$rootScope.sipTotal = 0;
+						$rootScope.lumpSumTotal = 0;
+						$rootScope.overall_total_sum = data.success['overall_total_sum'];
+						$rootScope.recommended_schemes = data.success['goals_recommended_schemes'];
+						$rootScope.recommended_schemes.forEach(function(data) {
+							$rootScope.sipTotal+= data.goal_summary.sip;
+							$rootScope.lumpSumTotal+= data.goal_summary.lumpsum;
+						});	
+						$scope.overall_allocation = data.success['overall_allocation'];
+						$rootScope.resultPercentage = [
+							['Equity',   $scope.overall_allocation.equity.percentage],
+							['Debt',     $scope.overall_allocation.debt.percentage],
+							['ELSS',     $scope.overall_allocation.elss.percentage],
+							['LIQUID',     $scope.overall_allocation.liquid.percentage]
+						];
+						var colors = ['#0580c3', '#0c4f74', '#f26928', '#87350f'];
+						var price = [$scope.overall_allocation.equity.amount, $scope.overall_allocation.debt.amount, $scope.overall_allocation.elss.amount, $scope.overall_allocation.liquid.amount];
+						for(var i=0;i<$rootScope.resultPercentage.length;i++){
+							var legendObject = {};
+							legendObject['name'] = $rootScope.resultPercentage[i][0];
+							legendObject['value'] = $rootScope.resultPercentage[i][1];
+							legendObject['price'] = price.splice(0,1).toString();
+							legendObject['color'] = colors.splice(0,1).toString();
+							legendObject['borderColor'] = '10px solid '+legendObject['color'];
+							$rootScope.legends.push(legendObject);
+						}
+						$rootScope.pieTitle = "<span class='currency'>&#8377;</span><span class='content'><span>" + $filter('amountSeffix')($rootScope.overall_total_sum) + " </span>";
+						$location.path('/investStep1');
+						
+					} else {
+						
+					}
+				});
+			}
+			}
 		    // $scope.populateGraph($rootScope.histPerformanceData, $scope.setvalue);
 
 		    //Try to get this from service instead of rootscope variable

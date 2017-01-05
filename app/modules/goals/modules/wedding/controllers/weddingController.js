@@ -47,7 +47,8 @@
 			this.scope.getGoalGraphDetails = angular.bind(this, this.getGoalGraphDetails ); 
 			this.scope.getGraphObject = angular.bind(this, this.getGraphObject ); 
             this.scope.graphObject = this.scope.getGraphObject();
-
+            this.scope.resetAllocation = angular.bind(this, this.resetAllocation);
+            
 			this.scope.calculateEstimates = function() {
 				var self = this;
 				if (!$scope.wedding['tenure']) {

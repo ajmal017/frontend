@@ -1,0 +1,30 @@
+      <div class="error-popup-container">
+            <div class="erorr-popup-wrapper">
+		<header class="login-header col-xs-12">
+			<div class="row">
+				<div class="cloud1"><img src="assets/images/login_cloud1.png"></div>
+				<div class="header-intro col-xs-12">
+					<div class="row">
+						<p class="pull-left">Enter OTP</p>
+						<div class="plane pull-right"><img src="assets/images/loginPlane.png"></div>
+					</div>
+				</div>
+				<div class="cloud2"><img src="assets/images/login_cloud2.png"></div>
+			</div>
+		</header>
+		<div class="mobile-form">
+			<form name="mobileForm" novalidate>
+				<div class="form-group">
+					<input ng-class="{'has-error':mobileForm.phone.$error.pattern}" type="text" ng-pattern="/^[0-9]+$/" name="phone" maxLength="10" ng-model="otp" required>
+					
+					<span class="error-text" ng-show="mobileForm.phone.$error.pattern">Please enter valid OTP</span>
+				</div>
+				<div class="login-btn-group">
+					<button ng-disabled="mobileForm.$invalid" class="fin-app-btn fin-orange full-width" ng-click="validateOtp(otp)">Validate OTP</button>
+				</div>
+				<div class="form-error" ng-if="errorOtpSettings"><p ng-bind="errorOtpSettings"></p></div>
+			</form>
+		</div>
+</div>
+</div>
+

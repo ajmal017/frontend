@@ -12,7 +12,7 @@
             <li ng-if="loggedIn" class="dropdown fin-dropdown"><a href="javascript:void(0)" class="fin-link log-in" data-toggle="dropdown"><span class="label">Logged in as </span><span class="name" ng-bind="userDetails.user['name']" ng-if="(userDetails.user['name'] !='')&&(userDetails.user['email'] =='')"></span>
             <span class="name" ng-bind="userDetails.user['email']" ng-if="(userDetails.user['email'] !='')&&(userDetails.user['name'] =='')"></span><span class="up"></span><span class="down"></span></a>
               <ul class="fin-dropdown-menu">
-                <li><a href="javascript:void(0)">Account Settings</a></li>
+                <li><a href="javascript:void(0)" click-redirect="/settings">Account Settings</a></li>
                 <li><a href="javascript:void(0)" ng-click="userLogout()">Log Out</a></li>
               </ul>
             </li>

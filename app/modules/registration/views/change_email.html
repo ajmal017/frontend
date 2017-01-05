@@ -1,0 +1,31 @@
+<div class="error-popup-container">
+    <div class="erorr-popup-wrapper settings_wrapper">
+		<header class="login-header col-xs-12">
+			<div class="row">
+				<div class="cloud1"><img src="assets/images/login_cloud1.png"></div>
+				<div class="header-intro col-xs-12">
+					<div class="row">
+						<p class="pull-left">Change Email</p>
+						<div class="plane pull-right"><img src="assets/images/loginPlane.png"></div>
+					</div>
+				</div>
+				<div class="cloud2"><img src="assets/images/login_cloud2.png"></div>
+			</div>
+		</header>
+		<div class="login-form">
+			<form name="mobileForm" novalidate>
+				<div class="form-group">
+					<label>Enter new email address</label>
+					<input ng-class="{'has-error':mobileForm.email.$error.pattern}" type="text" name="email" ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" ng-model="email" required>
+					
+					<span class="error-text" ng-show="mobileForm.email.$error.pattern">Please enter valid email</span>
+				</div>
+				<div class="login-btn-group">
+					<button ng-disabled="mobileForm.$invalid" class="fin-app-btn fin-orange full-width" ng-click="changeEmail(email)">Submit</button>
+				</div>
+				<div class="form-error" ng-if="errorOtpSettings"><p ng-bind="errorOtpSettings"></p></div>
+			</form>
+		</div>
+	</div>
+</div>
+
