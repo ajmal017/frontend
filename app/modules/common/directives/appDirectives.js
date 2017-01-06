@@ -1078,7 +1078,7 @@
                 	outVideo.src = videoSrc;
                 	var canvas = document.createElement("canvas");
                 	canvas.width = 100;
-                	canvas.height = 100;
+                	canvas.height = 75;
                 	outVideo.currentTime = 10;
                 	setTimeout(function(){
                 		canvas.getContext('2d').drawImage(outVideo, 0, 0, canvas.width, canvas.height);
@@ -1130,7 +1130,7 @@
 	                	outVideo.src = $('.vjs-tech').attr('src');
 	                	var canvas = document.createElement("canvas");
 	                	canvas.width = 100;
-	                	canvas.height = 100;
+	                	canvas.height = 75;
 	                	outVideo.currentTime = 2;
 	                	setTimeout(function(){
 	                		canvas.getContext('2d').drawImage(outVideo, 0, 0, canvas.width, canvas.height);
@@ -1139,7 +1139,7 @@
 		        			console.log(img.src);
 		        			thumbnail.prepend(img);
 		        			$rootScope.capturedFile = {
-				        		'blob' : player.recordedData,
+				        		'blob' : player.recordedData.video,
 				        		'thumbnail' : img.src
 				        	};
 	                	},1000); 

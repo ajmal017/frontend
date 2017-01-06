@@ -68,6 +68,8 @@
         	}
 
         	function saveVideoFile(videoFile, videoThumbnailFile) {
+    //    		var requestData = {'user_video_thumbnail_data': videoThumbnailFile,
+      //  				'user_video': videoFile};
             	var fd = new FormData();
         		fd.append('user_video', videoFile);
         		fd.append('user_video_thumbnail_data', videoThumbnailFile);

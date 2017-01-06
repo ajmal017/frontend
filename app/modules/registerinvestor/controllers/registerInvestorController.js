@@ -25,6 +25,10 @@
 					if('success' in data){
 						var statusObject = data['success'];
 						$scope.hasVideo = statusObject.has_uploaded;
+						$rootScope.capturedFile = {'thumbnail' : statusObject.user_video_thumbnail};
+					}
+					else {
+						$rootScope.capturedFile = {'thumbnail' : ''};
 					}
 				});
 				

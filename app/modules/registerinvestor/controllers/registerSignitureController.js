@@ -4,8 +4,8 @@
 		.module('finApp.registerInvestor')
 		.controller('registerSignatureController',registerSignatureController);
 
-		registerSignatureController.$inject = ['$rootScope','$scope','$http','$location','busyIndicator','registerInvestorService','userDetailsService'];
-		function registerSignatureController($rootScope,$scope,$http,$location,busyIndicator,registerInvestorService, userDetailsService){
+		registerSignatureController.$inject = ['$rootScope','$scope','$http','$location','busyIndicator','registerInvestorService','userDetailsService','ngDialog'];
+		function registerSignatureController($rootScope,$scope,$http,$location,busyIndicator,registerInvestorService, userDetailsService, ngDialog){
 			$scope.modelVal = {};
 			$scope.showSigniture = function(){
 				if (!registerInvestorService.isVaultLocked()) {
@@ -44,6 +44,20 @@
 				$location.path($rootScope.redirectUrlContext);
 			}
 
+			$scope.showSaveError = function() {
+				$scope.errorPopupMessage = 'We encountered a problem trying to save your information. Please try again.';
+				$scope.ngDialog = ngDialog;
+				ngDialog.open({ 
+		        	template: 'modules/common/views/partials/error_popup.html', 
+		        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+		        	overlay: false,
+		        	showClose : false,
+
+		        	scope: $scope,
+	        	});
+
+			}
+			
 			$scope.saveInfo = function() {
 				if (registerInvestorService.isVaultLocked()) {
 					$scope.reviewInfo();
@@ -67,19 +81,18 @@
 							}
 							else {
 								busyIndicator.hide();
-								//TODO show popup 
-								console.log("Failed to Save!");
+								$scope.showSaveError(); 
 							}
 						}, function() { busyIndicator.hide();});
 					}
 					else {
-						//TODO show popup 
 						busyIndicator.hide();
-						console.log("Failed to Save!");
+						$scope.showSaveError(); 
 					}
 
 				}, function() {
 					busyIndicator.hide();
+					$scope.showSaveError(); 
 				});
 				
 			}

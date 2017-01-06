@@ -2725,7 +2725,8 @@
         <p>Investor Info</p>
     </div>    
     <div class="fin-btn-group gotoPages">
-        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step == 1)" ng-click="(step=step+1)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="(modelVal.investorStatus==undefined)||(modelVal.panNumber=='')||(modelVal.panNumber==undefined)||(modelVal.applicantName=='')||(modelVal.applicantName==undefined)||(modelVal.fatherName=='')||(modelVal.fatherName==undefined)||(modelVal.dob==undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2)" ng-click="(step=step + 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
@@ -2784,7 +2785,8 @@
         <p>Bank Info</p>
     </div>    
     <div class="fin-btn-group gotoPages">
-        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step == 1)" ng-click="(step=step + 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 1)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" ng-disabled="(!modelVal.accountHolderName)||(!modelVal.ifscCode)||(!modelVal.accountNumber)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
@@ -2834,7 +2836,8 @@
         <p>Identity Info</p>
     </div>    
     <div class="fin-btn-group gotoPages">
-        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step == 1)" ng-click="(step=step + 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 1)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
@@ -2952,7 +2955,8 @@
         <p>Contact Info</p>
     </div>    
     <div class="fin-btn-group gotoPages">
-        <button class="fin-link-btn content-prev" ng-click="(step=getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step=getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1 || step == 2 || step == 3 || step == 4 || step == 5" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="step == 1 || step == 2 || step == 3 || step == 4 || step == 5" ng-click="onContinue()" ng-disabled="onDisabled()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
@@ -2999,7 +3003,8 @@
         <p>Nominee Info</p>
     </div>    
     <div class="fin-btn-group gotoPages">
-        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step == 1 && $root.selectedCriteria=='op1')" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 1 && $root.selectedCriteria=='op1')" ng-click="appendValues(modelVal);(step = step + 1);processNomineeAbsent()" ng-disabled="(!modelVal.nomineeAbsent)&&(!modelVal.nomineeName||!modelVal.nomineeDob||(showGuardian()&&!modelVal.guardianName))" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 1 && $root.selectedCriteria=='op2')" click-redirect="{{$root.redirectUrlContext}}"  class="fin-app-btn fin-skip-btn content-next">SKIP</button>
@@ -3123,6 +3128,10 @@
                           <img src="assets/images/investorregistration_video.png">
                           <img ng-if="user_female" src="assets/images/investorregistration_video.png">
                       </div>
+							<div ng-if="$root.capturedFile.thumbnail" class="imageThumbnail">
+                            <img width="100%" ng-src="{{$root.capturedFile.thumbnail}}">
+                      </div>
+                      
                       <p class="text-center">Tap to Record</p>
                     </div>
                   </div>
