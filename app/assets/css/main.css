@@ -1997,6 +1997,60 @@ span.highlight {
   text-align: center;
   width: 6%;
 }
+.account_settings h3 {
+  opacity: 1 !important;
+}
+.account_settings .acc_detail {
+  font-size: 17px !important;
+  font-family: "PlayfairDisplay";
+  color: #000000;
+  line-height: 1.5;
+  opacity: 0.6;
+}
+.account_settings .checkedList {
+  margin-right: 12px;
+  float: right;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #046baa;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  position: relative;
+  top: 10px;
+  display: table;
+}
+.account_settings .checkedList .image-div {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  padding: 0;
+}
+.account_settings .checkedList .image-div img {
+  width: 60%;
+}
+.account_settings .verified {
+  color: #046baa;
+  top: 15px;
+  position: relative;
+  width: 72px;
+}
+.account_settings .not-verified {
+  color: #f26529;
+  top: 15px;
+  position: relative;
+  width: 72px;
+  cursor: pointer;
+}
+.account_settings .edit-settings {
+  color: #f26529;
+  cursor: pointer;
+}
+.settings_wrapper .login_form {
+  width: 100%;
+  float: left;
+  padding-top: 14%;
+}
 section.register {
   position: relative;
   padding-top: 0px;
@@ -3881,7 +3935,6 @@ section.dashboard .goals-cover .checkbox-cover-delete label span {
   -o-background-size: 45% 36%;
   -webkit-background-size: 50% 52%;
           background-size: 50% 52%;
-  z-index: 100;
   background-repeat: no-repeat;
   -webkit-box-shadow: 0px 1px 4px 0px #1a78b9;
   -moz-box-shadow: 0px 1px 4px 0px #1a78b9;
@@ -4423,6 +4476,44 @@ section.quickInvest .started {
   margin-left: 10%;
   margin-top: 9%;
 }
+.goal-ngdialog-overlay .ngdialog-content .error-popup-container .settings_wrapper .login-form {
+  margin-top: 45px;
+  width: 100%;
+  float: left;
+}
+.goal-ngdialog-overlay .ngdialog-content .error-popup-container .settings_wrapper .login-form .form-group label {
+  pointer-events: none;
+  /* top: -4px; */
+  font-family: 'PlayfairDisplay-Regular';
+  color: #247abc;
+  font-weight: normal;
+  font-size: 1.5em;
+  /* -webkit-transition: all 0.2s ease; */
+  -o-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  /* transition: all 0.2s ease; */
+  opacity: 0.6;
+  letter-spacing: 0px;
+}
+.goal-ngdialog-overlay .ngdialog-content .error-popup-container .settings_wrapper .login-form .form-group span.normal {
+  color: #dad6d6!important;
+  float: left;
+}
+.goal-ngdialog-overlay .ngdialog-content .error-popup-container .settings_wrapper .login-form .form-group span.without-error {
+  position: relative!important;
+  width: 100%!important;
+  float: left;
+  color: #dad6d6;
+}
+.goal-ngdialog-overlay .ngdialog-content .error-popup-container .settings_wrapper .login-form .form-group span.error-text {
+  position: relative!important;
+  color: #f24965;
+  width: 100%!important;
+  float: left;
+}
+.goal-ngdialog-overlay .ngdialog-content .error-popup-container .settings_wrapper .login-form .form-group:nth-child(2) {
+  margin-bottom: 6%;
+}
 .meter-widget-cover {
   width: 100%;
   float: left;
@@ -4531,10 +4622,10 @@ section.quickInvest .started {
   width: 100%;
 }
 .meter-widget-cover .guage .text {
-  font-family: 'Roboto-Bold';
+  font-family: 'Roboto-Regular';
   color: #000;
   font-weight: normal;
-  font-size: 1em;
+  font-size: 11px;
   position: absolute;
   z-index: 1000;
   margin: 0px;
@@ -4623,6 +4714,28 @@ section.quickInvest .started {
   margin-top: 5px;
   padding-bottom: 10px;
   color: #247abc !important;
+}
+.meter-widget-cover .reset_allocation {
+  position: absolute;
+  top: 65%;
+  right: 13%;
+  width: 30px;
+  background-image: url(../images/restore.png);
+  height: 35px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100%;
+  -o-background-size: 100%;
+  background-size: 100%;
+  cursor: pointer;
+  z-index: 1;
 }
 .meter-widget-cover .blur-guageCalculator {
   opacity: 0.5;
@@ -5154,6 +5267,9 @@ section.registerInvestor .content-main-header .slider-entry-image {
 }
 section.registerInvestor .reviewList p {
   color: #046baa;
+  font-size: 14px;
+  cursor: pointer;
+  font-family: 'PlayfairDisplay-Regular';
 }
 section.registerInvestor .documents-outer-cover .documents-cover:first-child {
   padding-left: 0px;
@@ -7040,7 +7156,7 @@ section.trackPerformance .chart-main-tabs li a {
   display: table;
   width: 100%;
   height: 100%;
-  z-index: 10000;
+  z-index: 100000;
 }
 .loader .image-div {
   display: table-cell;

@@ -36,12 +36,12 @@
 			];
 
 			$scope.selection = [];
-			 // helper method to get selected fruits
+			 // helper method to get selected investments
 		  	$scope.selectedInvestments = function selectedInvestments() {
 		    	return filterFilter($scope.past_investments, { selected: true });
 		  	};
 
-		  	// watch fruits for changes
+		  	// watch investments for changes
 			  $scope.$watch('past_investments|filter:{selected:true}', function (nv) {
 			    $scope.selection = nv.map(function (data) {
 			      return data.value;

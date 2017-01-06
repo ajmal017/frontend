@@ -115,11 +115,12 @@
 			$scope.setModelVal = function(assetAllocationObj, sipAmount) {
 				$scope.modelVal.assetAllocation = assetAllocationObj;
 				$scope.modelVal.assetAllocation.equityInitial = assetAllocationObj.equity;
-					var debtAmount = (assetAllocationObj.debt/100) * sipAmount;
-					var equityAmount = (assetAllocationObj.equity/100) * sipAmount;
-					$scope.modelVal.debtAmount = debtAmount;
-					$scope.modelVal.equityAmount = equityAmount;
-					$scope.getGoalGraphDetails();
+				var debtAmount = (assetAllocationObj.debt/100) * sipAmount;
+				var equityAmount = (assetAllocationObj.equity/100) * sipAmount;
+				$scope.modelVal.debtAmount = debtAmount;
+				$scope.modelVal.equityAmount = equityAmount;
+				$rootScope.modelValInitial = $scope.modelVal;
+				$scope.getGoalGraphDetails();
 			}
 			
 			$scope.calculateEstimates = function(currentAge, retirementAge, monthlyIncome, amountSaved) {
@@ -202,6 +203,10 @@
 				$scope.equity = 100 - $scope.equity2;
 				$scope.equityAmountModal = ($scope.equity2/100) * $scope.amount
 				$scope.debtAmountModal = ($scope.equity/100) * $scope.amount;
+			}
+
+			$scope.resetAllocation = function() {
+				$scope.modelVal = $rootScope.modelValInitial;
 			}
 
 			$scope.fundSelectionRetirement = function(modelVal) {

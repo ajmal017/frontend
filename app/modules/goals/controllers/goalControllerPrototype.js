@@ -144,6 +144,7 @@ var finApp = finApp || {};
 			},
 
 			setModelVal : function(assetAllocationObj, sipAmount) {
+				this.scope.sipAmount = sipAmount;
 				this.scope.modelVal.assetAllocation = assetAllocationObj;
 				this.scope.modelVal.assetAllocation.equityInitial = assetAllocationObj.equity;
 				var debtAmount = (assetAllocationObj.debt/100) * sipAmount;
@@ -175,6 +176,15 @@ var finApp = finApp || {};
 				this.scope.modelVal.debtAmount = this.scope.debtAmountModal;
 				this.scope.modelVal.equityAmount = this.scope.equityAmountModal;
 				jQuery('#equiDeptModal').modal('hide');	
+			},
+
+			resetAllocation : function(equityInitial) {
+				this.scope.modelVal.assetAllocation.equity = equityInitial;
+				this.scope.modelVal.assetAllocation.debt = 100 - equityInitial;
+				this.scope.modelVal.debtAmount = (this.scope.modelVal.assetAllocation.debt/100) * this.scope.sipAmount;
+				this.scope.modelVal.equityAmount = (this.scope.modelVal.assetAllocation.equity/100) * this.scope.sipAmount;
+				console.log('modelVal',this.scope.modelVal);
+				// this.scope.modelVal = this.rootScope.modelValInitial;
 			},
 
 			getFundData : function(goal, busyIndicator) {

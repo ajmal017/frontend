@@ -15,7 +15,9 @@
                 validateCompareModifyScheme : validateCompareModifyScheme,
                 getFactsheetData : getFactsheetData,
                 getHistoricPerformance : getHistoricPerformance,
-                getGraphData : getGraphData
+                getGraphData : getGraphData,
+                compareSchemes : compareSchemes,
+                compareSchemesGraph : compareSchemesGraph
         	}
 
 	        function getGraphResultSet(response,year){
@@ -248,6 +250,48 @@
                 defer.resolve(obj);                
                 return defer.promise;
                 
+            }
+
+            function compareSchemes(resultArr){
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    appConfig.API_BASE_URL+'/core/funds/compare/', 
+                    {}, {
+                        Check: {
+                            method:'POST',
+                        }
+                    });
+                getAPI.Check({'fund_ids' : resultArr},function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
+            }
+
+            function compareSchemesGraph(resultArr){
+                var defer = $q.defer();
+                var getAPI = $resource( 
+                    appConfig.API_BASE_URL+'/core/funds/comparison/', 
+                    {}, {
+                        Check: {
+                            method:'POST',
+                        }
+                    });
+                getAPI.Check({'fund_id_list' : resultArr},function(data){
+                    if(data.status_code == 200){
+                        defer.resolve({'success':data.response});
+                    }else{
+                        defer.resolve({'Message':data.response['message']});
+                    }               
+                }, function(err){
+                    defer.reject(err);
+                }); 
+                return defer.promise;
             }
         }     
 })();

@@ -436,11 +436,11 @@
 						var leftText = '';
 						if(arcPos > 0 && arcPos < 90)
 						{
-							topText = '-12px';
-							leftText = '-39px';
+							topText = '-32px';
+							leftText = '-63px';
 						} else {
-							topText = '-47px';
-							leftText = '-68px';
+							topText = '-35px';
+							leftText = '-61px';
 						}
 
 						element.find('h4').css({

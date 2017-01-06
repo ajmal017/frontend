@@ -715,7 +715,7 @@
                                             <img src="assets/images/pointer.png">
                                         </div>
                                     </div>
-                                    <div class="box-indicator col-xs-12">
+<!--                                     <div class="box-indicator col-xs-12">
                                         <div class="row">
                                             <div class="col-xs-4 text-left">
                                                 <div class="row">
@@ -740,12 +740,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type>
                                     </div>  
                                     <p class="bottom-text">As per your risk profile</p>
+                                    <button class="reset_allocation" ng-click="resetAllocation(modelVal.assetAllocation.equityInitial)"></button>
                                 </div>
                             </div>
                         </div>
@@ -786,7 +787,8 @@
         <p>Quick Invest</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="quickInvestStart"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-disabled="quickInvestForm1.$invalid" ng-click="sendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1')" ng-disabled="modelVal.A2 < 1000 || modelVal.A2 == undefined || modelVal.A2 > 199999" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-disabled="modelVal.A2 == undefined" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
@@ -941,7 +943,7 @@
                                             <img src="assets/images/pointer.png">
                                         </div>
                                     </div>
-                                    <div class="box-indicator col-xs-12">
+<!--                                     <div class="box-indicator col-xs-12">
                                         <div class="row">
                                             <div class="col-xs-4 text-left">
                                                 <div class="row">
@@ -966,12 +968,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type>
                                     </div>  
                                     <p class="bottom-text">As per your risk profile</p>
+                                    <button class="reset_allocation" ng-click="resetAllocation(modelVal.assetAllocation.equityInitial)"></button>
+
                                 </div>
                             </div>
                         </div>
@@ -1012,7 +1016,11 @@
         <p>Retirement</p>
     </div> 
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <div ng-show="step > 1">
+            <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        </div>
+        <button class="fin-link-btn content-prev" ng-show="step == 1" click-redirect="retirementGoalsStarted"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+
         <button ng-show="(step = getStep()) && (step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-disabled="retirementForm1.$invalid" ng-click="sendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="sendValues(modelVal);(step = step + 1);calculateYear(modelVal.A2,modelVal.A3);getAssetAllocationCategory();" ng-disabled="(modelVal.A2 == 0)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op1')" ng-click="sendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A4);" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 == 0)||(modelVal.A4 == undefined)">CONTINUE</button>
@@ -1160,7 +1168,7 @@
                                             <img src="assets/images/pointer.png">
                                         </div>
                                     </div>
-                                    <div class="box-indicator col-xs-12">
+<!--                                     <div class="box-indicator col-xs-12">
                                         <div class="row">
                                             <div class="col-xs-4 text-left">
                                                 <div class="row">
@@ -1185,12 +1193,15 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type>
                                     </div>  
+
                                     <p class="bottom-text">As per your risk profile</p>
+                                    <button class="reset_allocation" ng-click="resetAllocation(modelVal.assetAllocation.equityInitial)"></button>
+
                                 </div>
                             </div>
                         </div>
@@ -1231,7 +1242,10 @@
         <p>Education</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <div ng-show="step > '1'">
+            <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        </div>
+        <button class="fin-link-btn content-prev" ng-show="step == 1" click-redirect="/educationStarted"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step = getStep()) && (step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
@@ -1419,7 +1433,7 @@
                                             <img src="assets/images/pointer.png">
                                         </div>
                                     </div>
-                                    <div class="box-indicator col-xs-12">
+<!--                                     <div class="box-indicator col-xs-12">
                                         <div class="row">
                                             <div class="col-xs-4 text-left">
                                                 <div class="row">
@@ -1444,12 +1458,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                    <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type>
                                     </div>  
                                     <p class="bottom-text">As per your risk profile</p>
+                                    <button class="reset_allocation" ng-click="resetAllocation(modelVal.assetAllocation.equityInitial)"></button>
                                 </div>
                             </div>
                         </div>
@@ -1490,7 +1505,10 @@
         <p>Property</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <div ng-show="step > '1'">
+            <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        </div>
+        <button class="fin-link-btn content-prev" ng-show="step == 1" click-redirect="/propertyStarted"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step = getStep()) && (step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
@@ -1639,7 +1657,7 @@
                                             <img src="assets/images/pointer.png">
                                         </div>
                                     </div>
-                                    <div class="box-indicator col-xs-12">
+<!--                                     <div class="box-indicator col-xs-12">
                                         <div class="row">
                                             <div class="col-xs-4 text-left">
                                                 <div class="row">
@@ -1664,12 +1682,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type>
                                     </div>  
                                     <p class="bottom-text">As per your risk profile</p>
+                                    <button class="reset_allocation" ng-click="resetAllocation(modelVal.assetAllocation.equityInitial)"></button>
                                 </div>
                             </div>
                         </div>
@@ -1711,7 +1730,10 @@
         <p>Automobile</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <div ng-show="step > 1">
+            <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        </div>
+        <button class="fin-link-btn content-prev" ng-show="step == 1" click-redirect="/automobileStarted"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step = getStep()) && (step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
@@ -1860,7 +1882,7 @@
                                             <img src="assets/images/pointer.png">
                                         </div>
                                     </div>
-                                    <div class="box-indicator col-xs-12">
+ <!--                                    <div class="box-indicator col-xs-12">
                                         <div class="row">
                                             <div class="col-xs-4 text-left">
                                                 <div class="row">
@@ -1885,12 +1907,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type>
                                     </div>  
                                     <p class="bottom-text">As per your risk profile</p>
+                                    <button class="reset_allocation" ng-click="resetAllocation(modelVal.assetAllocation.equityInitial)"></button>
                                 </div>
                             </div>
                         </div>
@@ -1931,7 +1954,10 @@
         <p>Vacation</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <div ng-show="step > 1">
+            <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        </div>
+        <button class="fin-link-btn content-prev" ng-show="step == 1" click-redirect="/vacationStarted"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step = getStep()) && (step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
@@ -2080,7 +2106,7 @@
                                             <img src="assets/images/pointer.png">
                                         </div>
                                     </div>
-                                    <div class="box-indicator col-xs-12">
+<!--                                     <div class="box-indicator col-xs-12">
                                         <div class="row">
                                             <div class="col-xs-4 text-left">
                                                 <div class="row">
@@ -2105,12 +2131,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type>
                                     </div>  
                                     <p class="bottom-text">As per your risk profile</p>
+                                    <button class="reset_allocation" ng-click="resetAllocation(modelVal.assetAllocation.equityInitial)"></button>
                                 </div>
                             </div>
                         </div>
@@ -2152,7 +2179,10 @@
         <p>Wedding</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <div ng-show="step > 1">
+            <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>   
+        </div>
+        <button class="fin-link-btn content-prev" ng-show="step == 1" click-redirect="/weddingStarted"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step = getStep()) && (step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
@@ -2238,7 +2268,7 @@
                                             <img src="assets/images/pointer.png">
                                         </div>
                                     </div>
-                                    <div class="box-indicator col-xs-12">
+<!--                                     <div class="box-indicator col-xs-12">
                                         <div class="row">
                                             <div class="col-xs-4 text-left">
                                                 <div class="row">
@@ -2263,12 +2293,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type> 
                                     </div> 
                                     <p class="bottom-text">As per your risk profile</p>
+                                    <button class="reset_allocation" ng-click="resetAllocation(modelVal.assetAllocation.equityInitial)"></button>
                                 </div>
                             </div>
                         </div>
@@ -2309,7 +2340,11 @@
         <p>Others</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <div ng-show="step > 1">
+            <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        </div>
+        <button class="fin-link-btn content-prev" ng-show="step == 1" click-redirect="/othersStarted"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+
         <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2)" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 3)" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
@@ -2454,7 +2489,7 @@
                                             <img src="assets/images/pointer.png">
                                         </div>
                                     </div>
-                                    <div class="box-indicator col-xs-12">
+<!--                                     <div class="box-indicator col-xs-12">
                                         <div class="row">
                                             <div class="col-xs-4 text-left">
                                                 <div class="row">
@@ -2479,12 +2514,14 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="guageCalculator" ng-class="{'blur-guageCalculator': modelVal.assetAllocation.equityInitial != modelVal.assetAllocation.equity}">
                                         <risk-image></risk-image>
                                         <risk-type></risk-type>
                                     </div>  
                                     <p class="bottom-text">As per your risk profile</p>
+                                    <button class="reset_allocation" ng-click="resetAllocation(modelVal.assetAllocation.equityInitial)"></button>
+
                                 </div>
                             </div>
                         </div>
@@ -2526,7 +2563,10 @@
         <p>Jewellery</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+
+        <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="jewelleryStarted"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+
         <button ng-show="(step = getStep()) && (step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 2) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
@@ -2623,7 +2663,9 @@
         <p>Save Tax</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="taxsavingStarted"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+
         <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);getGoalGraphDetails()" ng-disabled="(modelVal.A2 == 0)||(modelVal.A2 == undefined)||(modelVal.A2 < 5000)||(modelVal.A2 > 9999999)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getGoalGraphDetails()" ng-disabled="(modelVal.A2 == 0)||(modelVal.A2 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
