@@ -11,6 +11,7 @@
         		getKYCStatus : getKYCStatus,
         		getRegistrationStatus : getRegistrationStatus,
         		saveSignature : saveSignature,
+        		getSignature : getSignature,
         		saveVideoFile : saveVideoFile,
         		getVideoFile : getVideoFile,
         		saveDeclaration : saveDeclaration,
@@ -216,7 +217,30 @@
 				return defer.promise;
 
         	}
-        	
+
+        	function getSignature() {
+            	
+        		var defer = $q.defer();
+				var getAPI = $resource( 
+					appConfig.API_BASE_URL+'/user/signature/get/', 
+					{}, {
+						Check: {
+							method:'GET',
+						}
+					});
+				getAPI.Check({},function(data){
+					if(data.status_code == 200){
+						defer.resolve({'success':data.response});
+					}else{
+						defer.resolve({'Message':data.response['message']});
+					}				
+				}, function(err){
+					defer.reject(err);
+				}); 
+				return defer.promise;
+
+        	}
+
         	function isVaultLocked() {
         		if ($rootScope.userFlags && $rootScope.userFlags['user_flags'])
         			return $rootScope.userFlags['user_flags']['vault_locked'];

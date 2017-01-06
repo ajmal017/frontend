@@ -8,7 +8,9 @@
 		function registerSignatureController($rootScope,$scope,$http,$location,busyIndicator,registerInvestorService, userDetailsService){
 			$scope.modelVal = {};
 			$scope.showSigniture = function(){
-				$('#signitureModal').modal('show');
+				if (!registerInvestorService.isVaultLocked()) {
+					$('#signitureModal').modal('show');
+				}
 			}
 			$scope.done = function (){
 				var signature = $scope.accept();
@@ -25,26 +27,29 @@
 */
 			}
 			
+			$scope.shouldShowDeclaration = function() {
+				return !registerInvestorService.isVaultLocked();
+			}
 
 			$scope.getSignature = function() {
 				registerInvestorService.getSignature().then(function(data){
 					if('success' in data){
-						$scope.modelVal.signature = data['success'][signature];
+						$scope.modelVal.signature = data['success']['signature'];
 					}
 					 
 				});
 			}
 
 			$scope.reviewInfo = function() {
-				if ($rootScope.userFlags['user_flags']['vault']) {
-					$location.path('/registerInvestorReview');
-				}
-				else {
-					$location.path('/registerInvestorInfo');
-				}
+				$location.path($rootScope.redirectUrlContext);
 			}
 
 			$scope.saveInfo = function() {
+				if (registerInvestorService.isVaultLocked()) {
+					$scope.reviewInfo();
+					return;
+				}
+				
 				busyIndicator.show();
 				registerInvestorService.saveSignature($scope.modelVal.signature).then(function(data){
 					if('success' in data){
@@ -78,5 +83,7 @@
 				});
 				
 			}
+			
+			$scope.getSignature();
 		}
 })();

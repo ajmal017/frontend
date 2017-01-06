@@ -57,8 +57,16 @@
             return{
         		getSavedValues : getSavedValues,
                 setSavedValues : setSavedValues,
-                uploadFileToServer : uploadFileToServer 
+                uploadFileToServer : uploadFileToServer,
+                initializeModel : initializeModel
         	}
+            
+    		function initializeModel() {
+    			return {
+    				nomineeDob : '1991-01-01', 
+    				relationshipWithInvestor : 1,
+	        		};
+    		}
             
             function getSavedValues() {
             	if ($rootScope.initialize) {

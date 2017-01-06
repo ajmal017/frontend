@@ -17,7 +17,7 @@
 	        </div>
 	        <div class="col-xs-6 no-padding reviewList">
 	        	<p class="highlight not-verified placeholder" ng-click="($root.selectedCriteria='op1');($root.initialize=true);($root.redirectUrlContext='/registerInvestorReview')" click-redirect="/nomineeInfo"><span class="content">- Nominee Info</span></p>
-	        	<p><span class="content">- Signature</span></p>
+	        	<p ng-click="($root.redirectUrlContext='/registerInvestorReview')" click-redirect="/registerInvestorConfirm"><span class="content">- Signature</span></p>
 	        	<p ng-if="!kycStatus" ng-click="($root.redirectUrlContext='/registerInvestorReview')" click-redirect="/completeVideoSelfie">- Video Selfie <span ng-if="!hasVideo" class="nextline highlight placeholder addOnlyBold" click-redirect="/completeVideoSelfie">COMPLETE NOW</span></p>
 	        </div>
         </div>

@@ -7,7 +7,7 @@
 		nomineeInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','$timeout', 'nomineeInfoService','registerInvestorService','busyIndicator'];
 		function nomineeInfoController($rootScope,$scope,$route,$http,$location,$timeout, nomineeInfoService, registerInvestorService,busyIndicator){
 			this.scope = $scope;
-			this.scope.modelVal = {};
+			this.scope.modelVal = nomineeInfoService.initializeModel();;
 
 			this.rootScope = $rootScope;
 			this.route = $route;

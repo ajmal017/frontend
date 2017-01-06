@@ -180,24 +180,48 @@
 			};
 
 			this.saveCommunicationAddressImage = function() {
-				if (this.scope['frontImageUrl']) {
-					this.service.uploadFileToServer('address_proof_type', this.scope.modelVal.addressProofType, 'front_image', this.scope['frontImageUrl']);
-				}
-				if (this.scope['backImageUrl']) {
-					this.service.uploadFileToServer('address_proof_type', this.scope.modelVal.addressProofType, 'back_image', this.scope['backImageUrl']);
+				var self = this;
+				if (self.scope['frontImageUrl']) {
+					self.busyIndicator.show();
+					self.service.uploadFileToServer('address_proof_type', self.scope.modelVal.addressProofType, 'front_image', self.scope['frontImageUrl']).then(function(data) {
+						self.busyIndicator.hide();
+						if('success' in data){
+							if (self.scope['backImageUrl']) {
+								self.busyIndicator.show();
+								self.service.uploadFileToServer('address_proof_type', self.scope.modelVal.addressProofType, 'back_image', self.scope['backImageUrl']).then(function() {
+									self.busyIndicator.hide();
+								}, function() {self.busyIndicator.hide();} );
+							}
+						}
+					}, function() {
+						self.busyIndicator.hide();
+					});
 				}
 			};
 
 			this.scope.saveCommunicationAddressImage = angular.bind( this, this.saveCommunicationAddressImage );
 
 			this.savePermanentAddressImage = function() {
-				if (this.scope['permanentFrontImageUrl']) {
-					this.service.uploadFileToServer('permanent_address_proof_type', this.scope.modelVal.permanentAddressProofType, 'permanent_front_image', this.scope['permanentFrontImageUrl']);
-				}
-				if (this.scope['permanentBackImageUrl']) {
-					this.service.uploadFileToServer('permanent_address_proof_type', this.scope.modelVal.permanentAddressProofType, 'permanent_back_image', this.scope['permanentBackImageUrl']);
+				var self = this;
+				if (self.scope['permanentFrontImageUrl']) {
+					self.busyIndicator.show();
+					self.service.uploadFileToServer('permanent_address_proof_type', self.scope.modelVal.permanentAddressProofType, 'permanent_front_image', self.scope['permanentFrontImageUrl']).then(function(data) {
+						self.busyIndicator.hide();
+						if('success' in data){
+							
+							if (self.scope['permanentBackImageUrl']) {
+								self.busyIndicator.show();
+								self.service.uploadFileToServer('permanent_address_proof_type', self.scope.modelVal.permanentAddressProofType, 'permanent_back_image', self.scope['permanentBackImageUrl']).then(function() {
+									self.busyIndicator.hide();
+								}, function() {self.busyIndicator.hide();} );
+							}
+						}
+					}, function() {
+						self.busyIndicator.hide();
+					});
 				}
 			}
+			
 			this.scope.savePermanentAddressImage = angular.bind( this, this.savePermanentAddressImage);
 
 		}
