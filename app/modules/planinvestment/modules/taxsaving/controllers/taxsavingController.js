@@ -14,8 +14,19 @@
 			this.scope.taxsaving = {};
 			this.goalModelObject = this.scope.taxsaving;
 			
-			this.scope.modelVal = taxsavingService.getSavedValues();
-		
+			this.scope.modelVal = JSON.parse(sessionStorage.getItem('goalDetailsTemp')) || {};
+			if(this.scope.modelVal.A1 == "" || this.scope.modelVal.A1 == undefined) {
+				this.scope.modelVal = taxsavingService.getSavedValues();
+			} else {
+				
+			}
+			// this.scope.modelVal = taxsavingService.getSavedValues();
+			// if(this.scope.modelVal.A1 == "" || this.scope.modelVal.A1 == undefined) {
+			// 	this.scope.modelVal = JSON.parse(sessionStorage.getItem('goalDetailsTemp')) || {};
+			// } else {
+			// 	sessionStorage.removeItem('goalDetailsTemp');
+			// }	
+
 			this.rootScope = $rootScope;
 			this.route = $route;
 			this.location = $location;
@@ -106,6 +117,7 @@
 				goalsService.addParticularGoal(fundSelectionObj, 'tax').then(function(data){
 					if('success' in data) {
 						console.log('Goal added successfully');
+						taxsavingService.setSavedValues(modelVal);
 						self.getFundData('tax', busyIndicator);
 						
 					}

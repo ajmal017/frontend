@@ -3107,14 +3107,32 @@ span.error-text {
 }
 .swiper-container.customSwiper.automobile .typeSwiper,
 .swiper-container.customSwiper.wedding .typeSwiper,
+.swiper-container.customSwiper.jewellery .typeSwiper,
 .swiper-container.customSwiper.others .typeSwiper {
   width: 103px;
+}
+.swiper-container.customSwiper.automobile .swiper-slide .fin-btn-white,
+.swiper-container.customSwiper.wedding .swiper-slide .fin-btn-white,
+.swiper-container.customSwiper.jewellery .swiper-slide .fin-btn-white,
+.swiper-container.customSwiper.others .swiper-slide .fin-btn-white {
+  position: absolute;
+  right: -66% !important;
 }
 .swiper-container.customSwiper.vacation .typeSwiper {
   width: 103px;
 }
+.swiper-container.customSwiper.vacation .swiper-slide .fin-btn-white {
+  position: absolute;
+  right: -55% !important;
+}
 .swiper-container.customSwiper.taxsaving .typeSwiper {
   width: 85px;
+}
+.swiper-container.customSwiper.taxsaving .fin-btn-white {
+  position: relative !important;
+  right: 0% !important;
+  float: none !important;
+  margin-left: 4%;
 }
 .swiper-container.customSwiper.investorInfo .fin-btn-group,
 .swiper-container.customSwiper.bankInfo .fin-btn-group,
@@ -3188,7 +3206,7 @@ span.error-text {
   margin-right: 5px;
 }
 .swiper-container.customSwiper .swiper-content p .swiper-input.risk-age {
-  width: 15%;
+  width: 31%;
   left: 0;
 }
 .swiper-container.customSwiper .swiper-content p .swiper-input.year {
@@ -4135,6 +4153,7 @@ section.planinvest .bottom-desc h4 {
   font-weight: normal;
   font-size: 1em;
   margin-top: 2%;
+  cursor: pointer;
 }
 section.quickInvest {
   padding-top: 3%;
@@ -6532,11 +6551,13 @@ section.investStep1 .pie-cover .highcharts-container .highcharts-title span.cont
   font-size: 50px;
 }
 section.investStep1 .pie-cover .highcharts-container .highcharts-title span.content span {
-  display: block;
   word-wrap: break-word;
   white-space: pre-line;
   width: 96px;
-  font-size: 38px;
+  font-size: 33px;
+}
+section.investStep1 .pie-cover .highcharts-container .highcharts-title span.currency {
+  font-size: 26px;
 }
 section.investStep1 .pie-cover .highcharts-container .highcharts-title span.nextline {
   position: absolute;

@@ -6,13 +6,13 @@
 				<invest-pie-chart items="$root.resultPercentage" title="$root.pieTitle"></invest-pie-chart>
 				<div class="pie-chart-legend">
 					<div class="label-cover">
-						<p ng-repeat="legend in $root.legends"><span class="content" ng-bind="legend.name"></span><span class="legend-cover">
+						<p ng-repeat="legend in $root.legends"><span class="content col-xs-2" ng-bind="legend.name"></span><span class="legend-cover">
 							<span class="legend-main" ng-style="{'background-color':legend.color,'width':legend.value+'%'}">
 								<span class="right"></span>
 								<span class="left" ng-style="{'border-left':legend.borderColor}"></span>
 								<span class="value" ng-bind="legend.value+' %'"></span>
 							</span>
-						</span><span class="value-cover"><span>Rs.</span><span class="value" ng-bind="legend.price | currency:''"></span></span></p>
+						</span><span class="value-cover"><span class="currency">&#8377;</span><span class="value" ng-bind="legend.price | amountSeffix"></span></span></p>
 					</div>
 				</div>
 				<span class="placeholder bottom">*investment amounts are rounded off to the nearest hundred</span>
@@ -46,13 +46,13 @@
 									<p>{{schemes.goal_summary.goal}}</p>
 								</div>
 								<div class="td">
-									<p>Rs.<span>{{schemes.goal_summary.corpus}}</span></p>
+									<p><span class="currency">&#8377;</span><span>{{schemes.goal_summary.corpus | amountSeffix}}</span></p>
 								</div>
 								<div class="td">
 									<p>{{schemes.goal_summary.term}}</p>
 								</div>
 								<div class="td">
-									<p>Rs.<span>{{schemes.goal_summary.sip}}</span></p>
+									<p><span class="currency">&#8377;</span><span>{{schemes.goal_summary.sip}}</span></p>
 								</div>
 								<div class="td">
 									<p>{{schemes.goal_summary.lumpsum}}</p>
@@ -65,10 +65,10 @@
 							<p>Total</p>
 						</div>
 						<div class="sipTotal">
-							<p>Rs.<span>{{sipTotal}}</span></p>
+							<p><span class="currency">&#8377;</span><span>{{sipTotal}}</span></p>
 						</div>
 						<div class="lumpSumTotal">
-							<p>Rs.<span>{{lumpSumTotal}}</span></p>
+							<p><span class="currency">&#8377;</span><span>{{lumpSumTotal}}</span></p>
 						</div>
 					</div>
 				</div>

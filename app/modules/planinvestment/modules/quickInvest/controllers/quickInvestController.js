@@ -15,6 +15,11 @@
 			this.goalModelObject = this.scope.quickinvest;
 			
 			this.scope.modelVal = quickInvestService.getSavedValues();
+			if(this.scope.modelVal.A1 == "" || this.scope.modelVal.A1 == undefined) {
+				this.scope.modelVal = JSON.parse(sessionStorage.getItem('goalDetailsTemp')) || {};
+			} else {
+				sessionStorage.removeItem('goalDetailsTemp');
+			}
 			
 			this.rootScope = $rootScope;
 			this.route = $route;
@@ -45,6 +50,7 @@
 			this.scope.changeEquityModal = angular.bind(this, this.changeEquityModal );
 			this.scope.saveEquityDebtMix = angular.bind(this, this.saveEquityDebtMix );
 			this.scope.getFundData = angular.bind(this, this.getFundData );
+            this.scope.resetAllocation = angular.bind(this, this.resetAllocation);
 
 			this.scope.calculateEstimates = function() {
 			}
@@ -174,6 +180,7 @@
 				goalsService.addParticularGoal(fundSelectionObj, 'invest').then(function(data){
 					if('success' in data) {
 						console.log('Goal added successfully');
+						quickInvestService.setSavedValues(modelVal);
 						self.getFundData('invest', busyIndicator);
 						busyIndicator.hide();
 					}

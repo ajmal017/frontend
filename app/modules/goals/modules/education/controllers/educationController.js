@@ -16,6 +16,11 @@
 			this.goalModelObject = this.scope.education;
 			
 			this.scope.modelVal = educationService.getSavedValues();
+			if(this.scope.modelVal.A1 == "" || this.scope.modelVal.A1 == undefined) {
+				this.scope.modelVal = JSON.parse(sessionStorage.getItem('goalDetailsTemp')) || {};
+			} else {
+				sessionStorage.removeItem('goalDetailsTemp');
+			}
 			
 			this.rootScope = $rootScope;
 			this.route = $route;
@@ -117,6 +122,7 @@
 				busyIndicator.show();
 				goalsService.addParticularGoal(fundSelectionObj, 'education').then(function(data){
 					if('success' in data) {
+						educationService.setSavedValues(modelVal);
 						console.log('Goal added successfully');
 						self.getFundData('education', busyIndicator);
 						busyIndicator.hide();

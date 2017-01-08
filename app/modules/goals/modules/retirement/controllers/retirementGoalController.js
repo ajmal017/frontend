@@ -189,16 +189,16 @@
 			$scope.changeDebtModal = function() {
 				console.log('debt', $scope.equity);
 				$scope.equity2 = 100 - $scope.equity;
-				$scope.debtAmountModal = ($scope.equity/100) * $scope.amount;
-				$scope.equityAmountModal = ($scope.equity2/100) * $scope.amount
+				$scope.debtAmountModal = Math.round(($scope.equity/100) * $scope.amount);
+				$scope.equityAmountModal = Math.round(($scope.equity2/100) * $scope.amount);
 
 			}
 
 			$scope.changeEquityModal = function() {
 				console.log('equity',$scope.equity2);
 				$scope.equity = 100 - $scope.equity2;
-				$scope.equityAmountModal = ($scope.equity2/100) * $scope.amount
-				$scope.debtAmountModal = ($scope.equity/100) * $scope.amount;
+				$scope.equityAmountModal = Math.round(($scope.equity2/100) * $scope.amount);
+				$scope.debtAmountModal = Math.round(($scope.equity/100) * $scope.amount);
 			}
 
 			$scope.resetAllocation = function() {

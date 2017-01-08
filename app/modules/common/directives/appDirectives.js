@@ -108,7 +108,8 @@
 					formatSymbol : '@',
 					fontColor:'@',
 					yearMax : '@',
-					year : '@'
+					year : '@',
+					step5 : '@'
 				},
 				templateUrl:'modules/common/views/partials/calendar.html',
 				link:function($scope,$element,$attr,ngModel){
@@ -143,7 +144,11 @@
 					$scope.doDecrement = function(){
 						var min = parseInt($scope.min);
 						if(min <  model){
-							model = model - 1;
+							if($scope.step5 == 'true'){
+								model = model - 5;
+							} else {
+								model = model - 1;
+							}
 							$scope.model = model;
 							ngModel.$setViewValue($scope.model);
 						}else{
@@ -155,7 +160,11 @@
 					$scope.doIncrement = function(){
 						var max = parseInt($scope.max);
 						if(max > model){
-							model = model + 1;
+							if($scope.step5 == 'true'){
+								model = model + 5;
+							} else {
+								model = model + 1;
+							}
 							$scope.model = model;
 							ngModel.$setViewValue($scope.model);
 						}
@@ -429,8 +438,8 @@
 						var leftText = '';
 						if(arcPos > 0 && arcPos < 90)
 						{
-							topText = '-32px';
-							leftText = '-63px';
+							topText = '-12px';
+							leftText = '-38px';
 						} else {
 							topText = '-35px';
 							leftText = '-61px';

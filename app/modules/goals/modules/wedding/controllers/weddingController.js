@@ -15,7 +15,12 @@
 			this.goalModelObject = this.scope.wedding;
 			
 			this.scope.modelVal = weddingService.getSavedValues();
-			
+			if(this.scope.modelVal.A1 == "" || this.scope.modelVal.A1 == undefined) {
+				this.scope.modelVal = JSON.parse(sessionStorage.getItem('goalDetailsTemp')) || {};
+			} else {
+				sessionStorage.removeItem('goalDetailsTemp');
+			}
+
 			this.rootScope = $rootScope;
 			this.route = $route;
 			this.location = $location,
@@ -48,7 +53,7 @@
 			this.scope.getGraphObject = angular.bind(this, this.getGraphObject ); 
             this.scope.graphObject = this.scope.getGraphObject();
             this.scope.resetAllocation = angular.bind(this, this.resetAllocation);
-            
+
 			this.scope.calculateEstimates = function() {
 				var self = this;
 				if (!$scope.wedding['tenure']) {
@@ -120,6 +125,7 @@
 				busyIndicator.show();
 				goalsService.addParticularGoal(fundSelectionObj, 'wedding').then(function(data){
 					if('success' in data) {
+						weddingService.setSavedValues(modelVal);
 						console.log('Goal added successfully');
 						self.getFundData('wedding', busyIndicator);
 						

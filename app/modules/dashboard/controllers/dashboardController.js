@@ -4,13 +4,21 @@
 		.module('finApp.dashboard')
 		.controller('dashboardController',dashboardController);
 
-		dashboardController.$inject = ['$scope','$rootScope','$location','dashboardService','ngDialog']
-		function dashboardController($scope,$rootScope,$location,dashboardService,ngDialog){
+		dashboardController.$inject = ['$scope','$rootScope','$location','dashboardService','ngDialog', 'userDetailsService']
+		function dashboardController($scope,$rootScope,$location,dashboardService,ngDialog, userDetailsService){
 			// dashboardService.getDashboardDetails($rootScope.userFlags,function(data){
 			// 	$scope.dashCounts = data;
 			// })
+			$scope.callCompleteness = function() {
+				userDetailsService().then(function(userData){
+					$scope.userFlags = JSON.parse(sessionStorage.getItem('userFlags'))
+				});
+			}
 
-			var userFlags = JSON.parse(sessionStorage.getItem('userFlags'));
+			$scope.callCompleteness();
+
+
+			var userFlags = $scope.userFlags;
 			if(userFlags.user_answers.risk_score) {
 				$rootScope.userRiskFactor = userFlags.user_answers.risk_score;
 			} else {

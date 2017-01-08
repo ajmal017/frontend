@@ -24,7 +24,10 @@
                 return modelObject;
             }
 
-            function setSavedValues(){               
+            function setSavedValues(model){         
+                var modelObject = {};
+                var modelObject = model;
+                sessionStorage.setItem('goalDetailsTemp', JSON.stringify(modelObject));      
             }
 
         }     

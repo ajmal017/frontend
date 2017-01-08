@@ -22,6 +22,11 @@
 					$rootScope.redirectURL = '/quickInvestStart';
 				} else if($rootScope.currentGoal == 'tax'){
 					$rootScope.redirectURL = '/taxsavingStarted';
+				} else if($rootScope.currentGoal == 'retirement'){
+					$rootScope.redirectURL = '/retirementGoalsStarted';
+				} else if($rootScope.currentGoal == 'event') {
+					$rootScope.redirectURL = '/othersStarted';
+
 				} else {
 					$rootScope.redirectURL = '/'+ $rootScope.currentGoal +'Started'
 				}

@@ -15,7 +15,11 @@
 			this.goalModelObject = this.scope.automobile;
 			
 			this.scope.modelVal = automobileService.getSavedValues();
-			
+			if(this.scope.modelVal.A1 == "" || this.scope.modelVal.A1 == undefined) {
+				this.scope.modelVal = JSON.parse(sessionStorage.getItem('goalDetailsTemp')) || {};
+			} else {
+				sessionStorage.removeItem('goalDetailsTemp');
+			}
 			this.rootScope = $rootScope;
 			this.route = $route;
 			this.location = $location,
@@ -118,6 +122,7 @@
 				busyIndicator.show();
 				goalsService.addParticularGoal(fundSelectionObj, 'automobile').then(function(data){
 					if('success' in data) {
+						automobileService.setSavedValues(modelVal);
 						console.log('Goal added successfully');
 						self.getFundData('automobile', busyIndicator);
 						

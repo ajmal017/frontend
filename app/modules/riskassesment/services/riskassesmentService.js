@@ -21,6 +21,13 @@
         	}
 
         	function getAssesmentObject(){
+                
+                console.log('userFlags',jQuery.isEmptyObject($rootScope.userFlags));
+
+                if(!jQuery.isEmptyObject($rootScope.userFlags)){
+                    assesObject = $rootScope.userFlags['user_answers']['assess'];
+                }
+
         		return assesObject;
         	}
 

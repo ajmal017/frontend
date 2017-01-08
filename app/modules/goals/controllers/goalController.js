@@ -13,7 +13,7 @@
 			}
 
 			$scope.callCompleteness();
-
+			sessionStorage.removeItem('goalDetailsTemp');
 			$scope.startGoalAdd = function(currentGoal) {
 				$rootScope.currentGoal = currentGoal;
 				var goalRedirect = '';

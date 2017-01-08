@@ -15,7 +15,13 @@
 			this.goalModelObject = this.scope.property;
 			
 			this.scope.modelVal = propertyService.getSavedValues();
-			
+			if(this.scope.modelVal.A1 == "" || this.scope.modelVal.A1 == undefined) {
+				this.scope.modelVal = JSON.parse(sessionStorage.getItem('goalDetailsTemp')) || {};
+			} else {
+				sessionStorage.removeItem('goalDetailsTemp');
+			}
+			console.log('modelVal',this.scope.modelVal);
+
 			this.rootScope = $rootScope;
 			this.route = $route;
 			this.location = $location;
@@ -119,8 +125,10 @@
 				goalsService.addParticularGoal(fundSelectionObj, 'property').then(function(data){
 					if('success' in data) {
 						console.log('Goal added successfully');
+						propertyService.setSavedValues(modelVal);
 						self.getFundData('property', busyIndicator);
 						busyIndicator.hide();
+
 					}
 					else {
 						console.log('Error in service');

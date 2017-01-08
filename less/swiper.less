@@ -153,19 +153,38 @@
       }
       &.automobile,
       &.wedding,
+      &.jewellery,
       &.others{
         .typeSwiper{
           width:103px;
+        }
+        .swiper-slide{
+          .fin-btn-white{
+              position:absolute;
+              right:-66% !important;
+            }
         }
       }
       &.vacation{
         .typeSwiper{
           width:103px;
         }
+        .swiper-slide{
+          .fin-btn-white{
+              position:absolute;
+              right:-55% !important;
+            }
+        }
       }
       &.taxsaving{
         .typeSwiper{
           width:85px;
+        }
+        .fin-btn-white{
+          position:relative !important;
+          right:0% !important;
+          float: none !important;
+          margin-left: 4%;
         }
       }
       &.investorInfo,&.bankInfo,&.nomineeInfo,&.contactInfo,&.identityInfo{
@@ -220,7 +239,7 @@
               margin-right: 5px;
             }
             &.risk-age{
-              width: 15%;
+              width: 31%;
               left: 0;
             }
             &.year{

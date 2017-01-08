@@ -15,7 +15,12 @@
 			this.goalModelObject = this.scope.vacation;
 			
 			this.scope.modelVal = vacationService.getSavedValues();
-			
+			if(this.scope.modelVal.A1 == "" || this.scope.modelVal.A1 == undefined) {
+				this.scope.modelVal = JSON.parse(sessionStorage.getItem('goalDetailsTemp')) || {};
+			} else {
+				sessionStorage.removeItem('goalDetailsTemp');
+			}
+
 			this.rootScope = $rootScope;
 			this.route = $route;
 			this.location = $location,
@@ -119,6 +124,7 @@
 				busyIndicator.show();
 				goalsService.addParticularGoal(fundSelectionObj, 'vacation').then(function(data){
 					if('success' in data) {
+						vacationService.setSavedValues(modelVal);
 						console.log('Goal added successfully');
 						self.getFundData('vacation', busyIndicator);
 						
