@@ -197,7 +197,7 @@
 					$scope.errorPopupMessage = 'Thank you for your order request. Please confirm to receive payment instructions.'
 					$scope.confirmShowButton = true;
 					ngDialog.open({ 
-			        	template: '/modules/common/views/partials/error_popup.html', 
+			        	template: 'modules/common/views/partials/error_popup.html', 
 			        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
 			        	overlay: false,
 			        	showClose : false,
@@ -208,7 +208,7 @@
 								if('success' in data) {
 									$scope.errorPopupMessage = 'Your bank is not supported by our payment gateway. You will soon receive an email with payment instructions using other options (Cheque payment).';
 									ngDialog.open({ 
-							        	template: '/modules/common/views/partials/error_popup.html', 
+							        	template: 'modules/common/views/partials/error_popup.html', 
 							        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
 							        	overlay: false,
 							        	showClose : false,

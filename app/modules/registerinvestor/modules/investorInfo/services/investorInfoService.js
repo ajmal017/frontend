@@ -36,7 +36,7 @@
 	        			panNumber : response.pan_number, 
 	        			placeOfBirth : response.place_of_birth, 
 	        			fatherName : response.father_name, 
-	        			investorStatus : response.investor_status, 
+	        			investorStatus : response.investor_status || 'Resident Individual', 
 	        			occupationType : response.occupation_type || 'PRI', 
 	        			otherTaxPayer : response.other_tax_payer,
 	        			dob : response.dob,
@@ -58,7 +58,9 @@
     		function initializeModel() {
     			return {
     				occupationType : '', 
-    				income : ''
+    				income : '',
+    				countryOfBirth : 'India',
+    				investorStatus : 'Resident Individual', 
 	        		};
     		}
 

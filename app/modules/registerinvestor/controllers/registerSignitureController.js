@@ -4,11 +4,13 @@
 		.module('finApp.registerInvestor')
 		.controller('registerSignatureController',registerSignatureController);
 
-		registerSignatureController.$inject = ['$rootScope','$scope','$http','$location','busyIndicator','registerInvestorService','userDetailsService'];
-		function registerSignatureController($rootScope,$scope,$http,$location,busyIndicator,registerInvestorService, userDetailsService){
+		registerSignatureController.$inject = ['$rootScope','$scope','$http','$location','busyIndicator','registerInvestorService','userDetailsService','ngDialog'];
+		function registerSignatureController($rootScope,$scope,$http,$location,busyIndicator,registerInvestorService, userDetailsService, ngDialog){
 			$scope.modelVal = {};
 			$scope.showSigniture = function(){
-				$('#signitureModal').modal('show');
+				if (!registerInvestorService.isVaultLocked()) {
+					$('#signitureModal').modal('show');
+				}
 			}
 			$scope.done = function (){
 				var signature = $scope.accept();
@@ -25,17 +27,43 @@
 */
 			}
 			
+			$scope.shouldShowDeclaration = function() {
+				return !registerInvestorService.isVaultLocked();
+			}
 
 			$scope.getSignature = function() {
 				registerInvestorService.getSignature().then(function(data){
 					if('success' in data){
-						$scope.modelVal.signature = data['success'][signature];
+						$scope.modelVal.signature = data['success']['signature'];
 					}
 					 
 				});
 			}
+
+			$scope.reviewInfo = function() {
+				$location.path($rootScope.redirectUrlContext);
+			}
+
+			$scope.showSaveError = function() {
+				$scope.errorPopupMessage = 'We encountered a problem trying to save your information. Please try again.';
+				$scope.ngDialog = ngDialog;
+				ngDialog.open({ 
+		        	template: 'modules/common/views/partials/error_popup.html', 
+		        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+		        	overlay: false,
+		        	showClose : false,
+
+		        	scope: $scope,
+	        	});
+
+			}
 			
 			$scope.saveInfo = function() {
+				if (registerInvestorService.isVaultLocked()) {
+					$scope.reviewInfo();
+					return;
+				}
+				
 				busyIndicator.show();
 				registerInvestorService.saveSignature($scope.modelVal.signature).then(function(data){
 					if('success' in data){
@@ -53,21 +81,22 @@
 							}
 							else {
 								busyIndicator.hide();
-								//TODO show popup 
-								console.log("Failed to Save!");
+								$scope.showSaveError(); 
 							}
 						}, function() { busyIndicator.hide();});
 					}
 					else {
-						//TODO show popup 
 						busyIndicator.hide();
-						console.log("Failed to Save!");
+						$scope.showSaveError(); 
 					}
 
 				}, function() {
 					busyIndicator.hide();
+					$scope.showSaveError(); 
 				});
 				
 			}
+			
+			$scope.getSignature();
 		}
 })();

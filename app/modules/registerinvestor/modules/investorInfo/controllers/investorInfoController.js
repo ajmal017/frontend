@@ -4,8 +4,8 @@
 		.module('finApp.registerInvestor')
 		.controller('investorInfoController',investorInfoController);
 
-		investorInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','$timeout', 'registerInvestorService', 'investorInfoService','busyIndicator'];
-		function investorInfoController($rootScope,$scope,$route,$http,$location,$timeout, registerInvestorService, investorInfoService,busyIndicator){
+		investorInfoController.$inject = ['$rootScope','$scope','$route','$http','$location','$timeout', 'registerInvestorService', 'investorInfoService','busyIndicator','ngDialog'];
+		function investorInfoController($rootScope,$scope,$route,$http,$location,$timeout, registerInvestorService, investorInfoService,busyIndicator, ngDialog){
 			this.scope = $scope;
 			this.scope.modelVal = investorInfoService.initializeModel();
 
@@ -48,8 +48,25 @@
 							self.scope.modelVal.applicantName = data['success']['name'];
 						}
 					}
+					else {
+						$scope.errorPopupMessage = data['Message'];
+						$scope.ngDialog = ngDialog;
+						ngDialog.open({ 
+				        	template: 'modules/common/views/partials/error_popup.html', 
+				        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+				        	overlay: false,
+				        	showClose : false,
+
+				        	scope: $scope,
+				        	preCloseCallback:function(){
+				        		$scope.modelVal.panNumber = '';
+				        	}
+			        	});
+
+					}
 				}, function() {
 					self.busyIndicator.hide();
+
 				});
 
 			};

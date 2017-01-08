@@ -24,14 +24,14 @@
                     <p class="paddingTop2">Note: The above signature will be used to digitally sign the investor application form</p>
                   </div>
                   <div class="col-xs-12">
-                  <p>
-                    <div class="checkbox-cover">
+                  <p ng-if="shouldShowDeclaration()">
+                    <div ng-if="shouldShowDeclaration()" class="checkbox-cover">
                         <input type="checkbox" required id="option1Type1" name="option1" ng-model="modelVal.isDeclaration" value="op1">
                         <label for="option1Type1"><span></span>I certify that all information provided for registration is true.</label>
                     </div>
                   </p>
-                  <p>
-                    <div class="checkbox-cover">
+                  <p ng-if="shouldShowDeclaration()">
+                    <div class="checkbox-cover" ng-if="shouldShowDeclaration()">
                         <input type="checkbox" required id="option1Type2" name="option1" ng-model="modelVal.isTerms" value="op1">
                         <label class="" for="option1Type2">
                           <div class="pull-left checkbox-width">
@@ -64,8 +64,8 @@
 
     <div class="col-xs-12">
         <div class="fin-btn-group">
-            <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>REVIEW INFO</button>
-            <button ng-click="appendValues(modelVal);(step = step + 1);saveInfo()" ng-disabled="!modelVal.signature || !modelVal.isTerms || !modelVal.isDeclaration" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+            <button class="fin-link-btn content-prev" ng-click="reviewInfo()"><span><img src="assets/images/startedArrow.png"></span>REVIEW INFO</button>
+            <button ng-click="appendValues(modelVal);(step = step + 1);saveInfo()" ng-disabled="shouldShowDeclaration() && (!modelVal.signature || !modelVal.isTerms || !modelVal.isDeclaration)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         </div>
     </div>
 
