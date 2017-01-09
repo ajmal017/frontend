@@ -143,6 +143,12 @@
 			                  			            
                     }, 200);
 					
+                    $(window).on('resize',function(){
+                    	if (swiper) {
+                    		swiper.onResize();
+                    	}                    		             	
+	            	});
+
 					scope.calculate = function(type,value){
 					}
 

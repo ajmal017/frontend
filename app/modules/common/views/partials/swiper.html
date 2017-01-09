@@ -5,7 +5,7 @@
             <div class="swiper-content content-1" ng-init="disabled = 'locked'">
 
                 <div class="col-lg-12">
-                    <p class="pull-left col-lg-2 risk-questions">I am a <span class="swiper-input risk-age"><input only-number type="text" name="year" required ng-model="modelVal.A1"></span> year old</p><!-- <select dropdown dropdown-disable="disabled" ng-model="modelVal.A7"><option value="op1">Male</option><option value="op2">Female</option></select> -->
+                    <p class="pull-left col-lg-2 risk-questions">I am a <span class="swiper-input risk-age"><input only-number type="text" name="year" required ng-model="modelVal.A1"></span> years old</p><!-- <select dropdown dropdown-disable="disabled" ng-model="modelVal.A7"><option value="op1">Male</option><option value="op2">Female</option></select> -->
                     <div class="selectRisk_cover col-lg-1 no-padding">
                         <input type="radio" required id="male" name="gender" ng-model="modelVal.A7" value="op1">
                         <label for ="male">
@@ -172,7 +172,7 @@
         <div class="swiper-slide">
             <form name="riskAssesment1Form2">
             <div class="swiper-content">
-                <h2>I have invested in the following in the past <span class="nextline">(select all that are relevant)</span>  </h2>
+                <h2>I have invested in the following in the past <span class="nextline placeholder">(select all that are relevant)</span>  </h2>
                 <div class="radio-cover">
                     <div class="checkbox-cover" ng-repeat="investments in past_investments">
                         <input type="checkbox" id="{{investments.value}}" name="selectedInvestments[]" value="{{investments.value}}" ng-model="investments.selected"><label for="{{investments.value}}"><span></span>{{investments.name}}</label>
@@ -856,7 +856,7 @@
                       <p class="question multiple"><span class="content">What is your post-tax monthly income?</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A6" type="text" required></span></p>
 <!--                        <p class="question multiple"><span class="content">How much do you currently spend monthly?</span> <span class="swiper-input normal"><input format="number" ng-model="modelVal.A7" type="text" required></span></p>-->
                       <p class="question multiple"><span class="content">How much have you saved for rest of the retirement?</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A8" type="text" required></span></p>
-                      <span class="placeholder">Add total of your PPF,EPF,NPS, and other retirement savings</span>
+                      <span class="placeholder">Add total of your PPF, EPF, NPS, and other retirement savings</span>
                 </div>
             </form>
         </div>
@@ -2585,7 +2585,7 @@
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
                       <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" ng-init="modelVal.A1 = modelVal.A1 || 'My tax saving'" required ng-model="modelVal.A1"></span></p>
-                      <span class="placeholder">Use maximum 20 characters,alphabets and/or numbers</span>
+                      <span class="placeholder">Use maximum 20 characters, alphabets and/or numbers</span>
                       <span class="placeholder">We recommended naming this goal after the year of tax planning</span>
                 </div>
             </form>
