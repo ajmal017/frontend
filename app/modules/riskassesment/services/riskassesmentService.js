@@ -27,8 +27,11 @@
                 if(!jQuery.isEmptyObject($rootScope.userFlags)){
                     assesObject = $rootScope.userFlags['user_answers']['assess'];
                 }
-
+                if(assesObject.noneInvestments != '' || assesObject.noneInvestments != undefined){
+                    delete assesObject.noneInvestments;
+                }
         		return assesObject;
+
         	}
 
 	        function getAssesmentResult(params){

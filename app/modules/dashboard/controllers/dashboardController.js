@@ -4,8 +4,8 @@
 		.module('finApp.dashboard')
 		.controller('dashboardController',dashboardController);
 
-		dashboardController.$inject = ['$scope','$rootScope','$location','dashboardService','ngDialog', 'userDetailsService']
-		function dashboardController($scope,$rootScope,$location,dashboardService,ngDialog, userDetailsService){
+		dashboardController.$inject = ['$scope','$rootScope','$location','dashboardService','ngDialog', 'userDetailsService', 'investWithdrawService', 'busyIndicator']
+		function dashboardController($scope,$rootScope,$location,dashboardService,ngDialog, userDetailsService, investWithdrawService, busyIndicator){
 			// dashboardService.getDashboardDetails($rootScope.userFlags,function(data){
 			// 	$scope.dashCounts = data;
 			// })
@@ -77,5 +77,38 @@
 							$location.path('/trackPerformanceStart');
 					// }
 				}
+
+				$scope.goToWithdraw = function() {
+				$scope.noWithdraw = false;
+				if($rootScope.userFlags['user_flags']['show_redeem'] == false) {
+						$scope.errorPopupMessage = 'You cannot withdraw.';
+						$scope.ngDialog = ngDialog;
+						ngDialog.open({ 
+				        	template: 'modules/common/views/partials/error_popup.html', 
+				        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+				        	overlay: false,
+				        	showClose : false,
+
+				        	scope: $scope
+			        	});
+				} else {
+						busyIndicator.show();
+						investWithdrawService.getWithdrawDetails().then(function(data){
+							busyIndicator.hide();
+						if('success' in data) { 
+							if(!data.success.length)
+							{
+								$rootScope.noWithdraw = true;
+							}
+							console.log('redeem', data);
+							$rootScope.redeemData = data.success;
+							$location.path('/withdrawStart');
+						}
+						else {
+							
+						}
+				});
+				}
+			}
 		}
 })();

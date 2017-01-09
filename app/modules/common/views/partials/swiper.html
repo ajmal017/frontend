@@ -45,7 +45,7 @@
                 </div> 
 
                 <div class="col-lg-12">
-                    <p class="col-lg-1">with</p> 
+                    <p class="col-lg-1 paddingTop1">with</p> 
 
                     <div class="selectRisk_cover col-lg-1">
                         <input type="radio" required id="nokids" name="kidsNumber" ng-model="modelVal.A15" value="op1">
@@ -73,12 +73,12 @@
                     </div>
                     <!-- <select dropdown ng-model="modelVal.A15"><option selected value="op1">No</option><option value="op2">1</option>
                     <option value="op3">2</option><option value="op4">2+</option></select> -->
-                    <P>kid(s),</P>
+                    <P class="paddingTop1">kid(s),</P>
 
                 </div>    
 
                 <div class="col-lg-12">
-                    <p class="col-lg-1">with</p> 
+                    <p class="col-lg-1 paddingTop1">with</p> 
 
                     <div class="selectRisk_cover col-lg-1">
                         <input type="radio" required id="noparents" name="parentsNumber" ng-model="modelVal.A16" value="op1">
@@ -106,7 +106,7 @@
                     </div>
                     <!-- <select dropdown ng-model="modelVal.A15"><option selected value="op1">No</option><option value="op2">1</option>
                     <option value="op3">2</option><option value="op4">2+</option></select> -->
-                    <P>dependent adult(s),</P>
+                    <P class="paddingTop1">dependent adult(s),</P>
 
                 </div>    
 <!-- 
@@ -175,8 +175,12 @@
                 <h2>I have invested in the following in the past <span class="nextline">(select all that are relevant)</span>  </h2>
                 <div class="radio-cover">
                     <div class="checkbox-cover" ng-repeat="investments in past_investments">
-                        <input type="checkbox" id="{{investments.value}}" name="selectedInvestments[]" value="{{investments.value}}" ng-model="investments.selected"><label for="{{investments.value}}"><span></span>{{investments.name}}</label>
-                    </div>     
+                        <input type="checkbox" id="{{investments.value}}" name="selectedInvestments[]" value="{{investments.value}}" ng-model="investments.selected" ng-change="changeInvestments()"><label for="{{investments.value}}"><span></span>{{investments.name}}</label>
+                    </div>
+                    <hr /> 
+                    <div class="checkbox-cover">
+                    <input type="checkbox" id="none_selected" ng-true-value="'op5'" ng-false-value="false" ng-model="modelVal.noneInvestments" ng-change="uncheck()"><label for="none_selected"><span></span>None of the above</label>
+                    </div>    
                 </div>
             </div>
             </form>

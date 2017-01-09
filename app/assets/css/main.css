@@ -1415,6 +1415,9 @@ span.highlight {
 .mCSB_buttonUp {
   display: none;
 }
+.paddingTop1 {
+  padding-top: 1%;
+}
 @-webkit-keyframes makeDropdown {
   /*0%{
   	padding-top: 0%;
@@ -3809,6 +3812,15 @@ section.dashboard {
   padding-top: 3%;
   padding-bottom: 3%;
 }
+section.dashboard h1 {
+  font-family: 'PlayfairDisplay-Regular';
+  color: #000;
+  font-weight: normal;
+  font-size: 2.25em;
+  margin-top: 0;
+  margin-bottom: 4%;
+  opacity: 0.7;
+}
 section.dashboard .goals-outer-cover {
   width: 22%;
   float: left;
@@ -3817,13 +3829,13 @@ section.dashboard .goals-outer-cover:nth-child(1) .image-div img {
   width: 104%;
 }
 section.dashboard .goals-outer-cover:nth-child(2) .image-div img {
-  width: 85%;
+  width: 115%;
 }
 section.dashboard .goals-outer-cover:nth-child(3) .image-div img {
-  width: 95%;
+  width: 78%;
 }
 section.dashboard .goals-outer-cover:nth-child(4) .image-div img {
-  width: 81%;
+  width: 125%;
 }
 section.dashboard .goals-outer-cover:not(:last-child) {
   margin-right: 3%;
@@ -3908,6 +3920,9 @@ section.dashboard .goals-cover .image-div img {
   display: table-cell;
   width: 100%;
   margin: 0 auto;
+}
+section.dashboard .goals-cover .invest-goal {
+  margin: 46px 0 46px 35px;
 }
 section.dashboard .goals-cover .checkbox-cover label {
   opacity: 1;

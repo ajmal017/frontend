@@ -8,12 +8,14 @@
 		function riskController($rootScope,$scope,riskService){
 			$scope.resultObject = '0';
 			$scope.modelVal = {};
-
 			$scope.modelVal = riskService.getAssesmentObject();
-			
+			$scope.modelVal.noneInvestments = $scope.modelVal.A8;
 
 			$scope.appendFormValues = function(data){
-				riskService.setAssesmentObject(JSON.parse(data));
+				var deleteObj = JSON.parse(data);
+				delete deleteObj.noneInvestments;
+				console.log('data',deleteObj);
+				riskService.setAssesmentObject(deleteObj);
 				var assesValues = riskService.getAssesmentObject();
 				riskService.getAssesmentResult(assesValues).then(function(data){
 					if('success' in data){
@@ -28,7 +30,7 @@
 			}
 
 			$scope.past_investments = [
-				{name : 'Fixed Deposits', value : 'op1', selected : true},
+				{name : 'Fixed Deposits', value : 'op1', selected : false},
 				{name : 'Other Fixed Income Products (PPF, Debt Mutual Funds, etc.)', value: 'op2', selected:false},
 				{name : 'Equity Mutual Funds', value : 'op3', selected:false},
 				{name : 'Direct Stocks', value : 'op4', selected:false}
@@ -56,10 +58,13 @@
 		    	return filterFilter($scope.past_investments, { selected: true });
 		  	};
 
+		  	$scope.changeInvestments = function() {
 		  	// watch investments for changes
+		  	$scope.modelVal.noneInvestments = false;
 			  $scope.$watch('past_investments|filter:{selected:true}', function (nv) {
 			    $scope.selection = nv.map(function (data) {
-			      return data.value;
+			      	return data.value;
+			    
 			    });
 			    $scope.modelVal.A8 = $scope.selection.join();
 			  console.log('investments selected', $scope.selection);
@@ -69,7 +74,25 @@
 			  	$scope.disableAppend = false;
 			  }
 			  }, true);
+			}
 
+			  $scope.resetInvestments = function() {
+			  	$scope.past_investments = [
+					{name : 'Fixed Deposits', value : 'op1', selected : false},
+					{name : 'Other Fixed Income Products (PPF, Debt Mutual Funds, etc.)', value: 'op2', selected:false},
+					{name : 'Equity Mutual Funds', value : 'op3', selected:false},
+					{name : 'Direct Stocks', value : 'op4', selected:false}
+				];
+				$scope.modelVal.A8 = 'op5';
+				$scope.modelVal.noneInvestments = 'op5';
+				$scope.disableAppend = false;
+			  }
+			  $scope.uncheck = function() {
+			  	console.log('noneInvestments',$scope.modelVal.A8);
+			  	if($scope.modelVal.noneInvestments == 'op5'){
+			  		$scope.resetInvestments();
+			  	}
+			  }
 
 			  // console.log('investments selected', $scope.selection);
 		}

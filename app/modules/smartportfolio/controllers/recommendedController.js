@@ -4,8 +4,8 @@
 		.module('finApp.smartPortFolio')
 		.controller('recommendedController',recommendedController);
 
-		recommendedController.$inject = ['$rootScope','$scope','$http','$timeout','recommendedService', 'busyIndicator', '$location', 'goalsService', 'investWithdrawService', '$filter'];
-		function recommendedController($rootScope,$scope,$http,$timeout,recommendedService, busyIndicator, $location, goalsService, investWithdrawService, $filter){
+		recommendedController.$inject = ['$rootScope','$scope','$http','$timeout','recommendedService', 'busyIndicator', '$location', 'goalsService', 'investWithdrawService', '$filter', 'ngDialog'];
+		function recommendedController($rootScope,$scope,$http,$timeout,recommendedService, busyIndicator, $location, goalsService, investWithdrawService, $filter, ngDialog){
 			
 			$scope.recommendedSchemesObject = {}; 
 			$scope.schemeList = {};
@@ -228,31 +228,42 @@
 		  	$scope.selectedTop = function selectedTop() {
 		    	return filterFilter($scope.schemeTop, { selected: true });
 		  	}
-		  	$scope.$watch('otherRecommendSchemes|filter:{selected:true}', function (nv) {
-			    $scope.selection = nv.map(function (data) {
-			      return data.id;
-			    });
-			    $scope.selectedSchemes = $scope.selection;
-			  console.log('schemes selected', $scope.selectedSchemes);
-			  if($scope.selection.length < 1){
-			  	$scope.disableAppend = true;
-			  } else {
-			  	$scope.disableAppend = false;
-			  }
-			}, true);
+		  	if($location.$$path == '/compareAndModify'){
+			  	$scope.$watch('otherRecommendSchemes|filter:{selected:true}', function (nv) {
+			  		if(nv){
+				    $scope.selection = nv.map(function (data) {
+				      return data.id;
+				    });
+				    $scope.selectedSchemes = $scope.selection;
+				  console.log('schemes selected', $scope.selectedSchemes);
+				  if($scope.selection.length < 1){
+				  	$scope.disableAppend = true;
+				  } else {
+				  	$scope.disableAppend = false;
+				  }
+					}
+				    
+				}, true);
+		  	}
 
-		  	$scope.$watch('schemeTop|filter:{selected:true}', function (nv) {
-			    $scope.selection1 = nv.map(function (data) {
-			      return data.id;
-			    });
-			    $scope.selectedTop = $scope.selection1;
-			  console.log('schemes selected top', $scope.selectedTop);
-			  if($scope.selection.length < 1){
-			  	$scope.disableAppend = true;
-			  } else {
-			  	$scope.disableAppend = false;
-			  }
-			}, true);
+		  	if($location.$$path == '/compareAndModify'){
+			  	$scope.$watch('schemeTop|filter:{selected:true}', function (nv) {
+			  		if(nv){
+			  			$scope.selection1 = nv.map(function (data) {
+				      		return data.id;
+				    	});
+				    	$scope.selectedTop = $scope.selection1;
+						console.log('schemes selected top', $scope.selectedTop);
+						if($scope.selection.length < 1){
+						  	$scope.disableAppend = true;
+						} else {
+						  	$scope.disableAppend = false;
+						}
+			  		}
+				   
+				    
+				}, true);
+		  	}
 
 		  	$scope.compareSchemes = function(selectedSchemes, selectedTop) {
 		  		

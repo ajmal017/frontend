@@ -9,6 +9,7 @@
 		function config($routeProvider,$httpProvider){
 		$routeProvider
 			.when('/dashboard', {
+				title : 'Dashboard',
 		        templateUrl: 'modules/dashboard/views/dashboard.html',
 		        controller: 'dashboardController'
 		    })

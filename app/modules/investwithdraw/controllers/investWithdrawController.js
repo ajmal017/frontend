@@ -114,7 +114,6 @@
 						}
 				});
 				}
-
 			}
 
 			$scope.proceedWithdraw = function(modelObj) {
