@@ -63,6 +63,8 @@
 		    		if('success' in data){
 		    			busyIndicator.hide();
 		    			$scope.schemeList = data.success;
+		    			$scope.otherRecommendSchemes = $scope.schemeList['other recommended'];
+		    			$scope.schemeTop = $scope.schemeList['scheme'];
 		    			$scope.schemeListNumber = $scope.schemeList.scheme.length;
 
 		    		} else {
