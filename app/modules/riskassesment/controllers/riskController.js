@@ -9,6 +9,7 @@
 			$scope.resultObject = '0';
 			$scope.modelVal = {};
 			$scope.modelVal = riskService.getAssesmentObject();
+			$scope.disableAppend = true;
 			if($scope.modelVal.A8)
 			{
 				$scope.modelVal.noneInvestments = $scope.modelVal.A8;
