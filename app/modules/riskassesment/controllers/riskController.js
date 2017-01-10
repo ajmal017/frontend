@@ -9,7 +9,10 @@
 			$scope.resultObject = '0';
 			$scope.modelVal = {};
 			$scope.modelVal = riskService.getAssesmentObject();
-			$scope.modelVal.noneInvestments = $scope.modelVal.A8;
+			if($scope.modelVal.A8)
+			{
+				$scope.modelVal.noneInvestments = $scope.modelVal.A8;
+			}
 
 			$scope.appendFormValues = function(data){
 				var deleteObj = JSON.parse(data);
