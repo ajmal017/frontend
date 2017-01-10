@@ -140,18 +140,25 @@
 	        	}
 	        	
 	        	var equityPercentage = parseFloat(assetAllocation.equity),
-	        		debtPercentage = parseFloat(assetAllocation.debt);
+	        		debtPercentage = parseFloat(assetAllocation.debt),
+	        		liquidPercentage = 0;
+	        	
+	        	if (assetAllocation.liquid) {
+	        		liquidPercentage = parseFloat(assetAllocation.liquid);
+	        	}
 	        		
 	        	var equityComponents = computeFVComponents.call(this, appConfig.returnRate.equity, equityPercentage, years),
-	        		debtComponents = computeFVComponents.call(this, appConfig.returnRate.debt, debtPercentage, years);
+	        		debtComponents = computeFVComponents.call(this, appConfig.returnRate.debt, debtPercentage, years),
+	        		liquidComponents = liquidPercentage > 0? computeFVComponents.call(this, appConfig.returnRate.liquid, liquidPercentage, years) : [0, 0];
 	        	
 	        	var equityLumpsumComponent = lumpsum * equityComponents[0],
 	        		debtLumpsumComponent = lumpsum * debtComponents[0],
+	        		liquidLumpsumComponent = lumpsum * liquidComponents[0],
 	        		equitySIPComponent = sip * equityComponents[1],
-	        		debtSIPComponent = sip * debtComponents[1];
+	        		debtSIPComponent = sip * debtComponents[1],
+	        		liquidSIPComponent = sip * liquidComponents[1];
 	        	
-	        	var computedCorpus = equityLumpsumComponent + debtLumpsumComponent+ equitySIPComponent + debtSIPComponent;
-	        	
+	        	var computedCorpus = equityLumpsumComponent + debtLumpsumComponent+ liquidLumpsumComponent + equitySIPComponent + debtSIPComponent + liquidSIPComponent;
 	        	
 	        	return {"computedCorpus" : computedCorpus, "assetAllocation" : assetAllocation};
 	        }

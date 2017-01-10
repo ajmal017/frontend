@@ -193,39 +193,39 @@
 				if($rootScope.is_bank_supported == false) {
 					
 					$scope.ngDialog = ngDialog;
-					$scope.errorPopupMessage = 'Thank you for your order request. Please confirm to receive payment instructions.'
+					$scope.modalErrorMessage = 'Thank you for your order request. Please confirm to receive payment instructions.'
 					$scope.confirmShowButton = true;
-					ngDialog.open({ 
-			        	template: 'modules/common/views/partials/error_popup.html', 
+					ngDialog.openConfirm({ 
+			        	template: 'modules/common/views/partials/confirmText.html', 
 			        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
 			        	overlay: false,
 			        	showClose : false,
 
 			        	scope: $scope,
-			        	preCloseCallback:function(){
-			        		investWithdrawService.investBankUnsupported(totalSum).then(function(data){
-								if('success' in data) {
-									$scope.errorPopupMessage = 'Your bank is not supported by our payment gateway. You will soon receive an email with payment instructions using other options (Cheque payment).';
-									ngDialog.open({ 
-							        	template: 'modules/common/views/partials/error_popup.html', 
-							        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
-							        	overlay: false,
-							        	showClose : false,
+					}).then(function(confirm){
+		        		investWithdrawService.investBankUnsupported(totalSum).then(function(data){
+							if('success' in data) {
+								$scope.errorPopupMessage = 'Your bank is not supported by our payment gateway. You will soon receive an email with payment instructions using other options (Cheque payment).';
+								ngDialog.open({ 
+						        	template: 'modules/common/views/partials/error_popup.html', 
+						        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+						        	overlay: false,
+						        	showClose : false,
 
-							        	scope: $scope,
-							        	preCloseCallback:function(){
-							        		$location.path('/dashboard');
+						        	scope: $scope,
+						        	preCloseCallback:function(){
+						        		$location.path('/dashboard');
 
-							        	}
-						        	});
-								} else {
+						        	}
+					        	});
+							} else {
 
-								}
-							});
-			        	}
+							}
+						});
+
+		        	}, function(reject){
+		        		
 		        	});
-			
-					
 				} else {
 					
 					$scope.modalErrorMessage = 'You will now be redirected through a secure Payment Gateway (BillDesk) to your bank account.\n\nYour payment will be credited to Indian Clearing Corporation Limited (a Bombay Stock Exchange subsidiary) for your purchase.'

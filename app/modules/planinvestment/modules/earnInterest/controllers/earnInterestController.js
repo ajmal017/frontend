@@ -68,7 +68,7 @@
 			this.getGoalGraphDetails = function() {
 				var tenure = appConfig.LIQUID_LUMPSUM_TERM;
 
-				this.goalsService.getGoalGraphDetails(this.scope.graphObject, {'equity' :0, 'debt' : 100}, 0, this.scope.modelVal.A2 || 0, tenure);
+				this.goalsService.getGoalGraphDetails(this.scope.graphObject, {'equity' :0, 'debt' : 0, 'liquid' : 100}, 0, this.scope.modelVal.A2 || 0, tenure);
 
 				console.log('$scope.graphObject',this.scope.graphObject);
 			}
