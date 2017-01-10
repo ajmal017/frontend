@@ -20,9 +20,28 @@
 					<button ng-click="startGoalAdd('invest')" class="fin-app-btn fin-blue full-width">Quick Invest</button>				
 				</div>
 				<div class="col-xs-12 desc">
-					<p class="text-center">Simply Build Wealth through monthly<span class="nextline">SIP or one-time lumpsum investment or both.</span></p>
+					<p class="text-center">Simply Build Wealth through monthly<span class="nextline">SIP or one-time lumpsum investment.</span></p>
 					<h3 class="text-center"><span class="currency">&#8377</span>{{(quickInvestAmt | amountSeffix) || 0}} annual investment</h3>
-					<h4 class="text-center">in Quick Invest</h4>
+				</div>
+			</div>
+			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 invest-outer-cover">
+				<div class="investCover" ng-class="{'has-covered': $root.goalAnswered['tax'] == true}">
+					<div class="checkbox-cover" ng-if="$root.goalAnswered['tax']">
+						<input type="radio" name>
+						<label><span></span></label>
+					</div>
+					<div class="checkbox-cover-delete" ng-if="$root.goalAnswered['tax'] == true">
+						<label><span ng-click="deleteGoal('tax')"></span></label>
+						
+					</div>
+					<div class="image-div">
+						<img src="assets/images/saveTax.png">
+					</div>
+					<button ng-click="startGoalAdd('tax')" class="fin-app-btn fin-blue full-width">Save Tax</button>
+				</div>
+				<div class="col-xs-12 desc">
+					<p class="text-center">Invest in Equity Linked Savings Schemes<span class="nextline">(ELSS) and save taxes under section</span><span class="nextline">80C.</span></p>
+					<h3 class="text-center"><span class="currency">&#8377</span>{{(taxAmtInvested | amountSeffix) || 0}} annual investment</h3>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 invest-outer-cover">
@@ -39,29 +58,7 @@
 				<div class="col-xs-12 desc">
 					<p class="text-center">Save for a financial goal like Retirement,<span class="nextline">Education, Vacation, etc.</span></p>
 					<h3 class="text-center"><span class="currency">&#8377</span>{{(finGoalsAmt | amountSeffix) || 0}} annual investment</h3>
-					<h4 class="text-center">in Specific Goals</h4>
 				</div>				
-			</div>
-			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 invest-outer-cover">
-				<div class="investCover" ng-class="{'has-covered': $root.goalAnswered['tax'] == true}">
-					<div class="checkbox-cover" ng-if="$root.goalAnswered['tax']">
-						<input type="radio" name>
-						<label><span></span></label>
-					</div>
-					<div class="checkbox-cover-delete" ng-if="$root.goalAnswered['tax'] == true">
-						<label><span ng-click="deleteGoal('tax')"></span></label>
-						
-					</div>
-					<div class="image-div">
-						<img src="assets/images/saveTax.png">
-					</div>
-					<button ng-click="startGoalAdd('tax')" class="fin-app-btn fin-blue full-width">Save Taxes</button>
-				</div>
-				<div class="col-xs-12 desc">
-					<p class="text-center">Invest in Equity Linked Savings Schemes<span class="nextline">(ELSS) and save taxes under section</span><span class="nextline">80C.</span></p>
-					<h3 class="text-center"><span class="currency">&#8377</span>{{(taxAmtInvested | amountSeffix) || 0}} annual</h3>
-					<h4 class="text-center">Tax Saved</h4>
-				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 invest-outer-cover">
 				<div class="investCover" ng-class="{'has-covered': $root.goalAnswered['liquid'] == true}">
@@ -81,7 +78,6 @@
 				<div class="col-xs-12 desc">
 					<p class="text-center">Conveniently park your money in<span class="nextline">smarter mutual fund alternatives than</span><span class="nextline">traditional bank accounts.</span></p>
 					<h3 class="text-center"><span class="currency">&#8377</span>{{(liqAmtInvested | amountSeffix) || 0}} annual investment</h3>
-					<h4 class="text-center">to Earn Higher Interest</h4>
 				</div>
 			</div>
 		</div>
@@ -89,8 +85,8 @@
 	<div class="col-xs-12 bottom-desc" ng-if="$root.goalExists || $root.finGoalAnswered">
 		<p class="text-center">I am done planning my investments.</p>
 		<div class="fin-btn-group">
-			<button class="fin-app-btn fin-orange" ng-click="goToInvest()">INVEST NOW</button>
+			<button class="fin-app-btn fin-orange" ng-click="goToInvest()">CONFIRM & PAY</button>
 		</div>
-		<h4 class="text-center pull-left full-width" ng-click="showGoal();">VIEW PAST GOALS</h4>
+		<h4 class="text-center pull-left full-width" ng-click="showGoal();">TRACK INVESTMENTS<span class="nextline">to view existing goals</span></h4>
 	</div>
 </section>
