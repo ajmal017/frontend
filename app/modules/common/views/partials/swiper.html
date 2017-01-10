@@ -190,7 +190,7 @@
                 <form name="riskAssesment1Form3" novalidate>
                 <h2>My preference while investing would <span class="nextline">be to</span></h2>
                 <div class="radio-cover">
-                    <input type="radio" required id="option2Type1" name="option2" ng-model="modelVal.A9" value="op1"><label for="option2Type1"><span class="col-xs-2"></span>Take no risk, get fixed returns<div class = "nextline col-xs-10 no-padding">(Guaranteed return of 7% per annum)</div></label>
+                    <input type="radio" required id="option2Type1" name="option2" ng-model="modelVal.A9" value="op1"><label for="option2Type1"><span class="col-xs-2"></span>Take no risk, get fixed returns<span class = "nextline col-xs-10 no-padding">(Guaranteed return of 7% per annum)</span></label>
                     <input type="radio" required id="option2Type2" name="option2" ng-model="modelVal.A9" value="op2"><label for="option2Type2"><span class="col-xs-2"></span>Take low risk, get steady returns<div class = "nextline col-xs-10 no-padding">(Likely return of 10% with a chance of 5% loss)</div></label>
                     <input type="radio" required id="option2Type3" name="option2" ng-model="modelVal.A9" value="op3"><label for="option2Type3"><span class="col-xs-2"></span>Take moderate risk, get moderate returns<div class = "nextline col-xs-10 no-padding">(Likely return of 20% with a chance of 10% loss)</div></label>
                     <input type="radio" required id="option2Type4" name="option2" ng-model="modelVal.A9" value="op4"><label for="option2Type4"><span class="col-xs-2"></span>Take calculated risks, maximize returns<div class = "nextline col-xs-10 no-padding">(Likely return of 30% with a chance of 20% loss)</div></label>
@@ -455,7 +455,7 @@
         <div class="swiper-slide">
             <div class="swiper-content">
             <form name="riskAssesment2Form5" novalidate>
-                <h2>If there was a choice between a stable job with low growth and a less secure job with high growth, I would</h2>
+                <h2>Between a stable job with low growth and a less secure job with high growth, I would</h2>
                 <div class="radio-cover">
                     <input type="radio" required id="option5Type1" name="option5" ng-model="modelVal.A14" value="op1"><label for="option5Type1"><span></span>Definitely choose the stable job with low growth</label>
                     <input type="radio" required id="option5Type2" name="option3" ng-model="modelVal.A14" value="op2"><label for="option5Type2"><span></span>Probably choose the stable job with low growth</label>
@@ -653,7 +653,7 @@
         <div class="swiper-slide">
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
-                      <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" ng-init="modelVal.A1 = modelVal.A1 || 'My investment'" required ng-model="modelVal.A1"/></span></p>
+                      <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" ng-init="modelVal.A1 = modelVal.A1 || getDefaultGoalName()" required ng-model="modelVal.A1"/></span></p>
                       <span class="placeholder">Use maximum 20 characters, alphabets and/or numbers</span>
                 </div>
             </form>

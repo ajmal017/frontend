@@ -5,9 +5,11 @@
 		.controller('quickInvestController',quickInvestController);
 
 		quickInvestController.$inject = ['$scope','$rootScope','$route','$location', '$timeout', 'quickInvestService',
-			                              'goalsService', 'assetAllocationService', 'goalFormulaeService', 'appConfig', 'riskProfileService', 'goalConfig', 'busyIndicator'];
+			                              'goalsService', 'assetAllocationService', 'goalFormulaeService', 'appConfig', 
+			                              'riskProfileService', 'goalConfig', 'busyIndicator', '$filter'];
 		function quickInvestController($scope,$rootScope,$route,$location,$timeout,quickInvestService,
-				goalsService, assetAllocationService, goalFormulaeService, appConfig, riskProfileService, goalConfig, busyIndicator) {
+				goalsService, assetAllocationService, goalFormulaeService, appConfig, 
+				riskProfileService, goalConfig, busyIndicator, $filter) {
 			
 			this.scope = $scope;
 
@@ -84,6 +86,14 @@
 				$scope.loadDefaultValues();
 			}
 
+			$scope.getDefaultGoalName = function() {
+				var currentYear = new Date(),
+					currentMonth = $filter('date')(currentYear, 'MMM yy');
+					
+				return "My Investment " + currentMonth;
+	
+			}
+			
 			// this.setModelValLumpsum = function(assetAllocationObj) {
 			// 	$scope.modelVal.assetAllocation.equityInitial = assetAllocationObj.assetAllocation.equity;
 			// 	var debtAmount = (assetAllocationObj.assetAllocation.debt/100) * assetAllocationObj.minSIP;

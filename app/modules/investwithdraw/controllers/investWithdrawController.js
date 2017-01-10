@@ -231,7 +231,7 @@
 					$scope.modalErrorMessage = 'You will now be redirected through a secure Payment Gateway (BillDesk) to your bank account.\n\nYour payment will be credited to Indian Clearing Corporation Limited (a Bombay Stock Exchange subsidiary) for your purchase.'
 					
 					ngDialog.openConfirm({ 
-			        	template: '/modules/common/views/partials/confirmText.html', 
+			        	template: 'modules/common/views/partials/confirmText.html', 
 			        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
 			        	overlay: false,
 			        	showClose : false,
