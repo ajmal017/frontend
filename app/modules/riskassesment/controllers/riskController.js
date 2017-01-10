@@ -9,6 +9,7 @@
 			$scope.resultObject = '0';
 			$scope.modelVal = {};
 			$scope.modelVal = riskService.getAssesmentObject();
+			$scope.disableAppend = true;
 			if($scope.modelVal.A8)
 			{
 				$scope.modelVal.noneInvestments = $scope.modelVal.A8;
@@ -69,9 +70,9 @@
 			      	return data.value;
 			    
 			    });
-			    $scope.modelVal.A8 = $scope.selection.join();
-			  console.log('investments selected', $scope.selection);
-			  if($scope.selection.length < 1){
+			  $scope.modelVal.A8 = $scope.selection.join();
+			  if($scope.selection.length < 1 && $scope.modelVal.noneInvestments != 'op5'){
+			  	
 			  	$scope.disableAppend = true;
 			  } else {
 			  	$scope.disableAppend = false;
@@ -93,7 +94,11 @@
 			  $scope.uncheck = function() {
 			  	console.log('noneInvestments',$scope.modelVal.A8);
 			  	if($scope.modelVal.noneInvestments == 'op5'){
+			  		
 			  		$scope.resetInvestments();
+			  		$scope.disableAppend = false;
+			  	} else {
+			  		$scope.disableAppend = true;
 			  	}
 			  }
 

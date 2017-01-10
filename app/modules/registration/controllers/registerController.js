@@ -153,6 +153,9 @@
 			$scope.validateOtp = function(otp){
 				registerService.verifyOTP(otp).then(function(data){
 					if('success' in data){
+						$rootScope.userDetails.user.phone_number_verified = true;
+						$scope.settingsDetails = $rootScope.userDetails.user;
+						sessionStorage.setItem('userDetails',JSON.stringify($rootScope.userDetails)); 
 						ngDialog.closeAll();
 					} else {
 						$scope.errorOtpSettings = data.Message;

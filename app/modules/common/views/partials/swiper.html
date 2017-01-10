@@ -155,6 +155,7 @@
             </form>
         </div>
         <div class="swiper-slide">
+            <form name="riskAssesment1Form12" novalidate ng-init="step = 1">
             <div class="swiper-content content-1">
                 <h2>When it comes to investing, I</h2>
                 <div class="radio-cover">
@@ -168,6 +169,7 @@
                 </div>
                 <!-- <p>When it comes to investing, i<select dropdown ng-model="modelVal.A4"><option selected value="op1">Am a beginner</option><option value="op2">Understand somewhat</option><option value="op3">Understand well</option><option value="op4">Am an expert</option></select></p> -->
             </div>
+            </form>
         </div>
         <div class="swiper-slide">
             <form name="riskAssesment1Form2">
@@ -389,7 +391,7 @@
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="dashboard"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" ng-disabled="riskAssesment1Form1.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="step == 2" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="step == 2" ng-disabled="riskAssesment1Form12.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="step == 3" ng-disabled="disableAppend" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="step == 4" ng-disabled="riskAssesment1Form3.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="step == 5" ng-disabled="riskAssesment1Form4.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
