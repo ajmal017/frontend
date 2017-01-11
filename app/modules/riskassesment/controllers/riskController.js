@@ -13,6 +13,7 @@
 			if($scope.modelVal.A8)
 			{
 				$scope.modelVal.noneInvestments = $scope.modelVal.A8;
+				$scope.disableAppend = false;
 			}
 
 			$scope.appendFormValues = function(data){
