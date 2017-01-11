@@ -21,7 +21,7 @@
                 modelObject.A3 = retirementAnswers['retirement_age'];
                 modelObject.A4 = retirementAnswers['corpus'];
                 modelObject.A6 = retirementAnswers['monthly_income'];
-                modelObject.A8 = retirementAnswers['amount_saved'];
+                modelObject.A8 = retirementAnswers['amount_saved'] || 0;
                 modelObject.estimate_selection_type = retirementAnswers['estimate_selection_type'];
                 modelObject.A5 = retirementAnswers['monthly_investment'];
                 return modelObject;

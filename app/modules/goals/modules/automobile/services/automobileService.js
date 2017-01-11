@@ -26,7 +26,7 @@
                
                 modelObject.A5 = automobileAnswers['current_price'];
                 modelObject.A6 = automobileAnswers['prop_of_purchase_cost']
-                modelObject.A7 = automobileAnswers['amount_saved'];
+                modelObject.A7 = automobileAnswers['amount_saved'] || 0;
                 if (automobileAnswers['term']) {
                 	modelObject.A2 = parseInt(d.getFullYear() + automobileAnswers['term']);
                 }

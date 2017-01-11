@@ -27,7 +27,7 @@
                 modelObject.A5 = weddingAnswers['expected_people'];
                 modelObject.A6 = weddingAnswers['location'] || '';
                 modelObject.A7 = weddingAnswers['sharing_percentage'];
-                modelObject.A8 = weddingAnswers['amount_saved'];
+                modelObject.A8 = weddingAnswers['amount_saved'] || 0;
                 if (weddingAnswers['term']) {
                 	modelObject.A2 = parseInt(d.getFullYear() + weddingAnswers['term']);
                 }

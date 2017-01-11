@@ -23,7 +23,7 @@
                 modelObject.A3 = educationAnswers['corpus'];
                 modelObject.A5 = educationAnswers['location'] || '';
                 modelObject.A6 = educationAnswers['field'] || '';
-                modelObject.A7 = educationAnswers['amount_saved'];
+                modelObject.A7 = educationAnswers['amount_saved'] || 0;
                 if (educationAnswers['term']) {
                 	modelObject.A2 = parseInt(d.getFullYear() + educationAnswers['term']);
                 }

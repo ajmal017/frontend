@@ -15,7 +15,7 @@
 			this.goalModelObject = this.scope.automobile;
 			
 			this.scope.modelVal = automobileService.getSavedValues();
-			if(this.scope.modelVal.A1 == "" || this.scope.modelVal.A1 == undefined) {
+			if((this.scope.modelVal.A1 == "" || this.scope.modelVal.A1 == undefined) && sessionStorage.getItem('goalDetailsTemp')) {
 				this.scope.modelVal = JSON.parse(sessionStorage.getItem('goalDetailsTemp')) || {};
 			} else {
 				sessionStorage.removeItem('goalDetailsTemp');
