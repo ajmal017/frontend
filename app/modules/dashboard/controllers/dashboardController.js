@@ -21,9 +21,7 @@
 			var userFlags = $scope.userFlags;
 			if(userFlags.user_answers.risk_score) {
 				$rootScope.userRiskFactor = userFlags.user_answers.risk_score;
-			} else {
-				$rootScope.userRiskFactor = '7.0';
-			}
+			} 
 			$rootScope.is_bank_supported = userFlags.user_flags.is_bank_supported;
 			$scope.risk_score = $rootScope.userRiskFactor;
 			

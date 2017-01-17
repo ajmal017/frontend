@@ -37,6 +37,13 @@
 					},
 				]
 			},
+			'savetax' : {
+				'0' : [
+						{
+							'tip' : '<ul><li>Amount invested in ELSS schemes will have a lock-in period of 3 years.</li><li>Investment in ELSS schemes can be deemed towards a 3-year financial goal, or even for long term wealth building.</li></ul>',
+						}
+				],
+			},
 			'riskProfile' : {
 				'low' : 'low',
 				'belowAverage' : 'belowAverage',
@@ -87,6 +94,7 @@
 				'tip' : '<strong>Explanation of Growth estimates:</strong><ul><li>All future projections are based on historic returns and cannot be guaranteed.</li><li>Equity fund returns projected at 15.0% annualized.</li><li>Debt fund returns projected at 8.0% annualized.</li><li>All projections are annual, compounded monthly.</li></ul>'
 			},
 			{'tip' : '<strong>Disclaimer</strong><ul><li>Mutual fund investments are subject to market risks. Please read the offer documents carefully before investing.</li></ul>'}
-			]
+			],
+
 		});
 })();

@@ -232,10 +232,15 @@
 			.PIXEL2EM(16)!important;
 		}
 		ul{
-			margin-left:6%;
+			
 			li{
+				list-style-type: none;
 				&:not(:last-child){
 					margin-bottom:6%;
+				}
+				ul li{
+					margin-left: 6%;
+					list-style-type: disc;
 				}
 			}
 		}

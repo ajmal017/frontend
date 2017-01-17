@@ -4812,11 +4812,15 @@ section.quickInvest .started {
   font-weight: normal;
   font-size: 1em !important;
 }
-.tip-outer-cover .message ul {
-  margin-left: 6%;
+.tip-outer-cover .message ul li {
+  list-style-type: none;
 }
 .tip-outer-cover .message ul li:not(:last-child) {
   margin-bottom: 6%;
+}
+.tip-outer-cover .message ul li ul li {
+  margin-left: 6%;
+  list-style-type: disc;
 }
 .tip-outer-cover .tip {
   cursor: pointer;
