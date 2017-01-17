@@ -120,7 +120,7 @@
 				busyIndicator.show();
 				goalsService.addParticularGoal(fundSelectionObj, 'jewellery').then(function(data){
 					if('success' in data) {
-						automobileService.setSavedValues(modelVal);
+						jewelleryService.setSavedValues(modelVal);
 						console.log('Goal added successfully');
 						self.getFundData('jewellery', busyIndicator);
 						

@@ -59,11 +59,18 @@ var finApp = finApp || {};
 				
 				var calculateSIP = function() {
 					var computedSIPData = self.goalFormulaeService.computeSIPForCorpus({'corpus': corpus, 'tenure': self.goalModelObject['tenure'] }, self.goalModelObject['assetAllocationCategory']);
+					var assetAllocation = {};
+					if(self.scope.modelVal.sip && (parseInt(computedSIPData.computedSIP) == parseInt(self.scope.modelVal.sip))) {
+						assetAllocation = self.scope.modelVal.assetAllocation;
+					} else {
+						assetAllocation = computedSIPData.assetAllocation;
+					}
+					assetAllocation.equityInitial = computedSIPData.assetAllocation.equity;
 					self.goalModelObject['perMonth'] = computedSIPData.computedSIP;
 					self.goalModelObject['assetAllocation'] = computedSIPData.assetAllocation;
 					self.scope.modelVal.A4 = self.scope.modelVal.A4 || self.goalModelObject['perMonth']; 
 					self.goalModelObject['corpus'] = corpus;
-					self.setModelVal(computedSIPData.assetAllocation, computedSIPData.computedSIP);
+					self.setModelVal(assetAllocation, computedSIPData.computedSIP);
 				};
 				
 				if (!this.goalModelObject['assetAllocationCategory']) {
@@ -109,12 +116,12 @@ var finApp = finApp || {};
 															'sip' : computedSIPData.computedSIP,
 															'assetAllocation' : computedSIPData.assetAllocation};
 					}
-					self.setModelVal(computedSIPData.assetAllocation, computedSIPData.computedSIP);
+					//self.setModelVal(computedSIPData.assetAllocation, computedSIPData.computedSIP);
 					self.goalModelObject['goalEstimates'] = goalEstimates;
 					if (!self.scope.modelVal.estimate_selection_type) {
 						self.scope.modelVal.estimate_selection_type = 'op2';
-						self.scope.estimateSelectionChanged(self.appConfig.estimateType.COMFORTABLE);
 					}
+					self.scope.estimateSelectionChanged(self.appConfig.estimateType.COMFORTABLE);
 				}
 				
 			},
@@ -124,8 +131,18 @@ var finApp = finApp || {};
 				this.scope.modelVal.A4 = this.goalModelObject.goalEstimates[selectionType].sip;
 				this.goalModelObject['corpus'] = this.goalModelObject.goalEstimates[selectionType].corpus;
 				this.goalModelObject['perMonth'] = this.goalModelObject.goalEstimates[selectionType].sip;
-				this.goalModelObject['assetAllocation'] = this.goalModelObject.goalEstimates[selectionType].assetAllocation;
-				
+				if(this.scope.modelVal.sip == this.goalModelObject.goalEstimates[selectionType].sip){
+					this.goalModelObject['assetAllocation'] = this.scope.modelVal.assetAllocation;
+				} else {
+					this.goalModelObject['assetAllocation'] = this.goalModelObject.goalEstimates[selectionType].assetAllocation;
+				}
+				this.goalModelObject['assetAllocation']['equityInitial'] = this.goalModelObject.goalEstimates[selectionType].assetAllocation['equity'];
+				// if(this.scope.modelVal.sip && (parseInt(this.goalModelObject.goalEstimates[selectionType].sip) == parseInt(this.scope.modelVal.sip))) {
+				// 	this.goalModelObject['assetAllocation'] = this.scope.modelVal.assetAllocation;
+				// } else {
+
+				// }
+							
 				this.setModelVal(this.goalModelObject['assetAllocation'], this.goalModelObject['perMonth']);
 			},
 
@@ -146,9 +163,8 @@ var finApp = finApp || {};
 			setModelVal : function(assetAllocationObj, sipAmount) {
 				this.scope.sipAmount = sipAmount;
 				this.scope.modelVal.assetAllocation = assetAllocationObj;
-				this.scope.modelVal.assetAllocation.equityInitial = assetAllocationObj.equity;
-				var debtAmount = (assetAllocationObj.debt/100) * sipAmount;
-				var equityAmount = (assetAllocationObj.equity/100) * sipAmount;
+				var debtAmount = Math.round((assetAllocationObj.debt/100) * sipAmount);
+				var equityAmount = Math.round((assetAllocationObj.equity/100) * sipAmount);
 				this.scope.modelVal.debtAmount = debtAmount;
 				this.scope.modelVal.equityAmount = equityAmount;
 				this.scope.getGoalGraphDetails();

@@ -76,7 +76,17 @@
 			'QUICKINVEST_LUMPSUM_TERM' : 10,
 			'TAX_TERM' : 3,
 			'LIQUID_LUMPSUM_TERM' : 3,
-			'TAX_DEFAULT_ALLOCATION' : {'equity' : 0, 'debt' : 0, 'elss' : 100, 'liquid' : 0}
-			
+			'TAX_DEFAULT_ALLOCATION' : {'equity' : 0, 'debt' : 0, 'elss' : 100, 'liquid' : 0},
+			'QUICK_TIP_EQUIDEBT' : [{
+				'tip' : '<strong>Equity mutual funds:</strong> are those that invest in equities / stocks. They typically deliver higher returns over the long term (projected at 15% annualized, ideally for investment duration > 5 years), but they are riskier and can fluctuate in the short term.'
+			},
+			{'tip' : '<strong>Debt mutual funds:</strong> are those that generate steady Income from investing in instruments such as Corporate bonds, Government Bonds, Treasury Bills, etc. These are less risky and typically generate 6-10% returns depending on the time horizon of investment, security tenure and relative risk.' },
+			{'tip' : '<Strong>Equity / Debt Mix:</strong> is the split of total investments between Equity and Debt instruments. We recommend the right mix for you based on your risk assessment and horizon of investment. However, you can modify this if you prefer a higher / lower risk portfolio, and the graph of ‘Projected Investment Growth’ would show you how your expected returns would change based on this.'}
+			],
+			'QUICK_TIP_ProjInvGrow' : [{
+				'tip' : '<strong>Explanation of Growth estimates:</strong><ul><li>All future projections are based on historic returns and cannot be guaranteed.</li><li>Equity fund returns projected at 15.0% annualized.</li><li>Debt fund returns projected at 8.0% annualized.</li><li>All projections are annual, compounded monthly.</li></ul>'
+			},
+			{'tip' : '<strong>Disclaimer</strong><ul><li>Mutual fund investments are subject to market risks. Please read the offer documents carefully before investing.</li></ul>'}
+			]
 		});
 })();

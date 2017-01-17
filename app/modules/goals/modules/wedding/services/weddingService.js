@@ -28,6 +28,8 @@
                 modelObject.A6 = weddingAnswers['location'] || '';
                 modelObject.A7 = weddingAnswers['sharing_percentage'];
                 modelObject.A8 = weddingAnswers['amount_saved'] || 0;
+                modelObject.assetAllocation = weddingAnswers['allocation'];
+                modelObject.sip = weddingAnswers['sip'];
                 if (weddingAnswers['term']) {
                 	modelObject.A2 = parseInt(d.getFullYear() + weddingAnswers['term']);
                 }

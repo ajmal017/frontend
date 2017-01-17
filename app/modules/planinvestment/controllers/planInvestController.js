@@ -7,12 +7,16 @@
 		planInvestController.$inject = ['$scope','$rootScope','$location','planInvestService', 'userDetailsService', 'appConfig', 'goalsService', 'ngDialog', 'busyIndicator', 'investWithdrawService', '$filter']
 		function planInvestController($scope,$rootScope,$location,planInvestService,userDetailsService, appConfig, goalsService, ngDialog, busyIndicator, investWithdrawService, $filter){
 			
-			if(!jQuery.isEmptyObject($rootScope.userFlags)){
-				$rootScope.is_bank_supported = $rootScope.userFlags.user_flags.is_bank_supported;
-				$scope.quickInvestAmt = $rootScope.userFlags.user_answers.invest.lumpsum + ($rootScope.userFlags.user_answers.invest.sip * 12)
-				$scope.taxAmtInvested = $rootScope.userFlags.user_answers.tax.amount_invested;
-				$scope.liqAmtInvested = $rootScope.userFlags.user_answers.liquid.amount_invested;
+			sessionStorage.removeItem('goalDetailsTemp');
+			$scope.getSumValues = function(){
+				if(!jQuery.isEmptyObject($rootScope.userFlags)){
+					$rootScope.is_bank_supported = $rootScope.userFlags.user_flags.is_bank_supported;
+					$scope.quickInvestAmt = $rootScope.userFlags.user_answers.invest.lumpsum + ($rootScope.userFlags.user_answers.invest.sip * 12)
+					$scope.taxAmtInvested = $rootScope.userFlags.user_answers.tax.amount_invested;
+					$scope.liqAmtInvested = $rootScope.userFlags.user_answers.liquid.amount_invested;
+				}
 			}
+			
 
 			
 			$scope.startGoalAdd = function(currentGoal) {
@@ -33,6 +37,7 @@
 				userDetailsService().then(function(userData){
 					$scope.goalAnswered();
 					$scope.financialGoalAnswered();
+					$scope.getSumValues();
 				});
 			}
 
@@ -63,8 +68,6 @@
 					}
 				});
 			}
-
-			
 
 			$scope.getFinancialGoalSum = function() {
 				var sum = 0;
@@ -108,7 +111,7 @@
 						if('success' in data){
 							console.log('Goal deleted successfully');
 							$scope.callCompleteness();
-							
+							$scope.quickInvestAmt = $rootScope.userFlags.user_answers.invest.lumpsum + ($rootScope.userFlags.user_answers.invest.sip * 12)
 							
 						} else {
 

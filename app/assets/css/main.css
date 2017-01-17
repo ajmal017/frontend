@@ -3873,6 +3873,9 @@ section.dashboard .goals-outer-cover p.score {
   float: left;
   width: 100%;
 }
+section.dashboard .goals-outer-cover p.dashboardSubText {
+  font-size: 1.25em;
+}
 section.dashboard .goals-outer-cover p.text-score {
   font-size: 2.25em;
 }
@@ -4237,6 +4240,9 @@ section.quickInvest .started {
   width: 60%!important;
 }
 .goals .goal-section:nth-child(2) .goals-outer-cover:nth-child(3) .image-div img {
+  width: 60%!important;
+}
+.goals .goal-section:nth-child(2) .goals-outer-cover:nth-child(4) .image-div img {
   width: 60%!important;
 }
 .goals .goals-outer-cover .goals-cover {
@@ -4833,25 +4839,29 @@ section.quickInvest .started {
 }
 .infoTip {
   position: absolute;
-  min-width: 273px;
+  min-width: 292px;
   min-height: 87px;
-  padding: 20px 20px 20px 20px;
+  padding: 50px 20px 20px 20px;
   background-image: url(../images/infoTip.png);
   background-position: center;
   -webkit-background-size: 100% 100%;
-     -moz-background-size: 100% 100%;
-       -o-background-size: 100% 100%;
-          background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size: 100% 100%;
   margin-right: 16%;
-  top: 100%;
+  top: 72%;
   left: 20%;
-  z-index: 1000;
+  z-index: 1000000;
 }
 .infoTip ul {
   list-style-type: none;
 }
 .infoTip ul li {
   font-size: 12px;
+}
+.infoTip ul li ul {
+  list-style-type: circle;
+  padding-left: 20px;
 }
 .marginNegative60 {
   margin-top: -60px;

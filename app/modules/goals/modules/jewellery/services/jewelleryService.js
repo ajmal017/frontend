@@ -26,6 +26,8 @@
                
                 modelObject.A5 = jewelleryAnswers['current_price'];
                 modelObject.A7 = jewelleryAnswers['amount_saved'] || 0;
+                modelObject.assetAllocation = jewelleryAnswers['allocation'];
+                modelObject.sip = jewelleryAnswers['sip'];
                 if (jewelleryAnswers['term']) {
                 	modelObject.A2 = parseInt(d.getFullYear() + jewelleryAnswers['term']);
                 }

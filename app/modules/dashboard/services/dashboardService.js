@@ -15,7 +15,10 @@
                 var planConunt = 0;
                 for(var key in userFlags['user_answers']){
                     if(Object.keys(userFlags['user_answers'][key]).length != 0){
-                        planConunt = planConunt + 1;
+                        if(key != 'assess')
+                        {
+                            planConunt = planConunt + 1;                            
+                        }
                     }
                 }
                 resultObject['investCount'] = (planConunt < 10) ? 

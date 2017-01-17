@@ -29,12 +29,13 @@
 						<label><span></span></label>
 					</div> -->
 				</div>
-				<h2>Plan & Invest</h2>
+				<h2>Plan &amp; Invest</h2>
 				<p class="text-center desc">Investments should be linked to financial goals. We help you plan for these goals scientifically.</p>
 				<!-- <h3 class="text-center" ng-if="!portfolio_flag">You currently have no planned</h3>
 				<h3 class="text-center" ng-if="portfolio_flag">You currently have planned</h3>
-				<p class="text-center score" ng-bind="dashCounts['investCount']"></p>
-				<h4 class="text-center">Annual investments in varied goals</h4> -->
+				<p class="text-center score" ng-bind="dashCounts['investCount']"></p> -->
+				<h4 class="text-center" ng-if="portfolio_flag">{{dashCounts['investCount']}} goals under planning</h4>
+
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 goals-outer-cover" >
 				<div class="goals-cover" ng-click="showTrackPerformance()" ng-if="!disabledTrackPerformance">
@@ -59,6 +60,15 @@
 				<p class="text-center score text-score" ng-if="!dashCounts['trackPerform']">off track</p> -->
 				<!-- <h4 class="text-center" ng-if="user_flags.is_virtual">You don't have a smart portfolio yet</h4>
 				<h4 class="text-center" ng-if="!user_flags.is_virtual">You have a smart portfolio</h4> -->
+				<h4 class="text-center" ng-if="!user_flags.is_virtual">Track your</h4>
+				<p class="text-center score dashboardSubText" ng-if="!user_flags.is_virtual">CURRENT INVESTMENTS</p>
+				
+				<h4 class="text-center" ng-if="user_flags.is_virtual">Track how your</h4>
+				<p class="text-center score dashboardSubText" ng-if="user_flags.is_virtual">PLANNED GOALS</p>
+				<h4 class="text-center" ng-if="user_flags.is_virtual">would grow if invested</h4>
+
+				<h4 class="text-center" ng-if="disabledTrackPerformance">You have</h4>
+				<p class="text-center score dashboardSubText" ng-if="disabledTrackPerformance">NO CURRENT INVESTMENTS OR PLANNED GOALS.</p>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 goals-outer-cover">
 				<div class="goals-cover" ng-click="goToWithdraw()">
@@ -75,6 +85,10 @@
 				<!-- <h3 class="text-center">Your current risk score is</h3> -->
 <!-- 				<p class="text-center score">5.7</p>
 			<h4 class="text-center" ng-if="portfolio_flag">You havent started building<span class="nextline">your smart profile yet</span></h4> -->
+			<h4 class="text-center" ng-if="portfolio_flag">Withdraw now from your</h4>
+			<p class="text-center score dashboardSubText" ng-if="portfolio_flag">CURRENT INVESTMENTS.</p>
+			<h4 class="text-center" ng-if="!portfolio_flag">You have</h4>
+			<p class="text-center score dashboardSubText" ng-if="!portfolio_flag">NO CURRENT INVESTMENTS</p>
 			</div>
 			
 		</div>

@@ -6,9 +6,9 @@
 
 		dashboardController.$inject = ['$scope','$rootScope','$location','dashboardService','ngDialog', 'userDetailsService', 'investWithdrawService', 'busyIndicator']
 		function dashboardController($scope,$rootScope,$location,dashboardService,ngDialog, userDetailsService, investWithdrawService, busyIndicator){
-			// dashboardService.getDashboardDetails($rootScope.userFlags,function(data){
-			// 	$scope.dashCounts = data;
-			// })
+			dashboardService.getDashboardDetails($rootScope.userFlags,function(data){
+				$scope.dashCounts = data;
+			})
 			$scope.callCompleteness = function() {
 				userDetailsService().then(function(userData){
 					$scope.userFlags = JSON.parse(sessionStorage.getItem('userFlags'))

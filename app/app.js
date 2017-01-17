@@ -69,6 +69,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		$rootScope.assetAllocationTables = JSON.parse(sessionStorage.getItem('assetAllocationTables'))||[];
 		$rootScope.drawerOpen = false;
 		$rootScope.selectedCriteria = null;
+		$rootScope.toolTipEquiDebt = appConfig.QUICK_TIP_EQUIDEBT;
+		$rootScope.toolTipProjInv = appConfig.QUICK_TIP_ProjInvGrow;
 		var history = [],prevUrl,pos;
 		$rootScope.$on('$locationChangeStart', function(event, current, previous) {
 			if($rootScope.drawerOpen == true) $rootScope.drawerAnimate();

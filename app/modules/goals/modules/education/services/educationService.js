@@ -24,6 +24,8 @@
                 modelObject.A5 = educationAnswers['location'] || '';
                 modelObject.A6 = educationAnswers['field'] || '';
                 modelObject.A7 = educationAnswers['amount_saved'] || 0;
+                modelObject.assetAllocation = educationAnswers['allocation'];
+                modelObject.sip = educationAnswers['sip'];
                 if (educationAnswers['term']) {
                 	modelObject.A2 = parseInt(d.getFullYear() + educationAnswers['term']);
                 }

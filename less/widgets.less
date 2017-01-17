@@ -262,21 +262,28 @@
 	position:relative;	
 }
 .infoTip{
-	position:absolute;
-	min-width: 273px;
+    position: absolute;
+    min-width: 292px;
     min-height: 87px;
-    padding: 20px 20px 20px 20px;
+    padding: 50px 20px 20px 20px;
     background-image: url(../images/infoTip.png);
     background-position: center;
+    -webkit-background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+    -o-background-size: 100% 100%;
     background-size: 100% 100%;
     margin-right: 16%;
-    top:100%;
-    left:20%;
-    z-index: 1000;
+    top: 72%;
+    left: 20%;
+    z-index: 1000000;
     ul{
     	list-style-type:none;
     	li{
     		font-size:12px;
+    		ul{
+    			list-style-type: circle;
+    			padding-left: 20px; 
+    		}
     	}
     }
 }

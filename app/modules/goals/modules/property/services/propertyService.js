@@ -27,6 +27,8 @@
                 modelObject.A5 = propertyAnswers['current_price'];
                 modelObject.A6 = propertyAnswers['prop_of_purchase_cost']
                 modelObject.A7 = propertyAnswers['amount_saved'] || 0;
+                modelObject.assetAllocation = propertyAnswers['allocation'];
+                modelObject.sip = propertyAnswers['sip'];
                 if (propertyAnswers['term']) {
                 	modelObject.A2 = parseInt(d.getFullYear() + propertyAnswers['term']);
                 }
