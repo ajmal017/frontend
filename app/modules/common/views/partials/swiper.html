@@ -4,9 +4,9 @@
             <form name="riskAssesment1Form1" novalidate ng-init="step = 1">
             <div class="swiper-content content-1" ng-init="disabled = 'locked'">
 
-                <div class="col-lg-12">
-                    <p class="pull-left col-lg-2 risk-questions">I am a <span class="swiper-input risk-age"><input only-number type="text" name="year" required ng-model="modelVal.A1"></span> years old</p><!-- <select dropdown dropdown-disable="disabled" ng-model="modelVal.A7"><option value="op1">Male</option><option value="op2">Female</option></select> -->
-                    <div class="selectRisk_cover col-lg-1 no-padding">
+                <div class="col-lg-12 col-xs-12">
+                    <p class="pull-left col-lg-2 col-xs-5 risk-questions">I am a <span class="swiper-input risk-age"><input only-number type="text" name="year" required ng-model="modelVal.A1"></span> years old</p><!-- <select dropdown dropdown-disable="disabled" ng-model="modelVal.A7"><option value="op1">Male</option><option value="op2">Female</option></select> -->
+                    <div class="selectRisk_cover col-lg-1 col-xs-2 no-padding">
                         <input type="radio" required id="male" name="gender" ng-model="modelVal.A7" value="op1">
                         <label for ="male">
                             <img src="assets/images/riskassessmentMale.png" class="img img-responsive">
@@ -14,7 +14,7 @@
                         </label>
                     </div>
 
-                    <div class="selectRisk_cover col-lg-1 no-padding">
+                    <div class="selectRisk_cover col-lg-1 col-xs-2 no-padding">
                         <input type="radio" required id="female" name="gender" ng-model="modelVal.A7" value="op2">
                         <label for ="female">
                             <img src="assets/images/riskassessmentFemale.png" class="img img-responsive">
@@ -23,9 +23,9 @@
                     </div>
                 </div>
 
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-xs-12">
                 <p class="pull-left col-lg-2 risk-questions">and I am</p> 
-                <div class="selectRisk_cover col-lg-1 no-padding">
+                <div class="selectRisk_cover col-lg-1 col-xs-2 no-padding">
                     <input type="radio" required id="single" name="marital" ng-model="modelVal.A17" value="op1">
                     <label for ="single">
                         <img src="assets/images/riskassessmentSingle.png" class="img img-responsive">
@@ -33,7 +33,7 @@
                     </label>
                 </div>
 
-                <div class="selectRisk_cover col-lg-1 no-padding">
+                <div class="selectRisk_cover col-lg-1 col-xs-2 no-padding">
                     <input type="radio" required id="married" name="marital" ng-model="modelVal.A17" value="op2">
                     <label for ="married">
                         <img src="assets/images/riskassessmentMarried.png" class="img img-responsive">
@@ -44,8 +44,8 @@
                  <!-- <select dropdown ng-model="modelVal.A17"><option selected value="op1">Single</option><option value="op2">Married</option></select></p> -->
                 </div> 
 
-                <div class="col-lg-12">
-                    <p class="col-lg-1 paddingTop1">with</p> 
+                <div class="col-lg-12 col-xs-12">
+                    <p class="col-lg-1 col-xs-1 paddingTop1">with</p> 
 
                     <div class="selectRisk_cover col-lg-1">
                         <input type="radio" required id="nokids" name="kidsNumber" ng-model="modelVal.A15" value="op1">
@@ -77,8 +77,8 @@
 
                 </div>    
 
-                <div class="col-lg-12">
-                    <p class="col-lg-1 paddingTop1">with</p> 
+                <div class="col-lg-12 col-xs-12">
+                    <p class="col-lg-1 col-xs-1 paddingTop1">with</p> 
 
                     <div class="selectRisk_cover col-lg-1">
                         <input type="radio" required id="noparents" name="parentsNumber" ng-model="modelVal.A16" value="op1">
@@ -113,9 +113,9 @@
                 <select dropdown ng-model="modelVal.A16"><option selected value="op1">No</option><option value="op2">1</option>
                 <option value="op3">2</option></select>dependent parents</p -->
 
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-xs-12">
                     <p class="pull-left col-lg-1 risk-questions">and</p><!-- <select dropdown dropdown-disable="disabled" ng-model="modelVal.A7"><option value="op1">Male</option><option value="op2">Female</option></select> -->
-                    <div class="selectRisk_cover col-lg-1 no-padding">
+                    <div class="selectRisk_cover col-lg-1 col-xs-2 no-padding">
                         <input type="radio" required id="salary" name="occupation" ng-model="modelVal.A18" value="op1">
                         <label for ="salary">
                             <img src="assets/images/salary.png" class="img-responsive img">
@@ -123,7 +123,7 @@
                         </label>
                     </div>
 
-                    <div class="selectRisk_cover col-lg-1 no-padding">
+                    <div class="selectRisk_cover col-lg-1 col-xs-2 no-padding">
                         <input type="radio" required id="business" name="occupation" ng-model="modelVal.A18" value="op2">
                         <label for ="business">
                             <img src="assets/images/business.png" class="img-responsive img">
@@ -131,7 +131,7 @@
                         </label>
                     </div>
 
-                    <div class="selectRisk_cover col-lg-1 no-padding">
+                    <div class="selectRisk_cover col-lg-1 col-xs-2 no-padding">
                         <input type="radio" required id="home" name="occupation" ng-model="modelVal.A18" value="op3">
                         <label for ="home">
                             <img src="assets/images/home.png" class="img-responsive img">
@@ -139,14 +139,14 @@
                         </label>
                     </div>
 
-                    <div class="selectRisk_cover col-lg-1 no-padding">
+                    <div class="selectRisk_cover col-lg-1 col-xs-2 no-padding">
                         <input type="radio" required id="retired" name="occupation" ng-model="modelVal.A18" value="op4">
                         <label for ="retired">
                             <img src="assets/images/retired.png" class="img-responsive img">
                             <p class="text-center risk-options">Retired</p>
                         </label>
                     </div>
-                    <p class="col-lg-3 risk-questions">is my primary income source</p>
+                    <p class="col-lg-3 col-xs-2 risk-questions">is my primary income source</p>
                 </div>
 
                <!--  <p>and my primary income source is<select dropdown ng-model="modelVal.A18"><option selected value="op1">Salary</option><option value="op2">Business</option>
@@ -301,7 +301,7 @@
                 <div class="col-xs-12 score-category">
                     <div class="row">
                         <h3>Other Risk Profiles</h3>
-                        <div class="col-xs-6 score-cover" ng-if="!(result >= 0 && result <= 4)">
+                        <div class="col-xs-12 col-lg-6 score-cover" ng-if="!(result >= 0 && result <= 4)">
                             <div class="col-xs-4">
                                 <div class="time-image">
                                     <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage1.png">
@@ -315,7 +315,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xs-6 score-cover" ng-if="!(result >= 6.1 && result <= 7.5)">
+                        <div class="col-xs-12 col-lg-6 score-cover" ng-if="!(result >= 6.1 && result <= 7.5)">
                             <div class="col-xs-4">
                                 <div class="time-image">
                                     <img src="assets/images/loader.gif" lazy-img="assets/images/assesmentCar.png">
@@ -329,7 +329,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xs-6 score-cover" ng-if="!(result >= 4.1 && result <= 6.0)">
+                        <div class="col-xs-12 col-lg-6 score-cover" ng-if="!(result >= 4.1 && result <= 6.0)">
                             <div class="col-xs-4">
                                 <div class="time-image">
                                     <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage3.png">
@@ -343,7 +343,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xs-6 score-cover" ng-if="!(result >= 7.6 && result <= 9.0)">
+                        <div class="col-xs-12 col-lg-6 score-cover" ng-if="!(result >= 7.6 && result <= 9.0)">
                             <div class="col-xs-4">
                                 <div class="time-image">
                                     <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage2.png">
@@ -357,7 +357,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xs-6 score-cover" ng-if="!(result >= 9.1 && result <= 10.0)">
+                        <div class="col-xs-12 col-lg-6 score-cover" ng-if="!(result >= 9.1 && result <= 10.0)">
                             <div class="col-xs-4">
                                 <div class="time-image">
                                     <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage4.png">
@@ -556,7 +556,7 @@
                 <div class="col-xs-12 score-category">
                     <div class="row">
                         <h3>Other Risk Profiles</h3>
-                        <div class="col-xs-6 score-cover" ng-if="!(result >= 0 && result <= 4)">
+                        <div class="col-xs-12 col-lg-6  score-cover" ng-if="!(result >= 0 && result <= 4)">
                             <div class="col-xs-4">
                                 <div class="time-image">
                                     <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage1.png">
@@ -570,7 +570,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xs-6 score-cover" ng-if="!(result >= 6.1 && result <= 7.5)">
+                        <div class="col-xs-12 col-lg-6 score-cover" ng-if="!(result >= 6.1 && result <= 7.5)">
                             <div class="col-xs-4">
                                 <div class="time-image">
                                     <img src="assets/images/loader.gif" lazy-img="assets/images/assesmentCar.png">
@@ -584,7 +584,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xs-6 score-cover" ng-if="!(result >= 4.1 && result <= 6.0)">
+                        <div class="col-xs-12 col-lg-6 score-cover" ng-if="!(result >= 4.1 && result <= 6.0)">
                             <div class="col-xs-4">
                                 <div class="time-image">
                                     <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage3.png">
@@ -598,7 +598,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xs-6 score-cover" ng-if="!(result >= 7.6 && result <= 9.0)">
+                        <div class="col-xs-12 col-lg-6 score-cover" ng-if="!(result >= 7.6 && result <= 9.0)">
                             <div class="col-xs-4">
                                 <div class="time-image">
                                     <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage2.png">
@@ -612,7 +612,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-xs-6 score-cover" ng-if="!(result >= 9.1 && result <= 10.0)">
+                        <div class="col-xs-12 col-lg-6 score-cover" ng-if="!(result >= 9.1 && result <= 10.0)">
                             <div class="col-xs-4">
                                 <div class="time-image">
                                     <img src="assets/images/loader.gif" lazy-img="assets/images/categoryImage4.png">
@@ -807,6 +807,10 @@
     </div>
 </div>
 <div ng-if="swiperName == 'retirement'" class="fadeIn swiper-container customSwiper retirement type2Sliders" ng-init="step = 1">
+    <div class="typeSwiper">
+        <div class="image-backdrop"><img src="assets/images/retirementInner.png"></div>
+        <p>Retirement</p>
+    </div> 
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <form name="retirementForm1" novalidate>
@@ -829,7 +833,7 @@
                                     <fin-calendar-form ng-model="modelVal.A2" format-symbol="none" type="#f0f4f7" font-color="#047bc1" min="0" max="100"></fin-calendar-form>
                                 </div>
                             </div>
-                            <div class="col-xs-4 calendar-divider"><span></span></div>
+                            <div class="col-xs-4 calendar-divider hidden-xs"><span></span></div>
                             <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
                                 <div class="row">
                                     <h3 class="calendarHeader">Retirement Age</h3>
@@ -875,9 +879,9 @@
             <form name="retirementForm6" novalidate>
                 <div class="swiper-content content-6 total-estimation">
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
-                       <div class="col-xs-9 estimate">
+                       <div class="col-xs-12 col-lg-9 estimate">
                         <div class="row">
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
+                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
                             <div class="pigy"><info-tip quick-tip-data="budgetInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/budget.png">
@@ -890,7 +894,7 @@
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="comfInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -903,7 +907,7 @@
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="luxuInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/luxurious.png">
@@ -1029,10 +1033,6 @@
             </div>
         </div>
     </div>
-    <div class="typeSwiper">
-        <div class="image-backdrop"><img src="assets/images/retirementInner.png"></div>
-        <p>Retirement</p>
-    </div> 
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -1048,6 +1048,10 @@
     </div>
 </div>
 <div ng-if="swiperName == 'education'" class="fadeIn swiper-container customSwiper education type2Sliders" ng-init="step = 1">
+    <div class="typeSwiper">
+        <div class="image-backdrop"><img src="assets/images/education.png"></div>
+        <p>Education</p>
+    </div>
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <form name="retirementForm1" novalidate>
@@ -1281,6 +1285,10 @@
     
 </div>
 <div ng-if="swiperName == 'property'" class="fadeIn swiper-container customSwiper property type2Sliders" ng-init="step = 1">
+    <div class="typeSwiper">
+        <div class="image-backdrop"><img src="assets/images/property.png"></div>
+        <p>Property</p>
+    </div> 
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <form name="retirementForm1" novalidate>
@@ -1379,9 +1387,9 @@
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content content-6 total-estimation">
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
-                       <div class="col-xs-9 estimate">
+                       <div class="col-xs-12 col-lg-9 estimate">
                         <div class="row">
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
+                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
                             <div class="pigy"><info-tip quick-tip-data="budgetInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/budget.png">
@@ -1394,7 +1402,7 @@
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="comfInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -1407,7 +1415,7 @@
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="luxuInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/luxurious.png">
@@ -1435,7 +1443,7 @@
                 <div class="col-xs-12">
                     <div class="row">
                         <div class="gauge-result">
-                            <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="$root.toolTipEquiDebt" info-width="100%" class-name="guagePig"></info-tip></span>Equity/Debt Mix</p></div>
+                            <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="$root.toolTipEquiDebt" info-width="100%" class-name="guagePig"></span>Equity/Debt Mix</p></div>
                             <div class="meter-widget-cover">
                                 <div class="col-xs-12 meter-header">
                                     <button class="edit" ng-click="callModel(modelVal.assetAllocation.debt, modelVal.assetAllocation.equity, modelVal.A4)"></button>
@@ -1532,10 +1540,6 @@
             </div>
         </div>
     </div>
-    <div class="typeSwiper">
-        <div class="image-backdrop"><img src="assets/images/property.png"></div>
-        <p>Property</p>
-    </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > '1'">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -1551,6 +1555,10 @@
     </div>
 </div>
 <div ng-if="swiperName == 'automobile'" class="fadeIn swiper-container customSwiper automobile type2Sliders" ng-init="step = 1">
+    <div class="typeSwiper">
+        <div class="image-backdrop"><img src="assets/images/automobile.png"></div>
+        <p>Automobile</p>
+    </div>
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <form name="retirementForm1" novalidate>
@@ -1580,8 +1588,10 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
+                    <div class="col-xs-12">
                       <h1 class="topHeader">I would like to save following amount<span class="nextline">for my dream vehicle</span></h1>
                       <p class="question width-auto"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2')">PLEASE HELP ME ESTIMATE</button></p>
+                    </div>  
                 </div>
             </form>
         </div>
@@ -1763,10 +1773,6 @@
                 </div>
             </div>
         </div>
-    </div>
-    <div class="typeSwiper">
-        <div class="image-backdrop"><img src="assets/images/automobile.png"></div>
-        <p>Automobile</p>
     </div>    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
@@ -1842,9 +1848,9 @@
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content content-6 total-estimation">
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
-                       <div class="col-xs-9 estimate">
+                       <div class="col-xs-12 col-lg-9 estimate">
                         <div class="row">
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
+                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
                             <div class="pigy"><info-tip quick-tip-data="budgetInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/budget.png">
@@ -1857,7 +1863,7 @@
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="comfInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -1870,7 +1876,7 @@
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="luxuInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/luxurious.png">

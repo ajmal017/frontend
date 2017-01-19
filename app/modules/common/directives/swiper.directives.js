@@ -41,6 +41,11 @@
 			                calculateHeight:true,
 			                nextButton: '.content-next',
                 			prevButton: '.content-prev',
+                			breakpoints: {
+		                        768: {
+		                          direction : 'horizontal'
+		                        }
+		                    },
                 			onInit : function(swiper){
                 				
                 				var activeSlide = swiper.slides.eq(swiper.activeIndex);

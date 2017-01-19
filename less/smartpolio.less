@@ -28,11 +28,23 @@ section{
 				        width:80%;
 				      }
 				      margin-bottom:10%;
+				      @media @below768{
+				      	width: 171px;
+    					margin: 0px auto;
+    					padding-top:12px;
+				      }
 				    }
 				    p{
 				      .GLOBAL_FONT_STYLE('Roboto-Bold',@flamingoapprox,normal);
 				      .PIXEL2EM(16);
-				      text-align:right;     
+				      text-align:right; 
+				      @media @below768{
+				      	text-align: center;
+				      }    
+				    }
+				    @media @below768{
+				    	width:100% !important;
+				    	margin-top: 8%;
 				    }
 				}
 			}
@@ -59,6 +71,9 @@ section{
 				}
 			}
 			.indicator-cover{
+				@media @below768{
+					width: 100%;
+				}
 			 &.education{
 		        .typeSwiper{
 		          width:84px;
@@ -97,6 +112,13 @@ section{
 		        top: 160px;
 		        width:20px;
 		        z-index: 10;
+		        @media @below768{
+		        	flex-direction: row;
+		        	width: 100%;
+		        	top: 0;
+		        	box-orient: horizontal;
+		        	width: 100%;
+		        }
 		    }
 		    .dot{
 		      width:4px;
@@ -110,6 +132,9 @@ section{
 		        position:relative;
 		        &:not(:last-child){
 		            padding-bottom:100%;
+		            @media @below768{
+		            	padding: 0 19% 0 0;
+		            }
 		        }
 		    }
 		    .dot-cover:not(:last-child) .dot:after{
@@ -135,11 +160,20 @@ section{
 		                position:absolute;
 		                top: -4px;
 		                right: 19px;
+		                @media @below768{
+		                	top: 8px;
+		                	right: 1px;
+		                }
 		            }
 		        }
 		    }
 		    .dot-cover:not(:last-child) .dot.ani:after{
-		      height:100%
+		      height:100%;
+		      @media @below768{
+		      	    width: 100%;
+		    		height: 1px;
+		    		top: 2px;
+		      }
 		    }
 		    .dot.active,.dot.ani{
 		      background-color:#f26422;
@@ -162,6 +196,9 @@ section{
 				}
 				&.fin-orange{
 					min-width:200px;
+					@media @below768{
+						width: 100%;
+					}
 				}
 				&.fin-white{
 					background-image: -moz-linear-gradient( 90deg, rgb( 245, 245, 245 ) 0%, rgb( 255, 255, 255 ) 100%);
@@ -232,7 +269,10 @@ section{
 			background-image: -moz-linear-gradient( 90deg, rgb( 245, 245, 245 ) 0%, rgb( 255, 255, 255 ) 100%);
 		  	background-image: -webkit-linear-gradient( 90deg, rgb( 245, 245, 245 ) 0%, rgb( 255, 255, 255 ) 100%);
 		  	box-shadow: 1px 5.33px 11px -4px rgb( 4, 123, 193 );
-		  	height:400px;
+		  	min-height:400px;
+		  	height: auto;
+		  	float: left;
+		  	width: 100%;
 		  	border-radius:25px;
 		  	padding:4% 3%;
 		  	.chart-tabs{
@@ -276,6 +316,9 @@ section{
 		  	height:437px;
 		  	border-radius:25px;
 		  	padding:4% 3%;
+		  	@media @below768{
+		  		margin-bottom: 40px;
+		  	}
 		  	h2{
 		  		.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',#047bc1,normal);
 				.PIXEL2EM(18);

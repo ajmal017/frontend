@@ -61,6 +61,14 @@ div[ng-view]{
 	&.open{
 		transform:translate3d(-5%,0px,0px;)
 	}
+	.mobile_goal_header{
+		background-color: #f3f8fc;
+	    font-family: 'PlayfairDisplay-Regular';
+	    font-size: 24px;
+	    padding: 5% 0;
+		
+		
+	}
 }
 header{
 	.navbar{
@@ -72,11 +80,11 @@ header{
 		padding-top:2%;
 		.navbar-brand{
 			display:block;
-			width:228px;
+			/*width:228px;*/
 			height:auto;
 			padding:0px;
 			img{
-				width:100%;
+				/*width:100%;*/
 			}
 		}
 		h1{
@@ -187,6 +195,7 @@ header{
 							background-size: 100% 100%;
 							position: relative;
 							top: -3px;
+							right: 0px;
 							transition: all 0.2s ease;
 						}
 					}
@@ -230,6 +239,9 @@ header{
 						}
 					}
 				}
+				@media @below768{
+					width:300px;
+				}
 			}
 			/*.dropdown{
 				.dropdown-menu{
@@ -254,31 +266,19 @@ header{
 		@media @below768{
 			padding-top:6%;
 			.navbar-header{
-				width:100%;
+				/*width:100%;*/
 			}
 			.navbar-brand{
-				width:34%;
+				/*width:34%;*/
 			}
-			.navbar-right{
-				position: absolute;
-				margin: 0px;
-				margin-top:6%;
-				top:0px;
-				right:6%;
-				.start-btn{
-					display:none;
-				}
-				.log-in{
-					display:none;
-				}
-			}
+			
 		}
 	}
 	.navbar-header{
 		@media only screen and (min-width:1200px){
-			width:14%;
+			/*width:14%;*/
 			.navbar-brand{
-				width:100%;
+				/*width:100%;*/
 			}
 		}
 	}

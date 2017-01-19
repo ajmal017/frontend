@@ -1,5 +1,5 @@
 <section class="compareSchemes">
-	<div class="col-xs-5 schemes-cover mCustomScrollbar">
+	<div class="col-lg-5 col-xs-12 schemes-cover mCustomScrollbar">
 		<div class="schemes-inner col-xs-12" ng-repeat="schemes in $root.schemeCompareAfter.compared_fund">
 			<div class="col-xs-12">
 				<h2>{{schemes.fund_name}}</h2>
@@ -37,7 +37,7 @@
 			</div>
 		</div>
 	</div>
-	<div class="col-xs-7">
+	<div class="col-lg-7 col-xs-12">
 		<ul class="chart-main-tabs" ng-init="setChartValue = 'HISTORIC'">
 			<li ng-click="setChartValue = 'HISTORIC'" ng-class="{'activeli':setChartValue == 'HISTORIC'}"><a href="javascript:void(0)" >Historic Performance</a></li>
 			<li ng-click="setChartValue = 'OTHERS'" ng-class="{'activeli':setChartValue == 'OTHERS'}"><a href="javascript:void(0)">Other Comparison</a></li>

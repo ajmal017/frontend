@@ -75,6 +75,9 @@
 	}
 	&.schemeTable{
 		width:75%;
+		@media @below768{
+			width:100%;
+		}
 		.thead{
 			.th{
 				&:nth-child(1){
@@ -118,6 +121,9 @@
 	}
 	&.compareTable{
 		width:75%;
+		@media @below768{
+			width: 100%;
+		}
 		.seperate-cover{
 			width:100%;
 			float:left;
@@ -138,9 +144,12 @@
 				&:nth-child(3){
 					width:30%;
 					float:left;
+					@media @below768{
+						width: 38%;
+					}
 				}
 				&:nth-child(4){
-					width:25%;
+					width:17%;
 					float:left;
 				}
 				&:nth-child(5){
@@ -165,9 +174,12 @@
 				&:nth-child(3){
 					width:30%;
 					float:left;
+					@media @below768{
+						width: 38%;
+					}
 				}
 				&:nth-child(4){
-					width:25%;
+					width:17%;
 					float:left;
 				}
 				&:nth-child(5){
@@ -508,6 +520,10 @@
 	}
 	.tr{
 		border:none!important;
+	}
+	@media @below768{
+		width: 100%;
+		font-size:8px;
 	}
 }
 .mCSB_scrollTools_horizontal{
