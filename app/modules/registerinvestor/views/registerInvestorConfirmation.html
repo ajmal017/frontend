@@ -10,7 +10,7 @@
                   <div class="col-xs-4">
                     <div class="upload-image-cover" ng-click="showSigniture()">
 
-                      <div class="image-div">
+                      <div class="image-div" ng-if="!modelVal.signature">
                           <img src="assets/images/investorregistration_sign.png">
                       </div>
                       <div ng-if="modelVal.signature" class="imageThumbnail">
@@ -37,7 +37,7 @@
                           <div class="pull-left checkbox-width">
                             <span></span>
                           </div>
-                          <div class="col-xs-5 no-padding ">
+                          <div class="col-xs-10 col-lg-5 no-padding ">
                           I have read the Terms & Conditions of Use, and I hereby allow Finaskus Technologies Pvt Ltd to utilize the information preceding to fulfill my investment request and comply with the legal and regulatory requirements.
                           </div>
                         </label>

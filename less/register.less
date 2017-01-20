@@ -15,12 +15,23 @@ section{
 			position:absolute;
 			right:6%;
 			height:100%;
+			@media @below768{
+				position: relative;
+				right: 0;
+			}
 		}
 		.contact-header{
 			position:absolute;
 			top:50%;
 			transform:translateY(-50%);
 			right:5%;
+			@media @below768{
+				position: relative;
+				right: 0;
+				top: 0;
+				transform: none;
+				margin-top: 20%;
+			}
 			.cloud1,.cloud2{
 				position:absolute;
 				width:25%;
@@ -55,6 +66,10 @@ section{
 			width:80%;
 			float:left;
 			padding-top:14%;
+			@media @below768{
+				padding-top: 26%;
+				width: 100%;
+			}
 			.form-group{
 				.select{
 					width:100%;
@@ -232,7 +247,10 @@ section{
 	transform:translateY(-20%);
 	left:0;
 	right:0px;
-	margin:0px auto;	
+	margin:0px auto;
+	@media @below768{
+		width: 100%;
+	}	
 	.modal-content{
 		float: left;
 		box-shadow: none;

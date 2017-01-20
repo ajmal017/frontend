@@ -55,8 +55,9 @@
                 				}else{
                 					$rootScope.tipData = undefined;
                 				}
-                				var mainSwiperHeight = $('.'+scope.swiperName).outerHeight();
-								var height = $(activeSlide).find('.swiper-content').outerHeight() + 50;
+                				setTimeout(function(){
+                				var mainSwiperHeight = $('.'+scope.swiperName).outerHeight(true);
+								var height = $(activeSlide).find('.swiper-content').outerHeight(true) + 50;
 								var applyHeight = height - 100;
 								 $('.'+scope.swiperName).css('height', applyHeight);
         						 $('.'+scope.swiperName+'.swiper-wrapper').css('height', applyHeight);
@@ -85,12 +86,14 @@
 									if($rootScope.slideTobeChanged > 0){
 				                    	swiper.slideTo($rootScope.slideTobeChanged ,0,true);
 				                    	$rootScope.slideTobeChanged = undefined;
-	                				}				
+	                				}
+	                			},1500);				
                 			},
 			                onSlideChangeEnd: function(swiper){
 			                	$rootScope.lastSlide = true; 
 								if(!$rootScope.$$phase)	$rootScope.$apply();
-								var mainSwiperHeight = $('.'+scope.swiperName).outerHeight();
+								setTimeout(function(){
+								var mainSwiperHeight = $('.'+scope.swiperName).outerHeight(true);
 								var activeSlide = swiper.slides.eq(swiper.activeIndex);
 
 								if(($(activeSlide).data('key') !=undefined) && ($(activeSlide).data('key').indexOf('calculate') == -1)){
@@ -105,8 +108,11 @@
                 					$rootScope.tipData = undefined;
                 				}
                 				if(!$rootScope.$$phase) $rootScope.$apply();
-								var height = $(activeSlide).find('.swiper-content').outerHeight() + 50;
-								var applyHeight = height - 50;
+                				
+                					var height = $(activeSlide).find('.swiper-content').outerHeight(true) + 50;
+									var applyHeight = height - 50;
+                				
+								
 								 $('.'+scope.swiperName).css('height', applyHeight);
         						 $('.'+scope.swiperName+'.swiper-wrapper').css('height', applyHeight);
         						 $('.swiper-slide').css('height', '450px');
@@ -143,6 +149,7 @@
   								if((swiper.slides.length - 1) == (swiper.activeIndex)){
   									scope.sendValues({'data':JSON.stringify(scope.currentViewValue)});
   								}
+  							},500);
 			                }
 			            });
 			                  			            

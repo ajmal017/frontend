@@ -2,6 +2,9 @@
     width: 100%;
     height: 450px;
     transition:all 800ms ease;
+    @media @below768{
+      min-height: 450px;
+    }
     .bubble{
         display: flex;
         flex-direction:column;
@@ -15,9 +18,9 @@
         @media @below768{
           -webkit-box-orient: horizontal;
           flex-direction: row;
-          width: 100%;
+          left: 50%;
           top: 0;
-        }
+          width: 20%;        }
     }
     .dot{
       width:4px;
@@ -32,7 +35,7 @@
         &:not(:last-child){
             padding-bottom:100%;
             @media @below768{
-              padding:0 57px 0 0;
+              padding:0 100% 0 0;
             }
         }
     }
@@ -69,7 +72,7 @@
     .dot-cover:not(:last-child) .dot.ani:after{
       height:100%;
       @media @below768{
-        width:91px;
+        width:100%;
         height: 1px;
         top: 2px;
       }
@@ -97,7 +100,7 @@
           }
           margin-bottom:10%;
           @media @below768{
-            width: 171px;
+            width: 98px;
             margin: 0 auto;
           }
         }
@@ -150,6 +153,9 @@
             position:relative;
             margin-top:6%;
             width:100%;
+            @media @below768{
+              float: left;
+            }
             .swiper-input{
               input{
                 text-align:left;
@@ -229,6 +235,9 @@
       &.investorInfo,&.bankInfo,&.nomineeInfo,&.contactInfo,&.identityInfo{
         .fin-btn-group{
           width:46%!important;
+          @media @below768{
+            width:100% !important;
+          }
           .fin-app-btn{
             padding:3%;
           }
@@ -251,6 +260,9 @@
       &.retirement{
         .retirement-amount{
           width:45%;
+          @media @below768{
+            width: 100%;
+          }
         }
       }
       .swiper-content{
@@ -258,7 +270,7 @@
         padding-top:6%;
         transition:all 0.2s ease;
         @media @below768{
-          padding-top: 62%;
+          padding-top: 50% !important;
           margin-bottom: 12%;
           float: left;
           width: 100%;
@@ -300,6 +312,9 @@
                 position: relative;
                 input{
                   padding-left:5%;
+                  @media @below768{
+                    padding-left: 13%;
+                  }
                 }
                 span{
                   &.currency{
@@ -434,6 +449,15 @@
           position:absolute;
           top:48%;
           transform:translateY(-48%);
+          @media @below768{
+            top: 32%;
+            transform:translateY(-48%);
+          }
+          .incomeSource{
+            @media @below768{
+              height: 420px;
+            }
+          }
         } 
         &.content-6{
           padding:1%;
@@ -628,6 +652,9 @@
                 position: absolute;
                 top: 8%;
                 right: 8%;
+                @media @below768{
+                  left: 4%;
+                }
                 img{
                   width:100%;
                 }

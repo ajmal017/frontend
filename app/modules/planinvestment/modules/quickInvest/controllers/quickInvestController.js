@@ -90,7 +90,7 @@
 				var currentYear = new Date(),
 					currentMonth = $filter('date')(currentYear, 'MMM yy');
 					
-				return "My Investment " + currentMonth;
+				return "My Quick Invest " + currentMonth;
 	
 			}
 			

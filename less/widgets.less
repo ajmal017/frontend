@@ -445,6 +445,10 @@ input{
 }
 .highcharts-container{
 	margin:0 auto;	
+	@media @below768{
+		margin:0;
+		min-width: 100%;
+	}
 }
 .highcharts-credits{
 	display:none!important;	
@@ -643,6 +647,9 @@ input{
 #signitureModal,#videoCapptureModal{
 	.modal-dialog{
 		width:34%;
+		@media @below768{
+			width: 100%;
+		}
 	}
 	.modal-content{
 		width:100%;

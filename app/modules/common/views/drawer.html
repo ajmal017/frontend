@@ -17,7 +17,8 @@
       <ul id="accordion1" ng-if="loggedIn">
         <li class="panel"><a href="javascript:void(0)" click-redirect="/dashboard">Dashboard</a></li>
         <li class="panel"><a href="javascript:void(0)" click-redirect="/riskAssesment">Risk Assessment</a></li>
-        <li class="panel"><a href="javascript:void(0)" data-target="#secoundLink" data-toggle="collapse" data-parent="#accordion1">Build Financial Goals</a>
+        <li class="panel"><a href="javascript:void(0)" click-redirect="/planInvest">Plan &amp; Invest</a></li>
+<!--         <li class="panel"><a href="javascript:void(0)" data-target="#secoundLink" data-toggle="collapse" data-parent="#accordion1">Build Financial Goals</a>
             <ul id="secoundLink" class="collapse secondLevel">
               <li><a href="javascript:void(0)" click-redirect="/retirementGoalsStarted">Retirement</a></li>
               <li><a href="javascript:void(0)" click-redirect="/educationStarted">Education</a></li>
@@ -27,13 +28,20 @@
               <li><a href="javascript:void(0)" click-redirect="/automobileStarted">Automobile</a></li>
               <li><a href="javascript:void(0)" click-redirect="/othersStarted">Other</a></li>
             </ul>
-        </li>
+        </li> -->
         <li class="panel"><a href="javascript:void(0)" click-redirect="/trackPerformanceStart">Track Investments</a></li>
         <li class="panel"><a href="javascript:void(0)" click-redirect="/investWithdrawStart">Withdraw</a></li>        
         <li class="panel"><a href="javascript:void(0)" ng-if="$root.userFlags['user_flags']['process_choice']==='' || $root.userFlags['user_flags']['process_choice']==undefined" click-redirect="/registerInvestorStart">Investor Registration</a></li>
         <li class="panel"><a href="javascript:void(0)" ng-if="!($root.userFlags['user_flags']['vault']) && $root.userFlags['user_flags']['process_choice']==0" click-redirect="/registerInvestorInfo">Investor Registration</a></li>
         <li class="panel"><a href="javascript:void(0)" ng-if="($root.userFlags['user_flags']['vault'])" click-redirect="registerInvestorReview">Investor Registration</a></li>
-        <li class="panel"><a href="javascript:void(0)">Help?</a></li>
+        <!-- <li class="panel"><a href="javascript:void(0)" click-redirect="">Resource Center</a></li>
+        <li class="panel"><a href="javascript:void(0)" click-redirect="https://www.finaskus.com/#/contactUs">Support &amp; Feedback</a></li>
+        <li class="panel"><a href="javascript:void(0)">Share with a friend</a></li>
+        <li class="panel"><a href="javascript:void(0)" click-redirect="https://www.finaskus.com/#/aboutUs">About</a></li> -->
+        <li class="panel"><a href="https://www.finaskus.com/">Finaskus Website</a></li>
+        <li class="panel"><a href="javascript:void(0)" click-redirect="/settings">Settings</a></li>
+        <li class="panel"><a href="javascript:void(0)" ng-click="userLogout()">Logout</a></li>
+        <!-- <li class="panel"><a href="javascript:void(0)">Help?</a></li> -->
       </ul>
       <p class="copywrite"><span>Finaskus</span><span>&copy;</span><span>2016</span></p>
     </div>

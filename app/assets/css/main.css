@@ -1108,7 +1108,6 @@ button[disabled]:hover {
           border-radius: 50%;
 }
 .selectRisk_cover {
-  float: left;
   margin-bottom: 2%;
 }
 .selectRisk_cover input[type="radio"],
@@ -1145,6 +1144,13 @@ button[disabled]:hover {
   -moz-box-shadow: 1px 5.33px 11px -4px #247abc;
   box-shadow: 1px 5.33px 11px -4px #247abc;
   color: #f26529;
+}
+@media only screen and (max-width:768px) {
+  .selectRisk_cover input[type="radio"] + label .assessNumber,
+  .selectRisk_cover input[type="checkbox"] + label .assessNumber {
+    width: 33px;
+    height: 33px;
+  }
 }
 .selectRisk_cover input[type="radio"]:checked + label,
 .selectRisk_cover input[type="checkbox"]:checked + label {
@@ -1867,6 +1873,13 @@ span.highlight {
           box-shadow: 2.5pt 4.33pt 10pt 0pt #247abc;
   padding: 6% 2.7% 3% 2.7%;
 }
+@media only screen and (max-width:768px) {
+  .login-wrapper {
+    -webkit-border-radius: 26px;
+       -moz-border-radius: 26px;
+            border-radius: 26px;
+  }
+}
 .login-wrapper .login-header .cloud1,
 .login-wrapper .login-header .cloud2 {
   position: absolute;
@@ -2073,6 +2086,12 @@ section.register .side-desc {
   right: 6%;
   height: 100%;
 }
+@media only screen and (max-width:768px) {
+  section.register .side-desc {
+    position: relative;
+    right: 0;
+  }
+}
 section.register .contact-header {
   position: absolute;
   top: 50%;
@@ -2082,6 +2101,19 @@ section.register .contact-header {
        -o-transform: translateY(-50%);
           transform: translateY(-50%);
   right: 5%;
+}
+@media only screen and (max-width:768px) {
+  section.register .contact-header {
+    position: relative;
+    right: 0;
+    top: 0;
+    -webkit-transform: none;
+       -moz-transform: none;
+        -ms-transform: none;
+         -o-transform: none;
+            transform: none;
+    margin-top: 20%;
+  }
 }
 section.register .contact-header .cloud1,
 section.register .contact-header .cloud2 {
@@ -2120,6 +2152,12 @@ section.register .contact-form {
   width: 80%;
   float: left;
   padding-top: 14%;
+}
+@media only screen and (max-width:768px) {
+  section.register .contact-form {
+    padding-top: 26%;
+    width: 100%;
+  }
 }
 section.register .contact-form .form-group {
   position: relative;
@@ -2316,6 +2354,11 @@ section.register ul.login-dialog li a {
   left: 0;
   right: 0px;
   margin: 0px auto;
+}
+@media only screen and (max-width:768px) {
+  .modal-dialog {
+    width: 100%;
+  }
 }
 .modal-dialog .modal-content {
   float: left;
@@ -2776,6 +2819,11 @@ span.error-text {
 .calendar-cover .calendar-footer button img {
   width: 35%;
 }
+@media only screen and (max-width:768px) {
+  .calendar-cover .calendar-footer button img {
+    width: 19%;
+  }
+}
 .calendar-cover .calendar-footer button span {
   display: inline-block;
 }
@@ -2869,6 +2917,11 @@ span.error-text {
   -moz-transition: all 800ms ease;
   transition: all 800ms ease;
 }
+@media only screen and (max-width:768px) {
+  .swiper-container {
+    min-height: 450px;
+  }
+}
 .swiper-container .bubble {
   display: -webkit-box;
   display: -webkit-flex;
@@ -2904,8 +2957,9 @@ span.error-text {
        -moz-box-direction: normal;
         -ms-flex-direction: row;
             flex-direction: row;
-    width: 100%;
+    left: 50%;
     top: 0;
+    width: 20%;
   }
 }
 .swiper-container .dot {
@@ -2929,7 +2983,7 @@ span.error-text {
 }
 @media only screen and (max-width:768px) {
   .swiper-container .dot-cover:not(:last-child) {
-    padding: 0 57px 0 0;
+    padding: 0 100% 0 0;
   }
 }
 .swiper-container .dot-cover:not(:last-child) .dot:after {
@@ -2970,7 +3024,7 @@ span.error-text {
 }
 @media only screen and (max-width:768px) {
   .swiper-container .dot-cover:not(:last-child) .dot.ani:after {
-    width: 91px;
+    width: 100%;
     height: 1px;
     top: 2px;
   }
@@ -3003,7 +3057,7 @@ span.error-text {
 }
 @media only screen and (max-width:768px) {
   .swiper-container.customSwiper .typeSwiper .image-backdrop {
-    width: 171px;
+    width: 98px;
     margin: 0 auto;
   }
 }
@@ -3082,6 +3136,22 @@ span.error-text {
   position: relative;
   margin-top: 6%;
   width: 100%;
+}
+@media only screen and (max-width:768px) {
+  .swiper-container.customSwiper.retirement .swiper-slide .question,
+  .swiper-container.customSwiper.education .swiper-slide .question,
+  .swiper-container.customSwiper.property .swiper-slide .question,
+  .swiper-container.customSwiper.automobile .swiper-slide .question,
+  .swiper-container.customSwiper.vacation .swiper-slide .question,
+  .swiper-container.customSwiper.wedding .swiper-slide .question,
+  .swiper-container.customSwiper.jewellery .swiper-slide .question,
+  .swiper-container.customSwiper.others .swiper-slide .question,
+  .swiper-container.customSwiper.taxsaving .swiper-slide .question,
+  .swiper-container.customSwiper.investorInfo .swiper-slide .question,
+  .swiper-container.customSwiper.bankInfo .swiper-slide .question,
+  .swiper-container.customSwiper.nomineeInfo .swiper-slide .question {
+    float: left;
+  }
 }
 .swiper-container.customSwiper.retirement .swiper-slide .question .swiper-input input,
 .swiper-container.customSwiper.education .swiper-slide .question .swiper-input input,
@@ -3213,6 +3283,15 @@ span.error-text {
 .swiper-container.customSwiper.identityInfo .fin-btn-group {
   width: 46%!important;
 }
+@media only screen and (max-width:768px) {
+  .swiper-container.customSwiper.investorInfo .fin-btn-group,
+  .swiper-container.customSwiper.bankInfo .fin-btn-group,
+  .swiper-container.customSwiper.nomineeInfo .fin-btn-group,
+  .swiper-container.customSwiper.contactInfo .fin-btn-group,
+  .swiper-container.customSwiper.identityInfo .fin-btn-group {
+    width: 100% !important;
+  }
+}
 .swiper-container.customSwiper.investorInfo .fin-btn-group .fin-app-btn,
 .swiper-container.customSwiper.bankInfo .fin-btn-group .fin-app-btn,
 .swiper-container.customSwiper.nomineeInfo .fin-btn-group .fin-app-btn,
@@ -3247,6 +3326,11 @@ span.error-text {
 .swiper-container.customSwiper.retirement .retirement-amount {
   width: 45%;
 }
+@media only screen and (max-width:768px) {
+  .swiper-container.customSwiper.retirement .retirement-amount {
+    width: 100%;
+  }
+}
 .swiper-container.customSwiper .swiper-content {
   padding-bottom: 12%;
   padding-top: 6%;
@@ -3257,7 +3341,7 @@ span.error-text {
 }
 @media only screen and (max-width:768px) {
   .swiper-container.customSwiper .swiper-content {
-    padding-top: 62%;
+    padding-top: 50% !important;
     margin-bottom: 12%;
     float: left;
     width: 100%;
@@ -3302,6 +3386,11 @@ span.error-text {
 }
 .swiper-container.customSwiper .swiper-content p .swiper-input.normal.currency input {
   padding-left: 5%;
+}
+@media only screen and (max-width:768px) {
+  .swiper-container.customSwiper .swiper-content p .swiper-input.normal.currency input {
+    padding-left: 13%;
+  }
 }
 .swiper-container.customSwiper .swiper-content p .swiper-input.normal.currency span.currency {
   position: absolute;
@@ -3436,6 +3525,21 @@ span.error-text {
       -ms-transform: translateY(-48%);
        -o-transform: translateY(-48%);
           transform: translateY(-48%);
+}
+@media only screen and (max-width:768px) {
+  .swiper-container.customSwiper .swiper-content.content-1 {
+    top: 32%;
+    -webkit-transform: translateY(-48%);
+       -moz-transform: translateY(-48%);
+        -ms-transform: translateY(-48%);
+         -o-transform: translateY(-48%);
+            transform: translateY(-48%);
+  }
+}
+@media only screen and (max-width:768px) {
+  .swiper-container.customSwiper .swiper-content.content-1 .incomeSource {
+    height: 420px;
+  }
 }
 .swiper-container.customSwiper .swiper-content.content-6 {
   padding: 1%;
@@ -3642,6 +3746,11 @@ span.error-text {
   position: absolute;
   top: 8%;
   right: 8%;
+}
+@media only screen and (max-width:768px) {
+  .swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover .pigy {
+    left: 4%;
+  }
 }
 .swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate-cover .pigy img {
   width: 100%;
@@ -5202,6 +5311,12 @@ input.datepicker::placeholder {
 .highcharts-container {
   margin: 0 auto;
 }
+@media only screen and (max-width:768px) {
+  .highcharts-container {
+    margin: 0;
+    min-width: 100%;
+  }
+}
 .highcharts-credits {
   display: none!important;
 }
@@ -5413,6 +5528,12 @@ input.datepicker::placeholder {
 #signitureModal .modal-dialog,
 #videoCapptureModal .modal-dialog {
   width: 34%;
+}
+@media only screen and (max-width:768px) {
+  #signitureModal .modal-dialog,
+  #videoCapptureModal .modal-dialog {
+    width: 100%;
+  }
 }
 #signitureModal .modal-content,
 #videoCapptureModal .modal-content {
