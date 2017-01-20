@@ -35,6 +35,43 @@
 					{
 						'tip' : '<span class="currency">&#8377</span>1 Crore in 20',
 					},
+				],
+				'2' : [
+					{
+						'tip' : '<ul><li>Existing savings like EPF can grow to be a significant nest egg in retirement</li><li>For estimation, your savings are projected to grow @10% annually till you retire.</li></ul>'
+					}
+				],
+				'3' : [
+					{
+						'tip' : '<ul><li>'
+					}
+				]
+			},
+			'education' : {
+				'0' : [
+					{
+						'tip' : 'Starting early in a goal can make a big difference to your corpus at the time when you need it.'
+					}
+
+				],
+				'1' : [
+					{
+						'tip' : '<ul><li>An Indian education is a preferred alternative to education abroad if the eventual goal is to stay in India.</li><li>Choosing a college abroad/in another town has significant cost addition like travel/hostel.</li><li>Your current savings are projected to grow @8% annualized till your goal is achieved.'
+					}
+				]
+			},
+			'property' : {
+				'0' : [
+					{
+						'tip' : '<ul><li>Banks typically would cover 75-85% of property value in granting a loan.</li><li>Your current savings are projected to grow @8% annualized till your goal is achieved.</li></ul>'
+					}
+				]
+			},
+			'automobile' : {
+				'0' : [
+					{
+						'tip' : '<ul><li>Running costs of diesel cars tend to be higher than petrol cars. Use our Diesel vs. Petrol calculator to decide</li><li>On-road cost of car includes registration and insurance apart from the ex-showroom costs.</li><li>Banks would typically cover 70-80% of on-road vehicle cost in granting a loan.</li></ul>'
+					}
 				]
 			},
 			'savetax' : {

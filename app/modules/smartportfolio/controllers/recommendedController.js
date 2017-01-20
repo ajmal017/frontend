@@ -13,7 +13,7 @@
 			setTimeout(function(){
 				$('.seperate-cover').mCustomScrollbar();
 			},10);
-
+			$rootScope.currentGoal = sessionStorage.getItem('currentGoal');
 			if($location.$$path == '/recommendedSchemes' || $location.$$path == '/compareAndModify'){
 				$rootScope.subHeader = 'GO BACK TO '+ $rootScope.currentGoal.toUpperCase() +' GOAL';
 				if($rootScope.currentGoal == 'liquid'){

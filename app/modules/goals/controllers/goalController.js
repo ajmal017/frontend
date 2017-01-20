@@ -16,6 +16,7 @@
 			sessionStorage.removeItem('goalDetailsTemp');
 			$scope.startGoalAdd = function(currentGoal) {
 				$rootScope.currentGoal = currentGoal;
+				sessionStorage.setItem('currentGoal', $rootScope.currentGoal);
 				var goalRedirect = '';
 				if(currentGoal == 'retirement'){
 					goalRedirect = currentGoal + 'GoalsStarted';
