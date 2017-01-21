@@ -74,6 +74,28 @@
 					}
 				]
 			},
+			'vacation' : {
+				'0' : [
+					{
+						'tip' : '<ul><li>A vacation abroad costs significantly higher in terms of international flights and visa costs</li><li>Your current savings are projected to grow @8% annualized till your goal is achieved</li></ul>'
+					}
+
+				]
+			},
+			'wedding' : {
+				'0' : [
+					{
+						'tip' : '<ul><li>A multi-day or out-station wedding plan involves higher costs like travel and stay.</li><li>Your current savings are projected to grow @8% annualized till your goal is achieved.</li></ul>'
+					}
+				]
+			},
+			'jewellery' : {
+				'0' : [
+					{
+						'tip' : '<ul><li>Gold as an investment has historically generated lower returns than equity markets.</li><li>Your current savings are projected to grow at 8% annualized till your goal is achieved.</li></ul>'
+					}
+				]
+			},
 			'savetax' : {
 				'0' : [
 						{

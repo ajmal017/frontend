@@ -1885,14 +1885,42 @@
                 </div>
             </form>
         </div>
-        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'" data-key="vacation:0">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                  <info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="48px" class-name="marginNegative60"></info-tip>
-                  <p class="question multiple"><span class="content">Number of people going on this vacation (ages 2+ years) is</span> <span class="swiper-input age"><input ng-model="modelVal.A5" type="text" name="year" required></span></p>
-                  <p class="question multiple"><span class="content">Number of days of vacation is </span> <span class="swiper-input age"><input ng-model="modelVal.A6" type="text" name="year" required></span></p>
+                  <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskus estimate my vacation goal needs?</strong><p>Based on a few questions on your target vacation plans and what you have already saved, we will give you well-researched estimate of estimate of how much your vacation will cost in future, and how much you need to save monthly to achieve this goal.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
+                  <div class="col-xs-12 question-cover">
+                      <div class="row">
+                          <div class="col-xs-12 col-lg-5">
+                              <div class="row"> 
+                                <p class="question multiple"><span class="content">Number of people going on this vacation (ages 2+ years) is</span></p>
+                              </div>
+                          </div>
+                          <div class="col-xs-12 col-lg-6">
+                              <div class="row">
+                                 <p><span class="swiper-input age"><input ng-model="modelVal.A5" type="text" name="year" required></span></p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xs-12 question-cover">
+                      <div class="row">
+                          <div class="col-xs-12 col-lg-5">
+                              <div class="row"> 
+                                <p class="question multiple"><span class="content">Number of hotel nights for the vacation is </span><span class="nextline"><i>(For example, select 6 for a 7Days-6Nights vacation)</i></span></p>
+                              </div>
+                          </div>
+                          <div class="col-xs-12 col-lg-5">
+                              <div class="row">
+                                <p><span class="swiper-input age"><input ng-model="modelVal.A6" type="text" name="year" required></span></p>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
                   <p class="question multiple"><span class="content">This vacation will be <select dropdown ng-model="modelVal.A7"><option ng-selected="modelVal.A7 == 'op1' || modelVal.A7 == '' || modelVal.A7 == 'undefined'" value="op1">Domestic</option><option value="op2">International</option></select></span></p>
-                  <p class="question multiple"><span class="content">For this goal, so far I already saved</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A8" ng-keyup="showMessage2 = true" type="text" ame="year" required></span></p>
+                  
+                  <p class="question multiple"><span class="content">For this goal, so far I have already saved</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A8" ng-keyup="showMessage2 = true" type="text" ame="year" required></span></p>
                 </div>
             </form>
         </div>
@@ -2078,7 +2106,7 @@
                 </div>
             </form>
         </div>
-        <div class="swiper-slide">
+        <div class="swiper-slide" data-key="education:0">
             <form name="quickInvestForm2" novalidate>
                 <div class="swiper-content">
                     <h1 class="topHeader">I want to plan for this wedding  in</h1>
@@ -2113,14 +2141,14 @@
                 </div>
             </form>
         </div>
-        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'" data-key="wedding:0">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                  <info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="48px" class-name="marginNegative60"></info-tip>
-                  <p class="question multiple"><span class="content">Number of people expected at wedding is</span> <span class="swiper-input"><input ng-model="modelVal.A5" type="text" name="year" required></span></p>
-                  <p class="question multiple"><span class="content">This wedding will be organised <select dropdown ng-model="modelVal.A6"><option ng-selected="modelVal.A6 == 'op1' || modelVal.A6 == ''" value="op1">Locally</option><option ng-selected="modelVal.A6 == 'op2'" value="op2">Outstation</option></select></span></p>
-                  <p class="question multiple"><span class="content">I will share the following proportion of wedding expenses </span> <span class="swiper-input"><input ng-model="modelVal.A7" type="text" name="year" required><span class="percentage">%</span></span></p>
-                  <p class="question multiple"><span class="content">For this goal, so far I already saved</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A8" ng-keyup="showMessage2 = true" type="text" ame="year" required></span></p>
+                  <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskus estimate my wedding goal needs?</strong><p>Based on a few questions on your target wedding plans and what you have already saved, we will give you a well-researched estimate of how much you will need in future, and how much you need to save monthly to achieve this goal.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
+                  <p class="question multiple"><span class="content">Number of people I expect at the wedding is</span> <span class="swiper-input"><input ng-model="modelVal.A5" type="text" name="year" required ng-init="modelVal.A5 = modelVal.A5 || '100'"></span></p>
+                  <p class="question multiple"><span class="content">The wedding will be organised <select dropdown ng-model="modelVal.A6"><option ng-selected="modelVal.A6 == 'op1' || modelVal.A6 == ''" value="op1">Locally</option><option ng-selected="modelVal.A6 == 'op2'" value="op2">Outstation</option></select></span></p>
+                  <p class="question multiple"><span class="content">I will share the following proportion of wedding expenses </span> <span class="swiper-input"><input ng-model="modelVal.A7" ng-init="modelVal.A7 = modelVal.A7 || '60'" type="text" name="year" required><span class="percentage">%</span></span></p>
+                  <p class="question multiple"><span class="content">For this goal, so far I have already saved</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A8" ng-keyup="showMessage2 = true" type="text" ame="year" required></span></p>
                 </div>
             </form>
         </div>
@@ -2304,16 +2332,16 @@
         <div class="swiper-slide">
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
-                      <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" ng-init="modelVal.A1 = modelVal.A1 || 'My Event'" required ng-model="modelVal.A1"></span></p>
+                      <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" ng-init="modelVal.A1 = modelVal.A1 || 'My Secret Goal'" required ng-model="modelVal.A1"></span></p>
                       <span class="placeholder">Use maximum 20 characters,alphabets and/or numbers</span>
                       <span class="placeholder">We recommended naming this goal after your investment objective with this goal</span>
                 </div>
             </form>
         </div>
-        <div class="swiper-slide">
+        <div class="swiper-slide" data-key="education:0">
             <form name="quickInvestForm2" novalidate>
                 <div class="swiper-content">
-                    <h1 class="topHeader">I want to plan for this goal</h1>
+                    <h1 class="topHeader">I want to plan for this goal in</h1>
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 calender-outer-cover">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -2329,7 +2357,7 @@
         <div class="swiper-slide">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                      <h1 class="topHeader">I would like to save following amount for my goal</span></h1>
+                      <h1 class="topHeader">I will need the following amount for this goal</span></h1>
                       <p class="question width-more"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required/></span></span></p>
                 </div>
             </form>
@@ -2468,16 +2496,16 @@
         <div class="swiper-slide">
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
-                      <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" ng-init="modelVal.A1 = modelVal.A1 || 'My Jewellery'" required ng-model="modelVal.A1"></span></p>
+                      <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" ng-init="modelVal.A1 = modelVal.A1 || 'New Jewellery'" required ng-model="modelVal.A1"></span></p>
                       <span class="placeholder">Use maximum 20 characters,alphabets and/or numbers</span>
                       <span class="placeholder">We recommended naming the goal after the jewellery you want to buy</span>
                 </div>
             </form>
         </div>
-        <div class="swiper-slide">
+        <div class="swiper-slide" data-key="education:0">
             <form name="quickInvestForm2" novalidate>
                 <div class="swiper-content">
-                    <h1 class="topHeader">I want to purchase the jewellery in</h1>
+                    <h1 class="topHeader">I wish to purchase this jewellery in</h1>
                     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 calender-outer-cover">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
@@ -2493,7 +2521,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                      <h1 class="topHeader">I would like to save following amount<span class="nextline">for my jewellery</span></h1>
+                      <h1 class="topHeader">I will need the following amount for my jewellery<span class="nextline">for my jewellery</span></h1>
                       <p class="question width-auto"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2')">PLEASE HELP ME ESTIMATE</button></p>
                 </div>
             </form>
@@ -2509,11 +2537,11 @@
                 </div>
             </form>
         </div>
-        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
+        <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'" data-key="jewellery:0">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                  <info-tip quick-tip-data="[{'tip':'Amount invested in ELSS schemes will have a lock-in period of 3 years'}]" info-width="48px" class-name="marginNegative60"></info-tip>
-                  <p class="question multiple"><span class="content">The current price of the jewellery I wish to buy is</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A5" type="text" name="year" required></span></p>
+                  <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskus estimate my jewellery goal needs?</strong><p>Based on the current estimated cost of jewellery you wish you purchase and what you have already saved, we will give you a scientific estimate of how much that jewellery could cost in future, and how much you need to save monthly to achieve your goal.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
+                  <p class="question multiple"><span class="content">The current estimated cost of the jewellery I wish to purchase is</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A5" type="text" name="year" required></span></p>
                   <p class="question multiple"><span class="content">For this goal so far I have already saved</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A7" type="text" name="year" disable-tab required></span></p>
                 </div>
             </form>
@@ -2699,7 +2727,7 @@
         <div class="swiper-slide">
             <form name="retirementForm1" novalidate>
                 <div class="swiper-content content-1">
-                      <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" ng-init="modelVal.A1 = modelVal.A1 || 'My tax saving'" required ng-model="modelVal.A1"></span></p>
+                      <p class="question">My goal name is<span class="swiper-input global-input addMarginLeft"><input type="text" name="year" ng-init="modelVal.A1 = modelVal.A1 || getDefaultGoalName()" required ng-model="modelVal.A1"></span></p>
                       <span class="placeholder">Use maximum 20 characters, alphabets and/or numbers</span>
                       <span class="placeholder">We recommended naming this goal after the year of tax planning</span>
                 </div>
@@ -2708,7 +2736,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                      <h1 class="topHeader">You can invest upto <span class="currency">&#8377;</span> 1,50,000 to maximize your tax<span class="nextline">savings.</span><span class="nextline">I would like to invest</span></h1>
+                      <h1 class="topHeader">You can invest upto <span class="currency">&#8377;</span> 1,50,000 to maximise your tax<span class="nextline">savings.</span><span class="nextline">Enter amount to invest</span></h1>
                       <p class="question"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" name="year" required ng-model="modelVal.A2"></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2', 1)">PLEASE HELP ME ESTIMATE</button></p>
                       <span class="error-text" ng-show="modelVal.A2 != 0 && modelVal.A2 > 9999999">Maximum amount must be lesser than 99,99,999</span>
                       <span class="error-text" ng-show="modelVal.A2 != 0 && modelVal.A2 < 5000">Minimum amount must be greater than or equal to 5000</span>
@@ -2732,7 +2760,7 @@
                     4. Other tax saving / ELSS</span> <span class="swiper-input"><input ng-model="modelVal.A6" ng-change="computeFutureEligibility()" type="text" name="year" required></span></p>
                     <span class="placeholder addPadding-4Per">Further eligiblity</span>
                     <p class="question multiple"><span class="content">
-                    Thanks for the guidance.I would like to save<span class="nextline">the following amount <span class="currency swiper-input normal"><span class="currency">&#8377</span><input ng-model="modelVal.A2" ng-change="computeTaxBenefit()" format="number" type="text" name="year" required></span></span></span></p>
+                    Thanks for the guidance. I would like to invest<span class="nextline">the following amount <span class="currency swiper-input normal"><span class="currency">&#8377</span><input ng-model="modelVal.A2" ng-change="computeTaxBenefit()" format="number" type="text" name="year" required></span></span></span></p>
                     <p><span class="placeholder addPadding-4Per addOnlyBold">Your potential tax benefit is <span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="taxsaving.taxBenefit | currency:''"></span></span></p>
                 </div>
             </form>
@@ -3155,7 +3183,7 @@
         <div class="swiper-slide">
             <div class="swiper-content swiper-guage">
                 <div class="gauge-result">
-                    <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'Work in Progress'}]" info-width="100%" class-name="guagePig"></span>Projected Interest Gains</p></div>
+                    <div class="col-xs-12 result-header"><p><span class="pigy-icon"><info-tip quick-tip-data="[{'tip':'<strong>Liquid funds</strong>: are those mutual fund schemes that invest in money market instruments / securities with a residual maturity of up to 91 days, like treasury bills, certificate of deposits, commercial papers and term deposits.<ul><li>Typical gains on liquid funds are ~7% annualized (based on current interest rate scenario), offering ~3% higher returns than Saving Bank Deposits.</li><li>Investments in liquid funds can be withdrawn anytime without any penalty / lock-in period. </li><li>They have the lowest interest rate risk among debt funds as they primarily invest in securities with short maturity.</li><li>Liquid funds have no entry load and exit loads</li></ul>'}]" info-width="100%" class-name="guagePig"></span>Projected Interest Gains</p></div>
                     
                     <p><span class="placeholder addPadding-4Per addPaddingLeft-20Per">You will gain additional x% per year<span class="nextline">from this investment compared to</span><span class="nextline">Savings A/C interest of 4%</span></span></p>
 

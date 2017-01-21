@@ -5,9 +5,9 @@
 		.controller('taxsavingController',taxsavingController);
 
 		taxsavingController.$inject = ['$scope','$rootScope','$route','$location', '$timeout', 'taxsavingService',
-		                              'goalsService', 'assetAllocationService', 'goalFormulaeService', 'appConfig', 'busyIndicator'];
+		                              'goalsService', 'assetAllocationService', 'goalFormulaeService', 'appConfig', 'busyIndicator', '$filter'];
 		function taxsavingController($scope,$rootScope,$route,$location,$timeout,taxsavingService,
-				goalsService, assetAllocationService, goalFormulaeService, appConfig, busyIndicator) {
+				goalsService, assetAllocationService, goalFormulaeService, appConfig, busyIndicator, $filter) {
 			
 			this.scope = $scope;
 
@@ -53,7 +53,7 @@
 			this.scope.getGraphObject = angular.bind(this, this.getGraphObject ); 
             this.scope.graphObject = this.scope.getGraphObject();
             this.scope.getFundData = angular.bind(this, this.getFundData );
-            this.scope.infoProjTaxSaving = [{'tip' : '<strong>Equity Linked Saving Schemes (ELSS): </strong>are those mutual fund schemes that invest in equities / stock markets with a 3-year lock-in period, and are eligible for tax deduction from your income under Section 80C of the Income Tax Act 1961.<ul><li>You can invest up to <span class=currency>&#8377</span> 1.5 lakhs u/s 80C, and save up to <span class=currency>&#8377</span> 46,350 on your taxes (subject to individual tax slab).</li><li>ELSS returns are typically higher than other tax saving options over the long term (projected at 15% annualized, ideally for investment duration > 5 years), but they carry the risk of equity markets and can fluctuate in the short term.</li><li>ELSS lock-in period of 3 years is the one of the lowest lock-ins amongst other tax saving instruments.</li></ul>'}];
+            this.scope.infoProjTaxSaving = [{'tip' : '<strong>Equity Linked Saving Schemes (ELSS): </strong>are those mutual fund schemes that invest in equities / stock markets with a 3-year lock-in period, and are eligible for tax deduction from your income under Section 80C of the Income Tax Act 1961.<ul><li>You can invest up to <span class=currency>&#8377</span> 1.5 lakhs u/s 80C, and save up to <span class=currency>&#8377</span> 46,350 on your taxes (subject to individual tax slab).</li><li>ELSS returns are typically higher than other tax saving options over the long term (projected at 15% annualized, ideally for investment duration > 5 years), but they carry the risk of equity markets and can fluctuate in the short term.</li><li>ELSS offers one of the lowest lock-in period of 3 years compared to other tax saving instruments.</li></ul>'}];
             this.scope.infoProjInvGrowth = [{'tip' : '<strong>Explanation of Growth estimates:</strong><ul><li>All future projections are based on historic returns and cannot be guaranteed.</li><li>ELSS fund returns projected at 15.0% annualized.</li><li>All projections are annual, compounded monthly.</li></ul><strong>Disclaimer:</strong><ul><li>Mutual fund investments are subject to market risks. Please read the offer documents carefully before investing.</li></ul>'}];
             this.rootScope.tipData = [{'tip' : ''}]
 
@@ -76,6 +76,13 @@
 			this.scope.calculateEstimates = function() {
 			}
 			
+			$scope.getDefaultGoalName = function() {
+				var currentYear = new Date(),
+					currentYear = $filter('date')(currentYear, 'yy');
+				var nextYear = +currentYear + 1;	
+				return "My Tax Plan FY" + currentYear + "-" + nextYear;
+			}
+
 			this.scope.computeFutureEligibility = function() {
 				var ppf = parseFloat($scope.modelVal.A3 || 0),
 					insurance = parseFloat($scope.modelVal.A4 || 0),
