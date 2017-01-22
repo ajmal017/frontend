@@ -2,8 +2,9 @@
 	'use strict';
 	angular
 		.module('finApp.filters',[])
-		.filter('amountSeffix',amountSeffix);
-
+		.filter('amountSeffix',amountSeffix)
+		.filter('removeNegative', removeNegative)
+		.filter('capitalizeScheme', capitalizeScheme);
 		function amountSeffix(){
 			return function (input) {
 				var amount = 0;
@@ -18,6 +19,35 @@
 					var total = 0;
 				}
 				return total;
-			}
+			};
+		}
+
+		function removeNegative(){
+			return function (input) {
+				console.log('input',input);	
+				var amount = 0;
+				if(input){
+					var str = input.toString();
+					amount = str.replace("-","");;
+					return amount;
+				}
+				
+			};
+		}
+
+		function capitalizeScheme(){
+			return function (input) {
+				var capitalText = '';
+				if(input == 'elss') {
+					capitalText = input.toUpperCase();
+					
+				} else if(input == 'debt' || input == 'equity') {
+					capitalText = input.charAt(0).toUpperCase()+input.slice(1);
+				} else {
+					capitalText = input;
+				}
+				return capitalText;
+				
+			};
 		}
 })();

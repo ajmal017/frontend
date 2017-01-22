@@ -17,7 +17,7 @@
 								<div class="money-value">
 									<h4>Current Gain/Loss</h4>
 									<p class="gain types">
-									<span class="currency">&#8377;</span><span class="percentage">{{portfolioStatus.current_return}}</span></p>
+									<span class="currency">&#8377;</span><span class="percentage">{{portfolioStatus.current_return | removeNegative}}</span></p>
 									<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
 								</div>
 							</div>
@@ -32,10 +32,10 @@
 								<div class="money-value">
 									<h4>Annualized Returns(%)</h4>
 									<p class="gain types" ng-if="portfolioStatus.current_value.is_gain == true">
-									<span class="percentage">{{portfolioStatus.current_value.gain_per}}%</span>
+									<span class="percentage">{{portfolioStatus.current_value.gain_per | removeNegative}}%</span>
 									</p>
 									<p ng-if="portfolioStatus.current_value.is_gain == false" class="loss types">
-									<span class="percentage">{{portfolioStatus.current_value.gain_per}}%</span></p>
+									<span class="percentage">{{portfolioStatus.current_value.gain_per | removeNegative}}%</span></p>
 								</div>
 							</div>
 						</div>
@@ -118,7 +118,7 @@
 						  <div class="panel panel-default" ng-repeat="scheme in allSchemes">
 						    <div class="panel-heading" role="tab" id="headingOne">
 						    	<div class="panel-title">
-						    		<p>{{scheme.name}} Schemes <span class="pull-right"><a role="button" data-toggle="collapse" data-parent="#accordion" href="javascript:void(0)" data-target="#collapseOne_{{scheme.name}}" aria-expanded="true" aria-controls="collapseOne_{{scheme.name}}">
+						    		<p>{{scheme.name | capitalizeScheme}} Schemes <span class="pull-right"><a role="button" data-toggle="collapse" data-parent="#accordion" href="javascript:void(0)" data-target="#collapseOne_{{scheme.name}}" aria-expanded="true" aria-controls="collapseOne_{{scheme.name}}">
 						          EXPAND
 						        </a></span></p>
 						    	</div>
@@ -139,7 +139,7 @@
 													<div class="money-value">
 														<p class="gain types" ng-if="scheme.is_gain">
 														<span class="currency">&#8377;</span><span class="percentage">{{scheme.gain}}</span></p>
-														<p ng-if="!scheme.is_gain" class="loss types"><span class="currency">&#8377;</span><span class="percentage">( {{scheme.gain}} )</span></p>
+														<p ng-if="!scheme.is_gain" class="loss types"><span class="currency">&#8377;</span><span class="percentage">( {{scheme.gain | removeNegative}} )</span></p>
 													</div>
 												</div>
 											</div>
@@ -164,7 +164,7 @@
 													<div class="money-value">
 														<p class="gain types" ng-if="scheme.is_gain">
 														<span class="percentage">{{scheme.gain_per}}%</span></p>
-														<p ng-if="!scheme.is_gain" class="loss types"><span class="percentage">( {{scheme.gain_per}} )%</span></p>
+														<p ng-if="!scheme.is_gain" class="loss types"><span class="percentage">( {{scheme.gain_per | removeNegative}} )%</span></p>
 													</div>
 												</div>
 											</div>
@@ -177,7 +177,7 @@
 						        <div class="table-outer-cover panel-table">
 										<p class="schemes">{{fund.fund_name}}<span class="money-value">
 											<span class="gain types">
-											<span class="currency">&#8377;</span><span class="percentage">{{fund.gain}}</span></span>
+											<span class="currency">&#8377;</span><span class="percentage">{{fund.gain | removeNegative}}</span></span>
 										</span></p>
 										<div class="tbody">
 											<div class="tr">
@@ -198,7 +198,7 @@
 													<div class="money-value">
 														<p class="gain types" ng-if="fund.is_gain">
 														<span class="percentage">{{fund.return_percentage}}%</span></p>
-														<p ng-if="!fund.is_gain" class="loss types"><span class="percentage">({{fund.return_percentage}}%)</span></p>
+														<p ng-if="!fund.is_gain" class="loss types"><span class="percentage">({{fund.return_percentage | removeNegative}}%)</span></p>
 													</div>
 												</div>
 											</div>
@@ -427,7 +427,7 @@
         <div class="table-outer-cover panel-table">
 				<p class="schemes">{{fund.fund_name}}<span class="money-value">
 					<span class="gain types">
-					<span class="currency">&#8377;</span><span class="percentage">{{fund.gain}}</span></span>
+					<span class="currency">&#8377;</span><span class="percentage">{{fund.gain | removeNegative}}</span></span>
 				</span></p>
 				<div class="tbody">
 					<div class="tr">

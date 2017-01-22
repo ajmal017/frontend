@@ -5531,6 +5531,7 @@ input.datepicker::placeholder {
 }
 .customPanel .panel-table .thead .tr .th:nth-child(4) .money-value {
   float: right;
+  width: 100%;
 }
 .customPanel .panel-table .tbody .tr {
   padding-top: 0px;
@@ -5544,6 +5545,7 @@ input.datepicker::placeholder {
 }
 .customPanel .panel-table .tbody .tr .td:nth-child(4) .money-value {
   float: right;
+  min-width: 92px;
 }
 #signitureModal .modal-dialog,
 #videoCapptureModal .modal-dialog {
