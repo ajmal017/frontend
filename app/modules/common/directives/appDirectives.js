@@ -9,6 +9,7 @@
 		.directive('finCalendarForm',finCalendarForm)
 		.directive('dropdown',dropdown)
 		.directive('onlyNumber',onlyNumber)
+		.directive('onlyPercentage',onlyPercentage)
 		.directive('validatePassword',validatePassword)
 		.directive('checkPassword',checkPassword)
 		.directive('showTip',showTip)
@@ -197,6 +198,27 @@
 	    		link : function($scope,$element,$attr,ngModel){
 	    			ngModel.$parsers.unshift(function(value) {
 	    				value = value.replace(/[^0-9]/g, '');
+	    				ngModel.$setViewValue(value);
+                		ngModel.$render();
+                		return value;
+	    			});
+	    		}
+	    	}
+	    }
+
+	    function onlyPercentage(){
+	    	return{
+	    		restrict : 'A',
+	    		require : 'ngModel',
+	    		link : function($scope,$element,$attr,ngModel){
+	    			ngModel.$parsers.unshift(function(value) {
+	    				if (!value)
+	    					return;
+	    				value = value.replace(/[^0-9]/g, '');
+	    				if (value > 100) {
+	    					value = value/10;
+	    					value = value + '';
+	    				}
 	    				ngModel.$setViewValue(value);
                 		ngModel.$render();
                 		return value;

@@ -1370,7 +1370,7 @@
                             </div>
                             <div class="col-xs-12 col-lg-6">
                                 <div class="row">
-                                  <p><span class="swiper-input normal"><input format="number" ng-model="modelVal.A6" type="text" name="year" required ng-init="modelVal.A6 = modelVal.A6 || '30'"><span class="percentage">%</span></span></p>
+                                  <p><span class="swiper-input normal"><input only-percentage ng-model="modelVal.A6" type="text" name="year" min="0" max="100" required ng-init="modelVal.A6 = modelVal.A6 || '30'"><span class="percentage">%</span></span></p>
                                 </div>
                             </div>
                           </div>
@@ -1642,7 +1642,7 @@
                           </div>
                           <div class="col-xs-12 col-lg-6">
                               <div class="row">
-                                <p><span class="swiper-input normal"><input format="number" ng-model="modelVal.A6" ng-init="modelVal.A6 = modelVal.A6 || '30'" type="text" name="year" required><span class="percentage">%</span></span></p>
+                                <p><span class="swiper-input normal"><input only-percentage ng-model="modelVal.A6" ng-init="modelVal.A6 = modelVal.A6 || '30'" type="text" name="year" required><span class="percentage">%</span></span></p>
                               </div>
                           </div>
                       </div>
