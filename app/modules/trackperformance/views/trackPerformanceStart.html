@@ -175,7 +175,7 @@
 						    <div id="collapseOne_{{scheme.name}}" accordian class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
 						      <div class="panel-body" ng-repeat="fund in scheme.funds">
 						        <div class="table-outer-cover panel-table">
-										<p class="schemes">{{fund.fund_name}}<span class="money-value">
+										<p class="schemes" show-factsheet="{{fund.id}}">{{fund.fund_name}}<span class="money-value">
 											<span class="gain types">
 											<span class="currency">&#8377;</span><span class="percentage">{{fund.gain | removeNegative}}</span></span>
 										</span></p>

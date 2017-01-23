@@ -31,7 +31,7 @@
 		    })
 		    .when('/schemeFactsheet', {
 				title : 'Scheme Factsheet',
-				subHeader : 'GO BACK TO RECOMMENDED SCHEMES',
+				subHeader : 'GO BACK',
 				redirectUrl : '/recommendedSchemes',
 		        templateUrl: 'modules/smartportfolio/views/schemeFactsheet.html',
 		        controller: 'recommendedController'

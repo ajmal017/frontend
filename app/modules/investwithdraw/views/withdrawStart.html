@@ -30,7 +30,7 @@
 								<div class="tbody">
 									<div class="tr" ng-repeat="schemes in eachRecommend.value">
 										<div class="td">
-											<p class="schemes">{{schemes.name}}</p>
+											<p class="schemes" show-factsheet="{{schemes.fund_id}}">{{schemes.name}}</p>
 										</div>
 										<div class="td">
 											<p>{{schemes.fund_category}}</p>
@@ -82,7 +82,7 @@
     </div>
 </div>
 <div class="fin-btn-group addMargin investStep1">
-    <button click-redirect="/educationStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>CONTINUE PLANING</button>
+    <button click-redirect="/planInvest" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>CONTINUE PLANING</button>
     <!-- <button data-toggle="modal" data-target="#withdrawModal" class="fin-app-btn fin-orange">WITHDRAW NOW</button> -->
     <button ng-click="proceedWithdraw(withdraw)" class="fin-app-btn fin-orange" ng-disabled="!termsChecked">WITHDRAW NOW</button>
 
