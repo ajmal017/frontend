@@ -118,7 +118,10 @@
 		    	$scope.getAllFundsForGoal($rootScope.currentSchemeType);	
 		    }
 		    
-
+		  	if($location.$$path == '/schemeFactsheet'){
+		  		$rootScope.redirectURL = $rootScope.factSheetRedirectUrl;
+		  	}
+		  	
 		    $scope.addToRecommended = function(currentObj, index) {
 		    	
 		    	if($scope.schemeList['scheme'].length >= $scope.schemeListNumber){

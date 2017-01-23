@@ -1278,6 +1278,7 @@
 					    		busyIndicator.hide();
 					    		if('success' in data){
 					    			$rootScope.histPerformanceData = dataPerformance.success;
+					    			$rootScope.factSheetRedirectUrl = $location.$$path;
 					    			$location.path('/schemeFactsheet');
 					    		}
 					    		else {
