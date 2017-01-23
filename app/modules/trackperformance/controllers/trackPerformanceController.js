@@ -11,14 +11,41 @@
 			$scope.trackerDetails = '';
 			$scope.resultSet = '';
 			$scope.setChartValue = $rootScope.trackPerTab || 'SCHEME';
-		    $scope.showFinancialGoalModal = function (modelObj) {
+
+
+			$scope.getGoalImg = function(goalType) {
+				//console.log('goalType',goalType.goal_type);
+				var goal = goalType.goal_type;
+				var goalImg = ''
+				switch(goal){
+					case 'retirement' : goalImg = 'retirement.png';
+					break;
+					case 'tax' : goalImg = 'saveTax.png';
+					break;
+					case 'invest' : goalImg = 'planInvestMent.png';
+					break;
+					case 'vacation' : goalImg = 'vacation.png';
+					break;
+					case 'property' : goalImg = 'property.png';
+					break;
+					case 'education' : goalImg = 'education.png';
+					break;
+					case 'automobile' : goalImg = 'automobile.png';
+					break;
+					case 'wedding' : goalImg = 'wedding.png';
+					break;
+				}
+				return goalImg;
+			}
+
+			$scope.showFinancialGoalModal = function (modelObj) {
 		    	$scope.finGoalsModal = modelObj;
+		    	$scope.finGoalsModal.goalImgModal =  $scope.getGoalImg(modelObj);
 		    	$scope.finGoalsModal.schemes = $scope.allSchemes;
 				$('#finGoalStatusModal').modal('show');
 				console.log('Modal',$scope.finGoalsModal);
 
 			}
-
 		 //    $scope.resultPercentage = [
 			// 	['Equity',   30],
 			// 	['Debt',     20],
@@ -164,7 +191,14 @@
 				});
 			}
 
-			
+			$scope.getWidth = function(finGoalsModal) {
+				
+				if(finGoalsModal){
+					return {
+						"width":finGoalsModal.progress + "%"
+					};
+				}
+			}
 
 		    
 			$scope.portfolioDetails();

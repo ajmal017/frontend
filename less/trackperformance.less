@@ -204,6 +204,9 @@ section{
 						&.content{
 							.GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@marinerapprox,normal);
 							.PIXEL2EM(30);
+							@media @below768{
+								.PIXEL2EM(20);
+							}
 						}
 					}
 				}
@@ -213,6 +216,9 @@ section{
 						&.content{
 							font-family:'PlayfairDisplay-Regular';
 							.PIXEL2EM(24);
+							@media @below768{
+								.PIXEL2EM(18);
+							}
 						}
 					}
 				}

@@ -439,7 +439,7 @@
 		            });
 
 		            ctrl.$parsers.unshift(function (viewValue) {
-		                console.log(viewValue);
+		              
 		                if(viewValue){
 		                    var plainNumber = viewValue.replace(/[^\d|\-+|\.+]/g, '');
 		                    elem.val($filter('number')(plainNumber));

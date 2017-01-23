@@ -1878,6 +1878,7 @@ span.highlight {
     -webkit-border-radius: 26px;
        -moz-border-radius: 26px;
             border-radius: 26px;
+    top: 60%;
   }
 }
 .login-wrapper .login-header .cloud1,
@@ -3050,7 +3051,7 @@ span.error-text {
 @media only screen and (max-width:768px) {
   .swiper-container.customSwiper .typeSwiper {
     left: 0%;
-    top: 6%;
+    top: 32px;
     width: 100% !important;
   }
 }
@@ -3366,7 +3367,7 @@ span.error-text {
 }
 @media only screen and (max-width:768px) {
   .swiper-container.customSwiper .swiper-content {
-    padding-top: 50% !important;
+    padding-top: 64% !important;
     margin-bottom: 12%;
     float: left;
     width: 100%;
@@ -3553,7 +3554,7 @@ span.error-text {
 }
 @media only screen and (max-width:768px) {
   .swiper-container.customSwiper .swiper-content.content-1 {
-    top: 32%;
+    top: 55%;
     -webkit-transform: translateY(-48%);
        -moz-transform: translateY(-48%);
         -ms-transform: translateY(-48%);
@@ -6487,7 +6488,7 @@ section.recommended .recommended-table-section .indicator-cover .typeSwiper .ima
 }
 @media only screen and (max-width:768px) {
   section.recommended .recommended-table-section .indicator-cover .typeSwiper .image-backdrop {
-    width: 171px;
+    width: 98px;
     margin: 0px auto;
     padding-top: 12px;
   }
@@ -7417,12 +7418,22 @@ section.trackPerformance .chart-cover.finance-cover .finance-desc span.content {
   font-weight: normal;
   font-size: 1.875em;
 }
+@media only screen and (max-width:768px) {
+  section.trackPerformance .chart-cover.finance-cover .finance-desc span.content {
+    font-size: 1.25em;
+  }
+}
 section.trackPerformance .chart-cover.finance-cover .target-amount {
   line-height: 21px;
 }
 section.trackPerformance .chart-cover.finance-cover .target-amount span.content {
   font-family: 'PlayfairDisplay-Regular';
   font-size: 1.5em;
+}
+@media only screen and (max-width:768px) {
+  section.trackPerformance .chart-cover.finance-cover .target-amount span.content {
+    font-size: 1.125em;
+  }
 }
 section.trackPerformance .chart-cover.finance-cover .progress {
   margin-top: 21px;
