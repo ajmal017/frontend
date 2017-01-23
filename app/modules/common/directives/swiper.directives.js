@@ -65,7 +65,8 @@
         						 if(mainSwiperHeight < height){
         						 	$(activeSlide).css('height', applyHeight);
         						 }else{
-        						 	$('.'+scope.swiperName).css('height','450px');
+        						 	$('.'+scope.swiperName).css('height',applyHeight);
+        						 	$('.swiper-slide').css('height', applyHeight);
         						 }	
         						 if(!$rootScope.$$phase) $rootScope.$apply();
 									var div = $('<div/>', {
@@ -119,7 +120,9 @@
         						 if(mainSwiperHeight < height){
         						 	$(activeSlide).css('height', applyHeight);
         						 }else{
-        						 	$('.'+scope.swiperName).css('height','450px');
+        						 	$('.'+scope.swiperName).css('height',applyHeight);
+        						 	$('.swiper-slide').css('height', applyHeight);
+
         						 }
 
   								$('.'+scope.swiperName+' .dot').removeClass('active');
