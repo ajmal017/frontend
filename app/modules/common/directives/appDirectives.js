@@ -1143,9 +1143,7 @@
 				            maxLength: 10,
 				            debug: true,
 				            videoMimeType:'video/mp4',
-				            maxLength: 60,
-				        }
-				    }
+				            maxLength: 60}}
 				});
 				player.on('deviceError', function(){
 				    console.log('device error:', player.deviceErrorCode);

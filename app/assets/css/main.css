@@ -1953,6 +1953,7 @@ span.highlight {
   font-weight: normal;
   font-size: 1em;
   top: -72%;
+  left: 0;
 }
 .login-wrapper .login-form .form-group input + label {
   position: absolute;
@@ -3267,6 +3268,9 @@ span.error-text {
 .swiper-container.customSwiper.property .typeSwiper {
   width: 122px;
 }
+.swiper-container.customSwiper.property .swiper-slide .fin-btn-white {
+  right: -67% !important;
+}
 .swiper-container.customSwiper.automobile .typeSwiper,
 .swiper-container.customSwiper.wedding .typeSwiper,
 .swiper-container.customSwiper.jewellery .typeSwiper,
@@ -4177,6 +4181,9 @@ section.dashboard .goals-outer-cover h4 {
   section.dashboard .goals-outer-cover {
     width: 100%;
   }
+}
+section.dashboard .goals-outer-cover .goal_number {
+  font-size: 1.5em;
 }
 section.dashboard .goals-cover {
   cursor: pointer;
