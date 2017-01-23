@@ -3380,7 +3380,7 @@ span.error-text {
   color: #247abc;
 }
 .swiper-container.customSwiper .swiper-content p .swiper-input.age {
-  width: 4%!important;
+  /*width:4%!important;*/
   margin-left: 5px;
   margin-right: 5px;
 }
@@ -5402,6 +5402,12 @@ input.datepicker::placeholder {
   width: 100%;
   float: left;
 }
+@media only screen and (max-width:768px) {
+  .customPanel.panel-group {
+    max-width: 314px;
+    overflow-x: scroll;
+  }
+}
 .customPanel.panel-group .panel {
   background: transparent;
 }
@@ -5412,6 +5418,11 @@ input.datepicker::placeholder {
   width: 100%;
   float: left;
   border: none;
+}
+@media only screen and (max-width:768px) {
+  .customPanel .panel {
+    width: 500px;
+  }
 }
 .customPanel .panel-heading {
   width: 100%;
@@ -7429,6 +7440,12 @@ section.trackPerformance .chart-cover.scheme-pie .scheme-chart p span.nextline {
 section.trackPerformance .chart-cover.scheme-pie .customPanel {
   padding-top: 40px;
 }
+@media only screen and (max-width:768px) {
+  section.trackPerformance .chart-cover.scheme-pie .customPanel {
+    max-width: 300px;
+    overflow-x: scroll;
+  }
+}
 section.trackPerformance .chart-cover.scheme-pie .trackPerformanceLegends {
   margin-top: 50%;
   float: left;
@@ -7516,6 +7533,11 @@ section.trackPerformance .chart-main-tabs li a {
 #finGoalStatusModal .modal-dialog {
   width: 60%;
   top: 10%;
+}
+@media only screen and (max-width:768px) {
+  #finGoalStatusModal .modal-dialog {
+    width: 100%;
+  }
 }
 #finGoalStatusModal .modal-dialog .modal-content {
   float: none;

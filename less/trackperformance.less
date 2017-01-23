@@ -294,6 +294,10 @@ section{
 				}
 				.customPanel{
 					padding-top:40px;
+					@media @below768{
+						max-width: 300px;
+    					overflow-x: scroll;
+					}
 				}
 				.trackPerformanceLegends{
 					margin-top: 50%;
@@ -392,6 +396,9 @@ section{
 	.modal-dialog{
 		width:60%;
 		top: 10%;
+		@media @below768{
+			width: 100%;
+		}
 	.modal-content{
 		float:none;
 		.modal-wrapper{
