@@ -22,6 +22,8 @@
 			$scope.startGoalAdd = function(currentGoal) {
 				$rootScope.currentGoal = currentGoal;
 				var goalRedirect = '';
+				$rootScope.currentGoal = currentGoal;
+				sessionStorage.setItem('currentGoal', $rootScope.currentGoal);
 				if(currentGoal == 'invest') {
 					goalRedirect = 'quickInvestStart';
 				} else if(currentGoal == 'tax') {

@@ -513,6 +513,10 @@ input{
 	&.panel-group{
 		width:100%;
 		float:left;
+		@media @below768{
+			max-width: 314px;
+			overflow-x: scroll;
+		}
 		.panel{
 			background: transparent;
 			+ .panel{
@@ -524,6 +528,9 @@ input{
 		width:100%;
 		float:left;
 		border:none;
+		@media @below768{
+			width: 500px;
+		}
 	}
 	.panel-heading{
 		width:100%;

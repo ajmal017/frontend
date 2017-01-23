@@ -87,7 +87,7 @@
 				                    	swiper.slideTo($rootScope.slideTobeChanged ,0,true);
 				                    	$rootScope.slideTobeChanged = undefined;
 	                				}
-	                			},1500);				
+	                			},500);				
                 			},
 			                onSlideChangeEnd: function(swiper){
 			                	$rootScope.lastSlide = true; 
