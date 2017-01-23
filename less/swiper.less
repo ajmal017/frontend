@@ -18,9 +18,9 @@
         @media @below768{
           -webkit-box-orient: horizontal;
           flex-direction: row;
-          left: 50%;
+          left: 40%;
           top: 0;
-          width: 20%;        }
+          width: 16%;        }
     }
     .dot{
       width:4px;
@@ -275,6 +275,7 @@
         padding-bottom:12%;
         padding-top:6%;
         transition:all 0.2s ease;
+        min-height: 450px;
         @media @below768{
           padding-top: 50% !important;
           margin-bottom: 12%;
@@ -462,6 +463,11 @@
           .incomeSource{
             @media @below768{
               height: 420px;
+            }
+          }
+          &.content-risk{
+            @media @below768{
+              top:50%;
             }
           }
         } 
@@ -676,7 +682,9 @@
           margin-bottom: 3%;
           margin-top:0px;
         }  
-
+        &.hasCheckbox{
+          min-height: 580px;
+        }
       }   
       .fin-btn-group{
         &.gotoPages{
@@ -722,6 +730,7 @@
   overflow:hidden;
   transition:opacity 0.2s ease;
   visibility: hidden;
+  min-height: 450px;
 }
 .swiper-slide-prev,
 .swiper-slide-next{
