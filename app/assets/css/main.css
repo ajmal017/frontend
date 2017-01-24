@@ -979,6 +979,12 @@ section.introduction.about-app a {
 .fin-app-btn.fin-signIn .sign-img + span {
   margin-left: 15%;
 }
+@media only screen and (max-width:768px) {
+  .fin-app-btn.fin-signIn .sign-img {
+    width: 15px;
+    height: 15px;
+  }
+}
 .fin-app-btn.full-width {
   width: 100%;
 }
@@ -1175,6 +1181,9 @@ button[disabled]:hover {
   -webkit-border-radius: 50%;
      -moz-border-radius: 50%;
           border-radius: 50%;
+}
+.xScrollDiv {
+  overflow-x: scroll;
 }
 .fadeIn {
   -webkit-animation-name: fadeIn;
@@ -1422,6 +1431,10 @@ span.highlight {
 }
 .paddingTop1 {
   padding-top: 1%;
+}
+.no-paddingLR {
+  padding-left: 0;
+  padding-right: 0;
 }
 @-webkit-keyframes makeDropdown {
   /*0%{
@@ -5930,9 +5943,19 @@ section.registerInvestor .registerInvestorConfirm {
   width: 17%;
   float: left;
 }
+@media only screen and (max-width:768px) {
+  .table-outer-cover.compareTable .thead .th:nth-child(4) {
+    width: 22%;
+  }
+}
 .table-outer-cover.compareTable .thead .th:nth-child(5) {
   width: 25%;
   float: left;
+}
+@media only screen and (max-width:768px) {
+  .table-outer-cover.compareTable .thead .th:nth-child(5) {
+    width: 18%;
+  }
 }
 .table-outer-cover.compareTable .tbody .tr {
   padding-bottom: 0px;
@@ -5958,9 +5981,19 @@ section.registerInvestor .registerInvestorConfirm {
   width: 17%;
   float: left;
 }
+@media only screen and (max-width:768px) {
+  .table-outer-cover.compareTable .tbody .td:nth-child(4) {
+    width: 24%;
+  }
+}
 .table-outer-cover.compareTable .tbody .td:nth-child(5) {
   width: 25%;
   float: left;
+}
+@media only screen and (max-width:768px) {
+  .table-outer-cover.compareTable .tbody .td:nth-child(5) {
+    width: 8%;
+  }
 }
 .table-outer-cover.compareTable .tbody .td .delete-cover {
   cursor: pointer;
@@ -5994,6 +6027,12 @@ section.registerInvestor .registerInvestorConfirm {
 .table-outer-cover.compareTable .tbody .td .delete-cover img {
   width: 45%;
 }
+@media only screen and (max-width:768px) {
+  .table-outer-cover.compareTable .tbody .td .delete-cover {
+    height: 20px;
+    width: 20px;
+  }
+}
 .table-outer-cover.compareTable .tbody .td .add-cover {
   cursor: pointer;
   position: relative;
@@ -6026,10 +6065,22 @@ section.registerInvestor .registerInvestorConfirm {
 .table-outer-cover.compareTable .tbody .td .add-cover img {
   width: 45%;
 }
+@media only screen and (max-width:768px) {
+  .table-outer-cover.compareTable .tbody .td .add-cover {
+    height: 20px;
+    width: 20px;
+  }
+}
 .table-outer-cover.compareTable .tbody .td input[type="checkbox"] + label span {
   -webkit-border-radius: 12px;
      -moz-border-radius: 12px;
           border-radius: 12px;
+}
+@media only screen and (max-width:768px) {
+  .table-outer-cover.compareTable .tbody .td input[type="checkbox"] + label span {
+    height: 20px;
+    width: 20px;
+  }
 }
 .table-outer-cover.compareTable .tfooter {
   float: left;
@@ -6045,6 +6096,11 @@ section.registerInvestor .registerInvestorConfirm {
 }
 .table-outer-cover.investNowTable {
   width: 100%;
+}
+@media only screen and (max-width:768px) {
+  .table-outer-cover.investNowTable {
+    min-width: 400px;
+  }
 }
 .table-outer-cover.investNowTable .seperate-cover {
   width: 100%;
@@ -7057,6 +7113,11 @@ section.investStep1 .pie-cover .highcharts-container .highcharts-title span.next
 section.investStep1 .pie-cover .placeholder.bottom {
   margin-top: 10px;
   margin-left: 48px;
+}
+@media only screen and (max-width:768px) {
+  section.investStep1 .pie-cover .placeholder.bottom {
+    margin-left: 0;
+  }
 }
 section.investStep1 .pie-cover .pie-chart-legend .label-cover .content {
   font-family: 'Roboto-Regular';

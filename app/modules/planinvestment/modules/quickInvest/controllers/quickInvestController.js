@@ -127,7 +127,7 @@
 
 						$scope.quickinvest['assetAllocation'] = assetAllocationData.assetAllocation;
 						$scope.modelVal['assetAllocation'] = assetAllocationData.assetAllocation;
-
+						$scope.modelVal['assetAllocation']['equityInitial'] = assetAllocationData.assetAllocation['equity'];
 					    self.setModelVal(assetAllocationData.assetAllocation, $scope.modelVal.A2);
 						self.getGoalGraphDetails();
 						
@@ -141,6 +141,8 @@
 					var assetAllocationData = assetAllocationService.computeAssetAllocation($scope.quickinvest['assetAllocationCategory'], $scope.modelVal.A2 || 0, $scope.modelVal.A4 || 0);
 					$scope.quickinvest['assetAllocation'] = assetAllocationData.assetAllocation;
 					$scope.modelVal['assetAllocation'] = assetAllocationData.assetAllocation;
+					$scope.modelVal['assetAllocation']['equityInitial'] = assetAllocationData.assetAllocation['equity'];
+
 					// self.setModelValLumpsum(assetAllocationData);
 				    self.setModelVal(assetAllocationData.assetAllocation, $scope.modelVal.A4);
 					self.getGoalGraphDetails();

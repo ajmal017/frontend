@@ -41,7 +41,7 @@
 										<div class="td">
 											<p>
 												<div class="checkbox-cover text-center">
-													<input type="checkbox" id="{{recommendedSchemes.goal_name}}{{eachRecommend.key}}{{schemes.fund_id}}{{recommendedSchemes.goal_id}}" name="type" value="{{schemes.fund_id}}" ng-model="withdraw.all_units[recommendedSchemes.goal_id][schemes.fund_id]" ng-change="withdraw.all_units[recommendedSchemes.goal_id][schemes.fund_id] == true? withdraw.amount[recommendedSchemes.goal_id][schemes.fund_id] = schemes.return_value : withdraw.amount[recommendedSchemes.goal_id][schemes.fund_id] = '0';validateRedeem(schemes, withdraw.amount[recommendedSchemes.goal_id][schemes.fund_id], recommendedSchemes)">
+													<input type="checkbox" ng-disabled="!schemes.is_enabled" id="{{recommendedSchemes.goal_name}}{{eachRecommend.key}}{{schemes.fund_id}}{{recommendedSchemes.goal_id}}" name="type" value="{{schemes.fund_id}}" ng-model="withdraw.all_units[recommendedSchemes.goal_id][schemes.fund_id]" ng-change="withdraw.all_units[recommendedSchemes.goal_id][schemes.fund_id] == true? withdraw.amount[recommendedSchemes.goal_id][schemes.fund_id] = schemes.return_value : withdraw.amount[recommendedSchemes.goal_id][schemes.fund_id] = '0';validateRedeem(schemes, withdraw.amount[recommendedSchemes.goal_id][schemes.fund_id], recommendedSchemes)">
 													<label for="{{recommendedSchemes.goal_name}}{{eachRecommend.key}}{{schemes.fund_id}}{{recommendedSchemes.goal_id}}"><span></span></label>
 												</div>
 											</p>
@@ -49,12 +49,12 @@
 										<div class="td">
 											<div class="input-cover">
 												<span class="currency">&#8377;</span>
-												<input format="number" ng-model="withdraw.amount[recommendedSchemes.goal_id][schemes.fund_id]" ng-change="validateRedeem(schemes, withdraw.amount[recommendedSchemes.goal_id][schemes.fund_id], recommendedSchemes)" ng-init="withdraw.amount[recommendedSchemes.goal_id][schemes.fund_id] = '0'" type="text" name="" ng-disabled="withdraw.all_units[recommendedSchemes.goal_id][schemes.fund_id]">
+												<input format="number" ng-model="withdraw.amount[recommendedSchemes.goal_id][schemes.fund_id]" ng-change="validateRedeem(schemes, withdraw.amount[recommendedSchemes.goal_id][schemes.fund_id], recommendedSchemes)" ng-init="withdraw.amount[recommendedSchemes.goal_id][schemes.fund_id] = '0'" type="text" name="" ng-disabled="withdraw.all_units[recommendedSchemes.goal_id][schemes.fund_id] || !schemes.is_enabled">
 											</div>
 										</div>
 									</div>
 								</div>
-								
+								<span class="alert alert-dismissable col-xs-12 fadeOut text-right" ng-if="eachRecommend.key == 'elss'">Note: ELSS schemes have a minimum lock-in period of 3 years.</span>
 							</div>
 						</div>
 						<div class="tfooter">
@@ -70,14 +70,13 @@
 						</div>
 						<span class="alert alert-danger alert-dismissable col-xs-5 fadeOut text-center" ng-bind="showErrorMessage[recommendedSchemes.goal_id]" ng-if="showErrorMessage[recommendedSchemes.goal_id]"></span>
 
-
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 	<p class="result-total" ng-show="$root.noWithdraw">You don't have suffecient funds to withdraw.</p>
-	<p class="result-total">You will be recieving <span class="highlight"><span class="currency">&#8377;</span><span class="amount">0</span></span> as above.</p>
+	<p class="result-total">You will be recieving <span class="highlight"><span class="currency">&#8377;</span><span class="amount" ng-bind="getTotalWithdrawAmt(withdraw)"></span></span> as above.</p>
 </section>
 <div class="termsConditions">
 	<div class="checkbox-cover">

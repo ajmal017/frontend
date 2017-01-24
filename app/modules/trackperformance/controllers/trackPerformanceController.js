@@ -42,6 +42,25 @@
 		    	$scope.finGoalsModal = modelObj;
 		    	$scope.finGoalsModal.goalImgModal =  $scope.getGoalImg(modelObj);
 		    	$scope.finGoalsModal.schemes = $scope.allSchemes;
+		    	$scope.finGoalsModal.sip = getSip(modelObj);
+		    	$scope.finGoalsModal.lumpsum = getLumpsum(modelObj);
+
+		    	function getSip(modelObj){
+		    		if(modelObj.goal_type == 'retirement') {
+		    			return modelObj.goal_answers.monthly_investment
+		    		} else {
+		    			return modelObj.goal_answers.sip;
+		    		}
+		    	}
+
+		    	function getLumpsum(modelObj){
+		    		if(modelObj.goal_type == 'tax') {
+		    			return modelObj.goal_answers.amount_invested;
+		    		} else {
+		    			return modelObj.goal_answers.lumpsum;
+		    		}
+		    	}
+
 				$('#finGoalStatusModal').modal('show');
 				console.log('Modal',$scope.finGoalsModal);
 
@@ -206,6 +225,24 @@
 			$scope.portfolioTrackerDetails();
 			// $scope.leaderBoardDetails();
 			$scope.transactionHistoryDetails();
+
+			$scope.calculateTotalSIP = function(SIPModel) {
+				
+				var SIPTotal = 0;
+				SIPModel.forEach(function(data) {
+					SIPTotal = SIPTotal + data.agreed_sip;
+				});
+				return SIPTotal;
+			}
+
+			$scope.calcaulateLumpsum = function(lumpsum) {
+				
+				var lumpsumTotal = 0;
+				lumpsum.forEach(function(data){
+					lumpsumTotal = lumpsumTotal + data.agreed_lumpsum;
+				});
+				return lumpsumTotal;
+			}
 			
 		}
 })();

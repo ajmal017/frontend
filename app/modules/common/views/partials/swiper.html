@@ -189,7 +189,7 @@
                 <h2>I have invested in the following in the past <span class="nextline placeholder">(select all that are relevant)</span>  </h2>
                 <div class="radio-cover">
                     <div class="checkbox-cover" ng-repeat="investments in past_investments">
-                        <input type="checkbox" id="{{investments.value}}" name="selectedInvestments[]" value="{{investments.value}}" ng-model="investments.selected" ng-change="changeInvestments()"><label for="{{investments.value}}"><span></span>{{investments.name}}</label>
+                        <input type="checkbox" id="{{investments.value}}" name="selectedInvestments[]" value="{{investments.value}}" ng-model="investments.selected" ng-change="changeInvestments()"><label for="{{investments.value}}"><span class="col-xs-2"></span>{{investments.name}}</label>
                     </div>
                     <hr /> 
                     <div class="checkbox-cover">
@@ -200,14 +200,16 @@
             </form>
         </div>
         <div class="swiper-slide">
-            <div class="swiper-content col-xs-12">
+            <div class="swiper-content">
                 <form name="riskAssesment1Form3" novalidate>
                 <h2>My preference while investing would <span class="nextline">be to</span></h2>
+                <div class="col-lg-4 col-xs-12 no-padding">
                 <div class="radio-cover">
-                    <input type="radio" required id="option2Type1" name="option2" ng-model="modelVal.A9" value="op1"><label for="option2Type1"><span class="col-xs-2"></span>Take no risk, get fixed returns<div class = "nextline col-xs-10 no-padding">(Guaranteed return of 7% per annum)</div></label>
-                    <input type="radio" required id="option2Type2" name="option2" ng-model="modelVal.A9" value="op2"><label for="option2Type2"><span class="col-xs-2"></span>Take low risk, get steady returns<div class = "nextline col-xs-10 no-padding">(Likely return of 10% with a chance of 5% loss)</div></label>
-                    <input type="radio" required id="option2Type3" name="option2" ng-model="modelVal.A9" value="op3"><label for="option2Type3"><span class="col-xs-2"></span>Take some risk, get moderate to high returns<div class = "nextline col-xs-10 no-padding">(Likely return of 15% with a chance of 10% loss)</div></label>
-                    <input type="radio" required id="option2Type4" name="option2" ng-model="modelVal.A9" value="op4"><label for="option2Type4"><span class="col-xs-2"></span>Take high risks, maximize returns<div class = "nextline col-xs-10 no-padding">(Likely return of 25% with a chance of 20% loss)</div></label>
+                    <input type="radio" required id="option2Type1" name="option2" ng-model="modelVal.A9" value="op1"><label for="option2Type1"><div class="col-xs-2 no-padding"><span></span></div>Take no risk, get fixed returns<div class = "nextline col-xs-10 no-padding">(Guaranteed return of 7% per annum)</div></label>
+                    <input type="radio" required id="option2Type2" name="option2" ng-model="modelVal.A9" value="op2"><label for="option2Type2"><div class="col-xs-2 no-padding"><span></span></div>Take low risk, get steady returns<div class = "nextline col-xs-10 no-padding">(Likely return of 10% with a chance of 5% loss)</div></label>
+                    <input type="radio" required id="option2Type3" name="option2" ng-model="modelVal.A9" value="op3"><label for="option2Type3"><div class="col-xs-2 no-padding"><span></span></div><div class="col-xs-10 no-padding"> Take some risk, get moderate to high returns<div class = "nextline">(Likely return of 15% with a chance of 10% loss)</div></div></label>
+                    <input type="radio" required id="option2Type4" name="option2" ng-model="modelVal.A9" value="op4"><label for="option2Type4"><div class="col-xs-2 no-padding"><span></span></div>Take high risks, maximize returns<div class = "nextline col-xs-10 no-padding">(Likely return of 25% with a chance of 20% loss)</div></label>
+                </div>
                 </div>
                 </form>
             </div>
@@ -721,7 +723,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="guage clearfix" one-time-equity="{{modelVal.assetAllocation.equityInitial}}" calculate-guage="{{modelVal.assetAllocation.equity}}">
+                                <div class="guage clearfix" one-time-equity={{modelVal.assetAllocation.equityInitial}} calculate-guage={{modelVal.assetAllocation.equity}}>
                                     
                                     <div class="orbit">
                                         <div class="indicator"></div>

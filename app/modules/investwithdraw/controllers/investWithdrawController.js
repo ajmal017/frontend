@@ -8,7 +8,7 @@
 		function investWithdrawController($scope,$rootScope,$location,$filter,$http,investWithdrawService, busyIndicator, ngDialog, $interpolate, $routeParams){
 
 			$scope.withdraw = {};
-			$scope.withdrawTotal = 0;
+			$rootScope.totalAmt = 0;
 			$scope.withdrawError = 0;
 			$scope.goToInvest = function() {
 				$rootScope.legends = [];
@@ -309,7 +309,7 @@
 					}
 				}
 				
-				$scope.withdrawTotal = +$scope.withdrawTotal + +withdrawTotal;
+				$rootScope.totalAmt = $rootScope.totalAmt + withdrawTotal;
 				return withdrawTotal;
 				
 				// amt['amount'].forEach(function(value) {
@@ -318,7 +318,7 @@
 			}
 
 			$scope.validateRedeem = function(schemeObj, amount, goalId) {
-				console.log('schemeObj',schemeObj, 'amount',amount, 'goalId',goalId);
+				// console.log('schemeObj',schemeObj, 'amount',amount, 'goalId',goalId);
 				
 
 				var current_goalId = goalId['goal_id'];
@@ -344,5 +344,16 @@
 
 				return $scope.showErrorMessage[current_goalId];
 			}
+
+			// $scope.getTotalWithdrawAmt = function(withdrawObj) {
+			
+			// 	var totalWithdraw = 0
+			// 	for(var goal in withdrawObj.amount) {
+			// 		for(var each_amt in data) {
+			// 			totalWithdraw = +totalWithdraw + +data[each_amt];
+			// 		}
+			// 	}
+			// 	return totalWithdraw;
+			// }
 		}
 })();

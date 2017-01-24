@@ -151,10 +151,16 @@
 				&:nth-child(4){
 					width:17%;
 					float:left;
+					@media @below768{
+						width: 22%;
+					}
 				}
 				&:nth-child(5){
 					width:25%;
 					float:left;
+					@media @below768{
+						width: 18%;
+					}
 				}
 			}
 		}
@@ -181,10 +187,16 @@
 				&:nth-child(4){
 					width:17%;
 					float:left;
+					@media @below768{
+						width:24%;
+					}
 				}
 				&:nth-child(5){
 					width:25%;
 					float:left;
+					@media @below768{
+						width: 8%;
+					}
 				}
 				.delete-cover{
 					cursor:pointer;
@@ -207,6 +219,10 @@
   					}
   					img{
   						width:45%;
+  					}
+  					@media @below768{
+  						height: 20px;
+  						width:20px;
   					}
 				}
 				.add-cover{
@@ -231,11 +247,19 @@
   					img{
   						width:45%;
   					}
+  					@media @below768{
+  						height: 20px;
+  						width:20px;
+  					}
 				}
 				input[type="checkbox"]{
 					+ label{
 						span{
 							border-radius:12px;
+							@media @below768{
+								height: 20px;
+								width: 20px;
+							}
 						}
 					}
 				}
@@ -258,6 +282,10 @@
 	}
 	&.investNowTable{
 		width:100%;
+		@media @below768{
+			min-width: 400px;
+			
+		}
 		.seperate-cover{
 			width:100%;
 			float:left;

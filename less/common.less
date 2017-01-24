@@ -768,6 +768,10 @@ section{
 			+ span{
 				margin-left:15%;
 			}
+			@media @below768{
+				width:15px;
+				height:15px;
+			}
 		}
 	}
 	&.full-width{
@@ -866,7 +870,6 @@ button[disabled]{
 }
 .selectRisk_cover{
 	
-
     margin-bottom: 2%;
 	input[type="radio"],input[type="checkbox"] {
 	    display:none;
@@ -927,6 +930,9 @@ button[disabled]{
 			}
 		}
 	}
+}
+.xScrollDiv{
+	overflow-x: scroll;
 }
 .fadeIn{
   animation-name: fadeIn;
@@ -1128,6 +1134,10 @@ span.highlight{
 }
 .paddingTop1{
 	padding-top: 1%;
+}
+.no-paddingLR{
+	padding-left: 0;
+	padding-right: 0;
 }
 @keyframes makeDropdown{
 

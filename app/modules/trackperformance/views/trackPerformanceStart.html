@@ -346,17 +346,20 @@
 							<div class="tbody">
 								<div class="tr">
 									<div class="col-xs-3">
-										<p><span class="currency">&#8377;</span>{{finGoalsModal.goal_answers.lumpsum}}</p>
+										<p><span class="currency">&#8377;</span>{{finGoalsModal.lumpsum || 0}}</p>
 									</div>
 									<div class="col-xs-3">
-										<p><span class="currency">&#8377;</span>{{finGoalsModal.goal_answers.sip}}</p>
+										<p><span class="currency">&#8377;</span>{{finGoalsModal.sip || 0}}</p>
 									</div>
 									<div class="col-xs-2">
-										<p>{{finGoalsModal.goal_answers.term}} years</p>
+										<p>{{finGoalsModal.goal_answers.term || 'NA'}} years</p>
 									</div>
-									<div class="col-xs-4">
+									<div class="col-xs-4" ng-if="finGoalsModal.goal_type != 'tax'">
 										<span class="debt_percent">Debt {{finGoalsModal.goal_answers.allocation.debt}}%</span>
 										<span class="equity_percent">Equity {{finGoalsModal.goal_answers.allocation.equity}}%</span>
+									</div>
+									<div class="col-xs-4" ng-if="finGoalsModal.goal_type == 'tax'">
+										<span>ELSS {{finGoalsModal.goal_answers.allocation.elss}}%</span>
 									</div>
 								</div>
 							</div>
@@ -366,10 +369,10 @@
 			</div>
 			<div class="col-xs-12 taxPlanSchemeListTable" custom-scroll-bar>
 			<div class="panel-group customPanel" id="accordionModal" role="tablist" aria-multiselectable="true">
-  <div class="panel panel-default" ng-repeat="scheme in finGoalsModal.schemes" >
+  <div class="panel panel-default" ng-repeat="(key, scheme) in finGoalsModal.fund_details" ng-if="scheme.length > 0">
     <div class="panel-heading" role="tab">
     	<div class="panel-title">
-    		<p>{{scheme.name}} Schemes <span class="pull-right"><a role="button" data-toggle="collapse" data-parent="#accordionModal" href="javascript:void(0)" data-target="#collapseOneModal_{{scheme.name}}" aria-expanded="true" aria-controls="collapseOne">
+    		<p>{{key | capitalizeScheme}} Schemes <span class="pull-right"><a role="button" data-toggle="collapse" data-parent="#accordionModal" href="javascript:void(0)" data-target="#collapseOneModal_{{key}}" aria-expanded="true" aria-controls="collapseOne">
           EXPAND
         </a></span></p>
     	</div>
@@ -377,13 +380,14 @@
     		<div class="table-outer-cover panel-table">
 				<div class="thead">
 					<div class="tr">
+						
 						<div class="th">
-							<p>% Holding</p>
+							<p>SIP</p>
 						</div>
 						<div class="th">
-							<p>Invested Value</p>
+							<p>Lumpsum</p>
 						</div>
-						<div class="th">
+					<!-- 	<div class="th">
 							<p>Current Value</p>
 						</div>
 						<div class="th">
@@ -392,18 +396,19 @@
 								<span class="currency">&#8377;</span><span class="percentage">{{scheme.gain}}</span></p>
 								<p ng-if="!scheme.is_gain" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">{{scheme.gain}}</span> )</p>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 				<div class="tbody">
 					<div class="tr">
+						
 						<div class="td">
-							<p>{{scheme.holding_per}}%</p>
+							<p><span class="currency">&#8377;</span><span class="amount">{{calculateTotalSIP(scheme)}}</span></p>
 						</div>
 						<div class="td">
-							<p><span class="currency">&#8377;</span><span class="amount">{{scheme.invested}}</span></p>
+							<p><span class="currency">&#8377;</span><span class="amount">{{calcaulateLumpsum(scheme)}}</span></p>
 						</div>
-						<div class="td">
+<!-- 						<div class="td">
 							<div class="money-value">
 								<p>
 								<span class="currency">&#8377;</span><span class="amount">{{scheme.current_value}}</span></p>
@@ -416,39 +421,42 @@
 								<span class="percentage">{{scheme.gain_per}}%</span></p>
 								<p ng-if="!scheme.is_gain" class="loss types"><span class="percentage">({{scheme.gain_per}}%)</span></p>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
     	</div>
     </div>
-    <div id="collapseOneModal_{{scheme.name}}" accordian class="panel-collapse collapse" role="tabpanel">
-      <div class="panel-body" ng-repeat="fund in scheme.funds">
+    <div id="collapseOneModal_{{key}}" accordian class="panel-collapse collapse" role="tabpanel">
+      <div class="panel-body" ng-repeat="fund in scheme">
         <div class="table-outer-cover panel-table">
-				<p class="schemes">{{fund.fund_name}}<span class="money-value">
-					<span class="gain types">
-					<span class="currency">&#8377;</span><span class="percentage">{{fund.gain | removeNegative}}</span></span>
+				<p class="schemes">{{fund.scheme_name}}<span class="money-value">
+					<!-- <span class="gain types">
+					<span class="currency">&#8377;</span><span class="percentage">{{fund.gain | removeNegative}}</span></span> -->
 				</span></p>
 				<div class="tbody">
 					<div class="tr">
-						<div class="td">
+						<!-- <div class="td">
 							<p><span class="pie-circle" ng-style="{'background-color':'#047ac1'}"></span><span class="content">{{fund.fund_percentage}}%</span></p>
-						</div>
-						<div class="td">
-							<p><span class="currency">&#8377;</span><span class="amount">{{fund.invested_value}}</span></p>
-						</div>
+						</div> -->
+						
 						<div class="td">
 							<div class="money-value">
-								<p><span class="currency">&#8377;</span><span class="amount">{{fund.current_value}}</span></p>
+								<p><span class="currency">&#8377;</span><span class="amount">{{fund.agreed_sip}}</span></p>
 							</div>
 						</div>
 						<div class="td">
+							<div class="money-value">
+								<p><span class="currency">&#8377;</span><span class="amount">{{fund.agreed_lumpsum}}</span></p>
+							</div>
+						</div>
+						<!-- <div class="td">
 							<div class="money-value">
 								<p class="gain types" ng-if="fund.is_gain">
 								<span class="percentage">{{fund.return_percentage}}%</span></p>
 								<p  ng-if="!fund.is_gain" class="loss types">( <span class="percentage">{{fund.return_percentage}}%</span> )</p>
 							</div>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
