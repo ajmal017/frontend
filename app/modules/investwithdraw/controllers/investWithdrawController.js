@@ -8,6 +8,8 @@
 		function investWithdrawController($scope,$rootScope,$location,$filter,$http,investWithdrawService, busyIndicator, ngDialog, $interpolate, $routeParams){
 
 			$scope.withdraw = {};
+			$scope.withdrawTotal = 0;
+			$scope.withdrawError = 0;
 			$scope.goToInvest = function() {
 				$rootScope.legends = [];
 				var canInvest = true;
@@ -145,7 +147,7 @@
 								}
 							}
 
-							if(all_units[goalId]){
+							if(all_units){
 								for(var fundId in all_units[goalId]) {
 									if(all_units[goalId][fundId] == true){
 										var pushUnits = {
@@ -161,15 +163,15 @@
 					}
 					console.log('result Obj', resultObj);
 					
-					investWithdrawService.postWithdrawDetails(resultObj).then(function(data){
-						if('success' in data) { 
-							console.log('data success',data);
-							$location.path('/dashboard');
-						}
-						else {
+					// investWithdrawService.postWithdrawDetails(resultObj).then(function(data){
+					// 	if('success' in data) { 
+					// 		console.log('data success',data);
+					// 		$location.path('/dashboard');
+					// 	}
+					// 	else {
 
-						}
-					});
+					// 	}
+					// });
 				} else {
 					$scope.disableWithdraw = true;
 				}
@@ -284,6 +286,63 @@
 			if($location.$$path == '/investmentReturn') {
 				$scope.getPaymentConfirmed();
 			}
-			
+
+			$scope.getTotalCurrentValue = function(value) {
+				var returnValue = 0;
+				value['funds'].forEach(function(data) {
+					data['value'].forEach(function(eachFund) {
+						returnValue = +returnValue + +eachFund.return_value;
+					})
+				});
+				return returnValue;
+			}
+
+			$scope.getTotal = function(amt,goalId) {
+				
+				var withdrawTotal = 0;
+				if(amt['amount'] && goalId){
+					for(var keys in amt['amount'][goalId]){
+						if(amt['amount'][goalId].hasOwnProperty(keys)) {
+							
+							withdrawTotal = +withdrawTotal + +amt['amount'][goalId][keys];
+						}
+					}
+				}
+				
+				$scope.withdrawTotal = +$scope.withdrawTotal + +withdrawTotal;
+				return withdrawTotal;
+				
+				// amt['amount'].forEach(function(value) {
+				// 	console.log('value',value);
+				// })
+			}
+
+			$scope.validateRedeem = function(schemeObj, amount, goalId) {
+				console.log('schemeObj',schemeObj, 'amount',amount, 'goalId',goalId);
+				
+
+				var current_goalId = goalId['goal_id'];
+				var current_fundId = schemeObj['fund_id'];
+
+				$scope.showErrorMessage = {};
+				var each_goal_error = $scope.showErrorMessage[current_goalId];
+				
+					if((amount > 0 && schemeObj.minimum_withdrawal > 0) && (amount < schemeObj.minimum_withdrawal)) {
+					
+					$scope.showErrorMessage[current_goalId] = 'The amount cannot be less than minimum withdrawal amount';
+					
+					$scope.withdrawError = 1;
+					} else if((schemeObj.return_value-amount) < schemeObj.minimum_balance) {
+						$scope.showErrorMessage[current_goalId] = 'The balance after withdrawal cannot be below minimum balance';
+						$scope.withdrawError = 1;
+					} else {
+						$scope.showErrorMessage[current_goalId] = '';
+						$scope.withdrawError = 0;
+					}
+				
+				
+
+				return $scope.showErrorMessage[current_goalId];
+			}
 		}
 })();
