@@ -14,7 +14,7 @@
                 var resultObject = {};
                 var planConunt = 0;
                 for(var key in userFlags['user_answers']){
-                    if(Object.keys(userFlags['user_answers'][key]).length != 0){
+                    if(userFlags['user_answers'][key] != null && Object.keys(userFlags['user_answers'][key]).length != 0){
                         if(key != 'assess')
                         {
                             planConunt = planConunt + 1;                            

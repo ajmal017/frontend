@@ -42,6 +42,10 @@
 			this.scope.googleRegisterConfirmOtp = angular.bind( this, this.googleRegisterConfirmOtp );
 
 			$scope.verifyLogin = function(user){
+				if (user) {
+					user.is_web = true;
+				}
+				
 				authService.verifyLogin(user).then(function(data){
 					$scope.completeLogin(data);
 				});

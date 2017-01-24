@@ -41,6 +41,10 @@
 			this.scope.googleRegisterConfirmOtp = angular.bind( this, this.googleRegisterConfirmOtp );
 
 			$scope.userRegister = function(user){
+				if (user) {
+					user.is_web = true;
+				}
+
 				registerService.registerUser(user).then(function(data){
 					if('success' in data){
 						$scope.succesData = data['success'];
