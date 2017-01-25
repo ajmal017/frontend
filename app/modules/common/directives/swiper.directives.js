@@ -177,8 +177,8 @@
                     }
                     
                     scope.gotoFirst = function(param){
-                    	scope.modelVal = {};
-                    	scope.result = 0;
+                    	//scope.modelVal = {};
+                    	//scope.result = 0;
                     	setTimeout(function(){
                     		swiper.slideTo(param,0,true);
                     	},0)                    	

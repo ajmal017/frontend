@@ -4,8 +4,8 @@
 		.module('finApp.riskAssesment')
 		.controller('riskController',riskController);
 
-		riskController.$inject = ['$rootScope','$scope','riskService'];
-		function riskController($rootScope,$scope,riskService){
+		riskController.$inject = ['$rootScope','$scope','riskService','$location'];
+		function riskController($rootScope,$scope,riskService, $location){
 			$scope.resultObject = '0';
 			$scope.modelVal = {};
 			$scope.modelVal = riskService.getAssesmentObject();
@@ -17,10 +17,12 @@
 			}
 
 			$scope.appendFormValues = function(data){
+				if (typeof(data) !== "undefined" && data != undefined) {
 				var deleteObj = JSON.parse(data);
 				delete deleteObj.noneInvestments;
 				console.log('data',deleteObj);
 				riskService.setAssesmentObject(deleteObj);
+				}
 				var assesValues = riskService.getAssesmentObject();
 				riskService.getAssesmentResult(assesValues).then(function(data){
 					if('success' in data){
@@ -55,6 +57,7 @@
 						});
 					});
 				}
+				
 			}
 			
 			$scope.selection = [];
@@ -102,6 +105,16 @@
 			  		$scope.disableAppend = true;
 			  	}
 			  }
+
+				if(!jQuery.isEmptyObject($scope.modelVal) && $location.$$path == '/riskAssesment') {
+					if (!$rootScope.gotoFirstRiskAssessment) {
+						if ($scope.modelVal.A1 && $scope.modelVal.A4 && $scope.modelVal.A7 && $scope.modelVal.A8 && $scope.modelVal.A9 && 
+							$scope.modelVal.A15 && $scope.modelVal.A16 && $scope.modelVal.A17 && $scope.modelVal.A18 && $scope.modelVal.A19) {
+							$rootScope.slideTobeChanged = 6;
+						}
+							
+					}
+				}
 
 			  // console.log('investments selected', $scope.selection);
 		}
