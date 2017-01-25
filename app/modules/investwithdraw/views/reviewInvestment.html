@@ -81,10 +81,10 @@
 <div class="termsConditions">
 	<div class="checkbox-cover">
         <input type="checkbox" id="terms" name="type" ng-init="accepted_condn = false" ng-model="accepted_condn">
-        <label for="terms"><span></span>I have read and accepted the <b class="link">Scheme Offer Documents/KIMs</b>&<b class="link">Commision Structure</b></label>
+        <label for="terms"><span></span>I have read and accepted the <b class="link">Scheme Offer Documents/KIMs</b>&<b class="link">Commission Structure</b></label>
     </div>
 </div>
 <div class="fin-btn-group addMargin investStep1">
     <button click-redirect="/planInvest" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>CONTINUE PLANNING</button>
-    <button ng-click="payInvest(overall_total_sum)" class="fin-app-btn fin-orange" ng-disabled="accepted_condn == false">PAY & INVEST</button>
+    <button ng-click="payInvest(sipTotal+lumpSumTotal)" class="fin-app-btn fin-orange" ng-disabled="accepted_condn == false">PAY & INVEST</button>
 </div>
