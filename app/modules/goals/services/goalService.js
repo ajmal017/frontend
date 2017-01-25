@@ -196,6 +196,7 @@
 			        	}
 			        	
 			        	assetAllocation = assetAllocationTables[tableIndex]['table'][assetAllocationCategory];
+			        	assetAllocation = $.extend(true, {}, assetAllocation);
 			        	
 			        	if (tableIndex > 0) {
 			        		minSIP = assetAllocationTables[tableIndex - 1].sip_max + 1;
@@ -233,6 +234,7 @@
 					        	}
 
 					        	assetAllocation = assetAllocationTables[i]['table'][assetAllocationCategory];
+					        	assetAllocation = $.extend(true, {}, assetAllocation);
 					        	assetAllocation.elss = 0;
 					        	assetAllocation.liquid = 0;
 
