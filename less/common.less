@@ -824,6 +824,9 @@ button[disabled]{
           	float:left;
           	margin-bottom:2%;
           	opacity:0.7;
+          	@media @below768{
+          		opacity: 1;
+          	}
 	    	span{
 		    	display:inline-block;
 			    width:30px;
@@ -839,11 +842,24 @@ button[disabled]{
 			    background-repeat:no-repeat;
 			    transition:all 0.2s ease;
 			    cursor:pointer;
+			    /*@media @below768{
+			    	width: 20px;
+			    	height: 20px;
+			    }*/
+	    	}
+	    	i{
+	    		opacity: 0.6;
+	    		@media @below768{
+	    			opacity: 0.5;
+	    		}
 	    	}
 	    }
 	    &:checked{
 	    	+label{
 	    		opacity:1;
+	    		@media @below768{
+	    			font-weight: bold;
+	    		}
 	    		span{
 	    			background-color:#1a78b9;
 				    opacity:1;
@@ -1104,6 +1120,11 @@ span.highlight{
 }
 .addPadding-4Per{
 	padding-top:4%;	
+}
+.addPadding-4PerMob{
+	@media @below768{
+		padding-top: 4%;
+	}	
 }
 .addPaddingLeft-20Per{
 	padding-left:20%;
