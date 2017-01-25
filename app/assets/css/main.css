@@ -1058,6 +1058,14 @@ button[disabled]:hover {
   margin-bottom: 2%;
   opacity: 0.7;
 }
+@media only screen and (max-width:768px) {
+  .radio-cover input[type="radio"] + label,
+  .checkbox-cover input[type="radio"] + label,
+  .radio-cover input[type="checkbox"] + label,
+  .checkbox-cover input[type="checkbox"] + label {
+    opacity: 1;
+  }
+}
 .radio-cover input[type="radio"] + label span,
 .checkbox-cover input[type="radio"] + label span,
 .radio-cover input[type="checkbox"] + label span,
@@ -1082,12 +1090,38 @@ button[disabled]:hover {
   -moz-transition: all 0.2s ease;
   transition: all 0.2s ease;
   cursor: pointer;
+  /*@media @below768{
+			    	width: 20px;
+			    	height: 20px;
+			    }*/
+}
+.radio-cover input[type="radio"] + label i,
+.checkbox-cover input[type="radio"] + label i,
+.radio-cover input[type="checkbox"] + label i,
+.checkbox-cover input[type="checkbox"] + label i {
+  opacity: 0.6;
+}
+@media only screen and (max-width:768px) {
+  .radio-cover input[type="radio"] + label i,
+  .checkbox-cover input[type="radio"] + label i,
+  .radio-cover input[type="checkbox"] + label i,
+  .checkbox-cover input[type="checkbox"] + label i {
+    opacity: 0.5;
+  }
 }
 .radio-cover input[type="radio"]:checked + label,
 .checkbox-cover input[type="radio"]:checked + label,
 .radio-cover input[type="checkbox"]:checked + label,
 .checkbox-cover input[type="checkbox"]:checked + label {
   opacity: 1;
+}
+@media only screen and (max-width:768px) {
+  .radio-cover input[type="radio"]:checked + label,
+  .checkbox-cover input[type="radio"]:checked + label,
+  .radio-cover input[type="checkbox"]:checked + label,
+  .checkbox-cover input[type="checkbox"]:checked + label {
+    font-weight: bold;
+  }
 }
 .radio-cover input[type="radio"]:checked + label span,
 .checkbox-cover input[type="radio"]:checked + label span,
@@ -1401,6 +1435,11 @@ span.highlight {
 }
 .addPadding-4Per {
   padding-top: 4%;
+}
+@media only screen and (max-width:768px) {
+  .addPadding-4PerMob {
+    padding-top: 4%;
+  }
 }
 .addPaddingLeft-20Per {
   padding-left: 20%;
@@ -3390,7 +3429,7 @@ span.error-text {
   font-family: 'PlayfairDisplay-Regular';
   color: #101010;
   font-weight: normal;
-  font-size: 1.125em;
+  font-size: 0.875em;
   margin-bottom: 2%;
 }
 .swiper-container.customSwiper .swiper-content p .swiper-input {
@@ -3577,7 +3616,13 @@ span.error-text {
 }
 @media only screen and (max-width:768px) {
   .swiper-container.customSwiper .swiper-content.content-1 .incomeSource {
-    height: 420px;
+    height: 220px;
+  }
+  .swiper-container.customSwiper .swiper-content.content-1 .incomeSource .selectRisk_cover {
+    margin-left: 3%;
+  }
+  .swiper-container.customSwiper .swiper-content.content-1 .incomeSource .selectRisk_cover .risk-options {
+    font-size: 0.75em;
   }
 }
 @media only screen and (max-width:768px) {
@@ -5868,7 +5913,7 @@ section.registerInvestor .registerInvestorConfirm {
           box-shadow: 1px 5.33px 11px -4px #247abc;
 }
 .table-outer-cover.schemeTable {
-  width: 75%;
+  width: 92%;
 }
 @media only screen and (max-width:768px) {
   .table-outer-cover.schemeTable {
@@ -5908,7 +5953,7 @@ section.registerInvestor .registerInvestorConfirm {
   float: left;
 }
 .table-outer-cover.compareTable {
-  width: 75%;
+  width: 100%;
 }
 @media only screen and (max-width:768px) {
   .table-outer-cover.compareTable {
@@ -5931,7 +5976,7 @@ section.registerInvestor .registerInvestorConfirm {
   float: left;
 }
 .table-outer-cover.compareTable .thead .th:nth-child(3) {
-  width: 30%;
+  width: 35%;
   float: left;
 }
 @media only screen and (max-width:768px) {
@@ -5969,7 +6014,7 @@ section.registerInvestor .registerInvestorConfirm {
   float: left;
 }
 .table-outer-cover.compareTable .tbody .td:nth-child(3) {
-  width: 30%;
+  width: 35%;
   float: left;
 }
 @media only screen and (max-width:768px) {

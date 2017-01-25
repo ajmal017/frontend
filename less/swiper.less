@@ -289,7 +289,7 @@
         }
         p{
           .GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@blackapprox,normal);
-          .PIXEL2EM(18);
+          .PIXEL2EM(14);
           margin-bottom:2%;
           .swiper-input{
             display:inline-block;
@@ -467,7 +467,13 @@
           }
           .incomeSource{
             @media @below768{
-              height: 420px;
+              height: 220px;
+              .selectRisk_cover{
+                margin-left: 3%;
+                .risk-options{
+                  .PIXEL2EM(12);
+                }
+              }
             }
           }
           &.content-risk{
