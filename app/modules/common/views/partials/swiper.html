@@ -6,7 +6,7 @@
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <form name="riskAssesment1Form1" novalidate ng-init="step = 1">
-            <div class="swiper-content content-1 content-risk" ng-init="(disabled = 'locked')&&($root.gotoFirstRiskAssessment=false)">
+            <div class="swiper-content content-1 content-risk" ng-init="disabled = 'locked'">
 
                 <div class="col-lg-7 col-xs-12">
                     <p class="pull-left col-lg-3 col-md-3 col-sm-3 col-xs-5 risk-questions">I am a <span class="swiper-input risk-age"><input only-number type="text" name="year" required ng-model="modelVal.A1"></span> year old</p><!-- <select dropdown dropdown-disable="disabled" ng-model="modelVal.A7"><option value="op1">Male</option><option value="op2">Female</option></select> -->
@@ -643,7 +643,7 @@
                     </div>
                 </div>
                 <div class="fin-btn-group answer-more addMargin">
-                    <button ng-click="($root.gotoFirstRiskAssessment=true)" click-redirect="/riskAssesment" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>I'D LIKE TO TRY AGAIN</button>
+                    <button click-redirect="/riskAssesment" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>I'D LIKE TO TRY AGAIN</button>
                     <button ng-if="!$root.loggedIn" click-redirect="/registration" class="fin-app-btn fin-orange content-next">SIGN UP</button>
                     <button ng-if="$root.loggedIn" click-redirect="/dashboard" class="fin-app-btn fin-orange content-next">CONTINUE</button>
                 </div>
