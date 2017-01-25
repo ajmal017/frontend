@@ -1149,6 +1149,12 @@ button[disabled]:hover {
 }
 .selectRisk_cover {
   margin-bottom: 2%;
+  margin-right: 1%;
+}
+@media only screen and (max-width:768px) {
+  .selectRisk_cover {
+    margin-right: 0;
+  }
 }
 .selectRisk_cover input[type="radio"],
 .selectRisk_cover input[type="checkbox"] {
@@ -3429,7 +3435,7 @@ span.error-text {
   font-family: 'PlayfairDisplay-Regular';
   color: #101010;
   font-weight: normal;
-  font-size: 0.875em;
+  font-size: 1em;
   margin-bottom: 2%;
 }
 .swiper-container.customSwiper .swiper-content p .swiper-input {
@@ -3877,11 +3883,11 @@ span.error-text {
   width: 50%;
 }
 .swiper-container.customSwiper .fin-btn-group.answer-more .fin-orange {
-  width: 35%;
-  margin-right: 5%;
+  width: 55%;
 }
 .swiper-container.customSwiper .fin-btn-group.answer-more .fin-white {
-  width: 55%;
+  width: 35%;
+  margin-right: 5%;
 }
 .swiper-container.customSwiper .fin-btn-group.answer-more .fin-link-btn {
   margin-top: 5%;
@@ -4165,14 +4171,34 @@ section.dashboard .goals-outer-cover {
 section.dashboard .goals-outer-cover:nth-child(1) .image-div img {
   width: 104%;
 }
+@media only screen and (max-width:768px) {
+  section.dashboard .goals-outer-cover:nth-child(1) .image-div img {
+    width: 80%;
+  }
+}
 section.dashboard .goals-outer-cover:nth-child(2) .image-div img {
   width: 115%;
+}
+@media only screen and (max-width:768px) {
+  section.dashboard .goals-outer-cover:nth-child(2) .image-div img {
+    width: 80%;
+  }
 }
 section.dashboard .goals-outer-cover:nth-child(3) .image-div img {
   width: 78%;
 }
+@media only screen and (max-width:768px) {
+  section.dashboard .goals-outer-cover:nth-child(3) .image-div img {
+    width: 80%;
+  }
+}
 section.dashboard .goals-outer-cover:nth-child(4) .image-div img {
   width: 125%;
+}
+@media only screen and (max-width:768px) {
+  section.dashboard .goals-outer-cover:nth-child(4) .image-div img {
+    width: 80%;
+  }
 }
 section.dashboard .goals-outer-cover:not(:last-child) {
   margin-right: 3%;
@@ -4200,6 +4226,11 @@ section.dashboard .goals-outer-cover p.desc {
   width: 100%;
   margin-bottom: 7%;
   margin-top: 3%;
+}
+@media only screen and (max-width:768px) {
+  section.dashboard .goals-outer-cover p.desc {
+    margin-bottom: 3%;
+  }
 }
 section.dashboard .goals-outer-cover p.score {
   font-family: 'PlayfairDisplay-Regular';
@@ -4348,12 +4379,22 @@ section.planinvest h1 {
   margin-bottom: 4%;
   opacity: 0.7;
 }
+@media only screen and (max-width:768px) {
+  section.planinvest .invest-outer-cover {
+    margin-top: 12%;
+  }
+}
 section.planinvest .invest-outer-cover .investCover {
   position: relative;
   width: 100%;
   height: 234px;
   margin: 0 auto;
   display: table;
+}
+@media only screen and (max-width:768px) {
+  section.planinvest .invest-outer-cover .investCover {
+    width: 84%;
+  }
 }
 section.planinvest .invest-outer-cover .investCover .image-div {
   display: table-cell;
@@ -4452,14 +4493,34 @@ section.planinvest .invest-outer-cover button {
 section.planinvest .invest-outer-cover:nth-child(1) .image-div img {
   width: 70%;
 }
+@media only screen and (max-width:768px) {
+  section.planinvest .invest-outer-cover:nth-child(1) .image-div img {
+    width: 40%;
+  }
+}
 section.planinvest .invest-outer-cover:nth-child(2) .image-div img {
   width: 57%;
+}
+@media only screen and (max-width:768px) {
+  section.planinvest .invest-outer-cover:nth-child(2) .image-div img {
+    width: 40%;
+  }
 }
 section.planinvest .invest-outer-cover:nth-child(3) .image-div img {
   width: 45%;
 }
+@media only screen and (max-width:768px) {
+  section.planinvest .invest-outer-cover:nth-child(3) .image-div img {
+    width: 40%;
+  }
+}
 section.planinvest .invest-outer-cover:nth-child(4) .image-div img {
   width: 80%;
+}
+@media only screen and (max-width:768px) {
+  section.planinvest .invest-outer-cover:nth-child(4) .image-div img {
+    width: 40%;
+  }
 }
 section.planinvest .invest-outer-cover .desc {
   margin-top: 20%;
@@ -4471,6 +4532,11 @@ section.planinvest .invest-outer-cover .desc p {
   font-size: 1em;
   margin-bottom: 12%;
   height: 50px;
+}
+@media only screen and (max-width:768px) {
+  section.planinvest .invest-outer-cover .desc p {
+    margin-bottom: 3%;
+  }
 }
 section.planinvest .invest-outer-cover .desc h3 {
   font-family: 'PlayfairDisplay-Bold';
@@ -5913,7 +5979,7 @@ section.registerInvestor .registerInvestorConfirm {
           box-shadow: 1px 5.33px 11px -4px #247abc;
 }
 .table-outer-cover.schemeTable {
-  width: 92%;
+  width: 100%;
 }
 @media only screen and (max-width:768px) {
   .table-outer-cover.schemeTable {
