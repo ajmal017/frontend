@@ -191,7 +191,9 @@ var finApp = finApp || {};
 				this.scope.modelVal.assetAllocation.equity = this.scope.equity2;
 				this.scope.modelVal.debtAmount = this.scope.debtAmountModal;
 				this.scope.modelVal.equityAmount = this.scope.equityAmountModal;
+				this.scope.getGoalGraphDetails();
 				jQuery('#equiDeptModal').modal('hide');	
+
 			},
 
 			resetAllocation : function(equityInitial) {

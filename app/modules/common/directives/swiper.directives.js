@@ -37,13 +37,17 @@
 			                direction : 'vertical',
 			                slidesPerView : 1,
 			                loop: false,
-			                simulateTouch:false,
+			                simulateTouch:'false',
+			                touchMoveStopPropagation : false,
 			                calculateHeight:true,
 			                nextButton: '.content-next',
                 			prevButton: '.content-prev',
                 			breakpoints: {
 		                        768: {
-		                          direction : 'horizontal'
+		                        	longSwipes: false,
+		                          direction : 'horizontal',
+		                          simulateTouch:false,
+		                          touchMoveStopPropagation : false
 		                        }
 		                    },
                 			onInit : function(swiper){

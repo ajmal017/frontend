@@ -2336,6 +2336,7 @@ section.register .contact-form .form-group textarea + label {
   position: absolute;
   pointer-events: none;
   top: 0;
+  left: 0;
   font-family: 'PlayfairDisplay-Regular';
   color: #247abc;
   font-weight: normal;
@@ -2721,7 +2722,7 @@ span.error-text {
 }
 .fin-btn-cover.started {
   float: left;
-  width: 44%;
+  width: 100%;
   padding-left: 5%;
 }
 @media only screen and (max-width:768px) {
@@ -3080,8 +3081,8 @@ span.error-text {
 }
 @media only screen and (max-width:768px) {
   .swiper-container .dot-cover.showPseudo:after {
-    right: 1px;
-    top: 8px;
+    left: 0;
+    top: 13px;
   }
 }
 .swiper-container .dot-cover:not(:last-child) .dot.ani:after {
@@ -3092,6 +3093,12 @@ span.error-text {
     width: 100%;
     height: 1px;
     top: 2px;
+  }
+}
+@media only screen and (max-width:768px) {
+  .swiper-container .dot-cover:last-child.showPseudo:after {
+    right: 0;
+    left: -59px;
   }
 }
 .swiper-container .dot.active,
@@ -3425,10 +3432,15 @@ span.error-text {
 }
 @media only screen and (max-width:768px) {
   .swiper-container.customSwiper .swiper-content {
-    padding-top: 64% !important;
+    padding-top: 250px !important;
     margin-bottom: 12%;
     float: left;
     width: 100%;
+  }
+}
+@media only screen and (min-width:1400px) {
+  .swiper-container.customSwiper .swiper-content {
+    min-height: 550px;
   }
 }
 .swiper-container.customSwiper .swiper-content p {
@@ -3612,7 +3624,6 @@ span.error-text {
 }
 @media only screen and (max-width:768px) {
   .swiper-container.customSwiper .swiper-content.content-1 {
-    top: 55%;
     -webkit-transform: translateY(-48%);
        -moz-transform: translateY(-48%);
         -ms-transform: translateY(-48%);
@@ -3629,11 +3640,6 @@ span.error-text {
   }
   .swiper-container.customSwiper .swiper-content.content-1 .incomeSource .selectRisk_cover .risk-options {
     font-size: 0.75em;
-  }
-}
-@media only screen and (max-width:768px) {
-  .swiper-container.customSwiper .swiper-content.content-1.content-risk {
-    top: 50%;
   }
 }
 .swiper-container.customSwiper .swiper-content.content-6 {
@@ -3689,6 +3695,11 @@ span.error-text {
 .swiper-container.customSwiper .swiper-content.content-6 .score-header h3 span {
   color: #F26529;
 }
+@media only screen and (max-width:768px) {
+  .swiper-container.customSwiper .swiper-content.content-6 .score-header h3 {
+    font-size: 1.25em;
+  }
+}
 .swiper-container.customSwiper .swiper-content.content-6 .score-header p.score {
   font-family: 'PlayfairDisplay-Regular';
   color: #F26529;
@@ -3712,6 +3723,16 @@ span.error-text {
 .swiper-container.customSwiper .swiper-content.content-6 .score-category .score-cover:nth-child(2) .time-image img {
   width: 70%;
 }
+@media only screen and (max-width:768px) {
+  .swiper-container.customSwiper .swiper-content.content-6 .score-category .score-cover:nth-child(2) .time-image img {
+    width: 50%;
+  }
+}
+@media only screen and (max-width:600px) {
+  .swiper-container.customSwiper .swiper-content.content-6 .score-category .score-cover:nth-child(2) .time-image img {
+    width: 100%;
+  }
+}
 .swiper-container.customSwiper .swiper-content.content-6 .score-category h3 {
   font-family: 'PlayfairDisplay-Regular';
   color: #000;
@@ -3724,11 +3745,21 @@ span.error-text {
 }
 @media only screen and (max-width:768px) {
   .swiper-container.customSwiper .swiper-content.content-6 .score-category .time-image {
-    margin-top: 50%;
+    margin-top: 20%;
   }
 }
 .swiper-container.customSwiper .swiper-content.content-6 .score-category .time-image img {
   width: 100%;
+}
+@media only screen and (max-width:768px) {
+  .swiper-container.customSwiper .swiper-content.content-6 .score-category .time-image img {
+    width: 50%;
+  }
+}
+@media only screen and (max-width:600px) {
+  .swiper-container.customSwiper .swiper-content.content-6 .score-category .time-image img {
+    width: 100%;
+  }
 }
 .swiper-container.customSwiper .swiper-content.content-6 .score-category h4 {
   font-family: 'PlayfairDisplay-Regular';
@@ -3879,9 +3910,6 @@ span.error-text {
     bottom: 0;
   }
 }
-.swiper-container.customSwiper .fin-btn-group.answer-more {
-  width: 50%;
-}
 .swiper-container.customSwiper .fin-btn-group.answer-more .fin-orange {
   width: 55%;
 }
@@ -3911,6 +3939,11 @@ span.error-text {
   transition: opacity 0.2s ease;
   visibility: hidden;
   min-height: 450px;
+}
+@media only screen and (min-width:1400px) {
+  .swiper-slide {
+    min-height: 550px;
+  }
 }
 .swiper-slide-prev,
 .swiper-slide-next {
@@ -4177,7 +4210,7 @@ section.dashboard .goals-outer-cover:nth-child(1) .image-div img {
   }
 }
 section.dashboard .goals-outer-cover:nth-child(2) .image-div img {
-  width: 115%;
+  width: 140%;
 }
 @media only screen and (max-width:768px) {
   section.dashboard .goals-outer-cover:nth-child(2) .image-div img {
@@ -4237,7 +4270,6 @@ section.dashboard .goals-outer-cover p.score {
   color: #F26529;
   font-weight: normal;
   font-size: 3.125em;
-  line-height: 40px;
   float: left;
   width: 100%;
 }
@@ -4301,7 +4333,12 @@ section.dashboard .goals-cover .image-div img {
   margin: 0 auto;
 }
 section.dashboard .goals-cover .invest-goal {
-  margin: 46px 0 46px 35px;
+  margin: 14% 6%;
+}
+@media only screen and (max-width:768px) {
+  section.dashboard .goals-cover .invest-goal {
+    margin: 14% auto;
+  }
 }
 section.dashboard .goals-cover .checkbox-cover label {
   opacity: 1;
@@ -4744,18 +4781,7 @@ section.quickInvest .started {
 }
 .goals .bottom-desc .fin-btn-group button {
   float: none;
-  width: 15%;
   padding: 20px 0px;
-}
-@media only screen and (max-width:768px) {
-  .goals .bottom-desc .fin-btn-group button {
-    width: 45%;
-  }
-}
-@media only screen and (max-width:600px) {
-  .goals .bottom-desc .fin-btn-group button {
-    width: 100%!important;
-  }
 }
 .goals .bottom-desc h4 {
   width: 100%;
@@ -5202,21 +5228,23 @@ section.quickInvest .started {
   width: 40%;
   margin: 0 auto;
   margin-top: -8%;
-  background-color: #fff;
+  background-color: #f0f4f7;
   -webkit-border-radius: 10px;
      -moz-border-radius: 10px;
           border-radius: 10px;
 }
 .meter-widget-cover .guageCalculator img {
   background-color: #f0f4f7;
-  width: 100%;
+  width: 65%;
+  margin: 0 auto;
 }
 .meter-widget-cover .guageCalculator p {
-  font-size: 15px !important;
+  font-size: 12px !important;
   margin-bottom: 9px !important;
   margin-top: 5px;
   padding-bottom: 10px;
   color: #247abc !important;
+  background-color: #fff;
 }
 .meter-widget-cover .reset_allocation {
   position: absolute;
@@ -7698,6 +7726,11 @@ section.trackPerformance .chart-cover.scheme-pie .trackPerformanceLegends {
   padding: 0;
 }
 @media only screen and (max-width:768px) {
+  section.trackPerformance .chart-cover.scheme-pie .trackPerformanceLegends {
+    margin-top: 6%;
+  }
+}
+@media only screen and (min-width:1024px) and (max-width:1200px) {
   section.trackPerformance .chart-cover.scheme-pie .trackPerformanceLegends {
     margin-top: 6%;
   }

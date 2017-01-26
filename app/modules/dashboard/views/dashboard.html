@@ -66,14 +66,14 @@
 				<!-- <h4 class="text-center" ng-if="user_flags.is_virtual">You don't have a smart portfolio yet</h4>
 				<h4 class="text-center" ng-if="!user_flags.is_virtual">You have a smart portfolio</h4> -->
 				<h4 class="text-center" ng-if="!user_flags.is_virtual">Track your</h4>
-				<p class="text-center score dashboardSubText no-margin" ng-if="!user_flags.is_virtual">CURRENT INVESTMENTS</p>
+				<p class="text-center score dashboardSubText no-margin paddingTop2" ng-if="!user_flags.is_virtual">CURRENT INVESTMENTS</p>
 				
 				<h4 class="text-center" ng-if="user_flags.is_virtual && dashCounts['investCount']">Track how your</h4>
-				<p class="text-center score dashboardSubText no-margin" ng-if="user_flags.is_virtual">PLANNED GOALS</p>
+				<p class="text-center score dashboardSubText no-margin" ng-if="user_flags.is_virtual paddingTop2">PLANNED GOALS</p>
 				<h4 class="text-center" ng-if="user_flags.is_virtual">would grow if invested</h4>
 
 				<h4 class="text-center" ng-if="disabledTrackPerformance">You have</h4>
-				<p class="text-center score dashboardSubText no-margin" ng-if="disabledTrackPerformance">NO CURRENT INVESTMENTS OR PLANNED GOALS.</p>
+				<p class="text-center score dashboardSubText no-margin paddingTop2" ng-if="disabledTrackPerformance">NO CURRENT INVESTMENTS OR PLANNED GOALS.</p>
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 goals-outer-cover">
 				<div class="goals-cover" ng-click="goToWithdraw()">
@@ -91,9 +91,9 @@
 <!-- 				<p class="text-center score">5.7</p>
 			<h4 class="text-center" ng-if="portfolio_flag">You havent started building<span class="nextline">your smart profile yet</span></h4> -->
 			<h4 class="text-center" ng-if="portfolio_flag">Redeem now from your</h4>
-			<p class="text-center score dashboardSubText" ng-if="portfolio_flag">CURRENT INVESTMENTS.</p>
+			<p class="text-center score dashboardSubText paddingTop2" ng-if="portfolio_flag">CURRENT INVESTMENTS.</p>
 			<h4 class="text-center" ng-if="!portfolio_flag">You have</h4>
-			<p class="text-center score dashboardSubText" ng-if="!portfolio_flag">NO CURRENT INVESTMENTS</p>
+			<p class="text-center score dashboardSubText paddingTop2" ng-if="!portfolio_flag">NO CURRENT INVESTMENTS</p>
 			</div>
 			
 		</div>
