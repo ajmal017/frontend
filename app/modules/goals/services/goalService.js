@@ -68,14 +68,17 @@
                 sipAmount = parseInt(sipAmount); 
                 lumpsumAmount = parseInt(lumpsumAmount);
 
-                seriesProjected.data.length = 0;
-                seriesInvested.data.length = 0;
+                //seriesProjected.data.length = 0;
+                //seriesInvested.data.length = 0;
 
+                var seriesProjectedData = [],
+                seriesInvestedData = [];
+                
                 expectedCorpus = investedValue = lumpsumAmount + sipAmount;
         		var investedValueStr = $filter('amountSeffix')(investedValue);
         		var expectedCorpusStr = $filter('amountSeffix')(expectedCorpus);
-                seriesProjected.data.push({y:expectedCorpus, invested:investedValueStr,projected:expectedCorpusStr});
-            	seriesInvested.data.push({y:investedValue, invested:investedValueStr,projected:expectedCorpusStr});
+                seriesProjectedData.push({y:expectedCorpus, invested:investedValueStr,projected:expectedCorpusStr});
+            	seriesInvestedData.push({y:investedValue, invested:investedValueStr,projected:expectedCorpusStr});
 
                 
                 for (var i=1; i<=tenure; i++) {
@@ -89,12 +92,15 @@
             		expectedCorpusStr = $filter('amountSeffix')(expectedCorpus);
                 	
                 	category.push(String(year));
-                	seriesProjected.data.push({y:expectedCorpus, invested:investedValueStr,projected:expectedCorpusStr});
-                	seriesInvested.data.push({y:investedValue, invested:investedValueStr,projected:expectedCorpusStr});
+                	seriesProjectedData.push({y:expectedCorpus, invested:investedValueStr,projected:expectedCorpusStr});
+                	seriesInvestedData.push({y:investedValue, invested:investedValueStr,projected:expectedCorpusStr});
                 }
                 var interval = parseInt(Math.ceil(parseFloat((category.length)/8))),
                 	toDateStr = currentMonth + ' ' + String(currentYear + tenure);
 
+                graphObject.series[0].data = seriesProjectedData;
+                graphObject.series[1].data = seriesInvestedData;
+                
                 graphObject.interval = interval;
                 graphObject.toDate = toDateStr;
                 graphObject.totalInvestment = investedValue;
