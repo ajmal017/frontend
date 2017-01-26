@@ -34,6 +34,10 @@
 					break;
 					case 'wedding' : goalImg = 'wedding.png';
 					break;
+					case 'jewellery' : goalImg = 'jewellery.svg';
+					break;
+					case 'liquid' : goalImg = 'highInterest.png';
+					break;
 				}
 				return goalImg;
 			}

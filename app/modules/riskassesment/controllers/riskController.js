@@ -106,7 +106,7 @@
 			  	}
 			  }
 
-				if(!jQuery.isEmptyObject($scope.modelVal) && $location.$$path == '/riskAssesment') {
+/*				if(!jQuery.isEmptyObject($scope.modelVal) && $location.$$path == '/riskAssesment') {
 					if (!$rootScope.gotoFirstRiskAssessment) {
 						if ($scope.modelVal.A1 && $scope.modelVal.A4 && $scope.modelVal.A7 && $scope.modelVal.A8 && $scope.modelVal.A9 && 
 							$scope.modelVal.A15 && $scope.modelVal.A16 && $scope.modelVal.A17 && $scope.modelVal.A18 && $scope.modelVal.A19) {
@@ -115,7 +115,7 @@
 							
 					}
 				}
-
+*/
 			  // console.log('investments selected', $scope.selection);
 		}
 })();

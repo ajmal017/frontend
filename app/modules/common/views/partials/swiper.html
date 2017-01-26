@@ -6,7 +6,7 @@
     <div class="swiper-wrapper">
         <div class="swiper-slide">
             <form name="riskAssesment1Form1" novalidate ng-init="step = 1">
-            <div class="swiper-content content-1 content-risk" ng-init="(disabled = 'locked')&&($root.gotoFirstRiskAssessment=false)">
+            <div class="swiper-content content-1 content-risk" ng-init="disabled = 'locked'">
 
                 <div class="col-lg-7 col-xs-12">
                     <p class="pull-left col-lg-3 col-md-3 col-sm-3 col-xs-5 risk-questions">I am a <span class="swiper-input risk-age"><input only-number type="text" name="year" required ng-model="modelVal.A1"></span> year old</p><!-- <select dropdown dropdown-disable="disabled" ng-model="modelVal.A7"><option value="op1">Male</option><option value="op2">Female</option></select> -->
@@ -2530,7 +2530,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                      <h1 class="topHeader">I will need the following amount for my jewellery<span class="nextline">for my jewellery</span></h1>
+                      <h1 class="topHeader">I will need the following amount for my jewellery</h1>
                       <p class="question width-auto"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2')">PLEASE HELP ME ESTIMATE</button></p>
                 </div>
             </form>
