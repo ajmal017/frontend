@@ -391,11 +391,13 @@
                     </div>
                 </div>
                 <p class="more-questions">Would you like to answer some more questions to fine tune your score?</p>
-                <div class="fin-btn-group answer-more">
-                    <button ng-click="gotoMoreQuestion()" class="fin-app-btn fin-white content-next">YES, I'D LIKE THAT</button>
-                    <button ng-if="!$root.loggedIn" click-redirect="/registration" class="fin-app-btn fin-orange content-next">NO THANKS, LET'S CONTINUE TO NEXT STEP</button>
-                    <button ng-if="$root.loggedIn" click-redirect="/dashboard" class="fin-app-btn fin-orange content-next">NO THANKS, LET'S CONTINUE TO NEXT STEP</button>
-                    <button ng-click="gotoFirst(0);(step = 1)" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>I'D LIKE TO TRY AGAIN</button>
+                <div class="col-xs-12 col-md-8 col-sm-8 col-lg-5 no-padding">
+                    <div class="fin-btn-group answer-more">
+                        <button ng-click="gotoMoreQuestion()" class="fin-app-btn fin-white content-next">YES, I'D LIKE THAT</button>
+                        <button ng-if="!$root.loggedIn" click-redirect="/registration" class="fin-app-btn fin-orange content-next">NO THANKS, LET'S CONTINUE TO NEXT STEP</button>
+                        <button ng-if="$root.loggedIn" click-redirect="/dashboard" class="fin-app-btn fin-orange content-next">NO THANKS, LET'S CONTINUE TO NEXT STEP</button>
+                        <button ng-click="gotoFirst(0);(step = 1)" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>I'D LIKE TO TRY AGAIN</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -642,10 +644,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="fin-btn-group answer-more addMargin">
-                    <button click-redirect="/riskAssesment" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>I'D LIKE TO TRY AGAIN</button>
-                    <button ng-if="!$root.loggedIn" click-redirect="/registration" class="fin-app-btn fin-orange content-next">SIGN UP</button>
-                    <button ng-if="$root.loggedIn" click-redirect="/dashboard" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+                <div class="col-xs-12 col-md-8 col-sm-8 col-lg-5 no-padding">
+                    <div class="fin-btn-group answer-more addMargin">
+                        <button ng-click="($root.gotoFirstRiskAssessment=true)" click-redirect="/riskAssesment" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>I'D LIKE TO TRY AGAIN</button>
+                        <button ng-if="!$root.loggedIn" click-redirect="/registration" class="fin-app-btn fin-orange content-next">SIGN UP</button>
+                        <button ng-if="$root.loggedIn" click-redirect="/dashboard" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -893,9 +897,9 @@
             <form name="retirementForm6" novalidate>
                 <div class="swiper-content content-6 total-estimation">
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
-                       <div class="col-xs-12 col-lg-9 estimate">
+                       <div class="col-xs-12 col-lg-9 col-md-12 estimate">
                         <div class="row">
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
                             <div class="pigy"><info-tip quick-tip-data="budgetInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/budget.png">
@@ -908,7 +912,7 @@
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="comfInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -921,7 +925,7 @@
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="luxuInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/jewellery.svg">
@@ -1125,9 +1129,9 @@
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content content-6 total-estimation">
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
-                       <div class="col-xs-12 col-lg-9 estimate">
+                       <div class="col-xs-12 col-md-12 col-lg-9 estimate">
                         <div class="row">
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
+                            <div class="col-xs-12 col-md-3 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
                             <div class="pigy"><info-tip quick-tip-data="budgetInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/budget.png">
@@ -1140,7 +1144,7 @@
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-12 col-md-3 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="comfInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -1153,7 +1157,7 @@
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-12 col-md-3 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="luxuInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/jewellery.svg">
@@ -1267,7 +1271,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <goal-chart chartoptions="graphObject" ></goal-chart>
+                                <goal-chart chartoptions="graphObject"></goal-chart>
                             </div>
                         </div>
                     </div>
@@ -1401,9 +1405,9 @@
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content content-6 total-estimation">
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
-                       <div class="col-xs-12 col-lg-9 estimate">
+                       <div class="col-xs-12 col-lg-9 col-md-12 estimate">
                         <div class="row">
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
                             <div class="pigy"><info-tip quick-tip-data="budgetInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/budget.png">
@@ -1416,7 +1420,7 @@
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="comfInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -1429,7 +1433,7 @@
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="luxuInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/jewellery.svg">
@@ -1673,9 +1677,9 @@
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content content-6 total-estimation">
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
-                       <div class="col-xs-12 col-lg-9 estimate">
+                       <div class="col-xs-12 col-lg-9 col-md-12 estimate">
                         <div class="row">
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
                             <div class="pigy"><info-tip quick-tip-data="budgetInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/budget.png">
@@ -1688,7 +1692,7 @@
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="comfInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -1701,7 +1705,7 @@
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="luxuInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/jewellery.svg">
@@ -1933,9 +1937,9 @@
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content content-6 total-estimation">
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
-                       <div class="col-xs-12 col-lg-9 estimate">
+                       <div class="col-xs-12 col-lg-9 col-md-12 estimate">
                         <div class="row">
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
                             <div class="pigy"><info-tip quick-tip-data="budgetInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/budget.png">
@@ -1948,7 +1952,7 @@
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="comfInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -1961,7 +1965,7 @@
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="luxuInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/jewellery.svg">
@@ -2161,9 +2165,9 @@
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content content-6 total-estimation">
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
-                       <div class="col-xs-12 col-lg-9 estimate">
+                       <div class="col-xs-12 col-lg-9 col-md-12 estimate">
                         <div class="row">
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
                             <div class="pigy"><info-tip quick-tip-data="budgetInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/budget.png">
@@ -2176,7 +2180,7 @@
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="comfInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -2189,7 +2193,7 @@
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="luxuInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/jewellery.svg">
@@ -2555,9 +2559,9 @@
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content content-6 total-estimation">
                       <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
-                       <div class="col-lg-9 col-xs-12 estimate">
+                       <div class="col-lg-9 col-md-12 col-xs-12 estimate">
                         <div class="row">
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
                             <div class="pigy"><info-tip quick-tip-data="budgetInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/budget.png">
@@ -2570,7 +2574,7 @@
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="comfInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -2583,7 +2587,7 @@
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-12 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="luxuInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/jewellery.svg">

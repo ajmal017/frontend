@@ -63,8 +63,8 @@
                 top: -4px;
                 right: 19px;
                 @media @below768{
-                  right:1px;
-                  top: 8px;
+                  left: 0;
+                  top: 13px;
                 }
             }
         }
@@ -76,6 +76,18 @@
         height: 1px;
         top: 2px;
       }
+    }
+    .dot-cover:last-child {
+      &.showPseudo{
+        &:after{
+          @media @below768{
+            right:0;
+            left: -59px;
+          }
+        }
+        
+      }
+      
     }
     .dot.active,.dot.ani{
       background-color:#f26422;
@@ -282,7 +294,7 @@
         transition:all 0.2s ease;
         min-height: 450px;
         @media @below768{
-          padding-top: 64% !important;
+          padding-top: 250px !important;
           margin-bottom: 12%;
           float: left;
           width: 100%;
@@ -462,7 +474,7 @@
           top:48%;
           transform:translateY(-48%);
           @media @below768{
-            top: 55%;
+           
             transform:translateY(-48%);
           }
           .incomeSource{
@@ -478,7 +490,10 @@
           }
           &.content-risk{
             @media @below768{
-              top:50%;
+             
+            }
+            @media @below600{
+            
             }
           }
         } 
@@ -502,6 +517,7 @@
               .time-image{
                 img{
                   width:100%;
+
                 }
               }
               .point-range{
@@ -524,6 +540,9 @@
               span{
                 color:@flamingoapprox;
               }
+              @media @below768{
+                .PIXEL2EM(20);
+              }
             }
             p.score{
               .GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@flamingoapprox,normal);
@@ -543,7 +562,14 @@
               &:nth-child(2){
                 .time-image{
                   img{
+                    @media @below768{
+                      width:50%;
+                    }
+                    @media @below600{
+                      width: 100%;
+                    }
                     width:70%;
+                    
                   }
                 }
               }
@@ -556,10 +582,16 @@
             .time-image{
               margin-top:20%;
               @media @below768{
-                margin-top: 50%;
+                margin-top: 20%;
               }
               img{
                 width:100%;
+                @media @below768{
+                  width: 50%;
+                }
+                @media @below600{
+                  width: 100%;
+                }
               }
             }
             h4{
@@ -713,7 +745,7 @@
           }
         }
         &.answer-more{
-           width:50%;
+          
            .fin-orange{
             width:55%;
            }
