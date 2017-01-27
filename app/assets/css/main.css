@@ -268,11 +268,12 @@ header .navbar .navbar-right .fin-dropdown.open a span.down {
     width: 300px;
   }
 }
-@media only screen and (max-width:768px) {
+@media only screen and (max-width:600px) {
   header .navbar {
     padding-top: 6%;
   }
   header .navbar .navbar-header {
+    margin-top: 5%;
     /*width:100%;*/
   }
   header .navbar .navbar-brand {
@@ -830,6 +831,13 @@ section.introduction.about-app a {
   position: relative;
   top: -2px;
   color: #047BC1 !important;
+}
+@media only screen and (max-width:600px) {
+  .fin-link.menu {
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 14px;
+  }
 }
 .fin-link.menu .menu-icon {
   width: 42px;
@@ -2655,7 +2663,7 @@ span.error-text {
 }
 .getStarted {
   padding-top: 4%;
-  padding-left: 6%;
+  padding-left: 3%;
   padding-right: 6%;
 }
 .getStarted .pigyImage img {
@@ -2735,9 +2743,10 @@ span.error-text {
   margin-right: 3%;
   padding: 3%;
 }
-@media only screen and (max-width:768px) {
-  .fin-btn-cover.started .fin-app-btn {
+@media only screen and (max-width:600px) {
+  .fin-btn-cover.firstScreen .fin-app-btn {
     width: 100%;
+    margin-top: 5%;
   }
 }
 @-webkit-keyframes move {
@@ -3371,7 +3380,7 @@ span.error-text {
 .swiper-container.customSwiper.nomineeInfo .fin-btn-group,
 .swiper-container.customSwiper.contactInfo .fin-btn-group,
 .swiper-container.customSwiper.identityInfo .fin-btn-group {
-  width: 46%!important;
+  width: 100%!important;
 }
 @media only screen and (max-width:768px) {
   .swiper-container.customSwiper.investorInfo .fin-btn-group,
@@ -3410,7 +3419,7 @@ span.error-text {
 .swiper-container.customSwiper.contactInfo span.imagePlaceholder,
 .swiper-container.customSwiper.identityInfo span.imagePlaceholder {
   position: absolute;
-  bottom: -3%;
+  bottom: 12%;
   left: 0;
 }
 .swiper-container.customSwiper.retirement .retirement-amount {
@@ -3436,11 +3445,6 @@ span.error-text {
     margin-bottom: 12%;
     float: left;
     width: 100%;
-  }
-}
-@media only screen and (min-width:1400px) {
-  .swiper-container.customSwiper .swiper-content {
-    min-height: 550px;
   }
 }
 .swiper-container.customSwiper .swiper-content p {
@@ -3479,6 +3483,7 @@ span.error-text {
 }
 .swiper-container.customSwiper .swiper-content p .swiper-input.normal.currency {
   position: relative;
+  left: 0;
 }
 .swiper-container.customSwiper .swiper-content p .swiper-input.normal.currency input {
   padding-left: 5%;
@@ -3539,6 +3544,11 @@ span.error-text {
   margin-top: 1%!important;
   margin-bottom: 0px;
 }
+@media only screen and (max-width:768px) {
+  .swiper-container.customSwiper .swiper-content p.multiple {
+    font-size: 1.5em !important;
+  }
+}
 .swiper-container.customSwiper .swiper-content p.multiple span.swiper-input {
   width: 40%;
   font-size: 1.25em !important;
@@ -3562,6 +3572,11 @@ span.error-text {
   font-size: 1.875em;
   margin-top: 0px;
   line-height: 30px;
+}
+@media only screen and (max-width:768px) {
+  .swiper-container.customSwiper .swiper-content .topHeader {
+    font-size: 1.5em;
+  }
 }
 .swiper-container.customSwiper .swiper-content.hasCheckbox .checkbox-cover {
   padding-top: 7%;
@@ -3788,6 +3803,11 @@ span.error-text {
   font-weight: normal;
   font-size: 1.875em;
 }
+@media only screen and (max-width:768px) {
+  .swiper-container.customSwiper .swiper-content.content-6 p.more-questions {
+    font-size: 1.25em;
+  }
+}
 .swiper-container.customSwiper .swiper-content.content-6.total-estimation .estimate {
   padding-top: 3%;
 }
@@ -3896,13 +3916,12 @@ span.error-text {
 }
 .swiper-container.customSwiper .fin-btn-group.gotoPages {
   z-index: 1000;
-  width: 34%;
+  width: 100%;
   position: absolute;
   bottom: 5%;
 }
 @media only screen and (max-width:768px) {
   .swiper-container.customSwiper .fin-btn-group.gotoPages {
-    width: 100%;
     margin-top: 5%;
     bottom: 0%;
   }
@@ -3939,11 +3958,6 @@ span.error-text {
   transition: opacity 0.2s ease;
   visibility: hidden;
   min-height: 450px;
-}
-@media only screen and (min-width:1400px) {
-  .swiper-slide {
-    min-height: 550px;
-  }
 }
 .swiper-slide-prev,
 .swiper-slide-next {
@@ -4036,7 +4050,7 @@ span.error-text {
 }
 .swiper-guage .fin-btn-group {
   margin-top: 5%;
-  width: 70%;
+  width: 100%;
 }
 @media only screen and (max-width:768px) {
   .swiper-guage .fin-btn-group {
@@ -6236,11 +6250,6 @@ section.registerInvestor .registerInvestorConfirm {
 .table-outer-cover.investNowTable {
   width: 100%;
 }
-@media only screen and (max-width:768px) {
-  .table-outer-cover.investNowTable {
-    min-width: 400px;
-  }
-}
 .table-outer-cover.investNowTable .seperate-cover {
   width: 100%;
   float: left;
@@ -6251,6 +6260,7 @@ section.registerInvestor .registerInvestorConfirm {
 }
 .table-outer-cover.investNowTable .thead .th {
   width: 20%;
+  word-wrap: break-word;
 }
 .table-outer-cover.investNowTable .tbody {
   width: 96%;
@@ -6268,6 +6278,11 @@ section.registerInvestor .registerInvestorConfirm {
 .table-outer-cover.investNowTable .tfooter .total {
   float: left;
   width: 60%;
+}
+@media only screen and (max-width:600px) {
+  .table-outer-cover.investNowTable .tfooter .total {
+    width: 40%;
+  }
 }
 .table-outer-cover.investNowTable .tfooter .sipTotal {
   width: 20%;
@@ -7285,6 +7300,7 @@ section.investStep1 .pie-cover .pie-chart-legend .label-cover .legend-cover .leg
   position: relative;
   top: 6px;
   display: table;
+  min-width: 36px;
 }
 section.investStep1 .pie-cover .pie-chart-legend .label-cover .legend-cover .legend-main .right {
   position: absolute;

@@ -402,15 +402,17 @@
             </div>
         </div>
     </div>
-   
-    <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
-        <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="dashboard"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="step == 1" ng-disabled="riskAssesment1Form1.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="step == 2" ng-disabled="riskAssesment1Form12.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="step == 3" ng-disabled="disableAppend" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="step == 4" ng-disabled="riskAssesment1Form3.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="step == 5" ng-disabled="riskAssesment1Form4.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+
+    <div class="col-xs-8 col-lg-4 col-md-7">
+        <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
+            <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="dashboard"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+            <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+            <button ng-show="step == 1" ng-disabled="riskAssesment1Form1.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+            <button ng-show="step == 2" ng-disabled="riskAssesment1Form12.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+            <button ng-show="step == 3" ng-disabled="disableAppend" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+            <button ng-show="step == 4" ng-disabled="riskAssesment1Form3.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+            <button ng-show="step == 5" ng-disabled="riskAssesment1Form4.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        </div>
     </div>
 </div>
 <div ng-if="swiperName == 'riskAssesment2'" class="fadeIn swiper-container customSwiper riskAssesment2" ng-init="step = 1">
@@ -658,6 +660,7 @@
         <div class="image-backdrop"><img src="assets/images/riskMargin.png"></div>
         <p>Risk Assessment</p>
     </div>    
+    <div class="col-xs-8 col-lg-4 col-md-7">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" ng-disabled="riskAssesment2Form1.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
@@ -666,6 +669,7 @@
         <button ng-show="step == 4" ng-disabled="riskAssesment2Form4.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="step == 5" ng-disabled="riskAssesment2Form5.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="step == 6" ng-disabled="riskAssesment2Form6.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
     </div>
 </div>
 <div ng-if="swiperName == 'quickInvest'" class="fadeIn swiper-container customSwiper quickInvest type2Sliders" ng-init="step = 1">
@@ -803,10 +807,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="fin-btn-group addMargin">
-                    <button click-redirect="/quickInvestStart" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <!-- <button click-redirect="/planInvest" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
-                    <button ng-click="fundSelectionQuickInvest(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                <div class="col-xs-12 col-lg-10 col-md-10">
+                    <div class="fin-btn-group addMargin">
+                        <button click-redirect="/quickInvestStart" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
+                        <!-- <button click-redirect="/planInvest" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                        <button ng-click="fundSelectionQuickInvest(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -815,6 +821,7 @@
         <div class="image-backdrop"><img src="assets/images/planInvestMent.png"></div>
         <p>Quick Invest</p>
     </div>    
+    <div class="col-xs-8 col-lg-4 col-md-7">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="quickInvestStart"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -822,6 +829,7 @@
         <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1')" ng-disabled="modelVal.A2 < 1000 || modelVal.A2 == undefined || modelVal.A2 > 199999 || modelVal.A2%100 > 0" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 3) && ($root.selectedCriteria == 'op1')" ng-disabled="modelVal.A2 == undefined" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2 && $root.selectedCriteria == 'op2')" ng-disabled="modelVal.A4 < 5000 || modelVal.A4 == undefined || modelVal.A4 > 9999999 || modelVal.A4%100 > 0" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
     </div>
 </div>
 <div ng-if="swiperName == 'retirement'" class="fadeIn swiper-container customSwiper retirement type2Sliders" ng-init="step = 1">
@@ -1043,14 +1051,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="fin-btn-group addMargin">
-                    <button click-redirect="/retirementGoalsStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
-                    <button ng-click="fundSelectionRetirement(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                <div class="col-xs-12 col-lg-10 col-md-10">
+                    <div class="fin-btn-group addMargin">
+                        <button click-redirect="/retirementGoalsStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
+                        <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                        <button ng-click="fundSelectionRetirement(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="col-xs-8 col-lg-4 col-md-7">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -1063,6 +1074,7 @@
         <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op1')" ng-click="sendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A5 < 1000)||(modelVal.A5 == undefined)||(modelVal.A5 > 199999)||(modelVal.A5%100 > 0)">CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op2')" ng-click="sendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A3, modelVal.A6, modelVal.A8)" class="fin-app-btn fin-orange content-next" ng-disabled="((modelVal.A6 == 0)||(modelVal.A6 == undefined))||((modelVal.A8 == undefined))">CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op2')" ng-click="sendValues(modelVal);(step = step + 1);getGoalGraphDetails()" ng-disabled="(modelVal.A5 < 1000)||(modelVal.A5 == undefined)||(modelVal.A5 > 199999)||(modelVal.A5%100 > 0)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
     </div>
 </div>
 <div ng-if="swiperName == 'education'" class="fadeIn swiper-container customSwiper education type2Sliders" ng-init="step = 1">
@@ -1276,10 +1288,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="fin-btn-group addMargin">
-                    <button click-redirect="/educationStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
-                    <button ng-click="fundSelectionEducation(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                <div class="col-xs-12 col-lg-10 col-md-10">
+                    <div class="fin-btn-group addMargin">
+                        <button click-redirect="/educationStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
+                        <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                        <button ng-click="fundSelectionEducation(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1287,7 +1301,8 @@
     <div class="typeSwiper">
         <div class="image-backdrop"><img src="assets/images/education.png"></div>
         <p>Education</p>
-    </div>    
+    </div>
+    <div class="col-xs-8 col-lg-4 col-md-7">    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > '1'">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -1300,7 +1315,7 @@
         <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A6, modelVal.A7)" ng-disabled="(modelVal.A7 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="(modelVal.A4 < 1000)||(modelVal.A4 == undefined)||(modelVal.A4%100 > 0)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
-    
+    </div>
 </div>
 <div ng-if="swiperName == 'property'" class="fadeIn swiper-container customSwiper property type2Sliders" ng-init="step = 1">
     <div class="typeSwiper">
@@ -1550,14 +1565,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="fin-btn-group addMargin">
-                    <button click-redirect="/propertyStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
-                    <button ng-click="fundSelectionProperty(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                <div class="col-xs-12 col-lg-10 col-md-10">
+                    <div class="fin-btn-group addMargin">
+                        <button click-redirect="/propertyStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
+                        <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                        <button ng-click="fundSelectionProperty(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="col-xs-8 col-lg-4 col-md-7">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > '1'">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -1570,6 +1588,7 @@
         <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A6, modelVal.A7)" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A6 == 0)||(modelVal.A6 == undefined)||(modelVal.A7 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="(modelVal.A4 < 1000)||(modelVal.A4 == undefined)||(modelVal.A4%100 > 0)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         
+    </div>
     </div>
 </div>
 <div ng-if="swiperName == 'automobile'" class="fadeIn swiper-container customSwiper automobile type2Sliders" ng-init="step = 1">
@@ -1822,15 +1841,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="fin-btn-group addMargin">
-                    <button click-redirect="/automobileStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
-                    <!-- <button ng-click="portfolioFactoring()" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button> -->
-                    <button ng-click="fundSelectionAutomobile(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                <div class="col-xs-12 col-lg-10 col-md-10">
+                    <div class="fin-btn-group addMargin">
+                        <button click-redirect="/automobileStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
+                        <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                        <!-- <button ng-click="portfolioFactoring()" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button> -->
+                        <button ng-click="fundSelectionAutomobile(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>    
+    <div class="col-xs-8 col-lg-4 col-md-7">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -1842,6 +1864,7 @@
         <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 < 1000)||(modelVal.A4 == undefined)||(modelVal.A4%100 > 0)" >CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A6, modelVal.A7)" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A6 == 0)||(modelVal.A6 == undefined)||(modelVal.A7 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="(modelVal.A4 < 1000)||(modelVal.A4 == undefined)||(modelVal.A4%100 > 0)" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
+    </div>
     </div>
 </div>
 <div ng-if="swiperName == 'vacation'" class="fadeIn swiper-container customSwiper vacation type2Sliders" ng-init="step = 1">
@@ -2082,15 +2105,18 @@
                         </div>
                     </div>
                 </div>
-                <div class="fin-btn-group addMargin">
-                    <button click-redirect="/vacationStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
-                    <button ng-click="fundSelectionVacation(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                <div class="col-xs-12 col-lg-10 col-md-10">
+                    <div class="fin-btn-group addMargin">
+                        <button click-redirect="/vacationStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
+                        <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                        <button ng-click="fundSelectionVacation(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
- 
+    
+    <div class="col-xs-8 col-lg-4 col-md-7">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2102,6 +2128,7 @@
         <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 < 1000)||(modelVal.A4 == undefined)||(modelVal.A4%100 > 0)" >CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates()" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A6 == 0)||(modelVal.A6 == undefined)||(modelVal.A8 == undefined)" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="(modelVal.A4 < 1000)||(modelVal.A4 == undefined)||(modelVal.A4%100 > 0)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
     </div>
 </div>
 <div ng-if="swiperName == 'wedding'" class="fadeIn swiper-container customSwiper wedding type2Sliders" ng-init="step = 1">
@@ -2310,11 +2337,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="fin-btn-group addMargin">
-                    <button click-redirect="/weddingStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
-                    <!-- <button click-redirect="/dashboard" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button> -->
-                    <button ng-click="fundSelectionWedding(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                <div class="col-xs-12 col-lg-10 col-md-10">
+                    <div class="fin-btn-group addMargin">
+                        <button click-redirect="/weddingStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
+                        <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                        <!-- <button click-redirect="/dashboard" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button> -->
+                        <button ng-click="fundSelectionWedding(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2322,7 +2351,8 @@
     <div class="typeSwiper">
         <div class="image-backdrop"><img src="assets/images/wedding.png"></div>
         <p>Wedding</p>
-    </div>    
+    </div>
+    <div class="col-xs-8 col-lg-4 col-md-7">    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>   
@@ -2334,6 +2364,7 @@
         <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 < 1000)||(modelVal.A4 == undefined)||(modelVal.A4%100 > 0)" >CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A6, modelVal.A7)" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A7 == 0)||(modelVal.A7 == undefined)||(modelVal.A8 == undefined)" class="fin-app-btn fin-orange content-next" >CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="(modelVal.A4 < 1000)||(modelVal.A4 == undefined)||(modelVal.A4%100 > 0)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
     </div>
 </div>
 <div ng-if="swiperName == 'others'" class="fadeIn swiper-container customSwiper others type2Sliders" ng-init="step = 1">
@@ -2475,10 +2506,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="fin-btn-group addMargin">
-                    <button click-redirect="/othersStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
-                    <button ng-click="fundSelectionEvents(modelVal, date)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                <div class="col-xs-12 col-lg-10 col-md-10">
+                    <div class="fin-btn-group addMargin">
+                        <button click-redirect="/othersStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
+                        <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                        <button ng-click="fundSelectionEvents(modelVal, date)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2487,6 +2520,7 @@
         <div class="image-backdrop"><img src="assets/images/others.png"></div>
         <p>Others</p>
     </div>    
+    <div class="col-xs-8 col-lg-4 col-md-7">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
             <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2497,6 +2531,7 @@
         <button ng-show="(step == 2)" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory();" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 3)" ng-click="appendValues(modelVal);(step = step + 1);calculateRecommendedSIP(modelVal.A3);" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 4)" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 < 1000)||(modelVal.A4 == undefined)||(modelVal.A4%100 > 0)" >CONTINUE</button>
+    </div>
     </div>
 </div>
 <div ng-if="swiperName == 'jewellery'" class="fadeIn swiper-container customSwiper jewellery
@@ -2705,11 +2740,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="fin-btn-group addMargin">
-                    <button click-redirect="/jewelleryStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
-                    <!-- <button ng-click="portfolioFactoring()" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button> -->
-                    <button ng-click="fundSelectionJewellery(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                <div class="col-xs-12 col-lg-10 col-md-10">
+                    <div class="fin-btn-group addMargin">
+                        <button click-redirect="/jewelleryStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
+                        <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                        <!-- <button ng-click="portfolioFactoring()" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button> -->
+                        <button ng-click="fundSelectionJewellery(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2718,6 +2755,7 @@
         <div class="image-backdrop"><img src="assets/images/jewellery.svg"></div>
         <p>Jewellery</p>
     </div>    
+    <div class="col-xs-8 col-lg-4 col-md-7">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
 
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2729,6 +2767,7 @@
         <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next" ng-disabled="(modelVal.A4 < 1000)||(modelVal.A4 == undefined)||(modelVal.A4%100 > 0)" >CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 3) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);calculateEstimates(modelVal.A2, modelVal.A5, modelVal.A7)" ng-disabled="(modelVal.A5 == 0)||(modelVal.A5 == undefined)||(modelVal.A7 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step = getStep()) && (step == 4) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="(modelVal.A4 < 1000)||(modelVal.A4 == undefined)||(modelVal.A4%100 > 0)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
     </div>
 </div>
 <div ng-if="swiperName == 'taxsaving'" class="fadeIn swiper-container customSwiper taxsaving type2Sliders" ng-init="step = 1">
@@ -2806,10 +2845,12 @@
                         </div>
                     </div>
                 </div>
-                <div class="fin-btn-group addMargin">
-                    <button click-redirect="/taxsavingStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
-                    <button ng-click="fundSelectionSaveTax(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                <div class="col-xs-12 col-lg-10 col-md-10">
+                    <div class="fin-btn-group addMargin">
+                        <button click-redirect="/taxsavingStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
+                        <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
+                        <button ng-click="fundSelectionSaveTax(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2818,6 +2859,7 @@
         <div class="image-backdrop"><img src="assets/images/saveTax.png"></div>
         <p>Save Tax</p>
     </div>    
+    <div class="col-xs-8 col-lg-4 col-md-7">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="taxsavingStarted"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2825,6 +2867,7 @@
         <button ng-show="(step == 1) && ($root.selectedCriteria == 'op1' || $root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="retirementForm1.$invalid" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2) && ($root.selectedCriteria == 'op1')" ng-click="appendValues(modelVal);(step = step + 1);getGoalGraphDetails()" ng-disabled="(modelVal.A2 == 0)||(modelVal.A2 == undefined)||(modelVal.A2 < 5000)||(modelVal.A2 > 9999999)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2) && ($root.selectedCriteria == 'op2')" ng-click="appendValues(modelVal);(step = step + 1);getGoalGraphDetails()" ng-disabled="(modelVal.A2 == 0)||(modelVal.A2 == undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
     </div>
 </div>
 <div ng-if="swiperName == 'investorInfo'" class="fadeIn swiper-container customSwiper investorInfo type2Sliders" ng-init="step = 1">
@@ -2882,6 +2925,8 @@
             </form>
         </div>
     </div>
+    <span ng-if="(step == 3)" class="placeholder imagePlaceholder hidden-xs">Note: Above image will be used to register your investment account.</span>
+    <div class="col-xs-8 col-lg-4 col-md-7">
     <div class="fin-btn-group gotoPages">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2891,8 +2936,9 @@
         <button ng-show="(step == 2)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" ng-disabled="(!modelVal.placeOfBirth)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 3)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 3)" ng-click="appendValues(modelVal);uploadFileToServer(null, true);(step = step + 1)" ng-disabled="(!modelVal.imageUrl)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-    </div>sdsd{{step}}
-    <span ng-if="(step == 3)" class="placeholder imagePlaceholder hidden-xs">Note: Above image will be used to register your investment account.</span>
+    </div>
+    </div>
+    
 </div>
 <div ng-if="swiperName == 'bankInfo'" class="fadeIn swiper-container customSwiper bankInfo type2Sliders" ng-init="step = 1">
     <div class="swiper-wrapper">
@@ -2941,7 +2987,8 @@
     <div class="typeSwiper">
         <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
         <p>Bank Info</p>
-    </div>    
+    </div>   
+    <div class="col-xs-8 col-lg-4 col-md-7"> 
     <div class="fin-btn-group gotoPages">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2949,6 +2996,7 @@
         <button ng-show="(step == 1)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" ng-disabled="(!modelVal.accountHolderName)||(!modelVal.ifscCode)||(!modelVal.accountNumber)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 2)" ng-click="appendValues(modelVal);uploadFileToServer(null,true);(step = step + 1)" ng-disabled="(!modelVal.imageUrl)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
     </div>
     <span ng-if="(step == 2)" class="placeholder imagePlaceholder hidden-xs">Note: Above image will be used to register your investment account.</span>
 </div>
@@ -2993,6 +3041,7 @@
         <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
         <p>Identity Info</p>
     </div>    
+    <div class="col-xs-8 col-lg-4 col-md-7">
     <div class="fin-btn-group gotoPages">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -3000,6 +3049,7 @@
         <button ng-show="(step == 1)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 2)" ng-click="appendValues(modelVal);uploadFileToServer(null, true);(step = step + 1)" ng-disabled="(!modelVal.imageUrl)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
     </div>
     <span ng-if="(step == 2)" class="placeholder imagePlaceholder hidden-xs">Note: Above image will be used to register your investment account.</span>
 </div>
@@ -3111,12 +3161,14 @@
     <div class="typeSwiper">
         <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
         <p>Contact Info</p>
-    </div>    
+    </div> 
+    <div class="col-xs-8 col-lg-4 col-md-7">   
     <div class="fin-btn-group gotoPages">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step=getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1 || step == 2 || step == 3 || step == 4 || step == 5" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="step == 1 || step == 2 || step == 3 || step == 4 || step == 5" ng-click="onContinue()" ng-disabled="onDisabled()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
     </div>
     <span ng-if="(step == 2 && ($root.selectedCriteria=='op2'||$root.selectedCriteria=='op3'))||(step == 4 && ($root.selectedCriteria=='op2'||$root.selectedCriteria=='op3'))" class="placeholder imagePlaceholder hidden-xs">Note: Above image will be used to register your investment account.</span>
 </div>
@@ -3160,6 +3212,7 @@
         <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
         <p>Nominee Info</p>
     </div>    
+    <div class="col-xs-8 col-lg-4 col-md-7">
     <div class="fin-btn-group gotoPages">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -3167,6 +3220,7 @@
         <button ng-show="(step == 1 && $root.selectedCriteria=='op1')" ng-click="appendValues(modelVal);(step = step + 1);processNomineeAbsent()" ng-disabled="(!modelVal.nomineeAbsent)&&(!modelVal.nomineeName||!modelVal.nomineeDob||(showGuardian()&&!modelVal.guardianName))" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 1 && $root.selectedCriteria=='op2')" click-redirect="{{$root.redirectUrlContext}}"  class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 1 && $root.selectedCriteria=='op2')" ng-click="appendValues(modelVal);saveInfo(true);(step = step + 1)" ng-disabled="(!modelVal.addressAreEqual)&&(!modelVal.nomineeAddress.pincode||!modelVal.nomineeAddress.addressLine1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
     </div>
 </div>
 <div ng-if="swiperName == 'earnInterest'" class="fadeIn swiper-container customSwiper earnInterest type2Sliders" ng-init="step = 1">
@@ -3221,10 +3275,12 @@
                         <goal-chart chartoptions="graphObject" ></goal-chart>
                     </div>
                 </div>
-                <div class="fin-btn-group addMargin">
-                    <button click-redirect="/earnInterestStart" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
-                    <!-- <button click-redirect="/goals" class="fin-app-btn fin-orange">CONTINUE PLANING</button> -->
-                    <button ng-click="fundSelectionEarnInterest(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                <div class="col-xs-12 col-lg-10 col-md-10">
+                    <div class="fin-btn-group addMargin">
+                        <button click-redirect="/earnInterestStart" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
+                        <!-- <button click-redirect="/goals" class="fin-app-btn fin-orange">CONTINUE PLANING</button> -->
+                        <button ng-click="fundSelectionEarnInterest(modelVal)" class="fin-app-btn fin-orange">CONTINUE TO FUND SELECTION</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -3233,10 +3289,12 @@
         <div class="image-backdrop"><img src="assets/images/planInvestMent.png"></div>
         <p>Earn Higher Interest</p>
     </div>    
+    <div class="col-xs-8 col-lg-4 col-md-7">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" click-redirect="/earnInterestStart" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step == 1)" ng-disabled="modelVal.A1 == ''" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2)" ng-disabled="(!modelVal.A2 || modelVal.A2 == '' || modelVal.A2 < 5000 || modelVal.A2 > 9999999 || (modelVal.A2%100) > 0)" ng-click="appendValues(modelVal);(step = step + 1);getAssetAllocationCategory()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+    </div>
     </div>
 </div>
 <div ng-if="swiperName == 'registrationComplete'" class="fadeIn swiper-container customSwiper registrationComplete type2Sliders" ng-init="step = 1">

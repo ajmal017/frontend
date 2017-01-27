@@ -263,9 +263,10 @@ header{
 				}
 			}*/
 		}
-		@media @below768{
+		@media @below600{
 			padding-top:6%;
 			.navbar-header{
+				margin-top: 5%;
 				/*width:100%;*/
 			}
 			.navbar-brand{
@@ -662,6 +663,11 @@ section{
 		position:relative;
 		top:-2px;
 		color:@lochmaraapprox!important;
+		@media @below600{
+			padding-left: 0;
+			padding-right: 0;
+			padding-top: 14px;
+		}
 		.menu-icon{
 			width:42px;
 			height:24px;
