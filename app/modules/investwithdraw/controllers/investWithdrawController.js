@@ -345,15 +345,17 @@
 				return $scope.showErrorMessage[current_goalId];
 			}
 
-			// $scope.getTotalWithdrawAmt = function(withdrawObj) {
+			$scope.getTotalWithdrawAmt = function(withdrawObj) {
 			
-			// 	var totalWithdraw = 0
-			// 	for(var goal in withdrawObj.amount) {
-			// 		for(var each_amt in data) {
-			// 			totalWithdraw = +totalWithdraw + +data[each_amt];
-			// 		}
-			// 	}
-			// 	return totalWithdraw;
-			// }
+			 	var totalWithdraw = 0
+			 	if (withdrawObj.amount) {
+				 	for(var goal in withdrawObj.amount) {
+				 		for(var each_amt in withdrawObj.amount[goal]) {
+				 			totalWithdraw += parseFloat(withdrawObj.amount[goal][each_amt]);
+				 		}
+				 	}
+			 	}
+			 	return totalWithdraw;
+			}
 		}
 })();
