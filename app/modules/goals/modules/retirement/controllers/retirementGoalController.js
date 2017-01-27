@@ -209,9 +209,15 @@
 				$scope.debtAmountModal = Math.round(($scope.equity/100) * $scope.amount);
 			}
 
-			$scope.resetAllocation = function() {
+			$scope.resetAllocation = function(equityInitial) {
 				$scope.modelVal = $rootScope.modelValInitial;
+				$scope.modelVal.assetAllocation.equity = equityInitial;
+				$scope.modelVal.assetAllocation.debt = 100 - equityInitial;
+				$scope.modelVal.debtAmount = ($scope.modelVal.assetAllocation.debt/100) * $scope.amount;
+				$scope.modelVal.equityAmount = ($scope.modelVal.assetAllocation.equity/100) * $scope.amount;
 				$scope.getGoalGraphDetails();
+				console.log('modelVal',$scope.modelVal);
+				
 			}
 
 			$scope.fundSelectionRetirement = function(modelVal) {
