@@ -848,7 +848,7 @@
 					scope.$watch('chartoptions.series', function(newSeries, oldSeries) {
 						if (newSeries && newSeries.length == chart.series.length) {
 							for (var i=0; i<chart.series.length; i++) {
-								chart.series[i].setData(newSeries[i].data);
+								chart.series[i].setData(newSeries[i].data, true);
 							}
 							chart.redraw();
 						}

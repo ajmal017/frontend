@@ -16,14 +16,14 @@
 		        controller: 'investWithdrawController'
 		    })
 		    .when('/investStep1', {
-				title : 'Build Your Smart Portfolio',
+				title : 'Review Investment Plan',
 				subHeader : 'GO BACK TO DASHBOARD',
 				redirectUrl : '/dashboard',
 		        templateUrl: 'modules/investwithdraw/views/investStep1.html',
 		        controller: 'investWithdrawController'
 		    })
 		    .when('/reviewInvestment', {
-				title : 'Build Your Smart Portfolio',
+				title : 'Review Investment Plan',
 				subHeader : 'GO BACK TO DASHBOARD',
 				redirectUrl : '/dashboard',
 		        templateUrl: 'modules/investwithdraw/views/reviewInvestment.html',

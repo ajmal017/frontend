@@ -189,7 +189,8 @@
 				$scope.modelVal.assetAllocation.equity = $scope.equity2;
 				$scope.modelVal.debtAmount = $scope.debtAmountModal;
 				$scope.modelVal.equityAmount = $scope.equityAmountModal;
-				$('#equiDeptModal').modal('hide');	
+				$('#equiDeptModal').modal('hide');
+				$scope.getGoalGraphDetails();
 			}
 
 			$scope.changeDebtModal = function() {
@@ -209,6 +210,7 @@
 
 			$scope.resetAllocation = function() {
 				$scope.modelVal = $rootScope.modelValInitial;
+				$scope.getGoalGraphDetails();
 			}
 
 			$scope.fundSelectionRetirement = function(modelVal) {

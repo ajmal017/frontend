@@ -191,9 +191,8 @@ var finApp = finApp || {};
 				this.scope.modelVal.assetAllocation.equity = this.scope.equity2;
 				this.scope.modelVal.debtAmount = this.scope.debtAmountModal;
 				this.scope.modelVal.equityAmount = this.scope.equityAmountModal;
-				this.scope.getGoalGraphDetails();
 				jQuery('#equiDeptModal').modal('hide');	
-
+				this.getGoalGraphDetails();
 			},
 
 			resetAllocation : function(equityInitial) {
@@ -201,6 +200,7 @@ var finApp = finApp || {};
 				this.scope.modelVal.assetAllocation.debt = 100 - equityInitial;
 				this.scope.modelVal.debtAmount = (this.scope.modelVal.assetAllocation.debt/100) * this.scope.sipAmount;
 				this.scope.modelVal.equityAmount = (this.scope.modelVal.assetAllocation.equity/100) * this.scope.sipAmount;
+				this.getGoalGraphDetails();
 				console.log('modelVal',this.scope.modelVal);
 				// this.scope.modelVal = this.rootScope.modelValInitial;
 			},
