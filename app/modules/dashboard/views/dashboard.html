@@ -1,8 +1,9 @@
 <section class="fadeIn dashboard">
 <h1 class="text-center">What would you like to do next?</h1>
 	<div class="col-xs-12">
-		<div class="row">
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 goals-outer-cover">
+		<div class="col-xs-12 col-lg-6 col-md-6 no-padding">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<div class="goals-outer-cover riskassess">
 				<div class="goals-cover" click-redirect="/riskAssesment">
 						<div class="image-div">
 							<img class="img img-responsive" src="assets/images/riskassessmentMain.png">
@@ -23,8 +24,12 @@
 				<div ng-if="!risk_score">
 					<h4 class="text-center">You currently have no risk score</h4>
 				</div>
+				</div>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 goals-outer-cover">
+		
+
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<div class="goals-outer-cover planinvest">
 				<div class="goals-cover" click-redirect="/planInvest">
 					<div class="image-div invest-goal">
 						<img class="" src="assets/images/invest.png">
@@ -40,9 +45,12 @@
 				<h3 class="text-center" ng-if="portfolio_flag">You currently have planned</h3>
 				<p class="text-center score" ng-bind="dashCounts['investCount']"></p> -->
 				<h4 class="text-center" ng-if="portfolio_flag"><span class="highlight goal_number">{{dashCounts['investCount']}}</span> goals under planning</h4>
-
+				</div>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 goals-outer-cover" >
+			</div>
+			<div class="col-xs-12 col-lg-6 col-md-6 no-padding">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6" >
+			<div class="goals-outer-cover trackperform">
 				<div class="goals-cover" ng-click="showTrackPerformance()" ng-if="!disabledTrackPerformance">
 					<div class="image-div">
 						<img class="img img-responsive" src="assets/images/dashboardImage4.png">
@@ -74,8 +82,10 @@
 
 				<h4 class="text-center" ng-if="disabledTrackPerformance">You have</h4>
 				<p class="text-center score dashboardSubText no-margin paddingTop2" ng-if="disabledTrackPerformance">NO CURRENT INVESTMENTS OR PLANNED GOALS.</p>
+				</div>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-3 goals-outer-cover">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<div class="goals-outer-cover withdraw">
 				<div class="goals-cover" ng-click="goToWithdraw()">
 					<div class="image-div">
 						<img class="" src="assets/images/withdraw.png">
@@ -95,7 +105,7 @@
 			<h4 class="text-center" ng-if="!portfolio_flag">You have</h4>
 			<p class="text-center score dashboardSubText paddingTop2" ng-if="!portfolio_flag">NO CURRENT INVESTMENTS</p>
 			</div>
-			
+			</div>
 		</div>
 	</div>
 </section>

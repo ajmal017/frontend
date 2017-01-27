@@ -15,9 +15,11 @@
         	}
 	        function getSavedValues(){  
                 var retirementAnswers = {};
+                var riskAnswers = {};
                 retirementAnswers = $rootScope.userFlags['user_answers']['retirement'];
+                riskAnswers = $rootScope.userFlags['user_answers']['assess']
                 modelObject.A1 = retirementAnswers['goal_name'];
-                modelObject.A2 = retirementAnswers['current_age'];
+                modelObject.A2 = retirementAnswers['current_age'] || riskAnswers['A1'];
                 modelObject.A3 = retirementAnswers['retirement_age'];
                 modelObject.A4 = retirementAnswers['corpus'];
                 modelObject.A6 = retirementAnswers['monthly_income'];

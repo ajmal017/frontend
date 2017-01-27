@@ -5,6 +5,9 @@
     @media @below768{
       min-height: 450px;
     }
+    @media @above1400{
+      min-height: 550px;
+    }
     .bubble{
         display: flex;
         flex-direction:column;
@@ -298,6 +301,9 @@
           margin-bottom: 12%;
           float: left;
           width: 100%;
+        }
+        @media @above1400{
+          min-height:550px;
         }
         p{
           .GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@blackapprox,normal);
@@ -738,6 +744,10 @@
         &.hasCheckbox{
           min-height: 580px;
         }
+      }
+      .fin-btn-group-wrapper{
+        position: absolute;
+        bottom: 2%;
       }   
       .fin-btn-group{
         &.gotoPages{
@@ -784,6 +794,9 @@
   transition:opacity 0.2s ease;
   visibility: hidden;
   min-height: 450px;
+  @media @above1400{
+    min-height: 550px;
+  }
 }
 .swiper-slide-prev,
 .swiper-slide-next{

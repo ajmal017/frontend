@@ -391,7 +391,7 @@
                     </div>
                 </div>
                 <p class="more-questions">Would you like to answer some more questions to fine tune your score?</p>
-                <div class="col-xs-12 col-md-8 col-sm-8 col-lg-5 no-padding">
+                <div class="col-xs-12 col-md-8 col-sm-8 col-lg-5 no-padding fin-btn-group-wrapper">
                     <div class="fin-btn-group answer-more">
                         <button ng-click="gotoMoreQuestion()" class="fin-app-btn fin-white content-next">YES, I'D LIKE THAT</button>
                         <button ng-if="!$root.loggedIn" click-redirect="/registration" class="fin-app-btn fin-orange content-next">NO THANKS, LET'S CONTINUE TO NEXT STEP</button>
@@ -403,7 +403,7 @@
         </div>
     </div>
 
-    <div class="col-xs-8 col-lg-4 col-md-7">
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
         <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
             <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="dashboard"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
             <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -660,7 +660,7 @@
         <div class="image-backdrop"><img src="assets/images/riskMargin.png"></div>
         <p>Risk Assessment</p>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7">
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" ng-disabled="riskAssesment2Form1.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
@@ -807,7 +807,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-10 col-md-10">
+                <div class="col-xs-12 col-lg-10 col-md-10 fin-btn-group-wrapper">
                     <div class="fin-btn-group addMargin">
                         <button click-redirect="/quickInvestStart" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
                         <!-- <button click-redirect="/planInvest" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
@@ -821,7 +821,7 @@
         <div class="image-backdrop"><img src="assets/images/planInvestMent.png"></div>
         <p>Quick Invest</p>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7">
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="quickInvestStart"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -1051,7 +1051,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-10 col-md-10">
+                <div class="col-xs-12 col-lg-10 col-md-10 fin-btn-group-wrapper">
                     <div class="fin-btn-group addMargin">
                         <button click-redirect="/retirementGoalsStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
                         <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
@@ -1061,7 +1061,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-8 col-lg-4 col-md-7">
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -1288,7 +1288,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-10 col-md-10">
+                <div class="col-xs-12 col-lg-10 col-md-10 fin-btn-group-wrapper">
                     <div class="fin-btn-group addMargin">
                         <button click-redirect="/educationStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
                         <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
@@ -1302,7 +1302,7 @@
         <div class="image-backdrop"><img src="assets/images/education.png"></div>
         <p>Education</p>
     </div>
-    <div class="col-xs-8 col-lg-4 col-md-7">    
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > '1'">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -1565,7 +1565,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-10 col-md-10">
+                <div class="col-xs-12 col-lg-10 col-md-10 fin-btn-group-wrapper">
                     <div class="fin-btn-group addMargin">
                         <button click-redirect="/propertyStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
                         <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
@@ -1575,7 +1575,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-8 col-lg-4 col-md-7">
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > '1'">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -1841,7 +1841,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-10 col-md-10">
+                <div class="col-xs-12 col-lg-10 col-md-10 fin-btn-group-wrapper">
                     <div class="fin-btn-group addMargin">
                         <button click-redirect="/automobileStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
                         <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
@@ -1852,7 +1852,7 @@
             </div>
         </div>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7">
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2105,7 +2105,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-10 col-md-10">
+                <div class="col-xs-12 col-lg-10 col-md-10 fin-btn-group-wrapper">
                     <div class="fin-btn-group addMargin">
                         <button click-redirect="/vacationStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
                         <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
@@ -2116,7 +2116,7 @@
         </div>
     </div>
     
-    <div class="col-xs-8 col-lg-4 col-md-7">
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2337,7 +2337,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-10 col-md-10">
+                <div class="col-xs-12 col-lg-10 col-md-10 fin-btn-group-wrapper">
                     <div class="fin-btn-group addMargin">
                         <button click-redirect="/weddingStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
                         <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
@@ -2352,7 +2352,7 @@
         <div class="image-backdrop"><img src="assets/images/wedding.png"></div>
         <p>Wedding</p>
     </div>
-    <div class="col-xs-8 col-lg-4 col-md-7">    
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>   
@@ -2506,7 +2506,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-10 col-md-10">
+                <div class="col-xs-12 col-lg-10 col-md-10 fin-btn-group-wrapper">
                     <div class="fin-btn-group addMargin">
                         <button click-redirect="/othersStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
                         <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
@@ -2520,7 +2520,7 @@
         <div class="image-backdrop"><img src="assets/images/others.png"></div>
         <p>Others</p>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7">
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
             <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2740,7 +2740,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-10 col-md-10">
+                <div class="col-xs-12 col-lg-10 col-md-10 fin-btn-group-wrapper">
                     <div class="fin-btn-group addMargin">
                         <button click-redirect="/jewelleryStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
                         <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
@@ -2755,7 +2755,7 @@
         <div class="image-backdrop"><img src="assets/images/jewellery.svg"></div>
         <p>Jewellery</p>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7">
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
 
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2845,7 +2845,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-10 col-md-10">
+                <div class="col-xs-12 col-lg-10 col-md-10 fin-btn-group-wrapper">
                     <div class="fin-btn-group addMargin">
                         <button click-redirect="/taxsavingStarted" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
                         <!-- <button click-redirect="/goals" class="fin-app-btn fin-blue">CONTINUE PLANING</button> -->
@@ -2859,7 +2859,7 @@
         <div class="image-backdrop"><img src="assets/images/saveTax.png"></div>
         <p>Save Tax</p>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7">
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="taxsavingStarted"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2926,7 +2926,7 @@
         </div>
     </div>
     <span ng-if="(step == 3)" class="placeholder imagePlaceholder hidden-xs">Note: Above image will be used to register your investment account.</span>
-    <div class="col-xs-8 col-lg-4 col-md-7">
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2988,7 +2988,7 @@
         <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
         <p>Bank Info</p>
     </div>   
-    <div class="col-xs-8 col-lg-4 col-md-7"> 
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper"> 
     <div class="fin-btn-group gotoPages">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -3041,7 +3041,7 @@
         <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
         <p>Identity Info</p>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7">
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -3162,7 +3162,7 @@
         <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
         <p>Contact Info</p>
     </div> 
-    <div class="col-xs-8 col-lg-4 col-md-7">   
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">   
     <div class="fin-btn-group gotoPages">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step=getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -3212,7 +3212,7 @@
         <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
         <p>Nominee Info</p>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7">
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -3275,7 +3275,7 @@
                         <goal-chart chartoptions="graphObject" ></goal-chart>
                     </div>
                 </div>
-                <div class="col-xs-12 col-lg-10 col-md-10">
+                <div class="col-xs-12 col-lg-10 col-md-10 fin-btn-group-wrapper">
                     <div class="fin-btn-group addMargin">
                         <button click-redirect="/earnInterestStart" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO BACK & EDIT</button>
                         <!-- <button click-redirect="/goals" class="fin-app-btn fin-orange">CONTINUE PLANNING</button> -->
@@ -3289,7 +3289,7 @@
         <div class="image-backdrop"><img src="assets/images/planInvestMent.png"></div>
         <p>Earn Higher Interest</p>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7">
+    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" click-redirect="/earnInterestStart" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step == 1)" ng-disabled="retirementForm1.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
