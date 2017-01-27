@@ -257,7 +257,7 @@
       }
       &.investorInfo,&.bankInfo,&.nomineeInfo,&.contactInfo,&.identityInfo{
         .fin-btn-group{
-          width:46%!important;
+          width:100%!important;
           @media @below768{
             width:100% !important;
           }
@@ -275,7 +275,7 @@
         span{
           &.imagePlaceholder{
             position:absolute;
-            bottom: -3%;
+            bottom: 12%;
             left: 0;
           }
         }
@@ -334,6 +334,7 @@
               }
               &.currency{
                 position: relative;
+                left: 0;
                 input{
                   padding-left:5%;
                   @media @below768{
@@ -383,6 +384,9 @@
             .PIXEL2EM(30)!important;
             margin-top:1%!important;
             margin-bottom:0px;
+            @media @below768{
+              .PIXEL2EM(24)!important;
+            }
             span{
               &.swiper-input{
                 width:40%;
@@ -409,6 +413,9 @@
               .PIXEL2EM(30);
               margin-top:0px;
               line-height:30px;
+              @media @below768{
+                .PIXEL2EM(24);
+              }
         }
         &.hasCheckbox{
           .checkbox-cover{
@@ -618,6 +625,9 @@
               margin-bottom:3%;
               .GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@blackapprox,normal);
               .PIXEL2EM(30);
+              @media @below768{
+                .PIXEL2EM(20);
+              }
             }
           }
           &.total-estimation{
@@ -732,11 +742,11 @@
       .fin-btn-group{
         &.gotoPages{
           z-index:1000;
-          width:34%;
+          width:100%;
           position:absolute;
           bottom:5%;
           @media @below768{
-            width: 100%;
+
             margin-top: 5%;
             bottom: 0%;
             .content-next{
@@ -865,7 +875,7 @@
   }
   .fin-btn-group{
     margin-top:5%;
-    width:70%;
+    width:100%;
     @media @below768{
       width: 100%;
     }

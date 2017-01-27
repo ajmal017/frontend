@@ -283,7 +283,7 @@
 	&.investNowTable{
 		width:100%;
 		@media @below768{
-			min-width: 400px;
+			
 
 		}
 		.seperate-cover{
@@ -295,6 +295,7 @@
 			width:96%;
 			.th{
 				width:20%;
+				word-wrap: break-word;
 			}
 		}
 		.tbody{
@@ -312,6 +313,9 @@
 			.total{
 				float:left;
 				width:60%;
+				@media @below600{
+					width: 40%;
+				}
 			}
 			.sipTotal{
 				width:20%;

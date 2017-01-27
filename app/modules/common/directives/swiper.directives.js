@@ -37,7 +37,7 @@
 			                direction : 'vertical',
 			                slidesPerView : 1,
 			                loop: false,
-			                simulateTouch:'false',
+			                simulateTouch:false,
 			                touchMoveStopPropagation : false,
 			                calculateHeight:true,
 			                nextButton: '.content-next',
@@ -157,7 +157,21 @@
   									scope.sendValues({'data':JSON.stringify(scope.currentViewValue)});
   								}
   							},500);
-			                }
+			                },
+			                onTouchStart: function(swiper) {
+			                	console.log('touched');
+			                	event.stopPropagation();
+			                	return false;
+			                },
+			                onTouchMove: function (swiper){
+			                	console.log('swiper',swiper);
+							    return false;
+							},
+							  onTouchEnd: function (swiper){
+							    return true;
+							}
+
+
 			            });
 			                  			            
                     }, 200);
