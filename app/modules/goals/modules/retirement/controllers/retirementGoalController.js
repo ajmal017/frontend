@@ -180,6 +180,7 @@
 				$scope.debtAmountModal = debtAmount;
 				$scope.equityAmountModal = equityAmount;
 
+				$scope.minAmount = 1000;
 				$('#equiDeptModal').modal('show');
 			}
 
