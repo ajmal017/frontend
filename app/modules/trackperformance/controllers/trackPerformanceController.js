@@ -10,7 +10,7 @@
 			$scope.allFunds = '';	
 			$scope.trackerDetails = '';
 			$scope.resultSet = '';
-			$scope.setChartValue = $rootScope.trackPerTab || 'SCHEME';
+			$scope.setChartValue = $rootScope.trackPerTab || 'FINANCE';
 
 
 			$scope.getGoalImg = function(goalType) {

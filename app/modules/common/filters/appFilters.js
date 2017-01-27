@@ -16,7 +16,7 @@
 				}else if(amount >= 100000 && amount < 9900000){
 				    var total = parseFloat((amount / Math.pow(10, 5))).toFixed(2)+" L";
 				} else {
-					var total = 0;
+					var total = amount;
 				}
 				return total;
 			};

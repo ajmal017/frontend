@@ -65,6 +65,7 @@
 				this.goalsService.getGoalGraphDetails(this.scope.graphObject, {'equity' :100, 'debt' : 0}, 0, this.scope.modelVal.A2 || 0, tenure);
 
 				console.log('$scope.graphObject',this.scope.graphObject);
+				
 			}
 
 			this.scope.getGoalGraphDetails = angular.bind(this, this.getGoalGraphDetails ); 
