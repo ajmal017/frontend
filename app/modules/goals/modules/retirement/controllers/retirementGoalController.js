@@ -147,6 +147,9 @@
 							$scope.modelVal.estimate_selection_type = 'op2';
 							$scope.estimateSelectionChanged(appConfig.estimateType.COMFORTABLE);
 						}
+						else if (!$scope.retirement.corpus && $scope.modelVal.A5) {
+							$scope.calculateCorpus($scope.modelVal.A5);
+						}
 					}
 				});
 			}

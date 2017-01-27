@@ -25,11 +25,11 @@
 	        			accountHolderName : response.account_holder_name, 
 	        			accountType : response.account_type, 
 	        			sipCheck : response.sip_check,
-	        			ifscCode : response.ifsc_code.ifsc_code,
-	        			bankName : response.ifsc_code.name,
-	        			bankBranch : response.ifsc_code.bank_branch,
-	        			bankAddress: response.ifsc_code.address,
-	        			bankCity : response.ifsc_code.city,
+	        			ifscCode : response.ifsc_code?response.ifsc_code.ifsc_code:'',
+	        			bankName : response.ifsc_code?response.ifsc_code.name:'',
+	        			bankBranch : response.ifsc_code?response.ifsc_code.bank_branch : '',
+	        			bankAddress: response.ifsc_code?response.ifsc_code.address: '',
+	        			bankCity : response.ifsc_code?response.ifsc_code.city:'',
 	        			imageUrl : response.bank_cheque_image_thumbnail
 	        		};
         			
