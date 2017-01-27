@@ -3,7 +3,12 @@ var finApp = finApp || {};
 	'use strict';
 
 	finApp.goalControllerPrototype = {
-			showEquityModal: function(){
+			showEquityModal: function(minAmount){
+				if (typeof(minAmount) === "undefined" || minAmount == undefined) {
+					minAmount = 1000;
+				}
+				
+				this.scope.minAmount = minAmount;
 				$('#equiDeptModal').modal('show');
 			},
 			
@@ -146,8 +151,14 @@ var finApp = finApp || {};
 				this.setModelVal(this.goalModelObject['assetAllocation'], this.goalModelObject['perMonth']);
 			},
 
-			callModel : function(debtValue, equityValue, amount) {
+			callModel : function(debtValue, equityValue, amount, minAmount) {
 				console.log('debtValue',debtValue,'equityValue',equityValue,'amount',amount);
+				if (typeof(minAmount) === "undefined" || minAmount == undefined) {
+					minAmount = 1000;
+				}
+
+				this.scope.minAmount = minAmount;
+				
 				this.scope.amount = amount;
 
 				this.scope.equity = debtValue;

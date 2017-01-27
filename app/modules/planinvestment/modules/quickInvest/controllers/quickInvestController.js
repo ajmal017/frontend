@@ -63,8 +63,11 @@
 				var tenure = appConfig.QUICKINVEST_LUMPSUM_TERM;
 				if ($rootScope.selectedCriteria == 'op1') {
 					tenure = $scope.quickinvest['tenure'];
+					this.goalsService.getGoalGraphDetails(this.scope.graphObject, $scope.quickinvest['assetAllocation'], this.scope.modelVal.A2 || 0, 0, tenure);
 				}
-				this.goalsService.getGoalGraphDetails(this.scope.graphObject, $scope.quickinvest['assetAllocation'], this.scope.modelVal.A2 || 0, this.scope.modelVal.A4 || 0, tenure);
+				else {
+					this.goalsService.getGoalGraphDetails(this.scope.graphObject, $scope.quickinvest['assetAllocation'], 0, this.scope.modelVal.A4 || 0, tenure);
+				}
 
 				console.log('$scope.graphObject',this.scope.graphObject);
 			}
@@ -123,7 +126,7 @@
 						else {
 							$scope.quickinvest['assetAllocationCategory'] = "A"; //TODO define constants, default category
 						}
-						var assetAllocationData = assetAllocationService.computeAssetAllocation($scope.quickinvest['assetAllocationCategory'], $scope.modelVal.A2, $scope.modelVal.A4 || 0);
+						var assetAllocationData = assetAllocationService.computeAssetAllocation($scope.quickinvest['assetAllocationCategory'], $scope.modelVal.A2, 0);
 
 						$scope.quickinvest['assetAllocation'] = assetAllocationData.assetAllocation;
 						$scope.modelVal['assetAllocation'] = assetAllocationData.assetAllocation;
@@ -138,7 +141,7 @@
 					var riskProfile = riskProfileService();
 					$scope.quickinvest['assetAllocationCategory'] = appConfig.riskProfileToAssetAllocationCategory[riskProfile];
 
-					var assetAllocationData = assetAllocationService.computeAssetAllocation($scope.quickinvest['assetAllocationCategory'], $scope.modelVal.A2 || 0, $scope.modelVal.A4 || 0);
+					var assetAllocationData = assetAllocationService.computeAssetAllocation($scope.quickinvest['assetAllocationCategory'], 0, $scope.modelVal.A4 || 0);
 					$scope.quickinvest['assetAllocation'] = assetAllocationData.assetAllocation;
 					$scope.modelVal['assetAllocation'] = assetAllocationData.assetAllocation;
 					$scope.modelVal['assetAllocation']['equityInitial'] = assetAllocationData.assetAllocation['equity'];

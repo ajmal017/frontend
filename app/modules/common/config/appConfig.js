@@ -112,8 +112,8 @@
 			},
 			'returnRate' : {
 				'equity' : 15,
-				'debt' : 8,
-				'liquid' : 6
+				'debt' : 9,
+				'liquid' : 7
 			},
 			'assetAllocationCategory' : {
 				'OnlyEquity' : 'OnlyEquity',
