@@ -14,42 +14,43 @@ section{
 		padding-top: 3%;
 		padding-bottom: 3%;
 		.goals-outer-cover{
-			width:22%;
+		
 			float:left;
-			&:nth-child(1){
+			&.riskassess{
+				
 				.image-div{
 					img{
-						width:104%;
+						width:84%;
 						@media @below768{
 							width: 80%;
 						}
 					}
 				}
 			}
-			&:nth-child(2){
+			&.planinvest{
 				.image-div{
 					img{
-						width:140%;
+						width:93%;
 						@media @below768{
 							width: 80%;
 						}
 					}
 				}
 			}
-			&:nth-child(3){
+			&.trackperform{
 				.image-div{
 					img{
-						width:78%;
+						width:67%;
 						@media @below768{
 							width: 80%;
 						}
 					}
 				}
 			}
-			&:nth-child(4){
+			&.withdraw{
 				.image-div{
 					img{
-						width:125%;
+						width:108%;
 						@media @below768{
 							width: 80%;
 						}
@@ -57,10 +58,10 @@ section{
 				}
 			}
 			&:not(:last-child){
-				margin-right:3%;
+				/*margin-right:3%;*/
 			}
 			&:first-child{
-				margin-left:2%;
+				/*margin-left:2%;*/
 			}
 			h2{
 				float:left;
@@ -114,7 +115,9 @@ section{
 				margin-top:0px;
 			}
 			@media @below768{
-				width:100%;
+				width:80%;
+				float:none;
+				margin: 0 auto !important;
 			}
 			.goal_number{
 				.PIXEL2EM(24);
@@ -123,7 +126,7 @@ section{
 		.goals-cover{
 			cursor:pointer;
 			position:relative;
-			width:100%;
+			width:90%;
 			border-radius:25px;
 			margin-bottom: 12%;
 			float:left;
@@ -141,7 +144,7 @@ section{
 				}
 			}
 			.invest-goal{
-				margin: 14% 6%;
+				margin: 20% 17%;
 				@media @below768{
 					margin : 14% auto;
 				}

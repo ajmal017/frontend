@@ -84,6 +84,7 @@
 					busyIndicator.hide();
 					if('success' in data) {
 						$scope.allFunds = data.success.asset_class_overview;
+						$scope.current_portfolio = data.success['current portfolio'];
 						$scope.dashboardDetails();
 					} else {
 
@@ -142,8 +143,14 @@
 						}
 						$scope.legendColors = $scope.colors;
 						console.log('colors',$scope.colors);
-						var pieCurrency =  $filter('amountSeffix')(1200000);
-						$scope.pieTitle = "<p><span class='currency'>&#8377;</span><span class='content'>"+pieCurrency+"</span><span class='nextline'>Returns 0%</span></p>";
+						var pieCurrency =  $filter('amountSeffix')($scope.current_portfolio.corpus);
+						var ret_per = $filter('removeNegative')($scope.current_portfolio.gain);
+						var is_gain = $scope.current_portfolio.is_gain;
+						var class_err = '<span>';
+						if(!is_gain){
+							class_err = '<span class = "highlight">';
+						}
+						$scope.pieTitle = "<p><span class='currency'>&#8377;</span><span class='content'>"+pieCurrency+"</span><span class='nextline'>Returns "+class_err + ret_per+"</span>%</span></p>";
 						
 						
 						$scope.legends = [];
