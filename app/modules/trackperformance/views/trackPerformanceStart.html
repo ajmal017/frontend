@@ -66,13 +66,13 @@
 									<p>{{data.name}}</p>
 								</div>
 								<div class="td">
-									<p><span class="currency">&#8377;</span><span class="amount">{{data.current_value}}</span></p>
+									<p><span class="currency" ng-if="(data.name != 'BSE Sensex')&&(data.name != 'NSE CNX Nifty')">&#8377;</span><span class="amount">{{data.current_value}}</span></p>
 								</div>
 								<div class="td">
 									<div class="money-value">
 										<p class="gain types" ng-if="data.is_gain">
-										<span class="currency">&#8377;</span><span class="percentage">{{data.gain}}</span></p>
-										<p ng-if="!data.is_gain" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">{{data.gain}}</span> )</p>
+										<span class="currency" ng-if="(data.name != 'BSE Sensex')&&(data.name != 'NSE CNX Nifty')">&#8377;</span><span class="percentage">{{data.gain}}</span></p>
+										<p ng-if="!data.is_gain" class="loss types">( <span class="currency" ng-if="(data.name != 'BSE Sensex')&&(data.name != 'NSE CNX Nifty')">&#8377;</span><span class="percentage">{{data.gain}}</span> )</p>
 									</div>
 								</div>
 								<div class="td">
