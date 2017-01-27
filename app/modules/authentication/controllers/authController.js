@@ -50,6 +50,25 @@
 					$scope.completeLogin(data);
 				});
 			}
+			
+			$scope.processPasswordReset = function() {
+				$scope.ngDialog = ngDialog;
+				$scope.ngDialog.open({ 
+		        	template: 'modules/authentication/views/forgotPassword.html', 
+		        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+		        	overlay: false,
+		        	showClose : false,
+
+		        	scope: $scope
+	        	});
+
+			}
+
+			$scope.callPasswordReset = function(params) {
+				$scope.ngDialog.closeAll();
+				authService.resetPassword(params).then(function(data){
+				});
+			}
 		}
 		authController.prototype = finApp.authControllerPrototype;
 })();

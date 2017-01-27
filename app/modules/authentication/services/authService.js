@@ -11,13 +11,35 @@
         		submitSuccess : submitSuccess,
         		googleLogin : googleLogin,
         		googleRegister : googleRegister,
-        		googleRegisterExistingUser : googleRegisterExistingUser
+        		googleRegisterExistingUser : googleRegisterExistingUser,
+        		resetPassword : resetPassword 
         	}
 
 	        function verifyLogin(params){
 				var defer = $q.defer();
 				var postAPI = $resource( 
 					appConfig.API_BASE_URL+'/user/login/', 
+					{}, {
+						Check: {
+							method:'POST',
+						}
+					});
+				postAPI.Check(params,function(data){
+					if(data.status_code == 200){
+						defer.resolve({'success':data.response});
+					}else{
+						defer.resolve({'Message':data.response['message'], 'Error':data.error });
+					}				
+				}, function(err){
+					defer.reject(err);
+				}); 
+				return defer.promise;
+	        }
+
+	        function resetPassword(params){
+				var defer = $q.defer();
+				var postAPI = $resource( 
+					appConfig.API_BASE_URL+'/user/reset/password/', 
 					{}, {
 						Check: {
 							method:'POST',
