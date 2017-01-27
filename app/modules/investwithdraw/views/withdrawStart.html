@@ -75,8 +75,8 @@
 			</div>
 		</div>
 	</div>
-	<p class="result-total" ng-show="$root.noWithdraw">You don't have suffecient funds to withdraw.</p>
-	<p class="result-total">You will be recieving <span class="highlight"><span class="currency">&#8377;</span><span class="amount" ng-bind="getTotalWithdrawAmt(withdraw)"></span></span> as above.</p>
+	<p class="result-total" ng-show="$root.noWithdraw">You don't have sufficient funds to withdraw.</p>
+	<p class="result-total">You will be receiving <span class="highlight"><span class="currency">&#8377;</span><span class="amount" ng-bind="getTotalWithdrawAmt(withdraw)"></span></span> as above.</p>
 </section>
 <div class="termsConditions">
 	<div class="checkbox-cover">
@@ -85,7 +85,7 @@
     </div>
 </div>
 <div class="fin-btn-group addMargin investStep1">
-    <button click-redirect="/planInvest" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>CONTINUE PLANING</button>
+    <button click-redirect="/dashboard" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO TO DASHBOARD</button>
     <!-- <button data-toggle="modal" data-target="#withdrawModal" class="fin-app-btn fin-orange">WITHDRAW NOW</button> -->
     <button ng-click="proceedWithdraw(withdraw)" class="fin-app-btn fin-orange" ng-disabled="!termsChecked && withdrawError == '1'">WITHDRAW NOW</button>
 
