@@ -39,6 +39,7 @@
 			                loop: false,
 			                simulateTouch:false,
 			                touchMoveStopPropagation : false,
+			                onlyExternal : true,
 			                calculateHeight:true,
 			                nextButton: '.content-next',
                 			prevButton: '.content-prev',
