@@ -27,6 +27,10 @@
                 modelObject.A5 = automobileAnswers['current_price'];
                 modelObject.A6 = automobileAnswers['prop_of_purchase_cost']
                 modelObject.A7 = automobileAnswers['amount_saved'] || 0;
+                modelObject.estimate_selection_type = automobileAnswers['estimate_selection_type'];
+                modelObject.assetAllocation = automobileAnswers['allocation'];
+                modelObject.sip = automobileAnswers['sip'];
+                modelObject.estimate_selection_type = automobileAnswers['estimate_selection_type'];
                 if (automobileAnswers['term']) {
                 	modelObject.A2 = parseInt(d.getFullYear() + automobileAnswers['term']);
                 }

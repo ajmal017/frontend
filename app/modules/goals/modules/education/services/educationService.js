@@ -26,6 +26,7 @@
                 modelObject.A7 = educationAnswers['amount_saved'] || 0;
                 modelObject.assetAllocation = educationAnswers['allocation'];
                 modelObject.sip = educationAnswers['sip'];
+                modelObject.estimate_selection_type = educationAnswers['estimate_selection_type'];
                 if (educationAnswers['term']) {
                 	modelObject.A2 = parseInt(d.getFullYear() + educationAnswers['term']);
                 }
