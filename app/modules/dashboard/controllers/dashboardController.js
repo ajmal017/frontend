@@ -46,6 +46,7 @@
 
             $scope.user_flags = userFlags.user_flags;
             $scope.portfolio_flag = userFlags.user_flags.portfolio;
+            $scope.showRedeem = userFlags.user_flags.show_redeem;
 
             $scope.disabledTrackPerformance = false;
             if(userFlags.user_flags.is_virtual == true){

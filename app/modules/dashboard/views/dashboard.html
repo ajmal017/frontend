@@ -86,24 +86,31 @@
 			</div>
 			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 			<div class="goals-outer-cover withdraw">
-				<div class="goals-cover" ng-click="goToWithdraw()">
+				<div class="goals-cover" ng-click="goToWithdraw()" ng-if="showRedeem">
 					<div class="image-div">
 						<img class="" src="assets/images/withdraw.png">
 					</div>
+					
 					<!-- <div class="checkbox-cover" ng-if="user_flags.invest_redeem">
 						<input type="radio" name>
 						<label><span></span></label>
 					</div> -->
 				</div>
+				<div class="goals-cover goals-cover-disabled" ng-if="!showRedeem">
+					<div class="image-div">
+						<img src="assets/images/withdraw.png">
+					</div>
+				</div>
+				
 				<h2>Withdraw</h2>
 				<p class="text-center desc">Redeem your investments anytime anywhere with a few simple clicks.</p>
 				<!-- <h3 class="text-center">Your current risk score is</h3> -->
 <!-- 				<p class="text-center score">5.7</p>
 			<h4 class="text-center" ng-if="portfolio_flag">You havent started building<span class="nextline">your smart profile yet</span></h4> -->
-			<h4 class="text-center" ng-if="portfolio_flag">Redeem now from your</h4>
-			<p class="text-center score dashboardSubText paddingTop2" ng-if="portfolio_flag">CURRENT INVESTMENTS.</p>
-			<h4 class="text-center" ng-if="!portfolio_flag">You have</h4>
-			<p class="text-center score dashboardSubText paddingTop2" ng-if="!portfolio_flag">NO CURRENT INVESTMENTS</p>
+			<h4 class="text-center" ng-if="showRedeem">Redeem now from your</h4>
+			<p class="text-center score dashboardSubText paddingTop2" ng-if="showRedeem">CURRENT INVESTMENTS.</p>
+			<h4 class="text-center" ng-if="!showRedeem">You have</h4>
+			<p class="text-center score dashboardSubText paddingTop2" ng-if="!showRedeem">NO CURRENT INVESTMENTS</p>
 			</div>
 			</div>
 		</div>
