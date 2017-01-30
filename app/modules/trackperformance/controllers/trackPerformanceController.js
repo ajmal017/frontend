@@ -99,6 +99,7 @@
 					if('success' in data) {
 						$scope.portfolioStatus = data.success.portfolio_overview;
 						$scope.yestChanges = data.success.yesterday_changes;
+						$scope.dashboardDate = data.success.date; 
 						$scope.financial_goal_status = data.success.financial_goal_status;
 						$scope.financial_goal_status.forEach(function(data){
 							var date = new Date(data.date);
