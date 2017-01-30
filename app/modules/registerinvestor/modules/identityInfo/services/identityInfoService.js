@@ -24,7 +24,7 @@
         				maritalStatus : response.marital_status || '1', 
         				gender : response.gender || 'M', 
         				nationality : response.nationality || 'INDIA',
-        				imageUrl : response.identity_info_image_thumbnail
+        				imageUrl : response.identity_info_image_thumbnail?response.identity_info_image_thumbnail:response.identity_info_image
 	        		};
         			
         		};        		
