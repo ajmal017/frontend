@@ -26,11 +26,15 @@
                 modelObject.A8 = retirementAnswers['amount_saved'] || 0;
                 modelObject.estimate_selection_type = retirementAnswers['estimate_selection_type'];
                 modelObject.A5 = retirementAnswers['monthly_investment'];
+                modelObject.sip = retirementAnswers['monthly_investment'];
+                modelObject.assetAllocation = retirementAnswers['allocation'];
                 return modelObject;
                 
 	        }
             function setSavedValues(value){  
+                var modelObject = {};
                 modelObject = value;
+                sessionStorage.setItem('goalDetailsTemp', JSON.stringify(modelObject));
             }
 
             function addRetirementGoal(dataObj){

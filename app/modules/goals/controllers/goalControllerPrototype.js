@@ -123,10 +123,24 @@ var finApp = finApp || {};
 					}
 					//self.setModelVal(computedSIPData.assetAllocation, computedSIPData.computedSIP);
 					self.goalModelObject['goalEstimates'] = goalEstimates;
-					if (!self.scope.modelVal.estimate_selection_type) {
+					if (self.scope.modelVal.estimate_selection_type == '' || self.scope.modelVal.estimate_selection_type == undefined) {
 						self.scope.modelVal.estimate_selection_type = 'op2';
+						self.scope.estimateSelectionChanged(self.appConfig.estimateType.COMFORTABLE);
+					} else {
+						switch(self.scope.modelVal.estimate_selection_type) {
+						
+							case 'op1' : self.scope.estimateSelectionChanged(self.appConfig.estimateType.BUDGET);
+										break;
+							case 'op2' : self.scope.estimateSelectionChanged(self.appConfig.estimateType.COMFORTABLE);
+										break;
+							case 'op3' : self.scope.estimateSelectionChanged(self.appConfig.estimateType.LUXURY);	
+										break;
+							default : self.scope.estimateSelectionChanged(self.appConfig.estimateType.COMFORTABLE);
+										break;				 
+						}
 					}
-					self.scope.estimateSelectionChanged(self.appConfig.estimateType.COMFORTABLE);
+
+					
 				}
 				
 			},

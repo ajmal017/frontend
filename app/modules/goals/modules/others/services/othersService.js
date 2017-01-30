@@ -30,7 +30,8 @@
                 else {
                     modelObject.A2 = undefined;
                 }
-                
+                modelObject.assetAllocation = eventsAnswers['allocation'];
+                modelObject.sip = eventsAnswers['sip'];
                 return modelObject;
 	        }
 

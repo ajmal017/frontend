@@ -28,6 +28,7 @@
                 modelObject.A7 = jewelleryAnswers['amount_saved'] || 0;
                 modelObject.assetAllocation = jewelleryAnswers['allocation'];
                 modelObject.sip = jewelleryAnswers['sip'];
+                modelObject.estimate_selection_type = jewelleryAnswers['estimate_selection_type'];
                 if (jewelleryAnswers['term']) {
                 	modelObject.A2 = parseInt(d.getFullYear() + jewelleryAnswers['term']);
                 }

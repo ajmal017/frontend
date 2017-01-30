@@ -10,6 +10,11 @@
 											assetAllocationService, goalFormulaeService, appConfig, busyIndicator) {
 			$scope.retirement = {};
 			$scope.modelVal = retirementGoalsService.getSavedValues();
+			if (($scope.modelVal.A1 == "" || $scope.modelVal.A1 == undefined)  && sessionStorage.getItem('goalDetailsTemp')){
+				$scope.modelVal = JSON.parse(sessionStorage.getItem('goalDetailsTemp')) || {};
+			} else {
+				sessionStorage.removeItem('goalDetailsTemp');
+			}
 			$rootScope.setFundData = {};
 			$scope.budgetInfoText = [{'tip' : '<h5>A Budget Retirement would mean:</h5><p>You will get 40% of your current monthly income, adjusted for inflation, every month post retirement. With lower regular expenses, this would imply a somewhat lower lifestyle than you currently maintain.</p><h5>How the estimated value is calculated:</h5><ul><li>Your current income is projected to future value at 6% inflation, and income replacement of 40% is applied.</li><li> Life expectancy is taken as 80 years, or 20 years post retirement, whichever is higher.</li> <li>The total amount required at the time of retirement is calculated, to give you the required monthly income.</li> <li>Any existing savings for this goal is projected to grow at 8% annually, and reduced from the target amount.</li><li>The monthly savings required is calculated based on projected investment growth.</li></ul>'}];
 			$scope.comfInfoText = [{'tip' : '<h5>A Comfortable Retirement would mean:</h5><p>You will get 60% of your current monthly income, adjusted for inflation, every month post retirement. With lower regular expenses, this would imply a similar lifestyle as you currently maintain.</p><h5>How the estimated value is calculated:</h5><ul><li>Your current income is projected to future value at 6% inflation, and income replacement of 60% is applied.</li><li>Life expectancy is taken as 80 years, or 20 years post retirement, whichever is higher. </li><li>The total amount required at the time of retirement is calculated, to give you the required monthly income.</li><li>Any existing savings for this goal is projected to grow at 8% annually, and reduced from the target amount.</li><li>The monthly savings required is calculated based on projected investment growth.</li></ul>'}];
@@ -115,8 +120,9 @@
 			}
 
 			$scope.setModelVal = function(assetAllocationObj, sipAmount) {
+				$scope.sipAmount = sipAmount;
 				$scope.modelVal.assetAllocation = assetAllocationObj;
-				$scope.modelVal.assetAllocation.equityInitial = assetAllocationObj.equity;
+				// $scope.modelVal.assetAllocation.equityInitial = assetAllocationObj.equity;
 				var debtAmount = (assetAllocationObj.debt/100) * sipAmount;
 				var equityAmount = (assetAllocationObj.equity/100) * sipAmount;
 				$scope.modelVal.debtAmount = debtAmount;
@@ -143,11 +149,24 @@
 																'assetAllocation' : computedSIPData.assetAllocation};
 						}
 						$scope.retirement['goalEstimates'] = goalEstimates;
-						if (!$scope.modelVal.estimate_selection_type) {
+						if ($scope.modelVal.estimate_selection_type == '' || $scope.modelVal.estimate_selection_type == undefined) {
 							$scope.modelVal.estimate_selection_type = 'op2';
 							$scope.estimateSelectionChanged(appConfig.estimateType.COMFORTABLE);
+						} else {
+							switch($scope.modelVal.estimate_selection_type) {
+						
+								case 'op1' : $scope.estimateSelectionChanged(appConfig.estimateType.BUDGET);
+											break;
+								case 'op2' : $scope.estimateSelectionChanged(appConfig.estimateType.COMFORTABLE);
+											break;
+								case 'op3' : $scope.estimateSelectionChanged(appConfig.estimateType.LUXURY);	
+											break;
+								default : $scope.estimateSelectionChanged(appConfig.estimateType.COMFORTABLE);
+											break;				 
+							}
 						}
-						else if (!$scope.retirement.corpus && $scope.modelVal.A5) {
+
+						if (!$scope.retirement.corpus && $scope.modelVal.A5) {
 							$scope.calculateCorpus($scope.modelVal.A5);
 						}
 					}
@@ -161,7 +180,13 @@
 				$scope.retirement['corpus'] = $scope.retirement.goalEstimates[selectionType].corpus;
 				$scope.retirement['perMonth'] = $scope.retirement.goalEstimates[selectionType].sip;
 				$scope.retirement['assetAllocation'] = $scope.retirement.goalEstimates[selectionType].assetAllocation;
-				
+				if($scope.modelVal.sip == $scope.retirement.goalEstimates[selectionType].sip){
+					$scope.retirement['assetAllocation'] = $scope.modelVal.assetAllocation;
+				} else {
+					$scope.retirement['assetAllocation'] = $scope.retirement.goalEstimates[selectionType].assetAllocation;
+				}				
+				$scope.retirement['assetAllocation']['equityInitial'] = $scope.retirement.goalEstimates[selectionType].assetAllocation['equity'];
+
 				$scope.setModelVal($scope.retirement['assetAllocation'], $scope.retirement['perMonth']);
 
 			}
@@ -213,11 +238,11 @@
 			}
 
 			$scope.resetAllocation = function(equityInitial) {
-				$scope.modelVal = $rootScope.modelValInitial;
+				// $scope.modelVal = $rootScope.modelValInitial;
 				$scope.modelVal.assetAllocation.equity = equityInitial;
 				$scope.modelVal.assetAllocation.debt = 100 - equityInitial;
-				$scope.modelVal.debtAmount = ($scope.modelVal.assetAllocation.debt/100) * $scope.amount;
-				$scope.modelVal.equityAmount = ($scope.modelVal.assetAllocation.equity/100) * $scope.amount;
+				$scope.modelVal.debtAmount = ($scope.modelVal.assetAllocation.debt/100) * $scope.sipAmount;
+				$scope.modelVal.equityAmount = ($scope.modelVal.assetAllocation.equity/100) * $scope.sipAmount;
 				$scope.getGoalGraphDetails();
 				console.log('modelVal',$scope.modelVal);
 				
@@ -267,8 +292,8 @@
 				busyIndicator.show();
 				retirementGoalsService.addRetirementGoal(fundSelectionObj).then(function(data){
 					if('success' in data) {
+						retirementGoalsService.setSavedValues(modelVal);
 						console.log('Goal added successfully');
-						
 						$scope.getFundData('retirement');
 					}
 					else {
