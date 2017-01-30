@@ -40,7 +40,7 @@
 	        			occupationType : response.occupation_type || 'PRI', 
 	        			otherTaxPayer : response.other_tax_payer,
 	        			dob : response.dob,
-	        			imageUrl : response.pan_image_thumbnail,
+	        			imageUrl : response.pan_image_thumbnail?response.pan_image_thumbnail:response.pan_image,
 	        			kycStatus : $rootScope.userFlags['user_flags']['kra_verified']
 	        		};
         			

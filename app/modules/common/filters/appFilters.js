@@ -31,6 +31,7 @@
 					amount = str.replace("-","");;
 					return amount;
 				}
+				return amount;
 				
 			};
 		}

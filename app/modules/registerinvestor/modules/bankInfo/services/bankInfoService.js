@@ -30,7 +30,7 @@
 	        			bankBranch : response.ifsc_code?response.ifsc_code.bank_branch : '',
 	        			bankAddress: response.ifsc_code?response.ifsc_code.address: '',
 	        			bankCity : response.ifsc_code?response.ifsc_code.city:'',
-	        			imageUrl : response.bank_cheque_image_thumbnail
+	        			imageUrl : response.bank_cheque_image_thumbnail?response.bank_cheque_image_thumbnail:response.bank_cheque_image
 	        		};
         			
         		},

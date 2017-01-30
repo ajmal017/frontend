@@ -65,10 +65,10 @@
         					communicationAddressType : response.communication_address_type,
         					email : response.email,
         					phoneNumber : response.phone_number,
-        					frontImageUrl : response.front_image_thumbnail,
-        					backImageUrl : response.back_image_thumbnail,
-        					permanentFrontImageUrl : response.permanent_front_image_thumbnail,
-        					permanentBackImageUrl : response.permanent_back_image_thumbnail,
+        					frontImageUrl : response.front_image_thumbnail?response.front_image_thumbnail:response.front_image,
+        					backImageUrl : response.back_image_thumbnail?response.back_image_thumbnail:response.back_image,
+        					permanentFrontImageUrl : response.permanent_front_image_thumbnail?response.permanent_front_image_thumbnail:response.permanent_front_image,
+        					permanentBackImageUrl : response.permanent_back_image_thumbnail?response.permanent_back_image_thumbnail:response.permanent_back_image
         					
         			};
         			
