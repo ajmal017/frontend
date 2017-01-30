@@ -327,18 +327,22 @@
 				$scope.showErrorMessage = {};
 				var each_goal_error = $scope.showErrorMessage[current_goalId];
 				
-					if((amount > 0 && schemeObj.minimum_withdrawal > 0) && (amount < schemeObj.minimum_withdrawal)) {
+				if (schemeObj.return_value == amount) {
+					$scope.showErrorMessage[current_goalId] = '';
+					$scope.withdrawError = 0;
+				}
+				else if((amount > 0 && schemeObj.minimum_withdrawal > 0) && (amount < schemeObj.minimum_withdrawal)) {
 					
 					$scope.showErrorMessage[current_goalId] = 'The amount cannot be less than minimum withdrawal amount';
 					
 					$scope.withdrawError = 1;
-					} else if((schemeObj.return_value-amount) < schemeObj.minimum_balance) {
+				} else if((schemeObj.return_value-amount) < schemeObj.minimum_balance) {
 						$scope.showErrorMessage[current_goalId] = 'The balance after withdrawal cannot be below minimum balance';
 						$scope.withdrawError = 1;
-					} else {
+				} else {
 						$scope.showErrorMessage[current_goalId] = '';
 						$scope.withdrawError = 0;
-					}
+				}
 				
 				
 
