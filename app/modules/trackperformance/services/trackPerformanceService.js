@@ -143,6 +143,8 @@
 
                 var fundObject = response[year]['fund'];
                 var dates = response[year]['dates'];
+                var xirr = response[year]['xirr'];
+                var first_year = response[year]['dates'][0];
                 var colors = ['#f23434','#1081c4','#f2692f','#999999','#B3B3B3','#F2F2F2'];
                 var resultSet = [];
                 for(var i=0;i<fundObject.length;i++){
@@ -151,36 +153,55 @@
                     var valueObject = fundObject[i]['value'];
                     if(dates.length > valueObject.length){
                         valueObject = fundObject[i]['value'];
-                        dates = response[year]['dates'].slice(0,valueObject.length)
+                        dates = response[year]['dates'].slice(0,valueObject.length);
+                        xirr = response[year]['xirr'];
                         for(var j=0;j<valueObject.length;j++){
+                            var value = +(valueObject[j].toFixed(2));
                             data.push({
-                                'y' : valueObject[j],
-                                'date':dates[j]
+                                'y' : value,
+                                'date':dates[j],
+                                // 'x':dates[j],
+                                'xirr':xirr[j],
+                                'first_year':first_year
                             });
                         }
                     }else if(dates.length < valueObject.length){
-                        dates = response[year]['dates']
+                        dates = response[year]['dates'];
+                        xirr = response[year]['xirr'];
                         valueObject = fundObject[i]['value'].slice(0,dates.length);
                         for(var j=0;j<valueObject.length;j++){
+                            var value = +(valueObject[j].toFixed(2));
                             data.push({
-                                'y' : valueObject[j],
-                                'date':dates[j]
+                                'y' : value,
+                                'date':dates[j],
+                                // 'x':dates[j],
+                                'xirr':xirr[j],
+                                'first_year':first_year
                             });
                         }
                     }else if(dates.length == valueObject.length){
-                        dates = response[year]['dates']
+                        dates = response[year]['dates'];
+                        xirr = response[year]['xirr'];
                         valueObject = fundObject[i]['value'];
                         for(var j=0;j<valueObject.length;j++){
+                            var value = +(valueObject[j].toFixed(2));
+                           
                             data.push({
-                                'y' : valueObject[j],
-                                'date':dates[j]
+                                'y' : value,
+                                'date':dates[j],
+                                // 'x':dates[j],
+                                'xirr':xirr[j],
+                                'first_year':first_year
                             });
                         }
                     }
+                    data.first_year = first_year;
                     object['color'] = colors.splice(0,1).toString();
                     object['name'] = fundObject[i]['id'];
                     object['data'] = data;
                     object['marker'] = {symbol : 'square'};
+                   
+                    console.log('object pushed',object);
                     resultSet.push(object);
                 }
                 
@@ -196,7 +217,8 @@
                     "three_year": {
                         "fund": [{
                                 "id": "Current Amount",
-                                "value": resultSet.current_amount
+                                "value": resultSet.current_amount,
+
                                 },
                                 {
                                 "id": "Invested Amount",
@@ -205,7 +227,8 @@
                         ],
                         
                         "dates": resultSet.date,
-                        "category": []
+                        "category": [],
+                        "xirr": resultSet.xirr
                     }
                 }
 

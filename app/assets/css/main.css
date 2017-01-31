@@ -5580,12 +5580,6 @@ input.datepicker::placeholder {
 .highcharts-container {
   margin: 0 auto;
 }
-@media only screen and (max-width:768px) {
-  .highcharts-container {
-    margin: 0;
-    min-width: 100%;
-  }
-}
 .highcharts-credits {
   display: none!important;
 }
@@ -6094,6 +6088,11 @@ section.registerInvestor .registerInvestorConfirm {
   overflow-x: hidden!important;
   overflow-y: auto;
   height: 300px;
+}
+@media only screen and (max-width:600px) {
+  .table-outer-cover.compareTable .thead .th {
+    text-align: center;
+  }
 }
 .table-outer-cover.compareTable .thead .th:nth-child(1) {
   width: 10%;
@@ -6918,12 +6917,18 @@ section.recommended .fin-btn-group .fin-app-btn.fin-blue {
   min-width: 177px;
   margin-right: 2%;
 }
+@media only screen and (max-width:600px) {
+  section.recommended .fin-btn-group .fin-app-btn.fin-blue {
+    min-width: auto;
+  }
+}
 section.recommended .fin-btn-group .fin-app-btn.fin-orange {
   min-width: 200px;
 }
-@media only screen and (max-width:768px) {
+@media only screen and (max-width:600px) {
   section.recommended .fin-btn-group .fin-app-btn.fin-orange {
-    width: 100%;
+    float: right;
+    min-width: auto;
   }
 }
 section.recommended .fin-btn-group .fin-app-btn.fin-white {
@@ -6945,6 +6950,11 @@ section.recommended .fin-btn-group .fin-app-btn.fin-white:hover {
 section.recommended .fin-btn-group .fin-link-btn {
   padding: 16px;
   padding-left: 0px;
+}
+@media only screen and (max-width:600px) {
+  section.recommended .fin-btn-group {
+    padding: 0;
+  }
 }
 .calculated {
   width: 100%;
