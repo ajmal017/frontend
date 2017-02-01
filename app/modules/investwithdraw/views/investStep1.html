@@ -2,8 +2,8 @@
 	<div class="col-xs-12">
 		<div class="row">
 			<div class="col-xs-12 col-lg-4 col-md-4 pie-cover">
-				<p><span class="placeholder pie-header">Your asset allocation for the year</span></p>
-				<invest-pie-chart items="$root.resultPercentage" title="$root.pieTitle"></invest-pie-chart>
+				<p><span class="placeholder pie-header">Your asset allocation for the year</span></p>{{$root.colors}}
+				<invest-pie-chart items="$root.resultPercentage" title="$root.pieTitle" colors="$root.colors"></invest-pie-chart>
 				<div class="pie-chart-legend">
 					<div class="label-cover">
 						<p ng-repeat="legend in $root.legends"><span class="content col-xs-2" ng-bind="legend.name"></span><span class="legend-cover">
@@ -15,7 +15,7 @@
 						</span><span class="value-cover"><span class="currency">&#8377;</span><span class="value" ng-bind="legend.price | amountSeffix"></span></span></p>
 					</div>
 				</div>
-				<span class="placeholder bottom">*investment amounts are rounded off to the nearest hundred</span>
+				<!-- <span class="placeholder bottom">*investment amounts are rounded off to the nearest hundred</span> -->
 			</div>
 			<div class="col-xs-12 col-lg-8 col-md-8 xScrollDiv">
 				<p><span class="placeholder pie-header">Your goal summary</span></p>

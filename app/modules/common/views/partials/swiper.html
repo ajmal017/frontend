@@ -222,9 +222,9 @@
                 <form name="riskAssesment1Form4" novalidate>
                 <h2>If my <span class="currency">&#8377</span> 1 lakh investment goes down to <span class="currency">&#8377</span> 80,000 <span class="nextline"> in 2 months, I will</span></h2>
                 <div class="radio-cover">
-                    <input type="radio" required id="option3Type1" name="option3" ng-model="modelVal.A19" value="op1"><label for="option3Type1"><span></span>Sell all my holdings</label>
-                    <input type="radio" required id="option3Type2" name="option3" ng-model="modelVal.A19" value="op2"><label for="option3Type2"><span></span>Sell some of my holdings</label>
-                    <input type="radio" required id="option3Type3" name="option3" ng-model="modelVal.A19" value="op3"><label for="option3Type3"><span></span>Do Nothing, maintain holdings</label>
+                    <input type="radio" required id="option3Type1" name="option3" ng-model="modelVal.A19" value="op1"><label for="option3Type1"><span></span>Sell all my investments</label>
+                    <input type="radio" required id="option3Type2" name="option3" ng-model="modelVal.A19" value="op2"><label for="option3Type2"><span></span>Sell some of my investments</label>
+                    <input type="radio" required id="option3Type3" name="option3" ng-model="modelVal.A19" value="op3"><label for="option3Type3"><span></span>Do Nothing, maintain investments</label>
                     <input type="radio" required id="option3Type4" name="option3" ng-model="modelVal.A19" value="op4"><label for="option3Type4"><span></span>Buy more, it's a good time</label>
                 </div>
                 </form>
@@ -286,32 +286,44 @@
                         </div>
                         <div class="col-xs-3">
                             <h3>Your risk score is</h3>
-                            <p class="animated bounceIn score">{{result}}</p>
+                            <p class="animated bounceIn score">{{result | number:1}}</p>
                         </div>
                         <div class="col-xs-5" ng-if="result >= 0 && result <= 4">
                             <h3>You are <span>Low</span> Risk Taker</h3>
-                            <p class="desc">Minimize risk, preserve capital and target steady returns</p>
-                            <p class="desc">Invest mainly in debt funds</p>
+                            <ul>
+                                <li><p class="desc">Minimize risk, preserve capital and target steady returns</p></li>
+                                <li><p class="desc">Invest mainly in debt funds</p></li>
+                            </ul>
+                            
+                            
                         </div>
                         <div class="col-xs-5" ng-if="result >= 4.1 && result <= 6.0">
                             <h3>You are <span>Below Average</span> Risk Taker</h3>
-                            <p class="desc">Take calculated risks to get upside on returns</p>
-                            <p class="desc">Invest mainly in equity with some protection from debt funds</p>
+                            <ul>
+                                <li><p class="desc">Take calculated risks to get upside on returns</p></li>
+                                <li><p class="desc">Invest mainly in equity with some protection from debt funds</p></li>
+                            </ul>
                         </div>
                         <div class="col-xs-5" ng-if="result >= 6.1 && result <= 7.5">
                             <h3>You are <span>Average</span> Risk Taker</h3>
-                            <p class="desc">Take some risk to build wealth while protecting high downside</p>
-                            <p class="desc">Invest in a balance of equity and debt funds</p>
+                            <ul>
+                                <li><p class="desc">Take some risk to build wealth while protecting high downside</p></li>
+                                <li><p class="desc">Invest in a balance of equity and debt funds</p></li>
+                            </ul>
                         </div>
                         <div class="col-xs-5" ng-if="result >= 7.6 && result <= 9.0">
                             <h3>You are <span>Above Average</span> Risk Taker</h3>
-                            <p class="desc">Take calculated risks to get upside on returns</p>
-                            <p class="desc">Invest mainly in equity with some protection from debt funds</p>
+                            <ul>
+                                <li><p class="desc">Take calculated risks to get upside on returns</p></li>
+                                <li><p class="desc">Invest mainly in equity with some protection from debt funds</p></li>
+                            </ul>
                         </div>
                         <div class="col-xs-5" ng-if="result >= 9.1 && result <= 10.0">
                             <h3>You are <span>High</span> Risk Taker</h3>
-                            <p class="desc">Take calculated risks over long term to maximize wealth</p>
-                            <p class="desc">Invest mainly to equity funds</p>
+                            <ul>
+                                <li><p class="desc">Take higher risks over long term to maximize wealth</p></li>
+                                <li><p class="desc">Invest mainly in equity funds</p></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -383,15 +395,15 @@
                             <div class="col-xs-8">
                                 <h4>High Risk Taker<span class="range">9.1 - 10.0</span></h4>
                                 <ul>
-                                    <li>Take calculated risks over long term to maximize wealth</li>
-                                    <li>Invest mainly to equity funds</li>
+                                    <li>Take higher risks over long term to maximize wealth</li>
+                                    <li>Invest mainly in equity funds</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
                 <p class="more-questions">Would you like to answer some more questions to fine tune your score?</p>
-                <div class="col-xs-12 col-md-8 col-sm-8 col-lg-5 no-padding fin-btn-group-wrapper">
+                <div class="col-xs-12 col-md-5 col-sm-8 col-lg-5 no-padding fin-btn-group-wrapper">
                     <div class="fin-btn-group answer-more">
                         <button ng-click="gotoMoreQuestion()" class="fin-app-btn fin-white content-next">YES, I'D LIKE THAT</button>
                         <button ng-if="!$root.loggedIn" click-redirect="/registration" class="fin-app-btn fin-orange content-next">NO THANKS, LET'S CONTINUE TO NEXT STEP</button>
@@ -403,7 +415,7 @@
         </div>
     </div>
 
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">
         <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
             <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="dashboard"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
             <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -542,32 +554,42 @@
                         </div>
                         <div class="col-xs-3">
                             <h3>Your risk score is</h3>
-                            <p class="score">{{result}}</p>
+                            <p class="score">{{result | number:1}}</p>
                         </div>
                         <div class="col-xs-5" ng-if="result >= 0 && result <= 4">
                             <h3>You are <span>Low</span> Risk Taker</h3>
-                            <p class="desc">Minimize risk, preserve capital and target steady returns</p>
-                            <p class="desc">Invest mainly in debt funds</p>
+                            <ul>
+                                <li><p class="desc">Minimize risk, preserve capital and target steady returns</p></li>
+                                <li><p class="desc">Invest mainly in debt funds</p></li>
+                            </ul>
                         </div>
                         <div class="col-xs-5" ng-if="result >= 4.1 && result <= 6.0">
                             <h3>You are <span>Below Average</span> Risk Taker</h3>
-                            <p class="desc">Take calculated risks to get upside on returns</p>
-                            <p class="desc">Invest mainly in equity with some protection from debt funds</p>
+                            <ul>
+                                <li><p class="desc">Take calculated risks to get upside on returns</p></li>
+                                <li><p class="desc">Invest mainly in equity with some protection from debt funds</p></li>
+                            </ul>
                         </div>
                         <div class="col-xs-5" ng-if="result >= 6.1 && result <= 7.5">
                             <h3>You are <span>Average</span> Risk Taker</h3>
-                            <p class="desc">Take some risk to build wealth while protecting high downside</p>
-                            <p class="desc">Invest in a balance of equity and debt funds</p>
+                            <ul>
+                                <li><p class="desc">Take some risk to build wealth while protecting high downside</p></li>
+                                <li><p class="desc">Invest in a balance of equity and debt funds</p></li>
+                            </ul>
                         </div>
                         <div class="col-xs-5" ng-if="result >= 7.6 && result <= 9.0">
                             <h3>You are <span>Above Average</span> Risk Taker</h3>
-                            <p class="desc">Take calculated risks to get upside on returns</p>
-                            <p class="desc">Invest mainly in equity with some protection from debt funds</p>
+                            <ul>
+                                <li><p class="desc">Take calculated risks to get upside on returns</p></li>
+                                <li><p class="desc">Invest mainly in equity with some protection from debt funds</p></li>
+                            </ul>
                         </div>
                         <div class="col-xs-5" ng-if="result >= 9.1 && result <= 10.0">
                             <h3>You are <span>High</span> Risk Taker</h3>
-                            <p class="desc">Take calculated risks over long term to maximize wealth</p>
-                            <p class="desc">Invest mainly to equity funds</p>
+                            <ul>
+                                <li><p class="desc">Take higher risks over long term to maximize wealth</p></li>
+                                <li><p class="desc">Invest mainly in equity funds</p></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -639,14 +661,14 @@
                             <div class="col-xs-8">
                                 <h4>High Risk Taker<span class="range">9.1 - 10.0</span></h4>
                                 <ul>
-                                    <li>Take calculated risks over long term to maximize wealth</li>
-                                    <li>Invest mainly to equity funds</li>
+                                    <li>Take higher risks over long term to maximize wealth</li>
+                                    <li>Invest mainly in equity funds</li>
                                 </ul>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-md-8 col-sm-8 col-lg-5 no-padding">
+                <div class="col-xs-12 col-md-5 col-sm-8 col-lg-5 no-padding">
                     <div class="fin-btn-group answer-more addMargin">
                         <button ng-click="($root.gotoFirstRiskAssessment=true)" click-redirect="/riskAssesment" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>I'D LIKE TO TRY AGAIN</button>
                         <button ng-if="!$root.loggedIn" click-redirect="/registration" class="fin-app-btn fin-orange content-next">SIGN UP</button>
@@ -660,7 +682,7 @@
         <div class="image-backdrop"><img src="assets/images/riskMargin.png"></div>
         <p>Risk Assessment</p>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" ng-disabled="riskAssesment2Form1.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
@@ -821,7 +843,7 @@
         <div class="image-backdrop"><img src="assets/images/planInvestMent.png"></div>
         <p>Quick Invest</p>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="quickInvestStart"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -1061,7 +1083,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -1302,7 +1324,7 @@
         <div class="image-backdrop"><img src="assets/images/education.png"></div>
         <p>Education</p>
     </div>
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">    
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > '1'">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -1575,7 +1597,7 @@
             </div>
         </div>
     </div>
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > '1'">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -1852,7 +1874,7 @@
             </div>
         </div>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2116,7 +2138,7 @@
         </div>
     </div>
     
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2352,7 +2374,7 @@
         <div class="image-backdrop"><img src="assets/images/wedding.png"></div>
         <p>Wedding</p>
     </div>
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">    
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">    
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
             <button class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>   
@@ -2520,7 +2542,7 @@
         <div class="image-backdrop"><img src="assets/images/others.png"></div>
         <p>Others</p>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <div ng-show="step > 1">
             <button class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2755,7 +2777,7 @@
         <div class="image-backdrop"><img src="assets/images/jewellery.svg"></div>
         <p>Jewellery</p>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
 
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step = getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2860,7 +2882,7 @@
         <div class="image-backdrop"><img src="assets/images/saveTax.png"></div>
         <p>Save Tax</p>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="taxsavingStarted"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2927,7 +2949,7 @@
         </div>
     </div>
     <span ng-if="(step == 3)" class="placeholder imagePlaceholder hidden-xs">Note: Above image will be used to register your investment account.</span>
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -2989,7 +3011,7 @@
         <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
         <p>Bank Info</p>
     </div>   
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper"> 
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper"> 
     <div class="fin-btn-group gotoPages">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -3042,7 +3064,7 @@
         <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
         <p>Identity Info</p>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -3163,7 +3185,7 @@
         <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
         <p>Contact Info</p>
     </div> 
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">   
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">   
     <div class="fin-btn-group gotoPages">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step=getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -3213,7 +3235,7 @@
         <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
         <p>Nominee Info</p>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
@@ -3290,7 +3312,7 @@
         <div class="image-backdrop"><img src="assets/images/planInvestMent.png"></div>
         <p>Earn Higher Interest</p>
     </div>    
-    <div class="col-xs-8 col-lg-4 col-md-7 fin-btn-group-wrapper">
+    <div class="col-xs-8 col-lg-4 col-md-4 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages" ng-show="$root.lastSlide">
         <button class="fin-link-btn content-prev" click-redirect="/earnInterestStart" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step == 1)" ng-disabled="retirementForm1.$invalid" ng-click="appendValues(modelVal);(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>

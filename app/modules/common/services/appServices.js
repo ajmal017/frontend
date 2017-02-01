@@ -131,9 +131,9 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
     		}
         }
 
-	    finWebInterCepter.$inject = ['$q', '$location', '$timeout', '$rootScope', 'appText', 'appConfig'];
+	    finWebInterCepter.$inject = ['$q', '$location', '$timeout', '$rootScope', 'appText', 'appConfig', 'busyIndicator'];
 
-	    function finWebInterCepter($q, $location, $timeout, $rootScope, appText, appConfig) {
+	    function finWebInterCepter($q, $location, $timeout, $rootScope, appText, appConfig, busyIndicator) {
 	        var authFactory = {};
 	        var URL;
 	        var promise = [];
@@ -221,6 +221,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 	                	sessionStorage.removeItem('userDetails');
 	                	
 	                	$("#sessionLogoutModal").modal('show');
+	                	busyIndicator.hide();
 	                	
 	                }
 	                (URL in promise) ? $timeout.cancel(promise[URL]): "";

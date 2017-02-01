@@ -103,8 +103,19 @@
 						$scope.financial_goal_status = data.success.financial_goal_status;
 						$scope.financial_goal_status.forEach(function(data){
 							var date = new Date(data.date);
-							console.log('date',date);
+							console.log('date***',date);
 							data.dateFormatted = date;
+							var value = data.goal.substr(data.goal.length - 1);
+							if(value == "K") {
+								var returnGoal = data.goal.replace(" K","");
+								data.returnGoal = (returnGoal*1000).toLocaleString();
+							} else {
+								var onlyValue = parseFloat(data.goal.substr(data.goal,data.goal.length - 2));
+								onlyValue = onlyValue.toFixed(2);
+								var returnGoal = onlyValue + " " + value;
+								data.returnGoal = returnGoal;
+							}
+
 						});
 						$scope.allSchemes = data.success.asset_class_overview;
 						console.log('allFunds',$scope.allFunds);
@@ -116,16 +127,20 @@
 						console.log('allSchemes',$scope.allSchemes);
 						if($scope.allSchemes[0]){
 							var equityValue = $scope.allSchemes[0]['holding_per'];
-						} else {equityValue = 0;}
+							var equityAmt = $scope.allSchemes[0]['current_value'];
+						} else {equityValue = 0;equityAmt = 0;}
 						if($scope.allSchemes[1]){
 							var debtValue = $scope.allSchemes[1]['holding_per'];
-						} else {debtValue = 0;}
+							var debtAmt = $scope.allSchemes[1]['current_value'];
+						} else {debtValue = 0;debtAmt = 0;}
 						if($scope.allSchemes[2]){
 							var elssValue = $scope.allSchemes[2]['holding_per'];
-						} else {elssValue = 0;}
+							var elssAmt = $scope.allSchemes[2]['current_value'];
+						} else {elssValue = 0;elssAmt = 0;}
 						if($scope.allSchemes[3]){
 							var liquidValue = $scope.allSchemes[3]['holding_per'];
-						} else {liquidValue = 0;}
+							var liquidAmt = $scope.allSchemes[3]['current_value'];
+						} else {liquidValue = 0;liquidAmt = 0;}
 						$scope.resultPercentage = [
 							['Equity',   equityValue],
 							['Debt',     debtValue],
@@ -142,7 +157,7 @@
 							var color = trackPerformanceService.getHexcolors('#047ac1',init);
 							$scope.colors.push(color);
 						}
-						$scope.legendColors = $scope.colors;
+						$scope.colors = ['#247abc', '#05AB41', '#7f7f7f', '#db5d30'];
 						console.log('colors',$scope.colors);
 						var pieCurrency =  $filter('amountSeffix')($scope.current_portfolio.corpus);
 						var ret_per = $filter('removeNegative')($scope.current_portfolio.gain);
@@ -161,8 +176,8 @@
 							var color = trackPerformanceService.getHexcolors('#047ac1',init);
 							$scope.legendColors.push(color);
 						}
-						
-						var price = ['524920030', '1020320030', '1020320030', '1020320030'];
+						$scope.legendColors = ['#247abc', '#05AB41', '#7f7f7f', '#db5d30'];
+						var price = [equityAmt, debtAmt, elssAmt, liquidAmt];
 						for(var i=0;i<$scope.resultPercentage.length;i++){
 							var legendObject = {};
 							legendObject['name'] = $scope.resultPercentage[i][0];

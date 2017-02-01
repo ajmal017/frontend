@@ -888,10 +888,11 @@
     			restrict : 'EA',
     			scope:{
     				items : '=',
-    				title : '='
+    				title : '=',
+    				colors : '='
     			},
     			link: function (scope, element){
-					Highcharts.getOptions().colors = Highcharts.map(['#0580c3', '#0c4f74', '#f26928', '#87350f'], function (color) {
+					Highcharts.getOptions().colors = Highcharts.map(scope.colors, function (color) {
 				        return {
 				            radialGradient: {
 				                cx: 0.6,

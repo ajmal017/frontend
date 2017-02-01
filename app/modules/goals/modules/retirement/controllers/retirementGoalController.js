@@ -203,8 +203,8 @@
 				$scope.equity = debtValue;
 				$scope.equity2 = equityValue;
 				console.log('$scope.equity', $scope.equity, '$scope.equity2', $scope.equity2);
-				var debtAmount = ($scope.equity/100) * amount;
-				var equityAmount = ($scope.equity2/100) * amount;
+				var debtAmount =  Math.round(($scope.equity/100) * amount);
+				var equityAmount =  Math.round(($scope.equity2/100) * amount);
 				$scope.debtAmountModal = debtAmount;
 				$scope.equityAmountModal = equityAmount;
 
