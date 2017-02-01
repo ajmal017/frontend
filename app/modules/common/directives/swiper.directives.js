@@ -34,7 +34,7 @@
 
 	                setTimeout(function() {
                         swiper = $(element).find("." + scope.swiperName).swiper({
-			                direction : 'vertical',
+			                direction : 'horizontal',
 			                slidesPerView : 1,
 			                loop: false,
 			                simulateTouch:false,
