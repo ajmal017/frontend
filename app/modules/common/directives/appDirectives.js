@@ -660,7 +660,7 @@
 							borderRadius: 10,
 							borderWidth: 0,
 							formatter: function() {
-								scope.calculateAmount(this.y,this.point.date);
+								scope.calculateAmount(this.y,this.point.date,this.point.xirr,this.point.first_year);
 								return "<span class='nextline text-center'>"+this.point.date+"</span><br><span class='nextline'>"+this.y+"</span>";
 							}
 						},
@@ -696,13 +696,29 @@
                 			chart.setSize(applyWidth, 300);
                 			setTimeout(function(){
                 				chart.setSize(applyWidth, 300);
-                			},100);
+                			},500);
                 		},0);
                     		             	
 	            	});
-                    scope.calculateAmount = function(nav,date){
+                    scope.calculateAmount = function(nav,date,xirr,first_year){
                     	$rootScope.nav = {};
-                    	$rootScope.nav['amount'] = nav * 100;
+                    	if(xirr && first_year){
+                    		var d1 = first_year.split("-");
+	                    	var d2 = date.split("-");
+	                    	var first_date = new Date(d1[2], d1[1] - 1, d1[0]);
+	                    	var now_date = new Date(d2[2], d2[1] - 1, d2[0]);
+	                    	var timeDiff = Math.abs(now_date.getTime() - first_date.getTime());
+							var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+							var diffYear = diffDays/365;
+							var xirr = xirr/100;
+							var ratio = (Math.pow(1+xirr),diffYear);
+							var todaysVal = parseInt(10000*ratio);
+							$rootScope.nav['amount'] = 10000 + todaysVal;
+                    	} else {
+                    		var amount = (10000*nav)/100;
+							$rootScope.nav['amount'] = amount;
+                    	}
+                    	
                     	$rootScope.nav['date'] = date;
                     	if(!$rootScope.$$phase) $rootScope.$apply();
                     }

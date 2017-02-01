@@ -67,7 +67,7 @@
                 }
                 var indexObject = {};
                 indexObject['color'] = colors.splice(0,1).toString();
-                indexObject['name'] = 'BSE SENSEX';
+                indexObject['name'] = 'Benchmark';
                 indexObject['marker'] = {symbol : 'square'}
                 var dataIndex = [];
                 for(var k=0;k<valueObject.length;k++){

@@ -193,11 +193,15 @@ section{
 				&.fin-blue{
 					min-width:177px;
 					margin-right:2%;
+					@media @below600{
+						min-width: auto;
+					}
 				}
 				&.fin-orange{
 					min-width:200px;
-					@media @below768{
-						width: 100%;
+					@media @below600{
+						float: right;
+						min-width:auto;
 					}
 				}
 				&.fin-white{
@@ -216,6 +220,9 @@ section{
 			.fin-link-btn{
 				padding:16px;
 				padding-left:0px;
+			}
+			@media @below600{
+				padding:0;
 			}
 		}
 	}
