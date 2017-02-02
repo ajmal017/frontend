@@ -146,9 +146,9 @@
 						var min = parseInt($scope.min);
 						if(min <  model){
 							if($scope.step5 == 'true'){
-								model = model - 5;
+								model = +model - 5;
 							} else {
-								model = model - 1;
+								model = +model - 1;
 							}
 							$scope.model = model;
 							ngModel.$setViewValue($scope.model);
@@ -162,9 +162,9 @@
 						var max = parseInt($scope.max);
 						if(max > model){
 							if($scope.step5 == 'true'){
-								model = model + 5;
+								model = +model + 5;
 							} else {
-								model = model + 1;
+								model = +model + 1;
 							}
 							$scope.model = model;
 							ngModel.$setViewValue($scope.model);
