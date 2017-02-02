@@ -26,8 +26,12 @@
 
 		function amountFormat(){
 			return function (input) {
-				var amount = input;
-				var total = amount.toLocaleString();
+				var amount = input,
+					total='0';
+				
+				if (amount ) {
+					total = amount.toLocaleString();
+				}
 				
 				return total;
 			};
