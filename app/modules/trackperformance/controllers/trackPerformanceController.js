@@ -270,6 +270,13 @@
 				});
 				return lumpsumTotal;
 			}
+
+			$scope.checkNegAmt = function(amt) {
+				console.log('amt', amt);
+				if(amt < 0) {
+					return true;
+				}
+			}
 			
 		}
 })();
