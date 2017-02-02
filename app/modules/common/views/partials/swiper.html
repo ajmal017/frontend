@@ -915,7 +915,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'" data-key="retirement:2">
             <form name="retirementForm5" novalidate>
                 <div class="swiper-content" >
-                      <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskus estimate my retirement planning needs?</strong><p>Based on a few questions on your current income and what you have already saved, we will give you a scientific estimate of how much you need to save monthly to live with similar (or slightly lower or higher) lifestyle.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
+                      <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskUs estimate my retirement planning needs?</strong><p>Based on a few questions on your current income and what you have already saved, we will give you a scientific estimate of how much you need to save monthly to live with similar (or slightly lower or higher) lifestyle.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
                       <p class="question multiple"><span class="content">My current post-tax monthly income is</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A6" type="text" required></span></p>
 <!--                        <p class="question multiple"><span class="content">How much do you currently spend monthly?</span> <span class="swiper-input normal"><input format="number" ng-model="modelVal.A7" type="text" required></span></p>-->
                       <p class="question multiple"><span class="content">For this goal, so far I have already saved</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A8" type="text" required></span></p>
@@ -926,7 +926,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
             <form name="retirementForm6" novalidate>
                 <div class="swiper-content content-6 total-estimation">
-                      <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
+                      <p class="question multiple"><span class="content">I love FinAskUs estimate</span></p>
                        <div class="col-xs-12 col-lg-9 col-md-12 estimate">
                         <div class="row">
                             <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
@@ -1152,7 +1152,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'" data-key="education:1">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                    <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskus estimate my education planning needs?</strong><p>Based on a few questions on what sort of education you are targeting and what you have already saved, we will give you well-researched estimate of how much that education will cost in future, and how much you need to save monthly to achieve your goal.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
+                    <div class="pigy"><info-tip quick-tip-data="[{'tip':'<strong>How will FinAskUs estimate my education planning needs?</strong><p>Based on a few questions on what sort of education you are targeting and what you have already saved, we will give you well-researched estimate of how much that education will cost in future, and how much you need to save monthly to achieve your goal.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip></div>
                       <p class="question multiple"><span class="content">I wish to educate my child <select dropdown ng-model="modelVal.A5"><option ng-selected="modelVal.A5 == 'op1' || modelVal.A5 == 'undefined' || modelVal.A5 == ''" value="op1">In India</option><option ng-selected="modelVal.A5 == 'op2'" value="op2">Abroad</option></select></span></p>
                       <p class="question multiple"><span class="content">In the field of education <select dropdown ng-model="modelVal.A6"><option ng-selected="modelVal.A6 == 'op1' || modelVal.A6 == 'undefined' || modelVal.A6 == ''" value="op1">4-yr Engineering Grad</option><option ng-selected="modelVal.A6 == 'op2'" value="op2">2-yr Engineering Masters</option><option ng-selected="modelVal.A6 == 'op3'" value="op3">4-yr Medicine</option><option ng-selected="modelVal.A6 == 'op4'" value="op4">2-yr MBA</option><option ng-selected="modelVal.A6 == 'op5'" value="op5">1-yr MBA</option><option ng-selected="modelVal.A6 == 'op6'" value="op6">Commerce Grad</option><option ng-selected="modelVal.A6 == 'op7'" value="op7">Arts Grad</option><option ng-selected="modelVal.A6 == 'op8'" value="op8">Other 2-years Course</option><option value="op9" ng-selected="modelVal.A6 == 'op9'">Other 4-years Course</option></select></span></p>
                       <p class="question multiple"><span class="content">For this goal, so far I have already saved </span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A7" type="text" name="year" required></span></p>
@@ -1162,7 +1162,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content content-6 total-estimation">
-                      <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
+                      <p class="question multiple"><span class="content">I love FinAskUs estimate</span></p>
                        <div class="col-xs-12 col-md-12 col-lg-9 estimate">
                         <div class="row">
                             <div class="col-xs-12 col-md-3 col-lg-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
@@ -1392,7 +1392,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'" data-key="property:0">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                      <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskus estimate my property goal needs?</strong><p>Based on a few questions on your target property purchase, plans to take a housing loan and what you have already saved, we will give you a scientific estimate of how much you will need in future, and how much you need to save monthly to achieve this goal.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
+                      <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskUs estimate my property goal needs?</strong><p>Based on a few questions on your target property purchase, plans to take a housing loan and what you have already saved, we will give you a scientific estimate of how much you will need in future, and how much you need to save monthly to achieve this goal.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
                       <div class="col-xs-12 question-cover">
                           <div class="row">
                             <div class="col-xs-12 col-lg-5">
@@ -1441,7 +1441,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content content-6 total-estimation">
-                      <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
+                      <p class="question multiple"><span class="content">I love FinAskUs estimate</span></p>
                        <div class="col-xs-12 col-lg-9 col-md-12 estimate">
                         <div class="row">
                             <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
@@ -1668,7 +1668,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'" data-key="automobile:0">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                  <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskus estimate my vehicle goal needs?</strong><p>Based on a few questions on your target vehicle purchase, plans to take a vehicle loan and what you have already saved, we will give you a scientific estimate of how much how much you will need in future, and how much you need to save monthly to achieve this goal.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
+                  <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskUs estimate my vehicle goal needs?</strong><p>Based on a few questions on your target vehicle purchase, plans to take a vehicle loan and what you have already saved, we will give you a scientific estimate of how much how much you will need in future, and how much you need to save monthly to achieve this goal.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
                   <div class="col-xs-12 question-cover">
                       <div class="row">
                           <div class="col-xs-12 col-lg-5">
@@ -1717,7 +1717,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content content-6 total-estimation">
-                      <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
+                      <p class="question multiple"><span class="content">I love FinAskUs estimate</span></p>
                        <div class="col-xs-12 col-lg-9 col-md-12 estimate">
                         <div class="row">
                             <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
@@ -1942,7 +1942,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'" data-key="vacation:0">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                  <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskus estimate my vacation goal needs?</strong><p>Based on a few questions on your target vacation plans and what you have already saved, we will give you well-researched estimate of estimate of how much your vacation will cost in future, and how much you need to save monthly to achieve this goal.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
+                  <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskUs estimate my vacation goal needs?</strong><p>Based on a few questions on your target vacation plans and what you have already saved, we will give you well-researched estimate of estimate of how much your vacation will cost in future, and how much you need to save monthly to achieve this goal.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
                   <div class="col-xs-12 question-cover">
                       <div class="row">
                           <div class="col-xs-12 col-lg-5">
@@ -1981,7 +1981,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content content-6 total-estimation">
-                      <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
+                      <p class="question multiple"><span class="content">I love FinAskUs estimate</span></p>
                        <div class="col-xs-12 col-lg-9 col-md-12 estimate">
                         <div class="row">
                             <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
@@ -2202,7 +2202,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'" data-key="wedding:0">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                  <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskus estimate my wedding goal needs?</strong><p>Based on a few questions on your target wedding plans and what you have already saved, we will give you a well-researched estimate of how much you will need in future, and how much you need to save monthly to achieve this goal.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
+                  <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskUs estimate my wedding goal needs?</strong><p>Based on a few questions on your target wedding plans and what you have already saved, we will give you a well-researched estimate of how much you will need in future, and how much you need to save monthly to achieve this goal.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
                   <p class="question multiple"><span class="content">Number of people I expect at the wedding is</span> <span class="swiper-input"><input ng-model="modelVal.A5" type="text" name="year" required ng-init="modelVal.A5 = modelVal.A5 || '100'"></span></p>
                   <p class="question multiple"><span class="content">The wedding will be organised <select dropdown ng-model="modelVal.A6"><option ng-selected="modelVal.A6 == 'op1' || modelVal.A6 == ''" value="op1">Locally</option><option ng-selected="modelVal.A6 == 'op2'" value="op2">Outstation</option></select></span></p>
                   <p class="question multiple"><span class="content">I will share the following proportion of wedding expenses </span> <span class="swiper-input"><input ng-model="modelVal.A7" ng-init="modelVal.A7 = modelVal.A7 || '60'" type="text" name="year" required><span class="percentage">%</span></span></p>
@@ -2213,7 +2213,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content content-6 total-estimation">
-                      <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
+                      <p class="question multiple"><span class="content">I love FinAskUs estimate</span></p>
                        <div class="col-xs-12 col-lg-9 col-md-12 estimate">
                         <div class="row">
                             <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
@@ -2606,7 +2606,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'" data-key="jewellery:0">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                  <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskus estimate my jewellery goal needs?</strong><p>Based on the current estimated cost of jewellery you wish you purchase and what you have already saved, we will give you a scientific estimate of how much that jewellery could cost in future, and how much you need to save monthly to achieve your goal.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
+                  <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskUs estimate my jewellery goal needs?</strong><p>Based on the current estimated cost of jewellery you wish you purchase and what you have already saved, we will give you a scientific estimate of how much that jewellery could cost in future, and how much you need to save monthly to achieve your goal.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
                   <p class="question multiple"><span class="content">The current estimated cost of the jewellery I wish to purchase is</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A5" type="text" name="year" required></span></p>
                   <p class="question multiple"><span class="content">For this goal so far I have already saved</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A7" type="text" name="year" disable-tab required></span></p>
                 </div>
@@ -2615,7 +2615,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content content-6 total-estimation">
-                      <p class="question multiple"><span class="content">I love FinAskus estimate</span></p>
+                      <p class="question multiple"><span class="content">I love FinAskUs estimate</span></p>
                        <div class="col-lg-9 col-md-12 col-xs-12 estimate">
                         <div class="row">
                             <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op1'}" ng-click="modelVal.estimate_selection_type = 'op1';estimateSelectionChanged('budget')">
@@ -2818,7 +2818,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'" data-key="savetax:0">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                    <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskus estimate my tax savings?</strong><p>Based on your existing investments in any tax saving intruments that qualify under section 80C, we will give you a scientific estimate of how much further eligibility you hold under this section, and how much tax you can save through this investment.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
+                    <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskUs estimate my tax savings?</strong><p>Based on your existing investments in any tax saving intruments that qualify under section 80C, we will give you a scientific estimate of how much further eligibility you hold under this section, and how much tax you can save through this investment.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
                     <h1 class="topHeader">I have following other tax-saving investments<span class="nextline">u/s 80C for current financial year</span></h1>
                     <p class="question multiple"><span class="content">
                     1. PF / PPF investments</span> <span class="swiper-input"><input ng-model="modelVal.A3" ng-change="computeFutureEligibility()" type="text" name="year" required></span></p>

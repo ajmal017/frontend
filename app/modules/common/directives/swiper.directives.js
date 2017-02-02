@@ -66,7 +66,7 @@
 								var applyHeight = height - 50;
 								 $('.'+scope.swiperName).css('height', applyHeight);
         						 $('.'+scope.swiperName+'.swiper-wrapper').css('height', applyHeight);
-        						 $('.swiper-slide').css('height', '450px');
+        						 //$('.swiper-slide').css('height', '450px');
  								console.log("main swiper height: " + mainSwiperHeight + " applyHeight: " + applyHeight);
 
         						 if(mainSwiperHeight < height){
@@ -125,7 +125,7 @@
 								console.log("main swiper height: " + mainSwiperHeight + " applyHeight: " + applyHeight);
 								 $('.'+scope.swiperName).css('height', applyHeight);
         						 $('.'+scope.swiperName+'.swiper-wrapper').css('height', applyHeight);
-        						 $('.swiper-slide').css('height', '450px');
+        						 //$('.swiper-slide').css('height', '450px');
         						 if(mainSwiperHeight < height){
         							 console.log("main swiper height less ");
         						 	$(activeSlide).css('height', applyHeight);
