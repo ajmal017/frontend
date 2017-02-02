@@ -2991,16 +2991,16 @@ span.error-text {
 }
 .swiper-container {
   width: 100%;
-  height: 450px;
+  height: 500px;
 }
 @media only screen and (max-width:768px) {
   .swiper-container {
-    min-height: 450px;
+    min-height: 500px;
   }
 }
 @media only screen and (min-width:1400px) {
   .swiper-container {
-    min-height: 550px;
+    min-height: 600px;
   }
 }
 .swiper-container .bubble {
@@ -3221,7 +3221,7 @@ span.error-text {
 .swiper-container.customSwiper.bankInfo .swiper-slide .question,
 .swiper-container.customSwiper.nomineeInfo .swiper-slide .question {
   position: relative;
-  margin-top: 6%;
+  margin-top: 4%;
   width: 100%;
 }
 @media only screen and (max-width:768px) {
@@ -3439,11 +3439,11 @@ span.error-text {
 .swiper-container.customSwiper .swiper-content {
   padding-bottom: 150px;
   padding-top: 6%;
-  min-height: 450px;
+  min-height: 500px;
 }
 @media only screen and (max-width:768px) {
   .swiper-container.customSwiper .swiper-content {
-    padding-top: 250px !important;
+    padding-top: 200px !important;
     margin-bottom: 12%;
     float: left;
     width: 100%;
@@ -3451,7 +3451,7 @@ span.error-text {
 }
 @media only screen and (min-width:1400px) {
   .swiper-container.customSwiper .swiper-content {
-    min-height: 550px;
+    min-height: 600px;
   }
 }
 .swiper-container.customSwiper .swiper-content p {
@@ -3967,11 +3967,11 @@ span.error-text {
 .swiper-slide {
   overflow: hidden;
   visibility: hidden;
-  min-height: 450px;
+  min-height: 500px;
 }
 @media only screen and (min-width:1400px) {
   .swiper-slide {
-    min-height: 550px;
+    min-height: 600px;
   }
 }
 .swiper-slide-prev,
@@ -4199,7 +4199,7 @@ span.error-text {
 section.swiper-outer-cover {
   padding-left: 6%;
   padding-right: 6%;
-  padding-top: 6%;
+  padding-top: 4%;
 }
 section.swiper-outer-cover.customSwiper .typeSwiper {
   position: absolute;
