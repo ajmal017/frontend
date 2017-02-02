@@ -3,6 +3,7 @@
 	angular
 		.module('finApp.filters',[])
 		.filter('amountSeffix',amountSeffix)
+		.filter('amountFormat',amountFormat)
 		.filter('removeNegative', removeNegative)
 		.filter('capitalizeScheme', capitalizeScheme);
 		function amountSeffix(){
@@ -19,6 +20,15 @@
 				} else {
 					var total = amount;
 				}
+				return total;
+			};
+		}
+
+		function amountFormat(){
+			return function (input) {
+				var amount = input;
+				var total = amount.toLocaleString();
+				
 				return total;
 			};
 		}

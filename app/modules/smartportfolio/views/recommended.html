@@ -78,10 +78,10 @@
 						<p>{{eachScheme.category_name}}</p>
 					</div>
 					<div class="td">
-						<p><span class="currency">&#8377;</span>{{eachScheme.sip}}</p>
+						<p><span class="currency">&#8377;</span>{{eachScheme.sip | amountFormat}}</p>
 					</div>
 					<div class="td">
-						<p><span class="currency">&#8377;</span>{{eachScheme.lumpsum}}</p>
+						<p><span class="currency">&#8377;</span>{{eachScheme.lumpsum | amountFormat}}</p>
 					</div>
 				</div>
 			</div>
@@ -105,11 +105,11 @@
 			<div class="calculated-right-cover">
 				<div class="total-text">
 					<span class="placeholder">SIP</span>
-					<p><span class="currency">&#8377;</span><span class="amount">{{goalSummary.sip}}</span></p>
+					<p><span class="currency">&#8377;</span><span class="amount">{{goalSummary.sip | amountFormat}}</span></p>
 				</div>
 				<div class="total-text">
 					<span class="placeholder">Lumpsum</span>
-					<p><span class="currency">&#8377;</span><span class="amount">{{goalSummary.lumpsum}}</span></p>
+					<p><span class="currency">&#8377;</span><span class="amount">{{goalSummary.lumpsum | amountFormat}}</span></p>
 				</div>
 			</div>
 		</div>
@@ -119,7 +119,7 @@
 			</div>
 			<div class="calculated-right-cover">
 				<div class="total-text">
-					<p><span class="currency">&#8377;</span><span class="amount">{{totalAnnualInvest}}</span></p>
+					<p><span class="currency">&#8377;</span><span class="amount">{{totalAnnualInvest | amountFormat}}</span></p>
 				</div>
 			</div>
 		</div>
