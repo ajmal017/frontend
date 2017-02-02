@@ -178,8 +178,8 @@ var finApp = finApp || {};
 				this.scope.equity = debtValue;
 				this.scope.equity2 = equityValue;
 				
-				var debtAmount = (this.scope.equity/100) * amount;
-				var equityAmount = (this.scope.equity2/100) * amount;
+				var debtAmount = Math.round((this.scope.equity/100) * amount);
+				var equityAmount = Math.round((this.scope.equity2/100) * amount);
 				this.scope.debtAmountModal = debtAmount;
 				this.scope.equityAmountModal = equityAmount;
 				jQuery('#equiDeptModal').modal('show');
