@@ -87,7 +87,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+			<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 no-paddingDevice">
 				<ul class="chart-main-tabs">
 					<li ng-click="setChartValue = 'FINANCE'" ng-class="{'activeli':setChartValue == 'FINANCE'}"><a href="javascript:void(0)">Financial Goal Status</a></li>
 					<li ng-click="setChartValue = 'SCHEME'" ng-class="{'activeli':setChartValue == 'SCHEME'}"><a href="javascript:void(0)">Scheme Details</a></li>
@@ -95,7 +95,7 @@
 					<li ng-click="setChartValue = 'PORFOLIO_TRACKER'" ng-class="{'activeli':setChartValue == 'PORFOLIO_TRACKER'}"><a href="javascript:void(0)">Portfolio Tracker</a></li>
 				</ul>
 				<div class="chart-cover scheme-pie" ng-if="setChartValue == 'SCHEME'" custom-scroll-bar>
-					<div class="col-xs-12">
+					<div class="col-xs-12 no-paddingDevice">
 						<div class="col-xs-12 col-lg-12 scheme-chart">
 							<div class="row">
 								<scheme-chart title="pieTitle" items="resultPercentage" colors="colors"></scheme-chart>
