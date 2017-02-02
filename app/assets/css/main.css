@@ -1489,6 +1489,11 @@ span.highlight {
   padding-left: 0;
   padding-right: 0;
 }
+@media only screen and (max-width:768px) {
+  .no-paddingDevice {
+    padding: 0;
+  }
+}
 @-webkit-keyframes makeDropdown {
   /*0%{
   	padding-top: 0%;
@@ -3988,7 +3993,7 @@ span.error-text {
   }
 }
 .swiper-guage .gauge-result {
-  width: 35%;
+  width: 100%;
   margin-right: 6%;
   float: left;
 }
@@ -4010,13 +4015,14 @@ span.error-text {
   display: inline-block;
   width: 44px;
   margin-right: 6%;
+  float: left;
 }
 .swiper-guage .gauge-result .result-header p span.pigy-icon img {
   width: 100%;
 }
 .swiper-guage .gauge-result:last-child {
   margin-right: 0px;
-  width: 40%;
+  width: 100%;
 }
 @media only screen and (max-width:768px) {
   .swiper-guage .gauge-result:last-child {
@@ -4324,9 +4330,9 @@ section.dashboard .goals-outer-cover h4 {
 }
 @media only screen and (max-width:768px) {
   section.dashboard .goals-outer-cover {
-    width: 80%;
-    float: none;
-    margin: 0 auto !important;
+    /*width:80%;
+				float:none;
+				margin: 0 auto !important;*/
   }
 }
 section.dashboard .goals-outer-cover .goal_number {
@@ -4362,7 +4368,12 @@ section.dashboard .goals-cover .invest-goal {
 }
 @media only screen and (max-width:768px) {
   section.dashboard .goals-cover .invest-goal {
-    margin: 14% auto;
+    margin: 22% auto;
+  }
+}
+@media only screen and (max-width:768px) {
+  section.dashboard .goals-cover .withdraw-goal {
+    margin: 28% auto;
   }
 }
 section.dashboard .goals-cover .checkbox-cover label {
@@ -4807,7 +4818,6 @@ section.quickInvest .started {
 }
 .goals .bottom-desc .fin-btn-group button {
   float: none;
-  padding: 20px 0px;
 }
 .goals .bottom-desc h4 {
   width: 100%;
@@ -5392,7 +5402,7 @@ section.quickInvest .started {
   margin-top: -60px;
 }
 .guagePig {
-  top: 11px;
+  /*top:11px;	*/
 }
 .testSCroll {
   width: 400px;
@@ -5654,11 +5664,6 @@ input.datepicker::placeholder {
   float: left;
   border: none;
 }
-@media only screen and (max-width:768px) {
-  .customPanel .panel {
-    width: 500px;
-  }
-}
 .customPanel .panel-heading {
   width: 100%;
   float: left;
@@ -5671,6 +5676,11 @@ input.datepicker::placeholder {
   -webkit-border-top-right-radius: 25px;
      -moz-border-radius-topright: 25px;
           border-top-right-radius: 25px;
+}
+@media only screen and (max-width:768px) {
+  .customPanel .panel-heading {
+    padding: 14px;
+  }
 }
 .customPanel .panel-heading .panel-title p {
   font-family: 'PlayfairDisplay-Regular';
@@ -5779,6 +5789,11 @@ input.datepicker::placeholder {
   float: right;
   width: 100%;
 }
+@media only screen and (max-width:600px) {
+  .customPanel .panel-table .thead .tr .th:nth-child(4) .money-value {
+    width: 124%;
+  }
+}
 .customPanel .panel-table .tbody .tr {
   padding-top: 0px;
   padding-bottom: 0px;
@@ -5792,6 +5807,11 @@ input.datepicker::placeholder {
 .customPanel .panel-table .tbody .tr .td:nth-child(4) .money-value {
   float: right;
   min-width: 92px;
+}
+@media only screen and (max-width:768px) {
+  .customPanel .panel-table .tbody .tr .td:nth-child(4) .money-value {
+    min-width: 67px;
+  }
 }
 #signitureModal .modal-dialog,
 #videoCapptureModal .modal-dialog {
@@ -7457,6 +7477,12 @@ section.trackPerformance {
   padding-right: 6%;
   padding-bottom: 4%;
 }
+@media only screen and (max-width:600px) {
+  section.trackPerformance {
+    padding-left: 3%;
+    padding-right: 3%;
+  }
+}
 section.trackPerformance .smart-folio-cover {
   float: left;
   width: 100%;
@@ -7759,7 +7785,7 @@ section.trackPerformance .chart-cover.scheme-pie .customPanel {
 }
 @media only screen and (max-width:768px) {
   section.trackPerformance .chart-cover.scheme-pie .customPanel {
-    max-width: 300px;
+    /*max-width: 300px;*/
     overflow-x: scroll;
   }
 }
@@ -7822,7 +7848,7 @@ section.trackPerformance .chart-cover.scheme-pie .trackPerformanceLegends .legen
   text-align: center;
   vertical-align: middle;
   padding-left: 8px;
-  min-width: 32px;
+  min-width: 37px;
 }
 section.trackPerformance .chart-cover.transaction-cover {
   height: 517px;
