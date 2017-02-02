@@ -105,15 +105,17 @@
 							var date = new Date(data.date);
 							console.log('date***',date);
 							data.dateFormatted = date;
-							var value = data.goal.substr(data.goal.length - 1);
-							if(value == "K") {
+							var value = data.goal.substr(data.goal.length - 2);
+							if(value == " K") {
 								var returnGoal = data.goal.replace(" K","");
 								data.returnGoal = (returnGoal*1000).toLocaleString();
-							} else {
+							} else if(value == " L" || value == "Cr") {
 								var onlyValue = parseFloat(data.goal.substr(data.goal,data.goal.length - 2));
 								onlyValue = onlyValue.toFixed(2);
 								var returnGoal = onlyValue + " " + value;
 								data.returnGoal = returnGoal;
+							} else {
+								data.returnGoal = data.goal;
 							}
 
 						});
@@ -269,6 +271,13 @@
 					lumpsumTotal = lumpsumTotal + data.agreed_lumpsum;
 				});
 				return lumpsumTotal;
+			}
+
+			$scope.checkNegAmt = function(amt) {
+				console.log('amt', amt);
+				if(amt < 0) {
+					return true;
+				}
 			}
 			
 		}

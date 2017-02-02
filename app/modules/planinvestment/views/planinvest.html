@@ -3,7 +3,7 @@
 	<div class="col-xs-12">
 		<div class="row">
 			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 invest-outer-cover">
-				<div class="investCover" ng-class="{'has-covered': $root.goalAnswered['invest'] == true}" ng-click="startGoalAdd('invest')">
+				<div class="investCover" ng-class="{'has-covered': $root.goalAnswered['invest'] == true}">
 					<div class="cloud1"><img src="assets/images/login_cloud1.png"></div>
 					<div class="cloud2"><img src="assets/images/login_cloud2.png"></div>
 					<div class="checkbox-cover" ng-if="$root.goalAnswered['invest']">
@@ -14,10 +14,10 @@
 						<label><span ng-click="deleteGoal('invest')"></span></label>
 						
 					</div>
-					<div class="image-div">
+					<div class="image-div" ng-click="startGoalAdd('invest')">
 						<img src="assets/images/planInvestMent.png">
 					</div>	
-					<button class="fin-app-btn fin-blue full-width">Quick Invest</button>				
+					<button class="fin-app-btn fin-blue full-width" ng-click="startGoalAdd('invest')">Quick Invest</button>				
 				</div>
 				<div class="col-xs-12 desc">
 					<!-- <p class="text-center">Simply Build Wealth through monthly<span class="nextline">SIP or one-time lumpsum investment.</span></p> -->
@@ -26,7 +26,7 @@
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 invest-outer-cover">
-				<div class="investCover" ng-class="{'has-covered': $root.goalAnswered['tax'] == true}"  ng-click="startGoalAdd('tax')">
+				<div class="investCover" ng-class="{'has-covered': $root.goalAnswered['tax'] == true}">
 					<div class="checkbox-cover" ng-if="$root.goalAnswered['tax']">
 						<input type="radio" name>
 						<label><span></span></label>
@@ -35,10 +35,10 @@
 						<label><span ng-click="deleteGoal('tax')"></span></label>
 						
 					</div>
-					<div class="image-div">
+					<div class="image-div" ng-click="startGoalAdd('tax')">
 						<img src="assets/images/saveTax.png">
 					</div>
-					<button class="fin-app-btn fin-blue full-width">Save Tax</button>
+					<button class="fin-app-btn fin-blue full-width" ng-click="startGoalAdd('tax')">Save Tax</button>
 				</div>
 				<div class="col-xs-12 desc">
 					<!-- <p class="text-center">Invest in Equity Linked Savings Schemes<span class="nextline">(ELSS) and save taxes under section</span><span class="nextline">80C.</span></p> -->
@@ -63,7 +63,7 @@
 					<h3 class="text-center"><span class="currency">&#8377</span>{{(finGoalsAmt | amountSeffix) || 0}} annual investment</h3>
 				</div>				
 			</div>
-			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 invest-outer-cover" ng-click="startGoalAdd('liquid')">
+			<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 invest-outer-cover">
 				<div class="investCover" ng-class="{'has-covered': $root.goalAnswered['liquid'] == true}">
 					<div class="checkbox-cover" ng-if="$root.goalAnswered['liquid']">
 						<input type="radio" name>
@@ -73,9 +73,9 @@
 						<label><span ng-click="deleteGoal('liquid')"></span></label>
 						
 					</div>
-					<div class="image-div" >
+					<div class="image-div" ng-click="startGoalAdd('liquid')">
 						<img src="assets/images/highInterest.png">
-						<button class="fin-app-btn fin-blue full-width">Earn Higher Interest</button>
+						<button class="fin-app-btn fin-blue full-width" ng-click="startGoalAdd('liquid')">Earn Higher Interest</button>
 					</div>
 					
 				</div>
