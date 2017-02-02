@@ -36,7 +36,7 @@
 											<p>{{schemes.fund_category}}</p>
 										</div>
 										<div class="td">
-											<p><span class="currency">&#8377;</span><span class="amount" ng-init="cal">{{schemes.return_value}}</span></p>
+											<p><span class="currency">&#8377;</span><span class="amount" ng-init="cal">{{schemes.return_value | amountFormat}}</span></p>
 										</div>
 										<div class="td">
 											<p>
@@ -62,10 +62,10 @@
 								<p>Total Amount</p>
 							</div>
 							<div class="sipTotal">
-								<p><span class="currency">&#8377;</span><span>{{getTotalCurrentValue(recommendedSchemes)}}</span></p>
+								<p><span class="currency">&#8377;</span><span>{{getTotalCurrentValue(recommendedSchemes) | amountFormat}}</span></p>
 							</div>
 							<div class="lumpSumTotal">
-								<p><span class="currency">&#8377;</span><span>{{getTotal(withdraw,recommendedSchemes.goal_id)}}</span></p>
+								<p><span class="currency">&#8377;</span><span>{{getTotal(withdraw,recommendedSchemes.goal_id) | amountFormat}}</span></p>
 							</div>
 						</div>
 						<span class="alert alert-danger alert-dismissable col-xs-5 fadeOut text-center" ng-bind="showErrorMessage[recommendedSchemes.goal_id]" ng-if="showErrorMessage[recommendedSchemes.goal_id]"></span>

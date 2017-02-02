@@ -357,7 +357,10 @@
 			 	if (withdrawObj.amount) {
 				 	for(var goal in withdrawObj.amount) {
 				 		for(var each_amt in withdrawObj.amount[goal]) {
-				 			totalWithdraw += parseFloat(withdrawObj.amount[goal][each_amt]);
+				 			var parseAmt = parseFloat(withdrawObj.amount[goal][each_amt]);
+				 			if (isNaN(parseAmt) == false) {
+				 				totalWithdraw += parseAmt;
+				 			}
 				 		}
 				 	}
 			 	}

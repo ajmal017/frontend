@@ -52,10 +52,10 @@
 									<p>{{schemes.goal_summary.term}}</p>
 								</div>
 								<div class="td">
-									<p><span class="currency">&#8377;</span><span>{{schemes.goal_summary.sip}}</span></p>
+									<p><span class="currency">&#8377;</span><span>{{schemes.goal_summary.sip | amountFormat}}</span></p>
 								</div>
 								<div class="td">
-									<p>{{schemes.goal_summary.lumpsum}}</p>
+									<p>{{schemes.goal_summary.lumpsum | amountFormat}}</p>
 								</div>
 							</div>
 						</div>
@@ -65,10 +65,10 @@
 							<p>Total</p>
 						</div>
 						<div class="sipTotal">
-							<p><span class="currency">&#8377;</span><span>{{sipTotal}}</span></p>
+							<p><span class="currency">&#8377;</span><span>{{sipTotal | amountFormat}}</span></p>
 						</div>
 						<div class="lumpSumTotal">
-							<p><span class="currency">&#8377;</span><span>{{lumpSumTotal}}</span></p>
+							<p><span class="currency">&#8377;</span><span>{{lumpSumTotal | amountFormat}}</span></p>
 						</div>
 					</div>
 				</div>
