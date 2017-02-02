@@ -3438,7 +3438,7 @@ span.error-text {
 }
 @media only screen and (max-width:768px) {
   .swiper-container.customSwiper .swiper-content {
-    padding-top: 250px !important;
+    padding-top: 200px !important;
     margin-bottom: 12%;
     float: left;
     width: 100%;
