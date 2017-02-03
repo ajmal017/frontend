@@ -227,7 +227,7 @@ header .navbar .navbar-right .fin-dropdown a span.down {
   transition: all 0.2s ease;
 }
 header .navbar .navbar-right .fin-dropdown.open .fin-dropdown-menu {
-  z-index: 1;
+  z-index: 2;
   top: 42px;
   height: 152px;
   padding-top: 80px;
@@ -255,7 +255,7 @@ header .navbar .navbar-right .fin-dropdown.open .fin-dropdown-menu li:nth-child(
 }
 header .navbar .navbar-right .fin-dropdown.open > a {
   background-color: transparent;
-  z-index: 2;
+  z-index: 3;
 }
 header .navbar .navbar-right .fin-dropdown.open a span.up {
   opacity: 1;
@@ -3437,7 +3437,7 @@ span.error-text {
   }
 }
 .swiper-container.customSwiper .swiper-content {
-  padding-bottom: 150px;
+  padding-bottom: 100px;
   padding-top: 6%;
   min-height: 500px;
 }
@@ -3637,26 +3637,10 @@ span.error-text {
 }
 .swiper-container.customSwiper .swiper-content.content-1 {
   position: absolute;
-  top: 48%;
-  -webkit-transform: translateY(-48%);
-     -moz-transform: translateY(-48%);
-      -ms-transform: translateY(-48%);
-       -o-transform: translateY(-48%);
-          transform: translateY(-48%);
+  /*top:48%;*/
+  /*transform:translateY(-48%);*/
 }
 @media only screen and (max-width:768px) {
-  .swiper-container.customSwiper .swiper-content.content-1 {
-    -webkit-transform: translateY(-48%);
-       -moz-transform: translateY(-48%);
-        -ms-transform: translateY(-48%);
-         -o-transform: translateY(-48%);
-            transform: translateY(-48%);
-  }
-}
-@media only screen and (max-width:768px) {
-  .swiper-container.customSwiper .swiper-content.content-1 .incomeSource {
-    height: 220px;
-  }
   .swiper-container.customSwiper .swiper-content.content-1 .incomeSource .selectRisk_cover {
     margin-left: 3%;
   }
