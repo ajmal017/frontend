@@ -3927,6 +3927,7 @@ span.error-text {
 .swiper-container.customSwiper .fin-btn-group-wrapper {
   position: absolute;
   bottom: 2%;
+  padding: 0;
 }
 .swiper-container.customSwiper .fin-btn-group.gotoPages {
   z-index: 1000;
