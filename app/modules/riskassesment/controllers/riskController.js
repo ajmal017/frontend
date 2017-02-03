@@ -29,7 +29,11 @@
 						$scope.resultObject = Number(data.success['risk_score']);
 						if(!$rootScope.loggedIn){
 							localStorage.setItem('riskData', JSON.stringify(assesValues));
-						}					
+						}
+						if(!jQuery.isEmptyObject($rootScope.userFlags) && $rootScope.userFlags['user_answers']){
+							$rootScope.userFlags['user_answers']['assess'] = assesValues;
+							sessionStorage.setItem('userFlags', JSON.stringify($rootScope.userFlags));
+						}
 						if(!$scope.$$phase)	$scope.$apply(); 
 					}
 				});
