@@ -449,9 +449,9 @@
                 <div class="radio-cover">
                     <input type="radio" required id="option2Type3" name="option2" ng-model="modelVal.A11" value="op3"><label for="option2Type3"><span></span>Sell all mutual fund holdings</label>
                     <input type="radio" required id="option2Type2" name="option2" ng-model="modelVal.A11" value="op2"><label for="option2Type2"><span></span>Shift from Equity to Debt funds</label>
-                    <input type="radio" required id="option2Type4" name="option2" ng-model="modelVal.A11" value="op4"><label for="option2Type4"><span></span>Do Nothing</label>
+                    <input type="radio" required id="option2Type4" name="option2" ng-model="modelVal.A11" value="op4"><label for="option2Type4"><span></span>Do nothing</label>
                     <input type="radio" required id="option2Type1" name="option2" ng-model="modelVal.A11" value="op1"><label for="option2Type1"><span></span>Buy more mutual funds</label>
-                    <input type="radio" required id="option2Type1" name="option2" ng-model="modelVal.A11" value="op5"><label for="option2Type1"><span></span>Not be sure what to do</label>
+                    <input type="radio" required id="option2Type5" name="option2" ng-model="modelVal.A11" value="op5"><label for="option2Type5"><span></span>Not be sure what to do</label>
                 </div>
                 </form>
             </div>
@@ -479,7 +479,7 @@
                     <input type="radio" required id="option4Type2" name="option3" ng-model="modelVal.A13" value="op2"><label for="option4Type2"><span></span>Shift from Equity to Debt funds</label>
                     <input type="radio" required id="option4Type4" name="option4" ng-model="modelVal.A13" value="op4"><label for="option4Type4"><span></span>Do Nothing</label>
                     <input type="radio" required id="option4Type1" name="option4" ng-model="modelVal.A13" value="op1"><label for="option4Type1"><span></span>Look to buy more mutual funds</label>
-                    <input type="radio" required id="option4Type1" name="option4" ng-model="modelVal.A13" value="op5"><label for="option4Type1"><span></span>Not be sure what to do</label>
+                    <input type="radio" required id="option4Type5" name="option4" ng-model="modelVal.A13" value="op5"><label for="option4Type5"><span></span>Not be sure what to do</label>
                 </div>
                 </form>
             </div>
@@ -493,7 +493,7 @@
                     <input type="radio" required id="option5Type2" name="option3" ng-model="modelVal.A14" value="op2"><label for="option5Type2"><span class="col-xs-2"></span>Probably choose the stable job with low growth</label>
                     <input type="radio" required id="option5Type3" name="option5" ng-model="modelVal.A14" value="op3"><label for="option5Type3"><span class="col-xs-2"></span>Not be sure</label>
                     <input type="radio" required id="option5Type4" name="option5" ng-model="modelVal.A14" value="op4"><label for="option5Type4"><span class="col-xs-2"></span>Probably choose the less secure job with high growth</label>
-                    <input type="radio" required id="option5Type4" name="option5" ng-model="modelVal.A14" value="op5"><label for="option5Type4"><span class="col-xs-2"></span>Definitely choose the less secure job with high growth</label>
+                    <input type="radio" required id="option5Type5" name="option5" ng-model="modelVal.A14" value="op5"><label for="option5Type5"><span class="col-xs-2"></span>Definitely choose the less secure job with high growth</label>
                 </div>
                 </form>
             </div>
@@ -877,7 +877,7 @@
                 <div class="swiper-content">
                     <h1 class="topHeader">I would like to plan my retirement at the following age</h1>
                     <span class="placeholder">Click to edit</span>
-                    <div class="col-xs-8 col-sm-6 col-md-6 col-lg-4 calender-outer-cover">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 calender-outer-cover">
                         <div class="row">
                             <div class="col-xs-5 col-sm-4 col-md-4 col-lg-4">
                                 <div class="row">
@@ -886,7 +886,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-2 col-sm-3 calendar-divider"><span></span></div>
-                            <div class="col-xs-5 col-sm-5 col-md-4 col-lg-4">
+                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
                                 <div class="row">
                                     <h3 class="calendarHeader">Retirement Age</h3>
                                     <fin-calendar-form ng-init="modelVal.A3 = 60" ng-model="modelVal.A3" format-symbol="none" type="#fde8de" font-color="#f26529" min="0" max="100"></fin-calendar-form>
@@ -2604,7 +2604,7 @@
             <form name="quickInvestForm2" novalidate>
                 <div class="swiper-content">
                     <h1 class="topHeader">I wish to purchase this jewellery in</h1>
-                    <div class="col-xs-8 col-sm-6 col-md-6 col-lg-4 calender-outer-cover">
+                    <div class="col-xs-5 col-sm-3 col-md-4 col-lg-4 calender-outer-cover">
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
                                 <div class="row">
@@ -2663,7 +2663,7 @@
                                 <label for="budget"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
+                            <div class="col-xs-12 col-sm-3 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op2'}" ng-click="modelVal.estimate_selection_type = 'op2';estimateSelectionChanged('comfortable')">
                             <div class="pigy"><info-tip quick-tip-data="comfInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/confortable.png">
@@ -2676,7 +2676,7 @@
                                 <label for="confort"><span></span></label>
                             </div>
                             </div>
-                            <div class="col-xs-12 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
+                            <div class="col-xs-12 col-sm-3 col-lg-3 col-md-3 estimate-cover" ng-class="{'active' : modelVal.estimate_selection_type =='op3'}" ng-click="modelVal.estimate_selection_type = 'op3';estimateSelectionChanged('luxury')">
                             <div class="pigy"><info-tip quick-tip-data="luxuInfoText" info-width="28px"></info-tip></div>
                             <div class="image-div text-center">
                                 <img src="assets/images/jewellery.svg">

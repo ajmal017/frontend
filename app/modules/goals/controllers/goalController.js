@@ -139,7 +139,9 @@
 								legendObject['borderColor'] = '10px solid '+legendObject['color'];
 								$rootScope.legends.push(legendObject);
 							}
+							$rootScope.colors = ['#247abc', '#05AB41', '#7f7f7f', '#db5d30'];
 							$rootScope.pieTitle = "<span class='currency'>&#8377;</span><span class='content'><span>" + $filter('amountSeffix')($rootScope.overall_total_sum) + " </span>";
+							
 							$location.path('/investStep1');
 							
 						} else {

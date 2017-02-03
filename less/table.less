@@ -2,6 +2,7 @@
 	width:50%;
 	float:left;
 	padding:3% 3%;
+	margin-bottom: 2%;
 	background-image: -moz-linear-gradient( 90deg, rgb( 245, 245, 245 ) 0%, rgb( 255, 255, 255 ) 100%);
   	background-image: -webkit-linear-gradient( 90deg, rgb( 245, 245, 245 ) 0%, rgb( 255, 255, 255 ) 100%);
   	box-shadow: 1px 5.33px 11px -4px rgb( 4, 123, 193 );
@@ -287,10 +288,7 @@
 	}
 	&.investNowTable{
 		width:100%;
-		@media @below768{
-			
-
-		}
+		
 		.seperate-cover{
 			width:100%;
 			float:left;
@@ -299,6 +297,9 @@
 		.thead{
 			width:96%;
 			.th{
+				@media @below768{
+					width: 25%;
+				}
 				width:20%;
 				word-wrap: break-word;
 			}
@@ -307,6 +308,10 @@
 			width:96%;
 			.td{
 				width:20%;
+				@media @below768{
+					width: 24%;
+				    padding: 1%;
+				}
 			}
 		}
 		.tfooter{
@@ -318,8 +323,8 @@
 			.total{
 				float:left;
 				width:60%;
-				@media @below600{
-					width: 40%;
+				@media @below768{
+					width: 50%;
 				}
 			}
 			.sipTotal{
