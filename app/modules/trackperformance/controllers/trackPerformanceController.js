@@ -103,7 +103,7 @@
 						$scope.financial_goal_status = data.success.financial_goal_status;
 						$scope.financial_goal_status.forEach(function(data){
 							var date = new Date(data.date);
-							console.log('date***',date);
+							
 							data.dateFormatted = date;
 							var value = data.goal.substr(data.goal.length - 2);
 							if(value == " K") {

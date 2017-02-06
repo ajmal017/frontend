@@ -226,13 +226,13 @@
 								<p class="finance-desc"><span class="content">{{finGoals.name}}</span><span class="nextline placeholder addOnlyBold" ng-if="false">ON TRACK</span></p>
 							</div>
 							<div class="col-lg-4 col-xs-5">
-								<p class="target-amount"><span class="content highlight"><span class="currency">&#8377;</span><span class="content">{{finGoals.returnGoal}}</span></span><span class="nextline placeholder">{{finGoals.dateFormatted | date:'dd/MM/yyyy'}}</span></p>
+								<p class="target-amount"><span class="content highlight"><span class="currency">&#8377;</span><span class="content">{{finGoals.goal | backendAmtSuffix}}</span></span><span class="nextline placeholder">{{finGoals.dateFormatted | date:'dd/MM/yyyy'}}</span></p>
 							</div>
 						  </div>
 						  <div class="col-xs-12 no-padding">
 								<div class="progress">
 								    <div class="progress-bar" role="progressbar" ng-style="{'width':'{{finGoals.progress}}%'}">
-								    <span class="progress-price"><span class="currency">&#8377;</span><span class="amount">{{finGoals.expected_value}}</span></span>
+								    <span class="progress-price"><span class="currency">&#8377;</span><span class="amount">{{finGoals.expected_value | backendAmtSuffix}}</span></span>
 								    <span class="progress-percentage placeholder">{{finGoals.progress}}%</span>
 								    </div>
 								</div>
