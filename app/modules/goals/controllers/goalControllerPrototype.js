@@ -52,7 +52,7 @@ var finApp = finApp || {};
 						self.goalModelObject['assetAllocationCategory'] = data.success['asset_allocation_category'];
 					}
 					else {
-						self.goalModelObject['assetAllocationCategory'] = "A"; //TODO define constants, default category
+						//self.goalModelObject['assetAllocationCategory'] = "A"; //TODO define constants, default category
 					}
 					self.scope.$broadcast('assetAllocationCategoryChanged');
 				});
@@ -124,8 +124,8 @@ var finApp = finApp || {};
 					//self.setModelVal(computedSIPData.assetAllocation, computedSIPData.computedSIP);
 					self.goalModelObject['goalEstimates'] = goalEstimates;
 					if (self.scope.modelVal.estimate_selection_type == '' || self.scope.modelVal.estimate_selection_type == undefined) {
-						self.scope.modelVal.estimate_selection_type = 'op2';
-						self.scope.estimateSelectionChanged(self.appConfig.estimateType.COMFORTABLE);
+						// self.scope.modelVal.estimate_selection_type = 'op2';
+						// self.scope.estimateSelectionChanged(self.appConfig.estimateType.COMFORTABLE);
 					} else {
 						switch(self.scope.modelVal.estimate_selection_type) {
 						

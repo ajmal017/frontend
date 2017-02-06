@@ -6464,6 +6464,9 @@ section.registerInvestor .registerInvestorConfirm {
 .table-outer-cover.withdraw .tbody .checkbox-cover label span {
   margin-right: 0px;
 }
+.table-outer-cover.withdraw .tbody .checkbox-cover input[type="checkbox"][disabled] + label span {
+  opacity: 0.3;
+}
 .table-outer-cover.withdraw .tbody .input-cover {
   width: 100%;
   float: left;
@@ -6496,6 +6499,9 @@ section.registerInvestor .registerInvestorConfirm {
   padding-left: 12px;
   padding-bottom: 5px;
   text-align: left;
+}
+.table-outer-cover.withdraw .tbody input[type="text"][disabled] {
+  opacity: 0.5;
 }
 .table-outer-cover.withdraw .tfooter {
   border-top: 1px solid #e0e0e0;
