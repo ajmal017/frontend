@@ -711,7 +711,8 @@
 							var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 							var diffYear = diffDays/365;
 							var xirr = xirr/100;
-							var ratio = (Math.pow(1+xirr),diffYear);
+							var xirr1 = 1 + xirr;
+							var ratio = Math.pow(xirr1,diffYear);
 							var todaysVal = parseInt(10000*ratio);
 							$rootScope.nav['amount'] = 10000 + todaysVal;
                     	} else {
