@@ -41,6 +41,7 @@
 			this.scope.calculateRecommendedSIP = angular.bind( this, this.calculateRecommendedSIP );
 			this.scope.calculateCorpus = angular.bind( this, this.calculateCorpus);
 			this.scope.estimateSelectionChanged = angular.bind( this, this.estimateSelectionChanged);
+			this.scope.noEstimateSelection = angular.bind( this, this.noEstimateSelection);
 			this.scope.handleGoalEstimatesResponse = angular.bind( this, this.handleGoalEstimatesResponse);
 			
 			this.rootScope.showPortfolioFactoring = true;

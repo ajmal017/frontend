@@ -165,15 +165,15 @@
 					}
 					console.log('result Obj', resultObj);
 					
-					// investWithdrawService.postWithdrawDetails(resultObj).then(function(data){
-					// 	if('success' in data) { 
-					// 		console.log('data success',data);
-					// 		$location.path('/dashboard');
-					// 	}
-					// 	else {
+					investWithdrawService.postWithdrawDetails(resultObj).then(function(data){
+						if('success' in data) { 
+							console.log('data success',data);
+							$location.path('/dashboard');
+						}
+						else {
 
-					// 	}
-					// });
+						}
+					});
 				} else {
 					$scope.disableWithdraw = true;
 				}

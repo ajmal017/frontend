@@ -23,12 +23,13 @@
                 var d = new Date();
                 modelObject.A1 = propertyAnswers['goal_name'];
                 modelObject.A3 = propertyAnswers['corpus'];
-               
+                modelObject.A4 = propertyAnswers['sip'];
                 modelObject.A5 = propertyAnswers['current_price'];
                 modelObject.A6 = propertyAnswers['prop_of_purchase_cost']
                 modelObject.A7 = propertyAnswers['amount_saved'] || 0;
                 modelObject.assetAllocation = propertyAnswers['allocation'];
                 modelObject.sip = propertyAnswers['sip'];
+                modelObject.corpus = propertyAnswers['corpus'];
                 if (propertyAnswers['term']) {
                 	modelObject.A2 = parseInt(d.getFullYear() + propertyAnswers['term']);
                 }

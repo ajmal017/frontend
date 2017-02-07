@@ -32,6 +32,7 @@
                 }
                 modelObject.assetAllocation = eventsAnswers['allocation'];
                 modelObject.sip = eventsAnswers['sip'];
+                modelObject.corpus = eventsAnswers['corpus'];
                 return modelObject;
 	        }
 

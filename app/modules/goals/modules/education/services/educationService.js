@@ -21,11 +21,13 @@
                 var d = new Date();
                 modelObject.A1 = educationAnswers['goal_name'];
                 modelObject.A3 = educationAnswers['corpus'];
+                modelObject.A4 = educationAnswers['sip'];
                 modelObject.A5 = educationAnswers['location'] || '';
                 modelObject.A6 = educationAnswers['field'] || '';
                 modelObject.A7 = educationAnswers['amount_saved'] || 0;
                 modelObject.assetAllocation = educationAnswers['allocation'];
                 modelObject.sip = educationAnswers['sip'];
+                modelObject.corpus = educationAnswers['corpus'];
                 modelObject.estimate_selection_type = educationAnswers['estimate_selection_type'];
                 if (educationAnswers['term']) {
                 	modelObject.A2 = parseInt(d.getFullYear() + educationAnswers['term']);

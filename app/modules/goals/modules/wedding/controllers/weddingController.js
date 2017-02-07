@@ -41,6 +41,7 @@
 			this.scope.calculateCorpus = angular.bind( this, this.calculateCorpus);
 			this.scope.estimateSelectionChanged = angular.bind( this, this.estimateSelectionChanged);
 			this.scope.handleGoalEstimatesResponse = angular.bind( this, this.handleGoalEstimatesResponse);
+			this.scope.noEstimateSelection = angular.bind( this, this.noEstimateSelection);
 			
 			this.rootScope.showPortfolioFactoring = true;
 

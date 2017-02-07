@@ -23,11 +23,12 @@
                 var d = new Date();
                 modelObject.A1 = jewelleryAnswers['goal_name'];
                 modelObject.A3 = jewelleryAnswers['corpus'];
-               
+                modelObject.A4 = jewelleryAnswers['sip']
                 modelObject.A5 = jewelleryAnswers['current_price'];
                 modelObject.A7 = jewelleryAnswers['amount_saved'] || 0;
                 modelObject.assetAllocation = jewelleryAnswers['allocation'];
                 modelObject.sip = jewelleryAnswers['sip'];
+                modelObject.corpus = jewelleryAnswers['corpus'];
                 modelObject.estimate_selection_type = jewelleryAnswers['estimate_selection_type'];
                 if (jewelleryAnswers['term']) {
                 	modelObject.A2 = parseInt(d.getFullYear() + jewelleryAnswers['term']);

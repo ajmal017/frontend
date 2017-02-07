@@ -43,7 +43,8 @@
 			this.scope.handleGoalEstimatesResponse = angular.bind( this, this.handleGoalEstimatesResponse);
 			this.scope.portfolioFactoring = angular.bind( this, this.portfolioFactoring);
 			this.rootScope.showPortfolioFactoring = true;
-
+			this.scope.noEstimateSelection = angular.bind( this, this.noEstimateSelection);
+			
 			this.scope.changeDebtModal = angular.bind(this, this.changeDebtModal );
 			this.scope.changeEquityModal = angular.bind(this, this.changeEquityModal );
 			this.scope.saveEquityDebtMix = angular.bind(this, this.saveEquityDebtMix );

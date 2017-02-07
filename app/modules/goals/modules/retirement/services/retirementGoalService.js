@@ -27,6 +27,8 @@
                 modelObject.estimate_selection_type = retirementAnswers['estimate_selection_type'];
                 modelObject.A5 = retirementAnswers['monthly_investment'];
                 modelObject.sip = retirementAnswers['monthly_investment'];
+                modelObject.corpus = retirementAnswers['corpus'];
+
                 modelObject.assetAllocation = retirementAnswers['allocation'];
                 return modelObject;
                 

@@ -30,6 +30,8 @@
                 modelObject.A8 = vacationAnswers['amount_saved'] || 0;
                 modelObject.assetAllocation = vacationAnswers['allocation'];
                 modelObject.sip = vacationAnswers['sip'];
+                modelObject.corpus = vacationAnswers['corpus'];
+
                 if (vacationAnswers['term']) {
                 	modelObject.A2 = parseInt(d.getFullYear() + vacationAnswers['term']);
                 }
