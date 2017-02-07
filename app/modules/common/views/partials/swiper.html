@@ -3424,7 +3424,7 @@
                   </div>
                   <div class="col-xs-4">
                     <div class="upload-image-cover" ng-click="showVideoPopup()">
-                      <div class="image-div">
+                      <div class="image-div" ng-if="!$root.capturedFile.thumbnail">
                           <img src="assets/images/investorregistration_video.png">
                           <img ng-if="user_female" src="assets/images/investorregistration_video.png">
                       </div>
