@@ -116,6 +116,7 @@
 					} else {
 						assetAllocation = computedSIPData.assetAllocation;
 					}
+					assetAllocation.equityInitial = computedSIPData.assetAllocation.equity;
 					$scope.retirement['assetAllocation'] = assetAllocation;
 					$scope.modelVal.A4 = parseInt($scope.retirement['corpus']);
 					console.log("calculateCorpus: " + JSON.stringify(computedSIPData.assetAllocation) + " corpus: " + computedSIPData.computedCorpus);
@@ -138,7 +139,7 @@
 			$scope.setModelVal = function(assetAllocationObj, sipAmount) {
 				$scope.sipAmount = sipAmount;
 				$scope.modelVal.assetAllocation = assetAllocationObj;
-				$scope.modelVal.assetAllocation.equityInitial = assetAllocationObj.equity;
+				
 				var debtAmount = (assetAllocationObj.debt/100) * sipAmount;
 				var equityAmount = (assetAllocationObj.equity/100) * sipAmount;
 				$scope.modelVal.debtAmount = debtAmount;
