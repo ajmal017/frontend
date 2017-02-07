@@ -272,7 +272,7 @@
 			        } 
 				    
 				    var $listItems = $list.children('li');
-				    $listItems.eq(0).remove();			    
+				    // $listItems.eq(0).remove();			    
 				    $styledSelect.click(function (e) {
 				        e.stopPropagation();
 				        if($scope.disabled != undefined && $scope.disabled =='locked'){
