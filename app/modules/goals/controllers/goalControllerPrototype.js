@@ -187,8 +187,7 @@ var finApp = finApp || {};
 				this.goalModelObject['corpus'] = this.scope.modelVal.A3;
 				if(this.scope.modelVal.assetAllocation){
 					this.goalModelObject['assetAllocation'] = this.scope.modelVal.assetAllocation;
-				this.setModelVal(this.goalModelObject['assetAllocation'], this.goalModelObject['perMonth']);
-					
+					this.setModelVal(this.goalModelObject['assetAllocation'], this.goalModelObject['perMonth']);	
 				}
 			},
 
