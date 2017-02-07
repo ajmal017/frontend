@@ -19,9 +19,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 			console.log('$rootScope.userFlags',rootScope.userFlags);
 			if(userData.user_answers.risk_score) {
 				rootScope.userRiskFactor = userData.user_answers.risk_score;
-			} else {
-				rootScope.userRiskFactor = '7.0';
-			}
+			} 
     		
     	};
     	

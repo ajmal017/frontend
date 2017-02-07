@@ -981,7 +981,7 @@
                       <span class="error-text" ng-show="modelVal.A5 > 199999">Entered amount cannot be more than 199999</span>
                       <span class="error-text" ng-show="showMessage1 && (modelVal.A5 < 1000 || modelVal.A5 == undefined)">Minimum amount must be greater than or equal to 1000</span>
                       <span class="error-text" ng-show="showMessage1 && modelVal.A5 >= 1000 && (modelVal.A5%100) > 0">Amount must be in multiples of 100</span>
-                      <span class="nextline">for target amount <span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="retirement.corpus | amountSeffix"></span></span> by <span class="highlight" ng-bind="retirement.calculateYear"></span></span></span></p>
+                      <span class="nextline">for target amount <span class="highlight"><span class="currency">&#8377</span><span class="content" ng-bind="(retirement.corpus || 0) | amountSeffix"></span></span> by <span class="highlight" ng-bind="retirement.calculateYear"></span></span></span></p>
                 </div>
             </form>
         </div>
@@ -3458,10 +3458,12 @@
         <div class="image-backdrop"><img src="assets/images/investerRegistration.png"></div>
         <p>Video Selfie</p>
     </div>    
-    <div class="fin-btn-group gotoPages">
-        <button class="fin-link-btn content-prev" ng-show="(step == 1)" ng-click="(step != 1) && (step = step - 1)" click-redirect="/registerInvestorReview"><span><img src="assets/images/startedArrow.png"></span>DO IT LATER</button>
-        <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1);saveInfo()" ng-disabled="!$root.capturedFile.thumbnail" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2)" ng-click="appendValues(modelVal)" click-redirect="/dashboard" class="fin-app-btn fin-orange content-next">CONTINUE TO DASHBOARD</button>
+    <div class="col-xs-8 col-lg-4 col-sm-7 col-md-4 fin-btn-group-wrapper">
+        <div class="fin-btn-group gotoPages">
+            <button class="fin-link-btn content-prev" ng-show="(step == 1)" ng-click="(step != 1) && (step = step - 1)" click-redirect="/registerInvestorReview"><span><img src="assets/images/startedArrow.png"></span>DO IT LATER</button>
+            <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1);saveInfo()" ng-disabled="!$root.capturedFile.thumbnail" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+            <button ng-show="(step == 2)" ng-click="appendValues(modelVal)" click-redirect="/dashboard" class="fin-app-btn fin-orange content-next">CONTINUE TO DASHBOARD</button>
+        </div>
     </div>
 </div>
 

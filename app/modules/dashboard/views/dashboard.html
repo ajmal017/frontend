@@ -73,15 +73,21 @@
 					<p class="text-center score text-score" ng-if="!dashCounts['trackPerform']">off track</p> -->
 					<!-- <h4 class="text-center" ng-if="user_flags.is_virtual">You don't have a smart portfolio yet</h4>
 					<h4 class="text-center" ng-if="!user_flags.is_virtual">You have a smart portfolio</h4> -->
-					<h4 class="text-center" ng-if="!user_flags.is_virtual">Track your</h4>
-					<p class="text-center score dashboardSubText no-margin paddingTop2" ng-if="!user_flags.is_virtual">CURRENT INVESTMENTS</p>
-					
-					<h4 class="text-center" ng-if="user_flags.is_virtual && dashCounts['investCount']">Track how your</h4>
-					<p class="text-center score dashboardSubText no-margin paddingTop2" ng-if="user_flags.is_virtual">PLANNED GOALS</p>
-					<h4 class="text-center" ng-if="user_flags.is_virtual">would grow if invested</h4>
+					<div ng-if="!user_flags.is_virtual">
+						<h4 class="text-center">Track your</h4>
+						<p class="text-center score dashboardSubText no-margin paddingTop2">CURRENT INVESTMENTS</p>
+					</div>
 
-					<h4 class="text-center" ng-if="disabledTrackPerformance">You have</h4>
-					<p class="text-center score dashboardSubText no-margin paddingTop2" ng-if="disabledTrackPerformance">NO CURRENT INVESTMENTS OR PLANNED GOALS.</p>
+					<div ng-if="user_flags.is_virtual && dashCounts['investCount']">
+						<h4 class="text-center">Track how your</h4>
+						<p class="text-center score dashboardSubText no-margin paddingTop2">PLANNED GOALS</p>
+						<h4 class="text-center">would grow if invested</h4>
+					</div>
+
+					<div ng-if="disabledTrackPerformance">
+						<h4 class="text-center">You have</h4>
+						<p class="text-center score dashboardSubText no-margin paddingTop2">NO CURRENT INVESTMENTS OR PLANNED GOALS.</p>
+					</div>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">

@@ -2998,11 +2998,6 @@ span.error-text {
     min-height: 500px;
   }
 }
-@media only screen and (min-width:1400px) {
-  .swiper-container {
-    min-height: 600px;
-  }
-}
 .swiper-container .bubble {
   display: -webkit-box;
   display: -webkit-flex;
@@ -3447,11 +3442,6 @@ span.error-text {
     margin-bottom: 12%;
     float: left;
     width: 100%;
-  }
-}
-@media only screen and (min-width:1400px) {
-  .swiper-container.customSwiper .swiper-content {
-    min-height: 600px;
   }
 }
 .swiper-container.customSwiper .swiper-content p {
@@ -3953,11 +3943,6 @@ span.error-text {
   overflow: hidden;
   visibility: hidden;
   min-height: 500px;
-}
-@media only screen and (min-width:1400px) {
-  .swiper-slide {
-    min-height: 600px;
-  }
 }
 .swiper-slide-prev,
 .swiper-slide-next {
