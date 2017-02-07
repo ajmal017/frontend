@@ -714,7 +714,7 @@
 							var xirr1 = 1 + xirr;
 							var ratio = Math.pow(xirr1,diffYear);
 							var todaysVal = parseInt(10000*ratio);
-							$rootScope.nav['amount'] = 10000 + todaysVal;
+							$rootScope.nav['amount'] = todaysVal;
                     	} else {
                     		var amount = (10000*nav)/100;
 							$rootScope.nav['amount'] = amount;
