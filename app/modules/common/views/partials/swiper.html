@@ -2964,7 +2964,7 @@
                       <p class="question">My name is <span class="swiper-input"><input ng-model="modelVal.applicantName" type="text" name="year" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
                       <p class="question">and my father's name is <span class="swiper-input"><input ng-model="modelVal.fatherName" type="text" name="year" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span>
                       <p class="question">and my mother's name is <span class="swiper-input"><input ng-model="modelVal.mother_name" type="text" name="year" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span>
-                      <p class="question">I was born on <span class="swiper-input" ng-if="!$root.userFlags['user_flags']['vault_locked']"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" data-datepicker="{theme: 'flat',dateformat: 'YYYY-MM-DD'}" data-ng-model="modelVal.dob" ng-init="modelVal.dob = '1991-01-01'"></span><span class="swiper-input" ng-if="$root.userFlags['user_flags']['vault_locked']"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" disabled="" data-ng-model="modelVal.dob" ng-init="modelVal.dob = '1991-01-01'"></span></p>
+                      <p class="question">I was born on <span class="swiper-input" ng-if="!$root.userFlags['user_flags']['vault_locked']"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" data-datepicker="{theme: 'flat',dateformat: 'YYYY-MM-DD'}" data-ng-model="modelVal.dob"></span><span class="swiper-input" ng-if="$root.userFlags['user_flags']['vault_locked']"><input type="text" class="datepicker" placeholder="DD/MM/YYYY" disabled="" data-ng-model="modelVal.dob" ng-init="modelVal.dob = '1991-01-01'"></span></p>
                 </div>
             </form>
         </div>
@@ -3461,7 +3461,7 @@
     <div class="col-xs-8 col-lg-4 col-sm-7 col-md-4 fin-btn-group-wrapper">
         <div class="fin-btn-group gotoPages">
             <button class="fin-link-btn content-prev" ng-show="(step == 1)" ng-click="(step != 1) && (step = step - 1)" click-redirect="/registerInvestorReview"><span><img src="assets/images/startedArrow.png"></span>DO IT LATER</button>
-            <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1);saveInfo()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+            <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1);saveInfo()" ng-disabled="!$root.capturedFile.thumbnail" class="fin-app-btn fin-orange content-next">CONTINUE</button>
             <button ng-show="(step == 2)" ng-click="appendValues(modelVal)" click-redirect="/dashboard" class="fin-app-btn fin-orange content-next">CONTINUE TO DASHBOARD</button>
         </div>
     </div>

@@ -22,7 +22,7 @@
 	        			'investor_status': modelObject.investorStatus, 
 	        			'occupation_type': modelObject.occupationType, 
 	        			'other_tax_payer': modelObject.otherTaxPayer,
-	        			'dob': modelObject.dob	
+	        			'dob': modelObject.dob
 	        		};
         		},
         		
@@ -41,7 +41,7 @@
 	        			investorStatus : response.investor_status || 'Resident Individual', 
 	        			occupationType : response.occupation_type || 'PRI', 
 	        			otherTaxPayer : response.other_tax_payer,
-	        			dob : response.dob,
+	        			dob : response.dob || '1991-01-01',
 	        			imageUrl : response.pan_image_thumbnail?response.pan_image_thumbnail:response.pan_image,
 	        			kycStatus : $rootScope.userFlags['user_flags']['kra_verified']
 	        		};
@@ -63,6 +63,7 @@
     				income : '',
     				countryOfBirth : 'India',
     				investorStatus : 'Resident Individual', 
+    				dob : '1991-01-01'
 	        		};
     		}
 
