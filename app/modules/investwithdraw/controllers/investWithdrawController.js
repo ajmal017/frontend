@@ -32,11 +32,13 @@
 							result_goal.cancel_sips = [];
 							if(all_amounts[goalId]){
 								for(var fundId in all_amounts[goalId]) {
-									var pushFund = {
-										"fund_id" : fundId,
-										"redeem_amount" : all_amounts[goalId][fundId]
+									if (all_amounts[goalId][fundId] > 0 && !(all_units && all_units[goalId] && all_units[goalId][fundId])) {
+										var pushFund = {
+											"fund_id" : fundId,
+											"redeem_amount" : all_amounts[goalId][fundId]
+										}
+										result_goal.amount.push(pushFund);
 									}
-									result_goal.amount.push(pushFund);
 								}
 							}
 
@@ -60,12 +62,26 @@
 						busyIndicator.hide();
 						if('success' in data) { 
 							console.log('data success',data);
-							$location.path('/dashboard');
-						}
-						else {
+							$scope.errorPopupMessage = 'We have received your withdrawal request. Funds will be transferred into your registered bank account once it is processed.';
+							$scope.confirmShowButton = false;
+							$scope.ngDialog = ngDialog;
+							ngDialog.open({ 
+					        	template: 'modules/common/views/partials/error_popup.html', 
+					        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+					        	overlay: false,
+					        	showClose : false,
+
+					        	scope: $scope,
+					        	preCloseCallback:function(){
+									$location.path('/dashboard');
+					        	}
+				        	});
 
 						}
-					});
+						else {
+							busyIndicator.hide();
+						}
+					}, function() {busyIndicator.hide();});
 				} else {
 					$scope.disableWithdraw = true;
 				}
@@ -221,7 +237,7 @@
 				$scope.showErrorMessage = {};
 				var each_goal_error = $scope.showErrorMessage[current_goalId];
 				
-				if (schemeObj.return_value == amount) {
+				if (schemeObj.return_value == amount || amount == 0) {
 					$scope.showErrorMessage[current_goalId] = '';
 					$scope.withdrawError = 0;
 				}
