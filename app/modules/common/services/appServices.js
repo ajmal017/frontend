@@ -73,8 +73,8 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
         riskProfileService.$inject = ['$rootScope','appConfig'];
         function riskProfileService($rootScope, appConfig){
         	return function(){
-        		var risk_score = 7.0,
-        			riskProfile;
+        		var risk_score = '';
+        		var riskProfile = '';
         		if ($rootScope.userFlags && $rootScope.userFlags['user_answers']['risk_score']) {
         			risk_score = $rootScope.userFlags['user_answers']['risk_score'];
         		}

@@ -32,8 +32,5 @@
                 callback(resultObject);                
 	        }
 
-	        function submitSuccess(params){
-        		
-	        }
         }     
 })();

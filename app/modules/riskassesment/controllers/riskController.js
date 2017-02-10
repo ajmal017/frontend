@@ -19,11 +19,22 @@
 			$scope.appendFormValues = function(data){
 				if (typeof(data) !== "undefined" && data != undefined) {
 				var deleteObj = JSON.parse(data);
-				delete deleteObj.noneInvestments;
+				if(deleteObj.noneInvestments == 'op5'){
+					deleteObj.A8 = deleteObj.noneInvestments;
+				}
 				console.log('data',deleteObj);
+				
+
 				riskService.setAssesmentObject(deleteObj);
 				}
 				var assesValues = riskService.getAssesmentObject();
+				if(assesValues.noneInvestments == 'op5'){
+					assesValues.A8 = assesValues.noneInvestments;
+				}
+				if(assesValues.noneInvestments != '' || assesValues.noneInvestments != undefined){
+					delete assesValues.noneInvestments;
+				}
+
 				riskService.getAssesmentResult(assesValues).then(function(data){
 					if('success' in data){
 						$scope.resultObject = Number(data.success['risk_score']);
@@ -34,17 +45,23 @@
 							$rootScope.userFlags['user_answers']['assess'] = assesValues;
 							sessionStorage.setItem('userFlags', JSON.stringify($rootScope.userFlags));
 						}
+						if(assesValues.A8 == 'op5'){
+
+							$scope.modelVal.noneInvestments = assesValues.A8;
+				
+						}
 						if(!$scope.$$phase)	$scope.$apply(); 
 					}
+					
 				});
 				if(!$scope.$$phase)	$scope.$apply(); 
 			}
 
 			$scope.past_investments = [
-				{name : 'Fixed Deposits', value : 'op1', selected : false},
-				{name : 'Other Fixed Income Products (PPF, Debt Mutual Funds, etc.)', value: 'op2', selected:false},
-				{name : 'Equity Mutual Funds', value : 'op3', selected:false},
-				{name : 'Direct Stocks', value : 'op4', selected:false}
+				{name : 'Fixed Deposits', i : '', value : 'op1', selected : false},
+				{name : 'Other Fixed Income Products', i : '(PPF, Debt Mutual Funds, etc.)', value: 'op2', selected:false},
+				{name : 'Equity Mutual Funds', i : '', value : 'op3', selected:false},
+				{name : 'Direct Stocks', i : '', value : 'op4', selected:false}
 			];
 
 			if(!jQuery.isEmptyObject($scope.modelVal)){
@@ -90,10 +107,10 @@
 
 			  $scope.resetInvestments = function() {
 			  	$scope.past_investments = [
-					{name : 'Fixed Deposits', value : 'op1', selected : false},
-					{name : 'Other Fixed Income Products (PPF, Debt Mutual Funds, etc.)', value: 'op2', selected:false},
-					{name : 'Equity Mutual Funds', value : 'op3', selected:false},
-					{name : 'Direct Stocks', value : 'op4', selected:false}
+					{name : 'Fixed Deposits', i : '', value : 'op1', selected : false},
+					{name : 'Other Fixed Income Products', i : '(PPF, Debt Mutual Funds, etc.)', value: 'op2', selected:false},
+					{name : 'Equity Mutual Funds', i : '', value : 'op3', selected:false},
+					{name : 'Direct Stocks', i : '', value : 'op4', selected:false}
 				];
 				$scope.modelVal.A8 = 'op5';
 				$scope.modelVal.noneInvestments = 'op5';

@@ -3,10 +3,15 @@ var finApp = finApp || {};
 	'use strict';
 	
 	finApp.authControllerPrototype = {
-			completeLogin : function(data) {
+			completeLogin : function(data, status) {
 				var self = this;
+				var type = '';
+				if(status && status == 'onlyLogin'){
+					console.log('onlyLogin');
+					var type = 'onlyLogin';
+				}
 				if('success' in data){
-					this.authService.submitSuccess(data).then(function(data){
+					this.authService.submitSuccess(data, type).then(function(data){
 						self.userDetailsService().then(function(userData){
 							self.rootScope.$broadcast('refreshCredentials',userData['success']);
 							self.location.path('/dashboard');

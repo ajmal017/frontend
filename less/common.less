@@ -346,7 +346,17 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0479be', end
 					&:nth-child(7){
 						transition-delay:0.8s;
 					}
+					&.disabled{
+						opacity: 0.5;
+						transform: none;
+						a{
+							&:hover{
+								opacity:1;
+							}
+						}
+					}
 		 		}
+
 		 	}
 			.fin-start{
 				transform:translateX(0%);

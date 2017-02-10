@@ -57,11 +57,12 @@
 				return defer.promise;
 	        }
 
-	        function submitSuccess(params){
+	        function submitSuccess(params, type){
         		var defer = $q.defer(); 
         		$rootScope.$broadcast('userloggedIn', params['success']);
 					if(localStorage.getItem('riskData')){
 						$rootScope.loggedIn = true;
+						$rootScope.action = type;
 						var riskData = JSON.parse(localStorage.getItem('riskData'));
 						riskService.getAssesmentResult(riskData).then(function(data){
 							if('success' in data){

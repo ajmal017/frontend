@@ -191,7 +191,7 @@
                 <div class="col-xs-12 col-sm-6 col-lg-4 col-md-4 no-padding">
                     <div class="radio-cover">
                         <div class="checkbox-cover paddingTop2" ng-repeat="investments in past_investments">
-                            <input type="checkbox" id="{{investments.value}}" name="selectedInvestments[]" value="{{investments.value}}" ng-model="investments.selected" ng-change="changeInvestments()"><label for="{{investments.value}}"><div class="col-xs-2 no-padding"><span></span></div>{{investments.name}}</label>
+                            <input type="checkbox" id="{{investments.value}}" name="selectedInvestments[]" value="{{investments.value}}" ng-model="investments.selected" ng-change="changeInvestments()"><label for="{{investments.value}}"><div class="col-xs-2 no-padding"><span></span></div>{{investments.name}}<div class = "nextline col-xs-10 no-padding"><i>{{investments.i}}</i></div></label>
                         </div>
                         <hr /> 
                         <div class="checkbox-cover paddingTop2">
@@ -205,7 +205,7 @@
         <div class="swiper-slide">
             <div class="swiper-content">
                 <form name="riskAssesment1Form3" novalidate>
-                <h2>My preference while investing would <span class="nextline">be to</span></h2>
+                <h2>My preference while investing would be to</h2>
                 <div class="col-lg-4 col-xs-12 col-md-4 col-sm-6 no-padding">
                 <div class="radio-cover">
                     <input type="radio" required id="option2Type1" name="option2" ng-model="modelVal.A9" value="op1"><label for="option2Type1"><div class="col-xs-2 no-padding"><span></span></div>Take no risk, get fixed returns<div class = "nextline col-xs-10 no-padding"><i>(Guaranteed return of 7% per annum)</i></div></label>
@@ -220,11 +220,11 @@
         <div class="swiper-slide">
             <div class="swiper-content">
                 <form name="riskAssesment1Form4" novalidate>
-                <h2>If my <span class="currency">&#8377</span> 1 lakh investment goes down to <span class="currency">&#8377</span> 80,000 <span class="nextline"> in 2 months, I will</span></h2>
+                <h2>If my <span class="currency">&#8377</span> 1 lakh investment goes down to <span class="currency">&#8377</span> 80,000 in 2 months, I will</h2>
                 <div class="radio-cover">
                     <input type="radio" required id="option3Type1" name="option3" ng-model="modelVal.A19" value="op1"><label for="option3Type1"><span></span>Sell all my investments</label>
                     <input type="radio" required id="option3Type2" name="option3" ng-model="modelVal.A19" value="op2"><label for="option3Type2"><span></span>Sell some of my investments</label>
-                    <input type="radio" required id="option3Type3" name="option3" ng-model="modelVal.A19" value="op3"><label for="option3Type3"><span></span>Do Nothing, maintain investments</label>
+                    <input type="radio" required id="option3Type3" name="option3" ng-model="modelVal.A19" value="op3"><label for="option3Type3"><span></span>Do nothing, maintain investments</label>
                     <input type="radio" required id="option3Type4" name="option3" ng-model="modelVal.A19" value="op4"><label for="option3Type4"><span></span>Buy more, it's a good time</label>
                 </div>
                 </form>
@@ -1144,7 +1144,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content retirement-amount">
-                      <h1 class="topHeader">I will need the following amount for my Education goal<span class="nextline">Educational goal</span></h1>
+                      <h1 class="topHeader">I will need the following amount for my Education goal</h1>
                       <p class="question width-auto"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required></span><span class="or">OR </span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2')">PLEASE HELP ME ESTIMATE</button></p>
                 </div>
             </form>
@@ -1390,7 +1390,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                      <h1 class="topHeader">I will need the following amount <span class="nextline">for my dream property</span></h1>
+                      <h1 class="topHeader">I will need the following amount for my dream property</h1>
 
                       <p class="question width-auto"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2')">PLEASE HELP ME ESTIMATE</button></p>
                 </div>
@@ -1417,7 +1417,7 @@
                           <div class="row">
                             <div class="col-xs-12 col-md-5 col-sm-12 col-lg-5">
                                 <div class="row">
-                                  <p class="question multiple"><span class="content">The current price of the property I wish <span class="nextline">to purchase is</span></span></p>
+                                  <p class="question multiple"><span class="content">The current price of the property I wish to purchase is</span></p>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-6 col-sm-12 col-lg-6">
@@ -1445,7 +1445,7 @@
                           <div class="row">
                             <div class="col-xs-12 col-md-5 col-sm-12 col-lg-5">
                                 <div class="row">
-                                  <p class="question multiple"><span class="content">For this goal, so far i have already<span class="nextline">saved</span></span></p>
+                                  <p class="question multiple"><span class="content">For this goal, so far i have already saved</span></p>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-md-6 col-sm-12 col-lg-6">
@@ -1672,7 +1672,7 @@
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
                     <div class="col-xs-12">
-                      <h1 class="topHeader">I would like to save following amount<span class="nextline">for my dream vehicle</span></h1>
+                      <h1 class="topHeader">I would like to save following amount for my dream vehicle</h1>
                       <p class="question width-auto"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2')">PLEASE HELP ME ESTIMATE</button></p>
                     </div>  
                 </div>
@@ -1951,7 +1951,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                      <h1 class="topHeader">I would like to save following amount<span class="nextline">for my dream vacation</span></h1>
+                      <h1 class="topHeader">I would like to save following amount for my dream vacation</h1>
                       <p class="question width-more"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2')">PLEASE HELP ME ESTIMATE</button></p>
                 </div>
             </form>
@@ -2215,7 +2215,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                      <h1 class="topHeader">I would like to save following amount<span class="nextline">for this wedding</span></h1>
+                      <h1 class="topHeader">I would like to save following amount for this wedding</h1>
                       <p class="question width-more"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" ng-model="modelVal.A3" required></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2')">PLEASE HELP ME ESTIMATE</button></p>
                 </div>
             </form>
@@ -2858,7 +2858,7 @@
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op1'">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-                      <h1 class="topHeader">You can invest upto <span class="currency">&#8377;</span> 1,50,000 to maximise your tax<span class="nextline">savings.</span><span class="nextline">Enter amount to invest</span></h1>
+                      <h1 class="topHeader">You can invest upto <span class="currency">&#8377;</span> 1,50,000 to maximise your tax savings.<span class="nextline">Enter amount to invest</span></h1>
                       <p class="question"><span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" type="text" name="year" required ng-model="modelVal.A2"></span><span class="or">OR</span><button class="fin-app-btn fin-btn-white" ng-click="reloadRoute('op2', 1)">PLEASE HELP ME ESTIMATE</button></p>
                       <span class="error-text" ng-show="modelVal.A2 != 0 && modelVal.A2 > 9999999">Maximum amount must be lesser than 99,99,999</span>
                       <span class="error-text" ng-show="modelVal.A2 != 0 && modelVal.A2 < 500">Minimum amount must be greater than or equal to 500</span>
@@ -2871,7 +2871,7 @@
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
                     <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskUs estimate my tax savings?</strong><p>Based on your existing investments in any tax saving intruments that qualify under section 80C, we will give you a scientific estimate of how much further eligibility you hold under this section, and how much tax you can save through this investment.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
-                    <h1 class="topHeader">I have following other tax-saving investments<span class="nextline">u/s 80C for current financial year</span></h1>
+                    <h1 class="topHeader">I have following other tax-saving investments u/s 80C for current financial year</h1>
                     <p class="question multiple"><span class="content">
                     1. PF / PPF investments</span> <span class="swiper-input"><input ng-model="modelVal.A3" ng-change="computeFutureEligibility()" type="text" name="year" required></span></p>
                     <p class="question multiple"><span class="content">
@@ -3413,7 +3413,7 @@
             <form name="invertorInfoForm1" novalidate>
                 <div class="swiper-content">
                   <div class="col-xs-12">
-                    <h2 class="slider-description">To complete your KYC process, please take a short video (10-20 sec) of yourself<span class="nextline"> with the following:</span></h2>
+                    <h2 class="slider-description">To complete your KYC process, please take a short video (10-20 sec) of yourself with the following:</h2>
                   </div>
                   <div class="col-xs-12">
                       <ul class="videoSelfieConditions">

@@ -47,7 +47,7 @@
 				}
 				
 				authService.verifyLogin(user).then(function(data){
-					$scope.completeLogin(data);
+					$scope.completeLogin(data,'onlyLogin');
 				});
 			}
 			

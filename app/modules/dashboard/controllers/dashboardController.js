@@ -46,18 +46,18 @@
 
             $scope.user_flags = userFlags.user_flags;
             $scope.portfolio_flag = userFlags.user_flags.portfolio;
-            $scope.showRedeem = userFlags.user_flags.show_redeem;
+            $rootScope.showRedeem = userFlags.user_flags.show_redeem;
 
-            $scope.disabledTrackPerformance = false;
+            $rootScope.disabledTrackPerformance = false;
             if(userFlags.user_flags.is_virtual == true){
             	if(userFlags.user_flags.portfolio == true && userFlags.user_flags.rebuild_portfolio == false){
-            		$scope.disabledTrackPerformance = false;
+            		$rootScope.disabledTrackPerformance = false;
             	}
             	else {
-            		$scope.disabledTrackPerformance = true;
+            		$rootScope.disabledTrackPerformance = true;
             	}
             } else {
-            	$scope.disabledTrackPerformance = false;
+            	$rootScope.disabledTrackPerformance = false;
             }
 
 			console.log('risk_score',userFlags.user_answers.risk_score);
@@ -77,13 +77,13 @@
 					// }
 				}
 
-				$scope.goToWithdraw = function() {
+				$rootScope.goToWithdraw = function() {
 				$scope.noWithdraw = false;
 				if($rootScope.userFlags['user_flags']['show_redeem'] == false) {
 						$scope.errorPopupMessage = 'You cannot withdraw.';
 						$scope.ngDialog = ngDialog;
 						ngDialog.open({ 
-				        	template: 'modules/common/views/partials/error_popup.html', 
+				        	template: 'modules/common/views/partials/withdraw_error.html', 
 				        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
 				        	overlay: false,
 				        	showClose : false,

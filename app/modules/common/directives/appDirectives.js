@@ -33,7 +33,8 @@
 		.directive('riskImage',riskImage)
 		.directive('riskType',riskType)
 		.directive('showFactsheet',showFactsheet)
-		.directive('disableTab',disableTab);
+		.directive('disableTab',disableTab)
+		.directive('gotoWithdraw',gotoWithdraw);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -443,7 +444,7 @@
 		                if(viewValue){
 		                    var plainNumber = viewValue.replace(/[^\d|\-+|\.+]/g, '');
 		                    elem.val($filter('number')(plainNumber));
-		                    return plainNumber;
+		                    return true;
 		                }else{
 		                    return '';
 		                }
@@ -661,7 +662,7 @@
 							borderWidth: 0,
 							formatter: function() {
 								scope.calculateAmount(this.y,this.point.date,this.point.xirr,this.point.first_year);
-								return "<span class='nextline text-center'>"+this.point.date+"</span><br><span class='nextline'>"+this.y+"</span>";
+								return "<span class='nextline text-center'>"+this.point.date+"</span><br><span class='nextline'>"+parseInt(this.y).toLocaleString()+"</span>";
 							}
 						},
 						plotOptions: {
@@ -1324,4 +1325,57 @@
 				}
 			};			
 		}
+
+		gotoWithdraw.$inject = ['$location','$rootScope','investWithdrawService','busyIndicator','ngDialog'];
+	    function gotoWithdraw($location,$rootScope,investWithdrawService,busyIndicator,ngDialog) {
+	        var directive = {
+	            link: link,
+	            restrict: 'EA'
+	        };
+	        return directive;
+
+	        function link($scope, $element, $attrs) {
+	            $element.on('click', function() {
+	            	$scope.noWithdraw = false;
+					if($rootScope.userFlags['user_flags']['show_redeem'] == false) {
+						$scope.errorPopupMessage = 'You cannot withdraw.';
+						$scope.ngDialog = ngDialog;
+						ngDialog.open({ 
+				        	template: 'modules/common/views/partials/withdraw_error.html', 
+				        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+				        	overlay: false,
+				        	showClose : false,
+
+				        	scope: $scope
+			        	});
+					} else {
+						busyIndicator.show();
+						investWithdrawService.getWithdrawDetails().then(function(data){
+							busyIndicator.hide();
+							if('success' in data) { 
+								if(!data.success.length)
+								{
+									$rootScope.noWithdraw = true;
+								}
+								console.log('redeem', data);
+								$rootScope.redeemData = data.success;
+								$location.path('/withdrawStart');
+							}
+							else {
+								
+							}
+						});
+					}
+					$scope.gotoPlanning = function() {
+						console.log('hey');
+						ngDialog.closeAll();
+						$location.path('/planInvest');
+					}
+					$scope.gotoDashboard = function() {
+						ngDialog.closeAll();
+						$location.path('/dashboard');
+					}
+	            });
+	        }
+	    }
 })();

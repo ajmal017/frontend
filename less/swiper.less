@@ -289,7 +289,7 @@
       }
       .swiper-content{
         padding-bottom:100px;
-        padding-top:6%;
+        
         min-height:500px;
         @media @below768{
           padding-top: 200px !important;
@@ -319,8 +319,13 @@
               margin-right: 5px;
             }
             &.risk-age{
-              width: 31%;
+              width: 45%;
+
               left: 0;
+              input{
+                color: #f26529 !important;
+                .PIXEL2EM(32)!important;
+              }
             }
             &.year{
               width:10%;
@@ -352,7 +357,7 @@
 
             input:not(.datepicker){
               .GLOBAL_FONT_STYLE('PlayfairDisplay-Regular',@marinerapprox,normal);
-              .PIXEL2EM(20)!important;
+              .PIXEL2EM(20);
               width:100%;
               border:none;
               outline:none;

@@ -29,8 +29,9 @@
               <li><a href="javascript:void(0)" click-redirect="/othersStarted">Other</a></li>
             </ul>
         </li> -->
-        <li class="panel"><a href="javascript:void(0)" click-redirect="/trackPerformanceStart">Track Investments</a></li>
-        <li class="panel"><a href="javascript:void(0)" click-redirect="/investWithdrawStart">Withdraw</a></li>        
+        <li class="panel" ng-if="!$root.disabledTrackPerformance"><a href="javascript:void(0)" click-redirect="/trackPerformanceStart">Track Investments</a></li>
+        <li class="panel disabled" ng-if="$root.disabledTrackPerformance"><a href="javascript:void(0)">Track Investments</a></li>
+        <li class="panel"><a href="javascript:void(0)" goto-withdraw>Withdraw</a></li>
         <li class="panel"><a href="javascript:void(0)" ng-if="$root.userFlags['user_flags']['process_choice']==='' || $root.userFlags['user_flags']['process_choice']==undefined" click-redirect="/registerInvestorStart">Investor Registration</a></li>
         <li class="panel"><a href="javascript:void(0)" ng-if="!($root.userFlags['user_flags']['vault']) && $root.userFlags['user_flags']['process_choice']==0" click-redirect="/registerInvestorInfo">Investor Registration</a></li>
         <li class="panel"><a href="javascript:void(0)" ng-if="($root.userFlags['user_flags']['vault'])" click-redirect="registerInvestorReview">Investor Registration</a></li>

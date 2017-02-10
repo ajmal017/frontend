@@ -304,18 +304,18 @@
 					$rootScope.userFlags = userData.success;
 					
 					if($rootScope.userFlags['user_flags']['portfolio'] == false) {
-					canInvest = false;
-					$scope.errorPopupMessage = 'You have to add goals before you can invest.';
-					$scope.redirectPath = '/goals';	
-
-					} else if($rootScope.userFlags['user_flags']['kra_verified'] == false) {
 						canInvest = false;
-						$scope.errorPopupMessage = 'You are not KRA verified. Kindly contact FinAskus team.';
-						$scope.redirectPath = '/dashboard';	
+						$scope.errorPopupMessage = 'You have to add goals before you can invest.';
+						$scope.redirectPath = '/goals';	
+
 					} else if($rootScope.userFlags['user_flags']['vault'] == false){
 						canInvest = false;
-						$scope.errorPopupMessage = 'You have to complete investor registration before you can invest';
+						$scope.errorPopupMessage = 'You need to complete Investor Registration before you can invest.';
 						$scope.redirectPath = '/registerInvestorStart';
+					} else if($rootScope.userFlags['user_flags']['kra_verified'] == false) {
+						canInvest = false;
+						$scope.errorPopupMessage = 'Your KYC verification is in progress, you can only invest once it is completed. Kindly contact FinAskUs Support for any clarifications.';
+						$scope.redirectPath = '/dashboard';	
 					} 
 
 					if(canInvest == false){
