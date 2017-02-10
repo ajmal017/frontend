@@ -89,8 +89,15 @@
 			}
 
 			if($location.$$path == "/settings"){
-				$rootScope.userDetails = JSON.parse(sessionStorage.getItem('userDetails'))||{};
-				$scope.settingsDetails = $rootScope.userDetails.user;
+				userDetailsService().then(function(userData){
+					$rootScope.userDetails = JSON.parse(sessionStorage.getItem('userDetails'))||{};
+					$scope.settingsDetails = $rootScope.userDetails.user;
+					$scope.settingsDetails.email_verified = userData.success.user_flags.email_verified;
+					$scope.settingsDetails.phone_number_verified = userData.success.user_flags.phone_number_verified;
+					$rootScope.userDetails.user.phone_number_verified = $scope.settingsDetails.phone_number_verified;
+					$rootScope.userDetails.user.email_verified = $scope.settingsDetails.email_verified;
+					sessionStorage.setItem('userDetails',JSON.stringify($rootScope.userDetails)); 
+				});
 			}
 			$scope.verify = function(type) {
 				// $scope.processGoogleRegister = function() {
