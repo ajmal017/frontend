@@ -12,8 +12,8 @@
 	        		return {
 	        			'account_number': modelObject.accountNumber, 
 	        			'account_holder_name': modelObject.accountHolderName, 
-	        			'account_type': modelObject.accountType, 
-	        			'sip_check': modelObject.sipCheck,
+	        			'account_type': modelObject.accountType || 'S', 
+	        			'sip_check': modelObject.sipCheck || false,
 	        			'ifsc_code': modelObject.ifscCode,
 	        		};
         		},

@@ -87,7 +87,7 @@
 <div class="fin-btn-group addMargin investStep1">
     <button click-redirect="/dashboard" class="fin-link-btn content-prev"><span><img src="assets/images/startedArrow.png"></span>GO TO DASHBOARD</button>
     <!-- <button data-toggle="modal" data-target="#withdrawModal" class="fin-app-btn fin-orange">WITHDRAW NOW</button> -->
-    <button ng-click="proceedWithdraw(withdraw)" class="fin-app-btn fin-orange" ng-disabled="!termsChecked && withdrawError == '1'">WITHDRAW NOW</button>
+    <button ng-click="proceedWithdraw(withdraw)" class="fin-app-btn fin-orange" ng-disabled="!termsChecked || withdrawError == '1'">WITHDRAW NOW</button>
 
 </div>
 <div class="modal fade fade-scale" id="withdrawModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
