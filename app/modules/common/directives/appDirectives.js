@@ -34,7 +34,8 @@
 		.directive('riskType',riskType)
 		.directive('showFactsheet',showFactsheet)
 		.directive('disableTab',disableTab)
-		.directive('gotoWithdraw',gotoWithdraw);
+		.directive('gotoWithdraw',gotoWithdraw)
+		.directive('gotoInvest',gotoInvest);
 
 		clickRedirect.$inject = ['$location','$rootScope'];
 	    function clickRedirect($location,$rootScope) {
@@ -444,7 +445,7 @@
 		                if(viewValue){
 		                    var plainNumber = viewValue.replace(/[^\d|\-+|\.+]/g, '');
 		                    elem.val($filter('number')(plainNumber));
-		                    return true;
+		                    return plainNumber;
 		                }else{
 		                    return '';
 		                }
@@ -662,7 +663,9 @@
 							borderWidth: 0,
 							formatter: function() {
 								scope.calculateAmount(this.y,this.point.date,this.point.xirr,this.point.first_year);
-								return "<span class='nextline text-center'>"+this.point.date+"</span><br><span class='nextline'>"+parseInt(this.y).toLocaleString()+"</span>";
+								var graphMarker = "<h3 class='text-left'>On "+this.point.date+"</h3><br><span class='nextline'>Your Investment: <span class='currency'> </span>"+parseInt(this.y).toLocaleString('en-IN')+"</span>";
+
+								return graphMarker;
 							}
 						},
 						plotOptions: {
@@ -1378,4 +1381,101 @@
 	            });
 	        }
 	    }
+
+	    gotoInvest.$inject = ['$location','$rootScope','investWithdrawService','busyIndicator','ngDialog','$filter', 'userDetailsService'];
+		function gotoInvest($location,$rootScope,investWithdrawService,busyIndicator,ngDialog,$filter,userDetailsService) {
+			var directive = {
+	            link: link,
+	            restrict: 'EA'
+	        };
+	        return directive;
+
+	        function link($scope, $element, $attrs) {
+	            $element.on('click', function() {
+	            	$rootScope.legends = [];
+					var canInvest = true;
+					$scope.takeRegsitration = false;
+					userDetailsService().then(function(userData){
+						$rootScope.userFlags = userData.success;
+						if($rootScope.userFlags['user_flags']['portfolio'] == false) {
+							canInvest = false;
+							$scope.errorPopupMessage = 'You have to add goals before you can invest.';
+							
+
+						} else if($rootScope.userFlags['user_flags']['vault'] == false){
+							canInvest = false;
+							$scope.errorPopupMessage = 'You need to complete a one-time registration process before you can invest through FinAskUs. Kindly provide the necessary information through Investor Registration.';
+							$scope.takeRegistration = true;
+						
+						} else if($rootScope.userFlags['user_flags']['kra_verified'] == false) {
+							canInvest = false;
+							$scope.errorPopupMessage = 'Your KYC verification is in progress, you can only invest after it is completed. We will keep you informed on the status.';
+							
+						} 
+
+						if(canInvest == false){
+							$scope.ngDialog = ngDialog;
+							ngDialog.open({ 
+					        	template: 'modules/common/views/partials/invest_error.html', 
+					        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+					        	overlay: false,
+					        	showClose : false,
+
+					        	scope: $scope,
+					        	// preCloseCallback:function(){
+					        	// 	$location.path($scope.redirectPath);
+					        	// }
+				        	});
+						}
+
+						if(canInvest == true) {	
+							investWithdrawService.getInvestDetails().then(function(data){
+								if('success' in data) {
+									$rootScope.sipTotal = 0;
+									$rootScope.lumpSumTotal = 0;
+									$rootScope.overall_total_sum = data.success['overall_total_sum'];
+									$rootScope.recommended_schemes = data.success['goals_recommended_schemes'];
+									$rootScope.recommended_schemes.forEach(function(data) {
+										$rootScope.sipTotal+= data.goal_summary.sip;
+										$rootScope.lumpSumTotal+= data.goal_summary.lumpsum;
+									});	
+									$scope.overall_allocation = data.success['overall_allocation'];
+									$rootScope.resultPercentage = [
+										['Equity',   $scope.overall_allocation.equity.percentage],
+										['Debt',     $scope.overall_allocation.debt.percentage],
+										['ELSS',     $scope.overall_allocation.elss.percentage],
+										['LIQUID',     $scope.overall_allocation.liquid.percentage]
+									];
+									$scope.colors = ['#247abc', '#05AB41', '#7f7f7f', '#db5d30'];
+									var colors = ['#247abc', '#05AB41', '#7f7f7f', '#db5d30'];
+									var price = [$scope.overall_allocation.equity.amount, $scope.overall_allocation.debt.amount, $scope.overall_allocation.elss.amount, $scope.overall_allocation.liquid.amount];
+									for(var i=0;i<$rootScope.resultPercentage.length;i++){
+										var legendObject = {};
+										legendObject['name'] = $rootScope.resultPercentage[i][0];
+										legendObject['value'] = $rootScope.resultPercentage[i][1];
+										legendObject['price'] = price.splice(0,1).toString();
+										legendObject['color'] = colors.splice(0,1).toString();
+										legendObject['borderColor'] = '10px solid '+legendObject['color'];
+										$rootScope.legends.push(legendObject);
+									}
+									$rootScope.colors = ['#247abc', '#05AB41', '#7f7f7f', '#db5d30'];
+									$rootScope.pieTitle = "<span class='currency'>&#8377;</span><span class='content'><span>" + $filter('amountSeffix')($rootScope.overall_total_sum) + " </span>";
+									$location.path('/investStep1');
+									
+								} else {
+									
+								}
+							});
+						}
+
+						$scope.gotoRegistration = function() {
+							
+							ngDialog.closeAll();
+							$location.path('/registerInvestorStart');
+						}
+					});
+					
+	            });
+	        }
+		}
 })();

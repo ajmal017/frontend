@@ -32,10 +32,10 @@
 								<div class="money-value">
 									<h4>Annualized Returns(%)</h4>
 									<p class="gain types" ng-if="portfolioStatus.current_value.is_gain == true">
-									<span class="percentage">{{portfolioStatus.current_value.gain_per | removeNegative}}%</span>
+									<span class="percentage">{{(portfolioStatus.current_value.gain_per | removeNegative) | amountSeffix}}%</span>
 									</p>
 									<p ng-if="portfolioStatus.current_value.is_gain == false" class="loss types">
-									<span class="percentage">{{portfolioStatus.current_value.gain_per | removeNegative}}%</span></p>
+									<span class="percentage">{{(portfolioStatus.current_value.gain_per | removeNegative) | amountSeffix}}%</span></p>
 								</div>
 							</div>
 						</div>
@@ -324,7 +324,7 @@
 						</div>
 						<div class="col-xs-3 no-padding">
 							<p class="no-margin"><span class="placeholder">Expected corpus in {{finGoalsModal.dateFormatted | date:'yyyy'}}</span></p>
-							<p class="target-amount"><span class="content highlight"><span class="currency">&#8377</span><span class="content ng-binding">{{finGoalsModal.goal}}</span></span></p>
+							<p class="target-amount"><span class="content highlight"><span class="currency">&#8377</span><span class="content ng-binding">{{finGoalsModal.goal | backendAmtSuffix}}</span></span></p>
 						</div>
 					</div>
 
@@ -332,7 +332,7 @@
 						<div class="no-padding col-xs-12">
 							<div class="progress">
 							    <div class="progress-bar" role="progressbar" ng-style="getWidth(finGoalsModal)">
-							    <span class="progress-price"><span class="currency">&#8377</span><span class="amount ng-binding">{{finGoalsModal.expected_value}}</span></span>
+							    <span class="progress-price"><span class="currency">&#8377</span><span class="amount ng-binding">{{finGoalsModal.expected_value | backendAmtSuffix}}</span></span>
 							    <span class="progress-percentage placeholder">{{finGoalsModal.progress}}%</span>
 							    </div>
 							</div>
@@ -359,10 +359,10 @@
 							<div class="tbody">
 								<div class="tr">
 									<div class="col-xs-3">
-										<p><span class="currency">&#8377;</span>{{finGoalsModal.lumpsum || 0}}</p>
+										<p><span class="currency">&#8377;</span>{{(finGoalsModal.lumpsum || 0) | amountFormat}}</p>
 									</div>
 									<div class="col-xs-3">
-										<p><span class="currency">&#8377;</span>{{finGoalsModal.sip || 0}}</p>
+										<p><span class="currency">&#8377;</span>{{(finGoalsModal.sip || 0) | amountFormat}}</p>
 									</div>
 									<div class="col-xs-2">
 										<p>{{finGoalsModal.goal_answers.term || 'NA'}} years</p>

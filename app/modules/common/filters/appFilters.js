@@ -31,7 +31,7 @@
 					total='0';
 				
 				if (amount ) {
-					total = amount.toLocaleString();
+					total = amount.toLocaleString('en-IN');
 				}
 				
 				return total;
@@ -70,18 +70,21 @@
 		function backendAmtSuffix(){
 			return function (input) {
 				var capitalText = '';
-				var value = input.substr(input.length - 2);
-				if(value == " K") {
-					var returnGoal = input.replace(" K","");
-					capitalText = (returnGoal*1000).toLocaleString();
-				} else if(value == " L" || value == "Cr") {
-					var onlyValue = parseFloat(input.substr(input,input.length - 2));
-					onlyValue = onlyValue.toFixed(2);
-					var returnGoal = onlyValue + " " + value;
-					capitalText = returnGoal;
-				} else {
-					capitalText = input;
+				if(input){
+					var value = input.substr(input.length - 2);
+					if(value == " K") {
+						var returnGoal = input.replace(" K","");
+						capitalText = (returnGoal*1000).toLocaleString();
+					} else if(value == " L" || value == "Cr") {
+						var onlyValue = parseFloat(input.substr(input,input.length - 2));
+						onlyValue = onlyValue.toFixed(2);
+						var returnGoal = onlyValue + " " + value;
+						capitalText = returnGoal;
+					} else {
+						capitalText = input;
+					}
 				}
+				
 				return capitalText
 			}
 		}

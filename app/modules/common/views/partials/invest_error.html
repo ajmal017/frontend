@@ -1,0 +1,18 @@
+<div class="error-popup-container">
+	<div class="erorr-popup-wrapper">
+        <header class="login-header col-xs-12">
+            <div class="row">
+                <div class="cloud1"><img src="assets/images/login_cloud1.png"></div>
+                <div class="header-intro col-xs-12">
+                    <div class="row">
+                        <p class="pull-left" ng-bind-html="errorPopupMessage"></p>
+                        <div class="plane pull-right"><img src="assets/images/loginPlane.png"></div>
+                    </div>
+                </div>
+                <div class="cloud2"><img src="assets/images/login_cloud2.png"></div>
+            </div>
+        </header>
+        <button class="fin-app-btn fin-blue col-xs-5" ng-click="ngDialog.close()">Cancel</button>
+        <button class="fin-app-btn fin-orange pull-right" ng-if="takeRegistration" ng-click="gotoRegistration()" >Complete Investor Registration</button>
+    </div>
+</div>
