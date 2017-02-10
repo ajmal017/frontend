@@ -120,7 +120,7 @@ var finApp = finApp || {};
 							var userStatus = data['success']['user_status'];
 							
 							if (userStatus == 2) {
-								self.scope.completeLogin({'success':data['success']['res']});
+								self.scope.completeLogin({'success':data['success']['res']},'onlyLogin');
 							}
 							else if (userStatus == 3) {
 								self.scope.processGoogleRegister();
