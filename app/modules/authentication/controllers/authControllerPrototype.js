@@ -24,7 +24,7 @@ var finApp = finApp || {};
 			
 			completeGoogleLogin : function() {
 				this.ngDialog.closeAll();
-				this.scope.completeLogin(this.scope.registerSuccessData);
+				this.scope.completeLogin(this.scope.registerSuccessData, 'onlyLogin');
 			},
 			
 			registerPhone : function(mobileNumber) {
@@ -69,7 +69,7 @@ var finApp = finApp || {};
 				this.authService.googleRegisterExistingUser(this.scope.googleAuthParams).then(function(data) {
 					if ('success' in data) {
 						self.ngDialog.closeAll();
-						self.scope.completeLogin(data);
+						self.scope.completeLogin(data, 'onlyLogin');
 					}
 					else {
 						self.scope.errorMessage = data['Message'] + " " + data['Error'];
@@ -177,6 +177,7 @@ var finApp = finApp || {};
 				})
 			},
 
+			/* Only for registration */
 			googleRegisterConfirmOtp : function(otp){
 				var self = this;
 				this.registerService.confirmOtp(otp,this.scope.registerSuccessData['success']['tokens']).then(function(data){
