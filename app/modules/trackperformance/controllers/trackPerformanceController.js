@@ -126,23 +126,27 @@
 							data.funds = $scope.allFunds[key].value;
 							
 						});
-						console.log('allSchemes',$scope.allSchemes);
-						if($scope.allSchemes[0]){
-							var equityValue = $scope.allSchemes[0]['holding_per'];
-							var equityAmt = $scope.allSchemes[0]['current_value'];
-						} else {equityValue = 0;equityAmt = 0;}
-						if($scope.allSchemes[1]){
-							var debtValue = $scope.allSchemes[1]['holding_per'];
-							var debtAmt = $scope.allSchemes[1]['current_value'];
-						} else {debtValue = 0;debtAmt = 0;}
-						if($scope.allSchemes[2]){
-							var elssValue = $scope.allSchemes[2]['holding_per'];
-							var elssAmt = $scope.allSchemes[2]['current_value'];
-						} else {elssValue = 0;elssAmt = 0;}
-						if($scope.allSchemes[3]){
-							var liquidValue = $scope.allSchemes[3]['holding_per'];
-							var liquidAmt = $scope.allSchemes[3]['current_value'];
-						} else {liquidValue = 0;liquidAmt = 0;}
+						console.log('allSchemes',$scope.allSchemes[0]['name']);
+						var equityValue = 0, equityAmt = 0, debtValue = 0, debtAmt = 0, elssValue = 0, elssAmt = 0, liquidValue = 0, liquidAmt = 0;
+						$scope.allSchemes.forEach(function(data,key) {
+							switch(data['name']){
+								case 'equity': equityValue = data['holding_per'];
+											   equityAmt = data['current_value'];
+											  break;
+								case 'debt': debtValue = data['holding_per'];
+											 debtAmt = data['current_value'];
+											  break;
+								case 'elss': elssValue = data['holding_per'];
+											 elssAmt = data['current_value'];
+											  break;
+								case 'liquid': liquidValue = data['holding_per'];
+											   liquidAmt = data['current_value'];
+											  break;
+							}
+
+						});
+						
+
 						$scope.resultPercentage = [
 							['Equity',   equityValue],
 							['Debt',     debtValue],
