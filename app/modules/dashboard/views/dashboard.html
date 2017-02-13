@@ -16,13 +16,15 @@
 					<h2>Risk Assessment</h2>
 					<p class="text-center desc">Your risk assessment based on a few simple questions helps us give you more customized advice.</p>
 					<div ng-if="risk_score">
-						<h3 class="text-center">Your current risk score is</h3>
+						<h3 class="text-center">Your risk score is</h3>
 						<p class="text-center score">{{risk_score | number:1}}</p>
 						<h4 class="text-center">{{riskType}} taker</h4>
 					</div>
 
 					<div ng-if="!risk_score">
-						<h4 class="text-center">You have not completed your risk assessment.</h4>
+						<h3 class="text-center">Your risk assessment is</h4>
+						<p class="text-center score dashboardSubText no-margin paddingTop2">Not Completed</p>
+
 					</div>
 				</div>
 			</div>
@@ -44,7 +46,10 @@
 					<!-- <h3 class="text-center" ng-if="!portfolio_flag">You currently have no planned</h3>
 					<h3 class="text-center" ng-if="portfolio_flag">You currently have planned</h3>
 					<p class="text-center score" ng-bind="dashCounts['investCount']"></p> -->
-					<h4 class="text-center" ng-if="portfolio_flag"><span class="highlight goal_number">{{dashCounts['investCount']}}</span> goals under planning</h4>
+					<!-- <h4 class="text-center" ng-if="portfolio_flag"><span class="highlight goal_number">{{dashCounts['investCount']}}</span> goals under planning</h4> -->
+					<h3 class="text-center">You currently have</h3>
+					<p class="text-center score">{{dashCounts['investCount']}}</p>
+					<h4 class="text-center">Goals under planning</h4>
 				</div>
 			</div>
 		</div>
