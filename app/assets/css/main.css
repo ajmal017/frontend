@@ -6431,7 +6431,6 @@ section.registerInvestor .registerInvestorConfirm {
 .table-outer-cover.withdraw .seperate-cover {
   width: 100%;
   float: left;
-  height: 300px;
 }
 .table-outer-cover.withdraw .seperate-cover h4 {
   font-size: 1.125em;
@@ -7896,6 +7895,9 @@ section.trackPerformance .chart-cover.transaction-cover .schemes-inner .transact
 }
 section.trackPerformance .chart-cover.transaction-cover .schemes-inner .transactionEach .table {
   margin-bottom: 0;
+}
+section.trackPerformance .chart-cover.graph-cover .highcharts-container {
+  border: 1px dotted #333;
 }
 section.trackPerformance .chart-main-tabs li {
   margin-left: 0px;

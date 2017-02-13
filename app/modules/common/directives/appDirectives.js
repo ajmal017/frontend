@@ -663,7 +663,12 @@
 							borderWidth: 0,
 							formatter: function() {
 								scope.calculateAmount(this.y,this.point.date,this.point.xirr,this.point.first_year);
-								var graphMarker = "<h3 class='text-left'>On "+this.point.date+"</h3><br><span class='nextline'>Your Investment: <span class='currency'> </span>"+parseInt(this.y).toLocaleString('en-IN')+"</span>";
+								if(this.series.name == 'Current Amount'){
+									var graphMarker = "<h3 class='text-left'>On "+this.point.date+"</h3><br><span class='nextline'><strong>Your Current: </strong> <span class='currency'>\u20B9 </span>"+parseInt(this.y).toLocaleString('en-IN')+"</span><br><span class='nextline'><strong>Your investment:</strong> <span class='currency'>\u20B9 </span>"+parseInt(this.point.y_other).toLocaleString('en-IN')+"</span>";
+								} else if(this.series.name == 'Invested Amount'){
+									var graphMarker = "<h3 class='text-left'>On "+this.point.date+"</h3><br><span class='nextline'><strong>Your Investment: </strong> <span class='currency'>\u20B9 </span>"+parseInt(this.y).toLocaleString('en-IN')+"</span><br><span class='nextline'><strong>Your current: </strong> <span class='currency'>\u20B9 </span>"+parseInt(this.point.y_other).toLocaleString('en-IN')+"</span>";
+								}
+
 
 								return graphMarker;
 							}

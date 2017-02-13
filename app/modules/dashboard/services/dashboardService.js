@@ -25,7 +25,7 @@
                   resultObject['investCount'] = (planConunt < 10) ? 
                     '0'+planConunt : planConunt;  
                 } else {
-                    resultObject['investCount'] = false;
+                    resultObject['investCount'] = 0;
                 }
                 
                 resultObject['trackPerform'] = userFlags['user_flags']['track'];

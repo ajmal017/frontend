@@ -151,14 +151,20 @@
                     var object = {};
                     var data = [];
                     var valueObject = fundObject[i]['value'];
+                    var otherValueObj = fundObject[i]['other_value'];
+
                     if(dates.length > valueObject.length){
                         valueObject = fundObject[i]['value'];
+                        otherValueObj = fundObject[i]['other_value'];
                         dates = response[year]['dates'].slice(0,valueObject.length);
                         xirr = response[year]['xirr'];
                         for(var j=0;j<valueObject.length;j++){
                             var value = +(valueObject[j].toFixed(2));
+                            var other_value = +(otherValueObj[j].toFixed(2));
+
                             data.push({
                                 'y' : value,
+                                'y_other' : other_value,
                                 'date':dates[j],
                                 // 'x':dates[j],
                                 'xirr':xirr[j],
@@ -169,10 +175,15 @@
                         dates = response[year]['dates'];
                         xirr = response[year]['xirr'];
                         valueObject = fundObject[i]['value'].slice(0,dates.length);
+                        otherValueObj = fundObject[i]['other_value'];
+
                         for(var j=0;j<valueObject.length;j++){
                             var value = +(valueObject[j].toFixed(2));
+                            var other_value = +(otherValueObj[j].toFixed(2));
+
                             data.push({
                                 'y' : value,
+                                'y_other' : other_value,
                                 'date':dates[j],
                                 // 'x':dates[j],
                                 'xirr':xirr[j],
@@ -183,11 +194,15 @@
                         dates = response[year]['dates'];
                         xirr = response[year]['xirr'];
                         valueObject = fundObject[i]['value'];
+                        otherValueObj = fundObject[i]['other_value'];
+
                         for(var j=0;j<valueObject.length;j++){
                             var value = +(valueObject[j].toFixed(2));
+                            var other_value = +(otherValueObj[j].toFixed(2));
                            
                             data.push({
                                 'y' : value,
+                                'y_other' : other_value,
                                 'date':dates[j],
                                 // 'x':dates[j],
                                 'xirr':xirr[j],
@@ -218,11 +233,12 @@
                         "fund": [{
                                 "id": "Current Amount",
                                 "value": resultSet.current_amount,
-
+                                "other_value": resultSet.invested_amount
                                 },
                                 {
                                 "id": "Invested Amount",
-                                "value": resultSet.invested_amount
+                                "value": resultSet.invested_amount,
+                                "other_value": resultSet.current_amount
                                 }
                         ],
                         

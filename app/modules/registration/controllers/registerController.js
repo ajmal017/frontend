@@ -89,7 +89,9 @@
 			}
 
 			if($location.$$path == "/settings"){
+				busyIndicator.show();
 				userDetailsService().then(function(userData){
+					busyIndicator.hide();
 					$rootScope.userDetails = JSON.parse(sessionStorage.getItem('userDetails'))||{};
 					$scope.settingsDetails = $rootScope.userDetails.user;
 					$scope.settingsDetails.email_verified = userData.success.user_flags.email_verified;
@@ -134,9 +136,12 @@
 					var email = $rootScope.userDetails.user.email;
 					busyIndicator.show();
 					registerService.verifyEmail(email).then(function(data) {
+						busyIndicator.hide();
 						if('success' in data){
 							if(data.success['email_verified'] == false){
+								busyIndicator.show();
 								registerService.resendEmailVerify().then(function(data){
+									busyIndicator.hide();
 									if('success' in data){
 										busyIndicator.hide();
 										$scope.errorPopupMessage = data.success['message'];
@@ -153,10 +158,16 @@
 
 									}
 								})
-							}
-						} else {
+							} else {
+								if(data.success['email_verified'] == true){
+									$rootScope.userDetails.user.email_verified = true;
+									$scope.settingsDetails = $rootScope.userDetails.user;
+									sessionStorage.setItem('userDetails',JSON.stringify($rootScope.userDetails)); 
 
-						}
+								}
+
+							}
+						} 
 					})
 				}
 			}

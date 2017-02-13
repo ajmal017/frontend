@@ -12,12 +12,12 @@
 								</div>
 								<div class="money-value">
 									<h4>Current Value</h4>
-									<p><span class="currency">&#8377;</span><span class="amount">{{portfolioStatus.current_value.value | amountSeffix}}</span></p>
+									<p><span class="currency">&#8377;</span><span class="amount">{{(portfolioStatus.current_value.value | amountSeffix) || 0}}</span></p>
 								</div>
 								<div class="money-value">
 									<h4>Current Gain/Loss</h4>
 									<p class="gain types">
-									<span class="currency">&#8377;</span><span class="percentage">{{(portfolioStatus.current_return | removeNegative) | amountSeffix}}</span></p>
+									<span class="currency">&#8377;</span><span class="percentage">{{((portfolioStatus.current_return | removeNegative) | amountSeffix) || 0}}</span></p>
 									<p ng-if="false" class="loss types">( <span class="currency">&#8377;</span><span class="percentage">10,200</span> )</p>
 								</div>
 							</div>
@@ -27,7 +27,7 @@
 								</div>
 								<div class="money-value">
 									<h4>Invested Value</h4>
-									<p><span class="currency">&#8377;</span><span class="amount">{{portfolioStatus.invested | amountSeffix}}</span></p>
+									<p><span class="currency">&#8377;</span><span class="amount">{{(portfolioStatus.invested | amountSeffix) || 0}}</span></p>
 								</div>
 								<div class="money-value">
 									<h4>Annualized Returns(%)</h4>
@@ -291,7 +291,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="chart-cover" ng-if="setChartValue == 'PORFOLIO_TRACKER'" >
+				<div class="chart-cover graph-cover" ng-if="setChartValue == 'PORFOLIO_TRACKER'" >
 					<h3 class="chart-main-header">Portfolio Performance Since Inception</h3>
 					<hc-chart ng-if="resultSet" items="resultSet"></hc-chart>
 					<p class="text-right"><span class="addOnlyBold highlight"><span class="currency">&#8377;</span> 10,000</span> invested on {{resultSet[0]['data'][0]['date']}} would be <span class="content" ng-if="$root.nav"><span class="currency">&#8377;</span><span class="addOnlyBold highlight">{{$root.nav.amount | amountFormat}}</span> on {{$root.nav.date}}</span></p>
