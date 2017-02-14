@@ -444,7 +444,7 @@
 		              
 		                if(viewValue){
 		                    var plainNumber = viewValue.replace(/[^\d|\-+|\.+]/g, '');
-		                    elem.val($filter('amountFormat')(viewValue));
+		                    elem.val(parseInt(plainNumber).toLocaleString('en-IN'));
 		                    return plainNumber;
 		                }else{
 		                    return '';
