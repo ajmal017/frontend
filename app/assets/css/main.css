@@ -3497,7 +3497,7 @@ span.error-text {
   left: 0;
 }
 .swiper-container.customSwiper .swiper-content p .swiper-input.normal.currency input {
-  padding-left: 5%;
+  padding-left: 20px;
 }
 @media only screen and (max-width:768px) {
   .swiper-container.customSwiper .swiper-content p .swiper-input.normal.currency input {
@@ -3625,6 +3625,9 @@ span.error-text {
   font-weight: normal;
   font-size: 1.625em;
   width: 230px;
+}
+.swiper-container.customSwiper .swiper-content .upload-image-cover.upload-image-cover-disabled {
+  opacity: 0.5;
 }
 .swiper-container.customSwiper .swiper-content.retirement-content span.swiper-input {
   width: 67%!important;

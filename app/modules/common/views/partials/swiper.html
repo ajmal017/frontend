@@ -2893,14 +2893,15 @@
                 <div class="swiper-content">
                     <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskUs estimate my tax savings?</strong><p>Based on your existing investments in any tax saving intruments that qualify under section 80C, we will give you a scientific estimate of how much further eligibility you hold under this section, and how much tax you can save through this investment.</p>'}]" info-width="48px" class-name="marginNegative60"></info-tip>
                     <h1 class="topHeader">I have following other tax-saving investments u/s 80C for current financial year</h1>
+
                     <p class="question multiple"><span class="content">
-                    1. PF / PPF investments</span> <span class="swiper-input"><input ng-model="modelVal.A3" ng-change="computeFutureEligibility()" type="text" name="year" required></span></p>
+                    1. PF / PPF investments</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A3" ng-change="computeFutureEligibility()" type="text" name="year" required></span></p>
                     <p class="question multiple"><span class="content">
-                    2. Life Insurance Premium</span> <span class="swiper-input"><input ng-model="modelVal.A4" ng-change="computeFutureEligibility()" type="text" name="year" required></span></p>
+                    2. Life Insurance Premium</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A4" ng-change="computeFutureEligibility()" type="text" name="year" required></span></p>
                     <p class="question multiple"><span class="content">
-                    3. Home loan principal</span> <span class="swiper-input"><input ng-model="modelVal.A5" ng-change="computeFutureEligibility()" type="text" name="year" required></span></p>
+                    3. Home loan principal</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A5" ng-change="computeFutureEligibility()" type="text" name="year" required></span></p>
                     <p class="question multiple"><span class="content">
-                    4. Other tax saving / ELSS</span> <span class="swiper-input"><input ng-model="modelVal.A6" ng-change="computeFutureEligibility()" type="text" name="year" required></span></p>
+                    4. Other tax saving / ELSS</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A6" ng-change="computeFutureEligibility()" type="text" name="year" required></span></p>
                     <span class="placeholder addPadding-4Per">Further eligiblity</span>
                     <p class="question multiple"><span class="content">
                     Thanks for the guidance. I would like to invest<span class="nextline">the following amount <span class="currency swiper-input normal"><span class="currency">&#8377</span><input ng-model="modelVal.A2" ng-change="computeTaxBenefit()" format="number" type="text" name="year" required></span></span></span></p>

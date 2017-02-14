@@ -8,7 +8,7 @@
                     <h2 class="slider-description">Please sign or upload a photo of your signature</h2>
                   </div>
                   <div class="col-xs-4">
-                    <div class="upload-image-cover" ng-click="showSigniture()">
+                    <div class="upload-image-cover" ng-if="!$root.userFlags['user_flags']['vault_locked']" ng-click="showSigniture()">
 
                       <div class="image-div" ng-if="!modelVal.signature">
                           <img src="assets/images/investorregistration_sign.png">
@@ -17,9 +17,35 @@
                             <img width="100%" ng-src="{{modelVal.signature}}">
                       </div>
                       
-                      <p class="text-center">Sign</p>
+                      <p class="text-center">Sign here</p>
+
+                    </div>
+
+                    <div class="upload-image-cover upload-image-cover-disabled" ng-if="$root.userFlags['user_flags']['vault_locked']">
+
+                      <div class="image-div" ng-if="!modelVal.signature">
+                          <img src="assets/images/investorregistration_sign.png">
+                      </div>
+                      <div ng-if="modelVal.signature" class="imageThumbnail">
+                            <img width="100%" ng-src="{{modelVal.signature}}">
+                      </div>
+                      
+                      <p class="text-center">Sign here</p>
+
+                    </div>
+                    
+
+                    <div class="addPadding-4Per no-paddingLR col-xs-12">
+                      <input id='uploadPermanentBack' ng-show="needBackImage(modelVal.signature)" accept=".jpg, .png, .jpeg" style="display:none" autoplay onchange="angular.element(this).scope().imageUpload(this, 'signature')" type='file'/>  
+                  
+                      <button ng-if="!$root.userFlags['user_flags']['vault_locked']" class="fin-app-btn fin-orange content-next" upload-file="uploadPermanentBack">Upload Sign</button>
                     </div>
                   </div>
+
+                  
+                  
+                  
+
                   <div class="col-xs-12">
                     <p class="paddingTop2">Note: The above signature will be used to digitally sign the investor application form</p>
                   </div>

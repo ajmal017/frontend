@@ -31,6 +31,47 @@
 				return !registerInvestorService.isVaultLocked();
 			}
 
+			$scope.imageUpload = function(element, name){
+	            var file=element.files[0],
+	            	ext = file.name.substr(file.name.lastIndexOf('.')+1,file.name.length),
+	            	validExt = ['jpg','png','jpeg'];
+	            	
+	            $scope.Signature = "";
+	            if (typeof(name) === "undefined") {
+	            	name = 'imageUrl';
+	            }
+	            $scope.checkImageFile(file, function(e) {
+	                if(validExt.indexOf($scope.Signature) != -1){
+	                    var reader = new FileReader();
+	                    reader.onload = function (evt) {
+	                    	$scope.$apply(function($scope){
+	                    	$scope.modelVal[name] = evt.target.result;
+	                    	$scope[name] = element.files[0];
+	                        });
+	                    };
+	                    reader.readAsDataURL(file);
+	                }
+	            });
+	        }
+
+	        $scope.checkImageFile = function(file, onLoadendCallback){
+	            var slice = file.slice(0,4);
+	            	
+	            var reader = new FileReader();  
+	            reader.onloadend = onLoadendCallback;
+	            reader.readAsArrayBuffer(slice);  
+	            reader.onload = function(e) {
+	                var view = new DataView(reader.result);      
+	                var signature = view.getUint32(0, false).toString(16);
+	                switch(signature) {                 
+	                    case "89504e47": $scope.Signature = "png"; break;
+	                    case "ffd8ffe0":
+	                    case "ffd8ffe1":
+	                    case "ffd8ffe2": $scope.Signature = "jpeg"; break;
+	                };
+	            };
+	        }
+
 			$scope.getSignature = function() {
 				registerInvestorService.getSignature().then(function(data){
 					if('success' in data){
