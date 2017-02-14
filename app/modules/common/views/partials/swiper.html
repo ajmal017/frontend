@@ -3159,17 +3159,14 @@
         <div class="swiper-slide">
             <form name="quickInvestForm3" novalidate>
                 <div class="swiper-content">
-					  <span class="error-text col-xs-12">Communication Address</span>
-					  <p class="question col-xs-12">I am providing my<select dropdown dropdown-disable="$root.userFlags['user_flags']['vault_locked'] == true ?'locked' : ''" ng-model="modelVal.communicationAddressType"><option ng-selected="(modelVal.communicationAddressType==1)||(!modelVal.communicationAddressType)" value="1">Residential</option><option ng-selected="(modelVal.communicationAddressType==2)" value="2">Business</option><option ng-selected="(modelVal.communicationAddressType==3)" value="3">Residential or Business</option><option ng-selected="(modelVal.communicationAddressType==4)" value="4">Registered Office</option></select>address</p>
-                      <p class="question col-xs-12">My PIN code is <span class="swiper-input"><input validate-pincode ng-model="modelVal.communicationAddress.pincode" type="text" name="pincode" ng-change="quickInvestForm3.pincode.$error.invalidPincode?0:lookupPincode(modelVal.communicationAddress)" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
-                      <p class="question col-xs-12">and my address is<span class="swiper-input"><input ng-model="modelVal.communicationAddress.addressLine1" type="text" name="year" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
-                      <p class="question col-xs-12"><span class="swiper-input"><input ng-model="modelVal.communicationAddress.addressLine2" type="text" name="year" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
-                      <p class="col-xs-12">
-                      <span class="placeholder nextline">It is located in the city of <span ng-bind="modelVal.communicationAddress.city"></span></span>
-                      <span class="placeholder nextline">in the state of <span ng-bind="modelVal.communicationAddress.state"></span></span>
-                      <span class="placeholder nextline">in the country <span>INDIA</span></p>
-					  <span class="error-text col-xs-12" ng-show="!getKYCStatus()">You will be required to upload proof for the above address</span>
-                      </p>
+					  <span class="error-text col-xs-12">Permanent Address</span>
+					  <p class="question col-xs-12">My PIN code is <span class="swiper-input"><input ng-model="modelVal.permanentAddress.pincode" validate-pincode type="text" name="permPincode" ng-change="quickInvestForm5.permPincode.$error.invalidPincode?0:lookupPincode(modelVal.permanentAddress)" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
+                      <p class="question col-xs-12">and my address is <span class="swiper-input"><input ng-model="modelVal.permanentAddress.addressLine1" type="text" name="year" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
+                      <p class="question col-xs-12"><span class="swiper-input"><input ng-model="modelVal.permanentAddress.addressLine2" type="text" name="year" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
+                      <p class="question col-xs-12">It is located in the city of <span ng-bind="modelVal.permanentAddress.city"></span></p>
+                      <p class="question col-xs-12">in the state of <span ng-bind="modelVal.permanentAddress.state"></span></p>
+                      <p class="question col-xs-12">in the country <span>INDIA</span></p>
+                      <span class="error-text col-xs-12" ng-show="!getKYCStatus()">You will be required to upload proof for the above address</span>
                 </div>
             </form>
         </div>
@@ -3206,16 +3203,20 @@
             <form name="quickInvestForm5" novalidate>
                 <div class="swiper-content noPadding hasCheckbox">
                     <div class="checkbox-cover">
-                        <input type="checkbox" required id="option1Type2" ng-disabled="$root.userFlags['user_flags']['vault_locked']" name="option2" ng-model="modelVal.addressAreEqual" value="true"><label for="option1Type2"><span></span>My permanent address is same as the address given before.</label>
+                        <input type="checkbox" required id="option1Type2" ng-disabled="$root.userFlags['user_flags']['vault_locked']" name="option2" ng-model="modelVal.addressAreEqual" value="true"><label for="option1Type2"><span></span>My communication address is same as the address given before.</label>
                     </div>
                     <div ng-show="!modelVal.addressAreEqual">
-                      <p class="question col-xs-12">My PIN code is <span class="swiper-input"><input ng-model="modelVal.permanentAddress.pincode" validate-pincode type="text" name="permPincode" ng-change="quickInvestForm5.permPincode.$error.invalidPincode?0:lookupPincode(modelVal.permanentAddress)" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
-                      <p class="question col-xs-12">and my address is <span class="swiper-input"><input ng-model="modelVal.permanentAddress.addressLine1" type="text" name="year" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
-                      <p class="question col-xs-12"><span class="swiper-input"><input ng-model="modelVal.permanentAddress.addressLine2" type="text" name="year" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
-                      <p class="question col-xs-12">It is located in the city of <span ng-bind="modelVal.permanentAddress.city"></span></p>
-                      <p class="question col-xs-12">in the state of <span ng-bind="modelVal.permanentAddress.state"></span></p>
-                      <p class="question col-xs-12">in the country <span>INDIA</span></p>
-					  <span class="error-text col-xs-12" ng-show="!getKYCStatus()">You will be required to upload proof for the above address</span>
+
+                        <p class="question col-xs-12">I am providing my<select dropdown dropdown-disable="$root.userFlags['user_flags']['vault_locked'] == true ?'locked' : ''" ng-model="modelVal.communicationAddressType"><option ng-selected="(modelVal.communicationAddressType==1)||(!modelVal.communicationAddressType)" value="1">Residential</option><option ng-selected="(modelVal.communicationAddressType==2)" value="2">Business</option><option ng-selected="(modelVal.communicationAddressType==3)" value="3">Residential or Business</option><option ng-selected="(modelVal.communicationAddressType==4)" value="4">Registered Office</option></select>address</p>
+                      <p class="question col-xs-12">My PIN code is <span class="swiper-input"><input validate-pincode ng-model="modelVal.communicationAddress.pincode" type="text" name="pincode" ng-change="quickInvestForm3.pincode.$error.invalidPincode?0:lookupPincode(modelVal.communicationAddress)" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
+                      <p class="question col-xs-12">and my address is<span class="swiper-input"><input ng-model="modelVal.communicationAddress.addressLine1" type="text" name="year" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
+                      <p class="question col-xs-12"><span class="swiper-input"><input ng-model="modelVal.communicationAddress.addressLine2" type="text" name="year" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
+                      <p class="col-xs-12">
+                      <span class="placeholder nextline">It is located in the city of <span ng-bind="modelVal.communicationAddress.city"></span></span>
+                      <span class="placeholder nextline">in the state of <span ng-bind="modelVal.communicationAddress.state"></span></span>
+                      <span class="placeholder nextline">in the country <span>INDIA</span></p>
+                      <span class="error-text col-xs-12" ng-show="!getKYCStatus()">You will be required to upload proof for the above address</span>
+                      </p>
 					</div>
                 </div>
             </form>

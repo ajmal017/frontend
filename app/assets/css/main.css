@@ -3590,8 +3590,7 @@ span.error-text {
   }
 }
 .swiper-container.customSwiper .swiper-content.hasCheckbox .checkbox-cover {
-  padding-top: 7%;
-  padding-bottom: 3%;
+  padding-top: 2px;
 }
 .swiper-container.customSwiper .swiper-content.hasCheckbox .checkbox-cover label {
   font-family: 'PlayfairDisplay-Regular';
@@ -3910,7 +3909,7 @@ span.error-text {
   margin-top: 0px;
 }
 .swiper-container.customSwiper .swiper-content.hasCheckbox {
-  min-height: 580px;
+  /*min-height: 580px;*/
 }
 .swiper-container.customSwiper .fin-btn-group-wrapper {
   position: absolute;
