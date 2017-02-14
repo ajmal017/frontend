@@ -7,7 +7,7 @@
                   <div class="col-xs-12">
                     <h2 class="slider-description">Please sign or upload a photo of your signature</h2>
                   </div>
-                  <div class="col-xs-4">
+                  <div class="col-md-4 col-xs-8 col-sm-4">
                     <div class="upload-image-cover" ng-if="!$root.userFlags['user_flags']['vault_locked']" ng-click="showSigniture()">
 
                       <div class="image-div" ng-if="!modelVal.signature">
@@ -38,7 +38,7 @@
                     <div class="addPadding-4Per no-paddingLR col-xs-12">
                       <input id='uploadPermanentBack' ng-show="needBackImage(modelVal.signature)" accept=".jpg, .png, .jpeg" style="display:none" autoplay onchange="angular.element(this).scope().imageUpload(this, 'signature')" type='file'/>  
                   
-                      <button ng-if="!$root.userFlags['user_flags']['vault_locked']" class="fin-app-btn fin-orange content-next" upload-file="uploadPermanentBack">Upload Sign</button>
+                      <button class="fin-app-btn fin-blue content-next col-lg-6 col-xs-8 col-sm-12" upload-file="uploadPermanentBack">Upload Signature</button>
                     </div>
                   </div>
 
