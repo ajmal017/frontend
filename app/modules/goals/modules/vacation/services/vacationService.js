@@ -24,8 +24,8 @@
                 modelObject.A1 = vacationAnswers['goal_name'];
                 modelObject.A3 = vacationAnswers['corpus'];
                
-                modelObject.A5 = vacationAnswers['number_of_members'] || 2;
-                modelObject.A6 = vacationAnswers['number_of_days'] || 6;
+                modelObject.A5 = vacationAnswers['number_of_members'];
+                modelObject.A6 = vacationAnswers['number_of_days'];
                 modelObject.A7 = vacationAnswers['location'] || '';
                 modelObject.A8 = vacationAnswers['amount_saved'] || 0;
                 modelObject.assetAllocation = vacationAnswers['allocation'];

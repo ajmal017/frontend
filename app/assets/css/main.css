@@ -7364,6 +7364,7 @@ section.investStep1 .pie-cover .pie-chart-legend .label-cover .legend-cover .leg
   top: 0px;
   display: table;
   min-width: 36px;
+  width: 92%;
 }
 section.investStep1 .pie-cover .pie-chart-legend .label-cover .legend-cover .legend-main .right {
   position: absolute;
@@ -7812,13 +7813,16 @@ section.trackPerformance .chart-cover.scheme-pie .customPanel {
   }
 }
 section.trackPerformance .chart-cover.scheme-pie .trackPerformanceLegends {
-  float: left;
+  float: none;
   padding: 0;
   margin-top: 6%;
+  width: 59%;
+  margin: 2% auto;
 }
 @media only screen and (max-width:768px) {
   section.trackPerformance .chart-cover.scheme-pie .trackPerformanceLegends {
     margin-top: 6%;
+    width: 90%;
   }
 }
 @media only screen and (min-width:1024px) and (max-width:1200px) {
@@ -7833,7 +7837,7 @@ section.trackPerformance .chart-cover.scheme-pie .trackPerformanceLegends p {
 }
 section.trackPerformance .chart-cover.scheme-pie .trackPerformanceLegends .legend-cover {
   float: left;
-  width: 34%;
+  width: 50%;
 }
 @media only screen and (max-width:600px) {
   section.trackPerformance .chart-cover.scheme-pie .trackPerformanceLegends .legend-cover {
@@ -7845,6 +7849,7 @@ section.trackPerformance .chart-cover.scheme-pie .trackPerformanceLegends .legen
   position: relative;
   display: table;
   float: left;
+  width: 100%;
 }
 section.trackPerformance .chart-cover.scheme-pie .trackPerformanceLegends .legend-cover .legend-main .right {
   position: absolute;

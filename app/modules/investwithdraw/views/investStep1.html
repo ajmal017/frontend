@@ -3,16 +3,20 @@
 		<div class="row">
 			<div class="col-xs-12 col-lg-4 col-md-5 pie-cover no-paddingDevice">
 				<p><span class="placeholder pie-header">Your asset allocation for the year</span></p>
-				<invest-pie-chart items="$root.resultPercentage" title="$root.pieTitle" colors="$root.colors"></invest-pie-chart>
-				<div class="pie-chart-legend">
-					<div class="label-cover">
-						<p ng-repeat="legend in $root.legends"><span class="content col-xs-2" ng-bind="legend.name"></span><span class="legend-cover">
-							<span class="legend-main" ng-style="{'background-color':legend.color,'width':legend.value+'%'}">
-								<span class="right"></span>
-								<span class="left" ng-style="{'border-left':legend.borderColor}"></span>
-								<span class="value" ng-bind="legend.value+' %'"></span>
-							</span>
-						</span><span class="value-cover"><span class="currency">&#8377;</span><span class="value" ng-bind="legend.price | amountSeffix"></span></span></p>
+				<div class="col-xs-12 col-sm-6 col-md-12">
+				<invest-pie-chart items="$root.resultPercentage" title="$root.pieTitle" colors="$root.colors"></invest-pie-chart></div>
+				<div class="col-xs-12 col-sm-6 col-md-12 paddingTop2">
+					<div class="pie-chart-legend">
+						<div class="label-cover">
+							<p ng-repeat="legend in $root.legends"><span class="content col-xs-2" ng-bind="legend.name"></span><span class="legend-cover">
+								<!-- <span class="legend-main" ng-style="{'background-color':legend.color,'width':legend.value+'%'}"> -->
+								<span class="legend-main" ng-style="{'background-color':legend.color}">
+									<!-- <span class="right"></span>
+									<span class="left" ng-style="{'border-left':legend.borderColor}"></span> -->
+									<span class="value" ng-bind="legend.value+' %'"></span>
+								</span>
+							</span><span class="value-cover"><span class="currency">&#8377;</span><span class="value" ng-bind="legend.price | amountSeffix"></span></span></p>
+						</div>
 					</div>
 				</div>
 				<!-- <span class="placeholder bottom">*investment amounts are rounded off to the nearest hundred</span> -->

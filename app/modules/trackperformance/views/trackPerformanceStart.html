@@ -96,24 +96,25 @@
 				</ul>
 				<div class="chart-cover scheme-pie" ng-if="setChartValue == 'SCHEME'" custom-scroll-bar>
 					<div class="col-xs-12 no-paddingDevice">
-						<div class="col-xs-12 col-lg-12 scheme-chart">
+						<div class="col-xs-12 col-sm-6 col-lg-12 scheme-chart">
 							<div class="row">
 								<scheme-chart title="pieTitle" items="resultPercentage" colors="colors"></scheme-chart>
 							</div>
 						</div>
-						<div class="col-xs-12 col-lg-12 trackPerformanceLegendCont no-padding">
+						<div class="col-xs-12 col-sm-6 col-lg-12 trackPerformanceLegendCont paddingTop2">
 
 						<div class="trackPerformanceLegends col-xs-12 no-padding">
 							<p ng-repeat="legend in legends" class="no-padding text-center"><span class="content col-xs-2 no-padding" ng-bind="legend.name"></span>
 
-								<span class="legend-cover">
-									<span class="legend-main" ng-style="{'background-color':legend.color,'width':(legend.value)+'%'}">
-										<span class="right"></span>
-										<span class="left" ng-style="{'border-left':legend.borderColor}"></span>
+								<span class="legend-cover col-xs-6">
+									<!-- <span class="legend-main" ng-style="{'background-color':legend.color,'width':(legend.value)+'%'}"> -->
+									<span class="legend-main" ng-style="{'background-color':legend.color}">
+										<!-- <span class="right"></span>
+										<span class="left" ng-style="{'border-left':legend.borderColor}"></span> -->
 										<span class="value" ng-bind="legend.value+' %'"></span>
 									</span>
 								</span>
-								<span class="value-cover"><span class="currency">&#8377;</span><span class="value" ng-bind="legend.price | amountSeffix"></span></span>
+								<span class="value-cover pull-left"><span class="currency">&#8377;</span><span class="value" ng-bind="legend.price | amountSeffix"></span></span>
 							</p>
 						</div>
 						</div>
@@ -244,7 +245,7 @@
 					<div class="schemes-inner col-xs-12">
 						<div class="col-xs-12 transactionEach" ng-repeat="transactions in transactionHistory">			
 							<p ><h2 show-factsheet="{{transactions.fund_id}}" class="pull-left col-xs-9 no-padding">{{transactions.fund_name}}</h2></p>
-							<p ng-if="checkNegAmt(transactions.order_amount)" class="target-amount col-xs-3 no-padding no-margin"><span class="content highlight"><span class="currency">&#8377;</span><span class="content ng-binding">{{(transactions.order_amount | removeNegative) | amountSeffix}}</span></span></p>
+							<p ng-if="checkNegAmt(transactions.order_amount)" class="target-amount col-xs-3 no-padding no-margin"><span class="content highlight"><span class="currency">&#8377;</span><span class="content ng-binding">({{(transactions.order_amount | removeNegative) | amountSeffix}})</span></span></p>
 							<p ng-if="!checkNegAmt(transactions.order_amount)" class="target-amount col-xs-3 no-padding no-margin"><span class="content"><span class="currency">&#8377;</span><span class="content ng-binding">{{transactions.order_amount | amountSeffix}}</span></span></p>
 							<div class="list-details">
 								<div class="table">
@@ -276,7 +277,7 @@
 												<p>{{transactions.allotment_date}}</p>
 											</div>
 											<div class="td col-xs-2 no-padding">
-												<p>{{transactions.nav}}</p>
+												<p>{{transactions.nav | number:3}}</p>
 											</div>
 											<div class="td col-xs-2 no-padding">
 												<p>{{transactions.unit_alloted}}</p>

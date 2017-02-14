@@ -1188,7 +1188,7 @@
                                 <img src="assets/images/budget.png">
                             </div>
                             <h3 class="text-center">Monthly SIP</h3>
-                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="education.goalEstimates.budget.sip"></span></h4>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="education.goalEstimates.budget.sip | amountFormat"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="education.goalEstimates.budget.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
                                 <input type="radio" ng-model="modelVal.estimate_selection_type" id="budget" name="estimateNow" value="op1">
@@ -1202,7 +1202,7 @@
                                 <img src="assets/images/confortable.png">
                             </div>
                             <h3 class="text-center">Monthly SIP</h3>
-                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="education.goalEstimates.comfortable.sip"></span></h4>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="education.goalEstimates.comfortable.sip | amountFormat"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="education.goalEstimates.comfortable.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
                                 <input type="radio" ng-model="modelVal.estimate_selection_type" id="confort" name="estimateNow" value="op2">
@@ -1216,7 +1216,7 @@
                                 <img src="assets/images/jewellery.svg">
                             </div>
                             <h3 class="text-center">Monthly SIP</h3>
-                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="education.goalEstimates.luxury.sip"></span></h4>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="education.goalEstimates.luxury.sip | amountFormat"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="education.goalEstimates.luxury.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
                                 <input type="radio" ng-model="modelVal.estimate_selection_type" id="luxurious" name="estimateNow" value="op3">
@@ -1477,7 +1477,7 @@
                                 <img src="assets/images/budget.png">
                             </div>
                             <h3 class="text-center">Monthly SIP</h3>
-                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="property.goalEstimates.budget.sip"></span></h4>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="property.goalEstimates.budget.sip | amountFormat"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="property.goalEstimates.budget.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
                                 <input type="radio" ng-model="modelVal.estimate_selection_type" value="op1" id="budget" name="estimateNow">
@@ -1491,7 +1491,7 @@
                                 <img src="assets/images/confortable.png">
                             </div>
                             <h3 class="text-center">Monthly SIP</h3>
-                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="property.goalEstimates.comfortable.sip"></span></h4>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="property.goalEstimates.comfortable.sip | amountFormat"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="property.goalEstimates.comfortable.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
                                 <input type="radio" ng-model="modelVal.estimate_selection_type" value="op2" id="confort" name="estimateNow">
@@ -1505,7 +1505,7 @@
                                 <img src="assets/images/jewellery.svg">
                             </div>
                             <h3 class="text-center">Monthly SIP</h3>
-                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="property.goalEstimates.luxury.sip"></span></h4>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="property.goalEstimates.luxury.sip | amountFormat"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="property.goalEstimates.luxury.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
                                 <input type="radio" ng-model="modelVal.estimate_selection_type" value="op3" id="luxurious" name="estimateNow">
@@ -1760,7 +1760,7 @@
                                 <img src="assets/images/budget.png">
                             </div>
                             <h3 class="text-center">Monthly SIP</h3>
-                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="automobile.goalEstimates.budget.sip"></span></h4>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="automobile.goalEstimates.budget.sip | amountFormat"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="automobile.goalEstimates.budget.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
                                 <input type="radio" ng-model="modelVal.estimate_selection_type" value="op1" id="budget" name="estimateNow">
@@ -1774,7 +1774,7 @@
                                 <img src="assets/images/confortable.png">
                             </div>
                             <h3 class="text-center">Monthly SIP</h3>
-                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="automobile.goalEstimates.comfortable.sip"></span></h4>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="automobile.goalEstimates.comfortable.sip | amountFormat"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="automobile.goalEstimates.comfortable.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
                                 <input type="radio" ng-model="modelVal.estimate_selection_type" value="op2" id="confort" name="estimateNow">
@@ -1788,7 +1788,7 @@
                                 <img src="assets/images/jewellery.svg">
                             </div>
                             <h3 class="text-center">Monthly SIP</h3>
-                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="automobile.goalEstimates.luxury.sip"></span></h4>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="automobile.goalEstimates.luxury.sip | amountFormat"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="automobile.goalEstimates.luxury.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
                                 <input type="radio" ng-model="modelVal.estimate_selection_type" value="op3" id="luxurious" name="estimateNow">
@@ -1992,7 +1992,7 @@
                           </div>
                           <div class="col-xs-12 col-lg-6">
                               <div class="row">
-                                 <p><span class="swiper-input age"><input ng-model="modelVal.A5" type="text" name="year" required></span></p>
+                                 <p class="multiple"><span class="swiper-input age"><input ng-model="modelVal.A5" type="text" name="year" required></span></p>
                               </div>
                           </div>
                       </div>
@@ -2004,9 +2004,9 @@
                                 <p class="question multiple"><span class="content">Number of hotel nights for the vacation is </span><span class="nextline"><i>(For example, select 6 for a 7Days-6Nights vacation)</i></span></p>
                               </div>
                           </div>
-                          <div class="col-xs-12 col-lg-5">
+                          <div class="col-xs-12 col-lg-6">
                               <div class="row">
-                                <p><span class="swiper-input age"><input ng-model="modelVal.A6" type="text" name="year" required></span></p>
+                                <p class="multiple"><span class="swiper-input age"><input ng-model="modelVal.A6" type="text" name="year" required></span></p>
                               </div>
                           </div>
                       </div>
@@ -2031,7 +2031,7 @@
                                 <img src="assets/images/budget.png">
                             </div>
                             <h3 class="text-center">Monthly SIP</h3>
-                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="vacation.goalEstimates.budget.sip"></span></h4>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="vacation.goalEstimates.budget.sip | amountFormat"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="vacation.goalEstimates.budget.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
                                 <input type="radio" ng-model="modelVal.estimate_selection_type" value="op1" id="budget" name="estimateNow">
@@ -2045,7 +2045,7 @@
                                 <img src="assets/images/confortable.png">
                             </div>
                             <h3 class="text-center">Monthly SIP</h3>
-                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="vacation.goalEstimates.comfortable.sip"></span></h4>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="vacation.goalEstimates.comfortable.sip | amountFormat"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="vacation.goalEstimates.comfortable.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
                                 <input type="radio" ng-model="modelVal.estimate_selection_type" value="op2" id="confort" name="estimateNow">
@@ -2059,7 +2059,7 @@
                                 <img src="assets/images/jewellery.svg">
                             </div>
                             <h3 class="text-center">Monthly SIP</h3>
-                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="vacation.goalEstimates.luxury.sip"></span></h4>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="vacation.goalEstimates.luxury.sip | amountFormat"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="vacation.goalEstimates.luxury.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
                                 <input type="radio" ng-model="modelVal.estimate_selection_type" value="op3" id="luxurious" name="estimateNow">
@@ -2274,7 +2274,7 @@
                                 <img src="assets/images/budget.png">
                             </div>
                             <h3 class="text-center">Monthly SIP</h3>
-                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="wedding.goalEstimates.budget.sip | amountFormat"></span></h4>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="(wedding.goalEstimates.budget.sip | amountFormat)"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="wedding.goalEstimates.budget.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
                                 <input type="radio" ng-model="modelVal.estimate_selection_type" value="op1" id="budget" name="estimateNow">
@@ -2691,7 +2691,7 @@
                                 <img src="assets/images/budget.png">
                             </div>
                             <h3 class="text-center">Monthly SIP</h3>
-                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.goalEstimates.budget.sip"></span></h4>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.goalEstimates.budget.sip | amountFormat"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.goalEstimates.budget.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
                                 <input type="radio" ng-model="modelVal.estimate_selection_type" value="op1" id="budget" name="estimateNow">
@@ -2705,7 +2705,7 @@
                                 <img src="assets/images/confortable.png">
                             </div>
                             <h3 class="text-center">Monthly SIP</h3>
-                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.goalEstimates.comfortable.sip"></span></h4>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.goalEstimates.comfortable.sip | amountFormat"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.goalEstimates.comfortable.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
                                 <input type="radio" ng-model="modelVal.estimate_selection_type" value="op2" id="confort" name="estimateNow">
@@ -2719,7 +2719,7 @@
                                 <img src="assets/images/jewellery.svg">
                             </div>
                             <h3 class="text-center">Monthly SIP</h3>
-                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.goalEstimates.luxury.sip"></span></h4>
+                            <h4 class="text-center"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.goalEstimates.luxury.sip | amountFormat"></span></h4>
                             <p class="value text-center">Estimated value:<span class="nextline"><span class="currency">&#8377</span><span class="content" ng-bind="jewellery.goalEstimates.luxury.corpus | amountSeffix"></span></span></p>
                             <div class="radio-cover">
                                 <input type="radio" ng-model="modelVal.estimate_selection_type" value="op3" id="luxurious" name="estimateNow">
