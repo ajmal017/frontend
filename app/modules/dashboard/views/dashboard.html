@@ -83,7 +83,7 @@
 						<p class="text-center score dashboardSubText no-margin paddingTop2">Current Investments</p>
 					</div>
 
-					<div ng-if="user_flags.is_virtual && dashCounts['investCount']">
+					<div ng-if="user_flags.is_virtual && (dashCounts['investCount'] > 0)">
 						<h4 class="text-center">Track how your</h4>
 						<p class="text-center score dashboardSubText no-margin paddingTop2">Planned Goals</p>
 						<h4 class="text-center paddingTop2">would grow if invested</h4>
@@ -112,7 +112,7 @@
 							<img src="assets/images/withdraw.png">
 						</div>
 					</div>
-					
+				
 					<h2>Withdraw</h2>
 					<p class="text-center desc">Redeem your investments anytime anywhere with a few simple clicks.</p>
 					<!-- <h3 class="text-center">Your current risk score is</h3> -->

@@ -49,8 +49,9 @@
             $rootScope.showRedeem = userFlags.user_flags.show_redeem;
 
             $rootScope.disabledTrackPerformance = false;
-            if(userFlags.user_flags.is_virtual == true){
-            	if(userFlags.user_flags.portfolio == true && userFlags.user_flags.rebuild_portfolio == false){
+            if(userFlags.user_flags.is_virtual){
+            	if(parseInt($scope.dashCounts['investCount']) > 0){
+            		
             		$rootScope.disabledTrackPerformance = false;
             	}
             	else {

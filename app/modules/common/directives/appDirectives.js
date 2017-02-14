@@ -444,7 +444,7 @@
 		              
 		                if(viewValue){
 		                    var plainNumber = viewValue.replace(/[^\d|\-+|\.+]/g, '');
-		                    elem.val($filter('number')(plainNumber));
+		                    elem.val($filter('amountFormat')(viewValue));
 		                    return plainNumber;
 		                }else{
 		                    return '';
