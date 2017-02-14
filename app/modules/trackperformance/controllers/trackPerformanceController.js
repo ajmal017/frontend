@@ -278,8 +278,9 @@
 			}
 
 			$scope.checkNegAmt = function(amt) {
-				console.log('amt', amt);
+				
 				if(amt < 0) {
+					console.log('amt', amt);
 					return true;
 				}
 			}

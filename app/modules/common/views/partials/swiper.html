@@ -1442,7 +1442,7 @@
                             </div>
                             <div class="col-xs-12 col-md-6 col-sm-12 col-lg-6">
                                 <div class="row">
-                                  <p><span class="swiper-input normal"><input only-percentage ng-model="modelVal.A6" type="text" name="year" min="0" max="100" required ng-init="modelVal.A6 = modelVal.A6 || '30'"><span class="percentage">%</span></span></p>
+                                  <p><span class="swiper-input normal"><input only-percentage ng-model="modelVal.A6" type="text" name="year" min="0" max="100" required ng-init="modelVal.A6 = modelVal.A6"><span class="percentage">%</span></span></p>
                                 </div>
                             </div>
                           </div>
@@ -2253,9 +2253,9 @@
                   <info-tip quick-tip-data="[{'tip':'<strong>How will FinAskUs estimate my wedding goal needs?</strong><p>Based on a few questions on your target wedding plans and what you have already saved, we will give you a well-researched estimate of how much you will need in future, and how much you need to save monthly to achieve this goal.</p>'}]" info-width="48px" class-name=""></info-tip>
                 </div>
                 <div class="col-xs-12 col-sm-11 col-md-11 col-lg-12">
-                  <p class="question multiple pull-left"><span class="content">Number of people I expect at the wedding is</span> <span class="swiper-input"><input ng-model="modelVal.A5" type="text" name="year" required ng-init="modelVal.A5 = modelVal.A5 || '100'"></span></p>
+                  <p class="question multiple pull-left"><span class="content">Number of people I expect at the wedding is</span> <span class="swiper-input"><input ng-model="modelVal.A5" type="text" name="year" required ng-init="modelVal.A5 = modelVal.A5"></span></p>
                   <p class="question multiple pull-left"><span class="content">The wedding will be organised <select dropdown ng-model="modelVal.A6"><option ng-selected="modelVal.A6 == 'op1' || modelVal.A6 == ''" value="op1">Locally</option><option ng-selected="modelVal.A6 == 'op2'" value="op2">Outstation</option></select></span></p>
-                  <p class="question multiple pull-left"><span class="content">I will share the following proportion of wedding expenses </span> <span class="swiper-input"><input ng-model="modelVal.A7" ng-init="modelVal.A7 = modelVal.A7 || '60'" type="text" name="year" required><span class="percentage">%</span></span></p>
+                  <p class="question multiple pull-left"><span class="content">I will share the following proportion of wedding expenses </span> <span class="swiper-input"><input ng-model="modelVal.A7" ng-init="modelVal.A7 = modelVal.A7" type="text" name="year" required><span class="percentage">%</span></span></p>
                   <p class="question multiple pull-left"><span class="content">For this goal, so far I have already saved</span> <span class="currency swiper-input normal"><span class="currency">&#8377</span><input format="number" ng-model="modelVal.A8" ng-keyup="showMessage2 = true" type="text" ame="year" required></span></p>
                 </div>
                 </div>
