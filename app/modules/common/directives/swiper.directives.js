@@ -30,6 +30,7 @@
 	                scope.defaultspaceBetween = 0;
 	                scope.swiperName = attrs.swiperName;
 	                $rootScope.lastSlide = true;
+	                scope.step = 1;
 	                var swiper = null;
 
 	                setTimeout(function() {
@@ -219,7 +220,10 @@
 
                     scope.gotToNextSlide = function() {
                     	// setTimeout(function() {
+                    		
                     		swiper.slideNext(true);
+                    		// scope.step = +step +1;
+
                     	// },0)
                     }
 

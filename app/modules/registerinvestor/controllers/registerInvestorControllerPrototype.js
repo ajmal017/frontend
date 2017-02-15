@@ -121,7 +121,9 @@ var finApp = finApp || {};
 				        	});
 
 						} else if('success' in data) {
+							console.log('$scope.step',self.scope.step);
 							self.scope.gotToNextSlide();
+							self.scope.step = +self.scope.step + 1;
 							if (redirect) {
 		        				self.location.path(self.rootScope.redirectUrlContext);
 		        			}
