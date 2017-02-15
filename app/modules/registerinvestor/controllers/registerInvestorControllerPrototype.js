@@ -91,11 +91,15 @@ var finApp = finApp || {};
 			
 			saveInfo : function(redirect) {
 				var self = this;
+				// var swiper = jQuery("." + self.scope.swiperName).swiper();
+
 	            if (typeof(redirect) === "undefined") {
 	            	redirect = false;
 	            }
 
 	            if (this.registerInvestorService.isVaultLocked()) {
+					self.scope.gotToNextSlide();
+
 	        		if (redirect) {
 	        			self.location.path(self.rootScope.redirectUrlContext);
 	        		}
@@ -117,8 +121,7 @@ var finApp = finApp || {};
 				        	});
 
 						} else if('success' in data) {
-							var swiper = jQuery("." + self.scope.swiperName).swiper();
-							swiper.slideNext(true);
+							self.scope.gotToNextSlide();
 							if (redirect) {
 		        				self.location.path(self.rootScope.redirectUrlContext);
 		        			}

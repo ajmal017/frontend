@@ -3035,7 +3035,7 @@
         <button ng-show="(step == 1)" ng-click="(step=step+1)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="(modelVal.investorStatus==undefined)||(modelVal.panNumber=='')||(modelVal.panNumber==undefined)||(modelVal.applicantName=='')||(modelVal.applicantName==undefined)||(modelVal.fatherName=='')||(modelVal.fatherName==undefined)||(modelVal.dob==undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 2)" ng-click="(step=step + 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" ng-disabled="(!modelVal.placeOfBirth)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" ng-disabled="(!modelVal.placeOfBirth)" class="fin-app-btn fin-orange">CONTINUE</button>
         <button ng-show="(step == 3)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 3)" ng-click="appendValues(modelVal);uploadFileToServer(null, true);(step = step + 1)" ng-disabled="(!modelVal.imageUrl)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
@@ -3148,7 +3148,7 @@
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step == 1)" ng-click="(step=step + 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 1)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 1)" ng-click="appendValues(modelVal);saveInfo();(step = step + 1)" class="fin-app-btn fin-orange">CONTINUE</button>
         <button ng-show="(step == 2)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 2)" ng-click="appendValues(modelVal);uploadFileToServer(null, true);(step = step + 1)" ng-disabled="(!modelVal.imageUrl)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
@@ -3314,13 +3314,13 @@
         </div>
         <div class="swiper-slide" ng-if="$root.selectedCriteria == 'op2'">
             <form name="invertorInfoForm2" novalidate>
-                <div class="swiper-content">
+                <div class="swiper-content hasCheckbox">
                      <div class="checkbox-cover">
                        <input type="checkbox" required id="option1Type2" name="option2" ng-model="modelVal.addressAreEqual" value="true" ng-disabled="$root.userFlags['user_flags']['vault_locked']"><label for="option1Type2"><span></span>Their address is same as mine.</label>
                      </div>
                      <div ng-show="!modelVal.addressAreEqual">
-                      <p class="question">My PIN code is <span class="swiper-input"><input ng-model="modelVal.nomineeAddress.pincode" validate-pincode type="text" name="pincode" ng-change="invertorInfoForm2.pincode.$error.invalidPincode?0:lookupPincode(modelVal.nomineeAddress)" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
-                      <p class="question">and my address is <span class="swiper-input"><input ng-model="modelVal.nomineeAddress.addressLine1" type="text" name="year" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
+                      <p class="question">Their PIN code is <span class="swiper-input"><input ng-model="modelVal.nomineeAddress.pincode" validate-pincode type="text" name="pincode" ng-change="invertorInfoForm2.pincode.$error.invalidPincode?0:lookupPincode(modelVal.nomineeAddress)" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
+                      <p class="question">and their address is <span class="swiper-input"><input ng-model="modelVal.nomineeAddress.addressLine1" type="text" name="year" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
                       <p class="question"><span class="swiper-input"><input ng-model="modelVal.nomineeAddress.addressLine2" type="text" name="year" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
                       <p class="question">It is located in the city of <span ng-bind="modelVal.nomineeAddress.city"></span></p>
                       <p class="question">in the state of <span ng-bind="modelVal.nomineeAddress.state"></span></p>
@@ -3341,7 +3341,7 @@
         <button ng-show="(step == 1 && $root.selectedCriteria=='op1')" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step == 1 && $root.selectedCriteria=='op1')" ng-click="appendValues(modelVal);(step = step + 1);processNomineeAbsent()" ng-disabled="(!modelVal.nomineeAbsent)&&(!modelVal.nomineeName||!modelVal.nomineeDob||(showGuardian()&&!modelVal.guardianName))" class="fin-app-btn fin-orange content-next">CONTINUE</button>
         <button ng-show="(step == 1 && $root.selectedCriteria=='op2')" click-redirect="{{$root.redirectUrlContext}}"  class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 1 && $root.selectedCriteria=='op2')" ng-click="appendValues(modelVal);saveInfo(true);(step = step + 1)" ng-disabled="(!modelVal.addressAreEqual)&&(!modelVal.nomineeAddress.pincode||!modelVal.nomineeAddress.addressLine1)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step == 1 && $root.selectedCriteria=='op2')" ng-click="appendValues(modelVal);saveInfo(true);(step = step + 1)" ng-disabled="(!modelVal.addressAreEqual)&&(!modelVal.nomineeAddress.pincode||!modelVal.nomineeAddress.addressLine1)" class="fin-app-btn fin-orange">CONTINUE</button>
     </div>
     </div>
 </div>
@@ -3505,7 +3505,7 @@
     <div class="col-xs-8 col-lg-4 col-sm-7 col-md-4 fin-btn-group-wrapper">
         <div class="fin-btn-group gotoPages">
             <button class="fin-link-btn content-prev" ng-show="(step == 1)" ng-click="(step != 1) && (step = step - 1)" click-redirect="/registerInvestorReview"><span><img src="assets/images/startedArrow.png"></span>DO IT LATER</button>
-            <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1);saveInfo()" ng-disabled="!$root.capturedFile.thumbnail" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+            <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1);saveInfo()" ng-disabled="!$root.capturedFile.thumbnail" class="fin-app-btn fin-orange">CONTINUE</button>
             <button ng-show="(step == 2)" ng-click="appendValues(modelVal)" click-redirect="/dashboard" class="fin-app-btn fin-orange content-next">CONTINUE TO DASHBOARD</button>
         </div>
     </div>

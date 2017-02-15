@@ -217,6 +217,12 @@
                     	scope.currentViewValue = param;
                     }
 
+                    scope.gotToNextSlide = function() {
+                    	// setTimeout(function() {
+                    		swiper.slideNext(true);
+                    	// },0)
+                    }
+
 	            }
 			};
 		}
