@@ -15,7 +15,7 @@
 			this.timeout = $timeout;
 			this.busyIndicator = busyIndicator;
 			this.registerInvestorService = registerInvestorService;
-			
+			this.ngDialog = ngDialog;
 			this.service = bankInfoService;
 			this.scope.is_acc_supported = true;
 			var self = this;
@@ -71,15 +71,15 @@
 						// angular.extend(self.scope.modelVal, data['success']);
 						 self.scope.is_acc_supported = false;
 						// if(data.success.bank_supported == false) {
-							$scope.errorPopupMessage = data.Message;
-							$scope.ngDialog = ngDialog;
+							self.scope.errorPopupMessage = data.Message;
+							self.scope.ngDialog = ngDialog;
 							ngDialog.open({ 
 					        	template: 'modules/common/views/partials/error_popup.html', 
 					        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
 					        	overlay: false,
 					        	showClose : false,
 
-					        	scope: $scope
+					        	scope: self.scope
 				        	});
 						// }
 					} else if('success' in data) {

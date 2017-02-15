@@ -104,9 +104,26 @@ var finApp = finApp || {};
 					self.busyIndicator.show();
 					this.service.setSavedValues(this.scope.modelVal).then(function(data){
 						self.busyIndicator.hide();
-		        		if (redirect) {
-		        			self.location.path(self.rootScope.redirectUrlContext);
-		        		}
+						if('Message' in data){
+							self.scope.errorPopupMessage = data.Message;
+							self.scope.ngDialog = self.ngDialog;
+							self.ngDialog.open({ 
+					        	template: 'modules/common/views/partials/error_popup.html', 
+					        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+					        	overlay: false,
+					        	showClose : false,
+
+					        	scope: self.scope
+				        	});
+
+						} else if('success' in data) {
+							var swiper = jQuery("." + self.scope.swiperName).swiper();
+							swiper.slideNext(true);
+							if (redirect) {
+		        				self.location.path(self.rootScope.redirectUrlContext);
+		        			}
+						}
+		        		
 	
 					}, function() {
 						self.busyIndicator.hide();
