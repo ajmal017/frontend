@@ -3052,7 +3052,7 @@
                       <span class="placeholder nextline">Branch <span ng-bind="modelVal.bankBranch"></span></span>
                       <span class="placeholder nextline">City <span ng-bind="modelVal.bankCity"></span></span>
                       <p class="question">My account number is <span class="swiper-input"><input ng-model="modelVal.accountNumber" type="text" name="accnum" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required minlength="11" maxlength="15" ng-change="lookupAccNum()"></span></p>
-                      <p class="question">{{invertorInfoForm1.accnum.$error}}and it is in the name of <span class="swiper-input"><input ng-model="modelVal.accountHolderName" type="text" name="year" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
+                      <p class="question">and it is in the name of <span class="swiper-input"><input ng-model="modelVal.accountHolderName" type="text" name="year" ng-disabled="$root.userFlags['user_flags']['vault_locked']" required></span></p>
                       <p class="question">It is a bank of the following type: <select dropdown dropdown-disable="$root.userFlags['user_flags']['vault_locked'] == true ?'locked' : ''" ng-model="modelVal.accountType"><option value="S">Savings</option><option value="C">Current</option></select></p>
                       <div class="checkbox-cover">
                         <input type="checkbox" required id="option1Type1" name="option1" ng-model="modelVal.sipCheck" value="true" ng-disabled="$root.userFlags['user_flags']['vault_locked']"><label for="option1Type1"><span></span>I would like to add ACH mandate for SIP investment.</label>
