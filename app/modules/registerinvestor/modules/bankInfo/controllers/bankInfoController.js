@@ -17,7 +17,7 @@
 			this.registerInvestorService = registerInvestorService;
 			
 			this.service = bankInfoService;
-			
+			this.scope.is_acc_supported = true;
 			var self = this;
 
 
@@ -61,7 +61,38 @@
 
 			};
 
+			this.lookupAccNum = function() {
+				console.log('acc num');
+				var self = this;
+				self.busyIndicator.show();
+				this.service.lookupAccNum(this.scope.modelVal).then(function(data){
+					self.busyIndicator.hide();
+					if('Message' in data){
+						// angular.extend(self.scope.modelVal, data['success']);
+						 self.scope.is_acc_supported = false;
+						// if(data.success.bank_supported == false) {
+							$scope.errorPopupMessage = data.Message;
+							$scope.ngDialog = ngDialog;
+							ngDialog.open({ 
+					        	template: 'modules/common/views/partials/error_popup.html', 
+					        	className: 'goal-ngdialog-overlay ngdialog-theme-default',
+					        	overlay: false,
+					        	showClose : false,
+
+					        	scope: $scope
+				        	});
+						// }
+					} else if('success' in data) {
+						self.scope.is_acc_supported = true;
+					}
+				}, function() {
+					self.busyIndicator.hide();
+				});
+			}
+
 			this.scope.lookupIFSCCode = angular.bind( this, this.lookupIFSCCode );
+			this.scope.lookupAccNum = angular.bind( this, this.lookupAccNum );
+
 		}
 		
 		bankInfoController.prototype = finApp.registerInvestorControllerPrototype;
