@@ -219,12 +219,13 @@
                     }
 
                     scope.gotToNextSlide = function() {
-                    	// setTimeout(function() {
-                    		
+                    	
                     		swiper.slideNext(true);
-                    		// scope.step = +step +1;
-
-                    	// },0)
+                    		
+                    }
+                    scope.calculateStep = function() {
+                    	var step = swiper.activeIndex + 1;
+                    	return (step + 1);
                     }
 
 	            }
