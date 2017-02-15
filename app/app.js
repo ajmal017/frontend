@@ -156,6 +156,23 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 	    	
 	    	$('#sessionLogoutModal').modal('hide');	
 	    	$location.path('/');
-	    }
+	    };
+	    
+        function initGoogleAnalytics() {
+            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+            ga('create', 'UA-79265201-1', 'auto');
+
+            // Replace the following lines with the plugins you want to use.
+            ga('require', 'eventTracker');
+            ga('require', 'outboundLinkTracker');
+            ga('require', 'urlChangeTracker');
+            ga('require', 'cleanUrlTracker');
+            // ...
+
+            ga('send', 'pageview');
+        }
+
+        initGoogleAnalytics();
+
 	}
 })();
