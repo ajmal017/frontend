@@ -58,10 +58,10 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 		//GoogleSigninProvider.enableServerSide();
 
 		//FOR REMOVING HASH FOR PRODUCTION//
-		// $locationProvider.html5Mode({
-		//           enabled: true,
-		//           requireBase: false
-		//       });
+		$locationProvider.html5Mode({
+		           enabled: true,
+		           requireBase: false
+		});
 	}
 	run.$inject = ['$route','$routeParams','$rootScope','$location','appConfig','checkPath','busyIndicator'];
 	function run($route,$routeParams,$rootScope,$location,appConfig,checkPath,busyIndicator){
