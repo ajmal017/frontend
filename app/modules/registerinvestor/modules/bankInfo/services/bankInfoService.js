@@ -48,7 +48,9 @@
         		getSavedValues : getSavedValues,
                 setSavedValues : setSavedValues,
                 lookupIFSCCode : lookupIFSCCode,
-                uploadFileToServer : uploadFileToServer 
+                lookupAccNum : lookupAccNum,
+                uploadFileToServer : uploadFileToServer,
+                getSavedValuesInvestor : getSavedValuesInvestor
         	}
             
             function getSavedValues() {
@@ -62,8 +64,34 @@
 					});
 				getAPI.Check({},function(data){
 					if(data.status_code == 200){
+
 						deserializeModel(data.response);
 						defer.resolve({'success':modelObject});
+					}else{
+						var investorDetails = getSavedValuesInvestor();
+						defer.resolve({'Message':data.response['message']});
+					}				
+				}, function(err){
+					defer.reject(err);
+				}); 
+				return defer.promise;
+            }
+
+            function getSavedValuesInvestor() {
+        		var defer = $q.defer();
+				var getAPI = $resource( 
+					appConfig.API_BASE_URL+'/user/investor/info/get/', 
+					{}, {
+						Check: {
+							method:'GET',
+						}
+					});
+				getAPI.Check({},function(data){
+					if(data.status_code == 200){
+						modelObject.accountHolderName = data.response.applicant_name;
+
+						
+						defer.resolve({'success':data.response});
 					}else{
 						defer.resolve({'Message':data.response['message']});
 					}				
@@ -94,7 +122,7 @@
 					if(data.status_code == 200){
 						defer.resolve({'success':data.response});
 					}else{
-						defer.resolve({'Message':data.response['message']});
+						defer.resolve({'Message':data.response['error']});
 					}				
 				}, function(err){
 					defer.reject(err);
@@ -145,6 +173,34 @@
 						defer.resolve({'success':modelObject});
 					}else{
 						defer.resolve({'Message':data.response['message']});
+					}				
+				}, function(err){
+					defer.reject(err);
+				}); 
+				return defer.promise;
+            }
+
+            function lookupAccNum(model) {
+            	var checkData = {
+            		'account_holder_name' : model.accountHolderName,
+            		'account_number' : model.accountNumber,
+            		'account_type' : model.accountType,
+            		'ifsc_code' : model.ifscCode,
+            		'sip_check' : model.sipCheck || false
+            	}
+            	var defer = $q.defer();
+				var postAPI = $resource( 
+					appConfig.API_BASE_URL+'/user/investor/account/info/post/', 
+					{}, {
+						Check: {
+							method:'POST',
+						}
+					});
+				postAPI.Check(checkData,function(data){
+					if(data.status_code == 200){
+						defer.resolve({'success':data.response});
+					}else{
+						defer.resolve({'Message':data.error});
 					}				
 				}, function(err){
 					defer.reject(err);
