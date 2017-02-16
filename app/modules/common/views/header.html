@@ -7,7 +7,7 @@
         <h1 ng-if="title" class="hidden-xs"><span class="mainTitle" ng-bind="title"></span><span class="nextline" ng-bind="subHeader" click-redirect="{{redirectURL}}"></span></h1>
           <ul class="nav navbar-nav navbar-right col-xs-4 col-sm-5 col-lg-5 col-md-5 pull-right no-padding">
           <li class="pull-right"><a href="javascript:void(0)" class="fin-link menu">MENU <span class="menu-icon"></span></a></li>
-            <li class="pull-right" ng-if="!menu && !loggedIn && showLogin"><a href="javascript:void(0)" click-redirect="/" class="fin-link log-in">LOG IN</a></li>
+            <li class="pull-right" ng-if="showLogin"><a href="javascript:void(0)" click-redirect="/" class="fin-link log-in">LOG IN</a></li>
             <li class="pull-right" ng-if="(!getStarted && !menu) && !loggedIn"><a click-redirect="/gettingStarted" href="javascript:void(0)" class="fin-btn start-btn">GET STARTED</a></li>
             <li class="pull-right" ng-if="(getStarted && !menu) && !loggedIn"><p>Already have an account?</p></li>
             

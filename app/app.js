@@ -76,6 +76,7 @@ Written under contract by Robosoft Technologies Pvt. Ltd.
 			if($rootScope.drawerOpen == true) $rootScope.drawerAnimate();
 			$rootScope.getStarted = checkPath($location.path(),appConfig.pagesWithAlreadySignMsg);
 			$rootScope.menu = checkPath($location.path(),appConfig.pagesWithOnlyMenu);
+			$rootScope.showLogin = checkPath($location.path(),appConfig.pagesWithLogin);
 			$rootScope.isRestricted = checkPath($location.path(),appConfig.restrictedPages);
 			$rootScope.userFlags = JSON.parse(sessionStorage.getItem('userFlags'))||{};
 			history.push($location.path());

@@ -25,7 +25,9 @@
 			'pagesWithOnlyMenu':[
 				'/registration'
 			],
-			
+			'pagesWithLogin' : [
+				'/registration'
+			],
 			'retirement' : {
 				'0' : [
 					{
