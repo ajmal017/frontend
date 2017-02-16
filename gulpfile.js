@@ -42,10 +42,11 @@ gulp.task('watch', function() {
 
 //script paths
 var jsFilesModules = 'app/modules/**/*.js',  
-	jsFilesJSlibs = 'app/lib/*.js',
-    jsFilesCsslibs = 'app/lib/*.css',
+	jsFilesJSlibs = 'app/libs/*.js',
+    jsFilesCsslibs = 'app/libs/*.css',
     assets = 'app/assets/**',
     mainJs = 'app/app.js',
+    prototypeJs = 'app/modules/**/*Prototype.js',
     jsDest = 'dist',
     devePlace = 'app/**';
  
@@ -63,16 +64,16 @@ gulp.task('copyAssets', function() {
 
 gulp.task('copylibCssFiles', function() {  
     return gulp.src(jsFilesCsslibs)
-        .pipe(gulp.dest(jsDest+'/lib'));
+        .pipe(gulp.dest(jsDest+'/libs'));
 });
 
 gulp.task('copylibJSFiles', function() {  
     return gulp.src(jsFilesJSlibs)
-        .pipe(gulp.dest(jsDest+'/lib'));
+        .pipe(gulp.dest(jsDest+'/libs'));
 });
 
 gulp.task('minifyJS', function() {  
-    return gulp.src([mainJs,jsFilesModules])
+    return gulp.src([mainJs,prototypeJs,jsFilesModules])
         .pipe(concat('vendor.js'))
         .pipe(rename('vendor.min.js'))
         .pipe(uglify())
@@ -80,8 +81,9 @@ gulp.task('minifyJS', function() {
 });
 
 gulp.task('copyIndex', function() {
-    return gulp.src('app/index.html')
+    return gulp.src('app/index.html.dist')
     .pipe(htmlmin({collapseWhitespace: true}))
+    .pipe(rename('index.html'))
     .pipe(gulp.dest('dist'));
 });
 
