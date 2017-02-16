@@ -23,7 +23,7 @@
 				'/riskAssesmentMoreQuestions'
 			],
 			'pagesWithOnlyMenu':[
-				'/registration'
+				'/login'
 			],
 			'retirement' : {
 				'0' : [

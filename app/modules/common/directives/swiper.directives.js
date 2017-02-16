@@ -220,12 +220,17 @@
 
                     scope.gotToNextSlide = function() {
                     	
-                    		swiper.slideNext(true);
-                    		
+                		swiper.slideNext(true);
+                    	scope.slide = 1;
                     }
                     scope.calculateStep = function() {
-                    	var step = swiper.activeIndex + 1;
-                    	return (step + 1);
+                    	if(scope.slide){
+                    		var step = swiper.activeIndex + 1;
+                    		return (step + 1);
+                    	}
+                    	else {
+                    		return 1;
+                    	}
                     }
 
 	            }
