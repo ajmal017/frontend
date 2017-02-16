@@ -3030,14 +3030,14 @@
     <span ng-if="(step == 3)" class="placeholder imagePlaceholder hidden-xs">Note: Above image will be used to register your investment account.</span>
     <div class="col-xs-12 col-lg-4 col-sm-7 col-md-4 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages">
-        <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1)" ng-click="(step=step+1)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 1)" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="(modelVal.investorStatus==undefined)||(modelVal.panNumber=='')||(modelVal.panNumber==undefined)||(modelVal.applicantName=='')||(modelVal.applicantName==undefined)||(modelVal.fatherName=='')||(modelVal.fatherName==undefined)||(modelVal.dob==undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 2)" ng-click="(step=step + 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);saveInfo();(step = calculateStep())" ng-disabled="(!modelVal.placeOfBirth)" class="fin-app-btn fin-orange">CONTINUE</button>
-        <button ng-show="(step == 3)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 3)" ng-click="appendValues(modelVal);uploadFileToServer(null, true);(step = step + 1)" ng-disabled="(!modelVal.imageUrl)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step=getStep()) && (step > 1)" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step=getStep()) && (step == 1)" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step=getStep()) && (step == 1)" ng-click="(step=step+1)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="(step=getStep()) && (step == 1)" ng-click="appendValues(modelVal);(step = step + 1)" ng-disabled="(modelVal.investorStatus==undefined)||(modelVal.panNumber=='')||(modelVal.panNumber==undefined)||(modelVal.applicantName=='')||(modelVal.applicantName==undefined)||(modelVal.fatherName=='')||(modelVal.fatherName==undefined)||(modelVal.dob==undefined)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step=getStep()) && (step == 2)" ng-click="(step=step + 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="(step=getStep()) && (step == 2)" ng-click="appendValues(modelVal);saveInfo();" ng-disabled="(!modelVal.placeOfBirth)" class="fin-app-btn fin-orange">CONTINUE</button>
+        <button ng-show="(step=getStep()) && (step == 3)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="(step=getStep()) && (step == 3)" ng-click="appendValues(modelVal);uploadFileToServer(null, true);(step = step + 1)" ng-disabled="(!modelVal.imageUrl)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
     </div>
     
@@ -3091,7 +3091,7 @@
         <p>Bank Info</p>
     </div>   
     <div class="col-xs-12 col-lg-4 col-sm-7 col-md-4 fin-btn-group-wrapper"> 
-    <div class="fin-btn-group gotoPages">step{{step}}
+    <div class="fin-btn-group gotoPages">
         <button ng-show="(step=getStep()) && step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step=getStep()) && step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step=getStep()) && (step == 1)" ng-click="(step=step + 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
@@ -3146,12 +3146,12 @@
     </div>    
     <div class="col-xs-12 col-lg-4 col-sm-7 col-md-4 fin-btn-group-wrapper">
     <div class="fin-btn-group gotoPages">
-        <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1)" ng-click="(step=step + 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 1)" ng-click="appendValues(modelVal);saveInfo();(step = calculateStep())" class="fin-app-btn fin-orange">CONTINUE</button>
-        <button ng-show="(step == 2)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 2)" ng-click="appendValues(modelVal);uploadFileToServer(null, true);(step = step + 1)" ng-disabled="(!modelVal.imageUrl)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="(step=getStep()) && (step=step > 1)" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step=getStep()) && (step == 1)" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step=getStep()) && (step == 1)" ng-click="(step=step + 1)" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="(step=getStep()) && (step == 1)" ng-click="appendValues(modelVal);saveInfo();" class="fin-app-btn fin-orange">CONTINUE</button>
+        <button ng-show="(step=getStep()) && (step == 2)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="(step=getStep()) && (step == 2)" ng-click="appendValues(modelVal);uploadFileToServer(null, true);(step = step + 1)" ng-disabled="(!modelVal.imageUrl)" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
     </div>
     <span ng-if="(step == 2)" class="placeholder imagePlaceholder hidden-xs">Note: Above image will be used to register your investment account.</span>
@@ -3287,8 +3287,8 @@
     </div> 
     <div class="col-xs-12 col-lg-4 col-sm-7 col-md-4 fin-btn-group-wrapper">   
     <div class="fin-btn-group gotoPages">
-        <button ng-show="(step=getStep()) && step > 1" class="fin-link-btn content-prev" ng-click="(step=getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step=getStep()) && step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step=getStep()) && (step > 1)" class="fin-link-btn content-prev" ng-click="(step=getStep()) && (step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
+        <button ng-show="(step=getStep()) && (step == 1)" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="(step=getStep()) && (step == 1 || step == 2 || step == 3 || step == 4 || step == 5)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
         <button ng-show="(step=getStep()) && (step == 1 || step == 2 || step == 3 || step == 4 || step == 5)" ng-click="onContinue()" ng-disabled="onDisabled()" class="fin-app-btn fin-orange content-next">CONTINUE</button>
     </div>
@@ -3339,10 +3339,10 @@
     <div class="fin-btn-group gotoPages">
         <button ng-show="step > 1" class="fin-link-btn content-prev" ng-click="(step != 1) && (step = step - 1)"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
         <button ng-show="step == 1" class="fin-link-btn content-prev" click-redirect="{{$root.redirectUrlContext}}"><span><img src="assets/images/startedArrow.png"></span>BACK</button>
-        <button ng-show="(step == 1 && $root.selectedCriteria=='op1')" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 1 && $root.selectedCriteria=='op1')" ng-click="appendValues(modelVal);(step = step + 1);processNomineeAbsent()" ng-disabled="(!modelVal.nomineeAbsent)&&(!modelVal.nomineeName||!modelVal.nomineeDob||(showGuardian()&&!modelVal.guardianName))" class="fin-app-btn fin-orange content-next">CONTINUE</button>
-        <button ng-show="(step == 1 && $root.selectedCriteria=='op2')" click-redirect="{{$root.redirectUrlContext}}"  class="fin-app-btn fin-skip-btn content-next">SKIP</button>
-        <button ng-show="(step == 1 && $root.selectedCriteria=='op2')" ng-click="appendValues(modelVal);saveInfo(true);(step = calculateStep())" ng-disabled="(!modelVal.addressAreEqual)&&(!modelVal.nomineeAddress.pincode||!modelVal.nomineeAddress.addressLine1)" class="fin-app-btn fin-orange">CONTINUE</button>
+        <button ng-show="(step = getStep()) && (step == 1)" click-redirect="{{$root.redirectUrlContext}}" class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="(step = getStep()) && (step == 1)" ng-click="appendValues(modelVal);(step = step + 1);processNomineeAbsent()" ng-disabled="(!modelVal.nomineeAbsent)&&(!modelVal.nomineeName||!modelVal.nomineeDob||(showGuardian()&&!modelVal.guardianName))" class="fin-app-btn fin-orange content-next">CONTINUE</button>
+        <button ng-show="((step = getStep()) && step == 2)" click-redirect="{{$root.redirectUrlContext}}"  class="fin-app-btn fin-skip-btn content-next">SKIP</button>
+        <button ng-show="((step = getStep()) && step == 2)" ng-click="appendValues(modelVal);saveInfo(true);" ng-disabled="(!modelVal.addressAreEqual)&&(!modelVal.nomineeAddress.pincode||!modelVal.nomineeAddress.addressLine1)" class="fin-app-btn fin-orange">CONTINUE</button>
     </div>
     </div>
 </div>
